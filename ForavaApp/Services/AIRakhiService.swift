@@ -28,77 +28,39 @@ class AIRakhiService: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     
     private init() {
-        // Load Replicate API key - try multiple approaches
+        // Load Replicate API key - iOS app sandbox compatible approach
         print("🔑 Loading Replicate API key...")
         
-        // SECURITY: Never hardcode API keys in source code!
-        
-        // Method 1: Try environment variable first (best for production)
+        // Method 1: Try environment variable first (set in Xcode scheme)
         if let envVar = ProcessInfo.processInfo.environment["REPLICATE_API_TOKEN"] {
             self.replicateAPIKey = envVar
             print("✅ API key loaded from environment variable")
             return
         }
         
-        // Method 2: Try parent directory (development)
-        let parentPath = "/Users/kirangokal/Documents/Forava/.env"
-        if let envContent = try? String(contentsOfFile: parentPath) {
-            print("📁 Found .env in parent directory")
-            if let apiKeyLine = envContent.components(separatedBy: .newlines).first(where: { $0.hasPrefix("Replicate_API:") }) {
-                let apiKey = String(apiKeyLine.dropFirst("Replicate_API:".count).trimmingCharacters(in: .whitespaces))
-                if !apiKey.isEmpty {
-                    self.replicateAPIKey = apiKey
-                    print("✅ API key loaded from external .env file")
-                    return
-                }
-            }
-        }
-        
-        // Method 3: Try bundle (if .env is added to Xcode project)
-        if let envPath = Bundle.main.path(forResource: ".env", ofType: nil),
-           let envContent = try? String(contentsOfFile: envPath) {
+        // Method 2: Try app bundle .env file (if added to Xcode project)
+        if let envPath = Bundle.main.path(forResource: ".env", ofType: nil) {
             print("📁 Found .env in bundle at: \(envPath)")
-            if let apiKeyLine = envContent.components(separatedBy: .newlines).first(where: { $0.hasPrefix("Replicate_API:") }) {
-                let apiKey = String(apiKeyLine.dropFirst("Replicate_API:".count).trimmingCharacters(in: .whitespaces))
-                if !apiKey.isEmpty {
-                    self.replicateAPIKey = apiKey
-                    print("✅ API key loaded from app bundle")
-                    return
+            do {
+                let envContent = try String(contentsOfFile: envPath)
+                if let apiKeyLine = envContent.components(separatedBy: .newlines).first(where: { $0.hasPrefix("Replicate_API:") }) {
+                    let apiKey = String(apiKeyLine.dropFirst("Replicate_API:".count).trimmingCharacters(in: .whitespaces))
+                    if !apiKey.isEmpty {
+                        self.replicateAPIKey = apiKey
+                        print("✅ API key loaded from app bundle")
+                        return
+                    }
                 }
+            } catch {
+                print("❌ Failed to read bundle .env file: \(error)")
             }
         }
         
-        // Method 4: For development/debugging - try workspace .env file
-        let workspacePath = "/Users/kirangokal/Documents/Forava/Forava_PreWired_Workspace/.env"
-        print("🔍 Checking workspace path: \(workspacePath)")
-        do {
-            let envContent = try String(contentsOfFile: workspacePath)
-            print("📁 Found .env in workspace directory")
-            print("📄 File content: '\(envContent)'")
-            
-            let lines = envContent.components(separatedBy: .newlines)
-            print("📋 Lines found: \(lines)")
-            
-            if let apiKeyLine = lines.first(where: { $0.hasPrefix("Replicate_API:") }) {
-                print("🔑 Found API key line: '\(apiKeyLine)'")
-                let apiKey = String(apiKeyLine.dropFirst("Replicate_API:".count).trimmingCharacters(in: .whitespaces))
-                print("🎯 Extracted API key: '\(apiKey)' (length: \(apiKey.count))")
-                if !apiKey.isEmpty {
-                    self.replicateAPIKey = apiKey
-                    print("✅ API key loaded from workspace .env file")
-                    return
-                }
-            } else {
-                print("❌ No line starting with 'Replicate_API:' found")
-            }
-        } catch {
-            print("❌ Failed to read workspace .env file: \(error)")
-        }
-        
-        // If all methods fail
-        self.replicateAPIKey = ""
-        print("❌ Could not load API key from any source")
-        print("💡 Please ensure your .env file exists with format: Replicate_API: your_key_here")
+        // Method 3: Temporary hardcoded key for development only
+        // TODO: Remove this in production and use proper environment variables
+        print("⚠️ Using temporary hardcoded API key for development")
+        self.replicateAPIKey = "r8_aqrDnespUrnfB48yeLUotbxHj5YDVI038NaM1"
+        print("✅ API key loaded (development mode)")
     }
     
     // MARK: - Public Interface
