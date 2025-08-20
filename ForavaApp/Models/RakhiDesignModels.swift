@@ -235,102 +235,608 @@ class DesignElementsDatabase {
     static let shared = DesignElementsDatabase()
     
     private let elements: [DesignElement] = [
-        // Thread Elements
+        // 🧵 THREAD ELEMENTS (15+ options)
         DesignElement(
-            id: "red_thread",
+            id: "red_thread_mauli",
             displayName: "Red Thread (Mauli)",
             category: .thread,
             weight: 1.0,
             culturalSignificance: 1.0,
             ageAppropriate: [.any],
             compatibleGenres: [.traditional, .spiritual],
-            promptTokens: ["red thread", "mauli", "sacred thread", "traditional thread"]
+            promptTokens: ["red thread", "mauli", "sacred thread", "traditional red thread", "holy thread"]
         ),
         DesignElement(
-            id: "silk_thread",
-            displayName: "Silk Thread",
+            id: "saffron_thread",
+            displayName: "Saffron Thread",
+            category: .thread,
+            weight: 0.95,
+            culturalSignificance: 0.95,
+            ageAppropriate: [.any],
+            compatibleGenres: [.traditional, .spiritual],
+            promptTokens: ["saffron thread", "orange thread", "hindu thread", "sacred saffron"]
+        ),
+        DesignElement(
+            id: "silk_thread_premium",
+            displayName: "Premium Silk Thread",
             category: .thread,
             weight: 0.9,
             culturalSignificance: 0.8,
             ageAppropriate: [.adult, .elder],
             compatibleGenres: [.elegant, .modern],
-            promptTokens: ["silk thread", "smooth thread", "premium thread", "lustrous thread"]
+            promptTokens: ["silk thread", "premium thread", "lustrous silk", "smooth thread"]
         ),
-        
-        // Bead Elements
         DesignElement(
-            id: "gold_beads",
-            displayName: "Gold Beads",
-            category: .beads,
-            weight: 0.8,
+            id: "golden_thread",
+            displayName: "Golden Thread (Zari)",
+            category: .thread,
+            weight: 0.85,
             culturalSignificance: 0.9,
             ageAppropriate: [.any],
             compatibleGenres: [.traditional, .elegant],
-            promptTokens: ["gold beads", "golden spheres", "metallic beads"]
+            promptTokens: ["golden thread", "zari thread", "metallic thread", "gold woven thread"]
         ),
         DesignElement(
-            id: "pearl_beads",
-            displayName: "Pearl Beads",
-            category: .beads,
+            id: "cotton_thread_white",
+            displayName: "Pure White Cotton",
+            category: .thread,
+            weight: 0.8,
+            culturalSignificance: 0.85,
+            ageAppropriate: [.any],
+            compatibleGenres: [.traditional, .spiritual],
+            promptTokens: ["white cotton thread", "pure white thread", "cotton thread", "clean white thread"]
+        ),
+        DesignElement(
+            id: "multi_colored_thread",
+            displayName: "Multi-Colored Thread",
+            category: .thread,
+            weight: 0.75,
+            culturalSignificance: 0.7,
+            ageAppropriate: [.young, .adult],
+            compatibleGenres: [.modern, .traditional],
+            promptTokens: ["multi colored thread", "rainbow thread", "colorful thread", "vibrant thread"]
+        ),
+        DesignElement(
+            id: "silver_thread",
+            displayName: "Silver Thread",
+            category: .thread,
+            weight: 0.7,
+            culturalSignificance: 0.75,
+            ageAppropriate: [.any],
+            compatibleGenres: [.elegant, .modern],
+            promptTokens: ["silver thread", "metallic silver", "shiny thread", "silver woven"]
+        ),
+        DesignElement(
+            id: "twisted_rope_thread",
+            displayName: "Twisted Rope Thread",
+            category: .thread,
+            weight: 0.8,
+            culturalSignificance: 0.8,
+            ageAppropriate: [.any],
+            compatibleGenres: [.traditional, .elegant],
+            promptTokens: ["twisted thread", "rope thread", "braided thread", "thick twisted thread"]
+        ),
+        DesignElement(
+            id: "velvet_thread",
+            displayName: "Velvet Thread",
+            category: .thread,
+            weight: 0.65,
+            culturalSignificance: 0.6,
+            ageAppropriate: [.adult, .elder],
+            compatibleGenres: [.elegant, .modern],
+            promptTokens: ["velvet thread", "soft thread", "luxurious thread", "plush thread"]
+        ),
+        DesignElement(
+            id: "jute_thread_natural",
+            displayName: "Natural Jute Thread",
+            category: .thread,
             weight: 0.7,
             culturalSignificance: 0.7,
             ageAppropriate: [.adult, .elder],
-            compatibleGenres: [.elegant, .modern],
-            promptTokens: ["pearl beads", "white pearls", "lustrous beads"]
+            compatibleGenres: [.traditional, .spiritual],
+            promptTokens: ["jute thread", "natural thread", "rustic thread", "eco thread"]
         ),
         DesignElement(
-            id: "rudraksha_beads",
-            displayName: "Rudraksha Beads",
+            id: "crystal_thread",
+            displayName: "Crystal Embedded Thread",
+            category: .thread,
+            weight: 0.6,
+            culturalSignificance: 0.5,
+            ageAppropriate: [.young, .adult],
+            compatibleGenres: [.modern, .elegant],
+            promptTokens: ["crystal thread", "sparkly thread", "gem thread", "jeweled thread"]
+        ),
+        DesignElement(
+            id: "satin_thread",
+            displayName: "Satin Thread",
+            category: .thread,
+            weight: 0.65,
+            culturalSignificance: 0.6,
+            ageAppropriate: [.adult, .elder],
+            compatibleGenres: [.elegant, .modern],
+            promptTokens: ["satin thread", "glossy thread", "shiny satin", "smooth satin thread"]
+        ),
+        DesignElement(
+            id: "hemp_thread",
+            displayName: "Hemp Thread",
+            category: .thread,
+            weight: 0.7,
+            culturalSignificance: 0.75,
+            ageAppropriate: [.adult, .elder],
+            compatibleGenres: [.traditional, .spiritual],
+            promptTokens: ["hemp thread", "natural hemp", "organic thread", "eco friendly thread"]
+        ),
+        DesignElement(
+            id: "nylon_thread_durable",
+            displayName: "Durable Nylon Thread",
+            category: .thread,
+            weight: 0.6,
+            culturalSignificance: 0.4,
+            ageAppropriate: [.young, .adult],
+            compatibleGenres: [.modern],
+            promptTokens: ["nylon thread", "synthetic thread", "durable thread", "modern thread"]
+        ),
+        DesignElement(
+            id: "embroidery_thread",
+            displayName: "Embroidery Thread",
+            category: .thread,
+            weight: 0.75,
+            culturalSignificance: 0.8,
+            ageAppropriate: [.any],
+            compatibleGenres: [.traditional, .elegant],
+            promptTokens: ["embroidery thread", "decorative thread", "artistic thread", "craft thread"]
+        ),
+
+        // 📿 BEAD ELEMENTS (8 options)
+        DesignElement(
+            id: "gold_beads_traditional",
+            displayName: "Traditional Gold Beads",
             category: .beads,
             weight: 0.9,
+            culturalSignificance: 0.95,
+            ageAppropriate: [.any],
+            compatibleGenres: [.traditional, .elegant],
+            promptTokens: ["gold beads", "golden spheres", "metallic beads", "traditional gold beads"]
+        ),
+        DesignElement(
+            id: "pearl_beads_white",
+            displayName: "White Pearl Beads",
+            category: .beads,
+            weight: 0.8,
+            culturalSignificance: 0.75,
+            ageAppropriate: [.adult, .elder],
+            compatibleGenres: [.elegant, .modern],
+            promptTokens: ["pearl beads", "white pearls", "lustrous pearls", "natural pearls"]
+        ),
+        DesignElement(
+            id: "rudraksha_beads_sacred",
+            displayName: "Sacred Rudraksha Beads",
+            category: .beads,
+            weight: 0.95,
             culturalSignificance: 1.0,
             ageAppropriate: [.adult, .elder],
             compatibleGenres: [.spiritual, .traditional],
-            promptTokens: ["rudraksha beads", "sacred beads", "spiritual beads", "brown beads"]
+            promptTokens: ["rudraksha beads", "sacred beads", "spiritual beads", "holy rudraksha"]
         ),
-        
-        // Center Piece Elements
         DesignElement(
-            id: "om_symbol",
-            displayName: "Om Symbol",
+            id: "crystal_beads_clear",
+            displayName: "Clear Crystal Beads",
+            category: .beads,
+            weight: 0.7,
+            culturalSignificance: 0.6,
+            ageAppropriate: [.young, .adult],
+            compatibleGenres: [.modern, .elegant],
+            promptTokens: ["crystal beads", "clear crystals", "glass beads", "transparent beads"]
+        ),
+        DesignElement(
+            id: "wooden_beads_natural",
+            displayName: "Natural Wooden Beads",
+            category: .beads,
+            weight: 0.75,
+            culturalSignificance: 0.8,
+            ageAppropriate: [.any],
+            compatibleGenres: [.traditional, .spiritual],
+            promptTokens: ["wooden beads", "natural wood", "sandalwood beads", "carved wood beads"]
+        ),
+        DesignElement(
+            id: "silver_beads_metallic",
+            displayName: "Silver Metallic Beads",
+            category: .beads,
+            weight: 0.75,
+            culturalSignificance: 0.7,
+            ageAppropriate: [.any],
+            compatibleGenres: [.elegant, .modern],
+            promptTokens: ["silver beads", "metallic silver", "shiny silver beads", "chrome beads"]
+        ),
+        DesignElement(
+            id: "gemstone_beads_mixed",
+            displayName: "Mixed Gemstone Beads",
+            category: .beads,
+            weight: 0.8,
+            culturalSignificance: 0.85,
+            ageAppropriate: [.adult, .elder],
+            compatibleGenres: [.traditional, .elegant],
+            promptTokens: ["gemstone beads", "precious stones", "colorful gems", "mixed gems"]
+        ),
+        DesignElement(
+            id: "coral_beads_red",
+            displayName: "Red Coral Beads",
+            category: .beads,
+            weight: 0.85,
+            culturalSignificance: 0.9,
+            ageAppropriate: [.adult, .elder],
+            compatibleGenres: [.traditional, .spiritual],
+            promptTokens: ["coral beads", "red coral", "natural coral", "sea coral beads"]
+        ),
+
+        // 🎯 CENTER PIECE ELEMENTS (20 options)
+        DesignElement(
+            id: "om_symbol_traditional",
+            displayName: "Traditional Om Symbol",
+            category: .centerPiece,
+            weight: 0.95,
+            culturalSignificance: 1.0,
+            ageAppropriate: [.adult, .elder],
+            compatibleGenres: [.spiritual, .traditional],
+            promptTokens: ["om symbol", "sacred om", "hindu om", "spiritual aum", "divine symbol"]
+        ),
+        DesignElement(
+            id: "lotus_flower_pink",
+            displayName: "Pink Lotus Flower",
+            category: .centerPiece,
+            weight: 0.9,
+            culturalSignificance: 0.95,
+            ageAppropriate: [.any],
+            compatibleGenres: [.traditional, .spiritual, .elegant],
+            promptTokens: ["lotus flower", "pink lotus", "sacred lotus", "blooming lotus", "lotus petals"]
+        ),
+        DesignElement(
+            id: "ganesha_motif",
+            displayName: "Lord Ganesha Motif",
             category: .centerPiece,
             weight: 0.9,
             culturalSignificance: 1.0,
             ageAppropriate: [.adult, .elder],
             compatibleGenres: [.spiritual, .traditional],
-            promptTokens: ["om symbol", "sacred om", "hindu om", "spiritual symbol"]
+            promptTokens: ["ganesha", "lord ganesha", "elephant god", "ganpati", "spiritual deity"]
         ),
         DesignElement(
-            id: "lotus_motif",
-            displayName: "Lotus Motif",
+            id: "swastika_symbol",
+            displayName: "Sacred Swastika",
+            category: .centerPiece,
+            weight: 0.85,
+            culturalSignificance: 1.0,
+            ageAppropriate: [.adult, .elder],
+            compatibleGenres: [.spiritual, .traditional],
+            promptTokens: ["swastika", "sacred swastika", "auspicious symbol", "hindu swastika", "traditional symbol"]
+        ),
+        DesignElement(
+            id: "peacock_design",
+            displayName: "Peacock Design",
+            category: .centerPiece,
+            weight: 0.8,
+            culturalSignificance: 0.85,
+            ageAppropriate: [.any],
+            compatibleGenres: [.traditional, .elegant],
+            promptTokens: ["peacock", "peacock feathers", "colorful peacock", "indian peacock", "majestic bird"]
+        ),
+        DesignElement(
+            id: "mandala_circular",
+            displayName: "Circular Mandala",
+            category: .centerPiece,
+            weight: 0.85,
+            culturalSignificance: 0.9,
+            ageAppropriate: [.any],
+            compatibleGenres: [.spiritual, .traditional, .elegant],
+            promptTokens: ["mandala", "circular mandala", "geometric mandala", "spiritual pattern", "sacred geometry"]
+        ),
+        DesignElement(
+            id: "sun_symbol",
+            displayName: "Sun Symbol (Surya)",
             category: .centerPiece,
             weight: 0.8,
             culturalSignificance: 0.9,
             ageAppropriate: [.any],
-            compatibleGenres: [.traditional, .spiritual, .elegant],
-            promptTokens: ["lotus flower", "lotus petals", "sacred lotus", "pink lotus"]
+            compatibleGenres: [.spiritual, .traditional],
+            promptTokens: ["sun symbol", "surya", "solar disc", "sun rays", "bright sun"]
         ),
         DesignElement(
-            id: "geometric_center",
-            displayName: "Geometric Design",
+            id: "moon_crescent",
+            displayName: "Crescent Moon",
+            category: .centerPiece,
+            weight: 0.75,
+            culturalSignificance: 0.8,
+            ageAppropriate: [.any],
+            compatibleGenres: [.spiritual, .elegant],
+            promptTokens: ["crescent moon", "moon symbol", "lunar crescent", "night moon", "silver moon"]
+        ),
+        DesignElement(
+            id: "floral_bouquet",
+            displayName: "Floral Bouquet",
+            category: .centerPiece,
+            weight: 0.7,
+            culturalSignificance: 0.7,
+            ageAppropriate: [.any],
+            compatibleGenres: [.elegant, .traditional],
+            promptTokens: ["floral bouquet", "flower bunch", "beautiful flowers", "colorful blooms", "garden flowers"]
+        ),
+        DesignElement(
+            id: "heart_shape_love",
+            displayName: "Heart Shape (Love)",
+            category: .centerPiece,
+            weight: 0.6,
+            culturalSignificance: 0.6,
+            ageAppropriate: [.young, .adult],
+            compatibleGenres: [.modern, .elegant],
+            promptTokens: ["heart shape", "love symbol", "romantic heart", "affection symbol", "brotherly love"]
+        ),
+        DesignElement(
+            id: "star_pattern",
+            displayName: "Star Pattern",
+            category: .centerPiece,
+            weight: 0.65,
+            culturalSignificance: 0.6,
+            ageAppropriate: [.young, .adult],
+            compatibleGenres: [.modern, .elegant],
+            promptTokens: ["star pattern", "shining star", "celestial star", "bright star", "golden star"]
+        ),
+        DesignElement(
+            id: "elephant_motif",
+            displayName: "Elephant Motif",
+            category: .centerPiece,
+            weight: 0.8,
+            culturalSignificance: 0.9,
+            ageAppropriate: [.any],
+            compatibleGenres: [.traditional, .spiritual],
+            promptTokens: ["elephant", "indian elephant", "decorated elephant", "royal elephant", "wise elephant"]
+        ),
+        DesignElement(
+            id: "tree_of_life",
+            displayName: "Tree of Life",
+            category: .centerPiece,
+            weight: 0.75,
+            culturalSignificance: 0.8,
+            ageAppropriate: [.adult, .elder],
+            compatibleGenres: [.spiritual, .traditional],
+            promptTokens: ["tree of life", "sacred tree", "banyan tree", "life tree", "spiritual tree"]
+        ),
+        DesignElement(
+            id: "geometric_hexagon",
+            displayName: "Geometric Hexagon",
             category: .centerPiece,
             weight: 0.7,
             culturalSignificance: 0.6,
             ageAppropriate: [.young, .adult],
             compatibleGenres: [.modern, .elegant],
-            promptTokens: ["geometric pattern", "modern design", "abstract shape", "symmetrical"]
+            promptTokens: ["hexagon", "geometric shape", "modern design", "symmetrical pattern", "contemporary art"]
         ),
-        
-        // Decorative Elements
         DesignElement(
-            id: "tassels",
-            displayName: "Tassels",
-            category: .decorativeElements,
+            id: "infinity_symbol",
+            displayName: "Infinity Symbol",
+            category: .centerPiece,
+            weight: 0.65,
+            culturalSignificance: 0.7,
+            ageAppropriate: [.young, .adult],
+            compatibleGenres: [.modern, .elegant],
+            promptTokens: ["infinity symbol", "eternal bond", "endless love", "infinite connection", "forever symbol"]
+        ),
+        DesignElement(
+            id: "conch_shell",
+            displayName: "Sacred Conch Shell",
+            category: .centerPiece,
+            weight: 0.85,
+            culturalSignificance: 0.95,
+            ageAppropriate: [.adult, .elder],
+            compatibleGenres: [.spiritual, .traditional],
+            promptTokens: ["conch shell", "sacred conch", "sankh", "spiritual conch", "divine shell"]
+        ),
+        DesignElement(
+            id: "kalash_pot",
+            displayName: "Kalash (Sacred Pot)",
+            category: .centerPiece,
+            weight: 0.8,
+            culturalSignificance: 0.95,
+            ageAppropriate: [.adult, .elder],
+            compatibleGenres: [.spiritual, .traditional],
+            promptTokens: ["kalash", "sacred pot", "holy vessel", "ceremonial pot", "worship kalash"]
+        ),
+        DesignElement(
+            id: "diya_lamp",
+            displayName: "Traditional Diya Lamp",
+            category: .centerPiece,
+            weight: 0.8,
+            culturalSignificance: 0.9,
+            ageAppropriate: [.any],
+            compatibleGenres: [.traditional, .spiritual],
+            promptTokens: ["diya lamp", "oil lamp", "festival light", "traditional lamp", "glowing diya"]
+        ),
+        DesignElement(
+            id: "butterfly_colorful",
+            displayName: "Colorful Butterfly",
+            category: .centerPiece,
             weight: 0.6,
+            culturalSignificance: 0.5,
+            ageAppropriate: [.young, .adult],
+            compatibleGenres: [.modern, .elegant],
+            promptTokens: ["butterfly", "colorful butterfly", "flying butterfly", "delicate wings", "nature butterfly"]
+        ),
+        DesignElement(
+            id: "rose_flower",
+            displayName: "Rose Flower",
+            category: .centerPiece,
+            weight: 0.65,
+            culturalSignificance: 0.6,
+            ageAppropriate: [.any],
+            compatibleGenres: [.elegant, .modern],
+            promptTokens: ["rose flower", "red rose", "beautiful rose", "romantic rose", "blooming rose"]
+        ),
+
+        // 🎨 COLORS CATEGORY (Working now!)
+        DesignElement(
+            id: "saffron_orange",
+            displayName: "Saffron Orange",
+            category: .colors,
+            weight: 0.9,
+            culturalSignificance: 1.0,
+            ageAppropriate: [.any],
+            compatibleGenres: [.traditional, .spiritual],
+            promptTokens: ["saffron color", "sacred orange", "hindu orange", "traditional saffron", "holy orange"]
+        ),
+        DesignElement(
+            id: "deep_red_maroon",
+            displayName: "Deep Red Maroon",
+            category: .colors,
+            weight: 0.85,
+            culturalSignificance: 0.95,
+            ageAppropriate: [.any],
+            compatibleGenres: [.traditional, .elegant],
+            promptTokens: ["deep red", "maroon", "crimson red", "rich red", "traditional red"]
+        ),
+        DesignElement(
+            id: "royal_gold",
+            displayName: "Royal Gold",
+            category: .colors,
+            weight: 0.9,
+            culturalSignificance: 0.9,
+            ageAppropriate: [.any],
+            compatibleGenres: [.traditional, .elegant],
+            promptTokens: ["royal gold", "golden yellow", "bright gold", "metallic gold", "shining gold"]
+        ),
+        DesignElement(
+            id: "emerald_green",
+            displayName: "Emerald Green",
+            category: .colors,
+            weight: 0.8,
+            culturalSignificance: 0.8,
+            ageAppropriate: [.any],
+            compatibleGenres: [.traditional, .elegant],
+            promptTokens: ["emerald green", "rich green", "forest green", "deep green", "natural green"]
+        ),
+        DesignElement(
+            id: "peacock_blue",
+            displayName: "Peacock Blue",
+            category: .colors,
+            weight: 0.8,
+            culturalSignificance: 0.85,
+            ageAppropriate: [.any],
+            compatibleGenres: [.traditional, .elegant],
+            promptTokens: ["peacock blue", "royal blue", "deep blue", "vibrant blue", "indian blue"]
+        ),
+
+        // 🖼️ PATTERNS CATEGORY (Working now!)
+        DesignElement(
+            id: "paisley_pattern",
+            displayName: "Traditional Paisley",
+            category: .patterns,
+            weight: 0.9,
+            culturalSignificance: 0.95,
+            ageAppropriate: [.any],
+            compatibleGenres: [.traditional, .elegant],
+            promptTokens: ["paisley pattern", "indian paisley", "traditional motif", "curved paisley", "ornate paisley"]
+        ),
+        DesignElement(
+            id: "floral_vine_pattern",
+            displayName: "Floral Vine Pattern",
+            category: .patterns,
+            weight: 0.8,
+            culturalSignificance: 0.8,
+            ageAppropriate: [.any],
+            compatibleGenres: [.traditional, .elegant],
+            promptTokens: ["floral vine", "flower pattern", "vine design", "botanical pattern", "nature motif"]
+        ),
+        DesignElement(
+            id: "geometric_diamond",
+            displayName: "Diamond Geometric",
+            category: .patterns,
+            weight: 0.7,
+            culturalSignificance: 0.6,
+            ageAppropriate: [.young, .adult],
+            compatibleGenres: [.modern, .elegant],
+            promptTokens: ["diamond pattern", "geometric diamonds", "angular pattern", "modern geometry", "crystal pattern"]
+        ),
+        DesignElement(
+            id: "spiral_swirls",
+            displayName: "Spiral Swirls",
+            category: .patterns,
+            weight: 0.75,
             culturalSignificance: 0.7,
             ageAppropriate: [.any],
             compatibleGenres: [.traditional, .elegant],
-            promptTokens: ["tassels", "hanging threads", "decorative tassels", "flowing threads"]
+            promptTokens: ["spiral pattern", "swirl design", "curved spirals", "flowing swirls", "decorative spirals"]
+        ),
+        DesignElement(
+            id: "wave_pattern",
+            displayName: "Ocean Wave Pattern",
+            category: .patterns,
+            weight: 0.7,
+            culturalSignificance: 0.6,
+            ageAppropriate: [.any],
+            compatibleGenres: [.modern, .elegant],
+            promptTokens: ["wave pattern", "ocean waves", "flowing waves", "water pattern", "rhythmic waves"]
+        ),
+
+        // 🏺 MATERIALS CATEGORY (Working now!)
+        DesignElement(
+            id: "pure_silk_material",
+            displayName: "Pure Silk",
+            category: .materials,
+            weight: 0.9,
+            culturalSignificance: 0.85,
+            ageAppropriate: [.adult, .elder],
+            compatibleGenres: [.elegant, .traditional],
+            promptTokens: ["pure silk", "silk material", "lustrous silk", "premium silk", "soft silk"]
+        ),
+        DesignElement(
+            id: "cotton_handwoven",
+            displayName: "Handwoven Cotton",
+            category: .materials,
+            weight: 0.8,
+            culturalSignificance: 0.9,
+            ageAppropriate: [.any],
+            compatibleGenres: [.traditional, .spiritual],
+            promptTokens: ["handwoven cotton", "pure cotton", "organic cotton", "natural cotton", "traditional cotton"]
+        ),
+        DesignElement(
+            id: "velvet_luxurious",
+            displayName: "Luxurious Velvet",
+            category: .materials,
+            weight: 0.75,
+            culturalSignificance: 0.7,
+            ageAppropriate: [.adult, .elder],
+            compatibleGenres: [.elegant, .modern],
+            promptTokens: ["luxurious velvet", "soft velvet", "rich velvet", "plush material", "elegant fabric"]
+        ),
+        DesignElement(
+            id: "brocade_gold",
+            displayName: "Gold Brocade",
+            category: .materials,
+            weight: 0.85,
+            culturalSignificance: 0.9,
+            ageAppropriate: [.any],
+            compatibleGenres: [.traditional, .elegant],
+            promptTokens: ["gold brocade", "woven gold", "metallic fabric", "royal brocade", "ornate material"]
+        ),
+        DesignElement(
+            id: "satin_smooth",
+            displayName: "Smooth Satin",
+            category: .materials,
+            weight: 0.7,
+            culturalSignificance: 0.6,
+            ageAppropriate: [.adult, .elder],
+            compatibleGenres: [.elegant, .modern],
+            promptTokens: ["smooth satin", "glossy satin", "shiny fabric", "sleek material", "refined satin"]
+        ),
+
+        // 💎 DECORATIVE ELEMENTS (continuation)
+        DesignElement(
+            id: "tassels_golden",
+            displayName: "Golden Tassels",
+            category: .decorativeElements,
+            weight: 0.8,
+            culturalSignificance: 0.8,
+            ageAppropriate: [.any],
+            compatibleGenres: [.traditional, .elegant],
+            promptTokens: ["golden tassels", "hanging threads", "decorative tassels", "flowing golden threads"]
         ),
         DesignElement(
             id: "mirrors",

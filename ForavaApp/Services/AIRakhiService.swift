@@ -12,8 +12,9 @@ class AIRakhiService: ObservableObject {
     @Published var generatedRakhi: GeneratedRakhi?
     @Published var error: AIServiceError?
     
-    private let baseURL = "https://api.forava.ai/v1" // Production endpoint
-    private let fallbackURL = "http://localhost:8000" // Local development
+    // Removed old endpoints - using Replicate API exclusively
+    // private let baseURL = "https://api.forava.ai/v1" // Production endpoint (deprecated)
+    // private let fallbackURL = "http://localhost:8000" // Local development (deprecated)
     
     // Replicate API configuration
     private let replicateBaseURL = "https://api.replicate.com/v1"
@@ -188,14 +189,18 @@ class AIRakhiService: ObservableObject {
             return try await generateMockImage(prompt: prompt)
         }
         
-        // Use Replicate API for real generation
+        // Use Replicate API exclusively for real generation
         print("🎯 Starting image generation with Replicate API...")
         print("🔑 API Key status: \(replicateAPIKey.isEmpty ? "❌ Empty" : "✅ Available")")
         
+        guard !replicateAPIKey.isEmpty else {
+            throw AIServiceError.invalidDesignSpec("Replicate API key not configured. Please check your .env file.")
+        }
+        
+        // Progress tracking: Starting API call
+        await updateProgress(0.3)
+        
         do {
-            // Progress tracking: Starting API call
-            await updateProgress(0.3)
-            
             let result = try await generateWithReplicate(prompt: prompt, useCulturalModel: true)
             
             // Progress tracking: Image generated successfully
@@ -206,28 +211,12 @@ class AIRakhiService: ObservableObject {
             
         } catch {
             print("❌ Replicate API failed: \(error)")
-            
-            // Fallback to custom endpoints if Replicate fails
-            let request = ImageGenerationRequest(
-                prompt: prompt,
-                model: "sdxl_base_1.0",
-                scheduler: "DPMSolverMultistep"
-            )
-            
-            // Try primary endpoint first, fallback to local if needed
-            let endpoints = [baseURL, fallbackURL]
-            
-            for endpoint in endpoints {
-                do {
-                    let result = try await performImageGeneration(request: request, endpoint: endpoint, loraModels: loraModels)
-                    return result
-                } catch {
-                    print("Failed with endpoint \(endpoint): \(error)")
-                    continue
-                }
+            // Provide specific error message for Replicate API failures
+            if error.localizedDescription.contains("network") {
+                throw AIServiceError.networkError(error)
+            } else {
+                throw AIServiceError.serverError
             }
-            
-            throw AIServiceError.allEndpointsFailed
         }
     }
     
@@ -819,7 +808,7 @@ enum AIServiceError: LocalizedError {
         case .invalidEndpoint:
             return "Invalid API endpoint"
         case .allEndpointsFailed:
-            return "All generation endpoints are currently unavailable"
+            return "Replicate AI generation service is currently unavailable"
         case .decodingError:
             return "Failed to decode server response"
         }
