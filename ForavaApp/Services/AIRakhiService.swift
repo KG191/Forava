@@ -19,7 +19,7 @@ class AIRakhiService: ObservableObject {
     // Replicate API configuration
     private let replicateBaseURL = "https://api.replicate.com/v1"
     private let replicateAPIKey: String
-    private let culturalModel = "lucataco/indian-art-sdxl:af03d8b38843c3902b10c21b8709a7c21d970f7f95b4acf0bd7e06d7e2ad0c13"
+    private let culturalModel = "stability-ai/sdxl:39ed52f2a78e934b3ba6e2a89f5b1c712de7dfea535525255b1aa35c5565e08b"
     private let defaultModel = "stability-ai/sdxl:39ed52f2a78e934b3ba6e2a89f5b1c712de7dfea535525255b1aa35c5565e08b"
     
     // Demo mode - when true, uses mock generation instead of real API
@@ -214,12 +214,13 @@ class AIRakhiService: ObservableObject {
             
         } catch {
             print("❌ Replicate API failed: \(error)")
-            // Provide specific error message for Replicate API failures
-            if error.localizedDescription.contains("network") {
-                throw AIServiceError.networkError(error)
-            } else {
-                throw AIServiceError.serverError
+            print("❌ Error details: \(error.localizedDescription)")
+            if let apiError = error as? AIServiceError {
+                print("❌ AIServiceError: \(apiError)")
             }
+            
+            // Provide specific error message for Replicate API failures
+            throw error // Pass through the original error for better debugging
         }
     }
     
@@ -238,9 +239,9 @@ class AIRakhiService: ObservableObject {
         // Create optimized prompt for Rakhi generation
         let optimizedPrompt = buildCulturalRakhiPrompt(from: prompt)
         
-        // Create prediction request
+        // Create prediction request - use the working SDXL model
         let predictionRequest = ReplicatePredictionRequest(
-            version: modelToUse,
+            version: "39ed52f2a78e934b3ba6e2a89f5b1c712de7dfea535525255b1aa35c5565e08b", // SDXL 1.0 version
             input: ReplicateInput(
                 prompt: optimizedPrompt.positive,
                 negative_prompt: optimizedPrompt.negative,
@@ -255,7 +256,9 @@ class AIRakhiService: ObservableObject {
         )
         
         // Submit prediction
+        print("🚀 Submitting Replicate prediction...")
         let prediction = try await submitReplicatePrediction(request: predictionRequest)
+        print("✅ Prediction submitted with ID: \(prediction.id)")
         
         // Poll for completion
         let completedPrediction = try await pollReplicatePredictionCompletion(predictionId: prediction.id)
@@ -341,10 +344,21 @@ class AIRakhiService: ObservableObject {
         let encoder = JSONEncoder()
         urlRequest.httpBody = try encoder.encode(request)
         
+        print("📡 Sending request to: \(url)")
+        print("📝 Request payload: \(String(data: urlRequest.httpBody ?? Data(), encoding: .utf8) ?? "Unable to decode")")
+        
         let (data, response) = try await URLSession.shared.data(for: urlRequest)
         
-        guard let httpResponse = response as? HTTPURLResponse,
-              200...299 ~= httpResponse.statusCode else {
+        guard let httpResponse = response as? HTTPURLResponse else {
+            print("❌ Invalid HTTP response")
+            throw AIServiceError.serverError
+        }
+        
+        print("📊 HTTP Status Code: \(httpResponse.statusCode)")
+        print("📄 Response data: \(String(data: data, encoding: .utf8) ?? "Unable to decode")")
+        
+        guard 200...299 ~= httpResponse.statusCode else {
+            print("❌ HTTP error: \(httpResponse.statusCode)")
             throw AIServiceError.serverError
         }
         
