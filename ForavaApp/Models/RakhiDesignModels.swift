@@ -975,7 +975,7 @@ class DesignElementsDatabase {
         
         // COLORS CATEGORY (Brand new)
         DesignElement(
-            id: "saffron_orange",
+            id: "saffron_orange_traditional",
             displayName: "Saffron Orange",
             category: .colors,
             weight: 0.9,
