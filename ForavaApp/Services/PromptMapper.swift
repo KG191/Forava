@@ -304,8 +304,8 @@ class PromptMapper: ObservableObject {
         // Load from embedded CSV data first
         loadEmbeddedMappings()
         
-        // Then try to load from server for updates
-        await loadServerMappings()
+        // Skip server mappings for now (no server available)
+        // await loadServerMappings()
         
         isLoaded = true
     }

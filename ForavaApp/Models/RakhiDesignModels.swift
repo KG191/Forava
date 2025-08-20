@@ -1097,7 +1097,7 @@ class DesignElementsDatabase {
             promptTokens: ["mandala pattern", "circular mandala", "spiritual mandala", "sacred geometry"]
         ),
         DesignElement(
-            id: "geometric_diamond",
+            id: "geometric_diamond_pattern",
             displayName: "Diamond Geometric",
             category: .patterns,
             weight: 0.6,
@@ -1117,7 +1117,7 @@ class DesignElementsDatabase {
             promptTokens: ["floral vine", "flower pattern", "botanical design", "decorative flowers"]
         ),
         DesignElement(
-            id: "wave_pattern",
+            id: "wave_pattern_flow",
             displayName: "Wave Pattern",
             category: .patterns,
             weight: 0.5,

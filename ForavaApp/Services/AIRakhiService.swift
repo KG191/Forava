@@ -70,16 +70,29 @@ class AIRakhiService: ObservableObject {
         
         // Method 4: For development/debugging - try workspace .env file
         let workspacePath = "/Users/kirangokal/Documents/Forava/Forava_PreWired_Workspace/.env"
-        if let envContent = try? String(contentsOfFile: workspacePath) {
+        print("🔍 Checking workspace path: \(workspacePath)")
+        do {
+            let envContent = try String(contentsOfFile: workspacePath)
             print("📁 Found .env in workspace directory")
-            if let apiKeyLine = envContent.components(separatedBy: .newlines).first(where: { $0.hasPrefix("Replicate_API:") }) {
+            print("📄 File content: '\(envContent)'")
+            
+            let lines = envContent.components(separatedBy: .newlines)
+            print("📋 Lines found: \(lines)")
+            
+            if let apiKeyLine = lines.first(where: { $0.hasPrefix("Replicate_API:") }) {
+                print("🔑 Found API key line: '\(apiKeyLine)'")
                 let apiKey = String(apiKeyLine.dropFirst("Replicate_API:".count).trimmingCharacters(in: .whitespaces))
+                print("🎯 Extracted API key: '\(apiKey)' (length: \(apiKey.count))")
                 if !apiKey.isEmpty {
                     self.replicateAPIKey = apiKey
                     print("✅ API key loaded from workspace .env file")
                     return
                 }
+            } else {
+                print("❌ No line starting with 'Replicate_API:' found")
             }
+        } catch {
+            print("❌ Failed to read workspace .env file: \(error)")
         }
         
         // If all methods fail
