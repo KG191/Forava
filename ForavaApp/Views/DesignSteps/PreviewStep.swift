@@ -304,24 +304,46 @@ struct GeneratedRakhiResult: View {
                 Spacer()
             }
             
-            // Generated Image Placeholder
+            // Generated Image Display
             ZStack {
                 RoundedRectangle(cornerRadius: 16)
                     .fill(.regularMaterial)
                     .frame(height: 200)
                 
-                VStack(spacing: 12) {
-                    Image(systemName: "photo")
-                        .font(.system(size: 48))
-                        .foregroundStyle(.secondary)
-                    
-                    Text("Generated Rakhi Image")
-                        .font(.system(.body, design: .rounded).weight(.medium))
-                        .foregroundStyle(.secondary)
-                    
-                    Text("Quality Score: \(generatedRakhi.qualityScore, specifier: "%.1f")/1.0")
-                        .font(.system(.caption, design: .rounded))
-                        .foregroundStyle(.green)
+                if let imageData = generatedRakhi.mainImage.imageData {
+                    // Display the actual generated image
+                    if let uiImage = UIImage(data: imageData) {
+                        Image(uiImage: uiImage)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(maxHeight: 200)
+                            .clipShape(RoundedRectangle(cornerRadius: 16))
+                    } else {
+                        // Fallback if image data can't be converted
+                        VStack(spacing: 8) {
+                            Image(systemName: "exclamationmark.triangle")
+                                .font(.system(size: 32))
+                                .foregroundStyle(.orange)
+                            Text("Image format error")
+                                .font(.system(.caption, design: .rounded))
+                                .foregroundStyle(.secondary)
+                        }
+                    }
+                } else {
+                    // Loading or placeholder state
+                    VStack(spacing: 12) {
+                        Image(systemName: "photo")
+                            .font(.system(size: 48))
+                            .foregroundStyle(.secondary)
+                        
+                        Text("Generated Rakhi Image")
+                            .font(.system(.body, design: .rounded).weight(.medium))
+                            .foregroundStyle(.secondary)
+                        
+                        Text("Quality Score: \(generatedRakhi.qualityScore, specifier: "%.1f")/1.0")
+                            .font(.system(.caption, design: .rounded))
+                            .foregroundStyle(.green)
+                    }
                 }
             }
             
