@@ -114,17 +114,12 @@ struct RakhiDesignStudioView: View {
             }
         }
         .fullScreenCover(isPresented: $showingGeneratedRakhi) {
-            if aiService.generatedRakhi != nil {
-                // TODO: Add GeneratedRakhiView when included in project
-                Text("Generated Rakhi Result")
-                    .navigationTitle("Result")
-                    .toolbar {
-                        ToolbarItem(placement: .navigationBarTrailing) {
-                            Button("Done") {
-                                showingGeneratedRakhi = false
-                            }
-                        }
-                    }
+            if let generatedRakhi = aiService.generatedRakhi {
+                TemporaryGeneratedRakhiView(
+                    generatedRakhi: generatedRakhi,
+                    recipient: selectedContact,
+                    onDismiss: { showingGeneratedRakhi = false }
+                )
             }
         }
         .alert("Generation Cost", isPresented: $showingCostWarning) {
@@ -384,6 +379,188 @@ struct ForavaSecondaryButtonStyle: ButtonStyle {
             }
             .scaleEffect(configuration.isPressed ? 0.98 : 1.0)
             .animation(.spring(response: 0.3), value: configuration.isPressed)
+    }
+}
+
+// MARK: - Temporary Generated Rakhi View
+struct TemporaryGeneratedRakhiView: View {
+    let generatedRakhi: GeneratedRakhi
+    let recipient: Contact
+    let onDismiss: () -> Void
+    @State private var showingSendOptions = false
+    
+    var body: some View {
+        NavigationStack {
+            ScrollView {
+                VStack(spacing: 24) {
+                    // Success Header
+                    VStack(spacing: 16) {
+                        Image(systemName: "checkmark.seal.fill")
+                            .font(.system(size: 64))
+                            .foregroundStyle(.green)
+                        
+                        VStack(spacing: 8) {
+                            Text("Your Rakhi is Ready!")
+                                .font(.system(.title, design: .rounded).weight(.bold))
+                                .foregroundStyle(.primary)
+                            
+                            Text("Created for \(recipient.name)")
+                                .font(.system(.title3, design: .rounded).weight(.medium))
+                                .foregroundStyle(.orange)
+                        }
+                    }
+                    .padding(.top, 32)
+                    
+                    // Generated Image Display
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 20)
+                            .fill(.regularMaterial)
+                            .frame(height: 280)
+                        
+                        if let imageData = generatedRakhi.mainImage.imageData {
+                            if let uiImage = UIImage(data: imageData) {
+                                Image(uiImage: uiImage)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(maxHeight: 280)
+                                    .clipShape(RoundedRectangle(cornerRadius: 20))
+                                    .shadow(color: .black.opacity(0.1), radius: 8, y: 4)
+                            } else {
+                                VStack(spacing: 12) {
+                                    Image(systemName: "exclamationmark.triangle")
+                                        .font(.system(size: 48))
+                                        .foregroundStyle(.orange)
+                                    Text("Image format error")
+                                        .font(.system(.body, design: .rounded))
+                                        .foregroundStyle(.secondary)
+                                }
+                            }
+                        } else {
+                            VStack(spacing: 12) {
+                                Image(systemName: "photo")
+                                    .font(.system(size: 48))
+                                    .foregroundStyle(.secondary)
+                                Text("Generated Rakhi Image")
+                                    .font(.system(.body, design: .rounded))
+                                    .foregroundStyle(.secondary)
+                            }
+                        }
+                    }
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 24)
+                    .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 24))
+                    
+                    // Quality Scores
+                    HStack(spacing: 20) {
+                        VStack(spacing: 8) {
+                            Image(systemName: "star.fill")
+                                .font(.system(.title2))
+                                .foregroundStyle(.blue)
+                            VStack(spacing: 4) {
+                                Text("\(Int(generatedRakhi.qualityScore * 100))%")
+                                    .font(.system(.title3, design: .rounded).weight(.bold))
+                                    .foregroundStyle(.blue)
+                                Text("Quality Score")
+                                    .font(.system(.caption, design: .rounded).weight(.medium))
+                                    .foregroundStyle(.secondary)
+                            }
+                        }
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 16)
+                        .background(.blue.opacity(0.05), in: RoundedRectangle(cornerRadius: 16))
+                        
+                        VStack(spacing: 8) {
+                            Image(systemName: "leaf.fill")
+                                .font(.system(.title2))
+                                .foregroundStyle(.green)
+                            VStack(spacing: 4) {
+                                Text("\(Int(generatedRakhi.culturalScore * 100))%")
+                                    .font(.system(.title3, design: .rounded).weight(.bold))
+                                    .foregroundStyle(.green)
+                                Text("Cultural Score")
+                                    .font(.system(.caption, design: .rounded).weight(.medium))
+                                    .foregroundStyle(.secondary)
+                            }
+                        }
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 16)
+                        .background(.green.opacity(0.05), in: RoundedRectangle(cornerRadius: 16))
+                    }
+                    
+                    // Apple Watch Setup Notice
+                    VStack(spacing: 12) {
+                        HStack {
+                            Image(systemName: "applewatch")
+                                .foregroundStyle(.blue)
+                            Text("Apple Watch Ready")
+                                .font(.system(.headline, design: .rounded).weight(.semibold))
+                                .foregroundStyle(.primary)
+                            Spacer()
+                        }
+                        
+                        Text("This Rakhi is optimized as a functional clock face for Apple Watch with the image as background.")
+                            .font(.system(.subheadline, design: .rounded))
+                            .foregroundStyle(.secondary)
+                    }
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 16)
+                    .background(.blue.opacity(0.05), in: RoundedRectangle(cornerRadius: 16))
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 16)
+                            .stroke(.blue.opacity(0.3), lineWidth: 1)
+                    }
+                    
+                    // Send Rakhi Button (NO Regenerate button as requested)
+                    VStack(spacing: 16) {
+                        Button {
+                            showingSendOptions = true
+                        } label: {
+                            HStack(spacing: 12) {
+                                Image(systemName: "paperplane.fill")
+                                Text("Send Rakhi to \(recipient.name)")
+                            }
+                            .font(.system(.title3, design: .rounded).weight(.semibold))
+                            .foregroundStyle(.white)
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 18)
+                            .background(
+                                RoundedRectangle(cornerRadius: 16, style: .continuous)
+                                    .fill(.orange)
+                            )
+                            .shadow(color: .orange.opacity(0.3), radius: 12, y: 6)
+                        }
+                        
+                        Text("Free to send • Your Rakhi will be delivered instantly")
+                            .font(.system(.caption, design: .rounded))
+                            .foregroundStyle(.secondary)
+                            .multilineTextAlignment(.center)
+                    }
+                    .padding(.top, 8)
+                }
+                .padding(.horizontal, 24)
+                .padding(.bottom, 32)
+            }
+            .background(Color(.systemGroupedBackground))
+            .navigationTitle("Rakhi Created")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button("Done") {
+                        onDismiss()
+                    }
+                    .foregroundStyle(.orange)
+                }
+            }
+        }
+        .alert("Send Options", isPresented: $showingSendOptions) {
+            Button("Messages") { /* Send via Messages */ }
+            Button("WhatsApp") { /* Send via WhatsApp */ }
+            Button("Email") { /* Send via Email */ }
+            Button("Save to Photos") { /* Save to Photos */ }
+            Button("Cancel", role: .cancel) { }
+        } message: {
+            Text("Choose how to send your Rakhi to \(recipient.name)")
+        }
     }
 }
 
