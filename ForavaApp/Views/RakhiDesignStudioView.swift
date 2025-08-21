@@ -9,6 +9,9 @@ struct RakhiDesignStudioView: View {
     @State private var designSpec = RakhiDesignSpec()
     @State private var showingPreview = false
     @State private var showingGenerationError = false
+    @State private var showingGeneratedRakhi = false
+    @State private var showingCostWarning = false
+    @State private var pendingAction: (() -> Void)?
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
@@ -21,7 +24,7 @@ struct RakhiDesignStudioView: View {
                 ScrollView {
                     VStack(spacing: 24) {
                         // Header Info
-                        VStack(spacing: 8) {
+                        VStack(spacing: 12) {
                             Text("Create a Rakhi")
                                 .font(.system(.title2, design: .rounded).weight(.bold))
                                 .foregroundStyle(.primary)
@@ -29,6 +32,23 @@ struct RakhiDesignStudioView: View {
                             Text("for \(selectedContact.name)")
                                 .font(.system(.body, design: .rounded).weight(.medium))
                                 .foregroundStyle(.orange)
+                            
+                            // Cost Notification
+                            HStack(spacing: 8) {
+                                Image(systemName: "dollarsign.circle.fill")
+                                    .foregroundStyle(.green)
+                                
+                                Text("Each generation costs $2")
+                                    .font(.system(.subheadline, design: .rounded).weight(.medium))
+                                    .foregroundStyle(.secondary)
+                            }
+                            .padding(.horizontal, 16)
+                            .padding(.vertical, 8)
+                            .background(.green.opacity(0.05), in: RoundedRectangle(cornerRadius: 12))
+                            .overlay {
+                                RoundedRectangle(cornerRadius: 12)
+                                    .stroke(.green.opacity(0.3), lineWidth: 1)
+                            }
                         }
                         .padding(.top, 16)
                         
@@ -57,12 +77,13 @@ struct RakhiDesignStudioView: View {
                     currentStep: $currentStep,
                     designSpec: designSpec,
                     onGenerate: generateRakhi,
-                    isGenerating: aiService.isGenerating
+                    isGenerating: aiService.isGenerating,
+                    onStepChange: checkForCostWarning
                 )
             }
             .background(Color(.systemGroupedBackground))
             .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
+            .toolbar(content: {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button("Cancel") {
                         dismiss()
@@ -77,7 +98,7 @@ struct RakhiDesignStudioView: View {
                             .scaleEffect(0.8)
                     }
                 }
-            }
+            })
         }
         .alert("Generation Error", isPresented: $showingGenerationError) {
             Button("OK") { }
@@ -87,17 +108,56 @@ struct RakhiDesignStudioView: View {
         .onReceive(aiService.$error) { newError in
             showingGenerationError = newError != nil
         }
+        .onReceive(aiService.$generatedRakhi) { newRakhi in
+            if newRakhi != nil {
+                showingGeneratedRakhi = true
+            }
+        }
+        .fullScreenCover(isPresented: $showingGeneratedRakhi) {
+            if aiService.generatedRakhi != nil {
+                // TODO: Add GeneratedRakhiView when included in project
+                Text("Generated Rakhi Result")
+                    .navigationTitle("Result")
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            Button("Done") {
+                                showingGeneratedRakhi = false
+                            }
+                        }
+                    }
+            }
+        }
+        .alert("Generation Cost", isPresented: $showingCostWarning) {
+            Button("Cancel", role: .cancel) {
+                pendingAction = nil
+            }
+            Button("Continue ($2)") {
+                pendingAction?()
+                pendingAction = nil
+            }
+        } message: {
+            Text("Generating a new Rakhi or making changes after generation will cost $2. Do you want to continue?")
+        }
     }
     
     private func generateRakhi() {
         Task {
             do {
                 let generatedRakhi = try await aiService.generateRakhi(from: designSpec)
-                // Navigate to result view or handle success
                 print("Successfully generated Rakhi: \(generatedRakhi.id)")
             } catch {
                 print("Failed to generate Rakhi: \(error.localizedDescription)")
             }
+        }
+    }
+    
+    private func checkForCostWarning(_ action: @escaping () -> Void) {
+        // If user has already generated a Rakhi and is making changes, warn about cost
+        if aiService.generatedRakhi != nil {
+            pendingAction = action
+            showingCostWarning = true
+        } else {
+            action()
         }
     }
 }
@@ -207,6 +267,7 @@ struct DesignNavigationFooter: View {
     let designSpec: RakhiDesignSpec
     let onGenerate: () -> Void
     let isGenerating: Bool
+    let onStepChange: (@escaping () -> Void) -> Void
     
     var canProceed: Bool {
         switch currentStep {
@@ -228,9 +289,11 @@ struct DesignNavigationFooter: View {
             // Back Button
             if currentStep != .genre {
                 Button {
-                    withAnimation(.spring(response: 0.4, dampingFraction: 0.8)) {
-                        if let prevStep = currentStep.previous() {
-                            currentStep = prevStep
+                    onStepChange {
+                        withAnimation(.spring(response: 0.4, dampingFraction: 0.8)) {
+                            if let prevStep = currentStep.previous() {
+                                currentStep = prevStep
+                            }
                         }
                     }
                 } label: {
@@ -250,9 +313,11 @@ struct DesignNavigationFooter: View {
                 if currentStep == .preview {
                     onGenerate()
                 } else {
-                    withAnimation(.spring(response: 0.4, dampingFraction: 0.8)) {
-                        if let nextStep = currentStep.next() {
-                            currentStep = nextStep
+                    onStepChange {
+                        withAnimation(.spring(response: 0.4, dampingFraction: 0.8)) {
+                            if let nextStep = currentStep.next() {
+                                currentStep = nextStep
+                            }
                         }
                     }
                 }
@@ -323,5 +388,5 @@ struct ForavaSecondaryButtonStyle: ButtonStyle {
 }
 
 #Preview {
-    RakhiDesignStudioView(selectedContact: Contact.sampleContacts[0])
+    RakhiDesignStudioView(selectedContact: Contact(name: "Sample Contact", phoneNumber: "", relationship: ""))
 }

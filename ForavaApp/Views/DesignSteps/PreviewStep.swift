@@ -31,10 +31,7 @@ struct PreviewStep: View {
                     )
                 }
                 
-                // Generated Result
-                if let generatedRakhi = aiService.generatedRakhi {
-                    GeneratedRakhiResult(generatedRakhi: generatedRakhi)
-                }
+                // Note: Generated Result now shows on separate page via GeneratedRakhiView
                 
                 // Payment Configuration
                 PaymentConfigurationSection(designSpec: designSpec) {
@@ -288,95 +285,6 @@ struct GenerationProgressView: View {
     }
 }
 
-struct GeneratedRakhiResult: View {
-    let generatedRakhi: GeneratedRakhi
-    
-    var body: some View {
-        VStack(spacing: 16) {
-            HStack {
-                Image(systemName: "checkmark.seal.fill")
-                    .foregroundStyle(.green)
-                
-                Text("Rakhi Generated Successfully!")
-                    .font(.system(.headline, design: .rounded).weight(.semibold))
-                    .foregroundStyle(.primary)
-                
-                Spacer()
-            }
-            
-            // Generated Image Display
-            ZStack {
-                RoundedRectangle(cornerRadius: 16)
-                    .fill(.regularMaterial)
-                    .frame(height: 200)
-                
-                if let imageData = generatedRakhi.mainImage.imageData {
-                    // Display the actual generated image
-                    if let uiImage = UIImage(data: imageData) {
-                        Image(uiImage: uiImage)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(maxHeight: 200)
-                            .clipShape(RoundedRectangle(cornerRadius: 16))
-                    } else {
-                        // Fallback if image data can't be converted
-                        VStack(spacing: 8) {
-                            Image(systemName: "exclamationmark.triangle")
-                                .font(.system(size: 32))
-                                .foregroundStyle(.orange)
-                            Text("Image format error")
-                                .font(.system(.caption, design: .rounded))
-                                .foregroundStyle(.secondary)
-                        }
-                    }
-                } else {
-                    // Loading or placeholder state
-                    VStack(spacing: 12) {
-                        Image(systemName: "photo")
-                            .font(.system(size: 48))
-                            .foregroundStyle(.secondary)
-                        
-                        Text("Generated Rakhi Image")
-                            .font(.system(.body, design: .rounded).weight(.medium))
-                            .foregroundStyle(.secondary)
-                        
-                        Text("Quality Score: \(generatedRakhi.qualityScore, specifier: "%.1f")/1.0")
-                            .font(.system(.caption, design: .rounded))
-                            .foregroundStyle(.green)
-                    }
-                }
-            }
-            
-            // Action Buttons
-            HStack(spacing: 12) {
-                Button("Regenerate") {
-                    // Regenerate action
-                }
-                .font(.system(.subheadline, design: .rounded).weight(.medium))
-                .foregroundStyle(.orange)
-                .frame(maxWidth: .infinity)
-                .padding(.vertical, 12)
-                .background(.orange.opacity(0.1), in: RoundedRectangle(cornerRadius: 12))
-                
-                Button("Send Rakhi") {
-                    // Send action
-                }
-                .font(.system(.subheadline, design: .rounded).weight(.semibold))
-                .foregroundStyle(.white)
-                .frame(maxWidth: .infinity)
-                .padding(.vertical, 12)
-                .background(.orange, in: RoundedRectangle(cornerRadius: 12))
-            }
-        }
-        .padding(.horizontal, 20)
-        .padding(.vertical, 16)
-        .background(.green.opacity(0.05), in: RoundedRectangle(cornerRadius: 16))
-        .overlay {
-            RoundedRectangle(cornerRadius: 16)
-                .stroke(.green.opacity(0.3), lineWidth: 1)
-        }
-    }
-}
 
 struct PaymentConfigurationSection: View {
     let designSpec: RakhiDesignSpec
