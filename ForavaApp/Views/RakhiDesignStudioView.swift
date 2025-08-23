@@ -627,6 +627,7 @@ struct TemporaryGeneratedRakhiView: View {
         let suggested = baseAmount * complexityMultiplier * culturalMultiplier
         let rounded = NSDecimalNumber(decimal: suggested / Decimal(10)).rounding(accordingToBehavior: nil).decimalValue * Decimal(10) + Decimal(1)
         let suggestedAmount = min(max(rounded, Decimal(21)), Decimal(501))
+        print("💰 DEBUG: Calculated suggested amount: \(suggestedAmount)")
         
         // Delay to allow alert to dismiss first
         print("🔍 DEBUG: About to enter DispatchQueue delay")
@@ -641,7 +642,7 @@ struct TemporaryGeneratedRakhiView: View {
             print("🔗 Generated message: \(rakhiMessage)")
             print("🔗 Pay URL: \(AppConfig.universalPayURL(amount: suggestedAmount, desc: "Rakhi Blessing Gift", rakhiId: generatedRakhi.id.uuidString, sender: "Forava Creator")?.absoluteString ?? "nil")")
             
-            let paymentActivity = PaymentRequestActivity(url: paymentRequestURL, recipientName: self.recipient.name, amount: Int(NSDecimalNumber(decimal: suggestedAmount).doubleValue))
+            let paymentActivity = PaymentRequestActivity(url: paymentRequestURL, recipientName: self.recipient.name, amount: NSDecimalNumber(decimal: suggestedAmount).doubleValue)
             
             let activityVC = UIActivityViewController(
                 activityItems: [

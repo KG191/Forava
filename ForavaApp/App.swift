@@ -1,4 +1,5 @@
 import SwiftUI
+import Foundation
 
 @main
 struct ForavaApp: App {
@@ -25,7 +26,7 @@ class UniversalLinkHandler: ObservableObject {
         
         guard url.scheme == "https",
               url.host == AppConfig.associatedDomain,
-              url.path == AppConfig.universalPayPath else {
+              url.path == "/Forava/app" else {  // Only handle actual app Universal Links
             print("[UNIVERSAL LINK] Invalid URL format: \(url)")
             return
         }
@@ -156,12 +157,12 @@ struct UniversalLinkPaymentView: View {
         }
     }
     
-    private func amountButton(for amount: Double) -> some View {
+    private func amountButton(for amount: Decimal) -> some View {
         Button {
             selectedAmount = amount
         } label: {
             VStack(spacing: 4) {
-                Text("$\(Int(amount))")
+                Text("$\(NSDecimalNumber(decimal: amount).intValue)")
                     .font(.title3.weight(.bold))
                     .foregroundStyle(selectedAmount == amount ? .white : .primary)
                 
@@ -169,7 +170,7 @@ struct UniversalLinkPaymentView: View {
                     Text("Suggested")
                         .font(.caption2)
                         .foregroundStyle(selectedAmount == amount ? .white.opacity(0.8) : .orange)
-                } else if amount.truncatingRemainder(dividingBy: 10) == 1 {
+                } else if NSDecimalNumber(decimal: amount).intValue % 10 == 1 {
                     Text("Auspicious")
                         .font(.caption2)
                         .foregroundStyle(selectedAmount == amount ? .white.opacity(0.8) : .green)
@@ -197,7 +198,7 @@ struct UniversalLinkPaymentView: View {
                 } else {
                     Image(systemName: "gift.fill")
                 }
-                Text(isProcessingPayment ? "Processing..." : "Send Gift - $\(Int(selectedAmount))")
+                Text(isProcessingPayment ? "Processing..." : "Send Gift - $\(NSDecimalNumber(decimal: selectedAmount).intValue)")
             }
             .font(.headline.weight(.semibold))
             .foregroundStyle(.white)
@@ -222,7 +223,7 @@ struct UniversalLinkPaymentView: View {
         
         // Process payment using existing PaymentCoordinator
         PaymentCoordinator.shared.presentApplePay(
-            amountMinor: Int64(truncating: selectedAmount as NSDecimalNumber) * 100,
+            amountMinor: Int64(NSDecimalNumber(decimal: selectedAmount).doubleValue * 100),
             currencyCode: request.currency
         ) { result in
             DispatchQueue.main.async {

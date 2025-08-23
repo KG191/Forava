@@ -5,8 +5,8 @@
       {
         "appID": "C6MJDCDAUG.com.forava.app",
         "paths": [ 
-          "/Forava/pay/*",
-          "/Forava/pay",
+          "/Forava/app/*",
+          "/Forava/app",
           "/Forava/rakhi/*",
           "/Forava/gift/*"
         ]

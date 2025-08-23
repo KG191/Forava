@@ -3,7 +3,7 @@ import Foundation
 struct AppConfig {
     // MARK: - Universal Links & Deep Linking
     static let associatedDomain = "kg191.github.io"
-    static let universalPayPath = "/Forava/pay"
+    static let paymentPath = "/Forava/payment"
     
     // MARK: - Apple Pay Configuration
     static let merchantID = "merchant.C6MJDCDAUG.forava"
@@ -23,7 +23,7 @@ struct AppConfig {
         var components = URLComponents()
         components.scheme = "https"
         components.host = associatedDomain
-        components.path = "/Forava/payment"  // Use different path to avoid Universal Links
+        components.path = paymentPath
         
         var queryItems = [
             URLQueryItem(name: "amount", value: String(describing: amount)),
