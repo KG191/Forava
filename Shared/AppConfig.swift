@@ -6,7 +6,7 @@ struct AppConfig {
     static let universalPayPath = "/Forava/pay"
     
     // MARK: - Apple Pay Configuration
-    static let merchantID = "merchant.com.forava.app"
+    static let merchantID = "merchant.C6MJDCDAUG.forava"
     static let countryCode = "AU"  // Australia
     static let currencyCode = "AUD"
     

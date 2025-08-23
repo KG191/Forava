@@ -3,7 +3,7 @@
     "apps": [],
     "details": [
       {
-        "appID": "TEAMID.com.forava.app",
+        "appID": "C6MJDCDAUG.com.forava.app",
         "paths": [ 
           "/Forava/pay/*",
           "/Forava/pay",
@@ -12,7 +12,7 @@
         ]
       },
       {
-        "appID": "TEAMID.com.forava.app.watchkitapp",
+        "appID": "C6MJDCDAUG.com.forava.app.watchkitapp",
         "paths": [ 
           "/Forava/pay/*",
           "/Forava/pay"

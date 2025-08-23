@@ -3,26 +3,26 @@
     "apps": [],
     "details": [
       {
-        "appID": "TEAMID.com.forava.app",
+        "appID": "C6MJDCDAUG.com.forava.app",
         "paths": [ 
-          "/pay/*",
-          "/pay",
-          "/rakhi/*",
-          "/gift/*"
+          "/Forava/pay/*",
+          "/Forava/pay",
+          "/Forava/rakhi/*",
+          "/Forava/gift/*"
         ]
       },
       {
-        "appID": "TEAMID.com.forava.app.watchkitapp",
+        "appID": "C6MJDCDAUG.com.forava.app.watchkitapp",
         "paths": [ 
-          "/pay/*",
-          "/pay"
+          "/Forava/pay/*",
+          "/Forava/pay"
         ]
       }
     ]
   },
   "webcredentials": {
     "apps": [
-      "TEAMID.com.forava.app"
+      "C6MJDCDAUG.com.forava.app"
     ]
   }
 }
