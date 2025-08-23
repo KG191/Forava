@@ -501,16 +501,6 @@ class DesignElementsDatabase {
             promptTokens: ["ganesha", "lord ganesha", "elephant god", "ganpati", "spiritual deity"]
         ),
         DesignElement(
-            id: "swastika_symbol",
-            displayName: "Sacred Swastika",
-            category: .centerPiece,
-            weight: 0.85,
-            culturalSignificance: 1.0,
-            ageAppropriate: [.adult, .elder],
-            compatibleGenres: [.spiritual, .traditional],
-            promptTokens: ["swastika", "sacred swastika", "auspicious symbol", "hindu swastika", "traditional symbol"]
-        ),
-        DesignElement(
             id: "peacock_design",
             displayName: "Peacock Design",
             category: .centerPiece,
@@ -850,16 +840,6 @@ class DesignElementsDatabase {
         ),
         
         // Symbols
-        DesignElement(
-            id: "swastika",
-            displayName: "Swastika (Auspicious Symbol)",
-            category: .symbols,
-            weight: 0.8,
-            culturalSignificance: 1.0,
-            ageAppropriate: [.adult, .elder],
-            compatibleGenres: [.traditional, .spiritual],
-            promptTokens: ["swastika symbol", "auspicious swastika", "hindu swastika", "traditional symbol"]
-        ),
         DesignElement(
             id: "peacock_motif",
             displayName: "Peacock Motif",
@@ -1426,7 +1406,7 @@ class CulturalValidator {
     ]
     
     private let sensitiveElements: Set<String> = [
-        "swastika" // Requires careful context
+        // No sensitive elements currently defined
     ]
     
     private init() {}

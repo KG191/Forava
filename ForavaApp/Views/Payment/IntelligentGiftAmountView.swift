@@ -276,7 +276,7 @@ struct RelationshipSuggestionRow: View {
             HStack {
                 VStack(alignment: .leading, spacing: 4) {
                     HStack {
-                        Text("₹\(suggestion.amount as NSDecimalNumber)")
+                        Text("$\(suggestion.amount as NSDecimalNumber)")
                             .font(.headline.weight(.semibold))
                             .foregroundColor(.primary)
                         
@@ -330,7 +330,7 @@ struct CustomAmountSection: View {
             
             if showingCustomInput {
                 HStack {
-                    Text("₹")
+                    Text("$")
                         .font(.title2.weight(.medium))
                         .foregroundColor(.secondary)
                     
@@ -595,7 +595,7 @@ struct SuggestionCard: View {
     var body: some View {
         Button(action: onSelect) {
             VStack(spacing: 8) {
-                Text("₹\(suggestion.amount as NSDecimalNumber)")
+                Text("$\(suggestion.amount as NSDecimalNumber)")
                     .font(.title2.weight(.bold))
                     .foregroundColor(.primary)
                 

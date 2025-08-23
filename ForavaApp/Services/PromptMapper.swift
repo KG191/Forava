@@ -70,41 +70,59 @@ class PromptMapper: ObservableObject {
     // MARK: - Advanced Prompt Building
     
     private func buildCulturalContext(_ designSpec: RakhiDesignSpec) async -> String {
-        var context = "traditional Indian rakhi, cultural authenticity, "
+        // Only add minimal cultural context to preserve user selections
+        var context = "Indian rakhi, "
         
         switch designSpec.genre {
         case .traditional:
-            context += "ancient Indian tradition, classical design, time-honored patterns, "
+            context += "traditional style, "
         case .spiritual:
-            context += "spiritual significance, divine blessings, sacred symbols, "
+            context += "spiritual design, "
         case .elegant:
-            context += "refined elegance, sophisticated craftsmanship, premium quality, "
+            context += "elegant craftsmanship, "
         case .modern:
-            context += "contemporary fusion, modern aesthetics with traditional roots, "
+            context += "modern contemporary design, "
         case .unknown:
-            context += "culturally appropriate design, "
+            context += "cultural design, "
         }
         
-        // Add festival context
-        context += "Raksha Bandhan festival, sibling bond, protection thread, love and care, "
+        // Minimal festival context
+        context += "Raksha Bandhan festival, "
         
         return context
     }
     
     private func buildElementPrompts(_ elements: [DesignElement]) async -> String {
+        guard !elements.isEmpty else {
+            return "minimal design, clean appearance"
+        }
+        
         var elementPrompts: [String] = []
         
         for element in elements {
+            // Use VERY high weight for user-selected elements to ensure dominance
+            let elementWeight = max(1.5, element.culturalSignificance + 0.6)
+            
             if let culturalPrompts = culturalPrompts[element.id] {
-                let weightedPrompt = "(\\(culturalPrompts.primaryPrompt):\\(element.culturalSignificance))"
+                let weightedPrompt = "(\(culturalPrompts.primaryPrompt):\(String(format: "%.1f", elementWeight)))"
                 elementPrompts.append(weightedPrompt)
                 
-                // Add secondary prompts with reduced weight
-                for _ in culturalPrompts.secondaryPrompts.prefix(2) {
-                    elementPrompts.append("(cultural-element:0.7)")
+                // Only add one secondary prompt to avoid overwhelming
+                if let firstSecondary = culturalPrompts.secondaryPrompts.first {
+                    elementPrompts.append("(\(firstSecondary):1.2)")
                 }
+            } else {
+                // Fallback for elements without cultural prompts
+                let weightedPrompt = "(\(element.displayName.lowercased()):\(String(format: "%.1f", elementWeight)))"
+                elementPrompts.append(weightedPrompt)
             }
         }
+        
+        // Add VERY strong emphasis on ONLY selected elements
+        elementPrompts.append("(ONLY these specific elements:1.6)")
+        elementPrompts.append("(no additional elements:1.5)")
+        elementPrompts.append("(minimal other decoration:0.2)")
+        elementPrompts.append("(exclude unspecified elements:1.4)")
         
         return elementPrompts.joined(separator: ", ")
     }
@@ -112,47 +130,47 @@ class PromptMapper: ObservableObject {
     private func buildStylePrompts(_ genre: RakhiGenre, colorPalette: ColorPalette) async -> String {
         var stylePrompts: [String] = []
         
-        // Genre-specific style prompts
+        // Genre-specific style prompts - reduced to avoid overwhelming user selections
         switch genre {
         case .traditional:
-            stylePrompts.append("(traditional Indian craftsmanship:1.3)")
-            stylePrompts.append("(authentic cultural design:1.2)")
+            stylePrompts.append("(traditional style:1.1)")
         case .spiritual:
-            stylePrompts.append("(divine spiritual energy:1.4)")
-            stylePrompts.append("(sacred geometry:1.2)")
+            stylePrompts.append("(spiritual design:1.1)")
         case .elegant:
-            stylePrompts.append("(sophisticated elegance:1.3)")
-            stylePrompts.append("(premium luxury finish:1.1)")
+            stylePrompts.append("(elegant style:1.1)")
         case .modern:
-            stylePrompts.append("(contemporary design:1.2)")
-            stylePrompts.append("(modern artistic interpretation:1.1)")
+            stylePrompts.append("(modern contemporary:1.2)")
+            stylePrompts.append("(sleek design:1.1)")
         case .unknown:
             break
         }
         
-        // Color palette prompts
+        // Color palette prompts with specific color emphasis
         switch colorPalette {
         case .traditional:
-            stylePrompts.append("(vibrant red and gold:1.3)")
-            stylePrompts.append("(traditional saffron orange:1.2)")
+            stylePrompts.append("(vibrant red and gold:1.4)")
+            stylePrompts.append("(traditional saffron orange:1.3)")
+            stylePrompts.append("(red orange yellow gold colors:1.2)")
         case .modern:
-            stylePrompts.append("(contemporary color scheme:1.2)")
-            stylePrompts.append("(sleek modern palette:1.1)")
+            stylePrompts.append("(blue indigo cyan colors:1.4)")
+            stylePrompts.append("(contemporary blue palette:1.3)")
+            stylePrompts.append("(modern sleek blue tones:1.2)")
+            stylePrompts.append("(no red no orange no yellow:1.1)")
         case .vibrant:
-            stylePrompts.append("(bright festive colors:1.3)")
-            stylePrompts.append("(joyful color palette:1.2)")
+            stylePrompts.append("(bright pink purple blue green:1.4)")
+            stylePrompts.append("(vibrant festive colors:1.3)")
         case .pastel:
-            stylePrompts.append("(soft pastel tones:1.2)")
-            stylePrompts.append("(gentle color harmony:1.1)")
+            stylePrompts.append("(soft light pink blue yellow:1.3)")
+            stylePrompts.append("(pastel gentle tones:1.2)")
         case .earthy:
-            stylePrompts.append("(natural earth tones:1.2)")
-            stylePrompts.append("(organic color palette:1.1)")
+            stylePrompts.append("(brown tan beige natural:1.3)")
+            stylePrompts.append("(earth tone colors:1.2)")
         case .metallic:
-            stylePrompts.append("(metallic gold and silver:1.4)")
+            stylePrompts.append("(metallic gold silver:1.4)")
             stylePrompts.append("(lustrous finish:1.2)")
         case .monochrome:
-            stylePrompts.append("(elegant monochrome:1.2)")
-            stylePrompts.append("(sophisticated single color:1.1)")
+            stylePrompts.append("(single color design:1.3)")
+            stylePrompts.append("(monochrome elegant:1.2)")
         }
         
         return stylePrompts.joined(separator: ", ")
@@ -247,8 +265,49 @@ class PromptMapper: ObservableObject {
             "blurry", "low quality", "distorted", "inappropriate",
             "western symbols", "cross", "non-cultural", "offensive",
             "poorly crafted", "amateur", "inconsistent", "ugly",
-            "nsfw", "inappropriate cultural representation"
+            "nsfw", "inappropriate cultural representation",
+            "too many elements", "cluttered design", "overwhelming details"
         ]
+        
+        // Add color-specific negative prompts based on selected palette
+        switch designSpec.colorPalette {
+        case .modern:
+            negativePrompts.append(contentsOf: ["red colors", "orange colors", "yellow colors", "traditional red gold", "saffron"])
+        case .traditional:
+            negativePrompts.append(contentsOf: ["blue colors", "modern blue", "contemporary colors"])
+        case .pastel:
+            negativePrompts.append(contentsOf: ["vibrant colors", "bright colors", "intense colors"])
+        case .monochrome:
+            negativePrompts.append(contentsOf: ["multiple colors", "colorful", "rainbow"])
+        default:
+            break
+        }
+        
+        // Add element-specific negative prompts
+        if designSpec.elements.count == 1 {
+            negativePrompts.append(contentsOf: ["multiple design elements", "complex decorations", "many ornaments"])
+        }
+        
+        let selectedElementIds = Set(designSpec.elements.map { $0.id })
+        
+        // If threads are not selected, strongly exclude them
+        if !selectedElementIds.contains("red_thread") && !selectedElementIds.contains("silk_thread") {
+            negativePrompts.append(contentsOf: ["threads", "string", "cord", "rope", "mauli", "sacred thread", "red thread", "silk thread", "thread bracelet", "braided thread"])
+        }
+        
+        // If beads are not selected, strongly exclude them  
+        if !selectedElementIds.contains("gold_beads") && !selectedElementIds.contains("pearl_beads") && !selectedElementIds.contains("rudraksha_beads") {
+            negativePrompts.append(contentsOf: ["beads", "spheres", "pearls", "gold beads", "rudraksha", "ornamental beads", "decorative beads", "bead work", "beadwork"])
+        }
+        
+        // If decorative elements are not selected, exclude them
+        if !selectedElementIds.contains("tassels") {
+            negativePrompts.append(contentsOf: ["tassels", "hanging threads", "fringes", "dangling elements"])
+        }
+        
+        if !selectedElementIds.contains("mirrors") {
+            negativePrompts.append(contentsOf: ["mirrors", "reflective elements", "shiny surfaces", "glass work", "mirror work"])
+        }
         
         // Add age-specific negative prompts
         if designSpec.targetAgeGroup == .young {
@@ -322,8 +381,12 @@ class PromptMapper: ObservableObject {
                 secondaryPrompts: ["golden spherical ornaments", "precious metal decorations", "shimmering gold accents"]
             ),
             "om_symbol": CulturalPromptSet(
-                primaryPrompt: "sacred Om symbol",
-                secondaryPrompts: ["divine AUM emblem", "Hindu spiritual icon", "universal consciousness symbol"]
+                primaryPrompt: "ancient Sanskrit syllable symbol with large flowing bottom curve, middle curved line, upper curved arc, crescent moon shape below a perfect dot, all in luminous golden design representing three states of consciousness",
+                secondaryPrompts: ["sacred Devanagari script character with three distinct curved elements and celestial dot radiating divine light", "traditional AUM symbol featuring flowing asymmetrical curves with semicircular maya element and transcendent bindu point", "spiritual emblem with interconnected curved lines forming sacred geometry in golden metallic finish"]
+            ),
+            "om_symbol_traditional": CulturalPromptSet(
+                primaryPrompt: "traditional Sanskrit AUM symbol with three flowing curves representing waking-dream-sleep states, crescent veil of illusion, and transcendent dot above, rendered in sacred golden radiance",
+                secondaryPrompts: ["authentic Devanagari om character with large bottom curve for waking state, middle curve for dreams, upper curve for deep sleep, semicircle for maya, and dot for absolute consciousness", "classical meditation symbol featuring asymmetrical flowing curves with celestial crescent and divine point in lustrous gold", "sacred syllable emblem with traditional three-curve structure and transcendent elements in spiritual golden glow"]
             ),
             "lotus_motif": CulturalPromptSet(
                 primaryPrompt: "lotus flower design",
@@ -332,7 +395,23 @@ class PromptMapper: ObservableObject {
             "rudraksha_beads": CulturalPromptSet(
                 primaryPrompt: "holy rudraksha beads",
                 secondaryPrompts: ["sacred Shiva beads", "divine seed ornaments", "spiritual meditation beads"]
-            )
+            ),
+            "lotus_flower_pink": CulturalPromptSet(
+                primaryPrompt: "pink lotus flower centerpiece",
+                secondaryPrompts: ["sacred pink lotus", "blooming lotus center", "spiritual lotus blossom"]
+            ),
+            "ganesha_motif": CulturalPromptSet(
+                primaryPrompt: "elephant-headed figure with curved trunk and four arms seated in lotus position, rendered in divine golden radiance with ornate crown and peaceful expression",
+                secondaryPrompts: ["benevolent deity silhouette with large ears and rotund belly in meditative pose", "sacred figure with elephant features holding symbolic objects in multiple hands", "traditional indian deity form with elephant characteristics and celestial golden aura"]
+            ),
+            "peacock_design": CulturalPromptSet(
+                primaryPrompt: "peacock centerpiece design",
+                secondaryPrompts: ["Indian peacock motif", "colorful peacock art", "majestic peacock pattern"]
+            ),
+            "mandala_circular": CulturalPromptSet(
+                primaryPrompt: "circular mandala centerpiece",
+                secondaryPrompts: ["geometric mandala", "sacred mandala pattern", "spiritual mandala design"]
+            ),
         ]
     }
     
@@ -404,11 +483,18 @@ class PromptMapper: ObservableObject {
             
             // Center Piece Elements
             "om_symbol": [
-                PromptToken(token: "om symbol", baseWeight: 1.0),
-                PromptToken(token: "sacred om", baseWeight: 0.9),
-                PromptToken(token: "hindu om", baseWeight: 0.8),
-                PromptToken(token: "spiritual symbol", baseWeight: 0.7),
-                PromptToken(token: "aum sign", baseWeight: 0.6)
+                PromptToken(token: "sanskrit syllable symbol", baseWeight: 1.0),
+                PromptToken(token: "three curved lines with dot", baseWeight: 0.9),
+                PromptToken(token: "ancient spiritual character", baseWeight: 0.8),
+                PromptToken(token: "devanagari script emblem", baseWeight: 0.7),
+                PromptToken(token: "golden curved geometry", baseWeight: 0.6)
+            ],
+            "om_symbol_traditional": [
+                PromptToken(token: "traditional Sanskrit AUM character", baseWeight: 1.0),
+                PromptToken(token: "three consciousness curves with dot", baseWeight: 0.9),
+                PromptToken(token: "flowing asymmetrical sacred lines", baseWeight: 0.8),
+                PromptToken(token: "crescent moon celestial geometry", baseWeight: 0.7),
+                PromptToken(token: "classical meditation emblem", baseWeight: 0.6)
             ],
             "lotus_motif": [
                 PromptToken(token: "lotus flower", baseWeight: 1.0),
@@ -423,6 +509,30 @@ class PromptMapper: ObservableObject {
                 PromptToken(token: "abstract shape", baseWeight: 0.8),
                 PromptToken(token: "symmetrical design", baseWeight: 0.7),
                 PromptToken(token: "contemporary motif", baseWeight: 0.6)
+            ],
+            "lotus_flower_pink": [
+                PromptToken(token: "pink lotus flower", baseWeight: 1.0),
+                PromptToken(token: "sacred pink lotus", baseWeight: 0.9),
+                PromptToken(token: "blooming lotus", baseWeight: 0.8),
+                PromptToken(token: "lotus centerpiece", baseWeight: 0.7)
+            ],
+            "ganesha_motif": [
+                PromptToken(token: "ganesha motif", baseWeight: 1.0),
+                PromptToken(token: "lord ganesha", baseWeight: 0.9),
+                PromptToken(token: "ganpati symbol", baseWeight: 0.8),
+                PromptToken(token: "elephant god", baseWeight: 0.7)
+            ],
+            "peacock_design": [
+                PromptToken(token: "peacock design", baseWeight: 1.0),
+                PromptToken(token: "indian peacock", baseWeight: 0.9),
+                PromptToken(token: "colorful peacock", baseWeight: 0.8),
+                PromptToken(token: "peacock motif", baseWeight: 0.7)
+            ],
+            "mandala_circular": [
+                PromptToken(token: "circular mandala", baseWeight: 1.0),
+                PromptToken(token: "geometric mandala", baseWeight: 0.9),
+                PromptToken(token: "sacred mandala", baseWeight: 0.8),
+                PromptToken(token: "mandala pattern", baseWeight: 0.7)
             ],
             
             // Decorative Elements
@@ -440,14 +550,7 @@ class PromptMapper: ObservableObject {
                 PromptToken(token: "glass inlay", baseWeight: 0.5)
             ],
             
-            // Symbols
-            "swastika": [
-                PromptToken(token: "swastika symbol", baseWeight: 1.0),
-                PromptToken(token: "auspicious swastika", baseWeight: 0.9),
-                PromptToken(token: "hindu swastika", baseWeight: 0.8),
-                PromptToken(token: "traditional symbol", baseWeight: 0.7),
-                PromptToken(token: "sacred symbol", baseWeight: 0.6)
-            ],
+            // Symbols (excluding problematic swastika - content filtering issues)
             "peacock_motif": [
                 PromptToken(token: "peacock design", baseWeight: 1.0),
                 PromptToken(token: "peacock feathers", baseWeight: 0.9),

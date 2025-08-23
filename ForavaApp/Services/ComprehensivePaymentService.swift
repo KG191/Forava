@@ -60,7 +60,7 @@ class ComprehensivePaymentService: NSObject, ObservableObject {
         request.supportedNetworks = supportedNetworks
         request.merchantCapabilities = merchantCapabilities
         request.countryCode = "IN"
-        request.currencyCode = "INR"
+        request.currencyCode = "AUD"
         
         // Cultural payment configuration
         request.supportedCountries = Set(["IN", "US", "CA", "GB", "AU"])
@@ -718,7 +718,7 @@ struct PaymentRecord: Identifiable, Codable {
 
 struct PaymentPreferences: Codable {
     var prefersCulturalEnhancement: Bool = true
-    var defaultCurrency: String = "INR"
+    var defaultCurrency: String = "AUD"
     var autoSuggestAmounts: Bool = true
     var includeShippingInTotal: Bool = true
     var enableFestivalBonus: Bool = true

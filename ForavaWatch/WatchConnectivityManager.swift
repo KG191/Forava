@@ -1,5 +1,6 @@
 import Foundation
 import WatchConnectivity
+import WatchKit
 
 class WatchConnectivityManager: NSObject, ObservableObject {
     static let shared = WatchConnectivityManager()
@@ -164,9 +165,41 @@ extension WatchConnectivityManager: WCSessionDelegate {
             return nil
         }
         
+        // Handle embedded image data
+        var rakhiImageName = imageName
+        if let imageDataString = data["image_data"] as? String,
+           let imageData = Data(base64Encoded: imageDataString),
+           let hasEmbeddedImage = data["has_embedded_image"] as? Bool,
+           hasEmbeddedImage {
+            
+            // Save image data to Watch's documents directory
+            let imageFileName = "rakhi_\(UUID().uuidString).jpg"
+            if let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+                let imageURL = documentsPath.appendingPathComponent(imageFileName)
+                
+                do {
+                    try imageData.write(to: imageURL)
+                    rakhiImageName = imageFileName
+                    print("Rakhi image saved to Watch: \(imageURL.path)")
+                    
+                    // Also save to Photos for easy access
+                    if let image = UIImage(data: imageData) {
+                        DispatchQueue.main.async {
+                            WKInterfaceDevice.current().addMedia(image, name: "Rakhi_\(name)", completion: { success in
+                                print("Added Rakhi to Watch Photos: \(success)")
+                            })
+                        }
+                    }
+                    
+                } catch {
+                    print("Failed to save Rakhi image: \(error.localizedDescription)")
+                }
+            }
+        }
+        
         return Rakhi(
             name: name,
-            imageName: imageName,
+            imageName: rakhiImageName,
             description: description,
             price: price,
             category: category,

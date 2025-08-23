@@ -7,30 +7,18 @@ struct ContactSelectionView: View {
     
     @State private var selectedContact: Contact?
     @State private var showingContactPicker = false
-    @State private var contacts: [Contact] = Contact.sampleContacts
-    @State private var searchText = ""
+    @State private var contacts: [Contact] = []
     @Environment(\.dismiss) private var dismiss
     
     init(onContactSelected: ((Contact) -> Void)? = nil) {
         self.onContactSelected = onContactSelected
     }
     
-    var filteredContacts: [Contact] {
-        if searchText.isEmpty {
-            return contacts
-        } else {
-            return contacts.filter { contact in
-                contact.name.localizedCaseInsensitiveContains(searchText) ||
-                contact.relationship.localizedCaseInsensitiveContains(searchText)
-            }
-        }
-    }
     
     var body: some View {
-        NavigationStack {
-            VStack(spacing: 0) {
+        VStack(spacing: 0) {
                 // Header
-                VStack(spacing: 12) {
+                VStack(spacing: 16) {
                     Text("Choose Your Connection")
                         .font(.system(.title2, design: .rounded).weight(.bold))
                         .foregroundStyle(.primary)
@@ -39,28 +27,35 @@ struct ContactSelectionView: View {
                         .font(.system(.subheadline, design: .rounded))
                         .foregroundStyle(.secondary)
                         .multilineTextAlignment(.center)
+                    
+                    // Apple HIG compliant Add from Contacts button
+                    Button(action: {
+                        print("[DEBUG] Add from Contacts button tapped")
+                        requestContactAccess()
+                    }) {
+                        Text("Add from Contacts")
+                            .font(.system(.title3, design: .rounded).weight(.semibold))
+                            .foregroundStyle(.white)
+                            .frame(maxWidth: .infinity)
+                            .padding(.horizontal, 20)
+                            .padding(.vertical, 16)
+                    }
+                    .background(
+                        RoundedRectangle(cornerRadius: 12, style: .continuous)
+                            .fill(Color.orange)
+                            .shadow(color: .orange.opacity(0.3), radius: 8, x: 0, y: 4)
+                    )
+                    .frame(minHeight: 56) // Apple recommended minimum touch target
+                    .padding(.horizontal, 4)
+                    
                 }
                 .padding(.horizontal, 24)
                 .padding(.top, 16)
                 
-                // Search Bar
-                HStack {
-                    Image(systemName: "magnifyingglass")
-                        .foregroundStyle(.secondary)
-                    
-                    TextField("Search contacts...", text: $searchText)
-                        .textFieldStyle(.plain)
-                }
-                .padding(.horizontal, 16)
-                .padding(.vertical, 12)
-                .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 12))
-                .padding(.horizontal, 24)
-                .padding(.top, 20)
-                
                 // Contact List
                 ScrollView {
                     LazyVStack(spacing: 12) {
-                        ForEach(filteredContacts) { contact in
+                        ForEach(contacts) { contact in
                             ContactRow(
                                 contact: contact,
                                 isSelected: selectedContact?.id == contact.id
@@ -80,11 +75,6 @@ struct ContactSelectionView: View {
                 
                 // Bottom Actions
                 VStack(spacing: 16) {
-                    Button("Add from Contacts") {
-                        requestContactAccess()
-                    }
-                    .buttonStyle(ForavaSecondaryButtonStyle())
-                    
                     if let selectedContact = selectedContact {
                         if onContactSelected != nil {
                             Button {
@@ -116,43 +106,77 @@ struct ContactSelectionView: View {
             }
             .background(Color(.systemGroupedBackground))
             .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Cancel") {
-                        dismiss()
-                    }
-                    .foregroundStyle(.orange)
-                }
-            }
-        }
-        .sheet(isPresented: $showingContactPicker) {
+        .sheet(isPresented: $showingContactPicker, onDismiss: {
+            print("[DEBUG] Contact picker sheet dismissed")
+        }) {
             ContactPickerView { pickedContact in
+                print("[DEBUG] Contact picker callback triggered")
+                DispatchQueue.main.async {
+                    self.showingContactPicker = false
+                }
+                
                 if let contact = pickedContact {
-                    contacts.append(contact)
-                    selectedContact = contact
+                    print("[SUCCESS] Contact selected: \(contact.name)")
+                    DispatchQueue.main.async {
+                        self.contacts.append(contact)
+                        self.selectedContact = contact
+                    }
+                    
+                    // Automatically proceed to next step if onContactSelected is provided
+                    if let onContactSelected = self.onContactSelected {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                            print("[INFO] Proceeding to next step with contact: \(contact.name)")
+                            onContactSelected(contact)
+                        }
+                    }
+                } else {
+                    print("[ERROR] Contact picker was cancelled or no contact selected")
                 }
             }
         }
     }
     
     private func requestContactAccess() {
+        print("[DEBUG] Starting contact access request...")
         let store = CNContactStore()
+        let currentStatus = CNContactStore.authorizationStatus(for: .contacts)
+        print("[DEBUG] Current authorization status: \(currentStatus.rawValue)")
         
-        switch CNContactStore.authorizationStatus(for: .contacts) {
+        switch currentStatus {
         case .authorized:
-            showingContactPicker = true
+            print("[SUCCESS] Contact access already authorized, showing picker")
+            DispatchQueue.main.async {
+                self.showingContactPicker = true
+            }
         case .notDetermined:
+            print("[INFO] Contact access not determined, requesting permission")
             store.requestAccess(for: .contacts) { granted, error in
                 DispatchQueue.main.async {
+                    if let error = error {
+                        print("[ERROR] Contact access request failed: \(error.localizedDescription)")
+                        return
+                    }
+                    
                     if granted {
-                        showingContactPicker = true
+                        print("[SUCCESS] Contact access granted, showing picker")
+                        self.showingContactPicker = true
+                    } else {
+                        print("[ERROR] Contact access denied by user")
                     }
                 }
             }
-        case .denied, .restricted, .limited:
-            // Show alert to go to settings
-            break
+        case .denied:
+            print("[ERROR] Contact access denied - should show settings alert")
+            // TODO: Show alert directing user to Settings
+        case .restricted:
+            print("[ERROR] Contact access restricted")
+        case .limited:
+            print("[WARNING] Contact access limited")
+            DispatchQueue.main.async {
+                self.showingContactPicker = true
+            }
         @unknown default:
+            print("[ERROR] Unknown contact authorization status")
             break
         }
     }
@@ -200,7 +224,7 @@ struct ContactRow: View {
             }
             .padding(.horizontal, 20)
             .padding(.vertical, 16)
-            .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 16))
+            .background(Color(.systemGray6), in: RoundedRectangle(cornerRadius: 16))
             .overlay {
                 RoundedRectangle(cornerRadius: 16)
                     .stroke(isSelected ? .orange : .clear, lineWidth: 2)
@@ -236,14 +260,16 @@ struct ContactPickerView: UIViewControllerRepresentable {
         
         func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
             let forava = Contact(
-                name: "\(contact.givenName) \(contact.familyName)",
+                name: "\(contact.givenName) \(contact.familyName)".trimmingCharacters(in: .whitespaces),
                 phoneNumber: contact.phoneNumbers.first?.value.stringValue ?? "",
                 relationship: "Friend"
             )
+            print("[SUCCESS] Contact selected: \(forava.name)")
             onContactSelected(forava)
         }
         
         func contactPickerDidCancel(_ picker: CNContactPickerViewController) {
+            print("[INFO] Contact picker cancelled")
             onContactSelected(nil)
         }
     }

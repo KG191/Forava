@@ -128,18 +128,116 @@ final class WatchSessionManager_iOS: NSObject, WCSessionDelegate, ObservableObje
     // MARK: - Enhanced Watch Communication
     
     func sendGeneratedRakhiToWatch(_ rakhi: GeneratedRakhi, recipient: String) {
+        guard let session = session, session.isReachable else { 
+            print("Watch session not reachable")
+            return 
+        }
+        
+        // First, transfer the image data
+        if let imageData = rakhi.mainImage.imageData {
+            let imageKey = "rakhi_image_\(rakhi.id.uuidString)"
+            
+            // Save image data to temp file for transfer
+            let tempImageURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("\(imageKey).jpg")
+            do {
+                try imageData.write(to: tempImageURL)
+                
+                // Transfer image file to watch
+                session.transferFile(tempImageURL, metadata: ["rakhi_id": rakhi.id.uuidString])
+                print("Image file transfer initiated successfully")
+                
+                // Send metadata
+                sendRakhiMetadata(rakhi, recipient: recipient, imageKey: imageKey)
+                
+            } catch {
+                print("Failed to write temp image: \(error.localizedDescription)")
+                // Fallback to direct data transfer
+                sendRakhiWithImageData(rakhi, recipient: recipient, imageData: imageData)
+            }
+        } else {
+            // Send without image data
+            sendRakhiMetadata(rakhi, recipient: recipient, imageKey: nil)
+        }
+    }
+    
+    private func sendRakhiMetadata(_ rakhi: GeneratedRakhi, recipient: String, imageKey: String?) {
         guard let session = session, session.isReachable else { return }
+        
+        var rakhiDict: [String: Any] = [
+            "id": rakhi.id.uuidString,
+            "name": "AI Generated Rakhi",
+            "imageName": imageKey ?? "ai_rakhi",
+            "description": "Beautiful AI-generated rakhi for \(recipient)",
+            "price": calculateSuggestedAmount(rakhi),
+            "category": rakhi.designSpec.genre.rawValue,
+            "colors": extractColors(from: rakhi.designSpec)
+        ]
+        
+        if let imageKey = imageKey {
+            rakhiDict["image_file_key"] = imageKey
+            rakhiDict["has_image_file"] = true
+        }
+        
+        let rakhiData: [String: Any] = [
+            "type": "rakhi_received",
+            "rakhi": rakhiDict,
+            "sender": "AI Creator",
+            "recipient": recipient,
+            "enhanced_features": [
+                "has_animation": !rakhi.animationFrames.isEmpty,
+                "cultural_score": rakhi.culturalScore,
+                "quality_score": rakhi.qualityScore
+            ],
+            "watch_face_instructions": [
+                "can_set_automatically": false,
+                "setup_steps": [
+                    "Open the received Rakhi image on your Watch",
+                    "Press firmly on the watch face",
+                    "Tap 'Customize'",
+                    "Select 'Photos' face",
+                    "Choose the Rakhi image as background"
+                ]
+            ]
+        ]
+        
+        session.sendMessage(rakhiData, replyHandler: { reply in
+            print("Rakhi metadata sent to watch successfully: \(reply)")
+            
+            // Send additional data
+            Task {
+                await self.sendAnimationToWatch(rakhiId: rakhi.id.uuidString)
+                await self.sendPaymentContextToWatch(rakhi: rakhi, recipient: recipient)
+            }
+            
+        }, errorHandler: { error in
+            print("Failed to send rakhi metadata to watch: \(error.localizedDescription)")
+        })
+    }
+    
+    private func sendRakhiWithImageData(_ rakhi: GeneratedRakhi, recipient: String, imageData: Data) {
+        guard let session = session, session.isReachable else { return }
+        
+        // Compress image data for watch transfer (reduce size)
+        let compressedData: Data
+        if let image = UIImage(data: imageData),
+           let compressed = image.jpegData(compressionQuality: 0.6) {
+            compressedData = compressed
+        } else {
+            compressedData = imageData
+        }
         
         let rakhiData: [String: Any] = [
             "type": "rakhi_received",
             "rakhi": [
                 "id": rakhi.id.uuidString,
                 "name": "AI Generated Rakhi",
-                "imageName": "ai_rakhi",
-                "description": "Beautiful AI-generated rakhi",
+                "imageName": "embedded_image",
+                "description": "Beautiful AI-generated rakhi for \(recipient)",
                 "price": calculateSuggestedAmount(rakhi),
                 "category": rakhi.designSpec.genre.rawValue,
-                "colors": extractColors(from: rakhi.designSpec)
+                "colors": extractColors(from: rakhi.designSpec),
+                "image_data": compressedData.base64EncodedString(),
+                "has_embedded_image": true
             ],
             "sender": "AI Creator",
             "recipient": recipient,
@@ -147,20 +245,24 @@ final class WatchSessionManager_iOS: NSObject, WCSessionDelegate, ObservableObje
                 "has_animation": !rakhi.animationFrames.isEmpty,
                 "cultural_score": rakhi.culturalScore,
                 "quality_score": rakhi.qualityScore
+            ],
+            "watch_face_instructions": [
+                "can_set_automatically": false,
+                "setup_steps": [
+                    "The Rakhi image has been saved to your Watch",
+                    "To set as watch face:",
+                    "1. Press the Digital Crown to go to Watch Face gallery",
+                    "2. Swipe to find 'Photos' watch face",
+                    "3. Select the Rakhi image",
+                    "4. Press the Digital Crown to set it"
+                ]
             ]
         ]
         
         session.sendMessage(rakhiData, replyHandler: { reply in
-            print("Rakhi sent to watch successfully: \(reply)")
-            
-            // Send animation data if available
-            Task {
-                await self.sendAnimationToWatch(rakhiId: rakhi.id.uuidString)
-                await self.sendPaymentContextToWatch(rakhi: rakhi, recipient: recipient)
-            }
-            
+            print("Rakhi with embedded image sent to watch successfully: \(reply)")
         }, errorHandler: { error in
-            print("Failed to send rakhi to watch: \(error.localizedDescription)")
+            print("Failed to send rakhi with image data to watch: \(error.localizedDescription)")
         })
     }
     

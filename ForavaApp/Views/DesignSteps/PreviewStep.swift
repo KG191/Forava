@@ -32,11 +32,7 @@ struct PreviewStep: View {
                 }
                 
                 // Note: Generated Result now shows on separate page via GeneratedRakhiView
-                
-                // Payment Configuration
-                PaymentConfigurationSection(designSpec: designSpec) {
-                    showingPaymentSettings = true
-                }
+                // Note: Payment Configuration moved to Generated Rakhi page
             }
         }
         .sheet(isPresented: $showingPaymentSettings) {

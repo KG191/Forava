@@ -15,7 +15,9 @@ struct OnboardingView: View {
                 }
             }
         }
-        .fullScreenCover(isPresented: $showingDesignStudio) {
+        .fullScreenCover(isPresented: $showingDesignStudio, onDismiss: {
+            selectedContact = nil
+        }) {
             if let contact = selectedContact {
                 RakhiDesignStudioView(selectedContact: contact)
             }

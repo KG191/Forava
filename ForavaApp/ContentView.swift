@@ -105,81 +105,14 @@ struct ForavaSecondaryButton: ButtonStyle {
     }
 }
 
-// MARK: - Animated Title View with Dynamic Color Glance
+// MARK: - Optimized Title View - Simple and Fast
 struct AnimatedTitleView: View {
-    @State private var animationOffset: CGFloat = -250
-    @State private var glowIntensity: Double = 0.2
-    
     var body: some View {
-        ZStack {
-            // Base title text (white)
-            Text("Forava")
-                .font(.system(size: 99, weight: .semibold, design: .serif))
-                .kerning(0.5)
-                .foregroundStyle(.white)
-                .shadow(color: .black.opacity(0.12), radius: 6, y: 2)
-            
-            // Dynamic color overlay with animated glance effect
-            Text("Forava")
-                .font(.system(size: 99, weight: .semibold, design: .serif))
-                .kerning(0.5)
-                .foregroundStyle(
-                    LinearGradient(
-                        gradient: Gradient(colors: [
-                            .clear,
-                            Color(red: 0.9, green: 0.2, blue: 0.1), // Deep red
-                            Color(red: 1.0, green: 0.4, blue: 0.0), // Vibrant orange
-                            Color(red: 0.95, green: 0.3, blue: 0.05), // Red-orange blend
-                            .clear
-                        ]),
-                        startPoint: .leading,
-                        endPoint: .trailing
-                    )
-                )
-                .mask(
-                    // Moving glance effect - wider for more noticeable color
-                    Rectangle()
-                        .frame(width: 180)  // Wider glance area
-                        .blur(radius: 20)   // Softer edges for smooth transition
-                        .offset(x: animationOffset)
-                )
-                .shadow(color: Color(red: 1.0, green: 0.4, blue: 0.0).opacity(glowIntensity), radius: 12, y: 0)
-                .onAppear {
-                    startAnimation()
-                }
-        }
-    }
-    
-    private func startAnimation() {
-        // Initial delay before first glance
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            performGlanceAnimation()
-        }
-    }
-    
-    private func performGlanceAnimation() {
-        // Animate the glance effect - slow and noticeable
-        withAnimation(.easeInOut(duration: 2.5)) {
-            animationOffset = 250  // Move further right to fully clear the text
-            glowIntensity = 1.0    // Maximum intensity for very noticeable colors
-        }
-        
-        // Reset and schedule next animation
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-            // Instantly reset position without animation to prevent reverse flicker
-            animationOffset = -300  // Reset to start position immediately
-            glowIntensity = 0.0     // Clear any residual color instantly
-            
-            // Restore base glow and schedule next glance
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                glowIntensity = 0.2
-                
-                // Schedule next glance with longer pause
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
-                    performGlanceAnimation()
-                }
-            }
-        }
+        Text("Forava")
+            .font(.system(size: 99, weight: .semibold, design: .serif))
+            .kerning(0.5)
+            .foregroundStyle(.white)
+            .shadow(color: .black.opacity(0.12), radius: 6, y: 2)
     }
 }
 

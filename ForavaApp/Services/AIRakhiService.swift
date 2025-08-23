@@ -64,6 +64,15 @@ class AIRakhiService: ObservableObject {
     }
     
     // MARK: - Public Interface
+    
+    /// Clears any previously generated Rakhi to start a fresh design session
+    func clearGeneratedRakhi() {
+        generatedRakhi = nil
+        error = nil
+        generationProgress = 0.0
+        print("🧹 Cleared previous generated Rakhi for new design session")
+    }
+    
     func generateRakhi(from designSpec: RakhiDesignSpec) async throws -> GeneratedRakhi {
         isGenerating = true
         generationProgress = 0.0
@@ -239,6 +248,10 @@ class AIRakhiService: ObservableObject {
         // Create optimized prompt for Rakhi generation
         let optimizedPrompt = buildCulturalRakhiPrompt(from: prompt)
         
+        // DEBUG: Log the actual prompts being sent to SDXL
+        print("🎯 POSITIVE PROMPT: \(optimizedPrompt.positive)")
+        print("🚫 NEGATIVE PROMPT: \(optimizedPrompt.negative)")
+        
         // Create prediction request - use the working SDXL model
         let predictionRequest = ReplicatePredictionRequest(
             version: "39ed52f2a78e934b3ba6e2a89f5b1c712de7dfea535525255b1aa35c5565e08b", // SDXL 1.0 version
@@ -302,20 +315,16 @@ class AIRakhiService: ObservableObject {
     }
     
     private func buildCulturalRakhiPrompt(from prompt: AIPrompt) -> (positive: String, negative: String) {
+        // Use ONLY the carefully crafted prompts from PromptMapper - do not override with generic elements
         var positivePrompt = """
-        traditional Indian rakhi, intricate handcrafted design, \(prompt.positive), 
-        sacred thread bracelet, ornate beadwork, cultural symbols, 
-        vibrant Indian colors, detailed embroidery patterns, 
-        spiritual significance, brotherly love, festival of Raksha Bandhan,
+        \(prompt.positive), 
         high quality photography, professional lighting, sharp details,
-        traditional Indian art style, authentic cultural elements,
         masterpiece, best quality, ultra detailed, 8k resolution
         """
         
         var negativePrompt = """
         \(prompt.negative),
-        western jewelry, modern bracelet, plastic materials, mass produced,
-        inappropriate symbols, cross, star of david, christian symbols,
+        western jewelry, inappropriate symbols, cross, star of david, christian symbols,
         blurry, low quality, distorted, deformed, ugly, bad anatomy,
         extra limbs, missing parts, watermark, signature, text,
         bad proportions, cloned elements, duplicate, cropped,

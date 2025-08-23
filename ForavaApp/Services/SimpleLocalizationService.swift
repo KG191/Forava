@@ -99,7 +99,7 @@ class SimpleLocalizationService: ObservableObject {
         formatter.currencyCode = "INR"
         formatter.locale = currentLanguage == .hindi ? Locale(identifier: "hi_IN") : Locale(identifier: "en_IN")
         
-        return formatter.string(from: NSNumber(value: amount)) ?? "₹\(amount)"
+        return formatter.string(from: NSNumber(value: amount)) ?? "$\(amount)"
     }
     
     func formatDate(_ date: Date) -> String {

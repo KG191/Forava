@@ -192,8 +192,6 @@ struct ElementCard: View {
             return "line.3.horizontal.decrease"
         case "mirrors":
             return "diamond.fill"
-        case "swastika":
-            return "plus.square.fill"
         case "peacock_motif":
             return "bird.fill"
         default:

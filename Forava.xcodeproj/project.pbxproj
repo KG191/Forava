@@ -45,11 +45,6 @@
 		D7C5A189690F4BCBA21AE164 /* Models/RakhiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D8743C80C54749B8F43EC7 /* Models/RakhiModel.swift */; };
 		E5B73E65C8D44DA1987F1885 /* Views/RakhiSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9F7619777349E4AE02D074 /* Views/RakhiSelectionView.swift */; };
 		F7A3B4E21C8E4D029B5F6178 /* Services/AIRakhiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4C7F9A3B2E4A1F9C6E8520 /* Services/AIRakhiService.swift */; };
-		486021A873B84BA3BD436689 /* RakhiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE13BDA85F25444698B98367 /* RakhiModel.swift */; };
-		7F352A9462434CC59EA3C507 /* ContactSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B14ABF15074F978206DCC8 /* ContactSelectionView.swift */; };
-		CE930CDBFE7F483A9482023D /* RakhiSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C39F4192F1746A6A43299EC /* RakhiSelectionView.swift */; };
-		A365CE09035E49BF88170034 /* PaymentReceiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D63D6A0D1AD4E2D8A5B7250 /* PaymentReceiveView.swift */; };
-		0794A49CBAB1447FBFE48A52 /* WatchConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28FB0FC29424439B1F8D534 /* WatchConnectivityManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,11 +86,6 @@
 		C000 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C002 /* SharedFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedFormatting.swift; sourceTree = "<group>"; };
 		C004 /* SharedModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedModels.swift; sourceTree = "<group>"; };
-		FE13BDA85F25444698B98367 /* RakhiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RakhiModel.swift; sourceTree = "<group>"; };
-		18B14ABF15074F978206DCC8 /* ContactSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactSelectionView.swift; sourceTree = "<group>"; };
-		7C39F4192F1746A6A43299EC /* RakhiSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RakhiSelectionView.swift; sourceTree = "<group>"; };
-		3D63D6A0D1AD4E2D8A5B7250 /* PaymentReceiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentReceiveView.swift; sourceTree = "<group>"; };
-		E28FB0FC29424439B1F8D534 /* WatchConnectivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
