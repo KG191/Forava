@@ -14,8 +14,8 @@
       {
         "appID": "C6MJDCDAUG.com.forava.watch",
         "paths": [ 
-          "/Forava/pay/*",
-          "/Forava/pay"
+          "/Forava/app/watch/*",
+          "/Forava/app/watch"
         ]
       }
     ]
