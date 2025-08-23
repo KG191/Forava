@@ -123,64 +123,13 @@
                 // THIRD: Show loading state (now parameters are available)
                 showLoading();
                 
-                // FOURTH: Set up multiple timeout protection layers
-                
-                // Primary timeout - 8 seconds (shorter for faster fallback)
+                // FOURTH: Simple direct display (no timeouts needed)
                 setTimeout(function() {
-                    console.log('⏰ Primary timeout check (8s) - current page state');
-                    const loadingElement = document.querySelector('.loading');
-                    
-                    // Cross-browser compatible loading detection
-                    let isStillLoading = false;
-                    if (loadingElement) {
-                        // Multiple methods to detect loading state
-                        const displayStyle = loadingElement.style.display;
-                        const computedDisplay = window.getComputedStyle ? window.getComputedStyle(loadingElement).display : displayStyle;
-                        const hasLoadingClass = loadingElement.classList.contains('loading');
-                        const isVisible = loadingElement.offsetParent !== null;
-                        
-                        isStillLoading = (computedDisplay !== 'none') || hasLoadingClass || isVisible;
-                        
-                        console.log('🔍 Loading state analysis:', {
-                            displayStyle, computedDisplay, hasLoadingClass, isVisible, isStillLoading
-                        });
-                    }
-                    
-                    if (isStillLoading) {
-                        console.log('⏰ Primary timeout (8s) - forcing fallback for stuck loading');
-                        showFallbackMessage('payment-failed');
-                    } else {
-                        console.log('✓ Primary timeout - loading completed successfully');
-                    }
-                }, 8000);
+                    console.log('🎁 Displaying universal gift payment options...');
+                    showGiftPaymentOptions();
+                }, 500);
                 
-                // Secondary timeout - 15 seconds (emergency fallback)
-                setTimeout(function() {
-                    console.log('⚠️ Emergency timeout (15s) - forcing fallback regardless of state');
-                    const container = document.querySelector('.container');
-                    const hasFailureMessage = container && container.innerHTML.includes('Alternative ways to send');
-                    
-                    if (!hasFailureMessage) {
-                        console.log('⚠️ Emergency fallback triggered - page stuck for 15+ seconds');
-                        showFallbackMessage('payment-failed');
-                    }
-                }, 15000);
-                
-                // FIFTH: Immediate Apple Pay check for faster UX (reduced from 2s to 1s)
-                setTimeout(function() {
-                    console.log('🍎 Starting enhanced Apple Pay check...');
-                    console.log('📊 Current paymentParams:', paymentParams);
-                    console.log('🔍 Current senderName:', senderName);
-                    
-                    // Extra safety check before proceeding
-                    if (!paymentParams || !paymentParams.amount) {
-                        console.error('❌ Parameters missing at trigger time - emergency fallback');
-                        showFallbackMessage('payment-failed');
-                        return;
-                    }
-                    
-                    checkAndInitiatePayment();
-                }, 1000);
+                // No additional processing needed - universal payment options will be shown
                 
             } catch (error) {
                 console.error('❌ CRITICAL: Initialization error:', error);
@@ -263,303 +212,97 @@
             }
         }
         
-        function checkAndInitiatePayment() {
-            console.log('🔍 Checking Apple Pay availability...');
-            console.log('📊 Payment params check:', paymentParams);
-            console.log('👥 Sender name check:', senderName);
+        function showGiftPaymentOptions() {
+            console.log('🎁 Displaying universal gift payment options...');
+            console.log('📊 Payment params:', paymentParams);
+            console.log('👥 Sender name:', senderName);
             
-            // Final parameter validation before proceeding
+            // Final parameter validation
             if (!paymentParams || !paymentParams.amount) {
-                console.error('❌ Payment parameters missing in checkAndInitiatePayment');
-                showFallbackMessage('payment-failed');
+                console.error('❌ Payment parameters missing');
+                // Use emergency defaults
+                paymentParams = { amount: '61', desc: 'Rakhi Blessing Gift', currency: 'AUD' };
+                senderName = 'your friend';
+            }
+            
+            const container = document.querySelector('.container');
+            if (!container) {
+                console.error('❌ Container not found');
                 return;
             }
             
-            try {
-                // Enhanced cross-browser device detection
-                const userAgent = navigator.userAgent;
-                const isIOS = /iPad|iPhone|iPod/.test(userAgent);
-                const isMac = /Mac OS X|macOS/.test(userAgent);
-                const isAppleWatch = /Watch/.test(userAgent);
-                
-                // Explicit Windows/non-Apple device detection
-                const isWindows = /Windows NT|Windows/.test(userAgent);
-                const isAndroid = /Android/.test(userAgent);
-                const isLinux = /Linux/.test(userAgent) && !isAndroid;
-                const isChrome = /Chrome/.test(userAgent);
-                const isFirefox = /Firefox/.test(userAgent);
-                const isEdge = /Edge|Edg/.test(userAgent);
-                
-                const isDefinitelyNonApple = isWindows || isAndroid || isLinux;
-                
-                console.log('📱 Enhanced device info:', { 
-                    userAgent, isIOS, isMac, isAppleWatch, 
-                    isWindows, isAndroid, isLinux, isChrome, isFirefox, isEdge,
-                    isDefinitelyNonApple 
-                });
-                
-                // Safe ApplePaySession availability check
-                let applePayAvailable = false;
-                let canMakePayments = false;
-                
-                try {
-                    applePayAvailable = !!(window.ApplePaySession);
-                    if (applePayAvailable) {
-                        canMakePayments = ApplePaySession.canMakePayments();
-                    }
-                } catch (applePayError) {
-                    console.log('🚫 ApplePaySession check failed:', applePayError);
-                    applePayAvailable = false;
-                    canMakePayments = false;
-                }
-                
-                console.log('🍎 ApplePaySession available:', applePayAvailable);
-                console.log('💳 Can make payments:', canMakePayments);
-                
-                // Immediate fallback for definitely non-Apple devices
-                if (isDefinitelyNonApple) {
-                    console.log('🖥️ Definitely non-Apple device detected - immediate fallback');
-                    showFallbackMessage('non-apple-device');
-                    return;
-                }
-                
-                // Apple Pay check for potential Apple devices
-                if (applePayAvailable && canMakePayments) {
-                    console.log('✅ Apple Pay is available - initiating...');
-                    initiateApplePay();
-                    return;
-                }
-                
-                // Enhanced fallback logic for remaining cases
-                if (isIOS || isAppleWatch) {
-                    console.log('📱 iOS/Watch device but Apple Pay not available');
-                    showFallbackMessage('apple-device-no-pay');
-                } else if (isMac) {
-                    console.log('💻 Mac device but Apple Pay not available');
-                    showFallbackMessage('apple-device-no-pay');
-                } else {
-                    // Catch-all for any remaining non-Apple scenarios
-                    console.log('🖥️ Non-Apple device or unrecognized platform');
-                    showFallbackMessage('non-apple-device');
-                }
-                
-            } catch (error) {
-                console.error('❌ Error in checkAndInitiatePayment:', error);
-                showFallbackMessage('payment-failed');
-            }
-        }
-        
-        function showFallbackMessage(type) {
-            console.log('💬 Showing fallback message:', type);
-            console.log('📊 Current paymentParams:', paymentParams);
-            console.log('👥 Current senderName:', senderName);
+            const currencySymbol = paymentParams.currency === 'AUD' ? 'AU$' : '$';
             
-            try {
-                const container = document.querySelector('.container');
-                if (!container) {
-                    console.error('❌ Container element not found for fallback message');
-                    // Create emergency fallback if container missing
-                    document.body.innerHTML = `
-                        <div style="text-align: center; padding: 20px; font-family: -apple-system, sans-serif;">
-                            <h1>Gift Payment</h1>
-                            <p>Please send your gift directly to the sender.</p>
-                        </div>
-                    `;
-                    return;
-                }
-                
-                let fallbackHtml = '';
-                
-                // Comprehensive loading state cleanup
-                const loadingElements = document.querySelectorAll('.loading');
-                loadingElements.forEach(element => {
-                    element.style.display = 'none';
-                    element.style.visibility = 'hidden';
-                    element.classList.remove('loading');
-                });
-                
-                // Ensure we have safe parameter defaults
-                const safeParams = paymentParams || { amount: '61', desc: 'Rakhi Blessing Gift', currency: 'AUD' };
-                const safeSender = senderName || 'your friend';
-                const currencySymbol = safeParams.currency === 'AUD' ? 'AU$' : '$';
-                
-                console.log('🔒 Using safe parameters:', { safeParams, safeSender, currencySymbol });
-                
-                if (type === 'non-apple-device') {
-                fallbackHtml = `
-                    <div class="icon">🎊</div>
-                    <h1>Someone sent you a beautiful Rakhi!</h1>
-                    <div class="message">
-                        <p><strong>${safeParams.desc}</strong></p>
-                        <p>Amount: <strong>${currencySymbol}${safeParams.amount}</strong></p>
-                    </div>
-                    <div class="fallback-message">
-                        <p><strong>💝 To send a gift back, you can:</strong></p>
-                        <ul>
-                            <li>Send cash or a gift directly to ${safeSender}</li>
-                            <li>Make an online transfer to show your appreciation</li>
-                            <li>Call them to arrange a gift exchange</li>
-                        </ul>
-                        <p>This Rakhi was created with love using the Forava app - available on iPhone and Apple Watch for creating personalized cultural greetings.</p>
-                    </div>
-                `;
-            } else if (type === 'apple-device-no-pay') {
-                fallbackHtml = `
-                    <div class="icon">💳</div>
-                    <h1>Apple Pay isn't set up on this device</h1>
-                    <div class="message">
-                        <p><strong>${safeParams.desc}</strong></p>
-                        <p>Amount: <strong>${currencySymbol}${safeParams.amount}</strong></p>
-                    </div>
-                    <div class="fallback-message">
-                        <p><strong>💝 To send a gift back, you can:</strong></p>
-                        <ul>
-                            <li>Send a direct bank transfer or cash gift</li>
-                            <li>Arrange to meet and exchange gifts in person</li>
-                            <li>Use your preferred payment app to send money</li>
-                        </ul>
-                        <p>Or set up Apple Pay in Settings to use this quick payment feature in the future.</p>
-                    </div>
-                `;
-            } else if (type === 'payment-failed') {
-                fallbackHtml = `
-                    <div class="icon">⚠️</div>
-                    <h1>Payment couldn't be completed</h1>
-                    <div class="fallback-message">
-                        <p><strong>💝 Alternative ways to send your gift:</strong></p>
-                        <ul>
-                            <li>Send cash or transfer money directly to ${safeSender}</li>
-                            <li>Arrange an in-person gift exchange</li>
-                            <li>Use your banking app to send a transfer</li>
-                        </ul>
-                        <p><strong>The thought and intention matter most! ❤️</strong></p>
-                    </div>
-                `;
-            }
-            
-                // Set the fallback content with error handling
-                try {
-                    container.innerHTML = fallbackHtml + `
-                        <div class="footer">
-                            <p>Made with ❤️ for Raksha Bandhan</p>
-                        </div>
-                    `;
-                    console.log('✓ Fallback message displayed successfully for type:', type);
-                } catch (htmlError) {
-                    console.error('❌ Error setting fallback HTML:', htmlError);
-                    // Ultimate fallback - simple text
-                    container.innerHTML = `
-                        <div style="padding: 20px; text-align: center;">
-                            <h1>Rakhi Gift</h1>
-                            <p>Please send your gift directly to ${safeSender}</p>
-                            <p>Amount: ${currencySymbol}${safeParams.amount}</p>
-                        </div>
-                    `;
-                }
-                
-            } catch (error) {
-                console.error('❌ Critical error in showFallbackMessage:', error);
-                // Emergency fallback for complete failure
-                try {
-                    document.body.innerHTML = `
-                        <div style="text-align: center; padding: 40px; font-family: -apple-system, sans-serif; background: linear-gradient(135deg, #3E3A9F, #FF6A6A); color: white; min-height: 100vh;">
-                            <h1>Rakhi Gift Payment</h1>
-                            <p>Please contact the sender directly to arrange your gift exchange.</p>
-                            <p>Made with ❤️ for Raksha Bandhan</p>
-                        </div>
-                    `;
-                } catch (finalError) {
-                    console.error('❌ Final emergency fallback failed:', finalError);
-                }
-            }
-        }
-        
-        function initiateApplePay() {
-            console.log('🚀 Initiating Apple Pay...');
-            console.log('📊 Apple Pay params check:', paymentParams);
-            
-            try {
-                // Comprehensive parameter validation
-                if (!paymentParams || !paymentParams.amount) {
-                    console.error('❌ Payment parameters validation failed:', paymentParams);
-                    console.error('❌ Global paymentParams:', window.paymentParams);
-                    console.error('❌ Available URL params:', new URLSearchParams(window.location.search).toString());
-                    throw new Error('Payment parameters not available for Apple Pay');
-                }
-                
-                console.log('✓ Apple Pay parameters validated successfully');
-                console.log('💰 Processing amount:', paymentParams.amount);
-                console.log('📋 Description:', paymentParams.desc);
-                console.log('💱 Currency:', paymentParams.currency);
-                
-                const request = {
-                    countryCode: 'AU',
-                    currencyCode: paymentParams.currency,
-                    supportedNetworks: ['visa', 'masterCard', 'amex'],
-                    merchantCapabilities: ['supports3DS'],
-                    total: {
-                        label: 'Forava Rakhi Gift',
-                        amount: paymentParams.amount
-                    }
-                };
-                
-                console.log('📋 Apple Pay request:', request);
-                
-                const session = new ApplePaySession(3, request);
-                
-                session.onvalidatemerchant = function (event) {
-                    console.log('🔐 Merchant validation required:', event.validationURL);
-                    // Since we don't have merchant validation backend yet, 
-                    // we'll abort and show fallback
-                    console.log('⚠️ No merchant validation server available, showing fallback');
-                    session.abort();
-                    showFallbackMessage('payment-failed');
-                };
-                
-                session.onpaymentauthorized = function (event) {
-                    console.log('✅ Payment authorized:', event.payment);
-                    session.completePayment(ApplePaySession.STATUS_SUCCESS);
-                    showSuccessMessage();
-                };
-                
-                session.oncancel = function() {
-                    console.log('❌ Apple Pay cancelled by user');
-                    showFallbackMessage('payment-failed');
-                };
-                
-                console.log('🎬 Starting Apple Pay session...');
-                session.begin();
-                
-            } catch (error) {
-                console.error('❌ Apple Pay initiation failed:', error);
-                showFallbackMessage('payment-failed');
-            }
-        }
-        
-        function showSuccessMessage() {
-            const container = document.querySelector('.container');
             container.innerHTML = `
-                <div class="icon">✅</div>
-                <h1>Gift Sent Successfully!</h1>
+                <div class="icon">🎊</div>
+                <h1>Someone sent you a beautiful Rakhi!</h1>
                 <div class="message">
-                    <p>Your AU$${paymentParams.amount} gift has been sent!</p>
-                    <p>Thank you for spreading joy this Raksha Bandhan! 🎊</p>
+                    <p><strong>${paymentParams.desc}</strong></p>
+                    <p>Amount: <strong>${currencySymbol}${paymentParams.amount}</strong></p>
+                    <p style="margin-top: 15px; opacity: 0.9;">From: <strong>${senderName}</strong></p>
                 </div>
+                
                 <div class="fallback-message">
-                    <p><strong>🎊 Enjoyed sending a cultural gift?</strong></p>
-                    <p>Download Forava to create personalized greetings for:</p>
-                    <ul>
-                        <li>Chinese New Year 🧧</li>
-                        <li>Birthdays 🎂</li>
-                        <li>Diwali 🪔</li>
-                        <li>And many more cultural celebrations!</li>
-                    </ul>
+                    <p><strong>💝 Send a gift back using:</strong></p>
+                    
+                    <div style="margin: 20px 0; padding: 15px; background: rgba(255,255,255,0.1); border-radius: 12px;">
+                        <h3 style="margin: 0 0 10px 0; font-size: 1.1em;">📱 Digital Wallets</h3>
+                        <ul style="margin: 8px 0;">
+                            <li><strong>Apple Pay:</strong> Ask ${senderName} to send you their contact</li>
+                            <li><strong>Google Pay:</strong> Send via phone number or email</li>
+                            <li><strong>Samsung Pay:</strong> Available on Samsung devices</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="margin: 20px 0; padding: 15px; background: rgba(255,255,255,0.1); border-radius: 12px;">
+                        <h3 style="margin: 0 0 10px 0; font-size: 1.1em;">💳 Payment Apps</h3>
+                        <ul style="margin: 8px 0;">
+                            <li><strong>PayPal:</strong> Send to their email or phone</li>
+                            <li><strong>Venmo/CashApp:</strong> Search their username</li>
+                            <li><strong>Zelle:</strong> Via banking app using email/phone</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="margin: 20px 0; padding: 15px; background: rgba(255,255,255,0.1); border-radius: 12px;">
+                        <h3 style="margin: 0 0 10px 0; font-size: 1.1em;">🏦 Traditional Methods</h3>
+                        <ul style="margin: 8px 0;">
+                            <li><strong>Bank Transfer:</strong> Ask for their BSB/account details</li>
+                            <li><strong>Cash Gift:</strong> Give in person when you meet</li>
+                            <li><strong>Gift Card:</strong> Purchase their favorite store gift card</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="margin: 25px 0; padding: 15px; background: rgba(255,215,0,0.2); border-radius: 12px; border: 1px solid rgba(255,215,0,0.3);">
+                        <p style="margin: 0; font-size: 0.95em;"><strong>💡 Auspicious Gift Amounts:</strong></p>
+                        <p style="margin: 5px 0 0 0; font-size: 0.9em; opacity: 0.9;">Consider ${currencySymbol}21, ${currencySymbol}51, ${currencySymbol}101, or ${currencySymbol}201 for cultural significance</p>
+                    </div>
                 </div>
+                
+                <div style="margin-top: 25px; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 12px;">
+                    <p style="margin: 0 0 10px 0; font-size: 0.95em;"><strong>🎊 Enjoyed receiving a cultural greeting?</strong></p>
+                    <p style="margin: 0 0 12px 0; font-size: 0.9em; line-height: 1.4;">Download <strong>Forava</strong> to create personalized greetings for:</p>
+                    <div style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 10px 0;">
+                        <span style="background: rgba(255,255,255,0.15); padding: 4px 8px; border-radius: 8px; font-size: 0.85em;">🧧 Chinese New Year</span>
+                        <span style="background: rgba(255,255,255,0.15); padding: 4px 8px; border-radius: 8px; font-size: 0.85em;">🎂 Birthdays</span>
+                        <span style="background: rgba(255,255,255,0.15); padding: 4px 8px; border-radius: 8px; font-size: 0.85em;">🪔 Diwali</span>
+                        <span style="background: rgba(255,255,255,0.15); padding: 4px 8px; border-radius: 8px; font-size: 0.85em;">🎄 Christmas</span>
+                        <span style="background: rgba(255,255,255,0.15); padding: 4px 8px; border-radius: 8px; font-size: 0.85em;">🕌 Eid</span>
+                        <span style="background: rgba(255,255,255,0.15); padding: 4px 8px; border-radius: 8px; font-size: 0.85em;">🌸 Holi</span>
+                    </div>
+                    <p style="margin: 12px 0 0 0; font-size: 0.85em; opacity: 0.8; text-align: center;">Premium cultural gifting • Watch-first experience • Monthly/Annual subscriptions</p>
+                </div>
+                
                 <div class="footer">
                     <p>Made with ❤️ for Raksha Bandhan</p>
                 </div>
             `;
+            
+            console.log('✅ Universal gift payment options displayed');
         }
+        
+        // Legacy fallback function - no longer needed since we show universal payment options directly
+        
+        // Apple Pay functions removed - no longer needed for universal payment approach
     </script>
 </head>
 <body>
