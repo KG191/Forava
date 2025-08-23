@@ -12,7 +12,7 @@
         ]
       },
       {
-        "appID": "C6MJDCDAUG.com.forava.app.watchkitapp",
+        "appID": "C6MJDCDAUG.com.forava.watch",
         "paths": [ 
           "/Forava/pay/*",
           "/Forava/pay"
