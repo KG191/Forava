@@ -1,0 +1,23 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "TEAMID.com.forava.app",
+        "paths": [ 
+          "/Forava/pay/*",
+          "/Forava/pay",
+          "/Forava/rakhi/*",
+          "/Forava/gift/*"
+        ]
+      },
+      {
+        "appID": "TEAMID.com.forava.app.watchkitapp",
+        "paths": [ 
+          "/Forava/pay/*",
+          "/Forava/pay"
+        ]
+      }
+    ]
+  }
+}
