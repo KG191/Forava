@@ -41,21 +41,24 @@
             opacity: 0.9;
             line-height: 1.4;
         }
-        .app-link {
+        .pay-button {
             display: inline-block;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 12px 24px;
+            background: linear-gradient(45deg, #FF6A6A, #FFD166);
+            padding: 15px 30px;
             border-radius: 25px;
             text-decoration: none;
             color: white;
-            font-weight: 600;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            margin: 10px;
+            font-weight: 700;
+            border: none;
+            margin: 20px 10px;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            cursor: pointer;
+            font-size: 1.1em;
         }
-        .app-link:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
+        .pay-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
         }
         .footer {
             margin-top: 30px;
@@ -64,29 +67,76 @@
         }
     </style>
     <script>
-        // Try to open in Forava app if installed
+        let paymentParams = {};
+        
         window.onload = function() {
             const urlParams = new URLSearchParams(window.location.search);
-            const amount = urlParams.get('amount');
-            const desc = urlParams.get('desc');
-            const currency = urlParams.get('currency');
+            const amount = urlParams.get('amount') || '61';
+            const desc = urlParams.get('desc') || 'Rakhi Blessing Gift';
+            const currency = urlParams.get('currency') || 'AUD';
             
-            // Display payment details
-            if (amount) {
-                document.getElementById('amount').textContent = currency + ' ' + amount;
-            }
-            if (desc) {
-                document.getElementById('description').textContent = desc;
-            }
+            // Store for Apple Pay
+            paymentParams = { amount, desc, currency };
             
-            // Auto-redirect to app if on iOS
-            if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
-                setTimeout(function() {
-                    // Try to open in Forava app
-                    window.location = window.location.href;
-                }, 1000);
-            }
+            // Display payment details (fix currency display)
+            const currencySymbol = currency === 'AUD' ? 'AU$' : '$';
+            document.getElementById('amount').textContent = currencySymbol + amount;
+            document.getElementById('description').textContent = desc;
+            
+            // No auto-redirect - let user choose
         };
+        
+        function sendGift() {
+            // Check if we're on a device that supports Apple Pay
+            if (window.ApplePaySession && ApplePaySession.canMakePayments()) {
+                // Trigger Apple Pay directly
+                initiateApplePay();
+            } else if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+                // On iOS without Apple Pay support, redirect to app
+                window.location = 'https://apps.apple.com';
+            } else {
+                // On other devices, show message
+                alert('Apple Pay is only available on Apple devices. Please use an iPhone, iPad, or Apple Watch.');
+            }
+        }
+        
+        function initiateApplePay() {
+            const request = {
+                countryCode: 'AU',
+                currencyCode: paymentParams.currency,
+                supportedNetworks: ['visa', 'masterCard', 'amex'],
+                merchantCapabilities: ['supports3DS'],
+                total: {
+                    label: 'Forava',
+                    amount: paymentParams.amount
+                }
+            };
+            
+            const session = new ApplePaySession(3, request);
+            
+            session.onvalidatemerchant = function (event) {
+                // In production, validate with your server
+                console.log('Validate merchant:', event.validationURL);
+            };
+            
+            session.onpaymentauthorized = function (event) {
+                // Process payment
+                console.log('Payment authorized:', event.payment);
+                session.completePayment(ApplePaySession.STATUS_SUCCESS);
+                
+                // Show success message
+                document.querySelector('.container').innerHTML = `
+                    <div class="icon">✅</div>
+                    <h1>Gift Sent Successfully!</h1>
+                    <div class="message">
+                        <p>Your ${paymentParams.currency} ${paymentParams.amount} gift has been sent!</p>
+                        <p>Thank you for spreading joy this Raksha Bandhan! 🎊</p>
+                    </div>
+                `;
+            };
+            
+            session.begin();
+        }
     </script>
 </head>
 <body>
@@ -95,10 +145,10 @@
         <h1>Rakhi Gift Payment</h1>
         <div class="message">
             <p><strong id="description">Rakhi Blessing Gift</strong></p>
-            <p>Amount: <strong id="amount">$61</strong></p>
+            <p>Amount: <strong id="amount">AU$61</strong></p>
         </div>
-        <p>This link should open in the Forava app. If the app doesn't open automatically:</p>
-        <a href="https://apps.apple.com" class="app-link">Download Forava</a>
+        <p>Someone sent you a beautiful Rakhi! Send a gift back to show your love:</p>
+        <button onclick="sendGift()" class="pay-button">💝 Send a Gift in Return</button>
         <div class="footer">
             <p>Made with ❤️ for Raksha Bandhan</p>
         </div>
