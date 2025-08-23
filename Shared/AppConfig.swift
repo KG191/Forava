@@ -23,7 +23,7 @@ struct AppConfig {
         var components = URLComponents()
         components.scheme = "https"
         components.host = associatedDomain
-        components.path = universalPayPath
+        components.path = "/Forava/payment"  // Use different path to avoid Universal Links
         
         var queryItems = [
             URLQueryItem(name: "amount", value: String(describing: amount)),
@@ -52,8 +52,9 @@ struct AppConfig {
         🎊 I've created a beautiful Rakhi just for you!
         
         ⌚️ To set as Apple Watch face:
-        • Tap the image and "Save to Photos"
-        • On your Watch: Face Gallery → Photos → Select Rakhi
+        • Tap and hold the image
+        • Tap on Share
+        • Tap on Create Watch Face or Save Image for later
         
         💝 To send a gift back:
         • Tap this link: \(payURL)

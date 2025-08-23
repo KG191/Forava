@@ -609,6 +609,7 @@ struct TemporaryGeneratedRakhiView: View {
     // MARK: - Send Options Implementation
     private func sendToAppleWatch() {
         print("[INFO] Sending Rakhi via Messages for Watch setup to \(recipient.name)")
+        print("🔍 DEBUG: sendToAppleWatch() called")
         
         guard let imageData = generatedRakhi.mainImage.imageData,
               let uiImage = UIImage(data: imageData) else {
@@ -621,22 +622,26 @@ struct TemporaryGeneratedRakhiView: View {
         
         // Calculate amount for message
         let baseAmount: Decimal = 51.0
-        let complexityMultiplier = 1.0 + (Decimal(generatedRakhi.designSpec.elements.count) * 0.1)
+        let complexityMultiplier = Decimal(1.0) + (Decimal(generatedRakhi.designSpec.elements.count) * Decimal(0.1))
         let culturalMultiplier = Decimal(generatedRakhi.culturalScore)
         let suggested = baseAmount * complexityMultiplier * culturalMultiplier
-        let rounded = (suggested / 10).rounded() * 10 + 1
-        let suggestedAmount = min(max(rounded, 21), 501)
+        let rounded = NSDecimalNumber(decimal: suggested / Decimal(10)).rounding(accordingToBehavior: nil).decimalValue * Decimal(10) + Decimal(1)
+        let suggestedAmount = min(max(rounded, Decimal(21)), Decimal(501))
         
         // Delay to allow alert to dismiss first
+        print("🔍 DEBUG: About to enter DispatchQueue delay")
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            print("🔍 DEBUG: Inside DispatchQueue delay")
             let rakhiMessage = AppConfig.createRakhiMessage(
                 amount: suggestedAmount,
                 desc: "Rakhi Blessing Gift",
                 rakhiId: generatedRakhi.id.uuidString,
                 sender: "Forava Creator"
             )
+            print("🔗 Generated message: \(rakhiMessage)")
+            print("🔗 Pay URL: \(AppConfig.universalPayURL(amount: suggestedAmount, desc: "Rakhi Blessing Gift", rakhiId: generatedRakhi.id.uuidString, sender: "Forava Creator")?.absoluteString ?? "nil")")
             
-            let paymentActivity = PaymentRequestActivity(url: paymentRequestURL, recipientName: self.recipient.name, amount: 101) // Default suggested amount
+            let paymentActivity = PaymentRequestActivity(url: paymentRequestURL, recipientName: self.recipient.name, amount: Int(NSDecimalNumber(decimal: suggestedAmount).doubleValue))
             
             let activityVC = UIActivityViewController(
                 activityItems: [
@@ -675,11 +680,11 @@ struct TemporaryGeneratedRakhiView: View {
     private func createPaymentRequestURL() -> URL {
         // Calculate suggested amount based on rakhi complexity
         let baseAmount: Decimal = 51.0
-        let complexityMultiplier = 1.0 + (Decimal(generatedRakhi.designSpec.elements.count) * 0.1)
+        let complexityMultiplier = Decimal(1.0) + (Decimal(generatedRakhi.designSpec.elements.count) * Decimal(0.1))
         let culturalMultiplier = Decimal(generatedRakhi.culturalScore)
         let suggested = baseAmount * complexityMultiplier * culturalMultiplier
-        let rounded = (suggested / 10).rounded() * 10 + 1
-        let suggestedAmount = min(max(rounded, 21), 501)
+        let rounded = NSDecimalNumber(decimal: suggested / Decimal(10)).rounding(accordingToBehavior: nil).decimalValue * Decimal(10) + Decimal(1)
+        let suggestedAmount = min(max(rounded, Decimal(21)), Decimal(501))
         
         // Use AppConfig to create Universal Link
         return AppConfig.universalPayURL(
@@ -692,6 +697,7 @@ struct TemporaryGeneratedRakhiView: View {
     
     private func sendViaMessages() {
         print("[INFO] Sending Rakhi via Messages to \(recipient.name)")
+        print("🔍 DEBUG: sendViaMessages() called - THIS SHOULD NOT SHOW for Apple Watch button!")
         
         guard let imageData = generatedRakhi.mainImage.imageData,
               let uiImage = UIImage(data: imageData) else {

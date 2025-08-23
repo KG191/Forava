@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forava Payment - Rakhi Gift</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #3E3A9F, #FF6A6A);
+            color: white;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .message {
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            line-height: 1.4;
+        }
+        .pay-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #FF6A6A, #FFD166);
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            color: white;
+            font-weight: 700;
+            border: none;
+            margin: 20px 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            cursor: pointer;
+            font-size: 1.1em;
+        }
+        .pay-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        .footer {
+            margin-top: 30px;
+            font-size: 0.9em;
+            opacity: 0.7;
+        }
+    </style>
+    <script>
+        let paymentParams = {};
+        
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const amount = urlParams.get('amount') || '61';
+            const desc = urlParams.get('desc') || 'Rakhi Blessing Gift';
+            const currency = urlParams.get('currency') || 'AUD';
+            
+            // Store for Apple Pay
+            paymentParams = { amount, desc, currency };
+            
+            // Display payment details (fix currency display)
+            const currencySymbol = currency === 'AUD' ? 'AU$' : '$';
+            document.getElementById('amount').textContent = currencySymbol + amount;
+            document.getElementById('description').textContent = desc;
+            
+            // No auto-redirect - let user choose
+        };
+        
+        function sendGift() {
+            // Check if we're on a device that supports Apple Pay
+            if (window.ApplePaySession && ApplePaySession.canMakePayments()) {
+                // Trigger Apple Pay directly
+                initiateApplePay();
+            } else if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+                // On iOS without Apple Pay support, redirect to app
+                window.location = 'https://apps.apple.com';
+            } else {
+                // On other devices, show message
+                alert('Apple Pay is only available on Apple devices. Please use an iPhone, iPad, or Apple Watch.');
+            }
+        }
+        
+        function initiateApplePay() {
+            const request = {
+                countryCode: 'AU',
+                currencyCode: paymentParams.currency,
+                supportedNetworks: ['visa', 'masterCard', 'amex'],
+                merchantCapabilities: ['supports3DS'],
+                total: {
+                    label: 'Forava',
+                    amount: paymentParams.amount
+                }
+            };
+            
+            const session = new ApplePaySession(3, request);
+            
+            session.onvalidatemerchant = function (event) {
+                // In production, validate with your server
+                console.log('Validate merchant:', event.validationURL);
+            };
+            
+            session.onpaymentauthorized = function (event) {
+                // Process payment
+                console.log('Payment authorized:', event.payment);
+                session.completePayment(ApplePaySession.STATUS_SUCCESS);
+                
+                // Show success message
+                document.querySelector('.container').innerHTML = `
+                    <div class="icon">✅</div>
+                    <h1>Gift Sent Successfully!</h1>
+                    <div class="message">
+                        <p>Your ${paymentParams.currency} ${paymentParams.amount} gift has been sent!</p>
+                        <p>Thank you for spreading joy this Raksha Bandhan! 🎊</p>
+                    </div>
+                `;
+            };
+            
+            session.begin();
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="icon">🎊</div>
+        <h1>Rakhi Gift Payment</h1>
+        <div class="message">
+            <p><strong id="description">Rakhi Blessing Gift</strong></p>
+            <p>Amount: <strong id="amount">AU$61</strong></p>
+        </div>
+        <p>Someone sent you a beautiful Rakhi! Send a gift back to show your love:</p>
+        <button onclick="sendGift()" class="pay-button">💝 Send a Gift in Return</button>
+        <div class="footer">
+            <p>Made with ❤️ for Raksha Bandhan</p>
+        </div>
+    </div>
+</body>
+</html>
