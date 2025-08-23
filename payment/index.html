@@ -99,66 +99,177 @@
         let senderName = 'your friend'; // Will be extracted from URL params
         
         window.onload = function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const amount = urlParams.get('amount') || '61';
-            const desc = urlParams.get('desc') || 'Rakhi Blessing Gift';
-            const currency = urlParams.get('currency') || 'AUD';
-            const sender = urlParams.get('sender') || 'your friend';
+            console.log('🚀 Payment page loaded, initializing...');
             
-            // Store for Apple Pay and display
-            paymentParams = { amount, desc, currency };
-            senderName = sender;
-            
-            // Display payment details
-            const currencySymbol = currency === 'AUD' ? 'AU$' : '$';
-            document.getElementById('amount').textContent = currencySymbol + amount;
-            document.getElementById('description').textContent = desc;
-            
-            // Show loading state
-            showLoading();
-            
-            // Auto-trigger Apple Pay after 1.5 seconds
-            setTimeout(function() {
-                checkAndInitiatePayment();
-            }, 1500);
+            try {
+                // FIRST: Parse URL parameters
+                const urlParams = new URLSearchParams(window.location.search);
+                const amount = urlParams.get('amount') || '61';
+                const desc = urlParams.get('desc') || 'Rakhi Blessing Gift';
+                const currency = urlParams.get('currency') || 'AUD';
+                const sender = urlParams.get('sender') || 'Forava Creator';
+                
+                console.log('📊 Parsed parameters:', { amount, desc, currency, sender });
+                
+                // SECOND: Store parameters globally
+                paymentParams = { amount, desc, currency };
+                senderName = sender;
+                
+                console.log('💾 Stored parameters:', paymentParams);
+                
+                // THIRD: Show loading state (now parameters are available)
+                showLoading();
+                
+                // FOURTH: Set up timeout protection (15 seconds max)
+                setTimeout(function() {
+                    console.log('⏰ Timeout check - current page state');
+                    const loadingElement = document.querySelector('.loading');
+                    const isStillLoading = loadingElement && window.getComputedStyle(loadingElement).display !== 'none';
+                    
+                    if (isStillLoading) {
+                        console.log('⏰ Loading timeout reached after 15 seconds, showing fallback');
+                        showFallbackMessage('payment-failed');
+                    } else {
+                        console.log('✓ Loading completed within timeout period');
+                    }
+                }, 15000);
+                
+                // FIFTH: Auto-trigger Apple Pay after 2 seconds (give more time for params)
+                setTimeout(function() {
+                    console.log('🍎 Starting Apple Pay check...');
+                    console.log('📊 Current paymentParams:', paymentParams);
+                    console.log('🔍 Current senderName:', senderName);
+                    checkAndInitiatePayment();
+                }, 2000);
+                
+            } catch (error) {
+                console.error('❌ Initialization error:', error);
+                showFallbackMessage('payment-failed');
+            }
         };
         
         function showLoading() {
-            const container = document.querySelector('.container');
-            const loadingHtml = `
-                <div class="icon">🎊</div>
-                <h1>Rakhi Gift Payment</h1>
-                <div class="message">
-                    <p><strong id="description">${paymentParams.desc}</strong></p>
-                    <p>Amount: <strong id="amount">AU$${paymentParams.amount}</strong></p>
-                </div>
-                <div class="loading" style="display: block;">
-                    <div class="spinner"></div>
-                    <p>Setting up Apple Pay...</p>
-                </div>
-            `;
-            container.innerHTML = loadingHtml;
+            console.log('🔄 Showing loading state...');
+            
+            try {
+                const container = document.querySelector('.container');
+                
+                // Ensure paymentParams exists with safe defaults
+                const params = paymentParams || { amount: '61', desc: 'Rakhi Blessing Gift', currency: 'AUD' };
+                
+                // Validate parameters
+                if (!params.amount || !params.desc || !params.currency) {
+                    console.error('❌ Invalid payment parameters:', params);
+                    showFallbackMessage('payment-failed');
+                    return;
+                }
+                const currencySymbol = params.currency === 'AUD' ? 'AU$' : '$';
+                
+                console.log('📝 Using parameters for loading:', params);
+                
+                const loadingHtml = `
+                    <div class="icon">🎊</div>
+                    <h1>Rakhi Gift Payment</h1>
+                    <div class="message">
+                        <p><strong>${params.desc}</strong></p>
+                        <p>Amount: <strong>${currencySymbol}${params.amount}</strong></p>
+                    </div>
+                    <div class="loading" style="display: block;">
+                        <div class="spinner"></div>
+                        <p>Preparing your Gift in Return...</p>
+                    </div>
+                `;
+                container.innerHTML = loadingHtml;
+                
+                console.log('✅ Loading state displayed');
+                
+            } catch (error) {
+                console.error('❌ Error in showLoading:', error);
+                // Fallback to simple loading if there's an error
+                const container = document.querySelector('.container');
+                if (container) {
+                    container.innerHTML = `
+                        <div class="icon">🎊</div>
+                        <h1>Loading...</h1>
+                        <div class="loading" style="display: block;">
+                            <div class="spinner"></div>
+                            <p>Preparing your Gift in Return...</p>
+                        </div>
+                    `;
+                } else {
+                    console.error('❌ Container element not found');
+                    showFallbackMessage('payment-failed');
+                }
+            }
         }
         
         function checkAndInitiatePayment() {
-            // Check Apple Pay availability and device type
-            if (window.ApplePaySession && ApplePaySession.canMakePayments()) {
-                // Apple Pay is available - initiate immediately
-                initiateApplePay();
-            } else if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
-                // iOS device but Apple Pay not set up
-                showFallbackMessage('apple-device-no-pay');
-            } else {
-                // Non-Apple device
-                showFallbackMessage('non-apple-device');
+            console.log('🔍 Checking Apple Pay availability...');
+            console.log('📊 Payment params check:', paymentParams);
+            console.log('👥 Sender name check:', senderName);
+            
+            // Final parameter validation before proceeding
+            if (!paymentParams || !paymentParams.amount) {
+                console.error('❌ Payment parameters missing in checkAndInitiatePayment');
+                showFallbackMessage('payment-failed');
+                return;
+            }
+            
+            try {
+                // Check user agent first
+                const userAgent = navigator.userAgent;
+                const isIOS = /iPad|iPhone|iPod/.test(userAgent);
+                const isMac = /Mac OS X/.test(userAgent);
+                const isAppleWatch = /Watch/.test(userAgent);
+                
+                console.log('📱 Device info:', { userAgent, isIOS, isMac, isAppleWatch });
+                console.log('🍎 ApplePaySession available:', !!window.ApplePaySession);
+                
+                if (window.ApplePaySession) {
+                    const canMakePayments = ApplePaySession.canMakePayments();
+                    console.log('💳 Can make payments:', canMakePayments);
+                    
+                    if (canMakePayments) {
+                        console.log('✅ Apple Pay is available - initiating...');
+                        initiateApplePay();
+                        return;
+                    }
+                }
+                
+                // Apple Pay not available - determine why and show appropriate fallback
+                if (isIOS || isAppleWatch) {
+                    console.log('📱 iOS/Watch device but Apple Pay not available');
+                    showFallbackMessage('apple-device-no-pay');
+                } else if (isMac) {
+                    console.log('💻 Mac device - may support Apple Pay');
+                    showFallbackMessage('apple-device-no-pay');
+                } else {
+                    console.log('🖥️ Non-Apple device');
+                    showFallbackMessage('non-apple-device');
+                }
+                
+            } catch (error) {
+                console.error('❌ Error in checkAndInitiatePayment:', error);
+                showFallbackMessage('payment-failed');
             }
         }
         
         function showFallbackMessage(type) {
-            const container = document.querySelector('.container');
-            let fallbackHtml = '';
+            console.log('💬 Showing fallback message:', type);
+            console.log('📊 Current paymentParams:', paymentParams);
+            console.log('👥 Current senderName:', senderName);
             
-            if (type === 'non-apple-device') {
+            try {
+                const container = document.querySelector('.container');
+                let fallbackHtml = '';
+                
+                // Hide loading state first
+                const loadingElement = document.querySelector('.loading');
+                if (loadingElement) {
+                    loadingElement.style.display = 'none';
+                }
+                
+                if (type === 'non-apple-device') {
                 fallbackHtml = `
                     <div class="icon">🎊</div>
                     <h1>Someone sent you a beautiful Rakhi!</h1>
@@ -218,7 +329,18 @@
         }
         
         function initiateApplePay() {
+            console.log('🚀 Initiating Apple Pay...');
+            console.log('📊 Apple Pay params check:', paymentParams);
+            
             try {
+                // Validate paymentParams first
+                if (!paymentParams || !paymentParams.amount) {
+                    console.error('❌ Payment parameters validation failed:', paymentParams);
+                    throw new Error('Payment parameters not available');
+                }
+                
+                console.log('✓ Apple Pay parameters validated successfully');
+                
                 const request = {
                     countryCode: 'AU',
                     currencyCode: paymentParams.currency,
@@ -230,28 +352,35 @@
                     }
                 };
                 
+                console.log('📋 Apple Pay request:', request);
+                
                 const session = new ApplePaySession(3, request);
                 
                 session.onvalidatemerchant = function (event) {
-                    // TODO: In production, validate with your server
-                    console.log('Validate merchant:', event.validationURL);
-                    // For now, this will fail - need backend merchant validation
+                    console.log('🔐 Merchant validation required:', event.validationURL);
+                    // Since we don't have merchant validation backend yet, 
+                    // we'll abort and show fallback
+                    console.log('⚠️ No merchant validation server available, showing fallback');
                     session.abort();
                     showFallbackMessage('payment-failed');
                 };
                 
                 session.onpaymentauthorized = function (event) {
-                    console.log('Payment authorized:', event.payment);
+                    console.log('✅ Payment authorized:', event.payment);
                     session.completePayment(ApplePaySession.STATUS_SUCCESS);
-                    
-                    // Show success message with growth funnel
                     showSuccessMessage();
                 };
                 
+                session.oncancel = function() {
+                    console.log('❌ Apple Pay cancelled by user');
+                    showFallbackMessage('payment-failed');
+                };
+                
+                console.log('🎬 Starting Apple Pay session...');
                 session.begin();
                 
             } catch (error) {
-                console.error('Apple Pay initiation failed:', error);
+                console.error('❌ Apple Pay initiation failed:', error);
                 showFallbackMessage('payment-failed');
             }
         }
@@ -289,7 +418,7 @@
         <h1>Loading...</h1>
         <div class="loading" style="display: block;">
             <div class="spinner"></div>
-            <p>Preparing your gift payment...</p>
+            <p>Preparing your Gift in Return...</p>
         </div>
     </div>
 </body>
