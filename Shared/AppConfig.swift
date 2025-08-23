@@ -3,7 +3,7 @@ import Foundation
 struct AppConfig {
     // MARK: - Universal Links & Deep Linking
     static let associatedDomain = "kg191.github.io"
-    static let universalPayPath = "/pay"
+    static let universalPayPath = "/Forava/pay"
     
     // MARK: - Apple Pay Configuration
     static let merchantID = "merchant.C6MJDCDAUG.forava"

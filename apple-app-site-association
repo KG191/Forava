@@ -5,17 +5,17 @@
       {
         "appID": "C6MJDCDAUG.com.forava.app",
         "paths": [ 
-          "/pay/*",
-          "/pay",
-          "/rakhi/*",
-          "/gift/*"
+          "/Forava/pay/*",
+          "/Forava/pay",
+          "/Forava/rakhi/*",
+          "/Forava/gift/*"
         ]
       },
       {
         "appID": "C6MJDCDAUG.com.forava.watch",
         "paths": [ 
-          "/pay/*",
-          "/pay"
+          "/Forava/pay/*",
+          "/Forava/pay"
         ]
       }
     ]
