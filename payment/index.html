@@ -65,92 +65,231 @@
             font-size: 0.9em;
             opacity: 0.7;
         }
+        .fallback-message {
+            text-align: left;
+            line-height: 1.6;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+        .fallback-message ul {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+        .loading {
+            display: none;
+            margin: 20px 0;
+        }
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
     </style>
     <script>
         let paymentParams = {};
+        let senderName = 'your friend'; // Will be extracted from URL params
         
         window.onload = function() {
             const urlParams = new URLSearchParams(window.location.search);
             const amount = urlParams.get('amount') || '61';
             const desc = urlParams.get('desc') || 'Rakhi Blessing Gift';
             const currency = urlParams.get('currency') || 'AUD';
+            const sender = urlParams.get('sender') || 'your friend';
             
-            // Store for Apple Pay
+            // Store for Apple Pay and display
             paymentParams = { amount, desc, currency };
+            senderName = sender;
             
-            // Display payment details (fix currency display)
+            // Display payment details
             const currencySymbol = currency === 'AUD' ? 'AU$' : '$';
             document.getElementById('amount').textContent = currencySymbol + amount;
             document.getElementById('description').textContent = desc;
             
-            // No auto-redirect - let user choose
+            // Show loading state
+            showLoading();
+            
+            // Auto-trigger Apple Pay after 1.5 seconds
+            setTimeout(function() {
+                checkAndInitiatePayment();
+            }, 1500);
         };
         
-        function sendGift() {
-            // Check if we're on a device that supports Apple Pay
+        function showLoading() {
+            const container = document.querySelector('.container');
+            const loadingHtml = `
+                <div class="icon">🎊</div>
+                <h1>Rakhi Gift Payment</h1>
+                <div class="message">
+                    <p><strong id="description">${paymentParams.desc}</strong></p>
+                    <p>Amount: <strong id="amount">AU$${paymentParams.amount}</strong></p>
+                </div>
+                <div class="loading" style="display: block;">
+                    <div class="spinner"></div>
+                    <p>Setting up Apple Pay...</p>
+                </div>
+            `;
+            container.innerHTML = loadingHtml;
+        }
+        
+        function checkAndInitiatePayment() {
+            // Check Apple Pay availability and device type
             if (window.ApplePaySession && ApplePaySession.canMakePayments()) {
-                // Trigger Apple Pay directly
+                // Apple Pay is available - initiate immediately
                 initiateApplePay();
             } else if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
-                // On iOS without Apple Pay support, redirect to app
-                window.location = 'https://apps.apple.com';
+                // iOS device but Apple Pay not set up
+                showFallbackMessage('apple-device-no-pay');
             } else {
-                // On other devices, show message
-                alert('Apple Pay is only available on Apple devices. Please use an iPhone, iPad, or Apple Watch.');
+                // Non-Apple device
+                showFallbackMessage('non-apple-device');
             }
         }
         
-        function initiateApplePay() {
-            const request = {
-                countryCode: 'AU',
-                currencyCode: paymentParams.currency,
-                supportedNetworks: ['visa', 'masterCard', 'amex'],
-                merchantCapabilities: ['supports3DS'],
-                total: {
-                    label: 'Forava',
-                    amount: paymentParams.amount
-                }
-            };
+        function showFallbackMessage(type) {
+            const container = document.querySelector('.container');
+            let fallbackHtml = '';
             
-            const session = new ApplePaySession(3, request);
-            
-            session.onvalidatemerchant = function (event) {
-                // In production, validate with your server
-                console.log('Validate merchant:', event.validationURL);
-            };
-            
-            session.onpaymentauthorized = function (event) {
-                // Process payment
-                console.log('Payment authorized:', event.payment);
-                session.completePayment(ApplePaySession.STATUS_SUCCESS);
-                
-                // Show success message
-                document.querySelector('.container').innerHTML = `
-                    <div class="icon">✅</div>
-                    <h1>Gift Sent Successfully!</h1>
+            if (type === 'non-apple-device') {
+                fallbackHtml = `
+                    <div class="icon">🎊</div>
+                    <h1>Someone sent you a beautiful Rakhi!</h1>
                     <div class="message">
-                        <p>Your ${paymentParams.currency} ${paymentParams.amount} gift has been sent!</p>
-                        <p>Thank you for spreading joy this Raksha Bandhan! 🎊</p>
+                        <p><strong>${paymentParams.desc}</strong></p>
+                        <p>Amount: <strong>AU$${paymentParams.amount}</strong></p>
+                    </div>
+                    <div class="fallback-message">
+                        <p><strong>💝 To send a gift back, you can:</strong></p>
+                        <ul>
+                            <li>Send cash or a gift directly to ${senderName}</li>
+                            <li>Make an online transfer to show your appreciation</li>
+                            <li>Call them to arrange a gift exchange</li>
+                        </ul>
+                        <p>This Rakhi was created with love using the Forava app - available on iPhone and Apple Watch for creating personalized cultural greetings.</p>
                     </div>
                 `;
-            };
+            } else if (type === 'apple-device-no-pay') {
+                fallbackHtml = `
+                    <div class="icon">💳</div>
+                    <h1>Apple Pay isn't set up on this device</h1>
+                    <div class="message">
+                        <p><strong>${paymentParams.desc}</strong></p>
+                        <p>Amount: <strong>AU$${paymentParams.amount}</strong></p>
+                    </div>
+                    <div class="fallback-message">
+                        <p><strong>💝 To send a gift back, you can:</strong></p>
+                        <ul>
+                            <li>Send a direct bank transfer or cash gift</li>
+                            <li>Arrange to meet and exchange gifts in person</li>
+                            <li>Use your preferred payment app to send money</li>
+                        </ul>
+                        <p>Or set up Apple Pay in Settings to use this quick payment feature in the future.</p>
+                    </div>
+                `;
+            } else if (type === 'payment-failed') {
+                fallbackHtml = `
+                    <div class="icon">⚠️</div>
+                    <h1>Payment couldn't be completed</h1>
+                    <div class="fallback-message">
+                        <p><strong>💝 Alternative ways to send your gift:</strong></p>
+                        <ul>
+                            <li>Send cash or transfer money directly</li>
+                            <li>Arrange an in-person gift exchange</li>
+                            <li>Use your banking app to send a transfer</li>
+                        </ul>
+                        <p><strong>The thought and intention matter most! ❤️</strong></p>
+                    </div>
+                `;
+            }
             
-            session.begin();
+            container.innerHTML = fallbackHtml + `
+                <div class="footer">
+                    <p>Made with ❤️ for Raksha Bandhan</p>
+                </div>
+            `;
+        }
+        
+        function initiateApplePay() {
+            try {
+                const request = {
+                    countryCode: 'AU',
+                    currencyCode: paymentParams.currency,
+                    supportedNetworks: ['visa', 'masterCard', 'amex'],
+                    merchantCapabilities: ['supports3DS'],
+                    total: {
+                        label: 'Forava Rakhi Gift',
+                        amount: paymentParams.amount
+                    }
+                };
+                
+                const session = new ApplePaySession(3, request);
+                
+                session.onvalidatemerchant = function (event) {
+                    // TODO: In production, validate with your server
+                    console.log('Validate merchant:', event.validationURL);
+                    // For now, this will fail - need backend merchant validation
+                    session.abort();
+                    showFallbackMessage('payment-failed');
+                };
+                
+                session.onpaymentauthorized = function (event) {
+                    console.log('Payment authorized:', event.payment);
+                    session.completePayment(ApplePaySession.STATUS_SUCCESS);
+                    
+                    // Show success message with growth funnel
+                    showSuccessMessage();
+                };
+                
+                session.begin();
+                
+            } catch (error) {
+                console.error('Apple Pay initiation failed:', error);
+                showFallbackMessage('payment-failed');
+            }
+        }
+        
+        function showSuccessMessage() {
+            const container = document.querySelector('.container');
+            container.innerHTML = `
+                <div class="icon">✅</div>
+                <h1>Gift Sent Successfully!</h1>
+                <div class="message">
+                    <p>Your AU$${paymentParams.amount} gift has been sent!</p>
+                    <p>Thank you for spreading joy this Raksha Bandhan! 🎊</p>
+                </div>
+                <div class="fallback-message">
+                    <p><strong>🎊 Enjoyed sending a cultural gift?</strong></p>
+                    <p>Download Forava to create personalized greetings for:</p>
+                    <ul>
+                        <li>Chinese New Year 🧧</li>
+                        <li>Birthdays 🎂</li>
+                        <li>Diwali 🪔</li>
+                        <li>And many more cultural celebrations!</li>
+                    </ul>
+                </div>
+                <div class="footer">
+                    <p>Made with ❤️ for Raksha Bandhan</p>
+                </div>
+            `;
         }
     </script>
 </head>
 <body>
     <div class="container">
+        <!-- Content will be dynamically generated by JavaScript -->
         <div class="icon">🎊</div>
-        <h1>Rakhi Gift Payment</h1>
-        <div class="message">
-            <p><strong id="description">Rakhi Blessing Gift</strong></p>
-            <p>Amount: <strong id="amount">AU$61</strong></p>
-        </div>
-        <p>Someone sent you a beautiful Rakhi! Send a gift back to show your love:</p>
-        <button onclick="sendGift()" class="pay-button">💝 Send a Gift in Return</button>
-        <div class="footer">
-            <p>Made with ❤️ for Raksha Bandhan</p>
+        <h1>Loading...</h1>
+        <div class="loading" style="display: block;">
+            <div class="spinner"></div>
+            <p>Preparing your gift payment...</p>
         </div>
     </div>
 </body>
