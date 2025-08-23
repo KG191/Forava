@@ -11,6 +11,8 @@
 		21C939072E508B0900200285 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C000 /* Constants.swift */; };
 		21C939082E508B0900200285 /* SharedFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C002 /* SharedFormatting.swift */; };
 		21C939092E508B0900200285 /* SharedModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = C004 /* SharedModels.swift */; };
+		21C939EC2E59990B00200285 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C939EB2E59990B00200285 /* AppConfig.swift */; };
+		21C939ED2E59990B00200285 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C939EB2E59990B00200285 /* AppConfig.swift */; };
 		3C9D4E8F2B6A47189E5F2A71 /* Services/PromptMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1E3A8D9C4B4F5E8A2D9176 /* Services/PromptMapper.swift */; };
 		4D8F7A2E5C3B49D6A7E9F158 /* Views/RakhiDesignStudioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5E2B8C4F6D4927B3C8E519 /* Views/RakhiDesignStudioView.swift */; };
 		5A7D2E9F4C8B41A6A9E3F257 /* Views/DesignSteps/PreviewStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9F7A2D6B5C4819A2F4E683 /* Views/DesignSteps/PreviewStep.swift */; };
@@ -50,6 +52,8 @@
 /* Begin PBXFileReference section */
 		0FA2E6559476492DA311685B /* Services/WatchConnectivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services/WatchConnectivityManager.swift; sourceTree = "<group>"; };
 		1F7E4A8B5C9D4625A3E8F174 /* Views/DesignSteps/PersonalizationStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views/DesignSteps/PersonalizationStep.swift; sourceTree = "<group>"; };
+		21C939EA2E59988B00200285 /* ForavaWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ForavaWatch.entitlements; sourceTree = "<group>"; };
+		21C939EB2E59990B00200285 /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 		2C9E7F4A8D5B4836A1F6E297 /* Views/DesignSteps/GenreSelectionStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views/DesignSteps/GenreSelectionStep.swift; sourceTree = "<group>"; };
 		2D9F7619777349E4AE02D074 /* Views/RakhiSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views/RakhiSelectionView.swift; sourceTree = "<group>"; };
 		3E9F7A2D6B5C4819A2F4E683 /* Views/DesignSteps/PreviewStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views/DesignSteps/PreviewStep.swift; sourceTree = "<group>"; };
@@ -159,6 +163,7 @@
 		B1F0 /* ForavaWatch */ = {
 			isa = PBXGroup;
 			children = (
+				21C939EA2E59988B00200285 /* ForavaWatch.entitlements */,
 				B000 /* App.swift */,
 				B002 /* MainTokenView.swift */,
 				B00F /* GiftAmountPickerView.swift */,
@@ -175,6 +180,7 @@
 		C1F0 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				21C939EB2E59990B00200285 /* AppConfig.swift */,
 				C000 /* Constants.swift */,
 				C002 /* SharedFormatting.swift */,
 				C004 /* SharedModels.swift */,
@@ -304,6 +310,7 @@
 				6E8A3F5C2D4B49E1A7F2E946 /* Views/DesignSteps/PersonalizationStep.swift in Sources */,
 				5A7D2E9F4C8B41A6A9E3F257 /* Views/DesignSteps/PreviewStep.swift in Sources */,
 				C001 /* Constants.swift in Sources */,
+				21C939EC2E59990B00200285 /* AppConfig.swift in Sources */,
 				C003 /* SharedFormatting.swift in Sources */,
 				C005 /* SharedModels.swift in Sources */,
 			);
@@ -322,6 +329,7 @@
 				B021 /* RakhiWatchFaceView.swift in Sources */,
 				B023 /* WatchConnectivityManager.swift in Sources */,
 				21C939072E508B0900200285 /* Constants.swift in Sources */,
+				21C939ED2E59990B00200285 /* AppConfig.swift in Sources */,
 				21C939082E508B0900200285 /* SharedFormatting.swift in Sources */,
 				21C939092E508B0900200285 /* SharedModels.swift in Sources */,
 			);
@@ -529,6 +537,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ForavaWatch/ForavaWatch.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
@@ -558,6 +567,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ForavaWatch/ForavaWatch.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
