@@ -43,29 +43,45 @@ class AIRakhiService: ObservableObject {
             print("📁 Found .env in bundle at: \(envPath)")
             do {
                 let envContent = try String(contentsOfFile: envPath)
-                if let apiKeyLine = envContent.components(separatedBy: .newlines).first(where: { $0.hasPrefix("Replicate_API:") }) {
-                    let apiKey = String(apiKeyLine.dropFirst("Replicate_API:".count).trimmingCharacters(in: .whitespaces))
-                    if !apiKey.isEmpty {
-                        self.replicateAPIKey = apiKey
-                        print("✅ API key loaded from app bundle")
-                        return
+                let lines = envContent.components(separatedBy: .newlines)
+                
+                for line in lines {
+                    let trimmed = line.trimmingCharacters(in: .whitespacesAndNewlines)
+                    // Handle new format: REPLICATE_API_TOKEN=value
+                    if trimmed.hasPrefix("REPLICATE_API_TOKEN=") {
+                        let apiKey = String(trimmed.dropFirst("REPLICATE_API_TOKEN=".count))
+                        if !apiKey.isEmpty && apiKey != "your_replicate_api_token_here" {
+                            self.replicateAPIKey = apiKey
+                            print("✅ API key loaded from .env file")
+                            return
+                        }
+                    }
+                    // Handle legacy format: Replicate_API: value
+                    else if trimmed.hasPrefix("Replicate_API:") {
+                        let apiKey = String(trimmed.dropFirst("Replicate_API:".count).trimmingCharacters(in: .whitespaces))
+                        if !apiKey.isEmpty {
+                            self.replicateAPIKey = apiKey
+                            print("✅ API key loaded from .env file (legacy format)")
+                            return
+                        }
                     }
                 }
+                print("⚠️ No valid REPLICATE_API_TOKEN found in .env file")
             } catch {
-                print("❌ Failed to read bundle .env file: \(error)")
+                print("❌ Failed to read .env file: \(error)")
             }
+        } else {
+            print("⚠️ No .env file found in app bundle")
         }
         
-        // Method 3: Environment variable for development
-        // TODO: Set REPLICATE_API_TOKEN in environment variables
-        if let envKey = ProcessInfo.processInfo.environment["REPLICATE_API_TOKEN"], !envKey.isEmpty {
-            self.replicateAPIKey = envKey
-            print("✅ API key loaded from environment variable")
-        } else {
-            print("⚠️ REPLICATE_API_TOKEN environment variable not set")
-            print("Please add your API key to environment variables for security")
-            self.replicateAPIKey = "YOUR_REPLICATE_API_TOKEN_HERE"
-        }
+        // Fallback: Show helpful error message
+        print("❌ No Replicate API key found!")
+        print("📝 Setup instructions:")
+        print("1. Copy .env.example to .env")
+        print("2. Add your Replicate API token to REPLICATE_API_TOKEN in .env")
+        print("3. Add .env file to your Xcode project (drag & drop)")
+        print("4. Or set REPLICATE_API_TOKEN in Xcode scheme environment variables")
+        self.replicateAPIKey = ""
     }
     
     // MARK: - Public Interface
