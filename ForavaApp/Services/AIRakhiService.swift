@@ -56,11 +56,16 @@ class AIRakhiService: ObservableObject {
             }
         }
         
-        // Method 3: Temporary hardcoded key for development only
-        // TODO: Remove this in production and use proper environment variables
-        print("⚠️ Using temporary hardcoded API key for development")
-        self.replicateAPIKey = "r8_aqrDnespUrnfB48yeLUotbxHj5YDVI038NaM1"
-        print("✅ API key loaded (development mode)")
+        // Method 3: Environment variable for development
+        // TODO: Set REPLICATE_API_TOKEN in environment variables
+        if let envKey = ProcessInfo.processInfo.environment["REPLICATE_API_TOKEN"], !envKey.isEmpty {
+            self.replicateAPIKey = envKey
+            print("✅ API key loaded from environment variable")
+        } else {
+            print("⚠️ REPLICATE_API_TOKEN environment variable not set")
+            print("Please add your API key to environment variables for security")
+            self.replicateAPIKey = "YOUR_REPLICATE_API_TOKEN_HERE"
+        }
     }
     
     // MARK: - Public Interface
