@@ -3,19 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forava - Universal Links</title>
+    <title>Forava - Cultural Gifting</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #3E3A9F, #FF6A6A);
+            color: white;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        .subtitle {
+            font-size: 1.2em;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        .app-link {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        .app-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        .footer {
+            margin-top: 60px;
+            font-size: 0.9em;
+            opacity: 0.7;
+        }
+    </style>
 </head>
 <body>
-    <h1>🎊 Forava Universal Links</h1>
-    <p>This site hosts Universal Links configuration for the Forava app.</p>
-    
-    <h2>Test Links:</h2>
-    <ul>
-        <li><a href="https://kg191.github.io/Forava/.well-known/apple-app-site-association">apple-app-site-association file</a></li>
-        <li><a href="https://kg191.github.io/Forava/pay?amount=101&desc=Test">Test Universal Link</a></li>
-    </ul>
-    
-    <h2>Universal Links Structure:</h2>
-    <code>https://kg191.github.io/Forava/pay?amount=101&desc=Rakhi%20Gift&sender=Name</code>
+    <div class="container">
+        <h1>🎊 Forava</h1>
+        <p class="subtitle">Send beautiful Rakhi gifts directly to Apple Watch</p>
+        <a href="https://apps.apple.com" class="app-link">Download on App Store</a>
+        <div class="footer">
+            <p>Made with ❤️ for Raksha Bandhan</p>
+        </div>
+    </div>
 </body>
 </html>

@@ -19,5 +19,10 @@
         ]
       }
     ]
+  },
+  "webcredentials": {
+    "apps": [
+      "C6MJDCDAUG.com.forava.app"
+    ]
   }
 }
