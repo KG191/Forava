@@ -1,0 +1,98 @@
+{
+  "images": [
+    {
+      "size": "24x24",
+      "idiom": "watch",
+      "filename": "AppIcon-24x24@2x.png",
+      "scale": "2x"
+    },
+    {
+      "size": "24x24",
+      "idiom": "watch",
+      "filename": "AppIcon-24x24@3x.png",
+      "scale": "3x"
+    },
+    {
+      "size": "27.5x27.5",
+      "idiom": "watch",
+      "filename": "AppIcon-27.5x27.5@2x.png",
+      "scale": "2x"
+    },
+    {
+      "size": "27.5x27.5",
+      "idiom": "watch",
+      "filename": "AppIcon-27.5x27.5@3x.png",
+      "scale": "3x"
+    },
+    {
+      "size": "29x29",
+      "idiom": "watch",
+      "filename": "AppIcon-29x29@2x.png",
+      "scale": "2x"
+    },
+    {
+      "size": "29x29",
+      "idiom": "watch",
+      "filename": "AppIcon-29x29@3x.png",
+      "scale": "3x"
+    },
+    {
+      "size": "33x33",
+      "idiom": "watch",
+      "filename": "AppIcon-33x33@2x.png",
+      "scale": "2x"
+    },
+    {
+      "size": "33x33",
+      "idiom": "watch",
+      "filename": "AppIcon-33x33@3x.png",
+      "scale": "3x"
+    },
+    {
+      "size": "40x40",
+      "idiom": "watch",
+      "filename": "AppIcon-40x40@2x.png",
+      "scale": "2x"
+    },
+    {
+      "size": "40x40",
+      "idiom": "watch",
+      "filename": "AppIcon-40x40@3x.png",
+      "scale": "3x"
+    },
+    {
+      "size": "44x44",
+      "idiom": "watch",
+      "filename": "AppIcon-44x44@2x.png",
+      "scale": "2x"
+    },
+    {
+      "size": "44x44",
+      "idiom": "watch",
+      "filename": "AppIcon-44x44@3x.png",
+      "scale": "3x"
+    },
+    {
+      "size": "86x86",
+      "idiom": "watch",
+      "filename": "AppIcon-86x86@2x.png",
+      "scale": "2x"
+    },
+    {
+      "size": "98x98",
+      "idiom": "watch",
+      "filename": "AppIcon-98x98@2x.png",
+      "scale": "2x"
+    },
+    {
+      "size": "1024x1024",
+      "idiom": "watch",
+      "filename": "AppIcon-1024x1024@1x.png",
+      "scale": "1x"
+    }
+  ],
+  "info": {
+    "version": 1,
+    "author": "xcode"
+  }
+}

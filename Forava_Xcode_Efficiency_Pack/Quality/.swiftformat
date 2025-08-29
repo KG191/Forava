@@ -1,0 +1,8 @@
+--swiftversion 5.10
+--indent 4
+--wraparguments before-first
+--wrapcollections before-first
+--trimwhitespace always
+--semicolons never
+--stripunusedargs closure-only
+--self init-only

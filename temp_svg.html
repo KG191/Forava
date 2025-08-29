@@ -1,0 +1,48 @@
+
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <style>
+                body { margin: 0; padding: 0; background: white; }
+                svg { width: 1024px; height: 1024px; }
+            </style>
+        </head>
+        <body>
+            <!-- Forava 1024x1024 App Icon (no padding, Apple-like continuous corners via large radius) -->
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Rounded-rect background (approx Apple corner radius ≈229px for 1024) -->
+  <defs>
+    <clipPath id="r">
+      <rect x="0" y="0" width="1024" height="1024" rx="229" ry="229"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#r)">
+    <!-- Orange background -->
+    <rect width="1024" height="1024" fill="#E59B3D"/>
+
+    <!-- Infinity symbol -->
+    <path d="M 256 350
+             C 256 280, 320 230, 400 230
+             C 520 230, 560 320, 512 370
+             C 560 420, 520 510, 400 510
+             C 320 510, 256 460, 256 390
+             Z
+             M 768 350
+             C 768 280, 704 230, 624 230
+             C 504 230, 464 320, 512 370
+             C 464 420, 504 510, 624 510
+             C 704 510, 768 460, 768 390
+             Z"
+          fill="none" stroke="#F9F1C7" stroke-width="50" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Forava text -->
+    <g fill="#F9F1C7" font-family="Helvetica, Arial, sans-serif" font-weight="bold" font-size="200">
+      <text x="512" y="720" text-anchor="middle">Forava</text>
+    </g>
+  </g>
+</svg>
+        </body>
+        </html>
+        

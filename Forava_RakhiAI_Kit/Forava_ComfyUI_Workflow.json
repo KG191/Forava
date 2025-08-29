@@ -1,0 +1,30 @@
+{
+  "nodes": [
+    {
+      "id": "1",
+      "type": "LoadCheckpoint",
+      "ckpt_name": "sdxl_base_1.0.safetensors"
+    },
+    {
+      "id": "2",
+      "type": "KSampler",
+      "cfg": 7.5,
+      "steps": 30
+    },
+    {
+      "id": "3",
+      "type": "SaveImage",
+      "filename_prefix": "forava_rakhi"
+    }
+  ],
+  "edges": [
+    [
+      "1",
+      "2"
+    ],
+    [
+      "2",
+      "3"
+    ]
+  ]
+}

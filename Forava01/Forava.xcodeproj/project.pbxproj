@@ -1,0 +1,804 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		21C939072E508B0900200285 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C000 /* Constants.swift */; };
+		21C939082E508B0900200285 /* SharedFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C002 /* SharedFormatting.swift */; };
+		21C939092E508B0900200285 /* SharedModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = C004 /* SharedModels.swift */; };
+		21C93AE52E5E4EEB00200285 /* ColorSelectionStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93ACB2E5E4EEB00200285 /* ColorSelectionStep.swift */; };
+		21C93AE62E5E4EEB00200285 /* RealTimeGenerationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93AE22E5E4EEB00200285 /* RealTimeGenerationView.swift */; };
+		21C93AE72E5E4EEB00200285 /* GeneratedRakhiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93ADD2E5E4EEB00200285 /* GeneratedRakhiView.swift */; };
+		21C93AE82E5E4EEB00200285 /* ProductionMonitoringDashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93ADF2E5E4EEB00200285 /* ProductionMonitoringDashboard.swift */; };
+		21C93AE92E5E4EEB00200285 /* SimpleLanguageSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93AD62E5E4EEB00200285 /* SimpleLanguageSettingsView.swift */; };
+		21C93AEA2E5E4EEB00200285 /* RakhiHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93AD12E5E4EEB00200285 /* RakhiHistoryView.swift */; };
+		21C93AEB2E5E4EEB00200285 /* GenreSelectionStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93ACD2E5E4EEB00200285 /* GenreSelectionStep.swift */; };
+		21C93AEC2E5E4EEB00200285 /* PaymentCompletionFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93AD42E5E4EEB00200285 /* PaymentCompletionFlow.swift */; };
+		21C93AED2E5E4EEB00200285 /* ContactSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93ADB2E5E4EEB00200285 /* ContactSelectionView.swift */; };
+		21C93AEE2E5E4EEB00200285 /* PersonalizationStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93ACE2E5E4EEB00200285 /* PersonalizationStep.swift */; };
+		21C93AEF2E5E4EEB00200285 /* SocialSharingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93AD82E5E4EEB00200285 /* SocialSharingView.swift */; };
+		21C93AF02E5E4EEB00200285 /* AnimationPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93ADA2E5E4EEB00200285 /* AnimationPreviewView.swift */; };
+		21C93AF12E5E4EEB00200285 /* EnhancedPaymentOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93ADC2E5E4EEB00200285 /* EnhancedPaymentOptionsView.swift */; };
+		21C93AF22E5E4EEB00200285 /* ElementSelectionStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93ACC2E5E4EEB00200285 /* ElementSelectionStep.swift */; };
+		21C93AF32E5E4EEB00200285 /* AdvancedCustomizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93AC92E5E4EEB00200285 /* AdvancedCustomizationView.swift */; };
+		21C93AF42E5E4EEB00200285 /* IntelligentGiftAmountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93AD32E5E4EEB00200285 /* IntelligentGiftAmountView.swift */; };
+		21C93AF52E5E4EEB00200285 /* PreviewStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93ACF2E5E4EEB00200285 /* PreviewStep.swift */; };
+		21C93AF62E5E4EEB00200285 /* RakhiSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93AE12E5E4EEB00200285 /* RakhiSelectionView.swift */; };
+		21C93AF72E5E4EEB00200285 /* RakhiDesignStudioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93AE02E5E4EEB00200285 /* RakhiDesignStudioView.swift */; };
+		21C93AF82E5E4EEB00200285 /* PaymentReceiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93ADE2E5E4EEB00200285 /* PaymentReceiveView.swift */; };
+		21C93AF92E5E4EEB00200285 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93AE32E5E4EEB00200285 /* SettingsView.swift */; };
+		21C93B072E5E502F00200285 /* WatchConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93B052E5E502F00200285 /* WatchConnectivityManager.swift */; };
+		21C93B082E5E502F00200285 /* AIRakhiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93AFC2E5E502F00200285 /* AIRakhiService.swift */; };
+		21C93B092E5E502F00200285 /* AdvancedCustomizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93AFB2E5E502F00200285 /* AdvancedCustomizationService.swift */; };
+		21C93B0A2E5E502F00200285 /* EnhancedPaymentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93AFF2E5E502F00200285 /* EnhancedPaymentService.swift */; };
+		21C93B0B2E5E502F00200285 /* AdvancedAnimationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93AFA2E5E502F00200285 /* AdvancedAnimationService.swift */; };
+		21C93B0C2E5E502F00200285 /* ComprehensivePaymentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93AFD2E5E502F00200285 /* ComprehensivePaymentService.swift */; };
+		21C93B0D2E5E502F00200285 /* PromptMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93B002E5E502F00200285 /* PromptMapper.swift */; };
+		21C93B0E2E5E502F00200285 /* RealTimeGenerationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93B022E5E502F00200285 /* RealTimeGenerationService.swift */; };
+		21C93B0F2E5E502F00200285 /* RakhiHistoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93B012E5E502F00200285 /* RakhiHistoryService.swift */; };
+		21C93B102E5E502F00200285 /* SocialSharingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93B042E5E502F00200285 /* SocialSharingService.swift */; };
+		21C93B112E5E502F00200285 /* EnhancedAnimationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93AFE2E5E502F00200285 /* EnhancedAnimationService.swift */; };
+		21C93B122E5E502F00200285 /* SimpleLocalizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93B032E5E502F00200285 /* SimpleLocalizationService.swift */; };
+		21C93B1A2E5E50EF00200285 /* PerformanceOptimizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93B182E5E50EF00200285 /* PerformanceOptimizer.swift */; };
+		21C93B1B2E5E50EF00200285 /* RakhiDesignModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93B132E5E50EF00200285 /* RakhiDesignModels.swift */; };
+		21C93B1C2E5E50EF00200285 /* RakhiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93B142E5E50EF00200285 /* RakhiModel.swift */; };
+		21C93B1D2E5E50EF00200285 /* ProductionTestSuite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93B162E5E50EF00200285 /* ProductionTestSuite.swift */; };
+		A001 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000 /* App.swift */; };
+		A003 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A002 /* ContentView.swift */; };
+		A005 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A004 /* Assets.xcassets */; };
+		A010 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00F /* APIClient.swift */; };
+		A012 /* ApplePayConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = A011 /* ApplePayConfig.swift */; };
+		A014 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A013 /* OnboardingView.swift */; };
+		A016 /* PaymentCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A015 /* PaymentCoordinator.swift */; };
+		A01A /* WatchSessionManager_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = A019 /* WatchSessionManager_iOS.swift */; };
+		B001 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B000 /* App.swift */; };
+		B003 /* MainTokenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B002 /* MainTokenView.swift */; };
+		B005 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B004 /* Assets.xcassets */; };
+		B010 /* GiftAmountPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00F /* GiftAmountPickerView.swift */; };
+		B012 /* ReceiveTokenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B011 /* ReceiveTokenView.swift */; };
+		B014 /* TokenSessionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B013 /* TokenSessionViewModel.swift */; };
+		B016 /* WatchSessionManager_Watch.swift in Sources */ = {isa = PBXBuildFile; fileRef = B015 /* WatchSessionManager_Watch.swift */; };
+		B021 /* RakhiWatchFaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B020 /* RakhiWatchFaceView.swift */; };
+		B023 /* WatchConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B022 /* WatchConnectivityManager.swift */; };
+		C001 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C000 /* Constants.swift */; };
+		C003 /* SharedFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C002 /* SharedFormatting.swift */; };
+		C005 /* SharedModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = C004 /* SharedModels.swift */; };
+		BC6A716A535C45AEA4735390 /* RakhiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A87861EA0C458F9E34092A /* RakhiModel.swift */; };
+		265E2AC7DEC54332B86B7772 /* ContactSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC18083C5C9448F86D621B0 /* ContactSelectionView.swift */; };
+		BA46673A31F7400B911E1CB0 /* RakhiSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9709911D3043B18756C2E6 /* RakhiSelectionView.swift */; };
+		1DFE354507B34954B057B792 /* PaymentReceiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12C5867535B45318BA01F9F /* PaymentReceiveView.swift */; };
+		2CB29FA184C74B5C8BD5776A /* WatchConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95CD6424305432C858971F0 /* WatchConnectivityManager.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		21C93AC92E5E4EEB00200285 /* AdvancedCustomizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedCustomizationView.swift; sourceTree = "<group>"; };
+		21C93ACB2E5E4EEB00200285 /* ColorSelectionStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSelectionStep.swift; sourceTree = "<group>"; };
+		21C93ACC2E5E4EEB00200285 /* ElementSelectionStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementSelectionStep.swift; sourceTree = "<group>"; };
+		21C93ACD2E5E4EEB00200285 /* GenreSelectionStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreSelectionStep.swift; sourceTree = "<group>"; };
+		21C93ACE2E5E4EEB00200285 /* PersonalizationStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalizationStep.swift; sourceTree = "<group>"; };
+		21C93ACF2E5E4EEB00200285 /* PreviewStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewStep.swift; sourceTree = "<group>"; };
+		21C93AD12E5E4EEB00200285 /* RakhiHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RakhiHistoryView.swift; sourceTree = "<group>"; };
+		21C93AD32E5E4EEB00200285 /* IntelligentGiftAmountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntelligentGiftAmountView.swift; sourceTree = "<group>"; };
+		21C93AD42E5E4EEB00200285 /* PaymentCompletionFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentCompletionFlow.swift; sourceTree = "<group>"; };
+		21C93AD62E5E4EEB00200285 /* SimpleLanguageSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleLanguageSettingsView.swift; sourceTree = "<group>"; };
+		21C93AD82E5E4EEB00200285 /* SocialSharingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialSharingView.swift; sourceTree = "<group>"; };
+		21C93ADA2E5E4EEB00200285 /* AnimationPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationPreviewView.swift; sourceTree = "<group>"; };
+		21C93ADB2E5E4EEB00200285 /* ContactSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactSelectionView.swift; sourceTree = "<group>"; };
+		21C93ADC2E5E4EEB00200285 /* EnhancedPaymentOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnhancedPaymentOptionsView.swift; sourceTree = "<group>"; };
+		21C93ADD2E5E4EEB00200285 /* GeneratedRakhiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratedRakhiView.swift; sourceTree = "<group>"; };
+		21C93ADE2E5E4EEB00200285 /* PaymentReceiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentReceiveView.swift; sourceTree = "<group>"; };
+		21C93ADF2E5E4EEB00200285 /* ProductionMonitoringDashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductionMonitoringDashboard.swift; sourceTree = "<group>"; };
+		21C93AE02E5E4EEB00200285 /* RakhiDesignStudioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RakhiDesignStudioView.swift; sourceTree = "<group>"; };
+		21C93AE12E5E4EEB00200285 /* RakhiSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RakhiSelectionView.swift; sourceTree = "<group>"; };
+		21C93AE22E5E4EEB00200285 /* RealTimeGenerationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealTimeGenerationView.swift; sourceTree = "<group>"; };
+		21C93AE32E5E4EEB00200285 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		21C93AFA2E5E502F00200285 /* AdvancedAnimationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedAnimationService.swift; sourceTree = "<group>"; };
+		21C93AFB2E5E502F00200285 /* AdvancedCustomizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedCustomizationService.swift; sourceTree = "<group>"; };
+		21C93AFC2E5E502F00200285 /* AIRakhiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIRakhiService.swift; sourceTree = "<group>"; };
+		21C93AFD2E5E502F00200285 /* ComprehensivePaymentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComprehensivePaymentService.swift; sourceTree = "<group>"; };
+		21C93AFE2E5E502F00200285 /* EnhancedAnimationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnhancedAnimationService.swift; sourceTree = "<group>"; };
+		21C93AFF2E5E502F00200285 /* EnhancedPaymentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnhancedPaymentService.swift; sourceTree = "<group>"; };
+		21C93B002E5E502F00200285 /* PromptMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptMapper.swift; sourceTree = "<group>"; };
+		21C93B012E5E502F00200285 /* RakhiHistoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RakhiHistoryService.swift; sourceTree = "<group>"; };
+		21C93B022E5E502F00200285 /* RealTimeGenerationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealTimeGenerationService.swift; sourceTree = "<group>"; };
+		21C93B032E5E502F00200285 /* SimpleLocalizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleLocalizationService.swift; sourceTree = "<group>"; };
+		21C93B042E5E502F00200285 /* SocialSharingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialSharingService.swift; sourceTree = "<group>"; };
+		21C93B052E5E502F00200285 /* WatchConnectivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityManager.swift; sourceTree = "<group>"; };
+		21C93B132E5E50EF00200285 /* RakhiDesignModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RakhiDesignModels.swift; sourceTree = "<group>"; };
+		21C93B142E5E50EF00200285 /* RakhiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RakhiModel.swift; sourceTree = "<group>"; };
+		21C93B162E5E50EF00200285 /* ProductionTestSuite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductionTestSuite.swift; sourceTree = "<group>"; };
+		21C93B182E5E50EF00200285 /* PerformanceOptimizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceOptimizer.swift; sourceTree = "<group>"; };
+		A000 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		A002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A004 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Forava_Assets.xcassets; sourceTree = SOURCE_ROOT; };
+		A00F /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		A011 /* ApplePayConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplePayConfig.swift; sourceTree = "<group>"; };
+		A013 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		A015 /* PaymentCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentCoordinator.swift; sourceTree = "<group>"; };
+		A019 /* WatchSessionManager_iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSessionManager_iOS.swift; sourceTree = "<group>"; };
+		A01B /* ForavaApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ForavaApp.entitlements; sourceTree = "<group>"; };
+		A1FF /* ForavaApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ForavaApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B000 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		B002 /* MainTokenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTokenView.swift; sourceTree = "<group>"; };
+		B004 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Forava_WatchAssets.xcassets; sourceTree = SOURCE_ROOT; };
+		B00F /* GiftAmountPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftAmountPickerView.swift; sourceTree = "<group>"; };
+		B011 /* ReceiveTokenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveTokenView.swift; sourceTree = "<group>"; };
+		B013 /* TokenSessionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenSessionViewModel.swift; sourceTree = "<group>"; };
+		B015 /* WatchSessionManager_Watch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSessionManager_Watch.swift; sourceTree = "<group>"; };
+		B020 /* RakhiWatchFaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RakhiWatchFaceView.swift; sourceTree = "<group>"; };
+		B022 /* WatchConnectivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityManager.swift; sourceTree = "<group>"; };
+		B1FF /* ForavaWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ForavaWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C000 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		C002 /* SharedFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedFormatting.swift; sourceTree = "<group>"; };
+		C004 /* SharedModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedModels.swift; sourceTree = "<group>"; };
+		84A87861EA0C458F9E34092A /* RakhiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RakhiModel.swift; sourceTree = "<group>"; };
+		3FC18083C5C9448F86D621B0 /* ContactSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactSelectionView.swift; sourceTree = "<group>"; };
+		6E9709911D3043B18756C2E6 /* RakhiSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RakhiSelectionView.swift; sourceTree = "<group>"; };
+		F12C5867535B45318BA01F9F /* PaymentReceiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentReceiveView.swift; sourceTree = "<group>"; };
+		F95CD6424305432C858971F0 /* WatchConnectivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityManager.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A1FE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1FE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		21C93ACA2E5E4EEB00200285 /* Customization */ = {
+			isa = PBXGroup;
+			children = (
+				21C93AC92E5E4EEB00200285 /* AdvancedCustomizationView.swift */,
+			);
+			path = Customization;
+			sourceTree = "<group>";
+		};
+		21C93AD02E5E4EEB00200285 /* DesignSteps */ = {
+			isa = PBXGroup;
+			children = (
+				21C93ACB2E5E4EEB00200285 /* ColorSelectionStep.swift */,
+				21C93ACC2E5E4EEB00200285 /* ElementSelectionStep.swift */,
+				21C93ACD2E5E4EEB00200285 /* GenreSelectionStep.swift */,
+				21C93ACE2E5E4EEB00200285 /* PersonalizationStep.swift */,
+				21C93ACF2E5E4EEB00200285 /* PreviewStep.swift */,
+			);
+			path = DesignSteps;
+			sourceTree = "<group>";
+		};
+		21C93AD22E5E4EEB00200285 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				21C93AD12E5E4EEB00200285 /* RakhiHistoryView.swift */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		21C93AD52E5E4EEB00200285 /* Payment */ = {
+			isa = PBXGroup;
+			children = (
+				21C93AD32E5E4EEB00200285 /* IntelligentGiftAmountView.swift */,
+				21C93AD42E5E4EEB00200285 /* PaymentCompletionFlow.swift */,
+			);
+			path = Payment;
+			sourceTree = "<group>";
+		};
+		21C93AD72E5E4EEB00200285 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				21C93AD62E5E4EEB00200285 /* SimpleLanguageSettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		21C93AD92E5E4EEB00200285 /* Sharing */ = {
+			isa = PBXGroup;
+			children = (
+				21C93AD82E5E4EEB00200285 /* SocialSharingView.swift */,
+			);
+			path = Sharing;
+			sourceTree = "<group>";
+		};
+		21C93AE42E5E4EEB00200285 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A002 /* ContentView.swift */,
+				21C93ACA2E5E4EEB00200285 /* Customization */,
+				21C93AD02E5E4EEB00200285 /* DesignSteps */,
+				21C93AD22E5E4EEB00200285 /* History */,
+				21C93AD52E5E4EEB00200285 /* Payment */,
+				21C93AD72E5E4EEB00200285 /* Settings */,
+				21C93AD92E5E4EEB00200285 /* Sharing */,
+				21C93ADA2E5E4EEB00200285 /* AnimationPreviewView.swift */,
+				21C93ADB2E5E4EEB00200285 /* ContactSelectionView.swift */,
+				21C93ADC2E5E4EEB00200285 /* EnhancedPaymentOptionsView.swift */,
+				21C93ADD2E5E4EEB00200285 /* GeneratedRakhiView.swift */,
+				21C93ADE2E5E4EEB00200285 /* PaymentReceiveView.swift */,
+				21C93ADF2E5E4EEB00200285 /* ProductionMonitoringDashboard.swift */,
+				21C93AE02E5E4EEB00200285 /* RakhiDesignStudioView.swift */,
+				21C93AE12E5E4EEB00200285 /* RakhiSelectionView.swift */,
+				21C93AE22E5E4EEB00200285 /* RealTimeGenerationView.swift */,
+				21C93AE32E5E4EEB00200285 /* SettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		21C93B062E5E502F00200285 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				21C93AFA2E5E502F00200285 /* AdvancedAnimationService.swift */,
+				21C93AFB2E5E502F00200285 /* AdvancedCustomizationService.swift */,
+				21C93AFC2E5E502F00200285 /* AIRakhiService.swift */,
+				21C93AFD2E5E502F00200285 /* ComprehensivePaymentService.swift */,
+				21C93AFE2E5E502F00200285 /* EnhancedAnimationService.swift */,
+				21C93AFF2E5E502F00200285 /* EnhancedPaymentService.swift */,
+				21C93B002E5E502F00200285 /* PromptMapper.swift */,
+				21C93B012E5E502F00200285 /* RakhiHistoryService.swift */,
+				21C93B022E5E502F00200285 /* RealTimeGenerationService.swift */,
+				21C93B032E5E502F00200285 /* SimpleLocalizationService.swift */,
+				21C93B042E5E502F00200285 /* SocialSharingService.swift */,
+				21C93B052E5E502F00200285 /* WatchConnectivityManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		21C93B152E5E50EF00200285 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				21C93B132E5E50EF00200285 /* RakhiDesignModels.swift */,
+				21C93B142E5E50EF00200285 /* RakhiModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		21C93B172E5E50EF00200285 /* Testing */ = {
+			isa = PBXGroup;
+			children = (
+				21C93B162E5E50EF00200285 /* ProductionTestSuite.swift */,
+			);
+			path = Testing;
+			sourceTree = "<group>";
+		};
+		21C93B192E5E50EF00200285 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				21C93B182E5E50EF00200285 /* PerformanceOptimizer.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		A101 = {
+			isa = PBXGroup;
+			children = (
+				A1F0 /* ForavaApp */,
+				B1F0 /* ForavaWatch */,
+				C1F0 /* Shared */,
+				A200 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A1F0 /* ForavaApp */ = {
+			isa = PBXGroup;
+			children = (
+				21C93AE42E5E4EEB00200285 /* Views */,
+				A000 /* App.swift */,
+				A00F /* APIClient.swift */,
+				A011 /* ApplePayConfig.swift */,
+				A013 /* OnboardingView.swift */,
+				A015 /* PaymentCoordinator.swift */,
+				A019 /* WatchSessionManager_iOS.swift */,
+				21C93B152E5E50EF00200285 /* Models */,
+				21C93B172E5E50EF00200285 /* Testing */,
+				21C93B192E5E50EF00200285 /* Utils */,
+				21C93B062E5E502F00200285 /* Services */,
+				A01B /* ForavaApp.entitlements */,
+				A004 /* Assets.xcassets */,
+			);
+			path = ForavaApp;
+			sourceTree = "<group>";
+		};
+		A200 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A1FF /* ForavaApp.app */,
+				B1FF /* ForavaWatch.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B1F0 /* ForavaWatch */ = {
+			isa = PBXGroup;
+			children = (
+				B000 /* App.swift */,
+				B002 /* MainTokenView.swift */,
+				B00F /* GiftAmountPickerView.swift */,
+				B011 /* ReceiveTokenView.swift */,
+				B013 /* TokenSessionViewModel.swift */,
+				B015 /* WatchSessionManager_Watch.swift */,
+				B020 /* RakhiWatchFaceView.swift */,
+				B022 /* WatchConnectivityManager.swift */,
+				B004 /* Assets.xcassets */,
+			);
+			path = ForavaWatch;
+			sourceTree = "<group>";
+		};
+		C1F0 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				C000 /* Constants.swift */,
+				C002 /* SharedFormatting.swift */,
+				C004 /* SharedModels.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A1FD /* ForavaApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A1FA /* Build configuration list for PBXNativeTarget "ForavaApp" */;
+			buildPhases = (
+				A1FC /* Sources */,
+				A1FE /* Frameworks */,
+				A1FB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ForavaApp;
+			productName = ForavaApp;
+			productReference = A1FF /* ForavaApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B1FD /* ForavaWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B1FA /* Build configuration list for PBXNativeTarget "ForavaWatch" */;
+			buildPhases = (
+				B1FC /* Sources */,
+				B1FE /* Frameworks */,
+				B1FB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ForavaWatch;
+			productName = ForavaWatch;
+			productReference = B1FF /* ForavaWatch.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A100 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1630;
+				ORGANIZATIONNAME = "Forava Inc";
+				TargetAttributes = {
+					A1FD = {
+						CreatedOnToolsVersion = 15.0;
+					};
+					B1FD = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = A103 /* Build configuration list for PBXProject "Forava" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A101;
+			productRefGroup = A200 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A1FD /* ForavaApp */,
+				B1FD /* ForavaWatch */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A1FB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A005 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1FB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B005 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A1FC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A001 /* App.swift in Sources */,
+				A003 /* ContentView.swift in Sources */,
+				21C93B072E5E502F00200285 /* WatchConnectivityManager.swift in Sources */,
+				21C93B082E5E502F00200285 /* AIRakhiService.swift in Sources */,
+				21C93B092E5E502F00200285 /* AdvancedCustomizationService.swift in Sources */,
+				21C93B0A2E5E502F00200285 /* EnhancedPaymentService.swift in Sources */,
+				21C93B0B2E5E502F00200285 /* AdvancedAnimationService.swift in Sources */,
+				21C93B0C2E5E502F00200285 /* ComprehensivePaymentService.swift in Sources */,
+				21C93B0D2E5E502F00200285 /* PromptMapper.swift in Sources */,
+				21C93B0E2E5E502F00200285 /* RealTimeGenerationService.swift in Sources */,
+				21C93B0F2E5E502F00200285 /* RakhiHistoryService.swift in Sources */,
+				21C93B102E5E502F00200285 /* SocialSharingService.swift in Sources */,
+				21C93B112E5E502F00200285 /* EnhancedAnimationService.swift in Sources */,
+				21C93B122E5E502F00200285 /* SimpleLocalizationService.swift in Sources */,
+				A010 /* APIClient.swift in Sources */,
+				A012 /* ApplePayConfig.swift in Sources */,
+				A014 /* OnboardingView.swift in Sources */,
+				A016 /* PaymentCoordinator.swift in Sources */,
+				A01A /* WatchSessionManager_iOS.swift in Sources */,
+				21C93AE52E5E4EEB00200285 /* ColorSelectionStep.swift in Sources */,
+				21C93AE62E5E4EEB00200285 /* RealTimeGenerationView.swift in Sources */,
+				21C93AE72E5E4EEB00200285 /* GeneratedRakhiView.swift in Sources */,
+				21C93AE82E5E4EEB00200285 /* ProductionMonitoringDashboard.swift in Sources */,
+				21C93AE92E5E4EEB00200285 /* SimpleLanguageSettingsView.swift in Sources */,
+				21C93AEA2E5E4EEB00200285 /* RakhiHistoryView.swift in Sources */,
+				21C93AEB2E5E4EEB00200285 /* GenreSelectionStep.swift in Sources */,
+				21C93AEC2E5E4EEB00200285 /* PaymentCompletionFlow.swift in Sources */,
+				21C93AED2E5E4EEB00200285 /* ContactSelectionView.swift in Sources */,
+				21C93AEE2E5E4EEB00200285 /* PersonalizationStep.swift in Sources */,
+				21C93AEF2E5E4EEB00200285 /* SocialSharingView.swift in Sources */,
+				21C93AF02E5E4EEB00200285 /* AnimationPreviewView.swift in Sources */,
+				21C93B1A2E5E50EF00200285 /* PerformanceOptimizer.swift in Sources */,
+				21C93B1B2E5E50EF00200285 /* RakhiDesignModels.swift in Sources */,
+				21C93B1C2E5E50EF00200285 /* RakhiModel.swift in Sources */,
+				21C93B1D2E5E50EF00200285 /* ProductionTestSuite.swift in Sources */,
+				21C93AF12E5E4EEB00200285 /* EnhancedPaymentOptionsView.swift in Sources */,
+				21C93AF22E5E4EEB00200285 /* ElementSelectionStep.swift in Sources */,
+				21C93AF32E5E4EEB00200285 /* AdvancedCustomizationView.swift in Sources */,
+				21C93AF42E5E4EEB00200285 /* IntelligentGiftAmountView.swift in Sources */,
+				21C93AF52E5E4EEB00200285 /* PreviewStep.swift in Sources */,
+				21C93AF62E5E4EEB00200285 /* RakhiSelectionView.swift in Sources */,
+				21C93AF72E5E4EEB00200285 /* RakhiDesignStudioView.swift in Sources */,
+				21C93AF82E5E4EEB00200285 /* PaymentReceiveView.swift in Sources */,
+				21C93AF92E5E4EEB00200285 /* SettingsView.swift in Sources */,
+				C001 /* Constants.swift in Sources */,
+				C003 /* SharedFormatting.swift in Sources */,
+				C005 /* SharedModels.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1FC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B001 /* App.swift in Sources */,
+				B003 /* MainTokenView.swift in Sources */,
+				B010 /* GiftAmountPickerView.swift in Sources */,
+				B012 /* ReceiveTokenView.swift in Sources */,
+				B014 /* TokenSessionViewModel.swift in Sources */,
+				B016 /* WatchSessionManager_Watch.swift in Sources */,
+				B021 /* RakhiWatchFaceView.swift in Sources */,
+				B023 /* WatchConnectivityManager.swift in Sources */,
+				21C939072E508B0900200285 /* Constants.swift in Sources */,
+				21C939082E508B0900200285 /* SharedFormatting.swift in Sources */,
+				21C939092E508B0900200285 /* SharedModels.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		A102 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = YES;
+				CODE_SIGNING_REQUIRED = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = C6MJDCDAUG;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A104 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = YES;
+				CODE_SIGNING_REQUIRED = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = C6MJDCDAUG;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		A1F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ForavaApp/ForavaApp.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSContactsUsageDescription = "Forava needs access to your contacts to help you select family members and friends to send beautiful Rakhi gifts to during the festival of Raksha Bandhan.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.forava.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		A1F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ForavaApp/ForavaApp.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSContactsUsageDescription = "Forava needs access to your contacts to help you select family members and friends to send beautiful Rakhi gifts to during the festival of Raksha Bandhan.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.forava.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B1F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = ForavaWatch;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKWatchOnly = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.forava.watch;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Release;
+		};
+		B1F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = ForavaWatch;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKWatchOnly = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.forava.watch;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A103 /* Build configuration list for PBXProject "Forava" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A102 /* Debug */,
+				A104 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A1FA /* Build configuration list for PBXNativeTarget "ForavaApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1F9 /* Debug */,
+				A1F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B1FA /* Build configuration list for PBXNativeTarget "ForavaWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B1F9 /* Debug */,
+				B1F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A100 /* Project object */;
+}

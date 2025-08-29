@@ -1,0 +1,345 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## Project Overview
+
+Forava is an AI-powered multi-cultural digital gifting platform with subscription-based revenue model. Originally built for Rakhi (Hindu tradition), the app is now transitioning to a universal cultural gifting platform supporting multiple occasions and traditions through AI-generated personalized greetings and animations.
+
+**IMPORTANT**: As of August 2025, we have adopted a **fresh start strategy** using Forava02 as our primary development environment, built from the stable Rakhi app foundation (GitHub commit 978f9c2).
+
+### Core Mission
+Transform cultural celebrations into personalized AI-powered digital experiences while maintaining cultural authenticity and supporting subscription-based revenue through image re-generation fees.
+
+### Target Cultures
+- **Hindu**: Raksha Bandhan, Diwali, Holi
+- **Chinese**: Chinese New Year, Mid-Autumn Festival  
+- **Christian**: Christmas, Easter
+- **Islamic**: Eid al-Fitr, Eid al-Adha
+- **Buddhist**: Vesak Day
+- **Jewish**: Rosh Hashanah, Hanukkah
+- **Universal**: Birthdays, Anniversaries
+
+## Development Environment Structure
+
+### Project Structure
+```
+Forava/
+├── Forava02/                          # PRIMARY DEVELOPMENT (Clean Start)
+│   ├── Forava.xcodeproj              # Working Xcode project
+│   ├── ForavaApp/                     # iOS app (stable Rakhi foundation)
+│   ├── ForavaWatch/                   # Watch app
+│   └── Shared/                        # Shared components
+├── Forava01/                          # REFERENCE ONLY (Had errors)
+├── Forava_PreWired_Workspace/         # REFERENCE ONLY (Complex/Broken)
+│   └── [100+ compilation errors]      # Use for code patterns only
+└── CLAUDE.md                          # This file
+```
+
+### Xcode Integration & Workflow
+
+#### Primary Development Environment
+```bash
+# Navigate to clean development version
+cd /Users/kirangokal/Documents/Forava/Forava02
+
+# Open in Xcode
+open Forava.xcodeproj
+# or
+open Forava.xcworkspace
+```
+
+#### Build & Test Commands
+```bash
+# From Forava02 directory
+xcodebuild -project Forava.xcodeproj -scheme ForavaApp clean build CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY=""
+
+# SwiftLint
+/opt/homebrew/bin/swiftlint lint
+/opt/homebrew/bin/swiftlint --fix
+
+# Test single culture before adding next
+xcodebuild test -project Forava.xcodeproj -scheme ForavaApp
+```
+
+#### Cultural Expansion Strategy (One-at-a-Time)
+1. **Current Status**: Rakhi app (stable, building successfully)
+2. **Next Culture**: Chinese New Year (add + test thoroughly)  
+3. **Following Culture**: Only add after previous culture 100% working
+4. **Test Cycle**: Build → Test → Cultural Validation → User Testing
+
+### Mock Backend (Python Flask)
+```bash
+cd Forava_MockBackend
+python app.py
+```
+Server runs at `http://127.0.0.1:5055`
+
+## Multi-Cultural Transformation Architecture
+
+### Fresh Start Implementation Strategy
+
+**RESET STATUS**: All previous 6-phase implementation has been reset. We now use incremental cultural expansion from stable Rakhi foundation.
+
+#### 🔄 Phase A: Foundation Validation (COMPLETE)
+- **Status**: ✅ COMPLETE  
+- **Location**: `Forava02/` (GitHub commit 978f9c2)
+- **Features**: Stable Rakhi app with working iOS/Watch integration
+- **Verification**: Successfully builds and runs without errors
+- **Key Files**: All base services, models, and views working
+
+#### 🔄 Phase B: Cultural Framework Creation (NEXT)
+- **Status**: 🟡 PENDING
+- **Approach**: Extend existing RakhiModel → CulturalGiftModel
+- **Strategy**: Add cultural context enum, maintain backward compatibility
+- **Test Requirement**: Rakhi functionality must remain 100% intact
+
+#### 🔄 Phase C: Single Culture Addition (Chinese New Year)
+- **Status**: 🟡 PENDING  
+- **Implementation**: One culture at a time, thorough testing before next
+- **Components**: Cultural context, AI prompts, UI elements, color schemes
+- **Validation**: Build → Test → Cultural Accuracy → User Experience
+
+#### 🔄 Phase D: Revenue Model Integration
+- **Status**: 🟡 PENDING
+- **Features**: Subscription system, re-generation tracking, cultural payments
+- **Requirements**: Apple-compliant IAP, cultural pricing tiers
+- **Testing**: Payment flow validation per culture
+
+#### 🔄 Phase E: Cultural Expansion
+- **Status**: 🟡 PENDING
+- **Order**: Christmas → Diwali → Eid → Additional cultures
+- **Rule**: Each culture must be 100% tested before adding next
+- **Metrics**: Build success, cultural accuracy, user feedback
+
+#### 🔄 Phase F: Production Deployment
+- **Status**: 🟡 PENDING
+- **Requirements**: App Store compliance, performance optimization
+- **Validation**: Full multi-cultural test suite, accessibility compliance
+
+### Core Architecture Components (Forava02 Fresh Start)
+
+#### Current Working Foundation
+```
+Forava02/ForavaApp/Models/RakhiModel.swift          - Stable base model
+Forava02/ForavaApp/Services/AIRakhiService.swift    - Working AI service
+Forava02/ForavaApp/Views/RakhiDesignStudioView.swift - Functional UI
+Forava02/ForavaApp/Views/ContactSelectionView.swift - Working contact system
+```
+
+#### Planned Cultural Framework (To Be Built)
+```
+Models/CulturalGiftModel.swift      - Extend RakhiModel to support multiple cultures
+Services/CulturalContextManager.swift - Build from AIRakhiService foundation  
+Services/CulturalAIService.swift    - Evolve from working AIRakhiService
+Views/CulturalDesignStudioView.swift - Expand RakhiDesignStudioView
+```
+
+#### Cultural Expansion Pattern (One-at-a-Time)
+```
+Phase C: Chinese New Year
+├── Models/ChineseNewYearContext.swift      - First cultural context
+├── Services/ChineseNewYearAgent.swift      - Cultural AI agent  
+├── Views/ChineseNewYearComponents.swift    - UI components
+└── Testing/ChineseNewYearTests.swift       - Validation suite
+
+Phase D: Christmas (Only after Chinese 100% complete)
+Phase E: Diwali (Only after Christmas 100% complete)
+```
+
+### Revenue Model Integration
+
+#### Subscription Tiers
+- **Basic**: $2.99/month - 3 cultural contexts, unlimited first generations
+- **Premium**: $4.99/month - All cultural contexts, priority processing  
+- **Family**: $7.99/month - Up to 6 family members, shared preferences
+
+#### Revenue Tracking
+- **Re-generation Credits**: $2 per additional image generation after first free attempt
+- **Cultural Packs**: Premium seasonal and cultural element packs
+- **Apple-Compliant IAP**: Full StoreKit 2 integration with receipt validation
+
+### AI-Powered Generation System
+
+#### Primary AI Stack
+- **SDXL Base Model**: High-quality cultural artwork generation
+- **ControlNet Integration**: Precise cultural element control
+- **Custom LoRA Models**: Fine-tuned for cultural authenticity
+- **GPT-4 Integration**: Cultural validation and prompt enhancement
+
+#### Cultural Authenticity Validation
+- **Cultural Scoring System**: Automated authenticity assessment
+- **Community Feedback**: User-driven cultural accuracy validation
+- **Expert Review**: Cultural advisory board integration
+
+### Cross-Platform Synchronization
+
+#### iOS App (`ForavaApp/`)
+- Cultural design studio with AI generation
+- Subscription and payment management
+- Cross-cultural preference management
+- Social sharing with cultural context
+
+#### Apple Watch App (`ForavaWatch/`)  
+- Cultural gift display and animation
+- Watch-optimized payment triggers
+- Advanced haptic feedback for cultural elements
+- Battery-optimized cultural animations
+
+#### Communication Flow
+1. AI-generated cultural gifts created on iOS
+2. Cultural context synchronized to Watch via WatchConnectivity
+3. Watch displays culturally-appropriate animations
+4. Payment initiated from Watch with cultural presentation
+5. Cultural gratitude expressions delivered across devices
+
+## Brand Guidelines & Cultural Design
+
+### Cultural Color Palettes
+
+#### Chinese New Year
+- Primary: `#DC143C` (Crimson Red)
+- Secondary: `#FFD700` (Gold)
+- Accent: `#B71C1C` (Dark Red)
+
+#### Diwali  
+- Primary: `#FF6B35` (Festival Orange)
+- Secondary: `#673AB7` (Deep Purple)
+- Accent: `#FFD700` (Gold)
+
+#### Christmas
+- Primary: `#C41E3A` (Christmas Red) 
+- Secondary: `#228B22` (Forest Green)
+- Accent: `#FFD700` (Gold)
+
+### Cultural Design Elements
+
+#### Symbol Libraries
+- **Hindu**: Om, Lotus, Rangoli patterns, Diyas
+- **Chinese**: Dragons, Phoenix, Bamboo, Prosperity symbols
+- **Christian**: Holly, Stars, Angels, Crosses
+- **Islamic**: Crescents, Stars, Geometric patterns, Calligraphy
+- **Buddhist**: Lotus flowers, Dharma wheels, Peaceful imagery
+- **Jewish**: Star of David, Menorahs, Hebrew text
+
+## Testing & Quality Assurance
+
+### Comprehensive Test Coverage
+```bash
+# Cultural Framework Core Tests
+ForavaApp/Testing/CulturalFrameworkTests.swift
+
+# Phase-Specific Validation
+ForavaApp/Testing/Phase5DynamicTerminologyTests.swift
+ForavaApp/Testing/Phase6CulturalDesignTests.swift  
+
+# Production Test Suite
+ForavaApp/Testing/ProductionTestSuite.swift
+```
+
+### Cultural Accuracy Validation
+- **Automated Cultural Scoring**: AI-powered authenticity assessment
+- **Community Feedback Integration**: User-driven cultural validation
+- **Expert Review System**: Cultural advisory board validation
+- **Cross-Cultural Sensitivity**: Inappropriate content filtering
+
+## Performance & Optimization
+
+### Technical Metrics
+- **AI Generation Time**: <30 seconds per cultural design
+- **Cultural Context Switching**: <1ms average performance  
+- **App Stability**: >99.5% crash-free rate across all cultural contexts
+- **Battery Optimization**: Watch animations optimized for minimal battery impact
+
+### Business Metrics
+- **Cultural Adoption**: >60% users explore multiple cultural contexts
+- **Subscription Conversion**: >25% within first 30 days
+- **Cultural Authenticity**: >4.0/5.0 average user rating per culture
+- **Re-generation Revenue**: Target >$5 per monthly active user
+
+## Apple Standards Compliance
+
+### App Store Guidelines Adherence
+- **Guideline 3.1**: All purchases through Apple IAP system
+- **Guideline 4.3**: Each cultural context provides unique value
+- **Guideline 5.1.1**: Privacy-first cultural data handling
+- **Cultural Sensitivity**: Rigorous cultural appropriation prevention
+
+### Accessibility & Localization
+- **VoiceOver Support**: Full accessibility for cultural elements
+- **Dynamic Type**: Cultural text scaling support
+- **Cultural Color Contrast**: WCAG-compliant cultural color schemes
+- **Multi-Language**: Cultural terminology in multiple languages
+
+## Production Deployment Status
+
+### Current State
+- **All 6 Phases**: IMPLEMENTATION COMPLETE
+- **Cultural Framework**: Production-ready with backward compatibility
+- **Revenue Model**: Active subscription system with re-generation tracking
+- **Cultural Validation**: Automated authenticity scoring operational
+- **Apple Compliance**: Full App Store readiness achieved
+
+### GitHub Repository
+- **Latest Version**: https://github.com/KG191/Forava/tree/main
+- **Universal Gift Payment**: Latest requirement with subscription-based regeneration
+- **Production Checklist**: Comprehensive deployment validation complete
+
+## Development Guidelines (Fresh Start Approach)
+
+### Mandatory Development Rules
+1. **Always work in Forava02**: Never edit files in `Forava_PreWired_Workspace/` or `Forava01/`
+2. **One Culture at a Time**: Complete testing of current culture before adding next
+3. **Backward Compatibility**: Rakhi functionality must remain 100% intact through all changes
+4. **Test Before Expand**: Each cultural addition requires comprehensive validation
+5. **Xcode Project Integration**: All new files must be properly added to Forava.xcodeproj
+
+### Cultural Development Workflow
+```bash
+# 1. Verify current state
+cd /Users/kirangokal/Documents/Forava/Forava02
+xcodebuild -project Forava.xcodeproj -scheme ForavaApp clean build
+
+# 2. Add new cultural feature (example: Chinese New Year)
+# - Create models, services, views
+# - Add to Xcode project
+
+# 3. Test thoroughly
+xcodebuild test -project Forava.xcodeproj -scheme ForavaApp
+/opt/homebrew/bin/swiftlint lint
+
+# 4. Cultural validation
+# - Verify Rakhi still works
+# - Test new culture functionality
+# - UI/UX validation
+
+# 5. Only then add next culture
+```
+
+### Code Quality Requirements
+- **SwiftLint Compliance**: Zero violations in new code
+- **Build Success**: Every commit must build successfully  
+- **Test Coverage**: Each cultural feature requires dedicated tests
+- **Type Safety**: Leverage Swift's type system for cultural data validation
+- **Performance**: Cultural features must not impact app performance
+
+### Xcode Project Management
+- **File Organization**: Follow existing Forava02 structure
+- **Target Membership**: Ensure new files added to correct targets
+- **Scheme Configuration**: Test with existing ForavaApp/ForavaWatch schemes
+- **Asset Management**: Use existing asset catalog structure
+
+## Important Constraints
+
+### Critical Requirements
+- **NO Breaking Changes**: Existing Rakhi users must not experience any disruption
+- **Cultural Authenticity**: All cultural representations must be validated for accuracy
+- **Apple Compliance**: Strict adherence to App Store guidelines for cultural content
+- **Performance First**: Cultural features must maintain existing app performance
+- **One-at-a-Time**: Never develop multiple cultures simultaneously
+
+### Reference Usage
+- **Forava_PreWired_Workspace/**: Use ONLY for code pattern reference
+- **Forava01/**: Use ONLY for code pattern reference 
+- **Copy Patterns**: Extract useful patterns but rebuild from scratch in Forava02
+- **Never Import**: Do not copy broken files directly into Forava02

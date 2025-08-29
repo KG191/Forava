@@ -1,0 +1,22 @@
+# Xcode
+DerivedData/
+build/
+*.xcuserdatad
+*.xcuserstate
+
+# SwiftPM
+/.build/
+/Packages/
+
+# CocoaPods
+Pods/
+Podfile.lock
+
+# Carthage
+Carthage/Build/
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output

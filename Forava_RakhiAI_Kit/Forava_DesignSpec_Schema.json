@@ -1,0 +1,30 @@
+{
+  "genre": "Traditional",
+  "elements": [
+    {
+      "id": 1,
+      "choice": "Red thread",
+      "prompt_tokens": [
+        "red thread",
+        "silk"
+      ],
+      "control_settings": {
+        "weight": 1.0
+      }
+    },
+    {
+      "id": 2,
+      "choice": "Gold beads",
+      "prompt_tokens": [
+        "gold beads"
+      ],
+      "control_settings": {
+        "weight": 0.8
+      }
+    }
+  ],
+  "output": {
+    "style_strength": 0.7,
+    "image_size": "1024x1024"
+  }
+}
