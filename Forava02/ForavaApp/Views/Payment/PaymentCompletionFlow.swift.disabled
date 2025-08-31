@@ -1,0 +1,23 @@
+import SwiftUI
+
+// Payment completion flow temporarily disabled - functionality to be implemented later
+struct PaymentCompletionFlow: View {
+    var body: some View {
+        VStack {
+            Text("Payment completion coming soon")
+                .font(.title2)
+                .foregroundColor(.gray)
+            
+            Text("This feature will be implemented in a future update")
+                .font(.body)
+                .foregroundColor(.secondary)
+                .multilineTextAlignment(.center)
+                .padding()
+        }
+        .padding()
+    }
+}
+
+#Preview {
+    PaymentCompletionFlow()
+}

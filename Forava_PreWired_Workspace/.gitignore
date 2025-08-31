@@ -1,0 +1,27 @@
+# Xcode
+build/
+DerivedData/
+*.xcworkspace/xcuserdata/
+*.xcodeproj/xcuserdata/
+*.xcuserstate
+*.xcuserdatad/
+
+# macOS
+.DS_Store
+.DS_Store?
+.Spotlight-V100
+.Trashes
+
+# Security - Never commit API keys or secrets
+.env
+*.env
+.env.*
+secrets.txt
+api_keys.txt
+config/secrets/
+*.key
+*.pem
+
+# IDE
+.vscode/
+.idea/

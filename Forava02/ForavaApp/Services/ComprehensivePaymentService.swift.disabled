@@ -1,0 +1,15 @@
+import Foundation
+
+// Comprehensive payment service temporarily disabled - functionality to be implemented later
+class ComprehensivePaymentService: ObservableObject {
+    static let shared = ComprehensivePaymentService()
+    
+    @Published var isProcessing = false
+    
+    private init() {}
+    
+    // Placeholder methods to maintain interface compatibility
+    func processPayment() {
+        // Implementation pending
+    }
+}

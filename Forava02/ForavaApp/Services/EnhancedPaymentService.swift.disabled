@@ -1,0 +1,15 @@
+import Foundation
+
+// Enhanced payment service temporarily disabled - functionality to be implemented later
+class EnhancedPaymentService: ObservableObject {
+    static let shared = EnhancedPaymentService()
+    
+    @Published var isProcessing = false
+    
+    private init() {}
+    
+    // Placeholder methods to maintain interface compatibility
+    func processPayment() {
+        // Implementation pending
+    }
+}

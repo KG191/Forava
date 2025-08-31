@@ -1,0 +1,662 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0E9E4C6340144731B4FBBA79 /* Views/ContactSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976338E70CA941E1ADFBBF24 /* Views/ContactSelectionView.swift */; };
+		21C939072E508B0900200285 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C000 /* Constants.swift */; };
+		21C939082E508B0900200285 /* SharedFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C002 /* SharedFormatting.swift */; };
+		21C939092E508B0900200285 /* SharedModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = C004 /* SharedModels.swift */; };
+		21C939EC2E59990B00200285 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C939EB2E59990B00200285 /* AppConfig.swift */; };
+		21C939ED2E59990B00200285 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C939EB2E59990B00200285 /* AppConfig.swift */; };
+		3C9D4E8F2B6A47189E5F2A71 /* Services/PromptMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1E3A8D9C4B4F5E8A2D9176 /* Services/PromptMapper.swift */; };
+		4D8F7A2E5C3B49D6A7E9F158 /* Views/RakhiDesignStudioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5E2B8C4F6D4927B3C8E519 /* Views/RakhiDesignStudioView.swift */; };
+		5A7D2E9F4C8B41A6A9E3F257 /* Views/DesignSteps/PreviewStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9F7A2D6B5C4819A2F4E683 /* Views/DesignSteps/PreviewStep.swift */; };
+		622AE3044DCC4A4699A8D241 /* Services/WatchConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA2E6559476492DA311685B /* Services/WatchConnectivityManager.swift */; };
+		6E8A3F5C2D4B49E1A7F2E946 /* Views/DesignSteps/PersonalizationStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7E4A8B5C9D4625A3E8F174 /* Views/DesignSteps/PersonalizationStep.swift */; };
+		7B2D4E6F1A8C49B5A3E7F942 /* Views/DesignSteps/ElementSelectionStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3A8E9C2D7B4851A9C4F628 /* Views/DesignSteps/ElementSelectionStep.swift */; };
+		8E1F3C5A9B4D47E2A6F8D329 /* Views/DesignSteps/GenreSelectionStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9E7F4A8D5B4836A1F6E297 /* Views/DesignSteps/GenreSelectionStep.swift */; };
+		9E2F8B7D4A5C43E89F1D7329 /* Models/RakhiDesignModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8A9E6C7D3F4928A1C5E847 /* Models/RakhiDesignModels.swift */; };
+		9F4E7A1D6C5B48A7A2E8F153 /* Views/DesignSteps/ColorSelectionStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6D4E2F7B9C4734A5F1E869 /* Views/DesignSteps/ColorSelectionStep.swift */; };
+		A001 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000 /* App.swift */; };
+		A003 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A002 /* ContentView.swift */; };
+		A005 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A004 /* Assets.xcassets */; };
+		A010 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00F /* APIClient.swift */; };
+		A012 /* ApplePayConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = A011 /* ApplePayConfig.swift */; };
+		A014 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A013 /* OnboardingView.swift */; };
+		A016 /* PaymentCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A015 /* PaymentCoordinator.swift */; };
+		A018 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A017 /* SettingsView.swift */; };
+		A01A /* WatchSessionManageriOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = A019 /* WatchSessionManageriOS.swift */; };
+		A31BFDC8AE1142018776CBD0 /* Views/PaymentReceiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B90C2AE98D47F4A44997C0 /* Views/PaymentReceiveView.swift */; };
+		B001 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B000 /* App.swift */; };
+		B003 /* MainTokenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B002 /* MainTokenView.swift */; };
+		B005 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B004 /* Assets.xcassets */; };
+		B010 /* GiftAmountPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00F /* GiftAmountPickerView.swift */; };
+		B012 /* ReceiveTokenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B011 /* ReceiveTokenView.swift */; };
+		B014 /* TokenSessionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B013 /* TokenSessionViewModel.swift */; };
+		B016 /* WatchSessionManager_Watch.swift in Sources */ = {isa = PBXBuildFile; fileRef = B015 /* WatchSessionManager_Watch.swift */; };
+		B021 /* RakhiWatchFaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B020 /* RakhiWatchFaceView.swift */; };
+		B023 /* WatchConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B022 /* WatchConnectivityManager.swift */; };
+		C001 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C000 /* Constants.swift */; };
+		C003 /* SharedFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C002 /* SharedFormatting.swift */; };
+		C005 /* SharedModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = C004 /* SharedModels.swift */; };
+		D7C5A189690F4BCBA21AE164 /* Models/RakhiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D8743C80C54749B8F43EC7 /* Models/RakhiModel.swift */; };
+		E5B73E65C8D44DA1987F1885 /* Views/RakhiSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9F7619777349E4AE02D074 /* Views/RakhiSelectionView.swift */; };
+		F7A3B4E21C8E4D029B5F6178 /* Services/AIRakhiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4C7F9A3B2E4A1F9C6E8520 /* Services/AIRakhiService.swift */; };
+		D71BE24AB3954149B63688C8 /* RakhiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF65986F22864F75ACDD6037 /* RakhiModel.swift */; };
+		64FDE3EF0A744706987EB6D2 /* ContactSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055115B5D431497F96E49EFB /* ContactSelectionView.swift */; };
+		71BF19D2786E49788180A5AF /* RakhiSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A418546DD7F4A4FA4E212DF /* RakhiSelectionView.swift */; };
+		C22F6FB74C474A09BEDE19B2 /* PaymentReceiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3E73DF7AB7466A9635F448 /* PaymentReceiveView.swift */; };
+		0BF14903FED24006B4535A54 /* WatchConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A39B3EDF43452A9B10E67A /* WatchConnectivityManager.swift */; };
+		MODL12345678901234567890 /* RakhiCoreModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = MODL12345678901234567891 /* RakhiCoreModels.swift */; };
+		VIEW12345678901234567890 /* GeneratedRakhiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = VIEW12345678901234567891 /* GeneratedRakhiView.swift */; };
+		67A845BF847146EEB25FA61B /* SubscriptionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218D49349AEE449898E6876A /* SubscriptionManager.swift */; };
+		593B65E4CDB340CC887C55BA /* CulturalSystemMigrationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DF7D5877D1478DA79CC61E /* CulturalSystemMigrationService.swift */; };
+		1DC25B1E679D4023BC036C99 /* DynamicCulturalTerminologyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB6C8B4B55046CFAC6DCF8B /* DynamicCulturalTerminologyService.swift */; };
+		0D84A8B156184A8C917353E3 /* GlobalTerminologyUpdateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99446C8EDF3C4557B3B3B65A /* GlobalTerminologyUpdateService.swift */; };
+		55F5EA73ABD8465399C7A83B /* CulturalContextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AB89471FFD4EF4A8427947 /* CulturalContextManager.swift */; };
+		0C545561B2F743C583365D59 /* CulturalDesignAgentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBBA058AD9E4BDCA7F32C56 /* CulturalDesignAgentService.swift */; };
+		18B818BD9E87457AB2EFB550 /* CulturalConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB043F4B3044EDFA00569CC /* CulturalConfiguration.swift */; };
+		09F75AD128D4495EB8AEE0A5 /* CulturalFramework.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F5A3B59C3344FABA104A9F /* CulturalFramework.swift */; };
+		12B64044EC724A3B978A0036 /* CulturalValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9071006A1C44C6896F5CA07 /* CulturalValidator.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0FA2E6559476492DA311685B /* Services/WatchConnectivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services/WatchConnectivityManager.swift; sourceTree = "<group>"; };
+		1F7E4A8B5C9D4625A3E8F174 /* Views/DesignSteps/PersonalizationStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views/DesignSteps/PersonalizationStep.swift; sourceTree = "<group>"; };
+		21C939EA2E59988B00200285 /* ForavaWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ForavaWatch.entitlements; sourceTree = "<group>"; };
+		21C939EB2E59990B00200285 /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
+		2C9E7F4A8D5B4836A1F6E297 /* Views/DesignSteps/GenreSelectionStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views/DesignSteps/GenreSelectionStep.swift; sourceTree = "<group>"; };
+		2D9F7619777349E4AE02D074 /* Views/RakhiSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views/RakhiSelectionView.swift; sourceTree = "<group>"; };
+		3E9F7A2D6B5C4819A2F4E683 /* Views/DesignSteps/PreviewStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views/DesignSteps/PreviewStep.swift; sourceTree = "<group>"; };
+		5B8A9E6C7D3F4928A1C5E847 /* Models/RakhiDesignModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models/RakhiDesignModels.swift; sourceTree = "<group>"; };
+		5F3A8E9C2D7B4851A9C4F628 /* Views/DesignSteps/ElementSelectionStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views/DesignSteps/ElementSelectionStep.swift; sourceTree = "<group>"; };
+		68D8743C80C54749B8F43EC7 /* Models/RakhiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models/RakhiModel.swift; sourceTree = "<group>"; };
+		6F1E3A8D9C4B4F5E8A2D9176 /* Services/PromptMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services/PromptMapper.swift; sourceTree = "<group>"; };
+		72B90C2AE98D47F4A44997C0 /* Views/PaymentReceiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views/PaymentReceiveView.swift; sourceTree = "<group>"; };
+		8A6D4E2F7B9C4734A5F1E869 /* Views/DesignSteps/ColorSelectionStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views/DesignSteps/ColorSelectionStep.swift; sourceTree = "<group>"; };
+		8D4C7F9A3B2E4A1F9C6E8520 /* Services/AIRakhiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services/AIRakhiService.swift; sourceTree = "<group>"; };
+		976338E70CA941E1ADFBBF24 /* Views/ContactSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views/ContactSelectionView.swift; sourceTree = "<group>"; };
+		9A5E2B8C4F6D4927B3C8E519 /* Views/RakhiDesignStudioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views/RakhiDesignStudioView.swift; sourceTree = "<group>"; };
+		A000 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		A002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A004 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Forava_Assets.xcassets; sourceTree = SOURCE_ROOT; };
+		A00F /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		A011 /* ApplePayConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplePayConfig.swift; sourceTree = "<group>"; };
+		A013 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		A015 /* PaymentCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentCoordinator.swift; sourceTree = "<group>"; };
+		A017 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		A019 /* WatchSessionManageriOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSessionManageriOS.swift; sourceTree = "<group>"; };
+		A01B /* ForavaApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ForavaApp.entitlements; sourceTree = "<group>"; };
+		A1FF /* ForavaApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ForavaApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B000 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		B002 /* MainTokenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTokenView.swift; sourceTree = "<group>"; };
+		B004 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Forava_WatchAssets.xcassets; sourceTree = SOURCE_ROOT; };
+		B00F /* GiftAmountPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftAmountPickerView.swift; sourceTree = "<group>"; };
+		B011 /* ReceiveTokenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveTokenView.swift; sourceTree = "<group>"; };
+		B013 /* TokenSessionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenSessionViewModel.swift; sourceTree = "<group>"; };
+		B015 /* WatchSessionManager_Watch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSessionManager_Watch.swift; sourceTree = "<group>"; };
+		B020 /* RakhiWatchFaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RakhiWatchFaceView.swift; sourceTree = "<group>"; };
+		B022 /* WatchConnectivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityManager.swift; sourceTree = "<group>"; };
+		B1FF /* ForavaWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ForavaWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C000 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		C002 /* SharedFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedFormatting.swift; sourceTree = "<group>"; };
+		C004 /* SharedModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedModels.swift; sourceTree = "<group>"; };
+		BF65986F22864F75ACDD6037 /* RakhiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RakhiModel.swift; sourceTree = "<group>"; };
+		055115B5D431497F96E49EFB /* ContactSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactSelectionView.swift; sourceTree = "<group>"; };
+		2A418546DD7F4A4FA4E212DF /* RakhiSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RakhiSelectionView.swift; sourceTree = "<group>"; };
+		5C3E73DF7AB7466A9635F448 /* PaymentReceiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentReceiveView.swift; sourceTree = "<group>"; };
+		E0A39B3EDF43452A9B10E67A /* WatchConnectivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityManager.swift; sourceTree = "<group>"; };
+		MODL12345678901234567891 /* RakhiCoreModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForavaApp/Models/RakhiCoreModels.swift; sourceTree = "<group>"; };
+		VIEW12345678901234567891 /* GeneratedRakhiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForavaApp/Views/GeneratedRakhiView.swift; sourceTree = "<group>"; };
+		218D49349AEE449898E6876A /* SubscriptionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionManager.swift; sourceTree = "<group>"; };
+		26DF7D5877D1478DA79CC61E /* CulturalSystemMigrationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulturalSystemMigrationService.swift; sourceTree = "<group>"; };
+		AAB6C8B4B55046CFAC6DCF8B /* DynamicCulturalTerminologyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicCulturalTerminologyService.swift; sourceTree = "<group>"; };
+		99446C8EDF3C4557B3B3B65A /* GlobalTerminologyUpdateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalTerminologyUpdateService.swift; sourceTree = "<group>"; };
+		F0AB89471FFD4EF4A8427947 /* CulturalContextManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulturalContextManager.swift; sourceTree = "<group>"; };
+		3FBBA058AD9E4BDCA7F32C56 /* CulturalDesignAgentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulturalDesignAgentService.swift; sourceTree = "<group>"; };
+		7AB043F4B3044EDFA00569CC /* CulturalConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulturalConfiguration.swift; sourceTree = "<group>"; };
+		88F5A3B59C3344FABA104A9F /* CulturalFramework.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulturalFramework.swift; sourceTree = "<group>"; };
+		F9071006A1C44C6896F5CA07 /* CulturalValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulturalValidator.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A1FE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1FE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A101 = {
+			isa = PBXGroup;
+			children = (
+				A1F0 /* ForavaApp */,
+				B1F0 /* ForavaWatch */,
+				C1F0 /* Shared */,
+				A200 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A1F0 /* ForavaApp */ = {
+			isa = PBXGroup;
+			children = (
+				A000 /* App.swift */,
+				A002 /* ContentView.swift */,
+				A00F /* APIClient.swift */,
+				A011 /* ApplePayConfig.swift */,
+				A013 /* OnboardingView.swift */,
+				A015 /* PaymentCoordinator.swift */,
+				A017 /* SettingsView.swift */,
+				A019 /* WatchSessionManageriOS.swift */,
+				68D8743C80C54749B8F43EC7 /* Models/RakhiModel.swift */,
+				976338E70CA941E1ADFBBF24 /* Views/ContactSelectionView.swift */,
+				2D9F7619777349E4AE02D074 /* Views/RakhiSelectionView.swift */,
+				72B90C2AE98D47F4A44997C0 /* Views/PaymentReceiveView.swift */,
+				0FA2E6559476492DA311685B /* Services/WatchConnectivityManager.swift */,
+				8D4C7F9A3B2E4A1F9C6E8520 /* Services/AIRakhiService.swift */,
+				5B8A9E6C7D3F4928A1C5E847 /* Models/RakhiDesignModels.swift */,
+				6F1E3A8D9C4B4F5E8A2D9176 /* Services/PromptMapper.swift */,
+				9A5E2B8C4F6D4927B3C8E519 /* Views/RakhiDesignStudioView.swift */,
+				2C9E7F4A8D5B4836A1F6E297 /* Views/DesignSteps/GenreSelectionStep.swift */,
+				5F3A8E9C2D7B4851A9C4F628 /* Views/DesignSteps/ElementSelectionStep.swift */,
+				8A6D4E2F7B9C4734A5F1E869 /* Views/DesignSteps/ColorSelectionStep.swift */,
+				1F7E4A8B5C9D4625A3E8F174 /* Views/DesignSteps/PersonalizationStep.swift */,
+				3E9F7A2D6B5C4819A2F4E683 /* Views/DesignSteps/PreviewStep.swift */,
+				A01B /* ForavaApp.entitlements */,
+				A004 /* Assets.xcassets */,
+			);
+			path = ForavaApp;
+			sourceTree = "<group>";
+		};
+		A200 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A1FF /* ForavaApp.app */,
+				B1FF /* ForavaWatch.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B1F0 /* ForavaWatch */ = {
+			isa = PBXGroup;
+			children = (
+				21C939EA2E59988B00200285 /* ForavaWatch.entitlements */,
+				B000 /* App.swift */,
+				B002 /* MainTokenView.swift */,
+				B00F /* GiftAmountPickerView.swift */,
+				B011 /* ReceiveTokenView.swift */,
+				B013 /* TokenSessionViewModel.swift */,
+				B015 /* WatchSessionManager_Watch.swift */,
+				B020 /* RakhiWatchFaceView.swift */,
+				B022 /* WatchConnectivityManager.swift */,
+				B004 /* Assets.xcassets */,
+			);
+			path = ForavaWatch;
+			sourceTree = "<group>";
+		};
+		C1F0 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				21C939EB2E59990B00200285 /* AppConfig.swift */,
+				C000 /* Constants.swift */,
+				C002 /* SharedFormatting.swift */,
+				C004 /* SharedModels.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A1FD /* ForavaApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A1FA /* Build configuration list for PBXNativeTarget "ForavaApp" */;
+			buildPhases = (
+				A1FC /* Sources */,
+				A1FE /* Frameworks */,
+				A1FB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ForavaApp;
+			productName = ForavaApp;
+			productReference = A1FF /* ForavaApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B1FD /* ForavaWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B1FA /* Build configuration list for PBXNativeTarget "ForavaWatch" */;
+			buildPhases = (
+				B1FC /* Sources */,
+				B1FE /* Frameworks */,
+				B1FB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ForavaWatch;
+			productName = ForavaWatch;
+			productReference = B1FF /* ForavaWatch.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A100 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1630;
+				ORGANIZATIONNAME = "Forava Inc";
+				TargetAttributes = {
+					A1FD = {
+						CreatedOnToolsVersion = 15.0;
+					};
+					B1FD = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = A103 /* Build configuration list for PBXProject "Forava" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A101;
+			productRefGroup = A200 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A1FD /* ForavaApp */,
+				B1FD /* ForavaWatch */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A1FB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A005 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1FB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B005 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A1FC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A001 /* App.swift in Sources */,
+				A003 /* ContentView.swift in Sources */,
+				A010 /* APIClient.swift in Sources */,
+				A012 /* ApplePayConfig.swift in Sources */,
+				A014 /* OnboardingView.swift in Sources */,
+				A016 /* PaymentCoordinator.swift in Sources */,
+				A018 /* SettingsView.swift in Sources */,
+				A01A /* WatchSessionManageriOS.swift in Sources */,
+				D7C5A189690F4BCBA21AE164 /* Models/RakhiModel.swift in Sources */,
+				0E9E4C6340144731B4FBBA79 /* Views/ContactSelectionView.swift in Sources */,
+				E5B73E65C8D44DA1987F1885 /* Views/RakhiSelectionView.swift in Sources */,
+				A31BFDC8AE1142018776CBD0 /* Views/PaymentReceiveView.swift in Sources */,
+				622AE3044DCC4A4699A8D241 /* Services/WatchConnectivityManager.swift in Sources */,
+				F7A3B4E21C8E4D029B5F6178 /* Services/AIRakhiService.swift in Sources */,
+				9E2F8B7D4A5C43E89F1D7329 /* Models/RakhiDesignModels.swift in Sources */,
+				3C9D4E8F2B6A47189E5F2A71 /* Services/PromptMapper.swift in Sources */,
+				4D8F7A2E5C3B49D6A7E9F158 /* Views/RakhiDesignStudioView.swift in Sources */,
+				8E1F3C5A9B4D47E2A6F8D329 /* Views/DesignSteps/GenreSelectionStep.swift in Sources */,
+				7B2D4E6F1A8C49B5A3E7F942 /* Views/DesignSteps/ElementSelectionStep.swift in Sources */,
+				9F4E7A1D6C5B48A7A2E8F153 /* Views/DesignSteps/ColorSelectionStep.swift in Sources */,
+				6E8A3F5C2D4B49E1A7F2E946 /* Views/DesignSteps/PersonalizationStep.swift in Sources */,
+				5A7D2E9F4C8B41A6A9E3F257 /* Views/DesignSteps/PreviewStep.swift in Sources */,
+				C001 /* Constants.swift in Sources */,
+				21C939EC2E59990B00200285 /* AppConfig.swift in Sources */,
+				C003 /* SharedFormatting.swift in Sources */,
+				C005 /* SharedModels.swift in Sources */,
+			MODL12345678901234567890 /* RakhiCoreModels.swift in Sources */,
+			VIEW12345678901234567890 /* GeneratedRakhiView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1FC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B001 /* App.swift in Sources */,
+				B003 /* MainTokenView.swift in Sources */,
+				B010 /* GiftAmountPickerView.swift in Sources */,
+				B012 /* ReceiveTokenView.swift in Sources */,
+				B014 /* TokenSessionViewModel.swift in Sources */,
+				B016 /* WatchSessionManager_Watch.swift in Sources */,
+				B021 /* RakhiWatchFaceView.swift in Sources */,
+				B023 /* WatchConnectivityManager.swift in Sources */,
+				21C939072E508B0900200285 /* Constants.swift in Sources */,
+				21C939ED2E59990B00200285 /* AppConfig.swift in Sources */,
+				21C939082E508B0900200285 /* SharedFormatting.swift in Sources */,
+				21C939092E508B0900200285 /* SharedModels.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		A102 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = YES;
+				CODE_SIGNING_REQUIRED = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = C6MJDCDAUG;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A104 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = YES;
+				CODE_SIGNING_REQUIRED = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = C6MJDCDAUG;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		A1F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ForavaApp/ForavaApp.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSContactsUsageDescription = "Forava needs access to your contacts to help you select family members and friends to send beautiful Rakhi gifts to during the festival of Raksha Bandhan.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.forava.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		A1F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ForavaApp/ForavaApp.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSContactsUsageDescription = "Forava needs access to your contacts to help you select family members and friends to send beautiful Rakhi gifts to during the festival of Raksha Bandhan.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.forava.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B1F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ForavaWatch/ForavaWatch.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = ForavaWatch;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKWatchOnly = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.forava.watch;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Release;
+		};
+		B1F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ForavaWatch/ForavaWatch.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = ForavaWatch;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKWatchOnly = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.forava.watch;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A103 /* Build configuration list for PBXProject "Forava" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A102 /* Debug */,
+				A104 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A1FA /* Build configuration list for PBXNativeTarget "ForavaApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1F9 /* Debug */,
+				A1F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B1FA /* Build configuration list for PBXNativeTarget "ForavaWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B1F9 /* Debug */,
+				B1F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A100 /* Project object */;
+}

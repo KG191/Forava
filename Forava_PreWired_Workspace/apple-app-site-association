@@ -1,0 +1,28 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "C6MJDCDAUG.com.forava.app",
+        "paths": [ 
+          "/Forava/app/*",
+          "/Forava/app",
+          "/Forava/rakhi/*",
+          "/Forava/gift/*"
+        ]
+      },
+      {
+        "appID": "C6MJDCDAUG.com.forava.watch",
+        "paths": [ 
+          "/Forava/app/watch/*",
+          "/Forava/app/watch"
+        ]
+      }
+    ]
+  },
+  "webcredentials": {
+    "apps": [
+      "C6MJDCDAUG.com.forava.app"
+    ]
+  }
+}

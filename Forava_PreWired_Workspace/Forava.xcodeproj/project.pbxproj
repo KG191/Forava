@@ -1,0 +1,1072 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		21C939072E508B0900200285 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C000 /* Constants.swift */; };
+		21C939082E508B0900200285 /* SharedFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C002 /* SharedFormatting.swift */; };
+		21C939092E508B0900200285 /* SharedModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = C004 /* SharedModels.swift */; };
+		21C939EC2E59990B00200285 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C939EB2E59990B00200285 /* AppConfig.swift */; };
+		21C939ED2E59990B00200285 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C939EB2E59990B00200285 /* AppConfig.swift */; };
+		21C93A692E5C568C00200285 /* CulturalAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A1C2E5C568C00200285 /* CulturalAIService.swift */; };
+		21C93A6A2E5C568C00200285 /* EnhancedAnimationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A272E5C568C00200285 /* EnhancedAnimationService.swift */; };
+		21C93A6B2E5C568C00200285 /* TemporaryGeneratedRakhiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A672E5C568C00200285 /* TemporaryGeneratedRakhiView.swift */; };
+		21C93A6C2E5C568C00200285 /* PreviewStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A4B2E5C568C00200285 /* PreviewStep.swift */; };
+		21C93A6D2E5C568C00200285 /* IntelligentGiftAmountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A4F2E5C568C00200285 /* IntelligentGiftAmountView.swift */; };
+		21C93A6E2E5C568C00200285 /* EidAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A0C2E5C568C00200285 /* EidAgent.swift */; };
+		21C93A6F2E5C568C00200285 /* CulturalFrameworkInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A202E5C568C00200285 /* CulturalFrameworkInitializer.swift */; };
+		21C93A712E5C568C00200285 /* ContactSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A5A2E5C568C00200285 /* ContactSelectionView.swift */; };
+		21C93A722E5C568C00200285 /* RakhiDesignModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A052E5C568C00200285 /* RakhiDesignModels.swift */; };
+		21C93A732E5C568C00200285 /* DeviceOptimizedImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A242E5C568C00200285 /* DeviceOptimizedImageService.swift */; };
+		21C93A742E5C568C00200285 /* AIRakhiCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A142E5C568C00200285 /* AIRakhiCore.swift */; };
+		21C93A752E5C568C00200285 /* PaymentPageUpdateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A2C2E5C568C00200285 /* PaymentPageUpdateService.swift */; };
+		21C93A762E5C568C00200285 /* GeneratedRakhiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A5F2E5C568C00200285 /* GeneratedRakhiView.swift */; };
+		21C93A772E5C568C00200285 /* PromptUtilityExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A322E5C568C00200285 /* PromptUtilityExtensions.swift */; };
+		21C93A782E5C568C00200285 /* RakhiCoreModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A042E5C568C00200285 /* RakhiCoreModels.swift */; };
+		21C93A792E5C568C00200285 /* AIPromptExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A132E5C568C00200285 /* AIPromptExtensions.swift */; };
+		21C93A7A2E5C568C00200285 /* ElementSelectionStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A482E5C568C00200285 /* ElementSelectionStep.swift */; };
+		21C93A7B2E5C568C00200285 /* DynamicCulturalTerminologyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A252E5C568C00200285 /* DynamicCulturalTerminologyService.swift */; };
+		21C93A7C2E5C568C00200285 /* RealTimeGenerationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A342E5C568C00200285 /* RealTimeGenerationService.swift */; };
+		21C93A7D2E5C568C00200285 /* DevicePreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A5D2E5C568C00200285 /* DevicePreviewView.swift */; };
+		21C93A7E2E5C568C00200285 /* PersonalizationStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A4A2E5C568C00200285 /* PersonalizationStep.swift */; };
+		21C93A7F2E5C568C00200285 /* CulturalPreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A522E5C568C00200285 /* CulturalPreferencesView.swift */; };
+		21C93A802E5C568C00200285 /* SubscriptionManagementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A552E5C568C00200285 /* SubscriptionManagementView.swift */; };
+		21C93A812E5C568C00200285 /* ProductionMonitoringDashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A622E5C568C00200285 /* ProductionMonitoringDashboard.swift */; };
+		21C93A822E5C568C00200285 /* ChineseNewYearAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A092E5C568C00200285 /* ChineseNewYearAgent.swift */; };
+		21C93A832E5C568C00200285 /* WatchConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A382E5C568C00200285 /* WatchConnectivityManager.swift */; };
+		21C93A842E5C568C00200285 /* MultiLanguagePromptService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A2B2E5C568C00200285 /* MultiLanguagePromptService.swift */; };
+		21C93A852E5C568C00200285 /* CulturalDesignAgentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A1F2E5C568C00200285 /* CulturalDesignAgentService.swift */; };
+		21C93A862E5C568C00200285 /* AnimationPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A592E5C568C00200285 /* AnimationPreviewView.swift */; };
+		21C93A872E5C568C00200285 /* ProductionTestSuite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A3D2E5C568C00200285 /* ProductionTestSuite.swift */; };
+		21C93A882E5C568C00200285 /* AIValidationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A172E5C568C00200285 /* AIValidationExtensions.swift */; };
+		21C93A892E5C568C00200285 /* SimpleLanguageSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A542E5C568C00200285 /* SimpleLanguageSettingsView.swift */; };
+		21C93A8A2E5C568C00200285 /* JewishAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A0D2E5C568C00200285 /* JewishAgent.swift */; };
+		21C93A8B2E5C568C00200285 /* PaymentReceiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A602E5C568C00200285 /* PaymentReceiveView.swift */; };
+		21C93A8C2E5C568C00200285 /* ForavaButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A422E5C568C00200285 /* ForavaButtonStyles.swift */; };
+		21C93A8D2E5C568C00200285 /* AIMockExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A122E5C568C00200285 /* AIMockExtensions.swift */; };
+		21C93A8E2E5C568C00200285 /* SimpleLocalizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A352E5C568C00200285 /* SimpleLocalizationService.swift */; };
+		21C93A8F2E5C568C00200285 /* PerformanceOptimizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A3F2E5C568C00200285 /* PerformanceOptimizer.swift */; };
+		21C93A902E5C568C00200285 /* ColorSelectionStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A462E5C568C00200285 /* ColorSelectionStep.swift */; };
+		21C93A912E5C568C00200285 /* CulturalValidationFramework.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A232E5C568C00200285 /* CulturalValidationFramework.swift */; };
+		21C93A922E5C568C00200285 /* PromptServerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A312E5C568C00200285 /* PromptServerExtensions.swift */; };
+		21C93A932E5C568C00200285 /* ComprehensivePaymentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A1B2E5C568C00200285 /* ComprehensivePaymentService.swift */; };
+		21C93A942E5C568C00200285 /* EnhancedPaymentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A282E5C568C00200285 /* EnhancedPaymentService.swift */; };
+		21C93A952E5C568C00200285 /* RakhiHistoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A332E5C568C00200285 /* RakhiHistoryService.swift */; };
+		21C93A962E5C568C00200285 /* PromptMapperCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A2F2E5C568C00200285 /* PromptMapperCore.swift */; };
+		21C93A972E5C568C00200285 /* AdditionalAgents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A082E5C568C00200285 /* AdditionalAgents.swift */; };
+		21C93A982E5C568C00200285 /* GlobalTerminologyUpdateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A2A2E5C568C00200285 /* GlobalTerminologyUpdateService.swift */; };
+		21C93A992E5C568C00200285 /* RakhiHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A4D2E5C568C00200285 /* RakhiHistoryView.swift */; };
+		21C93A9A2E5C568C00200285 /* AnimationPerformanceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A1A2E5C568C00200285 /* AnimationPerformanceExtensions.swift */; };
+		21C93A9B2E5C568C00200285 /* CulturalAIModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A002E5C568C00200285 /* CulturalAIModels.swift */; };
+		21C93A9C2E5C568C00200285 /* EnhancedPaymentOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A5E2E5C568C00200285 /* EnhancedPaymentOptionsView.swift */; };
+		21C93A9D2E5C568C00200285 /* CulturalFrameworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A3A2E5C568C00200285 /* CulturalFrameworkTests.swift */; };
+		21C93A9E2E5C568C00200285 /* AdvancedCustomizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A112E5C568C00200285 /* AdvancedCustomizationService.swift */; };
+		21C93A9F2E5C568C00200285 /* AIReplicateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A162E5C568C00200285 /* AIReplicateExtensions.swift */; };
+		21C93AA02E5C568C00200285 /* PromptBuilderExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A2D2E5C568C00200285 /* PromptBuilderExtensions.swift */; };
+		21C93AA12E5C568C00200285 /* GenreSelectionStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A492E5C568C00200285 /* GenreSelectionStep.swift */; };
+		21C93AA22E5C568C00200285 /* CulturalGenreSelectionStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A472E5C568C00200285 /* CulturalGenreSelectionStep.swift */; };
+		21C93AA32E5C568C00200285 /* SocialSharingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A572E5C568C00200285 /* SocialSharingView.swift */; };
+		21C93AA42E5C568C00200285 /* ChristmasAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A0A2E5C568C00200285 /* ChristmasAgent.swift */; };
+		21C93AA52E5C568C00200285 /* SubscriptionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A372E5C568C00200285 /* SubscriptionManager.swift */; };
+		21C93AA62E5C568C00200285 /* DesignStepComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A412E5C568C00200285 /* DesignStepComponents.swift */; };
+		21C93AA72E5C568C00200285 /* CulturalSystemMigrationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A222E5C568C00200285 /* CulturalSystemMigrationService.swift */; };
+		21C93AA82E5C568C00200285 /* Phase6CulturalDesignTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A3C2E5C568C00200285 /* Phase6CulturalDesignTests.swift */; };
+		21C93AA92E5C568C00200285 /* CulturalFramework.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A012E5C568C00200285 /* CulturalFramework.swift */; };
+		21C93AAA2E5C568C00200285 /* EnhancedAnimationCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A262E5C568C00200285 /* EnhancedAnimationCore.swift */; };
+		21C93AAB2E5C568C00200285 /* CulturalPaymentPageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A212E5C568C00200285 /* CulturalPaymentPageService.swift */; };
+		21C93AAC2E5C568C00200285 /* Phase5DynamicTerminologyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A3B2E5C568C00200285 /* Phase5DynamicTerminologyTests.swift */; };
+		21C93AAD2E5C568C00200285 /* RakhiSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A642E5C568C00200285 /* RakhiSelectionView.swift */; };
+		21C93AAE2E5C568C00200285 /* PromptMappingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A302E5C568C00200285 /* PromptMappingData.swift */; };
+		21C93AAF2E5C568C00200285 /* AnimationCulturalExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A182E5C568C00200285 /* AnimationCulturalExtensions.swift */; };
+		21C93AB02E5C568C00200285 /* AdvancedAnimationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A102E5C568C00200285 /* AdvancedAnimationService.swift */; };
+		21C93AB12E5C568C00200285 /* DiwaliAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A0B2E5C568C00200285 /* DiwaliAgent.swift */; };
+		21C93AB22E5C568C00200285 /* CulturalContextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A1E2E5C568C00200285 /* CulturalContextManager.swift */; };
+		21C93AB32E5C568C00200285 /* VesakAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A0E2E5C568C00200285 /* VesakAgent.swift */; };
+		21C93AB42E5C568C00200285 /* CulturalContextPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A5B2E5C568C00200285 /* CulturalContextPicker.swift */; };
+		21C93AB52E5C568C00200285 /* CulturalConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A1D2E5C568C00200285 /* CulturalConfiguration.swift */; };
+		21C93AB62E5C568C00200285 /* RakhiDesignStudioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A632E5C568C00200285 /* RakhiDesignStudioView.swift */; };
+		21C93AB72E5C568C00200285 /* FixedSocialSharingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A292E5C568C00200285 /* FixedSocialSharingService.swift */; };
+		21C93AB82E5C568C00200285 /* SocialSharingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A362E5C568C00200285 /* SocialSharingService.swift */; };
+		21C93AB92E5C568C00200285 /* CulturalSenderConfigurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A5C2E5C568C00200285 /* CulturalSenderConfigurationView.swift */; };
+		21C93ABA2E5C568C00200285 /* PaymentCompletionFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A502E5C568C00200285 /* PaymentCompletionFlow.swift */; };
+		21C93ABB2E5C568C00200285 /* CulturalValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A022E5C568C00200285 /* CulturalValidator.swift */; };
+		21C93ABC2E5C568C00200285 /* AdvancedCustomizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A442E5C568C00200285 /* AdvancedCustomizationView.swift */; };
+		21C93ABD2E5C568C00200285 /* RakhiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A062E5C568C00200285 /* RakhiModel.swift */; };
+		21C93ABE2E5C568C00200285 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A532E5C568C00200285 /* SettingsView.swift */; };
+		21C93ABF2E5C568C00200285 /* RealTimeGenerationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A652E5C568C00200285 /* RealTimeGenerationView.swift */; };
+		21C93AC02E5C568C00200285 /* PaymentRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A612E5C568C00200285 /* PaymentRequestView.swift */; };
+		21C93AC12E5C568C00200285 /* PromptMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A2E2E5C568C00200285 /* PromptMapper.swift */; };
+		21C93AC22E5C568C00200285 /* AnimationGeneratorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A192E5C568C00200285 /* AnimationGeneratorExtensions.swift */; };
+		21C93AC32E5C568C00200285 /* DesignElementsDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A032E5C568C00200285 /* DesignElementsDatabase.swift */; };
+		21C93AC42E5C568C00200285 /* AIRakhiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93A152E5C568C00200285 /* AIRakhiService.swift */; };
+		21C93AC72E5D6A0000200285 /* CulturalGiftPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93AC62E5D6A0000200285 /* CulturalGiftPreviewView.swift */; };
+		21C93AC82E5D6A0000200285 /* CulturalDesignStudioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93AC52E5D6A0000200285 /* CulturalDesignStudioView.swift */; };
+		7BE5A6D27C5046ACA7B7D3CD /* AnimationModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19A1D79C0154928B901B331 /* AnimationModels.swift */; };
+		A001 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000 /* App.swift */; };
+		A003 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A002 /* ContentView.swift */; };
+		A005 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A004 /* Assets.xcassets */; };
+		A010 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00F /* APIClient.swift */; };
+		A012 /* ApplePayConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = A011 /* ApplePayConfig.swift */; };
+		A014 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A013 /* OnboardingView.swift */; };
+		A016 /* PaymentCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A015 /* PaymentCoordinator.swift */; };
+		A01A /* WatchSessionManageriOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = A019 /* WatchSessionManageriOS.swift */; };
+		B001 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B000 /* App.swift */; };
+		B003 /* MainTokenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B002 /* MainTokenView.swift */; };
+		B005 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B004 /* Assets.xcassets */; };
+		B010 /* GiftAmountPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00F /* GiftAmountPickerView.swift */; };
+		B012 /* ReceiveTokenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B011 /* ReceiveTokenView.swift */; };
+		B014 /* TokenSessionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B013 /* TokenSessionViewModel.swift */; };
+		B016 /* WatchSessionManager_Watch.swift in Sources */ = {isa = PBXBuildFile; fileRef = B015 /* WatchSessionManager_Watch.swift */; };
+		B021 /* RakhiWatchFaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B020 /* RakhiWatchFaceView.swift */; };
+		B023 /* WatchConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B022 /* WatchConnectivityManager.swift */; };
+		C001 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C000 /* Constants.swift */; };
+		C003 /* SharedFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C002 /* SharedFormatting.swift */; };
+		C005 /* SharedModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = C004 /* SharedModels.swift */; };
+		D186367B19314755B3AEE5A8 /* CulturalElementSelectionStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE1D06F3D3B4242BA555665 /* CulturalElementSelectionStep.swift */; };
+		E96662CE53CF4B13A79ACDBE /* CulturalColorSelectionStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0813F3B95E407890416D6D /* CulturalColorSelectionStep.swift */; };
+		AA5A21B0ED3F410C93977B60 /* CulturalPersonalizationStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B94E736F064C8B88C4BF75 /* CulturalPersonalizationStep.swift */; };
+		C48C891744AB4A519CA014F7 /* CulturalPreviewStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFC73E15C8C4A00BE2955ED /* CulturalPreviewStep.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		21C939EA2E59988B00200285 /* ForavaWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ForavaWatch.entitlements; sourceTree = "<group>"; };
+		21C939EB2E59990B00200285 /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
+		21C93A002E5C568C00200285 /* CulturalAIModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulturalAIModels.swift; sourceTree = "<group>"; };
+		21C93A012E5C568C00200285 /* CulturalFramework.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulturalFramework.swift; sourceTree = "<group>"; };
+		21C93A022E5C568C00200285 /* CulturalValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulturalValidator.swift; sourceTree = "<group>"; };
+		21C93A032E5C568C00200285 /* DesignElementsDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignElementsDatabase.swift; sourceTree = "<group>"; };
+		21C93A042E5C568C00200285 /* RakhiCoreModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RakhiCoreModels.swift; sourceTree = "<group>"; };
+		21C93A052E5C568C00200285 /* RakhiDesignModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RakhiDesignModels.swift; sourceTree = "<group>"; };
+		21C93A062E5C568C00200285 /* RakhiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RakhiModel.swift; sourceTree = "<group>"; };
+		21C93A082E5C568C00200285 /* AdditionalAgents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalAgents.swift; sourceTree = "<group>"; };
+		21C93A092E5C568C00200285 /* ChineseNewYearAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChineseNewYearAgent.swift; sourceTree = "<group>"; };
+		21C93A0A2E5C568C00200285 /* ChristmasAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChristmasAgent.swift; sourceTree = "<group>"; };
+		21C93A0B2E5C568C00200285 /* DiwaliAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiwaliAgent.swift; sourceTree = "<group>"; };
+		21C93A0C2E5C568C00200285 /* EidAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EidAgent.swift; sourceTree = "<group>"; };
+		21C93A0D2E5C568C00200285 /* JewishAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JewishAgent.swift; sourceTree = "<group>"; };
+		21C93A0E2E5C568C00200285 /* VesakAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VesakAgent.swift; sourceTree = "<group>"; };
+		21C93A102E5C568C00200285 /* AdvancedAnimationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedAnimationService.swift; sourceTree = "<group>"; };
+		21C93A112E5C568C00200285 /* AdvancedCustomizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedCustomizationService.swift; sourceTree = "<group>"; };
+		21C93A122E5C568C00200285 /* AIMockExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIMockExtensions.swift; sourceTree = "<group>"; };
+		21C93A132E5C568C00200285 /* AIPromptExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIPromptExtensions.swift; sourceTree = "<group>"; };
+		21C93A142E5C568C00200285 /* AIRakhiCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIRakhiCore.swift; sourceTree = "<group>"; };
+		21C93A152E5C568C00200285 /* AIRakhiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIRakhiService.swift; sourceTree = "<group>"; };
+		21C93A162E5C568C00200285 /* AIReplicateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIReplicateExtensions.swift; sourceTree = "<group>"; };
+		21C93A172E5C568C00200285 /* AIValidationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIValidationExtensions.swift; sourceTree = "<group>"; };
+		21C93A182E5C568C00200285 /* AnimationCulturalExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationCulturalExtensions.swift; sourceTree = "<group>"; };
+		21C93A192E5C568C00200285 /* AnimationGeneratorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationGeneratorExtensions.swift; sourceTree = "<group>"; };
+		21C93A1A2E5C568C00200285 /* AnimationPerformanceExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationPerformanceExtensions.swift; sourceTree = "<group>"; };
+		21C93A1B2E5C568C00200285 /* ComprehensivePaymentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComprehensivePaymentService.swift; sourceTree = "<group>"; };
+		21C93A1C2E5C568C00200285 /* CulturalAIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulturalAIService.swift; sourceTree = "<group>"; };
+		21C93A1D2E5C568C00200285 /* CulturalConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulturalConfiguration.swift; sourceTree = "<group>"; };
+		21C93A1E2E5C568C00200285 /* CulturalContextManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulturalContextManager.swift; sourceTree = "<group>"; };
+		21C93A1F2E5C568C00200285 /* CulturalDesignAgentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulturalDesignAgentService.swift; sourceTree = "<group>"; };
+		21C93A202E5C568C00200285 /* CulturalFrameworkInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulturalFrameworkInitializer.swift; sourceTree = "<group>"; };
+		21C93A212E5C568C00200285 /* CulturalPaymentPageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulturalPaymentPageService.swift; sourceTree = "<group>"; };
+		21C93A222E5C568C00200285 /* CulturalSystemMigrationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulturalSystemMigrationService.swift; sourceTree = "<group>"; };
+		21C93A232E5C568C00200285 /* CulturalValidationFramework.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulturalValidationFramework.swift; sourceTree = "<group>"; };
+		21C93A242E5C568C00200285 /* DeviceOptimizedImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceOptimizedImageService.swift; sourceTree = "<group>"; };
+		21C93A252E5C568C00200285 /* DynamicCulturalTerminologyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicCulturalTerminologyService.swift; sourceTree = "<group>"; };
+		21C93A262E5C568C00200285 /* EnhancedAnimationCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnhancedAnimationCore.swift; sourceTree = "<group>"; };
+		21C93A272E5C568C00200285 /* EnhancedAnimationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnhancedAnimationService.swift; sourceTree = "<group>"; };
+		21C93A282E5C568C00200285 /* EnhancedPaymentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnhancedPaymentService.swift; sourceTree = "<group>"; };
+		21C93A292E5C568C00200285 /* FixedSocialSharingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixedSocialSharingService.swift; sourceTree = "<group>"; };
+		21C93A2A2E5C568C00200285 /* GlobalTerminologyUpdateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalTerminologyUpdateService.swift; sourceTree = "<group>"; };
+		21C93A2B2E5C568C00200285 /* MultiLanguagePromptService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiLanguagePromptService.swift; sourceTree = "<group>"; };
+		21C93A2C2E5C568C00200285 /* PaymentPageUpdateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentPageUpdateService.swift; sourceTree = "<group>"; };
+		21C93A2D2E5C568C00200285 /* PromptBuilderExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptBuilderExtensions.swift; sourceTree = "<group>"; };
+		21C93A2E2E5C568C00200285 /* PromptMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptMapper.swift; sourceTree = "<group>"; };
+		21C93A2F2E5C568C00200285 /* PromptMapperCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptMapperCore.swift; sourceTree = "<group>"; };
+		21C93A302E5C568C00200285 /* PromptMappingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptMappingData.swift; sourceTree = "<group>"; };
+		21C93A312E5C568C00200285 /* PromptServerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptServerExtensions.swift; sourceTree = "<group>"; };
+		21C93A322E5C568C00200285 /* PromptUtilityExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptUtilityExtensions.swift; sourceTree = "<group>"; };
+		21C93A332E5C568C00200285 /* RakhiHistoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RakhiHistoryService.swift; sourceTree = "<group>"; };
+		21C93A342E5C568C00200285 /* RealTimeGenerationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealTimeGenerationService.swift; sourceTree = "<group>"; };
+		21C93A352E5C568C00200285 /* SimpleLocalizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleLocalizationService.swift; sourceTree = "<group>"; };
+		21C93A362E5C568C00200285 /* SocialSharingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialSharingService.swift; sourceTree = "<group>"; };
+		21C93A372E5C568C00200285 /* SubscriptionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionManager.swift; sourceTree = "<group>"; };
+		21C93A382E5C568C00200285 /* WatchConnectivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityManager.swift; sourceTree = "<group>"; };
+		21C93A3A2E5C568C00200285 /* CulturalFrameworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulturalFrameworkTests.swift; sourceTree = "<group>"; };
+		21C93A3B2E5C568C00200285 /* Phase5DynamicTerminologyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Phase5DynamicTerminologyTests.swift; sourceTree = "<group>"; };
+		21C93A3C2E5C568C00200285 /* Phase6CulturalDesignTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Phase6CulturalDesignTests.swift; sourceTree = "<group>"; };
+		21C93A3D2E5C568C00200285 /* ProductionTestSuite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductionTestSuite.swift; sourceTree = "<group>"; };
+		21C93A3F2E5C568C00200285 /* PerformanceOptimizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceOptimizer.swift; sourceTree = "<group>"; };
+		21C93A412E5C568C00200285 /* DesignStepComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignStepComponents.swift; sourceTree = "<group>"; };
+		21C93A422E5C568C00200285 /* ForavaButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForavaButtonStyles.swift; sourceTree = "<group>"; };
+		21C93A442E5C568C00200285 /* AdvancedCustomizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedCustomizationView.swift; sourceTree = "<group>"; };
+		21C93A462E5C568C00200285 /* ColorSelectionStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSelectionStep.swift; sourceTree = "<group>"; };
+		21C93A472E5C568C00200285 /* CulturalGenreSelectionStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulturalGenreSelectionStep.swift; sourceTree = "<group>"; };
+		21C93A482E5C568C00200285 /* ElementSelectionStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementSelectionStep.swift; sourceTree = "<group>"; };
+		21C93A492E5C568C00200285 /* GenreSelectionStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreSelectionStep.swift; sourceTree = "<group>"; };
+		21C93A4A2E5C568C00200285 /* PersonalizationStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalizationStep.swift; sourceTree = "<group>"; };
+		21C93A4B2E5C568C00200285 /* PreviewStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewStep.swift; sourceTree = "<group>"; };
+		21C93A4D2E5C568C00200285 /* RakhiHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RakhiHistoryView.swift; sourceTree = "<group>"; };
+		21C93A4F2E5C568C00200285 /* IntelligentGiftAmountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntelligentGiftAmountView.swift; sourceTree = "<group>"; };
+		21C93A502E5C568C00200285 /* PaymentCompletionFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentCompletionFlow.swift; sourceTree = "<group>"; };
+		21C93A522E5C568C00200285 /* CulturalPreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulturalPreferencesView.swift; sourceTree = "<group>"; };
+		21C93A532E5C568C00200285 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		21C93A542E5C568C00200285 /* SimpleLanguageSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleLanguageSettingsView.swift; sourceTree = "<group>"; };
+		21C93A552E5C568C00200285 /* SubscriptionManagementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionManagementView.swift; sourceTree = "<group>"; };
+		21C93A572E5C568C00200285 /* SocialSharingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialSharingView.swift; sourceTree = "<group>"; };
+		21C93A592E5C568C00200285 /* AnimationPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationPreviewView.swift; sourceTree = "<group>"; };
+		21C93A5A2E5C568C00200285 /* ContactSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactSelectionView.swift; sourceTree = "<group>"; };
+		21C93A5B2E5C568C00200285 /* CulturalContextPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulturalContextPicker.swift; sourceTree = "<group>"; };
+		21C93A5C2E5C568C00200285 /* CulturalSenderConfigurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulturalSenderConfigurationView.swift; sourceTree = "<group>"; };
+		21C93A5D2E5C568C00200285 /* DevicePreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicePreviewView.swift; sourceTree = "<group>"; };
+		21C93A5E2E5C568C00200285 /* EnhancedPaymentOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnhancedPaymentOptionsView.swift; sourceTree = "<group>"; };
+		21C93A5F2E5C568C00200285 /* GeneratedRakhiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratedRakhiView.swift; sourceTree = "<group>"; };
+		21C93A602E5C568C00200285 /* PaymentReceiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentReceiveView.swift; sourceTree = "<group>"; };
+		21C93A612E5C568C00200285 /* PaymentRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentRequestView.swift; sourceTree = "<group>"; };
+		21C93A622E5C568C00200285 /* ProductionMonitoringDashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductionMonitoringDashboard.swift; sourceTree = "<group>"; };
+		21C93A632E5C568C00200285 /* RakhiDesignStudioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RakhiDesignStudioView.swift; sourceTree = "<group>"; };
+		21C93A642E5C568C00200285 /* RakhiSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RakhiSelectionView.swift; sourceTree = "<group>"; };
+		21C93A652E5C568C00200285 /* RealTimeGenerationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealTimeGenerationView.swift; sourceTree = "<group>"; };
+		21C93A672E5C568C00200285 /* TemporaryGeneratedRakhiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemporaryGeneratedRakhiView.swift; sourceTree = "<group>"; };
+		21C93AC52E5D6A0000200285 /* CulturalDesignStudioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulturalDesignStudioView.swift; sourceTree = "<group>"; };
+		21C93AC62E5D6A0000200285 /* CulturalGiftPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulturalGiftPreviewView.swift; sourceTree = "<group>"; };
+		A000 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		A002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A004 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Forava_Assets.xcassets; sourceTree = SOURCE_ROOT; };
+		A00F /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		A011 /* ApplePayConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplePayConfig.swift; sourceTree = "<group>"; };
+		A013 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		A015 /* PaymentCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentCoordinator.swift; sourceTree = "<group>"; };
+		A019 /* WatchSessionManageriOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSessionManageriOS.swift; sourceTree = "<group>"; };
+		A01B /* ForavaApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ForavaApp.entitlements; sourceTree = "<group>"; };
+		A1FF /* ForavaApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ForavaApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B000 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		B002 /* MainTokenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTokenView.swift; sourceTree = "<group>"; };
+		B004 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Forava_WatchAssets.xcassets; sourceTree = SOURCE_ROOT; };
+		B00F /* GiftAmountPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftAmountPickerView.swift; sourceTree = "<group>"; };
+		B011 /* ReceiveTokenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveTokenView.swift; sourceTree = "<group>"; };
+		B013 /* TokenSessionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenSessionViewModel.swift; sourceTree = "<group>"; };
+		B015 /* WatchSessionManager_Watch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSessionManager_Watch.swift; sourceTree = "<group>"; };
+		B020 /* RakhiWatchFaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RakhiWatchFaceView.swift; sourceTree = "<group>"; };
+		B022 /* WatchConnectivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityManager.swift; sourceTree = "<group>"; };
+		B1FF /* ForavaWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ForavaWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C000 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		C002 /* SharedFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedFormatting.swift; sourceTree = "<group>"; };
+		C004 /* SharedModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedModels.swift; sourceTree = "<group>"; };
+		F19A1D79C0154928B901B331 /* AnimationModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationModels.swift; sourceTree = "<group>"; };
+		                DCE1D06F3D3B4242BA555665 /* CulturalElementSelectionStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulturalElementSelectionStep.swift; sourceTree = "<group>"; };
+		                3C0813F3B95E407890416D6D /* CulturalColorSelectionStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulturalColorSelectionStep.swift; sourceTree = "<group>"; };
+		                12B94E736F064C8B88C4BF75 /* CulturalPersonalizationStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulturalPersonalizationStep.swift; sourceTree = "<group>"; };
+		                BCFC73E15C8C4A00BE2955ED /* CulturalPreviewStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulturalPreviewStep.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A1FE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1FE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		21C939F72E5C4C9F00200285 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		21C93A072E5C568C00200285 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F19A1D79C0154928B901B331 /* AnimationModels.swift */,
+				21C93A002E5C568C00200285 /* CulturalAIModels.swift */,
+				21C93A012E5C568C00200285 /* CulturalFramework.swift */,
+				21C93A022E5C568C00200285 /* CulturalValidator.swift */,
+				21C93A032E5C568C00200285 /* DesignElementsDatabase.swift */,
+				21C93A042E5C568C00200285 /* RakhiCoreModels.swift */,
+				21C93A052E5C568C00200285 /* RakhiDesignModels.swift */,
+				21C93A062E5C568C00200285 /* RakhiModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		21C93A0F2E5C568C00200285 /* CulturalAgents */ = {
+			isa = PBXGroup;
+			children = (
+				21C93A082E5C568C00200285 /* AdditionalAgents.swift */,
+				21C93A092E5C568C00200285 /* ChineseNewYearAgent.swift */,
+				21C93A0A2E5C568C00200285 /* ChristmasAgent.swift */,
+				21C93A0B2E5C568C00200285 /* DiwaliAgent.swift */,
+				21C93A0C2E5C568C00200285 /* EidAgent.swift */,
+				21C93A0D2E5C568C00200285 /* JewishAgent.swift */,
+				21C93A0E2E5C568C00200285 /* VesakAgent.swift */,
+			);
+			path = CulturalAgents;
+			sourceTree = "<group>";
+		};
+		21C93A392E5C568C00200285 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				21C93A0F2E5C568C00200285 /* CulturalAgents */,
+				21C93A102E5C568C00200285 /* AdvancedAnimationService.swift */,
+				21C93A112E5C568C00200285 /* AdvancedCustomizationService.swift */,
+				21C93A122E5C568C00200285 /* AIMockExtensions.swift */,
+				21C93A132E5C568C00200285 /* AIPromptExtensions.swift */,
+				21C93A142E5C568C00200285 /* AIRakhiCore.swift */,
+				21C93A152E5C568C00200285 /* AIRakhiService.swift */,
+				21C93A162E5C568C00200285 /* AIReplicateExtensions.swift */,
+				21C93A172E5C568C00200285 /* AIValidationExtensions.swift */,
+				21C93A182E5C568C00200285 /* AnimationCulturalExtensions.swift */,
+				21C93A192E5C568C00200285 /* AnimationGeneratorExtensions.swift */,
+				21C93A1A2E5C568C00200285 /* AnimationPerformanceExtensions.swift */,
+				21C93A1B2E5C568C00200285 /* ComprehensivePaymentService.swift */,
+				21C93A1C2E5C568C00200285 /* CulturalAIService.swift */,
+				21C93A1D2E5C568C00200285 /* CulturalConfiguration.swift */,
+				21C93A1E2E5C568C00200285 /* CulturalContextManager.swift */,
+				21C93A1F2E5C568C00200285 /* CulturalDesignAgentService.swift */,
+				21C93A202E5C568C00200285 /* CulturalFrameworkInitializer.swift */,
+				21C93A212E5C568C00200285 /* CulturalPaymentPageService.swift */,
+				21C93A222E5C568C00200285 /* CulturalSystemMigrationService.swift */,
+				21C93A232E5C568C00200285 /* CulturalValidationFramework.swift */,
+				21C93A242E5C568C00200285 /* DeviceOptimizedImageService.swift */,
+				21C93A252E5C568C00200285 /* DynamicCulturalTerminologyService.swift */,
+				21C93A262E5C568C00200285 /* EnhancedAnimationCore.swift */,
+				21C93A272E5C568C00200285 /* EnhancedAnimationService.swift */,
+				21C93A282E5C568C00200285 /* EnhancedPaymentService.swift */,
+				21C93A292E5C568C00200285 /* FixedSocialSharingService.swift */,
+				21C93A2A2E5C568C00200285 /* GlobalTerminologyUpdateService.swift */,
+				21C93A2B2E5C568C00200285 /* MultiLanguagePromptService.swift */,
+				21C93A2C2E5C568C00200285 /* PaymentPageUpdateService.swift */,
+				21C93A2D2E5C568C00200285 /* PromptBuilderExtensions.swift */,
+				21C93A2E2E5C568C00200285 /* PromptMapper.swift */,
+				21C93A2F2E5C568C00200285 /* PromptMapperCore.swift */,
+				21C93A302E5C568C00200285 /* PromptMappingData.swift */,
+				21C93A312E5C568C00200285 /* PromptServerExtensions.swift */,
+				21C93A322E5C568C00200285 /* PromptUtilityExtensions.swift */,
+				21C93A332E5C568C00200285 /* RakhiHistoryService.swift */,
+				21C93A342E5C568C00200285 /* RealTimeGenerationService.swift */,
+				21C93A352E5C568C00200285 /* SimpleLocalizationService.swift */,
+				21C93A362E5C568C00200285 /* SocialSharingService.swift */,
+				21C93A372E5C568C00200285 /* SubscriptionManager.swift */,
+				21C93A382E5C568C00200285 /* WatchConnectivityManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		21C93A3E2E5C568C00200285 /* Testing */ = {
+			isa = PBXGroup;
+			children = (
+				21C93A3A2E5C568C00200285 /* CulturalFrameworkTests.swift */,
+				21C93A3B2E5C568C00200285 /* Phase5DynamicTerminologyTests.swift */,
+				21C93A3C2E5C568C00200285 /* Phase6CulturalDesignTests.swift */,
+				21C93A3D2E5C568C00200285 /* ProductionTestSuite.swift */,
+			);
+			path = Testing;
+			sourceTree = "<group>";
+		};
+		21C93A402E5C568C00200285 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				21C93A3F2E5C568C00200285 /* PerformanceOptimizer.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		21C93A432E5C568C00200285 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				21C93A412E5C568C00200285 /* DesignStepComponents.swift */,
+				21C93A422E5C568C00200285 /* ForavaButtonStyles.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		21C93A452E5C568C00200285 /* Customization */ = {
+			isa = PBXGroup;
+			children = (
+				21C93A442E5C568C00200285 /* AdvancedCustomizationView.swift */,
+			);
+			path = Customization;
+			sourceTree = "<group>";
+		};
+		21C93A4C2E5C568C00200285 /* DesignSteps */ = {
+			isa = PBXGroup;
+			children = (
+				21C93A462E5C568C00200285 /* ColorSelectionStep.swift */,
+				21C93A472E5C568C00200285 /* CulturalGenreSelectionStep.swift */,
+				21C93A482E5C568C00200285 /* ElementSelectionStep.swift */,
+				21C93A492E5C568C00200285 /* GenreSelectionStep.swift */,
+				21C93A4A2E5C568C00200285 /* PersonalizationStep.swift */,
+				21C93A4B2E5C568C00200285 /* PreviewStep.swift */,
+							DCE1D06F3D3B4242BA555665 /* CulturalElementSelectionStep.swift */,
+							3C0813F3B95E407890416D6D /* CulturalColorSelectionStep.swift */,
+							12B94E736F064C8B88C4BF75 /* CulturalPersonalizationStep.swift */,
+							BCFC73E15C8C4A00BE2955ED /* CulturalPreviewStep.swift */,
+			);
+			path = DesignSteps;
+			sourceTree = "<group>";
+		};
+		21C93A4E2E5C568C00200285 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				21C93A4D2E5C568C00200285 /* RakhiHistoryView.swift */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		21C93A512E5C568C00200285 /* Payment */ = {
+			isa = PBXGroup;
+			children = (
+				21C93A4F2E5C568C00200285 /* IntelligentGiftAmountView.swift */,
+				21C93A502E5C568C00200285 /* PaymentCompletionFlow.swift */,
+			);
+			path = Payment;
+			sourceTree = "<group>";
+		};
+		21C93A562E5C568C00200285 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				21C93A522E5C568C00200285 /* CulturalPreferencesView.swift */,
+				21C93A532E5C568C00200285 /* SettingsView.swift */,
+				21C93A542E5C568C00200285 /* SimpleLanguageSettingsView.swift */,
+				21C93A552E5C568C00200285 /* SubscriptionManagementView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		21C93A582E5C568C00200285 /* Sharing */ = {
+			isa = PBXGroup;
+			children = (
+				21C93A572E5C568C00200285 /* SocialSharingView.swift */,
+			);
+			path = Sharing;
+			sourceTree = "<group>";
+		};
+		21C93A682E5C568C00200285 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				21C93AC52E5D6A0000200285 /* CulturalDesignStudioView.swift */,
+				21C93AC62E5D6A0000200285 /* CulturalGiftPreviewView.swift */,
+				21C93A432E5C568C00200285 /* Components */,
+				21C93A452E5C568C00200285 /* Customization */,
+				21C93A4C2E5C568C00200285 /* DesignSteps */,
+				21C93A4E2E5C568C00200285 /* History */,
+				21C93A512E5C568C00200285 /* Payment */,
+				21C93A562E5C568C00200285 /* Settings */,
+				21C93A582E5C568C00200285 /* Sharing */,
+				21C93A592E5C568C00200285 /* AnimationPreviewView.swift */,
+				21C93A5A2E5C568C00200285 /* ContactSelectionView.swift */,
+				21C93A5B2E5C568C00200285 /* CulturalContextPicker.swift */,
+				21C93A5C2E5C568C00200285 /* CulturalSenderConfigurationView.swift */,
+				21C93A5D2E5C568C00200285 /* DevicePreviewView.swift */,
+				21C93A5E2E5C568C00200285 /* EnhancedPaymentOptionsView.swift */,
+				21C93A5F2E5C568C00200285 /* GeneratedRakhiView.swift */,
+				21C93A602E5C568C00200285 /* PaymentReceiveView.swift */,
+				21C93A612E5C568C00200285 /* PaymentRequestView.swift */,
+				21C93A622E5C568C00200285 /* ProductionMonitoringDashboard.swift */,
+				21C93A632E5C568C00200285 /* RakhiDesignStudioView.swift */,
+				21C93A642E5C568C00200285 /* RakhiSelectionView.swift */,
+				21C93A652E5C568C00200285 /* RealTimeGenerationView.swift */,
+				21C93A672E5C568C00200285 /* TemporaryGeneratedRakhiView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A101 = {
+			isa = PBXGroup;
+			children = (
+				A1F0 /* ForavaApp */,
+				B1F0 /* ForavaWatch */,
+				C1F0 /* Shared */,
+				A200 /* Products */,
+				21C939F72E5C4C9F00200285 /* Recovered References */,
+			);
+			sourceTree = "<group>";
+		};
+		A1F0 /* ForavaApp */ = {
+			isa = PBXGroup;
+			children = (
+				21C93A072E5C568C00200285 /* Models */,
+				21C93A392E5C568C00200285 /* Services */,
+				21C93A3E2E5C568C00200285 /* Testing */,
+				21C93A402E5C568C00200285 /* Utils */,
+				21C93A682E5C568C00200285 /* Views */,
+				A000 /* App.swift */,
+				A002 /* ContentView.swift */,
+				A00F /* APIClient.swift */,
+				A011 /* ApplePayConfig.swift */,
+				A013 /* OnboardingView.swift */,
+				A015 /* PaymentCoordinator.swift */,
+				A019 /* WatchSessionManageriOS.swift */,
+				A01B /* ForavaApp.entitlements */,
+				A004 /* Assets.xcassets */,
+			);
+			path = ForavaApp;
+			sourceTree = "<group>";
+		};
+		A200 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A1FF /* ForavaApp.app */,
+				B1FF /* ForavaWatch.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B1F0 /* ForavaWatch */ = {
+			isa = PBXGroup;
+			children = (
+				21C939EA2E59988B00200285 /* ForavaWatch.entitlements */,
+				B000 /* App.swift */,
+				B002 /* MainTokenView.swift */,
+				B00F /* GiftAmountPickerView.swift */,
+				B011 /* ReceiveTokenView.swift */,
+				B013 /* TokenSessionViewModel.swift */,
+				B015 /* WatchSessionManager_Watch.swift */,
+				B020 /* RakhiWatchFaceView.swift */,
+				B022 /* WatchConnectivityManager.swift */,
+				B004 /* Assets.xcassets */,
+			);
+			path = ForavaWatch;
+			sourceTree = "<group>";
+		};
+		C1F0 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				21C939EB2E59990B00200285 /* AppConfig.swift */,
+				C000 /* Constants.swift */,
+				C002 /* SharedFormatting.swift */,
+				C004 /* SharedModels.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A1FD /* ForavaApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A1FA /* Build configuration list for PBXNativeTarget "ForavaApp" */;
+			buildPhases = (
+				A1FC /* Sources */,
+				A1FE /* Frameworks */,
+				A1FB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ForavaApp;
+			productName = ForavaApp;
+			productReference = A1FF /* ForavaApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B1FD /* ForavaWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B1FA /* Build configuration list for PBXNativeTarget "ForavaWatch" */;
+			buildPhases = (
+				B1FC /* Sources */,
+				B1FE /* Frameworks */,
+				B1FB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ForavaWatch;
+			productName = ForavaWatch;
+			productReference = B1FF /* ForavaWatch.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A100 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1630;
+				ORGANIZATIONNAME = "Forava Inc";
+				TargetAttributes = {
+					A1FD = {
+						CreatedOnToolsVersion = 15.0;
+					};
+					B1FD = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = A103 /* Build configuration list for PBXProject "Forava" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A101;
+			productRefGroup = A200 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A1FD /* ForavaApp */,
+				B1FD /* ForavaWatch */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A1FB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A005 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1FB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B005 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A1FC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A001 /* App.swift in Sources */,
+				A003 /* ContentView.swift in Sources */,
+				21C93A692E5C568C00200285 /* CulturalAIService.swift in Sources */,
+				21C93A6A2E5C568C00200285 /* EnhancedAnimationService.swift in Sources */,
+				21C93A6B2E5C568C00200285 /* TemporaryGeneratedRakhiView.swift in Sources */,
+				21C93A6C2E5C568C00200285 /* PreviewStep.swift in Sources */,
+				21C93A6D2E5C568C00200285 /* IntelligentGiftAmountView.swift in Sources */,
+				21C93A6E2E5C568C00200285 /* EidAgent.swift in Sources */,
+				21C93A6F2E5C568C00200285 /* CulturalFrameworkInitializer.swift in Sources */,
+				21C93A712E5C568C00200285 /* ContactSelectionView.swift in Sources */,
+				21C93A722E5C568C00200285 /* RakhiDesignModels.swift in Sources */,
+				21C93A732E5C568C00200285 /* DeviceOptimizedImageService.swift in Sources */,
+				21C93A742E5C568C00200285 /* AIRakhiCore.swift in Sources */,
+				21C93A752E5C568C00200285 /* PaymentPageUpdateService.swift in Sources */,
+				21C93A762E5C568C00200285 /* GeneratedRakhiView.swift in Sources */,
+				21C93A772E5C568C00200285 /* PromptUtilityExtensions.swift in Sources */,
+				21C93A782E5C568C00200285 /* RakhiCoreModels.swift in Sources */,
+				21C93A792E5C568C00200285 /* AIPromptExtensions.swift in Sources */,
+				21C93A7A2E5C568C00200285 /* ElementSelectionStep.swift in Sources */,
+				21C93A7B2E5C568C00200285 /* DynamicCulturalTerminologyService.swift in Sources */,
+				21C93A7C2E5C568C00200285 /* RealTimeGenerationService.swift in Sources */,
+				21C93A7D2E5C568C00200285 /* DevicePreviewView.swift in Sources */,
+				21C93A7E2E5C568C00200285 /* PersonalizationStep.swift in Sources */,
+				21C93A7F2E5C568C00200285 /* CulturalPreferencesView.swift in Sources */,
+				21C93A802E5C568C00200285 /* SubscriptionManagementView.swift in Sources */,
+				21C93A812E5C568C00200285 /* ProductionMonitoringDashboard.swift in Sources */,
+				21C93A822E5C568C00200285 /* ChineseNewYearAgent.swift in Sources */,
+				21C93A832E5C568C00200285 /* WatchConnectivityManager.swift in Sources */,
+				21C93A842E5C568C00200285 /* MultiLanguagePromptService.swift in Sources */,
+				21C93A852E5C568C00200285 /* CulturalDesignAgentService.swift in Sources */,
+				21C93A862E5C568C00200285 /* AnimationPreviewView.swift in Sources */,
+				21C93A872E5C568C00200285 /* ProductionTestSuite.swift in Sources */,
+				21C93A882E5C568C00200285 /* AIValidationExtensions.swift in Sources */,
+				21C93A892E5C568C00200285 /* SimpleLanguageSettingsView.swift in Sources */,
+				21C93A8A2E5C568C00200285 /* JewishAgent.swift in Sources */,
+				21C93A8B2E5C568C00200285 /* PaymentReceiveView.swift in Sources */,
+				21C93A8C2E5C568C00200285 /* ForavaButtonStyles.swift in Sources */,
+				21C93A8D2E5C568C00200285 /* AIMockExtensions.swift in Sources */,
+				21C93A8E2E5C568C00200285 /* SimpleLocalizationService.swift in Sources */,
+				21C93A8F2E5C568C00200285 /* PerformanceOptimizer.swift in Sources */,
+				21C93A902E5C568C00200285 /* ColorSelectionStep.swift in Sources */,
+				21C93A912E5C568C00200285 /* CulturalValidationFramework.swift in Sources */,
+				21C93A922E5C568C00200285 /* PromptServerExtensions.swift in Sources */,
+				21C93A932E5C568C00200285 /* ComprehensivePaymentService.swift in Sources */,
+				21C93A942E5C568C00200285 /* EnhancedPaymentService.swift in Sources */,
+				21C93A952E5C568C00200285 /* RakhiHistoryService.swift in Sources */,
+				21C93A962E5C568C00200285 /* PromptMapperCore.swift in Sources */,
+				21C93A972E5C568C00200285 /* AdditionalAgents.swift in Sources */,
+				21C93A982E5C568C00200285 /* GlobalTerminologyUpdateService.swift in Sources */,
+				21C93A992E5C568C00200285 /* RakhiHistoryView.swift in Sources */,
+				21C93A9A2E5C568C00200285 /* AnimationPerformanceExtensions.swift in Sources */,
+				21C93A9B2E5C568C00200285 /* CulturalAIModels.swift in Sources */,
+				21C93A9C2E5C568C00200285 /* EnhancedPaymentOptionsView.swift in Sources */,
+				21C93A9D2E5C568C00200285 /* CulturalFrameworkTests.swift in Sources */,
+				21C93A9E2E5C568C00200285 /* AdvancedCustomizationService.swift in Sources */,
+				21C93A9F2E5C568C00200285 /* AIReplicateExtensions.swift in Sources */,
+				21C93AA02E5C568C00200285 /* PromptBuilderExtensions.swift in Sources */,
+				21C93AA12E5C568C00200285 /* GenreSelectionStep.swift in Sources */,
+				21C93AA22E5C568C00200285 /* CulturalGenreSelectionStep.swift in Sources */,
+				21C93AA32E5C568C00200285 /* SocialSharingView.swift in Sources */,
+				21C93AA42E5C568C00200285 /* ChristmasAgent.swift in Sources */,
+				21C93AA52E5C568C00200285 /* SubscriptionManager.swift in Sources */,
+				21C93AA62E5C568C00200285 /* DesignStepComponents.swift in Sources */,
+				21C93AA72E5C568C00200285 /* CulturalSystemMigrationService.swift in Sources */,
+				21C93AA82E5C568C00200285 /* Phase6CulturalDesignTests.swift in Sources */,
+				21C93AA92E5C568C00200285 /* CulturalFramework.swift in Sources */,
+				21C93AAA2E5C568C00200285 /* EnhancedAnimationCore.swift in Sources */,
+				21C93AAB2E5C568C00200285 /* CulturalPaymentPageService.swift in Sources */,
+				21C93AAC2E5C568C00200285 /* Phase5DynamicTerminologyTests.swift in Sources */,
+				21C93AAD2E5C568C00200285 /* RakhiSelectionView.swift in Sources */,
+				21C93AAE2E5C568C00200285 /* PromptMappingData.swift in Sources */,
+				21C93AAF2E5C568C00200285 /* AnimationCulturalExtensions.swift in Sources */,
+				21C93AB02E5C568C00200285 /* AdvancedAnimationService.swift in Sources */,
+				21C93AB12E5C568C00200285 /* DiwaliAgent.swift in Sources */,
+				21C93AB22E5C568C00200285 /* CulturalContextManager.swift in Sources */,
+				21C93AB32E5C568C00200285 /* VesakAgent.swift in Sources */,
+				21C93AB42E5C568C00200285 /* CulturalContextPicker.swift in Sources */,
+				21C93AB52E5C568C00200285 /* CulturalConfiguration.swift in Sources */,
+				21C93AB62E5C568C00200285 /* RakhiDesignStudioView.swift in Sources */,
+				21C93AB72E5C568C00200285 /* FixedSocialSharingService.swift in Sources */,
+				21C93AB82E5C568C00200285 /* SocialSharingService.swift in Sources */,
+				21C93AB92E5C568C00200285 /* CulturalSenderConfigurationView.swift in Sources */,
+				21C93ABA2E5C568C00200285 /* PaymentCompletionFlow.swift in Sources */,
+				21C93ABB2E5C568C00200285 /* CulturalValidator.swift in Sources */,
+				21C93ABC2E5C568C00200285 /* AdvancedCustomizationView.swift in Sources */,
+				21C93ABD2E5C568C00200285 /* RakhiModel.swift in Sources */,
+				21C93ABE2E5C568C00200285 /* SettingsView.swift in Sources */,
+				21C93ABF2E5C568C00200285 /* RealTimeGenerationView.swift in Sources */,
+				21C93AC02E5C568C00200285 /* PaymentRequestView.swift in Sources */,
+				21C93AC12E5C568C00200285 /* PromptMapper.swift in Sources */,
+				21C93AC22E5C568C00200285 /* AnimationGeneratorExtensions.swift in Sources */,
+				21C93AC32E5C568C00200285 /* DesignElementsDatabase.swift in Sources */,
+				21C93AC42E5C568C00200285 /* AIRakhiService.swift in Sources */,
+				7BE5A6D27C5046ACA7B7D3CD /* AnimationModels.swift in Sources */,
+				A010 /* APIClient.swift in Sources */,
+				A012 /* ApplePayConfig.swift in Sources */,
+				A014 /* OnboardingView.swift in Sources */,
+				A016 /* PaymentCoordinator.swift in Sources */,
+				A01A /* WatchSessionManageriOS.swift in Sources */,
+				C001 /* Constants.swift in Sources */,
+				21C939EC2E59990B00200285 /* AppConfig.swift in Sources */,
+				21C93AC72E5D6A0000200285 /* CulturalGiftPreviewView.swift in Sources */,
+				21C93AC82E5D6A0000200285 /* CulturalDesignStudioView.swift in Sources */,
+				C003 /* SharedFormatting.swift in Sources */,
+				C005 /* SharedModels.swift in Sources */,
+							D186367B19314755B3AEE5A8 /* CulturalElementSelectionStep.swift in Sources */,
+							E96662CE53CF4B13A79ACDBE /* CulturalColorSelectionStep.swift in Sources */,
+							AA5A21B0ED3F410C93977B60 /* CulturalPersonalizationStep.swift in Sources */,
+							C48C891744AB4A519CA014F7 /* CulturalPreviewStep.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1FC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B001 /* App.swift in Sources */,
+				B003 /* MainTokenView.swift in Sources */,
+				B010 /* GiftAmountPickerView.swift in Sources */,
+				B012 /* ReceiveTokenView.swift in Sources */,
+				B014 /* TokenSessionViewModel.swift in Sources */,
+				B016 /* WatchSessionManager_Watch.swift in Sources */,
+				B021 /* RakhiWatchFaceView.swift in Sources */,
+				B023 /* WatchConnectivityManager.swift in Sources */,
+				21C939072E508B0900200285 /* Constants.swift in Sources */,
+				21C939ED2E59990B00200285 /* AppConfig.swift in Sources */,
+				21C939082E508B0900200285 /* SharedFormatting.swift in Sources */,
+				21C939092E508B0900200285 /* SharedModels.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		A102 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = YES;
+				CODE_SIGNING_REQUIRED = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = C6MJDCDAUG;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A104 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = YES;
+				CODE_SIGNING_REQUIRED = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = C6MJDCDAUG;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		A1F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ForavaApp/ForavaApp.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSContactsUsageDescription = "Forava needs access to your contacts to help you select family members and friends to send beautiful Rakhi gifts to during the festival of Raksha Bandhan.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.forava.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		A1F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ForavaApp/ForavaApp.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSContactsUsageDescription = "Forava needs access to your contacts to help you select family members and friends to send beautiful Rakhi gifts to during the festival of Raksha Bandhan.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.forava.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B1F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ForavaWatch/ForavaWatch.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = ForavaWatch;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKWatchOnly = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.forava.watch;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Release;
+		};
+		B1F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ForavaWatch/ForavaWatch.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = ForavaWatch;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKWatchOnly = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.forava.watch;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A103 /* Build configuration list for PBXProject "Forava" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A102 /* Debug */,
+				A104 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A1FA /* Build configuration list for PBXNativeTarget "ForavaApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1F9 /* Debug */,
+				A1F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B1FA /* Build configuration list for PBXNativeTarget "ForavaWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B1F9 /* Debug */,
+				B1F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A100 /* Project object */;
+}

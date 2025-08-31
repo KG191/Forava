@@ -1,0 +1,200 @@
+import Foundation
+import SwiftUI
+
+struct CulturalEvent: Identifiable, Codable {
+    let id: UUID
+    let name: String
+    let imageName: String
+    let description: String
+    let category: CulturalCategory
+    let colors: [String]
+    let culturalContext: String
+
+    init(name: String, imageName: String, description: String, category: CulturalCategory,
+         colors: [String], culturalContext: String) {
+        self.id = UUID()
+        self.name = name
+        self.imageName = imageName
+        self.description = description
+        self.category = category
+        self.colors = colors
+        self.culturalContext = culturalContext
+    }
+
+    static let allEvents: [CulturalEvent] = [
+        CulturalEvent(
+            name: "Raksha Bandhan",
+            imageName: "RakshaBandan",
+            description: "Celebrate the sacred bond between siblings",
+            category: .hindu,
+            colors: ["#FF6B35", "#DC143C", "#FFD700"],
+            culturalContext: "Hindu festival celebrating sibling love and protection"
+        ),
+        CulturalEvent(
+            name: "Chinese New Year",
+            imageName: "ChineseNewYear",
+            description: "Welcome prosperity and good fortune",
+            category: .chinese,
+            colors: ["#DC143C", "#FFD700", "#B71C1C"],
+            culturalContext: "Traditional Chinese celebration marking the lunar new year"
+        ),
+        CulturalEvent(
+            name: "Christmas",
+            imageName: "Christmas",
+            description: "Celebrate the joy of giving and togetherness",
+            category: .christian,
+            colors: ["#C41E3A", "#228B22", "#FFD700"],
+            culturalContext: "Christian celebration of the birth of Jesus Christ"
+        ),
+        CulturalEvent(
+            name: "Christmas Eve",
+            imageName: "ChristmasEve",
+            description: "The magical night before Christmas filled with anticipation",
+            category: .christian,
+            colors: ["#0047AB", "#C41E3A", "#FFD700"],
+            culturalContext: "Christian celebration of the eve of Christ's birth"
+        ),
+        CulturalEvent(
+            name: "Diwali",
+            imageName: "Diwali",
+            description: "Festival of lights, prosperity, and new beginnings",
+            category: .hindu,
+            colors: ["#FF6B35", "#673AB7", "#FFD700"],
+            culturalContext: "Hindu festival celebrating the victory of light over darkness and the return of Lord Rama"
+        ),
+        CulturalEvent(
+            name: "Dhanteras",
+            imageName: "Dhanteras",
+            description: "First day of Diwali celebrating wealth and prosperity",
+            category: .hindu,
+            colors: ["#FFD700", "#FF6B35", "#C41E3A"],
+            culturalContext: "Hindu celebration marking the beginning of Diwali festivities"
+        ),
+        CulturalEvent(
+            name: "Eid al-Fitr",
+            imageName: "Eid al-Fitri",
+            description: "Celebrate the end of Ramadan with joy",
+            category: .islamic,
+            colors: ["#009639", "#FFD700", "#FFFFFF"],
+            culturalContext: "Islamic celebration marking the end of Ramadan fasting"
+        ),
+        CulturalEvent(
+            name: "Eid al-Adha",
+            imageName: "Eid al-Adha",
+            description: "Festival of sacrifice and devotion",
+            category: .islamic,
+            colors: ["#009639", "#C41E3A", "#FFD700"],
+            culturalContext: "Islamic festival commemorating Abraham's sacrifice"
+        ),
+        CulturalEvent(
+            name: "Holi",
+            imageName: "Holi",
+            description: "Festival of colors, love, and spring's triumph over winter",
+            category: .hindu,
+            colors: ["#FF1493", "#00CED1", "#32CD32"],
+            culturalContext: "Hindu festival celebrating the divine love of Radha-Krishna and victory of good over evil"
+        ),
+        CulturalEvent(
+            name: "Holika Dahan",
+            imageName: "HolikaDahan",
+            description: "Sacred bonfire night before Holi celebrating triumph of devotion",
+            category: .hindu,
+            colors: ["#FF4500", "#FFD700", "#DC143C"],
+            culturalContext: "Hindu celebration of Prahlad's devotion and the defeat of evil Holika"
+        ),
+        CulturalEvent(
+            name: "Mid-Autumn Festival",
+            imageName: "Mid-Autumn Festival",
+            description: "Celebrate family reunion under the full moon",
+            category: .chinese,
+            colors: ["#FFD700", "#FF4500", "#1E90FF"],
+            culturalContext: "Chinese festival celebrating harvest and family unity"
+        ),
+        CulturalEvent(
+            name: "Easter",
+            imageName: "Easter",
+            description: "Celebrate renewal and resurrection",
+            category: .christian,
+            colors: ["#FF69B4", "#32CD32", "#FFD700"],
+            culturalContext: "Christian celebration of the resurrection of Jesus Christ"
+        ),
+        CulturalEvent(
+            name: "Vesak Day",
+            imageName: "Vesak Day",
+            description: "Honor the birth and enlightenment of Buddha",
+            category: .buddhist,
+            colors: ["#FF8C00", "#4169E1", "#FFD700"],
+            culturalContext: "Buddhist celebration of Buddha's birth, enlightenment, and passing"
+        ),
+        CulturalEvent(
+            name: "Hanukkah",
+            imageName: "Hanukkah",
+            description: "Festival of lights and miracles",
+            category: .jewish,
+            colors: ["#0047AB", "#FFFFFF", "#FFD700"],
+            culturalContext: "Jewish festival celebrating the rededication of the Temple"
+        ),
+        CulturalEvent(
+            name: "Rosh Hashanah",
+            imageName: "Rosh Hashanah",
+            description: "Welcome the Jewish New Year",
+            category: .jewish,
+            colors: ["#0047AB", "#DC143C", "#FFD700"],
+            culturalContext: "Jewish New Year celebration of renewal and reflection"
+        ),
+        CulturalEvent(
+            name: "Birthdays",
+            imageName: "Birthdays",
+            description: "Celebrate another year of life and joy",
+            category: .universal,
+            colors: ["#FF1493", "#00CED1", "#FFD700"],
+            culturalContext: "Universal celebration of personal milestones and growth"
+        ),
+        CulturalEvent(
+            name: "Anniversaries",
+            imageName: "Anniversaries",
+            description: "Honor love and commitment",
+            category: .universal,
+            colors: ["#DC143C", "#FF69B4", "#FFD700"],
+            culturalContext: "Universal celebration of lasting relationships and commitments"
+        )
+    ]
+}
+
+enum CulturalCategory: String, CaseIterable, Codable {
+    case hindu = "Hindu"
+    case chinese = "Chinese"
+    case christian = "Christian"
+    case islamic = "Islamic"
+    case buddhist = "Buddhist"
+    case jewish = "Jewish"
+    case universal = "Universal"
+
+    var displayName: String {
+        return self.rawValue
+    }
+
+    var icon: String {
+        switch self {
+        case .hindu: return "sun.max.fill"
+        case .chinese: return "sparkles"
+        case .christian: return "heart.fill"
+        case .islamic: return "moon.stars.fill"
+        case .buddhist: return "leaf.fill"
+        case .jewish: return "star.fill"
+        case .universal: return "globe"
+        }
+    }
+
+    var primaryColor: Color {
+        switch self {
+        case .hindu: return Color(hex: "#FF6B35")
+        case .chinese: return Color(hex: "#DC143C")
+        case .christian: return Color(hex: "#C41E3A")
+        case .islamic: return Color(hex: "#009639")
+        case .buddhist: return Color(hex: "#FF8C00")
+        case .jewish: return Color(hex: "#0047AB")
+        case .universal: return Color(hex: "#FF1493")
+        }
+    }
+}

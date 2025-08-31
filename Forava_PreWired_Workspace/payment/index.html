@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forava Payment - Rakhi Gift</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #3E3A9F, #FF6A6A);
+            color: white;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .message {
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            line-height: 1.4;
+        }
+        .pay-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #FF6A6A, #FFD166);
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            color: white;
+            font-weight: 700;
+            border: none;
+            margin: 20px 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            cursor: pointer;
+            font-size: 1.1em;
+        }
+        .pay-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        .footer {
+            margin-top: 30px;
+            font-size: 0.9em;
+            opacity: 0.7;
+        }
+        .fallback-message {
+            text-align: left;
+            line-height: 1.6;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+        .fallback-message ul {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+        .loading {
+            display: none;
+            margin: 20px 0;
+        }
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+    <script>
+        let paymentParams = {};
+        let senderName = 'your friend'; // Will be extracted from URL params
+        
+        window.onload = function() {
+            console.log('🚀 Payment page loaded, initializing...');
+            console.log('🌍 User Agent:', navigator.userAgent);
+            console.log('🗺️ Page URL:', window.location.href);
+            console.log('🕰️ Timestamp:', new Date().toISOString());
+            
+            try {
+                // FIRST: Parse URL parameters
+                const urlParams = new URLSearchParams(window.location.search);
+                const amount = urlParams.get('amount') || '61';
+                const desc = urlParams.get('desc') || 'Rakhi Blessing Gift';
+                const currency = urlParams.get('currency') || 'AUD';
+                const sender = urlParams.get('sender') || 'Forava Creator';
+                
+                console.log('📊 Parsed parameters:', { amount, desc, currency, sender });
+                
+                // SECOND: Store parameters globally
+                paymentParams = { amount, desc, currency };
+                senderName = sender;
+                
+                console.log('💾 Stored parameters:', paymentParams);
+                
+                // THIRD: Show loading state (now parameters are available)
+                showLoading();
+                
+                // FOURTH: Simple direct display (no timeouts needed)
+                setTimeout(function() {
+                    console.log('🎁 Displaying universal gift payment options...');
+                    showGiftPaymentOptions();
+                }, 500);
+                
+                // No additional processing needed - universal payment options will be shown
+                
+            } catch (error) {
+                console.error('❌ CRITICAL: Initialization error:', error);
+                console.error('❌ Error stack:', error.stack);
+                console.log('⚠️ Attempting emergency fallback...');
+                
+                // Emergency parameter reconstruction
+                try {
+                    const emergencyParams = new URLSearchParams(window.location.search);
+                    const emergencyAmount = emergencyParams.get('amount') || '61';
+                    const emergencyDesc = emergencyParams.get('desc') || 'Rakhi Blessing Gift';
+                    const emergencySender = emergencyParams.get('sender') || 'your friend';
+                    
+                    console.log('⚠️ Emergency params:', { emergencyAmount, emergencyDesc, emergencySender });
+                    
+                    // Set global emergency values
+                    window.paymentParams = { amount: emergencyAmount, desc: emergencyDesc, currency: 'AUD' };
+                    window.senderName = emergencySender;
+                    
+                } catch (emergencyError) {
+                    console.error('❌ Emergency parameter extraction failed:', emergencyError);
+                }
+                
+                showFallbackMessage('payment-failed');
+            }
+        };
+        
+        function showLoading() {
+            console.log('🔄 Showing loading state...');
+            
+            try {
+                const container = document.querySelector('.container');
+                
+                // Ensure paymentParams exists with safe defaults
+                const params = paymentParams || { amount: '61', desc: 'Rakhi Blessing Gift', currency: 'AUD' };
+                
+                // Validate parameters
+                if (!params.amount || !params.desc || !params.currency) {
+                    console.error('❌ Invalid payment parameters:', params);
+                    showFallbackMessage('payment-failed');
+                    return;
+                }
+                const currencySymbol = params.currency === 'AUD' ? 'AU$' : '$';
+                
+                console.log('📝 Using parameters for loading:', params);
+                
+                const loadingHtml = `
+                    <div class="icon">🎊</div>
+                    <h1>Rakhi Gift Payment</h1>
+                    <div class="message">
+                        <p><strong>${params.desc}</strong></p>
+                        <p>Amount: <strong>${currencySymbol}${params.amount}</strong></p>
+                    </div>
+                    <div class="loading" style="display: block;">
+                        <div class="spinner"></div>
+                        <p>Preparing your Gift in Return...</p>
+                    </div>
+                `;
+                container.innerHTML = loadingHtml;
+                
+                console.log('✅ Loading state displayed');
+                
+            } catch (error) {
+                console.error('❌ Error in showLoading:', error);
+                // Fallback to simple loading if there's an error
+                const container = document.querySelector('.container');
+                if (container) {
+                    container.innerHTML = `
+                        <div class="icon">🎊</div>
+                        <h1>Loading...</h1>
+                        <div class="loading" style="display: block;">
+                            <div class="spinner"></div>
+                            <p>Preparing your Gift in Return...</p>
+                        </div>
+                    `;
+                } else {
+                    console.error('❌ Container element not found');
+                    showFallbackMessage('payment-failed');
+                }
+            }
+        }
+        
+        function showGiftPaymentOptions() {
+            console.log('🎁 Displaying universal gift payment options...');
+            console.log('📊 Payment params:', paymentParams);
+            console.log('👥 Sender name:', senderName);
+            
+            // Final parameter validation
+            if (!paymentParams || !paymentParams.amount) {
+                console.error('❌ Payment parameters missing');
+                // Use emergency defaults
+                paymentParams = { amount: '61', desc: 'Rakhi Blessing Gift', currency: 'AUD' };
+                senderName = 'your friend';
+            }
+            
+            const container = document.querySelector('.container');
+            if (!container) {
+                console.error('❌ Container not found');
+                return;
+            }
+            
+            const currencySymbol = paymentParams.currency === 'AUD' ? 'AU$' : '$';
+            
+            container.innerHTML = `
+                <div class="icon">🎊</div>
+                <h1>Someone sent you a beautiful Rakhi!</h1>
+                <div class="message">
+                    <p><strong>${paymentParams.desc}</strong></p>
+                    <p>Amount: <strong>${currencySymbol}${paymentParams.amount}</strong></p>
+                    <p style="margin-top: 15px; opacity: 0.9;">From: <strong>${senderName}</strong></p>
+                </div>
+                
+                <div class="fallback-message">
+                    <p><strong>💝 Send a gift back using:</strong></p>
+                    
+                    <div style="margin: 20px 0; padding: 15px; background: rgba(255,255,255,0.1); border-radius: 12px;">
+                        <h3 style="margin: 0 0 10px 0; font-size: 1.1em;">📱 Digital Wallets</h3>
+                        <ul style="margin: 8px 0;">
+                            <li><strong>Apple Pay:</strong> Ask ${senderName} to send you their contact</li>
+                            <li><strong>Google Pay:</strong> Send via phone number or email</li>
+                            <li><strong>Samsung Pay:</strong> Available on Samsung devices</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="margin: 20px 0; padding: 15px; background: rgba(255,255,255,0.1); border-radius: 12px;">
+                        <h3 style="margin: 0 0 10px 0; font-size: 1.1em;">💳 Payment Apps</h3>
+                        <ul style="margin: 8px 0;">
+                            <li><strong>PayPal:</strong> Send to their email or phone</li>
+                            <li><strong>Venmo/CashApp:</strong> Search their username</li>
+                            <li><strong>Zelle:</strong> Via banking app using email/phone</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="margin: 20px 0; padding: 15px; background: rgba(255,255,255,0.1); border-radius: 12px;">
+                        <h3 style="margin: 0 0 10px 0; font-size: 1.1em;">🏦 Traditional Methods</h3>
+                        <ul style="margin: 8px 0;">
+                            <li><strong>Bank Transfer:</strong> Ask for their BSB/account details</li>
+                            <li><strong>Cash Gift:</strong> Give in person when you meet</li>
+                            <li><strong>Gift Card:</strong> Purchase their favorite store gift card</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="margin: 25px 0; padding: 15px; background: rgba(255,215,0,0.2); border-radius: 12px; border: 1px solid rgba(255,215,0,0.3);">
+                        <p style="margin: 0; font-size: 0.95em;"><strong>💡 Auspicious Gift Amounts:</strong></p>
+                        <p style="margin: 5px 0 0 0; font-size: 0.9em; opacity: 0.9;">Consider ${currencySymbol}21, ${currencySymbol}51, ${currencySymbol}101, or ${currencySymbol}201 for cultural significance</p>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 25px; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 12px;">
+                    <p style="margin: 0 0 10px 0; font-size: 0.95em;"><strong>🎊 Enjoyed receiving a cultural greeting?</strong></p>
+                    <p style="margin: 0 0 12px 0; font-size: 0.9em; line-height: 1.4;">Download <strong>Forava</strong> to create personalized greetings for:</p>
+                    <div style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 10px 0;">
+                        <span style="background: rgba(255,255,255,0.15); padding: 4px 8px; border-radius: 8px; font-size: 0.85em;">🧧 Chinese New Year</span>
+                        <span style="background: rgba(255,255,255,0.15); padding: 4px 8px; border-radius: 8px; font-size: 0.85em;">🎂 Birthdays</span>
+                        <span style="background: rgba(255,255,255,0.15); padding: 4px 8px; border-radius: 8px; font-size: 0.85em;">🪔 Diwali</span>
+                        <span style="background: rgba(255,255,255,0.15); padding: 4px 8px; border-radius: 8px; font-size: 0.85em;">🎄 Christmas</span>
+                        <span style="background: rgba(255,255,255,0.15); padding: 4px 8px; border-radius: 8px; font-size: 0.85em;">🕌 Eid</span>
+                        <span style="background: rgba(255,255,255,0.15); padding: 4px 8px; border-radius: 8px; font-size: 0.85em;">🌸 Holi</span>
+                    </div>
+                    <p style="margin: 12px 0 0 0; font-size: 0.85em; opacity: 0.8; text-align: center;">Premium cultural gifting • Watch-first experience • Monthly/Annual subscriptions</p>
+                </div>
+                
+                <div class="footer">
+                    <p>Made with ❤️ for Raksha Bandhan</p>
+                </div>
+            `;
+            
+            console.log('✅ Universal gift payment options displayed');
+        }
+        
+        // Legacy fallback function - no longer needed since we show universal payment options directly
+        
+        // Apple Pay functions removed - no longer needed for universal payment approach
+    </script>
+</head>
+<body>
+    <div class="container">
+        <!-- Content will be dynamically generated by JavaScript -->
+        <div class="icon">🎊</div>
+        <h1>Loading...</h1>
+        <div class="loading" style="display: block;">
+            <div class="spinner"></div>
+            <p>Preparing your Gift in Return...</p>
+        </div>
+    </div>
+</body>
+</html>

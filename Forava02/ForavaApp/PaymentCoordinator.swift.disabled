@@ -1,0 +1,13 @@
+import Foundation
+
+// Payment coordinator temporarily disabled - functionality to be implemented later
+class PaymentCoordinator: ObservableObject {
+    static let shared = PaymentCoordinator()
+    
+    private init() {}
+    
+    // Placeholder methods to maintain interface compatibility
+    func processPayment() {
+        // Implementation pending
+    }
+}

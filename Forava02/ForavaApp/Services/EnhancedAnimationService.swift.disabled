@@ -1,0 +1,931 @@
+import Foundation
+import SwiftUI
+import Combine
+
+// MARK: - Enhanced Animation Service for Advanced Rakhi Animations
+
+@MainActor
+class EnhancedAnimationService: ObservableObject {
+    static let shared = EnhancedAnimationService()
+
+    // MARK: - Published Properties
+    @Published var isAnimating = false
+    @Published var animationProgress: Float = 0.0
+    @Published var activeAnimations: [AnimationInstance] = []
+    @Published var animationQuality: AnimationQuality = .high
+    @Published var culturalAnimations: [CulturalAnimation] = []
+    @Published var deviceOptimizedSettings: DeviceAnimationSettings
+
+    // MARK: - Private Properties
+    private var animationQueue: [AnimationRequest] = []
+    private var cancellables = Set<AnyCancellable>()
+    private let maxConcurrentAnimations = 3
+    private var animationCache = NSCache<NSString, AnimationResult>()
+
+    // MARK: - Device Detection
+    private let deviceCapabilities: DeviceCapabilities
+
+    private init() {
+        self.deviceCapabilities = DeviceCapabilities.current
+        self.deviceOptimizedSettings = DeviceAnimationSettings.optimized(for: deviceCapabilities)
+
+        loadCulturalAnimations()
+        setupAnimationObservers()
+        optimizeForDevice()
+    }
+
+    // MARK: - Core Animation Creation
+
+    func createRakhiFormationAnimation(
+        for rakhi: GeneratedRakhi,
+        style: AnimationStyle = .elegant,
+        duration: TimeInterval = 3.0
+    ) async throws -> AnimationSequence {
+
+        isAnimating = true
+        animationProgress = 0.0
+
+        defer {
+            isAnimating = false
+            animationProgress = 0.0
+        }
+
+        // Step 1: Analyze rakhi design for animation opportunities
+        animationProgress = 0.2
+        let animationPoints = analyzeRakhiForAnimation(rakhi)
+
+        // Step 2: Create formation sequence
+        animationProgress = 0.4
+        let formationSequence = try await createFormationSequence(
+            points: animationPoints,
+            style: style,
+            duration: duration
+        )
+
+        // Step 3: Add cultural elements
+        animationProgress = 0.6
+        let culturalEnhancements = addCulturalAnimationElements(
+            to: formationSequence,
+            genre: rakhi.designSpec.genre
+        )
+
+        // Step 4: Optimize for device
+        animationProgress = 0.8
+        let optimizedSequence = optimizeAnimationForDevice(culturalEnhancements)
+
+        // Step 5: Generate final sequence
+        animationProgress = 1.0
+        let finalSequence = try await generateAnimationFrames(optimizedSequence)
+
+        return finalSequence
+    }
+
+    func createRakhiRevealAnimation(
+        for rakhi: GeneratedRakhi,
+        revealStyle: RevealStyle = .bloom
+    ) async throws -> AnimationSequence {
+
+        let baseFrames = try await generateRevealFrames(rakhi, style: revealStyle)
+        let culturalTouches = addCulturalRevealElements(baseFrames, genre: rakhi.designSpec.genre)
+
+        return try await finalizeAnimationSequence(culturalTouches)
+    }
+
+    func createInteractiveAnimation(
+        for rakhi: GeneratedRakhi,
+        interaction: InteractionType
+    ) async throws -> InteractiveAnimationResult {
+
+        switch interaction {
+        case .touch:
+            return try await createTouchResponseAnimation(rakhi)
+        case .shake:
+            return try await createShakeResponseAnimation(rakhi)
+        case .rotate:
+            return try await createRotationAnimation(rakhi)
+        case .zoom:
+            return try await createZoomInteractionAnimation(rakhi)
+        }
+    }
+
+    // MARK: - Cultural Animation Enhancements
+
+    func addBlessingParticles(
+        to animation: AnimationSequence,
+        blessingType: BlessingType = .prosperity
+    ) -> AnimationSequence {
+
+        var enhancedAnimation = animation
+
+        // Create blessing particles based on type
+        let particles = createBlessingParticles(type: blessingType)
+
+        // Add particles to animation frames
+        for (index, frame) in enhancedAnimation.frames.enumerated() {
+            let progress = Float(index) / Float(enhancedAnimation.frames.count)
+            let particleLayer = interpolateParticles(particles, at: progress)
+
+            enhancedAnimation.frames[index] = combineFrameWithParticles(frame, particles: particleLayer)
+        }
+
+        return enhancedAnimation
+    }
+
+    func addCulturalGlow(
+        to animation: AnimationSequence,
+        genre: RakhiGenre
+    ) -> AnimationSequence {
+
+        let glowSettings = getCulturalGlowSettings(for: genre)
+        var enhancedAnimation = animation
+
+        for (index, frame) in enhancedAnimation.frames.enumerated() {
+            let progress = Float(index) / Float(enhancedAnimation.frames.count)
+            let glowIntensity = calculateGlowIntensity(progress: progress, settings: glowSettings)
+
+            enhancedAnimation.frames[index] = applyGlowEffect(
+                to: frame,
+                intensity: glowIntensity,
+                color: glowSettings.color
+            )
+        }
+
+        return enhancedAnimation
+    }
+
+    func addTraditionalMotionPatterns(
+        to animation: AnimationSequence,
+        pattern: TraditionalMotionPattern
+    ) -> AnimationSequence {
+
+        var enhancedAnimation = animation
+        let motionCurve = generateTraditionalMotionCurve(pattern)
+
+        // Apply traditional motion patterns to animation timing
+        for (index, frame) in enhancedAnimation.frames.enumerated() {
+            let progress = Float(index) / Float(enhancedAnimation.frames.count)
+            let adjustedTiming = motionCurve.evaluate(at: progress)
+
+            enhancedAnimation.frames[index].timing = adjustedTiming
+        }
+
+        return enhancedAnimation
+    }
+
+    // MARK: - Performance Optimization
+
+    func optimizeAnimationForDevice(_ animation: AnimationSequence) -> AnimationSequence {
+        var optimizedAnimation = animation
+
+        // Adjust frame rate based on device capabilities
+        if deviceCapabilities.recommendedFrameRate < 60 {
+            optimizedAnimation = reduceFrameRate(optimizedAnimation, to: deviceCapabilities.recommendedFrameRate)
+        }
+
+        // Adjust quality based on device performance
+        if deviceCapabilities.performanceClass == .low {
+            optimizedAnimation = reduceAnimationComplexity(optimizedAnimation)
+        }
+
+        // Optimize memory usage
+        optimizedAnimation = optimizeMemoryUsage(optimizedAnimation)
+
+        return optimizedAnimation
+    }
+
+    func preloadAnimation(_ animation: AnimationSequence) {
+        let cacheKey = animation.id.uuidString as NSString
+        let result = AnimationResult(sequence: animation, preloaded: true)
+        animationCache.setObject(result, forKey: cacheKey)
+    }
+
+    func getCachedAnimation(id: UUID) -> AnimationResult? {
+        let cacheKey = id.uuidString as NSString
+        return animationCache.object(forKey: cacheKey)
+    }
+
+    // MARK: - Animation Queue Management
+
+    func queueAnimation(_ request: AnimationRequest) {
+        animationQueue.append(request)
+        processAnimationQueue()
+    }
+
+    private func processAnimationQueue() {
+        guard activeAnimations.count < maxConcurrentAnimations,
+              !animationQueue.isEmpty else { return }
+
+        let request = animationQueue.removeFirst()
+
+        let instance = AnimationInstance(
+            id: UUID(),
+            request: request,
+            startTime: Date(),
+            status: .processing
+        )
+
+        activeAnimations.append(instance)
+
+        Task {
+            do {
+                let result = try await processAnimationRequest(request)
+                await updateAnimationInstance(instance.id, result: result)
+            } catch {
+                await updateAnimationInstance(instance.id, error: error)
+            }
+        }
+    }
+
+    private func updateAnimationInstance(_ id: UUID, result: AnimationSequence? = nil, error: Error? = nil) async {
+        await MainActor.run {
+            if let index = activeAnimations.firstIndex(where: { $0.id == id }) {
+                if let result = result {
+                    activeAnimations[index].result = result
+                    activeAnimations[index].status = .completed
+                } else if error != nil {
+                    activeAnimations[index].status = .failed
+                }
+
+                // Remove completed/failed animations after a delay
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                    self.activeAnimations.removeAll { $0.id == id }
+                    self.processAnimationQueue() // Process next in queue
+                }
+            }
+        }
+    }
+
+    // MARK: - Animation Analysis and Generation
+
+    private func analyzeRakhiForAnimation(_ rakhi: GeneratedRakhi) -> [AnimationPoint] {
+        var points: [AnimationPoint] = []
+
+        // Analyze design elements for animation opportunities
+        for element in rakhi.designSpec.elements {
+            let animationPoint = AnimationPoint(
+                element: element,
+                position: calculateElementPosition(element),
+                animationType: determineAnimationType(for: element),
+                priority: element.weight
+            )
+            points.append(animationPoint)
+        }
+
+        // Add center focal point
+        points.append(AnimationPoint(
+            element: DesignElement.centerFocus,
+            position: CGPoint(x: 0.5, y: 0.5),
+            animationType: .focal,
+            priority: 1.0
+        ))
+
+        return points.sorted { $0.priority > $1.priority }
+    }
+
+    private func createFormationSequence(
+        points: [AnimationPoint],
+        style: AnimationStyle,
+        duration: TimeInterval
+    ) async throws -> AnimationSequence {
+
+        let frameCount = Int(duration * Double(deviceOptimizedSettings.targetFrameRate))
+        var frames: [EnhancedAnimationFrame] = []
+
+        for frameIndex in 0..<frameCount {
+            let progress = Float(frameIndex) / Float(frameCount)
+            let frame = try await generateAnimationFrame(
+                points: points,
+                progress: progress,
+                style: style
+            )
+            frames.append(frame)
+        }
+
+        return AnimationSequence(
+            id: UUID(),
+            frames: frames,
+            duration: duration,
+            style: style,
+            quality: animationQuality
+        )
+    }
+
+    private func generateAnimationFrame(
+        points: [AnimationPoint],
+        progress: Float,
+        style: AnimationStyle
+    ) async throws -> EnhancedAnimationFrame {
+
+        // Apply easing function based on style
+        let easedProgress = style.easingFunction.evaluate(progress)
+
+        var frameElements: [FrameElement] = []
+
+        for point in points {
+            let element = try await renderAnimationPoint(
+                point,
+                progress: easedProgress,
+                style: style
+            )
+            frameElements.append(element)
+        }
+
+        return EnhancedAnimationFrame(
+            index: Int(progress * 100),
+            elements: frameElements,
+            timing: progress,
+            timestamp: Date()
+        )
+    }
+
+    private func renderAnimationPoint(
+        _ point: AnimationPoint,
+        progress: Float,
+        style: AnimationStyle
+    ) async throws -> FrameElement {
+
+        // Calculate position, scale, rotation, opacity based on progress
+        let animatedPosition = interpolatePosition(point.position, progress: progress, type: point.animationType)
+        let animatedScale = interpolateScale(progress: progress, type: point.animationType)
+        let animatedRotation = interpolateRotation(progress: progress, type: point.animationType)
+        let animatedOpacity = interpolateOpacity(progress: progress, type: point.animationType)
+
+        return FrameElement(
+            id: point.element.id,
+            position: animatedPosition,
+            scale: animatedScale,
+            rotation: animatedRotation,
+            opacity: animatedOpacity,
+            blendMode: style.blendMode
+        )
+    }
+
+    // MARK: - Cultural Animation Elements
+
+    private func addCulturalAnimationElements(
+        to sequence: AnimationSequence,
+        genre: RakhiGenre
+    ) -> AnimationSequence {
+
+        var enhancedSequence = sequence
+
+        // Add genre-specific cultural elements
+        switch genre {
+        case .traditional:
+            enhancedSequence = addTraditionalSparkles(to: enhancedSequence)
+            enhancedSequence = addMauliWaveEffect(to: enhancedSequence)
+        case .spiritual:
+            enhancedSequence = addSacredGeometry(to: enhancedSequence)
+            enhancedSequence = addDivineLight(to: enhancedSequence)
+        case .modern:
+            enhancedSequence = addContemporaryEffects(to: enhancedSequence)
+        case .elegant:
+            enhancedSequence = addElegantShimmer(to: enhancedSequence)
+        default:
+            break
+        }
+
+        return enhancedSequence
+    }
+
+    private func createBlessingParticles(type: BlessingType) -> [BlessingParticle] {
+        var particles: [BlessingParticle] = []
+
+        let particleCount = type.particleCount
+
+        for i in 0..<particleCount {
+            let particle = BlessingParticle(
+                id: UUID(),
+                type: type,
+                startPosition: randomPositionAroundEdge(),
+                endPosition: CGPoint(x: 0.5, y: 0.5), // Center
+                startTime: Float(i) * 0.1, // Stagger particles
+                duration: type.duration,
+                color: type.color,
+                symbol: type.symbol
+            )
+            particles.append(particle)
+        }
+
+        return particles
+    }
+
+    // MARK: - Interactive Animations
+
+    private func createTouchResponseAnimation(_ rakhi: GeneratedRakhi) async throws -> InteractiveAnimationResult {
+        // Create ripple effect from touch point
+        let rippleAnimation = try await generateRippleEffect(
+            center: CGPoint(x: 0.5, y: 0.5),
+            maxRadius: 1.0,
+            duration: 1.0
+        )
+
+        return InteractiveAnimationResult(
+            animation: rippleAnimation,
+            interactionType: .touch,
+            responsiveness: .immediate
+        )
+    }
+
+    private func createShakeResponseAnimation(_ rakhi: GeneratedRakhi) async throws -> InteractiveAnimationResult {
+        // Create traditional bell-like motion
+        let shakeAnimation = try await generateShakeEffect(
+            amplitude: 0.05,
+            frequency: 8.0,
+            damping: 0.95,
+            duration: 2.0
+        )
+
+        return InteractiveAnimationResult(
+            animation: shakeAnimation,
+            interactionType: .shake,
+            responsiveness: .immediate
+        )
+    }
+
+    // MARK: - Device Optimization
+
+    private func optimizeForDevice() {
+        // Adjust animation quality based on device capabilities
+        switch deviceCapabilities.performanceClass {
+        case .high:
+            animationQuality = .ultra
+            deviceOptimizedSettings.targetFrameRate = 60
+            deviceOptimizedSettings.maxParticles = 200
+        case .medium:
+            animationQuality = .high
+            deviceOptimizedSettings.targetFrameRate = 30
+            deviceOptimizedSettings.maxParticles = 100
+        case .low:
+            animationQuality = .medium
+            deviceOptimizedSettings.targetFrameRate = 24
+            deviceOptimizedSettings.maxParticles = 50
+        }
+
+        // Enable battery optimization for Watch
+        if deviceCapabilities.isWatchOS {
+            deviceOptimizedSettings.enableBatteryOptimization = true
+            deviceOptimizedSettings.maxParticles = 20
+        }
+    }
+
+    // MARK: - Helper Methods
+
+    private func loadCulturalAnimations() {
+        culturalAnimations = [
+            CulturalAnimation(
+                name: "Traditional Mandala Formation",
+                genre: .traditional,
+                pattern: .mandala,
+                duration: 3.0
+            ),
+            CulturalAnimation(
+                name: "Spiritual Lotus Bloom",
+                genre: .spiritual,
+                pattern: .lotus,
+                duration: 4.0
+            ),
+            CulturalAnimation(
+                name: "Modern Geometric Flow",
+                genre: .modern,
+                pattern: .geometric,
+                duration: 2.5
+            )
+        ]
+    }
+
+    private func setupAnimationObservers() {
+        // Monitor animation performance
+        $activeAnimations
+            .sink { [weak self] animations in
+                self?.monitorAnimationPerformance(animations)
+            }
+            .store(in: &cancellables)
+    }
+
+    private func monitorAnimationPerformance(_ animations: [AnimationInstance]) {
+        // Adjust quality if too many concurrent animations
+        if animations.count >= maxConcurrentAnimations {
+            temporarilyReduceQuality()
+        }
+    }
+
+    private func temporarilyReduceQuality() {
+        let originalQuality = animationQuality
+        animationQuality = .medium
+
+        // Restore after delay
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+            self.animationQuality = originalQuality
+        }
+    }
+
+    // MARK: - Animation Processing
+
+    private func processAnimationRequest(_ request: AnimationRequest) async throws -> AnimationSequence {
+        switch request.type {
+        case .formation(let rakhi, let style, let duration):
+            return try await createRakhiFormationAnimation(for: rakhi, style: style, duration: duration)
+        case .reveal(let rakhi, let style):
+            return try await createRakhiRevealAnimation(for: rakhi, revealStyle: style)
+        case .interactive(let rakhi, let interaction):
+            let result = try await createInteractiveAnimation(for: rakhi, interaction: interaction)
+            return result.animation
+        }
+    }
+
+    // Additional helper methods for animation generation would be implemented here...
+
+    private func calculateElementPosition(_ element: DesignElement) -> CGPoint {
+        // Calculate position based on element category and design rules
+        switch element.category {
+        case .centerPiece: return CGPoint(x: 0.5, y: 0.5)
+        case .decorative: return CGPoint(x: 0.7, y: 0.3)
+        case .thread: return CGPoint(x: 0.5, y: 0.8)
+        case .bead: return CGPoint(x: 0.3, y: 0.7)
+        case .charm: return CGPoint(x: 0.8, y: 0.6)
+        case .cultural: return CGPoint(x: 0.5, y: 0.2)
+        }
+    }
+
+    private func determineAnimationType(for element: DesignElement) -> AnimationType {
+        switch element.category {
+        case .centerPiece: return .focal
+        case .decorative: return .spiral
+        case .thread: return .wave
+        case .bead: return .sequence
+        case .charm: return .bounce
+        case .cultural: return .sacred
+        }
+    }
+
+    // Interpolation functions
+    private func interpolatePosition(_ base: CGPoint, progress: Float, type: AnimationType) -> CGPoint {
+        switch type {
+        case .spiral:
+            let angle = progress * 2 * .pi
+            let radius = 0.2 * progress
+            return CGPoint(
+                x: base.x + radius * cos(angle),
+                y: base.y + radius * sin(angle)
+            )
+        case .wave:
+            return CGPoint(
+                x: base.x + 0.1 * sin(progress * 2 * .pi),
+                y: base.y
+            )
+        default:
+            return base
+        }
+    }
+
+    private func interpolateScale(progress: Float, type: AnimationType) -> Float {
+        switch type {
+        case .bounce:
+            return 0.8 + 0.4 * (1 + sin(progress * 4 * .pi)) / 2
+        case .focal:
+            return 0.5 + 0.5 * progress
+        default:
+            return 1.0
+        }
+    }
+
+    private func interpolateRotation(progress: Float, type: AnimationType) -> Float {
+        switch type {
+        case .spiral:
+            return progress * 2 * .pi
+        case .sacred:
+            return progress * .pi / 2
+        default:
+            return 0.0
+        }
+    }
+
+    private func interpolateOpacity(progress: Float, type: AnimationType) -> Float {
+        switch type {
+        case .sequence:
+            return min(1.0, progress * 3)
+        default:
+            return min(1.0, progress * 2)
+        }
+    }
+
+    private func randomPositionAroundEdge() -> CGPoint {
+        let angle = Float.random(in: 0...(2 * .pi))
+        let radius: Float = 1.2 // Outside visible area
+        return CGPoint(
+            x: 0.5 + radius * cos(angle),
+            y: 0.5 + radius * sin(angle)
+        )
+    }
+}
+
+// MARK: - Supporting Types
+
+extension DesignElement {
+    static let centerFocus = DesignElement(
+        id: "center_focus",
+        displayName: "Center Focus",
+        category: .centerPiece,
+        weight: 1.0,
+        culturalSignificance: 0.5,
+        ageAppropriate: [.any],
+        compatibleGenres: RakhiGenre.allCases,
+        promptTokens: ["center", "focus"],
+        description: "Central focal point for animations"
+    )
+}
+
+struct AnimationInstance: Identifiable {
+    let id: UUID
+    let request: AnimationRequest
+    let startTime: Date
+    var status: AnimationStatus
+    var result: AnimationSequence?
+
+    enum AnimationStatus {
+        case queued
+        case processing
+        case completed
+        case failed
+    }
+}
+
+struct AnimationRequest {
+    let type: AnimationRequestType
+    let priority: Float
+    let timestamp: Date
+
+    enum AnimationRequestType {
+        case formation(GeneratedRakhi, AnimationStyle, TimeInterval)
+        case reveal(GeneratedRakhi, RevealStyle)
+        case interactive(GeneratedRakhi, InteractionType)
+    }
+}
+
+struct AnimationSequence: Identifiable {
+    let id: UUID
+    var frames: [EnhancedAnimationFrame]
+    let duration: TimeInterval
+    let style: AnimationStyle
+    let quality: AnimationQuality
+}
+
+struct EnhancedAnimationFrame {
+    let index: Int
+    let elements: [FrameElement]
+    var timing: Float
+    let timestamp: Date
+}
+
+struct FrameElement {
+    let id: String
+    let position: CGPoint
+    let scale: Float
+    let rotation: Float
+    let opacity: Float
+    let blendMode: BlendMode
+
+    enum BlendMode {
+        case normal
+        case multiply
+        case screen
+        case overlay
+    }
+}
+
+struct AnimationPoint {
+    let element: DesignElement
+    let position: CGPoint
+    let animationType: AnimationType
+    let priority: Double
+}
+
+struct AnimationResult {
+    let sequence: AnimationSequence
+    let preloaded: Bool
+    let cachedAt: Date = Date()
+}
+
+enum AnimationType {
+    case focal
+    case spiral
+    case wave
+    case sequence
+    case bounce
+    case sacred
+}
+
+enum AnimationStyle {
+    case elegant
+    case dynamic
+    case traditional
+    case modern
+
+    var easingFunction: EasingFunction {
+        switch self {
+        case .elegant: return .easeInOut
+        case .dynamic: return .easeOut
+        case .traditional: return .linear
+        case .modern: return .spring
+        }
+    }
+
+    var blendMode: FrameElement.BlendMode {
+        switch self {
+        case .elegant: return .overlay
+        case .dynamic: return .screen
+        case .traditional: return .normal
+        case .modern: return .multiply
+        }
+    }
+}
+
+enum RevealStyle {
+    case bloom
+    case unfold
+    case weave
+    case sparkle
+}
+
+enum InteractionType {
+    case touch
+    case shake
+    case rotate
+    case zoom
+}
+
+enum AnimationQuality {
+    case ultra
+    case high
+    case medium
+    case low
+
+    var frameRate: Int {
+        switch self {
+        case .ultra: return 60
+        case .high: return 30
+        case .medium: return 24
+        case .low: return 15
+        }
+    }
+}
+
+struct InteractiveAnimationResult {
+    let animation: AnimationSequence
+    let interactionType: InteractionType
+    let responsiveness: ResponsivenessLevel
+
+    enum ResponsivenessLevel {
+        case immediate
+        case fast
+        case normal
+        case delayed
+    }
+}
+
+struct BlessingParticle: Identifiable {
+    let id: UUID
+    let type: BlessingType
+    let startPosition: CGPoint
+    let endPosition: CGPoint
+    let startTime: Float
+    let duration: Float
+    let color: Color
+    let symbol: String
+}
+
+enum BlessingType {
+    case prosperity
+    case protection
+    case happiness
+    case wisdom
+
+    var particleCount: Int {
+        switch self {
+        case .prosperity: return 50
+        case .protection: return 30
+        case .happiness: return 80
+        case .wisdom: return 20
+        }
+    }
+
+    var duration: Float {
+        switch self {
+        case .prosperity: return 3.0
+        case .protection: return 4.0
+        case .happiness: return 2.0
+        case .wisdom: return 5.0
+        }
+    }
+
+    var color: Color {
+        switch self {
+        case .prosperity: return .yellow
+        case .protection: return .red
+        case .happiness: return .pink
+        case .wisdom: return .purple
+        }
+    }
+
+    var symbol: String {
+        switch self {
+        case .prosperity: return "💰"
+        case .protection: return "🛡️"
+        case .happiness: return "😊"
+        case .wisdom: return "📚"
+        }
+    }
+}
+
+struct CulturalAnimation {
+    let name: String
+    let genre: RakhiGenre
+    let pattern: CulturalPattern
+    let duration: TimeInterval
+
+    enum CulturalPattern {
+        case mandala
+        case lotus
+        case geometric
+        case paisley
+    }
+}
+
+enum TraditionalMotionPattern {
+    case circular
+    case spiral
+    case wave
+    case pendulum
+}
+
+struct DeviceCapabilities {
+    let performanceClass: PerformanceClass
+    let recommendedFrameRate: Int
+    let maxTextureSize: Int
+    let isWatchOS: Bool
+
+    static var current: DeviceCapabilities {
+        #if os(watchOS)
+        return DeviceCapabilities(
+            performanceClass: .low,
+            recommendedFrameRate: 24,
+            maxTextureSize: 512,
+            isWatchOS: true
+        )
+        #else
+        // Detect device performance (simplified)
+        return DeviceCapabilities(
+            performanceClass: .high,
+            recommendedFrameRate: 60,
+            maxTextureSize: 2048,
+            isWatchOS: false
+        )
+        #endif
+    }
+
+    enum PerformanceClass {
+        case high
+        case medium
+        case low
+    }
+}
+
+struct DeviceAnimationSettings {
+    var targetFrameRate: Int
+    var maxParticles: Int
+    var enableBatteryOptimization: Bool
+    var useHardwareAcceleration: Bool
+
+    static func optimized(for capabilities: DeviceCapabilities) -> DeviceAnimationSettings {
+        return DeviceAnimationSettings(
+            targetFrameRate: capabilities.recommendedFrameRate,
+            maxParticles: capabilities.performanceClass == .high ? 200 : 50,
+            enableBatteryOptimization: capabilities.isWatchOS,
+            useHardwareAcceleration: capabilities.performanceClass != .low
+        )
+    }
+}
+
+enum EasingFunction {
+    case linear
+    case easeIn
+    case easeOut
+    case easeInOut
+    case spring
+
+    func evaluate(_ t: Float) -> Float {
+        switch self {
+        case .linear:
+            return t
+        case .easeIn:
+            return t * t
+        case .easeOut:
+            return 1 - (1 - t) * (1 - t)
+        case .easeInOut:
+            return t < 0.5 ? 2 * t * t : 1 - pow(-2 * t + 2, 2) / 2
+        case .spring:
+            return sin(t * .pi * 2) * (1 - t) + t
+        }
+    }
+}
