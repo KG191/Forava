@@ -169,13 +169,32 @@ extension AnniversaryDesignView {
 
     // MARK: - Generation Logic
     private func generateAnniversaryGift() {
-        guard isReadyToGenerate else { return }
+        print("🎯 Generate Anniversary Gift button tapped")
+        print("📊 Validation Status:")
+        print("   - isReadyToGenerate: \(isReadyToGenerate)")
+        print("   - selectedTheme: \(selectedTheme?.rawValue ?? "nil")")
+        print("   - selectedElements count: \(selectedElements.count)")
+        print("   - selectedColorPalette: \(selectedColorPalette?.name ?? "nil")")
+        print("   - finalMessage: \(finalMessage)")
+        print("   - contactName: \(selectedContact.name)")
 
+        guard isReadyToGenerate else {
+            print("❌ Not ready to generate - validation failed")
+            print("   Missing:")
+            if selectedTheme == nil { print("   - Theme") }
+            if selectedElements.isEmpty { print("   - Elements") }
+            if selectedColorPalette == nil { print("   - Color Palette") }
+            if finalMessage.isEmpty || finalMessage == "No message selected" { print("   - Personal Message") }
+            return
+        }
+
+        print("✅ Starting Anniversary generation...")
         isGenerating = true
         currentTab = .check
 
         Task {
             do {
+                print("🤖 Calling AI service...")
                 let result = try await anniversaryAI.generateAnniversaryGift(
                     theme: selectedTheme!,
                     elements: selectedElements,
@@ -184,15 +203,17 @@ extension AnniversaryDesignView {
                     contactName: selectedContact.name
                 )
 
+                print("✅ Generation succeeded: \(result)")
                 await MainActor.run {
                     self.generatedImage = result
                     self.isGenerating = false
                 }
             } catch {
+                print("❌ Generation failed with error: \(error)")
                 await MainActor.run {
                     self.isGenerating = false
                     // Handle error appropriately
-                    print("Generation failed: \(error)")
+                    print("💥 Error details: \(error.localizedDescription)")
                 }
             }
         }

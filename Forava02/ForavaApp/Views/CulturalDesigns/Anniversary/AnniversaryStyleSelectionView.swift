@@ -70,12 +70,18 @@ struct AnniversaryStyleSelectionView: View {
     @ViewBuilder
     private func giftOptionsPreview(for theme: AnniversaryTheme) -> some View {
         VStack(spacing: 16) {
-            HStack {
-                Image(systemName: "gift.fill")
-                    .foregroundStyle(theme.primaryColor)
-                Text("Gift Options for \(theme.rawValue)")
-                    .font(.system(.headline, design: .rounded).weight(.semibold))
-                Spacer()
+            VStack(alignment: .leading, spacing: 8) {
+                HStack {
+                    Image(systemName: "sparkles")
+                        .foregroundStyle(theme.primaryColor.opacity(0.6))
+                    Text("Example Designs for \(theme.rawValue)")
+                        .font(.system(.subheadline, design: .rounded).weight(.semibold))
+                    Spacer()
+                }
+
+                Text("Preview of AI-generated design options")
+                    .font(.system(.caption, design: .rounded))
+                    .foregroundStyle(.secondary)
             }
             .padding(.horizontal, 20)
 
@@ -83,26 +89,42 @@ struct AnniversaryStyleSelectionView: View {
                 ForEach(Array(theme.giftOptions.enumerated()), id: \.offset) { index, option in
                     VStack(spacing: 8) {
                         RoundedRectangle(cornerRadius: 12)
-                            .fill(theme.primaryColor.opacity(0.1))
+                            .fill(theme.primaryColor.opacity(0.05))
                             .frame(height: 60)
                             .overlay(
                                 HStack {
                                     Image(systemName: giftOptionIcon(for: option))
-                                        .font(.title2)
-                                        .foregroundStyle(theme.primaryColor)
+                                        .font(.title3)
+                                        .foregroundStyle(theme.primaryColor.opacity(0.5))
 
                                     Spacer()
 
                                     Text("\(index + 1)")
-                                        .font(.caption.weight(.bold))
-                                        .foregroundStyle(theme.primaryColor.opacity(0.7))
+                                        .font(.caption2.weight(.medium))
+                                        .foregroundStyle(theme.primaryColor.opacity(0.4))
                                 }
                                 .padding(.horizontal, 12)
                             )
+                            .overlay(
+                                VStack {
+                                    HStack {
+                                        Spacer()
+                                        Text("Preview")
+                                            .font(.system(.caption2, design: .rounded).weight(.medium))
+                                            .foregroundStyle(theme.primaryColor.opacity(0.6))
+                                            .padding(.horizontal, 6)
+                                            .padding(.vertical, 2)
+                                            .background(theme.primaryColor.opacity(0.1))
+                                            .cornerRadius(4)
+                                    }
+                                    Spacer()
+                                }
+                                .padding(6)
+                            )
 
                         Text(option)
-                            .font(.system(.caption, design: .rounded).weight(.medium))
-                            .foregroundStyle(.primary)
+                            .font(.system(.caption, design: .rounded))
+                            .foregroundStyle(.secondary)
                             .multilineTextAlignment(.center)
                             .lineLimit(2)
                     }

@@ -272,12 +272,22 @@ struct AnniversaryCreateSummaryView: View {
     @ViewBuilder
     private func generateButton() -> some View {
         VStack(spacing: 12) {
-            Button(action: onGenerate) {
+            Button(action: {
+                if isReadyToGenerate {
+                    onGenerate()
+                } else {
+                    // Haptic feedback for disabled state
+                    #if os(iOS)
+                    let generator = UIImpactFeedbackGenerator(style: .light)
+                    generator.impactOccurred()
+                    #endif
+                }
+            }) {
                 HStack(spacing: 12) {
-                    Image(systemName: "wand.and.stars")
+                    Image(systemName: isReadyToGenerate ? "wand.and.stars" : "exclamationmark.triangle")
                         .font(.headline)
 
-                    Text("Generate Your Anniversary Gift")
+                    Text(isReadyToGenerate ? "Generate Your Anniversary Gift" : "Complete All Selections to Generate")
                         .font(.system(.headline, design: .rounded).weight(.semibold))
                 }
                 .foregroundStyle(.white)
@@ -285,15 +295,18 @@ struct AnniversaryCreateSummaryView: View {
                 .padding(.vertical, 16)
                 .background(
                     RoundedRectangle(cornerRadius: 12)
-                        .fill(isReadyToGenerate ? culturalColor.gradient : Color(.systemGray4).gradient)
+                        .fill(isReadyToGenerate ? culturalColor.gradient : Color.orange.gradient)
                 )
             }
-            .disabled(!isReadyToGenerate)
 
             if isReadyToGenerate {
                 Text("Generation typically takes 15-30 seconds")
                     .font(.system(.caption, design: .rounded))
                     .foregroundStyle(.secondary)
+            } else {
+                Text("Tap the missing items above to complete your selections")
+                    .font(.system(.caption, design: .rounded))
+                    .foregroundStyle(.orange)
             }
         }
         .padding(.horizontal, 20)
