@@ -1,23 +1,6 @@
 import Foundation
 import SwiftUI
 
-// MARK: - Core Contact Model
-struct Contact: Identifiable, Codable {
-    let id: UUID
-    let name: String
-    let phoneNumber: String
-    let email: String?
-    let relationship: String?
-
-    init(name: String, phoneNumber: String = "", email: String? = nil, relationship: String? = nil) {
-        self.id = UUID()
-        self.name = name
-        self.phoneNumber = phoneNumber
-        self.email = email
-        self.relationship = relationship
-    }
-}
-
 // Sample contacts extension
 extension Contact {
     static let sampleContacts = [
@@ -29,44 +12,8 @@ extension Contact {
     ]
 }
 
-// MARK: - Cultural Category
-enum CulturalCategory: String, Codable, CaseIterable {
-    case hindu = "Hindu"
-    case chinese = "Chinese"
-    case christian = "Christian"
-    case islamic = "Islamic"
-    case buddhist = "Buddhist"
-    case jewish = "Jewish"
-    case universal = "Universal"
-
-    var displayName: String {
-        return rawValue
-    }
-
-    var icon: String {
-        switch self {
-        case .hindu: return "🪢"
-        case .chinese: return "🧧"
-        case .christian: return "✝️"
-        case .islamic: return "🌙"
-        case .buddhist: return "🪷"
-        case .jewish: return "✡️"
-        case .universal: return "🎂"
-        }
-    }
-
-    var primaryColor: Color {
-        switch self {
-        case .hindu: return Color(hex: "#FF6B35") // Festival Orange
-        case .chinese: return Color(hex: "#DC143C") // Crimson Red
-        case .christian: return Color(hex: "#C41E3A") // Christmas Red
-        case .islamic: return Color(hex: "#009000") // Green
-        case .buddhist: return Color(hex: "#F99600") // Saffron Orange
-        case .jewish: return Color(hex: "#4169E1") // Royal Blue
-        case .universal: return Color(hex: "#FF8A00") // Warm Orange
-        }
-    }
-}
+// Note: CulturalCategory is now defined in CoreTypes.swift
+// This file imports and extends the cultural functionality
 
 // MARK: - Cultural Event
 struct CulturalEvent: Identifiable, Codable {
@@ -126,7 +73,7 @@ struct CulturalEvent: Identifiable, Codable {
             return "Choose a Lotus Design Style"
         case "Birthdays":
             return "Choose a Birthday Design Style"
-        case "Anniversaries":
+        case "Anniversary":
             return "Choose an Anniversary Design Style"
         default:
             // This should never happen with our defined events, but Swift requires exhaustiveness
@@ -140,7 +87,7 @@ extension CulturalEvent {
     // Landing page events (alphabetically ordered)
     static let allEvents = [
         CulturalEvent(
-            name: "Anniversaries",
+            name: "Anniversary",
             imageName: "Anniversaries",
             description: "Commemorating special relationships and milestones",
             category: .universal,
@@ -255,11 +202,4 @@ extension CulturalEvent {
     ]
 }
 
-// MARK: - Gift Status
-enum GiftStatus: String, Codable, CaseIterable {
-    case sent
-    case delivered
-    case viewed
-    case failed
-    case pending
-}
+// MARK: - Gift Status (Definition is in CoreTypes.swift)

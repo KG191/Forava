@@ -17,21 +17,27 @@ struct ContactSelectionView: View {
         self.onContactSelected = onContactSelected
     }
 
+    // Extracted background view to avoid type-checking timeout
+    @ViewBuilder
+    private var backgroundImage: some View {
+        if let event = selectedEvent {
+            Image(event.imageName)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .scaleEffect(0.8)
+                .opacity(0.3)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .position(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 2)
+                .ignoresSafeArea(.all)
+                .clipped()
+        }
+    }
+
     var body: some View {
         NavigationStack {
             ZStack {
                 // Background Image
-                if let event = selectedEvent {
-                    Image(event.imageName)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .scaleEffect(0.8) // 80% of the original image size
-                        .opacity(0.3) // Partially transparent
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .position(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 2)
-                        .ignoresSafeArea(.all)
-                        .clipped()
-                }
+                backgroundImage
 
                 VStack(spacing: 0) {
 
@@ -148,7 +154,7 @@ struct ContactSelectionView: View {
                         } else {
                             NavigationLink {
                                 if let event = selectedEvent {
-                                    CulturalGiftDesignView(selectedContact: selectedContact, selectedEvent: event)
+                                    TempCulturalGiftDesignView(selectedContact: selectedContact, selectedEvent: event)
                                 } else {
                                     RakhiSelectionView(selectedContact: selectedContact, selectedEvent: selectedEvent)
                                 }
@@ -303,6 +309,7 @@ struct ContactPickerView: UIViewControllerRepresentable {
         }
     }
 }
+
 
 #Preview {
     ContactSelectionView()

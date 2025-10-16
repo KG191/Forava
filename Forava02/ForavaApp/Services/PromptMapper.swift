@@ -651,12 +651,12 @@ class PromptBuilder {
 // MARK: - Enhanced Supporting Types
 
 struct AdvancedPrompt: Codable {
-    let positive: String
-    let negative: String
-    let loraModels: [String]
+    var positive: String
+    var negative: String
+    var loraModels: [String]
     let culturalWeight: Double
     let qualityEnhancers: [String]
-    let technicalParameters: TechnicalParameters
+    var technicalParameters: TechnicalParameters
 }
 
 struct CulturalPromptSet {
@@ -685,4 +685,14 @@ struct TechnicalParameters: Codable {
     let sampler: String
     let clip_skip: Int
     let strength: Double
+    
+    func withCfgScale(_ newCfgScale: Double) -> TechnicalParameters {
+        return TechnicalParameters(
+            cfg_scale: newCfgScale,
+            steps: steps,
+            sampler: sampler,
+            clip_skip: clip_skip,
+            strength: strength
+        )
+    }
 }

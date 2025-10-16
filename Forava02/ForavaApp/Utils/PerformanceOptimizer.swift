@@ -24,7 +24,7 @@ import os.log
 class PerformanceOptimizer: ObservableObject {
     static let shared = PerformanceOptimizer()
 
-    @Published var currentMetrics: PerformanceMetrics = PerformanceMetrics()
+    @Published var currentMetrics: OptimizationMetrics = OptimizationMetrics()
     @Published var optimizationRecommendations: [OptimizationRecommendation] = []
 
     private let logger = Logger(subsystem: "com.forava.performance", category: "optimizer")
@@ -59,7 +59,7 @@ class PerformanceOptimizer: ObservableObject {
     }
 
     private func updateMetrics() {
-        let newMetrics = PerformanceMetrics(
+        let newMetrics = OptimizationMetrics(
             memoryUsage: getMemoryUsage(),
             cpuUsage: getCPUUsage(),
             batteryLevel: getBatteryLevel(),
@@ -222,7 +222,7 @@ class PerformanceOptimizer: ObservableObject {
 
     // MARK: - Real-time Performance Analysis
 
-    private func analyzePerformance(_ metrics: PerformanceMetrics) {
+    private func analyzePerformance(_ metrics: OptimizationMetrics) {
         var recommendations: [OptimizationRecommendation] = []
 
         // Memory analysis
@@ -404,7 +404,7 @@ class PerformanceOptimizer: ObservableObject {
 
 // MARK: - Supporting Types
 
-struct PerformanceMetrics {
+struct OptimizationMetrics {
     let memoryUsage: Double // in MB
     let cpuUsage: Double // percentage
     let batteryLevel: Double // percentage

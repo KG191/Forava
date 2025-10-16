@@ -155,7 +155,7 @@ struct CulturalGiftSelectionView: View {
                         .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 16))
 
                         // Continue Button
-                        NavigationLink(destination: CulturalGiftDesignView(selectedContact: selectedContact, selectedEvent: selectedEvent)) {
+                        NavigationLink(destination: TempCulturalGiftDesignView(selectedContact: selectedContact, selectedEvent: selectedEvent)) {
                             HStack(spacing: 8) {
                                 Image(systemName: "arrow.right.circle.fill")
                                 Text("Continue with \(selectedGift.name)")
@@ -494,6 +494,70 @@ struct CulturalGiftConfirmationView: View {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                 dismiss()
             }
+        }
+    }
+}
+
+// MARK: - Temporary Cultural Gift Design View
+struct TempCulturalGiftDesignView: View {
+    let selectedContact: Contact
+    let selectedEvent: CulturalEvent
+
+    var body: some View {
+        // Route to appropriate cultural design view
+        switch selectedEvent.name.lowercased() {
+        case "anniversary":
+            AnniversaryDesignView(selectedContact: selectedContact, selectedEvent: selectedEvent)
+        default:
+            // Placeholder for other cultural events
+            VStack(spacing: 24) {
+                // Header
+                VStack(spacing: 12) {
+                    Image(systemName: selectedEvent.category.icon)
+                        .font(.system(size: 60))
+                        .foregroundStyle(selectedEvent.category.primaryColor)
+
+                    Text("Creating \(selectedEvent.name) Gift")
+                        .font(.system(.title, design: .rounded).weight(.bold))
+                        .foregroundStyle(.primary)
+
+                    Text("for \(selectedContact.name)")
+                        .font(.system(.title2, design: .rounded).weight(.medium))
+                        .foregroundStyle(selectedEvent.category.primaryColor)
+                }
+
+                // Status Message
+                VStack(spacing: 16) {
+                    Text("🎨 Cultural Design Studio")
+                        .font(.system(.headline, design: .rounded).weight(.semibold))
+
+                    Text("We're carefully crafting culturally authentic \(selectedEvent.name.lowercased()) gifts with AI-powered personalization.")
+                        .font(.system(.body, design: .rounded))
+                        .foregroundStyle(.secondary)
+                        .multilineTextAlignment(.center)
+
+                    Text("This feature is being enhanced to ensure cultural accuracy and authenticity.")
+                        .font(.system(.caption, design: .rounded))
+                        .foregroundStyle(.tertiary)
+                        .padding(.horizontal)
+                }
+
+                Spacer()
+
+                // Back Button
+                Button("Return to Gift Selection") {
+                    // This would typically dismiss or navigate back
+                }
+                .font(.system(.body, design: .rounded).weight(.semibold))
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 16)
+                .background(selectedEvent.category.primaryColor.opacity(0.1), in: RoundedRectangle(cornerRadius: 16))
+                .foregroundStyle(selectedEvent.category.primaryColor)
+            }
+            .padding(32)
+            .background(Color(.systemGroupedBackground))
+            .navigationTitle("Cultural Design")
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }

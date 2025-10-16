@@ -569,7 +569,7 @@ struct ShareHistoryRow: View {
 
             Spacer()
 
-            Text("✨ \(String(format: "%.1f", share.culturalScore))")
+            Text("✨ \(String(format: "%.1f", share.culturalScore ?? 0.0))")
                 .font(.system(.caption, design: .rounded))
                 .foregroundStyle(.orange)
         }

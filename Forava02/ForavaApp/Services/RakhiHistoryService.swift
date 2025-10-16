@@ -231,7 +231,7 @@ class RakhiHistoryService: ObservableObject {
                     description: "Rakhis with high cultural authenticity",
                     rakhis: highCulturalRakhis,
                     createdAt: Date(),
-                    culturalTheme: .traditional,
+                    culturalTheme: RakhiCulturalTheme.traditional,
                     isSmartCollection: true
                 )
             )
@@ -263,7 +263,7 @@ class RakhiHistoryService: ObservableObject {
                     description: "Classic traditional Rakhi designs",
                     rakhis: traditionalRakhis,
                     createdAt: Date(),
-                    culturalTheme: .traditional,
+                    culturalTheme: RakhiCulturalTheme.traditional,
                     isSmartCollection: true
                 )
             )
@@ -279,7 +279,7 @@ class RakhiHistoryService: ObservableObject {
                     description: "Rakhis with spiritual significance",
                     rakhis: spiritualRakhis,
                     createdAt: Date(),
-                    culturalTheme: .spiritual,
+                    culturalTheme: RakhiCulturalTheme.spiritual,
                     isSmartCollection: true
                 )
             )
@@ -486,7 +486,7 @@ struct RakhiCollection: Identifiable, Codable {
     var description: String?
     var rakhis: [GeneratedRakhi]
     let createdAt: Date
-    var culturalTheme: CulturalTheme?
+    var culturalTheme: RakhiCulturalTheme?
     var isSmartCollection: Bool = false
 
     var rakhiCount: Int {
@@ -499,7 +499,7 @@ struct RakhiCollection: Identifiable, Codable {
     }
 }
 
-enum CulturalTheme: String, CaseIterable, Codable {
+enum RakhiCulturalTheme: String, CaseIterable, Codable {
     case traditional = "Traditional"
     case spiritual = "Spiritual"
     case modern = "Modern"

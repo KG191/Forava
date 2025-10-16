@@ -1,0 +1,174 @@
+import SwiftUI
+import Foundation
+
+struct CulturalGiftDesignView: View {
+    let selectedContact: Contact
+    let selectedEvent: CulturalEvent
+    
+    @State private var currentTab: GiftDesignTab = .style
+    @Environment(\.dismiss) private var dismiss
+    
+    var body: some View {
+        NavigationStack {
+            VStack {
+                // Header with contact and event info
+                CulturalHeaderView(
+                    selectedContact: selectedContact,
+                    selectedEvent: selectedEvent
+                )
+                
+                // Route to specific cultural component based on selected event
+                Group {
+                    switch selectedEvent.name {
+                    // Universal Events
+                    case "Anniversary", "Anniversaries":
+                        AnniversaryDesignView(
+                            selectedContact: selectedContact,
+                            selectedEvent: selectedEvent
+                        )
+                    case "Birthday", "Birthdays":
+                        BirthdayDesignView(
+                            selectedContact: selectedContact,
+                            selectedEvent: selectedEvent
+                        )
+                    
+                    // Christian Events
+                    case "Christmas":
+                        ChristmasDesignView(
+                            selectedContact: selectedContact,
+                            selectedEvent: selectedEvent
+                        )
+                    case "Easter":
+                        EasterDesignView(
+                            selectedContact: selectedContact,
+                            selectedEvent: selectedEvent
+                        )
+                    
+                    // Chinese Events
+                    case "Chinese New Year":
+                        ChineseNewYearDesignView(
+                            selectedContact: selectedContact,
+                            selectedEvent: selectedEvent
+                        )
+                    case "Mid-Autumn Festival":
+                        MidAutumnFestivalDesignView(
+                            selectedContact: selectedContact,
+                            selectedEvent: selectedEvent
+                        )
+                    
+                    // Hindu Events
+                    case "Diwali":
+                        DiwaliDesignView(
+                            selectedContact: selectedContact,
+                            selectedEvent: selectedEvent
+                        )
+                    case "Raksha Bandhan":
+                        RakshaBandhanDesignView(
+                            selectedContact: selectedContact,
+                            selectedEvent: selectedEvent
+                        )
+                    case "Holi":
+                        // Placeholder for future implementation
+                        UnsupportedEventView(eventName: "Holi")
+                    
+                    // Islamic Events
+                    case "Eid al-Adha":
+                        EidAlAdhaDesignView(
+                            selectedContact: selectedContact,
+                            selectedEvent: selectedEvent
+                        )
+                    case "Eid al-Fitr":
+                        EidAlFitrDesignView(
+                            selectedContact: selectedContact,
+                            selectedEvent: selectedEvent
+                        )
+                    
+                    // Jewish Events
+                    case "Hanukkah":
+                        HanukkahDesignView(
+                            selectedContact: selectedContact,
+                            selectedEvent: selectedEvent
+                        )
+                    case "Rosh Hashanah":
+                        RoshHashanahDesignView(
+                            selectedContact: selectedContact,
+                            selectedEvent: selectedEvent
+                        )
+                    
+                    // Buddhist Events
+                    case "Vesak Day":
+                        VesakDayDesignView(
+                            selectedContact: selectedContact,
+                            selectedEvent: selectedEvent
+                        )
+                    
+                    // Default fallback
+                    default:
+                        UnsupportedEventView(eventName: selectedEvent.name)
+                    }
+                }
+            }
+            .navigationTitle("Design Gift")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button("Cancel") {
+                        dismiss()
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Simple header view for contact and event information
+private struct CulturalHeaderView: View {
+    let selectedContact: Contact
+    let selectedEvent: CulturalEvent
+    
+    var body: some View {
+        VStack(spacing: 8) {
+            HStack {
+                VStack(alignment: .leading) {
+                    Text("For: \(selectedContact.name)")
+                        .font(.headline)
+                        .foregroundColor(.primary)
+                    
+                    Text("Event: \(selectedEvent.name)")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                }
+                Spacer()
+            }
+            .padding(.horizontal)
+            
+            Divider()
+        }
+    }
+}
+
+// Fallback view for unsupported events
+private struct UnsupportedEventView: View {
+    let eventName: String
+    
+    var body: some View {
+        VStack(spacing: 20) {
+            Image(systemName: "calendar.badge.exclamationmark")
+                .font(.largeTitle)
+                .foregroundColor(.orange)
+            
+            Text("Event Not Yet Supported")
+                .font(.title2)
+                .fontWeight(.semibold)
+            
+            Text("The '\(eventName)' cultural event is not yet implemented in our design system.")
+                .multilineTextAlignment(.center)
+                .foregroundColor(.secondary)
+            
+            Text("More cultural celebrations coming soon!")
+                .font(.caption)
+                .foregroundColor(.secondary)
+        }
+        .padding()
+    }
+}

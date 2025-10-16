@@ -347,48 +347,52 @@ extension VesakDayPersonalTouch {
 }
 
 // MARK: - Vesak Day Selection State
-struct VesakDaySelectionState: Codable {
-    var selectedTheme: VesakDayTheme?
-    var selectedGift: String?
-    var selectedElements: [VesakDayElement] = []
-    var selectedColorPalette: VesakDayColorPalette?
-    var selectedOptionalMessage: VesakDayPersonalTouch?
-    var personalMessage: String = ""
+// TODO: Re-enable when CulturalSelectionState is available
+/*
+struct VesakDaySelectionState: CulturalSelectionState {
+    let selectedTheme: VesakDayTheme?
+    let selectedGift: String?
+    let selectedElements: [VesakDayElement]
+    let selectedColorPalette: VesakDayColorPalette?
+    let selectedOptionalMessage: VesakDayPersonalTouch?
+    let personalMessage: String
 
     var isComplete: Bool {
         return selectedTheme != nil &&
                selectedGift != nil &&
                !selectedElements.isEmpty &&
                selectedColorPalette != nil &&
-               (selectedOptionalMessage?.message.isEmpty == false || !personalMessage.isEmpty)
+               (selectedOptionalMessage != nil || !personalMessage.isEmpty)
     }
 
     var summary: String {
-        var parts: [String] = []
+        var components: [String] = []
 
         if let theme = selectedTheme {
-            parts.append("Style: \(theme.rawValue)")
+            components.append("Theme: \(theme.rawValue)")
         }
 
         if let gift = selectedGift {
-            parts.append("Gift: \(gift)")
+            components.append("Gift: \(gift)")
         }
 
         if !selectedElements.isEmpty {
             let elementNames = selectedElements.map { $0.name }
-            parts.append("Elements: \(elementNames.joined(separator: ", "))")
+            components.append("Elements: \(elementNames.joined(separator: ", "))")
         }
 
         if let palette = selectedColorPalette {
-            parts.append("Colors: \(palette.name)")
+            components.append("Colors: \(palette.name)")
         }
 
-        if let optionalMsg = selectedOptionalMessage, !optionalMsg.message.isEmpty {
-            parts.append("Message: \(optionalMsg.message)")
-        } else if !personalMessage.isEmpty {
-            parts.append("Personal Message: \(personalMessage)")
+        if !personalMessage.isEmpty {
+            components.append("Message: \(personalMessage)")
+        } else if let optionalMsg = selectedOptionalMessage {
+            components.append("Message: \(optionalMsg.message)")
         }
 
-        return parts.joined(separator: "\n")
+        return components.joined(separator: "\n")
     }
 }
+*/
+

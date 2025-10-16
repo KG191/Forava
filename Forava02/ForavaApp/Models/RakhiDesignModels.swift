@@ -179,6 +179,25 @@ enum ColorPalette: String, CaseIterable, Codable {
             return [.black, .white, .gray, Color(red: 0.3, green: 0.3, blue: 0.3)]
         }
     }
+    
+    var displayName: String {
+        switch self {
+        case .traditional:
+            return "Traditional"
+        case .modern:
+            return "Modern"
+        case .vibrant:
+            return "Vibrant"
+        case .pastel:
+            return "Pastel"
+        case .earthy:
+            return "Earthy"
+        case .metallic:
+            return "Metallic"
+        case .monochrome:
+            return "Monochrome"
+        }
+    }
 
     var promptTokens: [String] {
         switch self {

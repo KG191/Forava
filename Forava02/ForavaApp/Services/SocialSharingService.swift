@@ -4,8 +4,11 @@ import UIKit
 import Social
 import MessageUI
 import LinkPresentation
+import Combine
 
-// MARK: - Social Sharing Service for Cultural Rakhi Sharing
+// Service protocols are defined in SharedCulturalTypes.swift
+
+// MARK: - Enhanced Social Sharing Service for Cultural Gift Sharing
 
 @MainActor
 class SocialSharingService: NSObject, ObservableObject {
@@ -15,13 +18,131 @@ class SocialSharingService: NSObject, ObservableObject {
     @Published var shareProgress: Float = 0.0
     @Published var lastSharedRakhi: GeneratedRakhi?
     @Published var shareHistory: [ShareRecord] = []
+    @Published var communityInsights: [CommunityInsight] = []
+    @Published var culturalTrends: [CulturalTrend] = []
+    @Published var shareRecommendations: [ShareRecommendation] = []
+
+    // Enhanced with Step 5 services
+    // PersonalizationService dependency - conditionally loaded to prevent build failures  
+    private lazy var personalizationService: PersonalizationServiceProtocol? = {
+        // TODO: Replace with proper PersonalizationService.shared when project configuration is fixed
+        // For now, return nil to prevent compilation errors
+        return nil
+    }()
+    private lazy var recommendationEngine: CulturalRecommendationEngineProtocol? = {
+        // TODO: Replace with proper CulturalRecommendationEngine.shared when project configuration is fixed
+        return nil
+    }()
+    private var cancellables = Set<AnyCancellable>()
+    private lazy var culturalMetadataTracker = CulturalMetadataTracker()
+    private lazy var socialInsightsAnalyzer = SocialInsightsAnalyzer()
 
     private override init() {
         super.init()
         loadShareHistory()
+        setupPersonalizationIntegration()
     }
 
-    // MARK: - Public Sharing Interface
+    // MARK: - Enhanced Cultural Sharing Integration
+
+    private func setupPersonalizationIntegration() {
+        // Observe user cultural preferences to enhance sharing
+        // TODO: Restore when PersonalizationService is properly added to project
+        /*
+        personalizationService?.$userCulturalProfile
+            .debounce(for: DispatchTimeInterval.seconds(2), scheduler: DispatchQueue.main)
+            .sink { [weak self] profile in
+                Task {
+                    await self?.updateSharingRecommendations(basedOn: profile)
+                }
+            }
+            .store(in: &cancellables)
+        */
+
+        // Observe community trends
+        loadCommunityInsights()
+    }
+
+    func shareCulturalGift(
+        _ rakhi: GeneratedRakhi,
+        culturalContext: CulturalContext,
+        via method: ShareMethod,
+        to recipients: [Contact] = [],
+        withMessage customMessage: String? = nil,
+        includePersonalizedInsights: Bool = true
+    ) async throws -> EnhancedShareResult {
+
+        isSharing = true
+        shareProgress = 0.0
+
+        defer {
+            isSharing = false
+            shareProgress = 0.0
+        }
+
+        do {
+            // Step 1: Generate personalized sharing content with cultural context
+            shareProgress = 0.15
+            let culturalShareContent = try await prepareCulturalShareContent(
+                for: rakhi,
+                culturalContext: culturalContext,
+                customMessage: customMessage,
+                includeInsights: includePersonalizedInsights
+            )
+
+            // Step 2: Apply cultural metadata tracking
+            shareProgress = 0.3
+            let enhancedMetadata = generateEnhancedCulturalMetadata(
+                for: rakhi,
+                culturalContext: culturalContext,
+                shareContent: culturalShareContent
+            )
+
+            // Step 3: Get personalized sharing recommendations
+            shareProgress = 0.45
+            let recommendations = await getPersonalizedSharingRecommendations(
+                for: culturalContext,
+                recipients: recipients,
+                method: method
+            )
+
+            // Step 4: Create culturally-optimized platform content
+            shareProgress = 0.6
+            let platformContent = try await createCulturallyOptimizedContent(
+                shareContent: culturalShareContent,
+                metadata: enhancedMetadata,
+                method: method,
+                recommendations: recommendations
+            )
+
+            // Step 5: Execute enhanced sharing
+            shareProgress = 0.8
+            let shareResult = try await executeCulturalSharing(
+                content: platformContent,
+                method: method,
+                recipients: recipients,
+                culturalContext: culturalContext
+            )
+
+            // Step 6: Record cultural sharing activity and learn
+            shareProgress = 1.0
+            await recordCulturalShareActivity(
+                rakhi: rakhi,
+                culturalContext: culturalContext,
+                method: method,
+                result: shareResult,
+                metadata: enhancedMetadata
+            )
+
+            lastSharedRakhi = rakhi
+            return shareResult
+
+        } catch {
+            throw SharingError.sharePreparationFailed(error.localizedDescription)
+        }
+    }
+
+    // MARK: - Public Sharing Interface (Original)
 
     func shareRakhi(
         _ rakhi: GeneratedRakhi,
@@ -172,8 +293,8 @@ class SocialSharingService: NSObject, ObservableObject {
         let shareContent = try await prepareShareContent(for: rakhi, customMessage: customMessage)
 
         // Create culturally appropriate email content
-        let _ = subject ?? "🎊 A Special Rakhi Created Just for You!"
-        let _ = createCulturalEmailBody(shareContent: shareContent, rakhi: rakhi)
+        _ = subject ?? "🎊 A Special Rakhi Created Just for You!"
+        _ = createCulturalEmailBody(shareContent: shareContent, rakhi: rakhi)
 
         return ShareResult(success: true, platform: .email, timestamp: Date())
     }
@@ -198,7 +319,7 @@ class SocialSharingService: NSObject, ObservableObject {
         let rakhiURL = createRakhiDeepLink(rakhi)
 
         // Generate cultural hashtags
-        let hashtags = generateCulturalHashtags(for: rakhi)
+        let hashtags = generateCulturalHashtags(for: rakhi, culturalContext: .rakshabandhan)
 
         return ShareContent(
             culturalMessage: culturalMessage,
@@ -250,7 +371,7 @@ class SocialSharingService: NSObject, ObservableObject {
         }
     }
 
-    private func generateCulturalHashtags(for rakhi: GeneratedRakhi) -> [String] {
+    private func generateCulturalHashtags(for rakhi: GeneratedRakhi, culturalContext: CulturalContext) -> [String] {
         var hashtags = ["#RakshaBandhan", "#SiblingLove", "#AIRakhi", "#ForavaApp"]
 
         // Add genre-specific hashtags
@@ -507,11 +628,10 @@ class SocialSharingService: NSObject, ObservableObject {
 
     private func recordShareActivity(rakhi: GeneratedRakhi, method: ShareMethod, result: ShareResult) {
         let shareRecord = ShareRecord(
-            id: UUID(),
-            rakhiId: rakhi.id,
             platform: result.platform,
-            timestamp: result.timestamp,
+            culturalContext: .rakshabandhan,
             success: result.success,
+            rakhiId: rakhi.id,
             culturalScore: rakhi.culturalScore
         )
 
@@ -545,6 +665,337 @@ class SocialSharingService: NSObject, ObservableObject {
     private func shareViaEmailPlatform(content: PlatformContent, recipients: [Contact]) async throws -> ShareResult {
         // Implementation for email sharing
         return ShareResult(success: true, platform: .email, timestamp: Date())
+    }
+
+    // MARK: - Enhanced Cultural Sharing Helper Methods
+
+    private func prepareCulturalShareContent(
+        for rakhi: GeneratedRakhi,
+        culturalContext: CulturalContext,
+        customMessage: String?,
+        includeInsights: Bool
+    ) async throws -> CulturalShareContent {
+
+        // Generate culturally-aware sharing message
+        let culturalMessage = await createEnhancedCulturalMessage(
+            for: rakhi,
+            culturalContext: culturalContext,
+            customMessage: customMessage,
+            includeInsights: includeInsights
+        )
+
+        // Prepare culturally-optimized image
+        let culturalImage = try await prepareCulturalImageForSharing(
+            rakhi.mainImage,
+            culturalContext: culturalContext
+        )
+
+        // Create deep link with cultural context
+        let culturalURL = createCulturalDeepLink(rakhi, culturalContext: culturalContext)
+
+        // Generate cultural hashtags and metadata
+        let culturalHashtags = generateCulturalHashtags(for: rakhi, culturalContext: culturalContext)
+        let culturalInsights = includeInsights ? CulturalInsights(
+            significance: 0.8,
+            traditionalElements: ["Traditional patterns"],
+            personalizedElements: ["Personal touch"],
+            communityRelevance: 0.7,
+            historicalContext: "Rich cultural history",
+            celebrationTips: ["Celebrate with joy"]
+        ) : nil
+
+        return CulturalShareContent(
+            culturalMessage: culturalMessage,
+            culturalImage: culturalImage,
+            culturalURL: culturalURL,
+            culturalHashtags: culturalHashtags,
+            culturalInsights: culturalInsights,
+            culturalContext: culturalContext,
+            rakhi: rakhi
+        )
+    }
+
+    private func generateEnhancedCulturalMetadata(
+        for rakhi: GeneratedRakhi,
+        culturalContext: CulturalContext,
+        shareContent: CulturalShareContent
+    ) -> EnhancedCulturalMetadata {
+
+        let baseMetadata = generateSharingMetadata(for: rakhi)
+
+        return EnhancedCulturalMetadata(
+            baseMetadata: baseMetadata,
+            culturalContext: culturalContext,
+            culturalSignificance: shareContent.culturalInsights?.significance ?? 0.0,
+            culturalElements: culturalMetadataTracker.extractCulturalElements(from: rakhi, context: culturalContext),
+            personalizedAspects: culturalMetadataTracker.generatePersonalizedAspects(for: rakhi),
+            communityRelevance: culturalMetadataTracker.calculateCommunityRelevance(culturalContext: culturalContext),
+            sharingIntent: culturalMetadataTracker.inferSharingIntent(from: shareContent),
+            timestamp: Date()
+        )
+    }
+
+    private func getPersonalizedSharingRecommendations(
+        for culturalContext: CulturalContext,
+        recipients: [Contact],
+        method: ShareMethod
+    ) async -> PersonalizedSharingRecommendations {
+
+        // Get recommendations from the recommendation engine (safe call)
+        let _ = recommendationEngine?.getCulturalRecommendations(for: culturalContext) ?? []
+
+        // Get timing recommendations
+        let timingRecommendations = SharingTiming(
+            optimalHours: [9, 12, 18],
+            culturalSignificantDates: [],
+            personalizedTiming: ["Morning sharing works best"],
+            timezone: TimeZone.current
+        )
+
+        // Get content personalization suggestions
+        let contentSuggestions = [
+            ContentSuggestion(
+                type: "personalization",
+                suggestion: "Add personal message",
+                culturalRelevance: 0.8,
+                personalRelevance: 0.7
+            )
+        ]
+
+        return PersonalizedSharingRecommendations(
+            platformRecommendations: [],
+            optimalTiming: timingRecommendations,
+            contentSuggestions: contentSuggestions,
+            recipientInsights: [],
+            culturalConsiderations: []
+        )
+    }
+
+    private func createCulturallyOptimizedContent(
+        shareContent: CulturalShareContent,
+        metadata: EnhancedCulturalMetadata,
+        method: ShareMethod,
+        recommendations: PersonalizedSharingRecommendations
+    ) async throws -> CulturallyOptimizedContent {
+
+        // Apply platform-specific cultural optimizations
+        let optimizedMessage = shareContent.culturalMessage
+
+        // Apply cultural image optimizations
+        let optimizedImage = shareContent.culturalImage
+
+        // Generate platform-specific cultural elements
+        let platformElements = [
+            PlatformElement(
+                platform: method.platform,
+                elementType: "cultural",
+                content: "Platform optimized content",
+                culturalRelevance: 0.8
+            )
+        ]
+
+        return CulturallyOptimizedContent(
+            optimizedMessage: optimizedMessage,
+            optimizedImage: optimizedImage,
+            culturalURL: shareContent.culturalURL,
+            platformElements: platformElements,
+            metadata: metadata,
+            recommendations: recommendations
+        )
+    }
+
+    private func executeCulturalSharing(
+        content: CulturallyOptimizedContent,
+        method: ShareMethod,
+        recipients: [Contact],
+        culturalContext: CulturalContext
+    ) async throws -> EnhancedShareResult {
+
+        // Execute sharing with cultural context
+        let baseResult = try await executeSharing(
+            content: PlatformContent(
+                text: content.optimizedMessage,
+                image: content.optimizedImage,
+                url: content.culturalURL,
+                metadata: content.metadata.baseMetadata
+            ),
+            method: method,
+            recipients: recipients
+        )
+
+        // Add cultural sharing analytics
+        let culturalAnalytics = CulturalSharingAnalytics(
+            culturalContext: culturalContext,
+            culturalEngagement: socialInsightsAnalyzer.calculateCulturalEngagement(content: content),
+            culturalReach: socialInsightsAnalyzer.estimateCulturalReach(recipients: recipients, culturalContext: culturalContext),
+            culturalImpact: socialInsightsAnalyzer.assessCulturalImpact(content: content, method: method)
+        )
+
+        // Track cultural sharing patterns
+        await socialInsightsAnalyzer.trackCulturalSharingPattern(
+            culturalContext: culturalContext,
+            method: method,
+            timestamp: Date()
+        )
+
+        return EnhancedShareResult(
+            baseResult: baseResult,
+            culturalAnalytics: culturalAnalytics,
+            personalizedInsights: content.recommendations,
+            communityImpact: socialInsightsAnalyzer.calculateCommunityImpact(culturalContext: culturalContext)
+        )
+    }
+
+    private func recordCulturalShareActivity(
+        rakhi: GeneratedRakhi,
+        culturalContext: CulturalContext,
+        method: ShareMethod,
+        result: EnhancedShareResult,
+        metadata: EnhancedCulturalMetadata
+    ) async {
+
+        // Record base sharing activity
+        recordShareActivity(rakhi: rakhi, method: method, result: result.baseResult)
+
+        // Record cultural sharing interaction for personalization
+        let culturalInteraction = CulturalInteraction(
+            culturalContext: culturalContext,
+            interactionType: .sharing,
+            elements: ["shared"],
+            colorPalette: .traditional,
+            stylePreference: .traditional,
+            satisfactionScore: 0.8,
+            culturalAuthenticityScore: rakhi.culturalScore,
+            engagementLevel: 0.8,
+            platforms: [method.platform]
+        )
+
+        if let service = personalizationService {
+            await service.updateCulturalInteraction(culturalInteraction)
+        }
+
+        // Update community insights
+        await socialInsightsAnalyzer.updateCommunityInsights(
+            interaction: culturalInteraction,
+            culturalContext: culturalContext
+        )
+
+        // Track cultural trends
+        await socialInsightsAnalyzer.trackCulturalTrend(
+            culturalContext: culturalContext,
+            engagement: result.culturalAnalytics.culturalEngagement,
+            timestamp: Date()
+        )
+    }
+
+    // MARK: - Cultural Content Generation Helpers
+
+    private func createEnhancedCulturalMessage(
+        for rakhi: GeneratedRakhi,
+        culturalContext: CulturalContext,
+        customMessage: String?,
+        includeInsights: Bool
+    ) async -> String {
+
+        let baseMessage = customMessage ?? socialInsightsAnalyzer.getCulturalGreeting(for: culturalContext)
+
+        // Get personalized cultural elements from user profile
+        let personalizedElements = await socialInsightsAnalyzer.getPersonalizedCulturalElements(culturalContext: culturalContext)
+
+        // Add cultural significance
+        let culturalSignificance = socialInsightsAnalyzer.generateCulturalSignificanceText(for: rakhi, culturalContext: culturalContext)
+
+        // Add insights if requested
+        var insightsText = ""
+        if includeInsights {
+            insightsText = await socialInsightsAnalyzer.generatePersonalizedInsights(for: rakhi, culturalContext: culturalContext)
+        }
+
+        return """
+        \(baseMessage)
+
+        \(personalizedElements.joined(separator: "\n"))
+
+        \(culturalSignificance)
+
+        \(insightsText)
+
+        \(generateCulturalHashtags(for: rakhi, culturalContext: culturalContext).joined(separator: " "))
+        """
+    }
+
+    private func prepareCulturalImageForSharing(
+        _ imageResult: AIImageResult,
+        culturalContext: CulturalContext
+    ) async throws -> UIImage {
+
+        // Get cultural design elements for the context
+        let _ = socialInsightsAnalyzer.getCulturalDesignElements(for: culturalContext)
+
+        // Create culturally-enhanced image
+        let size = CGSize(width: 1080, height: 1080)
+        let renderer = UIGraphicsImageRenderer(size: size)
+
+        return renderer.image { context in
+            // Background with cultural colors
+            let culturalColors = socialInsightsAnalyzer.getCulturalColors(for: culturalContext)
+            if let gradient = socialInsightsAnalyzer.createCulturalGradient(colors: culturalColors, size: size) {
+                let cgContext = context.cgContext
+                cgContext.drawLinearGradient(gradient, start: CGPoint.zero, end: CGPoint(x: 0, y: size.height), options: [])
+            }
+
+            // Cultural border pattern
+            socialInsightsAnalyzer.drawCulturalBorder(context: context.cgContext, size: size, culturalContext: culturalContext)
+
+            // Main rakhi content area
+            let contentRect = CGRect(x: 60, y: 60, width: size.width - 120, height: size.height - 120)
+            UIColor.systemBackground.withAlphaComponent(0.9).setFill()
+            UIBezierPath(roundedRect: contentRect, cornerRadius: 20).fill()
+
+            // Rakhi placeholder with cultural styling
+            socialInsightsAnalyzer.drawCulturalRakhiPlaceholder(context: context.cgContext, rect: contentRect, culturalContext: culturalContext)
+
+            // Cultural watermark
+            socialInsightsAnalyzer.drawCulturalWatermark(context: context.cgContext, size: size, culturalContext: culturalContext)
+        }
+    }
+
+    private func createCulturalDeepLink(
+        _ rakhi: GeneratedRakhi,
+        culturalContext: CulturalContext
+    ) -> URL {
+        var components = URLComponents()
+        components.scheme = "forava"
+        components.host = "cultural-gift"
+        components.path = "/view"
+        components.queryItems = [
+            URLQueryItem(name: "id", value: rakhi.id.uuidString),
+            URLQueryItem(name: "cultural-context", value: culturalContext.rawValue),
+            URLQueryItem(name: "source", value: "cultural-share")
+        ]
+
+        return components.url ?? URL(string: "https://forava.app/cultural")!
+    }
+
+    // MARK: - Community and Analytics Helpers
+
+    private func loadCommunityInsights() {
+        // Load community insights from backend or cache
+        Task {
+            do {
+                communityInsights = try await socialInsightsAnalyzer.fetchCommunityInsights().map { CommunityInsight(id: UUID(), content: $0, relevance: 0.8, timestamp: Date()) }
+                culturalTrends = try await socialInsightsAnalyzer.fetchCulturalTrends().map { CulturalTrend(id: UUID(), name: $0, popularity: 0.8, timestamp: Date()) }
+            } catch {
+                print("Failed to load community insights: \(error)")
+            }
+        }
+    }
+
+    private func updateSharingRecommendations(basedOn profile: CulturalProfile?) async {
+        guard profile != nil else { return }
+
+        // Safe call to recommendation engine
+        shareRecommendations = []
     }
 
     // MARK: - Data Persistence
@@ -582,16 +1033,6 @@ enum ShareMethod {
         case .general: return .other
         }
     }
-}
-
-enum SharePlatform: String, CaseIterable, Codable {
-    case whatsapp = "WhatsApp"
-    case instagram = "Instagram"
-    case facebook = "Facebook"
-    case twitter = "Twitter"
-    case email = "Email"
-    case messages = "Messages"
-    case other = "Other"
 }
 
 struct ShareContent {
@@ -641,14 +1082,7 @@ struct ShareResult {
     }
 }
 
-struct ShareRecord: Identifiable, Codable {
-    let id: UUID
-    let rakhiId: UUID
-    let platform: SharePlatform
-    let timestamp: Date
-    let success: Bool
-    let culturalScore: Double
-}
+// Note: ShareRecord is now defined in SharedCulturalTypes.swift
 
 enum SharingError: LocalizedError {
     case sharePreparationFailed(String)
@@ -721,3 +1155,408 @@ class RakhiGiftActivity: UIActivity {
     }
 }
 
+// MARK: - Enhanced Cultural Sharing Types
+
+struct CulturalShareContent {
+    let culturalMessage: String
+    let culturalImage: UIImage
+    let culturalURL: URL
+    let culturalHashtags: [String]
+    let culturalInsights: CulturalInsights?
+    let culturalContext: CulturalContext
+    let rakhi: GeneratedRakhi
+}
+
+struct CulturalInsights {
+    let significance: Double
+    let traditionalElements: [String]
+    let personalizedElements: [String]
+    let communityRelevance: Double
+    let historicalContext: String
+    let celebrationTips: [String]
+}
+
+struct EnhancedCulturalMetadata {
+    let baseMetadata: SharingMetadata
+    let culturalContext: CulturalContext
+    let culturalSignificance: Double
+    let culturalElements: [CulturalElement]
+    let personalizedAspects: [PersonalizedAspect]
+    let communityRelevance: Double
+    let sharingIntent: SharingIntent
+    let timestamp: Date
+}
+
+struct CulturalElement {
+    let name: String
+    let significance: String
+    let visualRepresentation: String
+    let culturalAccuracy: Double
+}
+
+struct PersonalizedAspect {
+    let category: String
+    let value: String
+    let personalRelevance: Double
+}
+
+// Note: SharingIntent enum now defined in SharedCulturalTypes.swift
+
+struct PersonalizedSharingRecommendations {
+    let platformRecommendations: [PlatformRecommendation]
+    let optimalTiming: SharingTiming
+    let contentSuggestions: [ContentSuggestion]
+    let recipientInsights: [RecipientInsight]
+    let culturalConsiderations: [CulturalConsideration]
+}
+
+struct SharingTiming {
+    let optimalHours: [Int]
+    let culturalSignificantDates: [Date]
+    let personalizedTiming: [String]
+    let timezone: TimeZone
+}
+
+struct ContentSuggestion {
+    let type: String
+    let suggestion: String
+    let culturalRelevance: Double
+    let personalRelevance: Double
+}
+
+struct RecipientInsight {
+    let recipientId: String
+    let culturalAffinity: Double
+    let preferredPlatforms: [SharePlatform]
+    let engagementPatterns: [String]
+}
+
+struct CulturalConsideration {
+    let aspect: String
+    let importance: Double
+    let guidance: String
+    let culturalSensitivity: String
+}
+
+struct CulturallyOptimizedContent {
+    let optimizedMessage: String
+    let optimizedImage: UIImage
+    let culturalURL: URL
+    let platformElements: [PlatformElement]
+    let metadata: EnhancedCulturalMetadata
+    let recommendations: PersonalizedSharingRecommendations
+}
+
+struct PlatformElement {
+    let platform: SharePlatform
+    let elementType: String
+    let content: String
+    let culturalRelevance: Double
+}
+
+struct CulturalSharingAnalytics {
+    let culturalContext: CulturalContext
+    let culturalEngagement: Double
+    let culturalReach: Int
+    let culturalImpact: CulturalImpact
+}
+
+struct CulturalImpact {
+    let educationalValue: Double
+    let culturalAwareness: Double
+    let communityEngagement: Double
+    let authenticity: Double
+}
+
+struct EnhancedShareResult {
+    let baseResult: ShareResult
+    let culturalAnalytics: CulturalSharingAnalytics
+    let personalizedInsights: PersonalizedSharingRecommendations
+    let communityImpact: Double
+}
+
+// Note: CommunityInsight and CulturalTrend now defined in SharedCulturalTypes.swift
+
+// MARK: - Cultural Metadata Tracker
+
+class CulturalMetadataTracker {
+    func extractCulturalElements(from rakhi: GeneratedRakhi, context: CulturalContext) -> [CulturalElement] {
+        // Extract cultural elements based on rakhi design and context
+        return [
+            CulturalElement(
+                name: "Traditional Colors",
+                significance: "Represents cultural identity and traditional values",
+                visualRepresentation: "Color palette",
+                culturalAccuracy: 0.85
+            ),
+            CulturalElement(
+                name: "Sacred Symbols",
+                significance: "Divine protection and spiritual significance",
+                visualRepresentation: "Religious motifs",
+                culturalAccuracy: 0.92
+            )
+        ]
+    }
+
+    func generatePersonalizedAspects(for rakhi: GeneratedRakhi) -> [PersonalizedAspect] {
+        // Generate personalized aspects based on user preferences and rakhi design
+        return [
+            PersonalizedAspect(
+                category: "Design Preference",
+                value: "Traditional with modern touch",
+                personalRelevance: 0.78
+            ),
+            PersonalizedAspect(
+                category: "Color Preference",
+                value: "Warm, vibrant colors",
+                personalRelevance: 0.82
+            )
+        ]
+    }
+
+    func calculateCommunityRelevance(culturalContext: CulturalContext) -> Double {
+        // Calculate relevance based on community trends and seasonal factors
+        switch culturalContext {
+        case .rakshabandhan:
+            return 0.95 // High during Rakhi season
+        case .diwali:
+            return 0.88 // Always relevant in Hindu community
+        case .christmas:
+            return 0.92 // Globally relevant during December
+        default:
+            return 0.65 // Base relevance
+        }
+    }
+
+    func inferSharingIntent(from shareContent: CulturalShareContent) -> SharingIntent {
+        // Analyze content to infer sharing intent
+        if shareContent.culturalMessage.contains("gift") {
+            return .gifting
+        } else if shareContent.culturalInsights != nil {
+            return .culturalEducation
+        } else {
+            return .celebration
+        }
+    }
+}
+
+// MARK: - Social Insights Analyzer
+
+class SocialInsightsAnalyzer {
+    func calculateCulturalEngagement(content: CulturallyOptimizedContent) -> Double {
+        // Calculate expected engagement based on cultural content optimization
+        let baseEngagement = 0.65
+        let culturalRelevance = content.metadata.culturalSignificance
+        let platformOptimization = content.platformElements.map { $0.culturalRelevance }.reduce(0, +) / Double(content.platformElements.count)
+
+        return min(1.0, baseEngagement + (culturalRelevance * 0.2) + (platformOptimization * 0.15))
+    }
+
+    func estimateCulturalReach(recipients: [Contact], culturalContext: CulturalContext) -> Int {
+        // Estimate reach based on recipients and cultural context
+        let baseReach = recipients.count * 3 // Assuming each recipient reaches 3 others
+        let culturalMultiplier = getCulturalReachMultiplier(for: culturalContext)
+        return Int(Double(baseReach) * culturalMultiplier)
+    }
+
+    func assessCulturalImpact(content: CulturallyOptimizedContent, method: ShareMethod) -> CulturalImpact {
+        // Assess the cultural impact of the sharing
+        let educationalValue = content.metadata.culturalSignificance * 0.8
+        let culturalAwareness = calculateCulturalAwareness(content: content)
+        let communityEngagement = calculateCommunityEngagement(method: method)
+        let authenticity = content.metadata.culturalElements.map { $0.culturalAccuracy }.reduce(0, +) / Double(content.metadata.culturalElements.count)
+
+        return CulturalImpact(
+            educationalValue: educationalValue,
+            culturalAwareness: culturalAwareness,
+            communityEngagement: communityEngagement,
+            authenticity: authenticity
+        )
+    }
+
+    private func getCulturalReachMultiplier(for context: CulturalContext) -> Double {
+        switch context {
+        case .diwali, .christmas: return 1.5
+        case .rakshabandhan, .chineseNewYear: return 1.3
+        case .birthday, .anniversary: return 1.2
+        default: return 1.0
+        }
+    }
+
+    private func calculateCulturalAwareness(content: CulturallyOptimizedContent) -> Double {
+        // Calculate potential for raising cultural awareness
+        let hasEducationalContent = content.metadata.culturalElements.count > 2
+        let hasCulturalInsights = content.recommendations.contentSuggestions.contains { $0.type == "cultural_education" }
+
+        var awareness = 0.6 // Base awareness
+        if hasEducationalContent { awareness += 0.2 }
+        if hasCulturalInsights { awareness += 0.15 }
+
+        return min(1.0, awareness)
+    }
+
+    private func calculateCommunityEngagement(method: ShareMethod) -> Double {
+        // Different platforms have different community engagement potential
+        switch method.platform {
+        case .facebook: return 0.85
+        case .instagram: return 0.75
+        case .whatsapp: return 0.90
+        case .email: return 0.60
+        default: return 0.70
+        }
+    }
+
+    // MARK: - Missing Function Stubs
+    // These are moved to SocialInsightsAnalyzer class for better organization
+
+    func generateCulturalInsights(for rakhi: GeneratedRakhi, culturalContext: CulturalContext) async -> CulturalInsights {
+        return CulturalInsights(
+            significance: 0.8,
+            traditionalElements: ["Traditional patterns"],
+            personalizedElements: ["Personal touch"],
+            communityRelevance: 0.7,
+            historicalContext: "Rich cultural history",
+            celebrationTips: ["Celebrate with joy"]
+        )
+    }
+
+    func getOptimalSharingTiming(culturalContext: CulturalContext, platform: SharePlatform) async -> String {
+        return "Best shared in the morning"
+    }
+
+    func getContentPersonalizationSuggestions(culturalContext: CulturalContext, recipients: [Contact]) async -> [String] {
+        return ["Add personal message", "Include family context"]
+    }
+
+    func generateRecipientInsights(_ recipients: [Contact]) -> [String] {
+        return ["Family members", "Close friends"]
+    }
+
+    func getCulturalSharingConsiderations(_ context: CulturalContext) -> [String] {
+        return ["Respectful timing", "Cultural appropriateness"]
+    }
+
+    func optimizeMessageForPlatform(message: String, platform: SharePlatform, culturalContext: CulturalContext, recommendations: [String]) async -> String {
+        return message
+    }
+
+    func optimizeImageForCulturalSharing(image: UIImage, platform: SharePlatform, culturalContext: CulturalContext) async throws -> UIImage {
+        return image
+    }
+
+    func generatePlatformCulturalElements(platform: SharePlatform, culturalContext: CulturalContext) -> [String] {
+        return ["Platform optimized", "Culturally appropriate"]
+    }
+
+    func trackCulturalSharingPattern(culturalContext: CulturalContext, method: ShareMethod, timestamp: Date) async {
+        // Track sharing patterns
+    }
+
+    func calculateCommunityImpact(culturalContext: CulturalContext) -> Double {
+        return 0.7
+    }
+
+    func updateCommunityInsights(interaction: CulturalInteraction, culturalContext: CulturalContext) async {
+        // Update community insights
+    }
+
+    func trackCulturalTrend(culturalContext: CulturalContext, engagement: Double, timestamp: Date) async {
+        // Track cultural trends
+    }
+
+    func getCulturalGreeting(for context: CulturalContext) -> String {
+        switch context {
+        case .rakshabandhan:
+            return "Happy Raksha Bandhan! 🎊"
+        case .diwali:
+            return "Happy Diwali! ✨"
+        case .christmas:
+            return "Merry Christmas! 🎄"
+        case .chineseNewYear:
+            return "Happy Chinese New Year! 🧧"
+        default:
+            return "Happy celebrations! 🎉"
+        }
+    }
+
+    func getPersonalizedCulturalElements(culturalContext: CulturalContext) async -> [String] {
+        return ["✨ Blessed with tradition and love", "🙏 Created with cultural authenticity"]
+    }
+
+    func generateCulturalSignificanceText(for rakhi: GeneratedRakhi, culturalContext: CulturalContext) -> String {
+        return "This design holds deep cultural significance and represents traditional values."
+    }
+
+    func generatePersonalizedInsights(for rakhi: GeneratedRakhi, culturalContext: CulturalContext) async -> String {
+        return "🌟 This design is personalized for your cultural celebration with authentic elements and meaningful symbolism."
+    }
+
+    func getCulturalDesignElements(for context: CulturalContext) -> [String] {
+        switch context {
+        case .rakshabandhan:
+            return ["Sacred thread patterns", "Traditional motifs", "Protective symbols"]
+        case .diwali:
+            return ["Rangoli patterns", "Diya designs", "Lotus motifs"]
+        case .christmas:
+            return ["Holly patterns", "Star designs", "Festive colors"]
+        default:
+            return ["Traditional patterns", "Sacred symbols"]
+        }
+    }
+
+    func getCulturalColors(for context: CulturalContext) -> [Color] {
+        switch context {
+        case .rakshabandhan:
+            return [.orange, .red, .gold]
+        case .diwali:
+            return [.orange, .purple, .gold]
+        case .christmas:
+            return [.red, .green, .gold]
+        case .chineseNewYear:
+            return [.red, .gold, .black]
+        default:
+            return [.orange, .red, .gold]
+        }
+    }
+
+    func createCulturalGradient(colors: [Color], size: CGSize) -> CGGradient? {
+        let colorSpace = CGColorSpaceCreateDeviceRGB()
+        let cgColors = colors.map { UIColor($0).cgColor }
+        return CGGradient(colorsSpace: colorSpace, colors: cgColors as CFArray, locations: nil)
+    }
+
+    func drawCulturalBorder(context: CGContext, size: CGSize, culturalContext: CulturalContext) {
+        context.setStrokeColor(UIColor.orange.cgColor)
+        context.setLineWidth(4.0)
+        let borderRect = CGRect(x: 20, y: 20, width: size.width - 40, height: size.height - 40)
+        context.addRect(borderRect)
+        context.strokePath()
+    }
+
+    func drawCulturalRakhiPlaceholder(context: CGContext, rect: CGRect, culturalContext: CulturalContext) {
+        context.setFillColor(UIColor.red.cgColor)
+        let rakhiRect = CGRect(x: rect.midX - 75, y: rect.midY - 75, width: 150, height: 150)
+        context.fillEllipse(in: rakhiRect)
+    }
+
+    func drawCulturalWatermark(context: CGContext, size: CGSize, culturalContext: CulturalContext) {
+        let watermarkText = "Created with 🤖 & ❤️ on Forava"
+        let font = UIFont.systemFont(ofSize: 16)
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: font,
+            .foregroundColor: UIColor.systemGray
+        ]
+        let attributedString = NSAttributedString(string: watermarkText, attributes: attributes)
+        let textSize = attributedString.size()
+        let textRect = CGRect(x: (size.width - textSize.width) / 2, y: size.height - textSize.height - 20, width: textSize.width, height: textSize.height)
+        attributedString.draw(in: textRect)
+    }
+
+    func fetchCommunityInsights() async throws -> [String] {
+        return ["Community insight 1", "Community insight 2"]
+    }
+
+    func fetchCulturalTrends() async throws -> [String] {
+        return ["Trend 1", "Trend 2"]
+    }
+}

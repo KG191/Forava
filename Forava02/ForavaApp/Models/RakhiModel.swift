@@ -92,7 +92,6 @@ enum RakhiCategory: String, CaseIterable, Codable {
     }
 }
 
-
 struct RakhiGift: Identifiable, Codable {
     let id: UUID
     let rakhi: Rakhi
@@ -114,4 +113,3 @@ struct RakhiGift: Identifiable, Codable {
         self.message = message
     }
 }
-
