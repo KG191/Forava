@@ -71,7 +71,7 @@ struct AnniversaryDesignView: View, CulturalDesignViewProtocol {
                 sendContent()
                     .tag(GiftDesignTab.send)
             }
-            .tabViewStyle(.page(indexDisplayMode: .never))
+            // Removed .page style - it was blocking all button taps inside tabs
             .animation(.easeInOut(duration: 0.3), value: currentTab)
         }
         .navigationTitle("Anniversary Design")
