@@ -14,6 +14,7 @@
 		215A843D2E9CF560006D56E9 /* BaseCulturalAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215A843A2E9CF560006D56E9 /* BaseCulturalAIService.swift */; };
 		215A843E2E9CF560006D56E9 /* CulturalAIConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215A843B2E9CF560006D56E9 /* CulturalAIConfiguration.swift */; };
 		215A843F2E9CF560006D56E9 /* CulturalAIServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215A843C2E9CF560006D56E9 /* CulturalAIServiceProtocol.swift */; };
+		215A844B2EA39FA3006D56E9 /* ImageWithTextOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215A844A2EA39FA3006D56E9 /* ImageWithTextOverlay.swift */; };
 		218FF3552E63C593008C12BF /* HanukkahModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218FF3532E63C593008C12BF /* HanukkahModels.swift */; };
 		218FF3562E63C593008C12BF /* MidAutumnFestivalModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218FF3542E63C593008C12BF /* MidAutumnFestivalModels.swift */; };
 		218FF35B2E63C675008C12BF /* RakshaBandhanModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218FF3592E63C675008C12BF /* RakshaBandhanModels.swift */; };
@@ -139,6 +140,7 @@
 		215A843A2E9CF560006D56E9 /* BaseCulturalAIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCulturalAIService.swift; sourceTree = "<group>"; };
 		215A843B2E9CF560006D56E9 /* CulturalAIConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulturalAIConfiguration.swift; sourceTree = "<group>"; };
 		215A843C2E9CF560006D56E9 /* CulturalAIServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulturalAIServiceProtocol.swift; sourceTree = "<group>"; };
+		215A844A2EA39FA3006D56E9 /* ImageWithTextOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageWithTextOverlay.swift; sourceTree = "<group>"; };
 		218FF3532E63C593008C12BF /* HanukkahModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HanukkahModels.swift; sourceTree = "<group>"; };
 		218FF3542E63C593008C12BF /* MidAutumnFestivalModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MidAutumnFestivalModels.swift; sourceTree = "<group>"; };
 		218FF3592E63C675008C12BF /* RakshaBandhanModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RakshaBandhanModels.swift; sourceTree = "<group>"; };
@@ -315,6 +317,7 @@
 		218FF3622E642A86008C12BF /* Anniversary */ = {
 			isa = PBXGroup;
 			children = (
+				215A844A2EA39FA3006D56E9 /* ImageWithTextOverlay.swift */,
 				A1411BA74DF4437F81A335E5 /* AnniversaryStyleSelectionView.swift */,
 				B37C93AD8519475BBBFB7C8D /* AnniversarySendShareView.swift */,
 				B4B5FEF885234404BDD19665 /* AnniversaryPersonalTouchView.swift */,
@@ -787,6 +790,7 @@
 				21C93B802E5FE78800200285 /* GeneratedRakhiView.swift in Sources */,
 				21C93B812E5FE78800200285 /* AdvancedAnimationService.swift in Sources */,
 				21C93B822E5FE78800200285 /* AdvancedCustomizationView.swift in Sources */,
+				215A844B2EA39FA3006D56E9 /* ImageWithTextOverlay.swift in Sources */,
 				21C93BB42E6188E900200285 /* AnniversaryModels.swift in Sources */,
 				21C93B832E5FE78800200285 /* CulturalEvent.swift in Sources */,
 				21C93B842E5FE78800200285 /* EnhancedPaymentOptionsView.swift in Sources */,

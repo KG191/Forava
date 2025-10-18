@@ -3,6 +3,7 @@ import Foundation
 
 struct AnniversaryCreateSummaryView: View {
     let selectedTheme: AnniversaryTheme?
+    let selectedGiftOption: String?
     let selectedElements: [AnniversaryElement]
     let selectedColorPalette: AnniversaryColorPalette?
     let finalMessage: String
@@ -31,12 +32,22 @@ struct AnniversaryCreateSummaryView: View {
                 VStack(spacing: 20) {
                     // Selection Summary Cards
                     VStack(spacing: 16) {
+                        // Theme Card
                         selectionSummaryCard(
                             title: "Style Theme",
                             content: selectedTheme?.rawValue ?? "Not selected",
                             isComplete: selectedTheme != nil,
                             icon: "paintbrush.fill",
                             details: selectedTheme?.description
+                        )
+
+                        // Gift Option Card
+                        selectionSummaryCard(
+                            title: "Gift Style",
+                            content: selectedGiftOption ?? "Not selected",
+                            isComplete: selectedGiftOption != nil,
+                            icon: "gift.fill",
+                            details: selectedGiftOption != nil ? "Specific design style for your anniversary gift" : nil
                         )
 
                         selectionSummaryCard(
@@ -242,7 +253,10 @@ struct AnniversaryCreateSummaryView: View {
                             .font(.system(.subheadline, design: .rounded).weight(.medium))
 
                         VStack(alignment: .leading, spacing: 2) {
-                            featureItem("🎨 \(selectedTheme?.rawValue ?? "") style design")
+                            if let giftOption = selectedGiftOption {
+                                featureItem("🎁 \(giftOption) design")
+                            }
+                            featureItem("🎨 \(selectedTheme?.rawValue ?? "") style theme")
                             featureItem("✨ \(selectedElements.count) custom design elements")
                             featureItem("🌈 \(selectedColorPalette?.name ?? "") color palette")
                             featureItem("💌 Personalized anniversary message")
@@ -334,17 +348,19 @@ struct AnniversaryCreateSummaryView: View {
     private var completedSteps: Int {
         var steps = 0
         if selectedTheme != nil { steps += 1 }
+        if selectedGiftOption != nil { steps += 1 }
         if !selectedElements.isEmpty { steps += 1 }
         if selectedColorPalette != nil { steps += 1 }
         if !finalMessage.isEmpty && finalMessage != "No message selected" { steps += 1 }
         return steps
     }
 
-    private let totalSteps = 4
+    private let totalSteps = 5
 
     private var missingItemsDescription: String {
         var missing: [String] = []
         if selectedTheme == nil { missing.append("Style Theme") }
+        if selectedGiftOption == nil { missing.append("Gift Style") }
         if selectedElements.isEmpty { missing.append("Design Elements") }
         if selectedColorPalette == nil { missing.append("Color Palette") }
         if finalMessage.isEmpty || finalMessage == "No message selected" { missing.append("Personal Message") }
@@ -362,6 +378,7 @@ struct AnniversaryCreateSummaryView: View {
 #Preview {
     AnniversaryCreateSummaryView(
         selectedTheme: .romantic,
+        selectedGiftOption: "Classic Love Letter Card",
         selectedElements: [AnniversaryElement.allElements[0], AnniversaryElement.allElements[4]],
         selectedColorPalette: AnniversaryColorPalette.allPalettes[0],
         finalMessage: "Celebrating another year of love and happiness together",

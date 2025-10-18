@@ -185,18 +185,30 @@ struct AnniversaryColorPalette: Identifiable, Codable {
     let id: UUID
     let name: String
     let description: String
-    let primaryColor: String
-    let secondaryColor: String
-    let accentColor: String
+    let primaryColor: String        // Hex code (e.g., "#DC143C")
+    let secondaryColor: String      // Hex code
+    let accentColor: String         // Hex code
+    let primaryColorName: String    // Descriptive name for AI (e.g., "deep crimson red")
+    let secondaryColorName: String  // Descriptive name for AI
+    let accentColorName: String     // Descriptive name for AI
+    let primaryColorSimple: String  // SDXL-optimized simple name (e.g., "red")
+    let secondaryColorSimple: String // SDXL-optimized simple name (e.g., "gold")
+    let accentColorSimple: String   // SDXL-optimized simple name (e.g., "cream")
     let backgroundHint: String
 
-    init(name: String, description: String, primaryColor: String, secondaryColor: String, accentColor: String, backgroundHint: String) {
+    init(name: String, description: String, primaryColor: String, secondaryColor: String, accentColor: String, primaryColorName: String, secondaryColorName: String, accentColorName: String, primaryColorSimple: String, secondaryColorSimple: String, accentColorSimple: String, backgroundHint: String) {
         self.id = UUID()
         self.name = name
         self.description = description
         self.primaryColor = primaryColor
         self.secondaryColor = secondaryColor
         self.accentColor = accentColor
+        self.primaryColorName = primaryColorName
+        self.secondaryColorName = secondaryColorName
+        self.accentColorName = accentColorName
+        self.primaryColorSimple = primaryColorSimple
+        self.secondaryColorSimple = secondaryColorSimple
+        self.accentColorSimple = accentColorSimple
         self.backgroundHint = backgroundHint
     }
 
@@ -218,6 +230,12 @@ extension AnniversaryColorPalette {
             primaryColor: "#DC143C",
             secondaryColor: "#E6C2A6",
             accentColor: "#FDF5E6",
+            primaryColorName: "deep crimson red",
+            secondaryColorName: "warm rose gold",
+            accentColorName: "soft cream",
+            primaryColorSimple: "red",
+            secondaryColorSimple: "gold",
+            accentColorSimple: "cream",
             backgroundHint: "romantic candlelit atmosphere"
         ),
         AnniversaryColorPalette(
@@ -226,6 +244,12 @@ extension AnniversaryColorPalette {
             primaryColor: "#FFD700",
             secondaryColor: "#F5DEB3",
             accentColor: "#FFF8DC",
+            primaryColorName: "rich golden yellow",
+            secondaryColorName: "pale wheat beige",
+            accentColorName: "cornsilk white",
+            primaryColorSimple: "gold",
+            secondaryColorSimple: "beige",
+            accentColorSimple: "white",
             backgroundHint: "warm golden glow"
         ),
         AnniversaryColorPalette(
@@ -234,6 +258,12 @@ extension AnniversaryColorPalette {
             primaryColor: "#C0C0C0",
             secondaryColor: "#F0F8FF",
             accentColor: "#4682B4",
+            primaryColorName: "metallic silver",
+            secondaryColorName: "pale ice blue",
+            accentColorName: "steel blue",
+            primaryColorSimple: "silver",
+            secondaryColorSimple: "blue",
+            accentColorSimple: "steel",
             backgroundHint: "sophisticated silver shimmer"
         ),
         AnniversaryColorPalette(
@@ -242,6 +272,12 @@ extension AnniversaryColorPalette {
             primaryColor: "#9B111E",
             secondaryColor: "#800020",
             accentColor: "#FFC0CB",
+            primaryColorName: "deep ruby red",
+            secondaryColorName: "dark burgundy",
+            accentColorName: "soft pink",
+            primaryColorSimple: "red",
+            secondaryColorSimple: "burgundy",
+            accentColorSimple: "pink",
             backgroundHint: "passionate ruby atmosphere"
         ),
         AnniversaryColorPalette(
@@ -250,6 +286,12 @@ extension AnniversaryColorPalette {
             primaryColor: "#000000",
             secondaryColor: "#FFD700",
             accentColor: "#FFFFFF",
+            primaryColorName: "elegant black",
+            secondaryColorName: "rich gold",
+            accentColorName: "pure white",
+            primaryColorSimple: "black",
+            secondaryColorSimple: "gold",
+            accentColorSimple: "white",
             backgroundHint: "elegant black tie event"
         ),
         AnniversaryColorPalette(
@@ -258,6 +300,12 @@ extension AnniversaryColorPalette {
             primaryColor: "#FFB6C1",
             secondaryColor: "#E6E6FA",
             accentColor: "#F0FFF0",
+            primaryColorName: "light pink",
+            secondaryColorName: "lavender mist",
+            accentColorName: "pale mint green",
+            primaryColorSimple: "pink",
+            secondaryColorSimple: "lavender",
+            accentColorSimple: "mint",
             backgroundHint: "soft dreamy atmosphere"
         ),
         AnniversaryColorPalette(
@@ -266,6 +314,12 @@ extension AnniversaryColorPalette {
             primaryColor: "#36454F",
             secondaryColor: "#E6C2A6",
             accentColor: "#FFFFFF",
+            primaryColorName: "charcoal gray",
+            secondaryColorName: "warm tan",
+            accentColorName: "clean white",
+            primaryColorSimple: "gray",
+            secondaryColorSimple: "tan",
+            accentColorSimple: "white",
             backgroundHint: "clean modern background"
         ),
         AnniversaryColorPalette(
@@ -274,6 +328,12 @@ extension AnniversaryColorPalette {
             primaryColor: "#DEB887",
             secondaryColor: "#F5DEB3",
             accentColor: "#FFF8DC",
+            primaryColorName: "burlywood tan",
+            secondaryColorName: "wheat beige",
+            accentColorName: "cornsilk cream",
+            primaryColorSimple: "tan",
+            secondaryColorSimple: "beige",
+            accentColorSimple: "cream",
             backgroundHint: "vintage sepia warmth"
         )
     ]
@@ -344,4 +404,5 @@ extension AnniversaryPersonalTouch {
     static let personalMessagePlaceholder = "Add your own personal anniversary message here..."
     static let maxPersonalMessageLength = 200
 }
+
 

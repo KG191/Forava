@@ -56,25 +56,56 @@ class BaseCulturalAIService: ObservableObject {
     }
 
     private func loadAPIKeysFromEnvironment() {
-        // Try .env file first (development environment)
-        if let envPath = Bundle.main.path(forResource: ".env", ofType: nil) {
-            loadFromEnvFile(path: envPath)
+        // Method 1: Environment variables (Xcode scheme) - Most reliable for development
+        if let envKey = ProcessInfo.processInfo.environment["REPLICATE_API_TOKEN"], !envKey.isEmpty {
+            self.replicateAPIKey = envKey
+            print("✅ Loaded API key from environment variables")
+            return
         }
 
-        // Try Info.plist configuration
+        // Method 2: Alternative environment variable name
+        if let altKey = ProcessInfo.processInfo.environment["REPLICATE_API_KEY"], !altKey.isEmpty {
+            self.replicateAPIKey = altKey
+            print("✅ Loaded API key from alternative environment variable")
+            return
+        }
+
+        // Method 3: .env file in app bundle (for production)
+        if let envPath = Bundle.main.path(forResource: ".env", ofType: nil) {
+            print("📁 Found .env in app bundle: \(envPath)")
+            loadFromEnvFile(path: envPath)
+            if !replicateAPIKey.isEmpty { return }
+        }
+
+        // Method 4: .env file in project directory (for development)
+        let projectEnvPath = "/Users/kirangokal/Documents/Forava/Forava02/.env"
+        if FileManager.default.fileExists(atPath: projectEnvPath) {
+            print("📁 Found .env in project directory: \(projectEnvPath)")
+            loadFromEnvFile(path: projectEnvPath)
+            if !replicateAPIKey.isEmpty { return }
+        }
+
+        // Method 5: Info.plist configuration
         if replicateAPIKey.isEmpty,
            let plistKey = Bundle.main.object(forInfoDictionaryKey: "REPLICATE_API_KEY") as? String,
            !plistKey.isEmpty {
             self.replicateAPIKey = plistKey
             print("✅ Loaded API key from Info.plist")
+            return
         }
 
-        // Try UserDefaults as final fallback
+        // Method 6: UserDefaults as final fallback
         if replicateAPIKey.isEmpty,
            let defaultsKey = UserDefaults.standard.string(forKey: "REPLICATE_API_KEY"),
            !defaultsKey.isEmpty {
             self.replicateAPIKey = defaultsKey
             print("✅ Loaded API key from UserDefaults fallback")
+            return
+        }
+
+        // If we reach here, no API key was found
+        if replicateAPIKey.isEmpty {
+            print("❌ No Replicate API key found from any source")
         }
     }
 
@@ -143,8 +174,26 @@ class BaseCulturalAIService: ObservableObject {
 
     // MARK: - Core Generation Logic
 
-    /// Main generation method to be overridden by subclasses
+    /// Main generation method with default dimensions
     func generateCulturalGift(prompt: String, culturalContext: String) async throws -> String {
+        return try await generateCulturalGift(
+            prompt: prompt,
+            culturalContext: culturalContext,
+            width: CulturalAIConfiguration.defaultWidth,
+            height: CulturalAIConfiguration.defaultHeight
+        )
+    }
+
+    /// Main generation method with custom dimensions and optional color enforcement
+    func generateCulturalGift(
+        prompt: String,
+        culturalContext: String,
+        width: Int,
+        height: Int,
+        primaryColor: String? = nil,
+        secondaryColor: String? = nil,
+        accentColor: String? = nil
+    ) async throws -> String {
         guard !isGenerating else {
             throw CulturalAIConfiguration.CulturalAIError.networkError("Generation already in progress")
         }
@@ -163,7 +212,15 @@ class BaseCulturalAIService: ObservableObject {
         }
 
         do {
-            return try await performReplicateGeneration(prompt: prompt, culturalContext: culturalContext)
+            return try await performReplicateGeneration(
+                prompt: prompt,
+                culturalContext: culturalContext,
+                width: width,
+                height: height,
+                primaryColor: primaryColor,
+                secondaryColor: secondaryColor,
+                accentColor: accentColor
+            )
         } catch {
             self.error = error as? CulturalAIConfiguration.CulturalAIError ??
                         CulturalAIConfiguration.CulturalAIError.networkError(error.localizedDescription)
@@ -173,18 +230,40 @@ class BaseCulturalAIService: ObservableObject {
 
     // MARK: - Replicate API Integration
 
-    private func performReplicateGeneration(prompt: String, culturalContext: String) async throws -> String {
+    private func performReplicateGeneration(
+        prompt: String,
+        culturalContext: String,
+        width: Int,
+        height: Int,
+        primaryColor: String?,
+        secondaryColor: String?,
+        accentColor: String?
+    ) async throws -> String {
         print("🤖 Starting cultural AI generation for: \(culturalContext)")
 
-        // Create prediction request
-        let predictionId = try await createPrediction(prompt: prompt)
+        // Create prediction request with color-exclusion negative prompt if colors provided
+        let predictionId = try await createPrediction(
+            prompt: prompt,
+            width: width,
+            height: height,
+            primaryColor: primaryColor,
+            secondaryColor: secondaryColor,
+            accentColor: accentColor
+        )
         generationProgress = 0.3
 
         // Poll for completion
         return try await pollForCompletion(predictionId: predictionId)
     }
 
-    private func createPrediction(prompt: String) async throws -> String {
+    private func createPrediction(
+        prompt: String,
+        width: Int,
+        height: Int,
+        primaryColor: String? = nil,
+        secondaryColor: String? = nil,
+        accentColor: String? = nil
+    ) async throws -> String {
         let url = URL(string: CulturalAIConfiguration.predictionsEndpoint)!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -195,8 +274,42 @@ class BaseCulturalAIService: ObservableObject {
             request.setValue(value, forHTTPHeaderField: key)
         }
 
-        let requestBody = CulturalAIConfiguration.modelConfiguration(prompt: prompt)
+        // Determine which negative prompt to use
+        let negativePrompt: String
+        if let primary = primaryColor,
+           let secondary = secondaryColor,
+           let accent = accentColor {
+            // Use color-exclusion negative prompt for maximum color conformance
+            negativePrompt = CulturalAIConfiguration.colorExclusionNegativePrompt(
+                allowedPrimary: primary,
+                allowedSecondary: secondary,
+                allowedAccent: accent
+            )
+            print("🎨 COLOR-EXCLUSION MODE ACTIVE")
+            print("   Allowed colors: \(primary), \(secondary), \(accent)")
+        } else {
+            // Use default negative prompt
+            negativePrompt = CulturalAIConfiguration.negativePrompt
+        }
+
+        // CRITICAL: Include negative prompt to prevent text generation and wrong colors
+        let requestBody = CulturalAIConfiguration.modelConfiguration(
+            prompt: prompt,
+            negativePrompt: negativePrompt,
+            width: width,
+            height: height
+        )
         request.httpBody = try JSONSerialization.data(withJSONObject: requestBody)
+
+        // Debug: Log the actual request being sent
+        if let jsonData = request.httpBody,
+           let jsonString = String(data: jsonData, encoding: .utf8) {
+            print("📤 Replicate API Request Body:")
+            print(jsonString)
+            print("🚫 NEGATIVE PROMPT (forbids these elements):")
+            print(negativePrompt)
+            print("=" + String(repeating: "=", count: 79))
+        }
 
         let (data, response) = try await URLSession.shared.data(for: request)
 
@@ -205,6 +318,12 @@ class BaseCulturalAIService: ObservableObject {
         }
 
         guard httpResponse.statusCode == 201 else {
+            // Debug: Log error response body
+            if let errorString = String(data: data, encoding: .utf8) {
+                print("❌ Replicate API Error Response:")
+                print(errorString)
+            }
+
             if httpResponse.statusCode == 429 {
                 throw CulturalAIConfiguration.CulturalAIError.quotaExceeded
             }
@@ -284,15 +403,20 @@ class BaseCulturalAIService: ObservableObject {
 
     // MARK: - Utility Methods
 
-    /// Generate cultural prompt with shared enhancements
+    /// Generate cultural prompt with shared enhancements and agent specification wrapper
     func enhanceCulturalPrompt(_ basePrompt: String) -> String {
-        var enhancedPrompt = basePrompt
+        // Wrap in agent specification directive prefix
+        var enhancedPrompt = "AGENT DIRECTIVE: You are creating a decorative background image with ONLY patterns and shapes. "
+        enhancedPrompt += basePrompt
 
-        // Add quality enhancements
+        // Add quality enhancements with pattern emphasis
         enhancedPrompt += CulturalAIConfiguration.qualityEnhancement
 
         // Add cultural sensitivity
         enhancedPrompt += CulturalAIConfiguration.culturalSensitivity
+
+        // Add aggressive NO TEXT enforcement - critical for pure decorative images
+        enhancedPrompt += CulturalAIConfiguration.noTextEnforcement
 
         return enhancedPrompt
     }

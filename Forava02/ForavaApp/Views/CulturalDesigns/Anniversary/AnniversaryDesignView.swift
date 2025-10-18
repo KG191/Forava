@@ -23,6 +23,7 @@ struct AnniversaryDesignView: View, CulturalDesignViewProtocol {
     // MARK: - State Management
     @State var currentTab: GiftDesignTab = .style
     @State var selectedTheme: AnniversaryTheme?
+    @State var selectedGiftOption: String?
     @State var selectedElements: [AnniversaryElement] = []
     @State var selectedColorPalette: AnniversaryColorPalette?
     @State var selectedMessage: AnniversaryPersonalTouch?
@@ -30,7 +31,7 @@ struct AnniversaryDesignView: View, CulturalDesignViewProtocol {
 
     // MARK: - Additional State
     @State private var isGenerating = false
-    @State private var generatedImage: String?
+    @State private var generatedImages: [String: String] = [:] // Keys: "iPhone", "AppleWatch"
     @State private var showingShareSheet = false
     @StateObject private var anniversaryAI = AnniversaryAIService.shared
 
@@ -81,10 +82,20 @@ struct AnniversaryDesignView: View, CulturalDesignViewProtocol {
 
     // MARK: - Computed Properties
     private var isReadyToGenerate: Bool {
-        selectedTheme != nil &&
-        !selectedElements.isEmpty &&
-        selectedColorPalette != nil &&
-        (selectedMessage != nil || !personalMessage.isEmpty)
+        let hasTheme = selectedTheme != nil
+        let hasGiftOption = selectedGiftOption != nil
+        let hasElements = !selectedElements.isEmpty
+        let hasColorPalette = selectedColorPalette != nil
+        let hasMessage = selectedMessage != nil || !personalMessage.isEmpty
+
+        // Enhanced validation logging for debugging
+        if !hasTheme { print("⚠️ Tab 1 (Style): No theme selected") }
+        if !hasGiftOption { print("⚠️ Tab 1 (Style): No gift option selected") }
+        if !hasElements { print("⚠️ Tab 2 (Elements): No elements selected") }
+        if !hasColorPalette { print("⚠️ Tab 3 (Colour): No color palette selected") }
+        if !hasMessage { print("⚠️ Tab 4 (Touch): No message entered") }
+
+        return hasTheme && hasGiftOption && hasElements && hasColorPalette && hasMessage
     }
 
     private var selectedElementsDescription: String {
@@ -107,6 +118,7 @@ extension AnniversaryDesignView {
     @ViewBuilder func styleContent() -> StyleContent {
         AnniversaryStyleSelectionView(
             selectedTheme: $selectedTheme,
+            selectedGiftOption: $selectedGiftOption,
             culturalColor: culturalColor
         )
     }
@@ -136,6 +148,7 @@ extension AnniversaryDesignView {
     @ViewBuilder func createContent() -> CreateContent {
         AnniversaryCreateSummaryView(
             selectedTheme: selectedTheme,
+            selectedGiftOption: selectedGiftOption,
             selectedElements: selectedElements,
             selectedColorPalette: selectedColorPalette,
             finalMessage: finalMessage,
@@ -149,7 +162,8 @@ extension AnniversaryDesignView {
 
     @ViewBuilder func checkContent() -> CheckContent {
         AnniversaryCheckImageView(
-            generatedImage: generatedImage,
+            generatedImages: generatedImages,
+            personalMessage: finalMessage,
             isGenerating: $isGenerating,
             culturalColor: culturalColor,
             onRegenerate: {
@@ -160,7 +174,8 @@ extension AnniversaryDesignView {
 
     @ViewBuilder func sendContent() -> SendContent {
         AnniversarySendShareView(
-            generatedImage: generatedImage,
+            generatedImages: generatedImages,
+            personalMessage: finalMessage,
             selectedContact: selectedContact,
             culturalColor: culturalColor,
             showingShareSheet: $showingShareSheet
@@ -170,21 +185,23 @@ extension AnniversaryDesignView {
     // MARK: - Generation Logic
     private func generateAnniversaryGift() {
         print("🎯 Generate Anniversary Gift button tapped")
-        print("📊 Validation Status:")
-        print("   - isReadyToGenerate: \(isReadyToGenerate)")
-        print("   - selectedTheme: \(selectedTheme?.rawValue ?? "nil")")
-        print("   - selectedElements count: \(selectedElements.count)")
-        print("   - selectedColorPalette: \(selectedColorPalette?.name ?? "nil")")
-        print("   - finalMessage: \(finalMessage)")
-        print("   - contactName: \(selectedContact.name)")
+        print("=" + String(repeating: "=", count: 79))
+        print("📊 ALL TAB SELECTIONS - USER PREFERENCES:")
+        print("=" + String(repeating: "=", count: 79))
+        print("Tab 1 - THEME: \(selectedTheme?.rawValue ?? "❌ NOT SELECTED")")
+        print("Tab 1 - GIFT OPTION: \(selectedGiftOption ?? "❌ NOT SELECTED")")
+        print("Tab 2 - ELEMENTS (\(selectedElements.count)): \(selectedElements.map { $0.name }.joined(separator: ", "))")
+        print("Tab 3 - COLOR PALETTE: \(selectedColorPalette?.name ?? "❌ NOT SELECTED")")
+        if let colors = selectedColorPalette {
+            print("        PRIMARY: \(colors.primaryColorName) (\(colors.primaryColor))")
+            print("        SECONDARY: \(colors.secondaryColorName) (\(colors.secondaryColor))")
+            print("        ACCENT: \(colors.accentColorName) (\(colors.accentColor))")
+        }
+        print("Tab 4 - MESSAGE: \(finalMessage)")
+        print("=" + String(repeating: "=", count: 79))
 
         guard isReadyToGenerate else {
             print("❌ Not ready to generate - validation failed")
-            print("   Missing:")
-            if selectedTheme == nil { print("   - Theme") }
-            if selectedElements.isEmpty { print("   - Elements") }
-            if selectedColorPalette == nil { print("   - Color Palette") }
-            if finalMessage.isEmpty || finalMessage == "No message selected" { print("   - Personal Message") }
             return
         }
 
@@ -194,18 +211,34 @@ extension AnniversaryDesignView {
 
         Task {
             do {
-                print("🤖 Calling AI service...")
-                let result = try await anniversaryAI.generateAnniversaryGift(
+                // Generate iPhone background (tall format - no text in AI)
+                print("📱 Generating iPhone background...")
+                let iPhoneResult = try await anniversaryAI.generateAnniversaryGift(
                     theme: selectedTheme!,
+                    giftOption: selectedGiftOption,
                     elements: selectedElements,
                     colorPalette: selectedColorPalette!,
-                    message: finalMessage,
+                    message: "", // No text in AI - will overlay natively
                     contactName: selectedContact.name
                 )
+                print("✅ iPhone background generated: \(iPhoneResult)")
 
-                print("✅ Generation succeeded: \(result)")
+                // Generate Apple Watch background (square format - no text in AI)
+                print("⌚ Generating Apple Watch background...")
+                let watchResult = try await anniversaryAI.generateAnniversaryGift(
+                    theme: selectedTheme!,
+                    giftOption: selectedGiftOption,
+                    elements: selectedElements,
+                    colorPalette: selectedColorPalette!,
+                    message: "", // No text in AI - will overlay natively
+                    contactName: selectedContact.name,
+                    format: .appleWatch // Specify Watch format for square dimensions
+                )
+                print("✅ Apple Watch background generated: \(watchResult)")
+
                 await MainActor.run {
-                    self.generatedImage = result
+                    self.generatedImages["iPhone"] = iPhoneResult
+                    self.generatedImages["AppleWatch"] = watchResult
                     self.isGenerating = false
                 }
             } catch {

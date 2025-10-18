@@ -4,7 +4,8 @@ import MessageUI
 import Photos
 
 struct AnniversarySendShareView: View {
-    let generatedImage: String?
+    let generatedImages: [String: String]  // Keys: "iPhone", "AppleWatch"
+    let personalMessage: String
     let selectedContact: Contact
     let culturalColor: Color
     @Binding var showingShareSheet: Bool
@@ -13,6 +14,10 @@ struct AnniversarySendShareView: View {
     @State private var showingSaveConfirmation = false
     @State private var saveStatus: SaveStatus = .none
     @State private var shareMethod: ShareMethod?
+
+    private var hasGeneratedImages: Bool {
+        !generatedImages.isEmpty
+    }
 
     enum ShareMethod: String, CaseIterable {
         case messages = "Messages"
@@ -87,7 +92,7 @@ struct AnniversarySendShareView: View {
 
                 // Glass Morphism Content Container
                 VStack(spacing: 24) {
-                    if generatedImage != nil {
+                    if hasGeneratedImages {
                         // Image Preview
                         imagePreviewSection()
 
@@ -125,7 +130,7 @@ struct AnniversarySendShareView: View {
             if MFMessageComposeViewController.canSendText() {
                 MessageComposeView(
                     recipient: selectedContact.phoneNumber,
-                    image: generatedImage
+                    images: generatedImages
                 )
             } else {
                 Text("Messages not available")
@@ -394,13 +399,14 @@ struct AnniversarySendShareView: View {
 // MARK: - Message Composer
 struct MessageComposeView: UIViewControllerRepresentable {
     let recipient: String
-    let image: String?
+    let images: [String: String]
 
     func makeUIViewController(context: Context) -> MFMessageComposeViewController {
         let composer = MFMessageComposeViewController()
         composer.recipients = [recipient]
         composer.body = "Happy Anniversary! I created this special gift for you. 💕"
         composer.messageComposeDelegate = context.coordinator
+        // TODO: Attach actual generated images with text overlay
         return composer
     }
 
@@ -422,7 +428,8 @@ struct MessageComposeView: UIViewControllerRepresentable {
 
 #Preview {
     AnniversarySendShareView(
-        generatedImage: "sample_image_url",
+        generatedImages: ["iPhone": "sample_image_url", "AppleWatch": "sample_watch_url"],
+        personalMessage: "Happy 10th Anniversary!",
         selectedContact: Contact(name: "Sarah Johnson", phoneNumber: "+1-555-0123", relationship: "Partner"),
         culturalColor: Color(hex: "#DC143C"),
         showingShareSheet: .constant(false)

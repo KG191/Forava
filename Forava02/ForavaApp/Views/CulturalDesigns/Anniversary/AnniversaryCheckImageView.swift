@@ -2,7 +2,8 @@ import SwiftUI
 import Foundation
 
 struct AnniversaryCheckImageView: View {
-    let generatedImage: String?
+    let generatedImages: [String: String]  // Keys: "iPhone", "AppleWatch"
+    let personalMessage: String
     @Binding var isGenerating: Bool
     let culturalColor: Color
     let onRegenerate: () -> Void
@@ -27,6 +28,32 @@ struct AnniversaryCheckImageView: View {
             case .appleWatch: return 1.0   // Square for Apple Watch
             }
         }
+
+        var dictionaryKey: String {
+            switch self {
+            case .iPhone: return "iPhone"
+            case .appleWatch: return "AppleWatch"
+            }
+        }
+
+        var displaySize: CGSize {
+            switch self {
+            case .iPhone:
+                return CGSize(
+                    width: CGFloat(CulturalAIConfiguration.iPhoneWidth),
+                    height: CGFloat(CulturalAIConfiguration.iPhoneHeight)
+                )
+            case .appleWatch:
+                return CGSize(
+                    width: CGFloat(CulturalAIConfiguration.watchWidth),
+                    height: CGFloat(CulturalAIConfiguration.watchHeight)
+                )
+            }
+        }
+    }
+
+    private var currentImage: String? {
+        generatedImages[selectedFormat.dictionaryKey]
     }
 
     var body: some View {
@@ -49,7 +76,7 @@ struct AnniversaryCheckImageView: View {
                 // Glass Morphism Content Container
                 VStack(spacing: 24) {
                     // Format Selection
-                    if !isGenerating && generatedImage != nil {
+                    if !isGenerating && !generatedImages.isEmpty {
                         formatSelectionView()
                     }
 
@@ -60,7 +87,7 @@ struct AnniversaryCheckImageView: View {
                     generationControlsView()
 
                     // Quality Assessment (if image exists)
-                    if !isGenerating && generatedImage != nil {
+                    if !isGenerating && !generatedImages.isEmpty {
                         qualityAssessmentView()
                     }
                 }
@@ -130,7 +157,7 @@ struct AnniversaryCheckImageView: View {
         VStack(spacing: 16) {
             if isGenerating {
                 generatingView()
-            } else if let imageURL = generatedImage {
+            } else if let imageURL = currentImage {
                 generatedImageView(imageURL: imageURL)
             } else {
                 placeholderView()
@@ -181,31 +208,43 @@ struct AnniversaryCheckImageView: View {
     @ViewBuilder
     private func generatedImageView(imageURL: String) -> some View {
         VStack(spacing: 12) {
-            // Image Preview
+            // Image Preview - Using ImageWithTextOverlay component
             Button {
                 showingFullscreen = true
             } label: {
-                ZStack {
+                ImageWithTextOverlay(
+                    imageURL: imageURL,
+                    message: personalMessage,
+                    imageSize: selectedFormat.displaySize,
+                    culturalColor: culturalColor
+                )
+                .frame(maxWidth: .infinity)
+                .aspectRatio(selectedFormat.aspectRatio, contentMode: .fit)
+                .clipShape(RoundedRectangle(cornerRadius: 16))
+                .overlay(
                     RoundedRectangle(cornerRadius: 16)
-                        .fill(Color(.systemGray6))
-                        .aspectRatio(selectedFormat.aspectRatio, contentMode: .fit)
-                        .overlay(
-                            // Placeholder for actual image
-                            VStack(spacing: 8) {
-                                Image(systemName: selectedFormat.icon)
-                                    .font(.largeTitle)
-                                    .foregroundStyle(culturalColor)
-
-                                Text("\(selectedFormat.rawValue) Preview")
-                                    .font(.system(.caption, design: .rounded).weight(.medium))
-                                    .foregroundStyle(.secondary)
-
-                                Text("Tap to view full size")
-                                    .font(.system(.caption2, design: .rounded))
-                                    .foregroundStyle(.secondary)
-                            }
-                        )
-                }
+                        .stroke(culturalColor.opacity(0.3), lineWidth: 2)
+                )
+                .shadow(color: culturalColor.opacity(0.2), radius: 8, x: 0, y: 4)
+                .overlay(
+                    // Tap hint overlay
+                    VStack {
+                        Spacer()
+                        HStack {
+                            Spacer()
+                            Text("Tap to view full size")
+                                .font(.system(.caption2, design: .rounded).weight(.medium))
+                                .foregroundStyle(.white)
+                                .padding(.horizontal, 12)
+                                .padding(.vertical, 6)
+                                .background(
+                                    Capsule()
+                                        .fill(.black.opacity(0.6))
+                                )
+                                .padding(8)
+                        }
+                    }
+                )
             }
             .buttonStyle(.plain)
 
@@ -213,7 +252,7 @@ struct AnniversaryCheckImageView: View {
             HStack {
                 Image(systemName: selectedFormat.icon)
                     .foregroundStyle(culturalColor)
-                Text("Optimized for \(selectedFormat.rawValue)")
+                Text("Optimized for \(selectedFormat.rawValue) with personal message")
                     .font(.system(.caption, design: .rounded))
                     .foregroundStyle(.secondary)
                 Spacer()
@@ -248,7 +287,7 @@ struct AnniversaryCheckImageView: View {
     @ViewBuilder
     private func generationControlsView() -> some View {
         VStack(spacing: 12) {
-            if !isGenerating && generatedImage != nil {
+            if !isGenerating && !generatedImages.isEmpty {
                 // Regenerate Button
                 Button(action: onRegenerate) {
                     HStack(spacing: 12) {
@@ -382,22 +421,34 @@ struct AnniversaryCheckImageView: View {
 
                 Spacer()
 
-                // Full size image placeholder
-                RoundedRectangle(cornerRadius: 20)
-                    .fill(Color(.systemGray6))
-                    .aspectRatio(selectedFormat.aspectRatio, contentMode: .fit)
-                    .overlay(
-                        VStack(spacing: 16) {
-                            Image(systemName: selectedFormat.icon)
-                                .font(.system(.largeTitle))
-                                .foregroundStyle(culturalColor)
-
-                            Text("Full Size \(selectedFormat.rawValue) Preview")
-                                .font(.system(.title2, design: .rounded).weight(.semibold))
-                                .foregroundStyle(.primary)
-                        }
+                // Full size image display with text overlay
+                if let imageURL = currentImage {
+                    ImageWithTextOverlay(
+                        imageURL: imageURL,
+                        message: personalMessage,
+                        imageSize: selectedFormat.displaySize,
+                        culturalColor: culturalColor
                     )
+                    .aspectRatio(selectedFormat.aspectRatio, contentMode: .fit)
+                    .clipShape(RoundedRectangle(cornerRadius: 20))
                     .padding()
+                } else {
+                    RoundedRectangle(cornerRadius: 20)
+                        .fill(Color(.systemGray6))
+                        .aspectRatio(selectedFormat.aspectRatio, contentMode: .fit)
+                        .overlay(
+                            VStack(spacing: 16) {
+                                Image(systemName: selectedFormat.icon)
+                                    .font(.system(.largeTitle))
+                                    .foregroundStyle(culturalColor)
+
+                                Text("Full Size \(selectedFormat.rawValue) Preview")
+                                    .font(.system(.title2, design: .rounded).weight(.semibold))
+                                    .foregroundStyle(.primary)
+                            }
+                        )
+                        .padding()
+                }
 
                 Spacer()
             }
@@ -407,7 +458,8 @@ struct AnniversaryCheckImageView: View {
 
 #Preview {
     AnniversaryCheckImageView(
-        generatedImage: "sample_image_url",
+        generatedImages: ["iPhone": "sample_image_url", "AppleWatch": "sample_watch_url"],
+        personalMessage: "Happy 10th Anniversary!",
         isGenerating: .constant(false),
         culturalColor: Color(hex: "#DC143C"),
         onRegenerate: {}

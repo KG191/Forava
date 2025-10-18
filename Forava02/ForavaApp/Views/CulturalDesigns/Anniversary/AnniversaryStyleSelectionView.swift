@@ -3,6 +3,7 @@ import Foundation
 
 struct AnniversaryStyleSelectionView: View {
     @Binding var selectedTheme: AnniversaryTheme?
+    @Binding var selectedGiftOption: String?
     let culturalColor: Color
 
     private let columns = [
@@ -87,47 +88,70 @@ struct AnniversaryStyleSelectionView: View {
 
             LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 2), spacing: 12) {
                 ForEach(Array(theme.giftOptions.enumerated()), id: \.offset) { index, option in
-                    VStack(spacing: 8) {
-                        RoundedRectangle(cornerRadius: 12)
-                            .fill(theme.primaryColor.opacity(0.05))
-                            .frame(height: 60)
-                            .overlay(
-                                HStack {
-                                    Image(systemName: giftOptionIcon(for: option))
-                                        .font(.title3)
-                                        .foregroundStyle(theme.primaryColor.opacity(0.5))
+                    let isSelected = selectedGiftOption == option
 
-                                    Spacer()
-
-                                    Text("\(index + 1)")
-                                        .font(.caption2.weight(.medium))
-                                        .foregroundStyle(theme.primaryColor.opacity(0.4))
-                                }
-                                .padding(.horizontal, 12)
-                            )
-                            .overlay(
-                                VStack {
+                    Button {
+                        withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
+                            selectedGiftOption = option
+                        }
+                        #if os(iOS)
+                        let generator = UIImpactFeedbackGenerator(style: .light)
+                        generator.impactOccurred()
+                        #endif
+                    } label: {
+                        VStack(spacing: 8) {
+                            RoundedRectangle(cornerRadius: 12)
+                                .fill(isSelected ? theme.primaryColor.opacity(0.15) : theme.primaryColor.opacity(0.05))
+                                .frame(height: 60)
+                                .overlay(
                                     HStack {
-                                        Spacer()
-                                        Text("Preview")
-                                            .font(.system(.caption2, design: .rounded).weight(.medium))
-                                            .foregroundStyle(theme.primaryColor.opacity(0.6))
-                                            .padding(.horizontal, 6)
-                                            .padding(.vertical, 2)
-                                            .background(theme.primaryColor.opacity(0.1))
-                                            .cornerRadius(4)
-                                    }
-                                    Spacer()
-                                }
-                                .padding(6)
-                            )
+                                        Image(systemName: giftOptionIcon(for: option))
+                                            .font(.title3)
+                                            .foregroundStyle(isSelected ? theme.primaryColor : theme.primaryColor.opacity(0.5))
 
-                        Text(option)
-                            .font(.system(.caption, design: .rounded))
-                            .foregroundStyle(.secondary)
-                            .multilineTextAlignment(.center)
-                            .lineLimit(2)
+                                        Spacer()
+
+                                        if isSelected {
+                                            Image(systemName: "checkmark.circle.fill")
+                                                .font(.title3)
+                                                .foregroundStyle(theme.primaryColor)
+                                        } else {
+                                            Text("\(index + 1)")
+                                                .font(.caption2.weight(.medium))
+                                                .foregroundStyle(theme.primaryColor.opacity(0.4))
+                                        }
+                                    }
+                                    .padding(.horizontal, 12)
+                                )
+                                .overlay(
+                                    VStack {
+                                        HStack {
+                                            Spacer()
+                                            Text("Preview")
+                                                .font(.system(.caption2, design: .rounded).weight(.medium))
+                                                .foregroundStyle(isSelected ? theme.primaryColor : theme.primaryColor.opacity(0.6))
+                                                .padding(.horizontal, 6)
+                                                .padding(.vertical, 2)
+                                                .background(isSelected ? theme.primaryColor.opacity(0.2) : theme.primaryColor.opacity(0.1))
+                                                .cornerRadius(4)
+                                        }
+                                        Spacer()
+                                    }
+                                    .padding(6)
+                                )
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 12)
+                                        .stroke(isSelected ? theme.primaryColor : Color.clear, lineWidth: 2)
+                                )
+
+                            Text(option)
+                                .font(.system(.caption, design: .rounded))
+                                .foregroundStyle(isSelected ? .primary : .secondary)
+                                .multilineTextAlignment(.center)
+                                .lineLimit(2)
+                        }
                     }
+                    .buttonStyle(.plain)
                 }
             }
             .padding(.horizontal, 20)
@@ -182,6 +206,7 @@ struct AnniversaryStyleSelectionView: View {
 #Preview {
     AnniversaryStyleSelectionView(
         selectedTheme: .constant(.romantic),
+        selectedGiftOption: .constant("Classic Love Letter Card"),
         culturalColor: Color(hex: "#DC143C")
     )
 }
