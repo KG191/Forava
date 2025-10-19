@@ -54,7 +54,8 @@ struct AnniversaryStyleSelectionView: View {
                 .padding(.vertical, 24)
                 .background(
                     RoundedRectangle(cornerRadius: 20)
-                        .fill(.ultraThinMaterial)
+                        .fill(.thinMaterial)
+                        .background(RoundedRectangle(cornerRadius: 20).fill(culturalColor.opacity(0.03)))
                         .overlay(
                             RoundedRectangle(cornerRadius: 20)
                                 .stroke(culturalColor.opacity(0.3), lineWidth: 1)
@@ -107,25 +108,24 @@ struct AnniversaryStyleSelectionView: View {
                     } label: {
                         VStack(spacing: 8) {
                             RoundedRectangle(cornerRadius: 12)
-                                .fill(isSelected ? theme.primaryColor.opacity(0.15) : theme.primaryColor.opacity(0.05))
+                                .fill(isSelected ? theme.primaryColor.opacity(0.75) : theme.primaryColor.opacity(0.05))  // Stronger background for visibility
                                 .frame(height: 60)
                                 .overlay(
                                     HStack {
                                         Image(systemName: giftOptionIcon(for: option))
                                             .font(.title3)
-                                            .foregroundStyle(isSelected ? theme.primaryColor : theme.primaryColor.opacity(0.5))
+                                            .foregroundStyle(isSelected ? .white : theme.primaryColor.opacity(0.7))  // WCAG 3:1 contrast - Apple HIG compliant
+                                            .shadow(color: .black.opacity(isSelected ? 0.3 : 0), radius: 1, x: 0, y: 1)
 
                                         Spacer()
 
                                         if isSelected {
                                             Image(systemName: "checkmark.circle.fill")
                                                 .font(.title3)
-                                                .foregroundStyle(theme.primaryColor)
-                                        } else {
-                                            Text("\(index + 1)")
-                                                .font(.caption2.weight(.medium))
-                                                .foregroundStyle(theme.primaryColor.opacity(0.4))
+                                                .foregroundStyle(.white)  // White checkmark when selected
+                                                .shadow(color: .black.opacity(0.3), radius: 1, x: 0, y: 1)
                                         }
+                                        // Removed index numbers as user found them confusing
                                     }
                                     .padding(.horizontal, 12)
                                 )
@@ -135,10 +135,10 @@ struct AnniversaryStyleSelectionView: View {
                                             Spacer()
                                             Text("Preview")
                                                 .font(.system(.caption2, design: .rounded).weight(.medium))
-                                                .foregroundStyle(isSelected ? theme.primaryColor : theme.primaryColor.opacity(0.6))
+                                                .foregroundStyle(isSelected ? .white : theme.primaryColor.opacity(0.6))
                                                 .padding(.horizontal, 6)
                                                 .padding(.vertical, 2)
-                                                .background(isSelected ? theme.primaryColor.opacity(0.2) : theme.primaryColor.opacity(0.1))
+                                                .background(isSelected ? .white.opacity(0.2) : theme.primaryColor.opacity(0.1))
                                                 .cornerRadius(4)
                                         }
                                         Spacer()
@@ -147,7 +147,7 @@ struct AnniversaryStyleSelectionView: View {
                                 )
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 12)
-                                        .stroke(isSelected ? theme.primaryColor : Color.clear, lineWidth: 2)
+                                        .stroke(isSelected ? .white.opacity(0.5) : Color.clear, lineWidth: 2)  // White border when selected
                                 )
 
                             Text(option)

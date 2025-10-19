@@ -35,7 +35,7 @@ enum CulturalCategory: String, Codable, CaseIterable {
         case .islamic: return .teal
         case .buddhist: return .purple
         case .jewish: return .blue
-        case .universal: return .gray
+        case .universal: return Color(hex: "#FF9500")  // Vibrant iOS-standard orange for Anniversary & Birthday
         }
     }
 }

@@ -5,10 +5,11 @@ struct ModularTabButton: View {
     let tab: GiftDesignTab
     let isSelected: Bool
     let culturalColor: Color
+    let namespace: Namespace.ID
     let onTap: () -> Void
 
-    // Vibrant iOS-standard orange for unselected tabs (enhanced from washed #FFC170)
-    private let unselectedColor = Color(hex: "#FF9500")
+    // Vibrant iOS-standard orange for ALL tabs (master theme color)
+    private let masterOrange = Color(hex: "#FF9500")
 
     var body: some View {
         Button(action: onTap) {
@@ -16,25 +17,51 @@ struct ModularTabButton: View {
                 // Tab number indicator
                 ZStack {
                     Circle()
-                        .fill(isSelected ? culturalColor : unselectedColor) // Full opacity for vibrancy
+                        .fill(masterOrange)
                         .frame(width: 24, height: 24)
+                        .shadow(
+                            color: masterOrange.opacity(0.6),
+                            radius: 8,
+                            x: 0,
+                            y: 0
+                        )
 
                     Text("\(tab.tabNumber)")
                         .font(.system(.caption, design: .rounded).weight(.bold))
-                        .foregroundStyle(.white) // Full white for both states
+                        .foregroundStyle(.white)
                 }
 
                 // Tab icon
                 Image(systemName: tab.icon)
                     .font(.system(.caption, design: .rounded))
-                    .foregroundStyle(isSelected ? culturalColor : unselectedColor) // Full opacity
+                    .foregroundStyle(masterOrange)
 
                 // Tab label
                 Text(tab.rawValue)
                     .font(.system(.caption2, design: .rounded).weight(.medium))
-                    .foregroundStyle(isSelected ? culturalColor : unselectedColor) // Full opacity
+                    .foregroundStyle(masterOrange)
             }
             .frame(width: 60)
+            .padding(.vertical, 8)
+            .padding(.horizontal, 4)
+            .background(
+                // Vertical glass indicator for selected tab (Apple HIG standard)
+                Group {
+                    if isSelected {
+                        Capsule()
+                            .fill(Color(hex: "#FFC170").opacity(0.7))  // Orange base
+                            .overlay(
+                                Capsule()
+                                    .fill(.white.opacity(0.3))  // White frost (no material desaturation)
+                            )
+                            .overlay(
+                                Capsule()
+                                    .stroke(.white.opacity(0.6), lineWidth: 1.5)
+                            )
+                            .matchedGeometryEffect(id: "tabSelection", in: namespace)
+                    }
+                }
+            )
         }
         .buttonStyle(.plain)
     }
@@ -209,6 +236,7 @@ struct ModularCulturalTabNavigationView: View {
     @State private var scrollOffset: CGFloat = 0
     @State private var contentWidth: CGFloat = 0
     @State private var visibleWidth: CGFloat = 0
+    @Namespace private var tabSelection
 
     private var canScrollLeft: Bool {
         scrollOffset > 10
@@ -239,7 +267,8 @@ struct ModularCulturalTabNavigationView: View {
                                 ModularTabButton(
                                     tab: tab,
                                     isSelected: currentTab == tab,
-                                    culturalColor: culturalColor
+                                    culturalColor: culturalColor,
+                                    namespace: tabSelection
                                 ) {
                                     withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
                                         currentTab = tab
@@ -300,28 +329,8 @@ struct ModularCulturalTabNavigationView: View {
                     .padding(.leading, 8)
                 }
             }
-            // Right edge gradient with chevron
-            .overlay(alignment: .trailing) {
-                if canScrollRight {
-                    HStack(spacing: 0) {
-                        LinearGradient(
-                            colors: [.white.opacity(0), .white.opacity(0.9)],
-                            startPoint: .leading,
-                            endPoint: .trailing
-                        )
-                        .frame(width: 50)
-
-                        Image(systemName: "chevron.right")
-                            .font(.system(size: 14, weight: .bold))
-                            .foregroundStyle(.white)
-                            .padding(8)
-                            .background(culturalColor.opacity(0.9))
-                            .clipShape(Circle())
-                            .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 2)
-                    }
-                    .padding(.trailing, 8)
-                }
-            }
+            // Right edge - no chevron (removed to prevent blocking Tab 7)
+            // Auto-scroll behavior preserved through ScrollViewReader
         }
         .frame(height: 100)
         .padding(.top, 20)
@@ -350,17 +359,27 @@ struct StyleCard<Theme: CaseIterable & RawRepresentable & Hashable>: View where 
         Button(action: action) {
             VStack(spacing: 12) {
                 RoundedRectangle(cornerRadius: 16)
-                    .fill(isSelected ? primaryColor.gradient : Color(.systemGray5).gradient)
+                    .fill(
+                        LinearGradient(
+                            colors: isSelected ?
+                                [primaryColor.opacity(0.9), primaryColor.opacity(0.7)] :  // Stronger opacity for readability
+                                [primaryColor.opacity(0.15), primaryColor.opacity(0.05)],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                    )
                     .frame(height: 120)
                     .overlay(
                         VStack(spacing: 8) {
                             Text(theme.rawValue)
                                 .font(.system(.title3, design: .rounded).weight(.bold))
-                                .foregroundStyle(isSelected ? .white : .primary)
+                                .foregroundStyle(.white)  // Always white for maximum contrast
+                                .shadow(color: .black.opacity(isSelected ? 0.3 : 0), radius: 2, x: 0, y: 1)  // Text shadow when selected
                             Text(description)
                                 .font(.system(.caption, design: .rounded))
-                                .foregroundStyle(isSelected ? .white.opacity(0.8) : .secondary)
+                                .foregroundStyle(isSelected ? .white.opacity(0.95) : .secondary)
                                 .multilineTextAlignment(.center)
+                                .shadow(color: .black.opacity(isSelected ? 0.2 : 0), radius: 1, x: 0, y: 1)
                         }
                         .padding()
                     )

@@ -94,7 +94,8 @@ struct AnniversaryCheckImageView: View {
                 .padding(.vertical, 24)
                 .background(
                     RoundedRectangle(cornerRadius: 20)
-                        .fill(.ultraThinMaterial)
+                        .fill(.thinMaterial)
+                        .background(RoundedRectangle(cornerRadius: 20).fill(culturalColor.opacity(0.03)))
                         .overlay(
                             RoundedRectangle(cornerRadius: 20)
                                 .stroke(culturalColor.opacity(0.3), lineWidth: 1)
