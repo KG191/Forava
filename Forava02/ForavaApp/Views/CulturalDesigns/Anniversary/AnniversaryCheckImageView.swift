@@ -105,7 +105,13 @@ struct AnniversaryCheckImageView: View {
                 Spacer(minLength: 100)
             }
         }
-        .background(Color(.systemGroupedBackground))
+        .background(
+            LinearGradient(
+                colors: [culturalColor.opacity(0.08), .white],
+                startPoint: .top,
+                endPoint: .bottom
+            )
+        )
         .fullScreenCover(isPresented: $showingFullscreen) {
             fullscreenImageView()
         }
@@ -201,7 +207,7 @@ struct AnniversaryCheckImageView: View {
         .frame(maxWidth: .infinity)
         .background(
             RoundedRectangle(cornerRadius: 16)
-                .fill(Color(.systemGray6))
+                .fill(culturalColor.opacity(0.12))
         )
     }
 
@@ -280,7 +286,7 @@ struct AnniversaryCheckImageView: View {
         .frame(maxWidth: .infinity)
         .background(
             RoundedRectangle(cornerRadius: 16)
-                .stroke(Color(.systemGray4), style: StrokeStyle(lineWidth: 2, dash: [5]))
+                .stroke(culturalColor.opacity(0.35), style: StrokeStyle(lineWidth: 2, dash: [5]))
         )
     }
 
@@ -362,7 +368,7 @@ struct AnniversaryCheckImageView: View {
         .padding(.vertical, 16)
         .background(
             RoundedRectangle(cornerRadius: 16)
-                .fill(Color(.systemGray6).opacity(0.5))
+                .fill(culturalColor.opacity(0.10))
         )
         .padding(.horizontal, 20)
     }
@@ -385,7 +391,7 @@ struct AnniversaryCheckImageView: View {
                 GeometryReader { geometry in
                     ZStack(alignment: .leading) {
                         RoundedRectangle(cornerRadius: 4)
-                            .fill(Color(.systemGray5))
+                            .fill(culturalColor.opacity(0.12))
                             .frame(height: 6)
 
                         RoundedRectangle(cornerRadius: 4)
@@ -434,7 +440,7 @@ struct AnniversaryCheckImageView: View {
                     .padding()
                 } else {
                     RoundedRectangle(cornerRadius: 20)
-                        .fill(Color(.systemGray6))
+                        .fill(culturalColor.opacity(0.10))
                         .aspectRatio(selectedFormat.aspectRatio, contentMode: .fit)
                         .overlay(
                             VStack(spacing: 16) {

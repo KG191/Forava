@@ -65,7 +65,13 @@ struct AnniversaryStyleSelectionView: View {
                 Spacer(minLength: 100)
             }
         }
-        .background(Color(.systemGroupedBackground))
+        .background(
+            LinearGradient(
+                colors: [culturalColor.opacity(0.08), .white],
+                startPoint: .top,
+                endPoint: .bottom
+            )
+        )
     }
 
     @ViewBuilder

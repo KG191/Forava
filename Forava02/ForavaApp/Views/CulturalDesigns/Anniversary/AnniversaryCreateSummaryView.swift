@@ -100,7 +100,13 @@ struct AnniversaryCreateSummaryView: View {
                 Spacer(minLength: 100)
             }
         }
-        .background(Color(.systemGroupedBackground))
+        .background(
+            LinearGradient(
+                colors: [culturalColor.opacity(0.08), .white],
+                startPoint: .top,
+                endPoint: .bottom
+            )
+        )
     }
 
     @ViewBuilder
@@ -152,7 +158,7 @@ struct AnniversaryCreateSummaryView: View {
         .padding()
         .background(
             RoundedRectangle(cornerRadius: 12)
-                .fill(isComplete ? culturalColor.opacity(0.1) : Color(.systemGray6))
+                .fill(isComplete ? culturalColor.opacity(0.25) : culturalColor.opacity(0.12))
         )
         .padding(.horizontal, 20)
     }
@@ -183,7 +189,7 @@ struct AnniversaryCreateSummaryView: View {
                 GeometryReader { geometry in
                     ZStack(alignment: .leading) {
                         RoundedRectangle(cornerRadius: 4)
-                            .fill(Color(.systemGray5))
+                            .fill(culturalColor.opacity(0.15))
                             .frame(height: 8)
 
                         RoundedRectangle(cornerRadius: 4)

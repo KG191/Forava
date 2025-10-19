@@ -7,8 +7,8 @@ struct ModularTabButton: View {
     let culturalColor: Color
     let onTap: () -> Void
 
-    // Light orange color for unselected tabs (matching landing page)
-    private let unselectedColor = Color(hex: "#FFC170")
+    // Vibrant iOS-standard orange for unselected tabs (enhanced from washed #FFC170)
+    private let unselectedColor = Color(hex: "#FF9500")
 
     var body: some View {
         Button(action: onTap) {
@@ -16,23 +16,23 @@ struct ModularTabButton: View {
                 // Tab number indicator
                 ZStack {
                     Circle()
-                        .fill(isSelected ? culturalColor : unselectedColor.opacity(0.6))
+                        .fill(isSelected ? culturalColor : unselectedColor) // Full opacity for vibrancy
                         .frame(width: 24, height: 24)
 
                     Text("\(tab.tabNumber)")
                         .font(.system(.caption, design: .rounded).weight(.bold))
-                        .foregroundStyle(isSelected ? .white : .white.opacity(0.8))
+                        .foregroundStyle(.white) // Full white for both states
                 }
 
                 // Tab icon
                 Image(systemName: tab.icon)
                     .font(.system(.caption, design: .rounded))
-                    .foregroundStyle(isSelected ? culturalColor : unselectedColor.opacity(0.8))
+                    .foregroundStyle(isSelected ? culturalColor : unselectedColor) // Full opacity
 
                 // Tab label
                 Text(tab.rawValue)
                     .font(.system(.caption2, design: .rounded).weight(.medium))
-                    .foregroundStyle(isSelected ? culturalColor : unselectedColor.opacity(0.8))
+                    .foregroundStyle(isSelected ? culturalColor : unselectedColor) // Full opacity
             }
             .frame(width: 60)
         }
@@ -206,25 +206,134 @@ struct ModularCulturalTabNavigationView: View {
     @Binding var currentTab: GiftDesignTab
     let culturalColor: Color
 
+    @State private var scrollOffset: CGFloat = 0
+    @State private var contentWidth: CGFloat = 0
+    @State private var visibleWidth: CGFloat = 0
+
+    private var canScrollLeft: Bool {
+        scrollOffset > 10
+    }
+
+    private var canScrollRight: Bool {
+        // More conservative threshold to prevent chevron from blocking last tab
+        // Require at least 80 points of hidden content before showing indicator
+        contentWidth > 0 && visibleWidth > 0 && (scrollOffset + visibleWidth < contentWidth - 80)
+    }
+
     var body: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 16) {
-                ForEach(GiftDesignTab.allCases, id: \.self) { tab in
-                    ModularTabButton(
-                        tab: tab,
-                        isSelected: currentTab == tab,
-                        culturalColor: culturalColor
-                    ) {
-                        withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
-                            currentTab = tab
+        GeometryReader { outerGeometry in
+            ScrollViewReader { proxy in
+                ScrollView(.horizontal, showsIndicators: false) {
+                    ZStack(alignment: .leading) {
+                        // Hidden view to track scroll offset
+                        GeometryReader { scrollGeometry in
+                            Color.clear.preference(
+                                key: ScrollOffsetPreferenceKey.self,
+                                value: scrollGeometry.frame(in: .named("scroll")).minX
+                            )
                         }
+                        .frame(height: 0)
+
+                        HStack(spacing: 16) {
+                            ForEach(GiftDesignTab.allCases, id: \.self) { tab in
+                                ModularTabButton(
+                                    tab: tab,
+                                    isSelected: currentTab == tab,
+                                    culturalColor: culturalColor
+                                ) {
+                                    withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
+                                        currentTab = tab
+                                    }
+                                }
+                                .id(tab)
+                            }
+                        }
+                        .padding(.horizontal, 24)
+                        .padding(.vertical, 12)
+                        .background(
+                            GeometryReader { contentGeometry in
+                                Color.clear.onAppear {
+                                    contentWidth = contentGeometry.size.width
+                                }
+                                .onChange(of: contentGeometry.size.width) { _, newWidth in
+                                    contentWidth = newWidth
+                                }
+                            }
+                        )
+                    }
+                }
+                .coordinateSpace(name: "scroll")
+                .onPreferenceChange(ScrollOffsetPreferenceKey.self) { value in
+                    scrollOffset = -value
+                }
+                .onAppear {
+                    visibleWidth = outerGeometry.size.width
+                }
+                .onChange(of: outerGeometry.size.width) { _, newWidth in
+                    visibleWidth = newWidth
+                }
+                .onChange(of: currentTab) { _, newTab in
+                    withAnimation(.easeInOut(duration: 0.3)) {
+                        proxy.scrollTo(newTab, anchor: .center)
                     }
                 }
             }
-            .padding(.horizontal, 24)
-            .padding(.vertical, 12)
+            // Left edge gradient with chevron
+            .overlay(alignment: .leading) {
+                if canScrollLeft {
+                    HStack(spacing: 0) {
+                        Image(systemName: "chevron.left")
+                            .font(.system(size: 14, weight: .bold))
+                            .foregroundStyle(.white)
+                            .padding(8)
+                            .background(culturalColor.opacity(0.9))
+                            .clipShape(Circle())
+                            .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 2)
+
+                        LinearGradient(
+                            colors: [.white.opacity(0.9), .white.opacity(0)],
+                            startPoint: .leading,
+                            endPoint: .trailing
+                        )
+                        .frame(width: 50)
+                    }
+                    .padding(.leading, 8)
+                }
+            }
+            // Right edge gradient with chevron
+            .overlay(alignment: .trailing) {
+                if canScrollRight {
+                    HStack(spacing: 0) {
+                        LinearGradient(
+                            colors: [.white.opacity(0), .white.opacity(0.9)],
+                            startPoint: .leading,
+                            endPoint: .trailing
+                        )
+                        .frame(width: 50)
+
+                        Image(systemName: "chevron.right")
+                            .font(.system(size: 14, weight: .bold))
+                            .foregroundStyle(.white)
+                            .padding(8)
+                            .background(culturalColor.opacity(0.9))
+                            .clipShape(Circle())
+                            .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 2)
+                    }
+                    .padding(.trailing, 8)
+                }
+            }
         }
+        .frame(height: 100)
         .padding(.top, 20)
+    }
+}
+
+// MARK: - Scroll Offset Preference Key
+private struct ScrollOffsetPreferenceKey: PreferenceKey {
+    static var defaultValue: CGFloat = 0
+
+    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+        value = nextValue()
     }
 }
 

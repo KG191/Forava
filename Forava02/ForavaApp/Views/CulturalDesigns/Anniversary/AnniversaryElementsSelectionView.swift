@@ -69,7 +69,13 @@ struct AnniversaryElementsSelectionView: View {
                 Spacer(minLength: 100)
             }
         }
-        .background(Color(.systemGroupedBackground))
+        .background(
+            LinearGradient(
+                colors: [culturalColor.opacity(0.08), .white],
+                startPoint: .top,
+                endPoint: .bottom
+            )
+        )
     }
 
     @ViewBuilder
@@ -153,7 +159,7 @@ struct AnniversaryElementsSelectionView: View {
                 // Element Icon and Priority
                 ZStack {
                     RoundedRectangle(cornerRadius: 12)
-                        .fill(isSelected ? categoryColor.gradient : Color(.systemGray5).gradient)
+                        .fill(isSelected ? categoryColor.gradient : culturalColor.opacity(0.10).gradient)
                         .frame(height: 80)
 
                     VStack(spacing: 8) {

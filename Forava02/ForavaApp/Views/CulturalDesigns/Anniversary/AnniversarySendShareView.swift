@@ -125,7 +125,13 @@ struct AnniversarySendShareView: View {
                 Spacer(minLength: 100)
             }
         }
-        .background(Color(.systemGroupedBackground))
+        .background(
+            LinearGradient(
+                colors: [culturalColor.opacity(0.08), .white],
+                startPoint: .top,
+                endPoint: .bottom
+            )
+        )
         .sheet(isPresented: $showingMessageComposer) {
             if MFMessageComposeViewController.canSendText() {
                 MessageComposeView(
@@ -158,7 +164,7 @@ struct AnniversarySendShareView: View {
 
             // Image Preview Card
             RoundedRectangle(cornerRadius: 16)
-                .fill(Color(.systemGray6))
+                .fill(culturalColor.opacity(0.12))
                 .aspectRatio(1.0, contentMode: .fit)
                 .frame(maxHeight: 200)
                 .overlay(
@@ -228,7 +234,7 @@ struct AnniversarySendShareView: View {
             .padding(.vertical, 16)
             .background(
                 RoundedRectangle(cornerRadius: 12)
-                    .fill(Color(.systemGray6))
+                    .fill(culturalColor.opacity(0.10))
             )
         }
         .buttonStyle(.plain)

@@ -49,35 +49,41 @@ struct AnniversaryDesignView: View, CulturalDesignViewProtocol {
                 culturalColor: culturalColor
             )
 
-            // Tab Content
-            TabView(selection: $currentTab) {
-                styleContent()
-                    .tag(GiftDesignTab.style)
-
-                elementsContent()
-                    .tag(GiftDesignTab.elements)
-
-                colorContent()
-                    .tag(GiftDesignTab.colour)
-
-                touchContent()
-                    .tag(GiftDesignTab.touch)
-
-                createContent()
-                    .tag(GiftDesignTab.create)
-
-                checkContent()
-                    .tag(GiftDesignTab.check)
-
-                sendContent()
-                    .tag(GiftDesignTab.send)
+            // Tab Content - Direct view switching (no TabView to avoid iOS "More" navigation)
+            ZStack {
+                if currentTab == .style {
+                    styleContent()
+                        .transition(.opacity)
+                } else if currentTab == .elements {
+                    elementsContent()
+                        .transition(.opacity)
+                } else if currentTab == .colour {
+                    colorContent()
+                        .transition(.opacity)
+                } else if currentTab == .touch {
+                    touchContent()
+                        .transition(.opacity)
+                } else if currentTab == .create {
+                    createContent()
+                        .transition(.opacity)
+                } else if currentTab == .check {
+                    checkContent()
+                        .transition(.opacity)
+                } else if currentTab == .send {
+                    sendContent()
+                        .transition(.opacity)
+                }
             }
-            // Removed .page style - it was blocking all button taps inside tabs
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
             .animation(.easeInOut(duration: 0.3), value: currentTab)
         }
         .navigationTitle("Anniversary Design")
         .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden(false)
+        .toolbar(.hidden, for: .tabBar)
+        .toolbarBackground(.hidden, for: .bottomBar)
         .background(Color(.systemGroupedBackground))
+        .edgesIgnoringSafeArea([])
     }
 
     // MARK: - Computed Properties

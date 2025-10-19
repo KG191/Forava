@@ -58,7 +58,13 @@ struct AnniversaryColorPaletteView: View {
                 Spacer(minLength: 100)
             }
         }
-        .background(Color(.systemGroupedBackground))
+        .background(
+            LinearGradient(
+                colors: [culturalColor.opacity(0.08), .white],
+                startPoint: .top,
+                endPoint: .bottom
+            )
+        )
     }
 
     @ViewBuilder
@@ -110,7 +116,7 @@ struct AnniversaryColorPaletteView: View {
             .padding()
             .background(
                 RoundedRectangle(cornerRadius: 12)
-                    .fill(isSelected ? culturalColor.opacity(0.1) : Color(.systemGray6))
+                    .fill(isSelected ? culturalColor.opacity(0.25) : culturalColor.opacity(0.10))
             )
         }
         .buttonStyle(.plain)
@@ -206,7 +212,7 @@ struct AnniversaryColorPaletteView: View {
                 .foregroundStyle(.secondary)
                 .padding(.horizontal, 8)
                 .padding(.vertical, 4)
-                .background(Color(.systemGray5))
+                .background(culturalColor.opacity(0.12))
                 .cornerRadius(6)
         }
     }

@@ -61,7 +61,13 @@ struct AnniversaryPersonalTouchView: View {
                 Spacer(minLength: 100)
             }
         }
-        .background(Color(.systemGroupedBackground))
+        .background(
+            LinearGradient(
+                colors: [culturalColor.opacity(0.08), .white],
+                startPoint: .top,
+                endPoint: .bottom
+            )
+        )
     }
 
     @ViewBuilder
@@ -141,7 +147,7 @@ struct AnniversaryPersonalTouchView: View {
             .frame(minHeight: 100)
             .background(
                 RoundedRectangle(cornerRadius: 12)
-                    .fill(isSelected ? message.tone.color.gradient : Color(.systemGray6).gradient)
+                    .fill(isSelected ? message.tone.color.gradient : culturalColor.opacity(0.10).gradient)
             )
         }
         .buttonStyle(.plain)
@@ -180,7 +186,7 @@ struct AnniversaryPersonalTouchView: View {
                         .padding(.vertical, 6)
                         .background(
                             RoundedRectangle(cornerRadius: 8)
-                                .fill(showingCustomInput ? Color(.systemGray5) : culturalColor.opacity(0.1))
+                                .fill(showingCustomInput ? culturalColor.opacity(0.15) : culturalColor.opacity(0.1))
                         )
                 }
             }
@@ -279,7 +285,7 @@ struct AnniversaryPersonalTouchView: View {
             .padding()
             .background(
                 RoundedRectangle(cornerRadius: 12)
-                    .fill(Color(.systemGray6))
+                    .fill(culturalColor.opacity(0.12))
             )
         }
         .padding(.horizontal, 20)
