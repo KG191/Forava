@@ -24,8 +24,8 @@ struct ContentView: View {
                     // Push content toward the top area
                     Spacer().frame(height: 24)
 
-                    // MARK: Large, centered Rakhi hero
-                    Image("rakhi_hero")
+                    // MARK: Large, centered Anniversary hero
+                    Image("Anniversaries")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 280, height: 200) // Reduced size to make room for carousel
@@ -47,7 +47,7 @@ struct ContentView: View {
                     // Small spacer
                     Spacer().frame(height: 20)
 
-                    // MARK: Cultural Events Carousel
+                    // MARK: Anniversary-only Cultural Events Carousel
                     CulturalCarouselView { event in
                         selectedEvent = event
                         navigateToContact = true
