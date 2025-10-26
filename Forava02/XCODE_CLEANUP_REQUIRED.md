@@ -99,3 +99,31 @@ Once Xcode project is clean and building:
 **Current Branch**: Xcode03_Anv
 **Commit**: 6b4a001
 **Status**: Awaiting manual Xcode cleanup
+
+## Update: Attempted Automated Cleanup
+
+**Date**: 2025-10-26 16:51
+
+### What Was Attempted
+Programmatic editing of `project.pbxproj` file to remove deleted file references.
+
+### Result
+❌ **FAILED** - Project file became corrupted
+✅ **RESTORED** from backup
+
+### Additional Files Deleted
+- AIRakhiService.swift
+- RakhiHistoryService.swift
+- GeneratedRakhiView.swift
+- RakhiSelectionView.swift  
+- RakhiHistoryView.swift
+- RakhiDesignStudioView.swift
+- AdvancedCustomizationView.swift (entire Customization/ directory)
+
+These are legacy files from the original Rakhi app that aren't needed for Anniversary.
+
+### Conclusion
+**Manual Xcode cleanup is REQUIRED** and is the safest approach.
+
+Programmatic editing of project.pbxproj is too risky and leads to corruption.
+
