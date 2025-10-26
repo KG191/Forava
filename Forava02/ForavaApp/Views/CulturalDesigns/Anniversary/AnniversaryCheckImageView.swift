@@ -176,19 +176,11 @@ struct AnniversaryCheckImageView: View {
     @ViewBuilder
     private func generatingView() -> some View {
         VStack(spacing: 20) {
-            // Animated Progress Indicator
-            ZStack {
-                Circle()
-                    .stroke(culturalColor.opacity(0.2), lineWidth: 4)
-                    .frame(width: 60, height: 60)
-
-                Circle()
-                    .trim(from: 0, to: 0.7)
-                    .stroke(culturalColor, lineWidth: 4)
-                    .frame(width: 60, height: 60)
-                    .rotationEffect(.degrees(-90))
-                    .animation(.linear(duration: 1).repeatForever(autoreverses: false), value: isGenerating)
-            }
+            // Apple HIG-Compliant Progress Indicator
+            ProgressView()
+                .progressViewStyle(.circular)
+                .scaleEffect(2.5)
+                .tint(culturalColor)
 
             VStack(spacing: 8) {
                 Text("Creating Your Anniversary Gift")

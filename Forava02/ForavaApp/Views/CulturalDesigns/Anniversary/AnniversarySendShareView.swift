@@ -9,11 +9,14 @@ struct AnniversarySendShareView: View {
     let selectedContact: Contact
     let culturalColor: Color
     @Binding var showingShareSheet: Bool
+    let onGoBackToGenerate: () -> Void
 
     @State private var showingMessageComposer = false
+    @State private var showingMailComposer = false
     @State private var showingSaveConfirmation = false
     @State private var saveStatus: SaveStatus = .none
     @State private var shareMethod: ShareMethod?
+    @State private var activityItems: [Any] = []
 
     private var hasGeneratedImages: Bool {
         !generatedImages.isEmpty
@@ -137,11 +140,24 @@ struct AnniversarySendShareView: View {
             if MFMessageComposeViewController.canSendText() {
                 MessageComposeView(
                     recipient: selectedContact.phoneNumber,
-                    images: generatedImages
+                    images: generatedImages,
+                    personalMessage: personalMessage
                 )
             } else {
                 Text("Messages not available")
             }
+        }
+        .sheet(isPresented: $showingMailComposer) {
+            MailComposeView(
+                recipient: selectedContact.email ?? "",
+                subject: "Happy Anniversary!",
+                images: generatedImages,
+                personalMessage: personalMessage,
+                culturalColor: culturalColor
+            )
+        }
+        .sheet(isPresented: $showingShareSheet) {
+            ActivityViewController(activityItems: activityItems)
         }
         .alert("Save Status", isPresented: $showingSaveConfirmation) {
             Button("OK") {
@@ -344,7 +360,7 @@ struct AnniversarySendShareView: View {
                 .multilineTextAlignment(.center)
 
             Button("Go Back to Generate") {
-                // This would be handled by the parent view
+                onGoBackToGenerate()
             }
             .font(.system(.subheadline, design: .rounded).weight(.medium))
             .foregroundStyle(culturalColor)
@@ -378,28 +394,147 @@ struct AnniversarySendShareView: View {
     }
 
     private func shareViaEmail() {
-        // Email sharing implementation would go here
-        print("📧 Sharing via email to \(selectedContact.email ?? "unknown email")")
+        if MFMailComposeViewController.canSendMail() {
+            showingMailComposer = true
+        } else {
+            saveStatus = .failed("Email not configured on this device")
+            showingSaveConfirmation = true
+        }
     }
 
     private func saveToPhotos() {
         saveStatus = .saving
 
-        // Simulate save operation
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            // In real implementation, this would actually save the image
-            if Bool.random() { // Simulate success/failure
-                saveStatus = .success
-                showingSaveConfirmation = true
-            } else {
-                saveStatus = .failed("Permission denied")
-                showingSaveConfirmation = true
+        // Request add-only photo library permission (iOS 14+ best practice)
+        PHPhotoLibrary.requestAuthorization(for: .addOnly) { status in
+            DispatchQueue.main.async {
+                guard status == .authorized else {
+                    saveStatus = .failed("Photo library access denied")
+                    showingSaveConfirmation = true
+                    return
+                }
+
+                // Load and save all generated images
+                Task {
+                    var savedCount = 0
+                    var failedCount = 0
+
+                    for (_, imageURL) in generatedImages {
+                        if let url = URL(string: imageURL),
+                           let data = try? Data(contentsOf: url),
+                           let image = UIImage(data: data) {
+
+                            // Create image with text overlay
+                            let renderer = UIGraphicsImageRenderer(size: image.size)
+                            let finalImage = renderer.image { _ in
+                                // Draw base image
+                                image.draw(at: .zero)
+
+                                // Draw text overlay if message exists
+                                if !personalMessage.isEmpty && personalMessage != "No message selected" {
+                                    let paragraphStyle = NSMutableParagraphStyle()
+                                    paragraphStyle.alignment = .center
+
+                                    let attributes: [NSAttributedString.Key: Any] = [
+                                        .font: UIFont(name: "Snell Roundhand", size: 28) ?? UIFont.systemFont(ofSize: 28, weight: .bold),
+                                        .foregroundColor: UIColor.white,
+                                        .paragraphStyle: paragraphStyle,
+                                        .strokeColor: UIColor(culturalColor),
+                                        .strokeWidth: -3.0
+                                    ]
+
+                                    let textRect = CGRect(
+                                        x: image.size.width * 0.1,
+                                        y: image.size.height * 0.25,
+                                        width: image.size.width * 0.8,
+                                        height: image.size.height * 0.5
+                                    )
+
+                                    personalMessage.draw(with: textRect, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
+                                }
+                            }
+
+                            // Save to Photos
+                            do {
+                                try await PHPhotoLibrary.shared().performChanges {
+                                    PHAssetChangeRequest.creationRequestForAsset(from: finalImage)
+                                }
+                                savedCount += 1
+                            } catch {
+                                failedCount += 1
+                            }
+                        } else {
+                            failedCount += 1
+                        }
+                    }
+
+                    // Update status
+                    await MainActor.run {
+                        if savedCount > 0 {
+                            saveStatus = .success
+                        } else {
+                            saveStatus = .failed("Could not save images")
+                        }
+                        showingSaveConfirmation = true
+                    }
+                }
             }
         }
     }
 
     private func shareViaActivitySheet() {
-        showingShareSheet = true
+        // Prepare images for sharing
+        Task {
+            var items: [Any] = []
+
+            // Add personal message
+            if !personalMessage.isEmpty && personalMessage != "No message selected" {
+                items.append(personalMessage)
+            }
+
+            // Load and prepare images
+            for (_, imageURL) in generatedImages {
+                if let url = URL(string: imageURL),
+                   let data = try? Data(contentsOf: url),
+                   let image = UIImage(data: data) {
+
+                    // Create image with text overlay
+                    let renderer = UIGraphicsImageRenderer(size: image.size)
+                    let finalImage = renderer.image { _ in
+                        image.draw(at: .zero)
+
+                        if !personalMessage.isEmpty && personalMessage != "No message selected" {
+                            let paragraphStyle = NSMutableParagraphStyle()
+                            paragraphStyle.alignment = .center
+
+                            let attributes: [NSAttributedString.Key: Any] = [
+                                .font: UIFont(name: "Snell Roundhand", size: 28) ?? UIFont.systemFont(ofSize: 28, weight: .bold),
+                                .foregroundColor: UIColor.white,
+                                .paragraphStyle: paragraphStyle,
+                                .strokeColor: UIColor(culturalColor),
+                                .strokeWidth: -3.0
+                            ]
+
+                            let textRect = CGRect(
+                                x: image.size.width * 0.1,
+                                y: image.size.height * 0.25,
+                                width: image.size.width * 0.8,
+                                height: image.size.height * 0.5
+                            )
+
+                            personalMessage.draw(with: textRect, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
+                        }
+                    }
+
+                    items.append(finalImage)
+                }
+            }
+
+            await MainActor.run {
+                activityItems = items
+                showingShareSheet = true
+            }
+        }
     }
 }
 
@@ -407,13 +542,15 @@ struct AnniversarySendShareView: View {
 struct MessageComposeView: UIViewControllerRepresentable {
     let recipient: String
     let images: [String: String]
+    let personalMessage: String
 
     func makeUIViewController(context: Context) -> MFMessageComposeViewController {
         let composer = MFMessageComposeViewController()
         composer.recipients = [recipient]
-        composer.body = "Happy Anniversary! I created this special gift for you. 💕"
+        composer.body = personalMessage.isEmpty || personalMessage == "No message selected" ?
+            "Happy Anniversary! I created this special gift for you. 💕" :
+            personalMessage
         composer.messageComposeDelegate = context.coordinator
-        // TODO: Attach actual generated images with text overlay
         return composer
     }
 
@@ -433,12 +570,111 @@ struct MessageComposeView: UIViewControllerRepresentable {
     }
 }
 
+// MARK: - Mail Composer
+struct MailComposeView: UIViewControllerRepresentable {
+    let recipient: String
+    let subject: String
+    let images: [String: String]
+    let personalMessage: String
+    let culturalColor: Color
+
+    func makeUIViewController(context: Context) -> MFMailComposeViewController {
+        let composer = MFMailComposeViewController()
+        composer.setToRecipients([recipient])
+        composer.setSubject(subject)
+
+        let messageBody = personalMessage.isEmpty || personalMessage == "No message selected" ?
+            "Happy Anniversary! I created this special gift for you." :
+            personalMessage
+        composer.setMessageBody(messageBody, isHTML: false)
+        composer.mailComposeDelegate = context.coordinator
+
+        // Attach images asynchronously
+        Task {
+            for (format, imageURL) in images {
+                if let url = URL(string: imageURL),
+                   let data = try? Data(contentsOf: url),
+                   let image = UIImage(data: data) {
+
+                    // Create image with text overlay
+                    let renderer = UIGraphicsImageRenderer(size: image.size)
+                    let finalImage = renderer.image { _ in
+                        image.draw(at: .zero)
+
+                        if !personalMessage.isEmpty && personalMessage != "No message selected" {
+                            let paragraphStyle = NSMutableParagraphStyle()
+                            paragraphStyle.alignment = .center
+
+                            let attributes: [NSAttributedString.Key: Any] = [
+                                .font: UIFont(name: "Snell Roundhand", size: 28) ?? UIFont.systemFont(ofSize: 28, weight: .bold),
+                                .foregroundColor: UIColor.white,
+                                .paragraphStyle: paragraphStyle,
+                                .strokeColor: UIColor(culturalColor),
+                                .strokeWidth: -3.0
+                            ]
+
+                            let textRect = CGRect(
+                                x: image.size.width * 0.1,
+                                y: image.size.height * 0.25,
+                                width: image.size.width * 0.8,
+                                height: image.size.height * 0.5
+                            )
+
+                            personalMessage.draw(with: textRect, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
+                        }
+                    }
+
+                    if let imageData = finalImage.jpegData(compressionQuality: 0.9) {
+                        await MainActor.run {
+                            composer.addAttachmentData(imageData, mimeType: "image/jpeg", fileName: "Anniversary_\(format).jpg")
+                        }
+                    }
+                }
+            }
+        }
+
+        return composer
+    }
+
+    func updateUIViewController(_ uiViewController: MFMailComposeViewController, context: Context) {}
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator()
+    }
+
+    class Coordinator: NSObject, MFMailComposeViewControllerDelegate {
+        func mailComposeController(
+            _ controller: MFMailComposeViewController,
+            didFinishWith result: MFMailComposeResult,
+            error: Error?
+        ) {
+            controller.dismiss(animated: true)
+        }
+    }
+}
+
+// MARK: - Activity View Controller
+struct ActivityViewController: UIViewControllerRepresentable {
+    let activityItems: [Any]
+
+    func makeUIViewController(context: Context) -> UIActivityViewController {
+        let controller = UIActivityViewController(
+            activityItems: activityItems,
+            applicationActivities: nil
+        )
+        return controller
+    }
+
+    func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {}
+}
+
 #Preview {
     AnniversarySendShareView(
         generatedImages: ["iPhone": "sample_image_url", "AppleWatch": "sample_watch_url"],
         personalMessage: "Happy 10th Anniversary!",
         selectedContact: Contact(name: "Sarah Johnson", phoneNumber: "+1-555-0123", relationship: "Partner"),
         culturalColor: Color(hex: "#DC143C"),
-        showingShareSheet: .constant(false)
+        showingShareSheet: .constant(false),
+        onGoBackToGenerate: { print("Go back to generate") }
     )
 }

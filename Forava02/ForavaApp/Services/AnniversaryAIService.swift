@@ -63,15 +63,20 @@ class AnniversaryAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
 
         print("🎨 Generating \(format == .iPhone ? "iPhone" : "Apple Watch") format: \(width)x\(height)")
 
+        // Build element-exclusion negative prompt (forbid unselected elements)
+        let forbiddenElements = buildForbiddenElementsPrompt(selectedElement: elements.first)
+
         // Use centralized generation with cultural context, format-specific dimensions, and color enforcement
+        // CRITICAL: Pass base color names (not weighted strings) for color-exclusion negative prompt
         return try await generateCulturalGift(
             prompt: enhanceCulturalPrompt(prompt),
             culturalContext: "Anniversary",
             width: width,
             height: height,
-            primaryColor: colorPalette.primaryColorSimple,
-            secondaryColor: colorPalette.secondaryColorSimple,
-            accentColor: colorPalette.accentColorSimple
+            primaryColor: colorPalette.primaryColorBase,
+            secondaryColor: colorPalette.secondaryColorBase,
+            accentColor: colorPalette.accentColorBase,
+            additionalNegativePrompt: forbiddenElements
         )
     }
 
@@ -131,64 +136,64 @@ class AnniversaryAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
         // Replace template placeholders with Anniversary-specific content
         prompt = prompt.replacingOccurrences(of: "[CULTURAL_EVENT]", with: "anniversary")
 
-        // Theme-specific styling with PATTERN-FOCUSED gift option integration
+        // Enhanced theme-specific styling with SDXL weight syntax for strict conformance
         let themeStyle: String
-        if let giftOption = spec.giftOption {
-            // Strip text-triggering words and convert to pattern descriptions
-            let patternFocus = giftOption
-                .replacingOccurrences(of: "Card", with: "Pattern")
-                .replacingOccurrences(of: "Letter", with: "Decorative Design")
-                .replacingOccurrences(of: "Collage", with: "Composition")
-                .replacingOccurrences(of: "Message", with: "Visual Elements")
-                .replacingOccurrences(of: "Book", with: "Layout")
-                .replacingOccurrences(of: "Album", with: "Arrangement")
-
-            // Emphasize PATTERNS ONLY in descriptions
-            switch spec.theme {
-            case .romantic:
-                themeStyle = "\(patternFocus) rendered as romantic decorative patterns with heart shapes, floral motifs, and flowing organic forms"
-            case .milestone:
-                themeStyle = "\(patternFocus) rendered as celebratory patterns with golden geometric shapes, achievement symbols, and radiant abstract elements"
-            case .family:
-                themeStyle = "\(patternFocus) rendered as family-centered patterns with warm circular forms, connected geometric shapes, and generational abstract motifs"
-            case .achievement:
-                themeStyle = "\(patternFocus) rendered as achievement patterns with success symbols, ascending geometric forms, and recognition abstract elements"
-            }
-        } else {
-            // Fallback to PATTERN-ONLY general theme descriptions
-            switch spec.theme {
-            case .romantic:
-                themeStyle = "romantic decorative patterns with heart shapes, floral motifs, and flowing organic forms"
-            case .milestone:
-                themeStyle = "milestone celebration patterns with golden geometric shapes, achievement symbols, and radiant abstract elements"
-            case .family:
-                themeStyle = "family-centered patterns with warm circular forms, connected geometric shapes, and generational abstract motifs"
-            case .achievement:
-                themeStyle = "achievement patterns with success symbols, ascending geometric forms, and recognition abstract elements"
-            }
+        switch spec.theme {
+        case .romantic:
+            themeStyle = """
+                (romantic celebration:1.6), (intimate love and partnership:1.5), \
+                (flowing romantic patterns:1.4), (soft hearts:1.4), \
+                (elegant floral accents:1.3), (dreamy atmosphere:1.3), \
+                (gentle romantic lighting:1.3), (tender emotional expression:1.3), \
+                (refined romantic elegance:1.4), (graceful curves:1.3), \
+                (warm passionate energy:1.3)
+                """
+        case .milestone:
+            themeStyle = """
+                (milestone commemoration:1.6), (significant achievement celebration:1.5), \
+                (golden celebration energy:1.4), (triumph symbols:1.4), \
+                (radiant success markers:1.3), (festive jubilation:1.3), \
+                (accomplishment visualization:1.4), (sophisticated golden patterns:1.3), \
+                (geometric celebration design:1.3)
+                """
+        case .family:
+            themeStyle = """
+                (family bond celebration:1.6), (warm connected patterns:1.5), \
+                (unity and togetherness:1.4), (generational legacy symbols:1.4), \
+                (heritage visualization:1.3), (cozy familial atmosphere:1.3), \
+                (circular connection forms:1.3), (warm golden tones:1.3), \
+                (nurturing warmth:1.3)
+                """
+        case .achievement:
+            themeStyle = """
+                (achievement celebration:1.6), (personal accomplishment:1.5), \
+                (professional success visualization:1.4), (ascending progress patterns:1.4), \
+                (growth trajectory:1.3), (victory symbols:1.3), \
+                (excellence markers:1.3), (inspirational triumph energy:1.4), \
+                (professional sophistication:1.3)
+                """
         }
         prompt = prompt.replacingOccurrences(of: "[THEME_STYLE]", with: themeStyle)
 
-        // Design elements integration
-        let centrePieces = spec.elements.filter { $0.category == .centrePiece }
-        let supportingElements = spec.elements.filter { $0.category == .supportingElement }
-
-        var elementsText = ""
-        if !centrePieces.isEmpty {
-            let centrePrompts = centrePieces.map { $0.aiPromptModifier }.joined(separator: " and ")
-            elementsText = "\(centrePrompts) as central focus"
+        // Single centerpiece element - MANDATORY with aggressive emphasis
+        let centreElementsText: String
+        if let selectedElement = spec.elements.first {
+            // Triple repetition with SDXL weights for absolute conformance
+            let repeatedPrompts = [
+                "(\(selectedElement.name):1.8)",  // Highest weight - MUST appear
+                "(\(selectedElement.name) centerpiece:1.7)",  // Reinforces central placement
+                selectedElement.aiPromptModifier  // Detailed descriptor with built-in weights (1.5-1.6)
+            ].joined(separator: ", ")
+            centreElementsText = "YOU MUST INCLUDE THIS CENTERPIECE: \(repeatedPrompts), MANDATORY central focal element"
+        } else {
+            centreElementsText = "(decorative anniversary focal point:1.3), romantic celebration motifs"
         }
-        if !supportingElements.isEmpty {
-            let supportPrompts = supportingElements.map { $0.aiPromptModifier }.joined(separator: ", ")
-            if !elementsText.isEmpty {
-                elementsText += " adorned with \(supportPrompts)"
-            } else {
-                elementsText = supportPrompts
-            }
-        }
-        prompt = prompt.replacingOccurrences(of: "[CULTURAL_ELEMENTS]", with: elementsText)
+        prompt = prompt.replacingOccurrences(of: "[CENTRE_ELEMENTS]", with: centreElementsText)
 
-        // Color integration with SIMPLE SDXL-optimized names (repeated throughout template for max adherence)
+        // Supporting elements - simplified (no longer used, but template still requires it)
+        prompt = prompt.replacingOccurrences(of: "[SUPPORTING_ELEMENTS]", with: "elegant complementary decorative flourishes")
+
+        // Color integration with SIMPLE SDXL-optimized names + STRICT ENFORCEMENT
         let colors = spec.colorPalette
         prompt = prompt.replacingOccurrences(of: "[PRIMARY_COLOR_SIMPLE]", with: colors.primaryColorSimple)
         prompt = prompt.replacingOccurrences(of: "[SECONDARY_COLOR_SIMPLE]", with: colors.secondaryColorSimple)
@@ -207,16 +212,51 @@ class AnniversaryAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
         print("=" + String(repeating: "=", count: 79))
         print("📊 USER SELECTIONS VERIFICATION:")
         print("   Theme: \(spec.theme.rawValue)")
-        print("   Gift Option: \(spec.giftOption ?? "none")")
-        print("   Elements (\(spec.elements.count)): \(spec.elements.map { $0.name }.joined(separator: ", "))")
+        print("   Element: \(spec.elements.first?.name ?? "NONE")")
         print("   Color Palette: \(spec.colorPalette.name)")
         print("   🎨 SDXL COLOR ENFORCEMENT:")
+        // swiftlint:disable:next line_length
         print("   ├─ PRIMARY (SIMPLE): \(spec.colorPalette.primaryColorSimple) [hex: \(spec.colorPalette.primaryColor)]")
+        // swiftlint:disable:next line_length
         print("   ├─ SECONDARY (SIMPLE): \(spec.colorPalette.secondaryColorSimple) [hex: \(spec.colorPalette.secondaryColor)]")
         print("   └─ ACCENT (SIMPLE): \(spec.colorPalette.accentColorSimple) [hex: \(spec.colorPalette.accentColor)]")
         print("=" + String(repeating: "=", count: 79))
 
         return prompt
+    }
+
+    // MARK: - Element Exclusion
+    nonisolated private func buildForbiddenElementsPrompt(selectedElement: AnniversaryElement?) -> String {
+        // All possible centerpiece elements
+        let allElementNames = ["Hearts", "Trophy", "Champagne", "Flowers"]
+
+        // If no element selected, forbid all specific elements
+        guard let selected = selectedElement else {
+            return "hearts, trophy, champagne, flowers, no centerpiece element"
+        }
+
+        // Filter out the selected element to get forbidden list
+        let forbiddenNames = allElementNames.filter { $0.lowercased() != selected.name.lowercased() }
+
+        // Build comprehensive negative prompt with variations
+        var negativeTerms: [String] = []
+
+        for name in forbiddenNames {
+            let lower = name.lowercased()
+            negativeTerms.append(lower)
+            negativeTerms.append("no \(lower)")
+            negativeTerms.append("\(lower) missing")
+            negativeTerms.append("\(lower) absent")
+        }
+
+        // Add general prohibition
+        negativeTerms.append("multiple centerpiece elements")
+        negativeTerms.append("mixed centerpieces")
+        negativeTerms.append("wrong centerpiece")
+
+        print("🚫 FORBIDDEN ELEMENTS: \(forbiddenNames.joined(separator: ", "))")
+
+        return negativeTerms.joined(separator: ", ")
     }
 
     // MARK: - Mock Generation (for development)

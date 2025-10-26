@@ -92,8 +92,8 @@ struct CulturalAIConfiguration {
     }
 
     /// AI generation parameters optimized for cultural content
-    static let inferenceSteps = 25
-    static let guidanceScale = 9.5  // Increased from 7.5 for stricter color conformance
+    static let inferenceSteps = 50  // Increased from 25 for better color/element refinement and artistic detail
+    static let guidanceScale = 14.0  // Tuned for strict conformance while preserving artistic quality (17.0 too high, 13.0 too loose)
     static let scheduler = "K_EULER_ANCESTRAL"
 
     // MARK: - Cultural Authenticity Standards
@@ -155,36 +155,87 @@ struct CulturalAIConfiguration {
 
     // MARK: - Cultural Prompt Standards
 
-    /// Base prompt structure - COLORS FIRST for maximum SDXL adherence
+    /// Base prompt structure - OPTIMIZED FOR SDXL (front-to-back processing)
+    /// Critical requirements FIRST, atmospheric details LAST
+    /// Combines rich descriptive guidance with SDXL weight syntax for optimal results
     static let culturalPromptTemplate = """
-        MANDATORY COLOR SCHEME - USE ONLY THESE COLORS:
-        PRIMARY COLOR (dominates the entire image): [PRIMARY_COLOR_SIMPLE]
-        SECONDARY COLOR (supporting elements): [SECONDARY_COLOR_SIMPLE]
-        ACCENT COLOR (small highlights): [ACCENT_COLOR_SIMPLE]
+        CRITICAL REQUIREMENTS - Create an exquisite [CULTURAL_EVENT] celebration design:
 
-        You are a decorative pattern artist working exclusively with [PRIMARY_COLOR_SIMPLE], [SECONDARY_COLOR_SIMPLE], and [ACCENT_COLOR_SIMPLE] colors.
+        ═══════════════════════════════════════════════════════════════════════════════
+        1. COLOR PALETTE MANDATE (NON-NEGOTIABLE - HIGHEST PRIORITY):
+        ═══════════════════════════════════════════════════════════════════════════════
 
-        Create a [CULTURAL_EVENT] celebration background using ONLY [PRIMARY_COLOR_SIMPLE], [SECONDARY_COLOR_SIMPLE], and [ACCENT_COLOR_SIMPLE].
-        The [THEME_STYLE] aesthetic must be rendered in [PRIMARY_COLOR_SIMPLE] as the dominant color with [SECONDARY_COLOR_SIMPLE] supporting.
+        PRIMARY COLOR: [PRIMARY_COLOR_SIMPLE] - Use for central focal elements (approximately 70% dominance)
+        SECONDARY COLOR: [SECONDARY_COLOR_SIMPLE] - Use for supporting decorative elements (approximately 20%)
+        ACCENT COLOR: [ACCENT_COLOR_SIMPLE] - Use for highlights and refined details (approximately 10%)
 
-        Design elements: [CULTURAL_ELEMENTS] painted in [PRIMARY_COLOR_SIMPLE], [SECONDARY_COLOR_SIMPLE], and [ACCENT_COLOR_SIMPLE] only.
-        Background atmosphere: [BACKGROUND_ATMOSPHERE] using [PRIMARY_COLOR_SIMPLE] and [SECONDARY_COLOR_SIMPLE].
+        ABSOLUTELY REQUIRED: Use ONLY these three colors - do not introduce any other colors whatsoever.
+        STRICTLY FORBIDDEN: Adding colors outside this palette, rainbow effects, or multicolored elements.
+        The color palette is NON-NEGOTIABLE and must be strictly followed throughout the entire composition.
 
-        CRITICAL COLOR MANDATE:
-        - The image MUST be primarily [PRIMARY_COLOR_SIMPLE] color
-        - Supporting elements MUST be [SECONDARY_COLOR_SIMPLE] color
-        - Small accents MUST be [ACCENT_COLOR_SIMPLE] color
-        - You are ABSOLUTELY FORBIDDEN from using any other colors
-        - Every single element must be [PRIMARY_COLOR_SIMPLE], [SECONDARY_COLOR_SIMPLE], or [ACCENT_COLOR_SIMPLE]
+        ═══════════════════════════════════════════════════════════════════════════════
+        2. MANDATORY CENTERPIECE ELEMENT (MUST APPEAR PROMINENTLY):
+        ═══════════════════════════════════════════════════════════════════════════════
 
-        PATTERN DIRECTIVE:
-        - Create ONLY decorative patterns, shapes, and visual elements
-        - You are FORBIDDEN from generating any text, letters, words, or symbols
-        - Express [EMOTIONAL_CONTEXT] through [PRIMARY_COLOR_SIMPLE] and [SECONDARY_COLOR_SIMPLE] patterns only
+        [CENTRE_ELEMENTS]
+
+        THIS ELEMENT IS ABSOLUTELY MANDATORY - IT MUST APPEAR PROMINENTLY as the dominant visual focus.
+        This centerpiece should be the primary focal point with refined details, elegant presentation,
+        and sophisticated artistic rendering. Ensure clear, unmistakable, PROMINENT presence.
+
+        ═══════════════════════════════════════════════════════════════════════════════
+        3. ARTISTIC THEME & VISUAL STYLE:
+        ═══════════════════════════════════════════════════════════════════════════════
+
+        [THEME_STYLE]
+
+        Create this design with professional quality, refined elegance, and sophisticated visual harmony.
+        Use graceful composition, balanced visual hierarchy, and exquisite attention to decorative details.
+
+        ═══════════════════════════════════════════════════════════════════════════════
+        4. ATMOSPHERIC BACKGROUND & EMOTIONAL CONTEXT:
+        ═══════════════════════════════════════════════════════════════════════════════
+
+        Background atmosphere: [BACKGROUND_ATMOSPHERE]
+        Emotional expression: [EMOTIONAL_CONTEXT]
+
+        The overall composition should evoke appropriate emotional resonance through visual elements,
+        lighting effects, and atmospheric depth, creating a memorable and meaningful design.
+
+        ═══════════════════════════════════════════════════════════════════════════════
+        5. SUPPORTING DECORATIVE ELEMENTS (complementary accents):
+        ═══════════════════════════════════════════════════════════════════════════════
+
+        [SUPPORTING_ELEMENTS]
+
+        These elements add graceful embellishment and refined decorative harmony,
+        complementing the central elements with elegant visual balance.
+
+        ═══════════════════════════════════════════════════════════════════════════════
+        CRITICAL ARTISTIC DIRECTIVES:
+        ═══════════════════════════════════════════════════════════════════════════════
+
+        ✓ CREATE: Harmonious color coordination using ONLY the three specified colors - NO EXCEPTIONS
+        ✓ CREATE: The specified centerpiece element MUST be clearly visible and prominent
+        ✓ CREATE: Professional quality with exquisite details and refined artistic execution
+        ✓ CREATE: Sophisticated visual hierarchy with balanced composition and elegant proportions
+        ✓ CREATE: Exquisite but refined composition - avoid excessive ornamentation
+        ✓ CREATE: Sophisticated elegance with restraint - not overly busy or cluttered
+
+        ✗ AVOID: Colors outside the specified three-color palette - ABSOLUTELY FORBIDDEN
+        ✗ AVOID: Missing or obscured centerpiece element - MUST BE CLEARLY VISIBLE
+        ✗ AVOID: Text, words, letters, numbers, typography, or any readable characters
+        ✗ AVOID: Generic or simplistic execution - aim for refined, exquisite quality
+        ✗ AVOID: Excessive decoration, overly busy compositions, or cluttered designs
+        ✗ AVOID: Elements not specified by the user
+
+        Generate decorative patterns, elegant shapes, and sophisticated abstract visual elements
+        that create a memorable, professional, and artistically beautiful composition with refined restraint.
         """
 
     /// Base negative prompt - explicitly forbidden elements for SDXL (industry-standard technique)
-    static let baseNegativePrompt = "text, words, letters, writing, typography, calligraphy, numbers, alphabet, script, handwriting, printed text, captions, labels, titles, messages, quotes, sayings, greetings, card text, watermarks, signatures, readable characters"
+    /// Includes NSFW safety terms to prevent false positives from content filter
+    static let baseNegativePrompt = "text, words, letters, writing, typography, calligraphy, numbers, alphabet, script, handwriting, printed text, captions, labels, titles, messages, quotes, sayings, greetings, card text, watermarks, signatures, readable characters, nsfw, nudity, explicit, sexual, inappropriate, adult content, suggestive, provocative, revealing"
 
     /// All possible colors for exclusion (comprehensive list of common SDXL-understood colors)
     private static let allKnownColors = [
@@ -222,7 +273,7 @@ struct CulturalAIConfiguration {
     }
 
     /// Legacy negative prompt (for backward compatibility)
-    static let negativePrompt = baseNegativePrompt + ", wrong colors, off-palette colors, unspecified colors, rainbow, excessive colors, multicolored chaos"
+    static let negativePrompt = baseNegativePrompt + ", wrong colors, off-palette colors, unspecified colors, rainbow, excessive colors, multicolored chaos, overly busy, excessive decoration, cluttered composition, too many elements, extra elements not requested"
 
     /// Quality enhancement suffix for all prompts
     static let qualityEnhancement = ", masterpiece, best quality, highly detailed, professional digital art, pure decorative patterns, abstract visual elements only"

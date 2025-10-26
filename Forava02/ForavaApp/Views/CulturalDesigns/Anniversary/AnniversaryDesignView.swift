@@ -23,7 +23,6 @@ struct AnniversaryDesignView: View, CulturalDesignViewProtocol {
     // MARK: - State Management
     @State var currentTab: GiftDesignTab = .style
     @State var selectedTheme: AnniversaryTheme?
-    @State var selectedGiftOption: String?
     @State var selectedElements: [AnniversaryElement] = []
     @State var selectedColorPalette: AnniversaryColorPalette?
     @State var selectedMessage: AnniversaryPersonalTouch?
@@ -89,19 +88,17 @@ struct AnniversaryDesignView: View, CulturalDesignViewProtocol {
     // MARK: - Computed Properties
     private var isReadyToGenerate: Bool {
         let hasTheme = selectedTheme != nil
-        let hasGiftOption = selectedGiftOption != nil
         let hasElements = !selectedElements.isEmpty
         let hasColorPalette = selectedColorPalette != nil
         let hasMessage = selectedMessage != nil || !personalMessage.isEmpty
 
         // Enhanced validation logging for debugging
         if !hasTheme { print("⚠️ Tab 1 (Style): No theme selected") }
-        if !hasGiftOption { print("⚠️ Tab 1 (Style): No gift option selected") }
         if !hasElements { print("⚠️ Tab 2 (Elements): No elements selected") }
         if !hasColorPalette { print("⚠️ Tab 3 (Colour): No color palette selected") }
         if !hasMessage { print("⚠️ Tab 4 (Touch): No message entered") }
 
-        return hasTheme && hasGiftOption && hasElements && hasColorPalette && hasMessage
+        return hasTheme && hasElements && hasColorPalette && hasMessage
     }
 
     private var selectedElementsDescription: String {
@@ -124,7 +121,6 @@ extension AnniversaryDesignView {
     @ViewBuilder func styleContent() -> StyleContent {
         AnniversaryStyleSelectionView(
             selectedTheme: $selectedTheme,
-            selectedGiftOption: $selectedGiftOption,
             culturalColor: culturalColor
         )
     }
@@ -154,7 +150,7 @@ extension AnniversaryDesignView {
     @ViewBuilder func createContent() -> CreateContent {
         AnniversaryCreateSummaryView(
             selectedTheme: selectedTheme,
-            selectedGiftOption: selectedGiftOption,
+            selectedGiftOption: nil,
             selectedElements: selectedElements,
             selectedColorPalette: selectedColorPalette,
             finalMessage: finalMessage,
@@ -184,7 +180,10 @@ extension AnniversaryDesignView {
             personalMessage: finalMessage,
             selectedContact: selectedContact,
             culturalColor: culturalColor,
-            showingShareSheet: $showingShareSheet
+            showingShareSheet: $showingShareSheet,
+            onGoBackToGenerate: {
+                currentTab = .create
+            }
         )
     }
 
@@ -195,7 +194,6 @@ extension AnniversaryDesignView {
         print("📊 ALL TAB SELECTIONS - USER PREFERENCES:")
         print("=" + String(repeating: "=", count: 79))
         print("Tab 1 - THEME: \(selectedTheme?.rawValue ?? "❌ NOT SELECTED")")
-        print("Tab 1 - GIFT OPTION: \(selectedGiftOption ?? "❌ NOT SELECTED")")
         print("Tab 2 - ELEMENTS (\(selectedElements.count)): \(selectedElements.map { $0.name }.joined(separator: ", "))")
         print("Tab 3 - COLOR PALETTE: \(selectedColorPalette?.name ?? "❌ NOT SELECTED")")
         if let colors = selectedColorPalette {
@@ -221,7 +219,7 @@ extension AnniversaryDesignView {
                 print("📱 Generating iPhone background...")
                 let iPhoneResult = try await anniversaryAI.generateAnniversaryGift(
                     theme: selectedTheme!,
-                    giftOption: selectedGiftOption,
+                    giftOption: nil,
                     elements: selectedElements,
                     colorPalette: selectedColorPalette!,
                     message: "", // No text in AI - will overlay natively
@@ -233,7 +231,7 @@ extension AnniversaryDesignView {
                 print("⌚ Generating Apple Watch background...")
                 let watchResult = try await anniversaryAI.generateAnniversaryGift(
                     theme: selectedTheme!,
-                    giftOption: selectedGiftOption,
+                    giftOption: nil,
                     elements: selectedElements,
                     colorPalette: selectedColorPalette!,
                     message: "", // No text in AI - will overlay natively

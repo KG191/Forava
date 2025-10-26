@@ -105,13 +105,10 @@ struct AnniversaryPersonalTouchView: View {
     private func messageCard(message: AnniversaryPersonalTouch, isSelected: Bool) -> some View {
         Button {
             withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
-                if selectedMessage?.id == message.id {
-                    selectedMessage = nil
-                } else {
-                    selectedMessage = message
-                    personalMessage = ""
-                    showingCustomInput = false
-                }
+                // Always select the message (no deselect toggle for required field)
+                selectedMessage = message
+                personalMessage = ""
+                showingCustomInput = false
             }
         } label: {
             VStack(spacing: 12) {
@@ -175,12 +172,11 @@ struct AnniversaryPersonalTouchView: View {
                         if showingCustomInput {
                             selectedMessage = nil
                             isTextFieldFocused = true
-                        } else {
-                            personalMessage = ""
                         }
+                        // Don't clear personalMessage when hiding - preserve user's typed text
                     }
                 } label: {
-                    Text(showingCustomInput ? "Cancel" : "Write Your Own")
+                    Text(showingCustomInput ? "Done" : "Write Your Own")
                         .font(.system(.caption, design: .rounded).weight(.medium))
                         .foregroundStyle(showingCustomInput ? .secondary : culturalColor)
                         .padding(.horizontal, 12)

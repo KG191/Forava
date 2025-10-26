@@ -3,6 +3,7 @@ import SwiftUI
 struct ContentView: View {
     @State private var selectedEvent: CulturalEvent?
     @State private var navigateToContact = false
+    @State private var showSettings = false
 
     var body: some View {
         NavigationStack {
@@ -57,11 +58,24 @@ struct ContentView: View {
                     Spacer()
                 }
             }
-            .toolbar(.hidden, for: .navigationBar) // clean landing page
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        showSettings = true
+                    } label: {
+                        Image(systemName: "gearshape.fill")
+                            .foregroundColor(.white)
+                            .font(.system(size: 20))
+                    }
+                }
+            }
             .navigationDestination(isPresented: $navigateToContact) {
                 if let event = selectedEvent {
                     ContactSelectionView(selectedEvent: event)
                 }
+            }
+            .sheet(isPresented: $showSettings) {
+                SettingsView()
             }
         }
     }

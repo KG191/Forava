@@ -67,6 +67,17 @@ struct SettingsView: View {
                     Text("Legal")
                 }
 
+                // Debug Section (only in debug builds)
+                #if DEBUG
+                Section {
+                    debugSection
+                } header: {
+                    Text("Debug & Testing")
+                } footer: {
+                    Text("Developer tools for testing and debugging. Only visible in debug builds.")
+                }
+                #endif
+
                 // App Information Section
                 Section {
                     appInfoSection
@@ -346,6 +357,39 @@ struct SettingsView: View {
             }
         }
     }
+
+    // MARK: - Debug Section
+    #if DEBUG
+    private var debugSection: some View {
+        Group {
+            NavigationLink {
+                AnniversaryTestRunnerView()
+            } label: {
+                HStack {
+                    Image(systemName: "wand.and.stars")
+                        .foregroundStyle(.orange)
+                        .frame(width: 20)
+
+                    Text("Anniversary AI Tests")
+                }
+            }
+
+            HStack {
+                Image(systemName: "hammer.fill")
+                    .foregroundStyle(.gray)
+                    .frame(width: 20)
+
+                Text("Build Configuration")
+
+                Spacer()
+
+                Text("Debug")
+                    .foregroundStyle(.orange)
+                    .font(.system(.caption, design: .rounded).weight(.medium))
+            }
+        }
+    }
+    #endif
 
     // MARK: - App Info Section
     private var appInfoSection: some View {

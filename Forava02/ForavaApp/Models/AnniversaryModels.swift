@@ -11,62 +11,13 @@ enum AnniversaryTheme: String, Codable, CaseIterable {
     var description: String {
         switch self {
         case .romantic:
-            return "Intimate celebration of love and partnership"
+            return "Intimate celebration of love and partnership with flowing romantic patterns, soft hearts, elegant floral accents, dreamy atmosphere, tender emotional expression"
         case .milestone:
-            return "Commemorating significant achievements and years"
+            return "Commemorating significant achievements with golden celebration energy, triumph symbols, radiant success markers, festive jubilation, accomplishment visualization"
         case .family:
-            return "Honoring family bonds and generational love"
+            return "Honoring family bonds with warm connected patterns, generational legacy symbols, heritage visualization, unity and togetherness, cozy familial atmosphere"
         case .achievement:
-            return "Celebrating personal and professional accomplishments"
-        }
-    }
-
-    var giftOptions: [String] {
-        switch self {
-        case .romantic:
-            return [
-                "Classic Love Letter Card",
-                "Romantic Garden Scene",
-                "Elegant Couple Silhouette",
-                "Heart Constellation Design",
-                "Vintage Romance Card",
-                "Modern Love Typography",
-                "Sunset Together Scene",
-                "Love Story Timeline"
-            ]
-        case .milestone:
-            return [
-                "Golden Years Celebration",
-                "Milestone Number Design",
-                "Achievement Timeline Card",
-                "Memory Collage Style",
-                "Progress Journey Map",
-                "Celebration Fireworks",
-                "Trophy Achievement Card",
-                "Success Story Design"
-            ]
-        case .family:
-            return [
-                "Family Tree Design",
-                "Generational Legacy Card",
-                "Family Photo Mosaic",
-                "Home & Hearts Theme",
-                "Family Crest Style",
-                "Heritage Celebration",
-                "Unity Symbol Design",
-                "Family Bond Circle"
-            ]
-        case .achievement:
-            return [
-                "Career Milestone Card",
-                "Educational Achievement",
-                "Personal Growth Journey",
-                "Success Story Design",
-                "Professional Recognition",
-                "Goal Achievement Theme",
-                "Excellence Award Style",
-                "Accomplishment Timeline"
-            ]
+            return "Celebrating personal and professional accomplishments with success visualization, ascending progress patterns, victory symbols, excellence markers, inspirational triumph energy"
         }
     }
 
@@ -88,96 +39,46 @@ enum AnniversaryTheme: String, Codable, CaseIterable {
 struct AnniversaryElement: Identifiable, Codable {
     let id: UUID
     let name: String
-    let category: ElementCategory
-    let priority: Int // Higher number = higher priority
+    let weight: Double // SDXL emphasis weight (1.4-1.5 for centerpiece presence)
     let aiPromptModifier: String
 
-    init(name: String, category: ElementCategory, priority: Int, aiPromptModifier: String) {
+    init(name: String, weight: Double, aiPromptModifier: String) {
         self.id = UUID()
         self.name = name
-        self.category = category
-        self.priority = priority
+        self.weight = weight
         self.aiPromptModifier = aiPromptModifier
-    }
-
-    enum ElementCategory: String, Codable, CaseIterable {
-        case centrePiece = "Centre Piece"
-        case supportingElement = "Supporting Element"
-
-        var description: String {
-            switch self {
-            case .centrePiece:
-                return "Takes visual precedence in the design"
-            case .supportingElement:
-                return "Complements the main design elements"
-            }
-        }
     }
 }
 
 // MARK: - Anniversary Elements Collection
 extension AnniversaryElement {
     static let allElements: [AnniversaryElement] = [
-        // Centre Pieces (Priority 90-100)
+        // All elements are centerpieces - user selects exactly ONE
         AnniversaryElement(
             name: "Hearts",
-            category: .centrePiece,
-            priority: 100,
-            aiPromptModifier: "elegant hearts as central focal point, romantic and loving"
-        ),
-        AnniversaryElement(
-            name: "Rings",
-            category: .centrePiece,
-            priority: 95,
-            aiPromptModifier: "beautiful rings as centerpiece, symbolizing unity and commitment"
-        ),
-        AnniversaryElement(
-            name: "Calendar",
-            category: .centrePiece,
-            priority: 92,
-            aiPromptModifier: "special date calendar as focal point, marking important milestones"
+            weight: 1.7,
+            // swiftlint:disable:next line_length
+            aiPromptModifier: "(elegant flowing hearts:1.6) as central romantic focal point with soft curves and tender expression, hearts symbolizing deep love and commitment, dreamy romantic heart patterns with graceful movement"
         ),
         AnniversaryElement(
             name: "Trophy",
-            category: .centrePiece,
-            priority: 90,
-            aiPromptModifier: "achievement trophy as centerpiece, celebrating accomplishments"
-        ),
-
-        // Supporting Elements (Priority 50-80)
-        AnniversaryElement(
-            name: "Flowers",
-            category: .supportingElement,
-            priority: 80,
-            aiPromptModifier: "beautiful flowers as romantic decorative accents"
+            weight: 1.6,
+            // swiftlint:disable:next line_length
+            aiPromptModifier: "(gleaming achievement trophy:1.5) as centerpiece celebrating accomplishments and success, elegant trophy design with refined details, symbol of victory and milestone achievement"
         ),
         AnniversaryElement(
             name: "Champagne",
-            category: .supportingElement,
-            priority: 75,
-            aiPromptModifier: "celebratory champagne as festive embellishments"
+            weight: 1.6,
+            // swiftlint:disable:next line_length
+            aiPromptModifier: "(celebratory champagne bottle and glasses:1.5) as festive centerpiece, elegant champagne bottle with cork popping, crystal glasses clinking in celebration, sparkling bubbles and joyful toast to love and success"
         ),
         AnniversaryElement(
-            name: "Confetti",
-            category: .supportingElement,
-            priority: 70,
-            aiPromptModifier: "joyful confetti as celebration border elements"
-        ),
-        AnniversaryElement(
-            name: "Ribbon",
-            category: .supportingElement,
-            priority: 65,
-            aiPromptModifier: "elegant ribbons as decorative flourishes"
+            name: "Flowers",
+            weight: 1.6,
+            // swiftlint:disable:next line_length
+            aiPromptModifier: "(beautiful romantic flowers:1.5) as central floral focal point, exquisite blooms with graceful petals and elegant arrangement, soft delicate flowers creating natural beauty and romantic atmosphere"
         )
     ]
-
-    static var centrePieces: [AnniversaryElement] {
-        return allElements.filter { $0.category == .centrePiece }.sorted { $0.priority > $1.priority }
-    }
-
-    static var supportingElements: [AnniversaryElement] {
-        return allElements.filter { $0.category == .supportingElement }.sorted { $0.priority > $1.priority }
-    }
 }
 
 // MARK: - Anniversary Color Palettes
@@ -191,12 +92,16 @@ struct AnniversaryColorPalette: Identifiable, Codable {
     let primaryColorName: String    // Descriptive name for AI (e.g., "deep crimson red")
     let secondaryColorName: String  // Descriptive name for AI
     let accentColorName: String     // Descriptive name for AI
-    let primaryColorSimple: String  // SDXL-optimized simple name (e.g., "red")
-    let secondaryColorSimple: String // SDXL-optimized simple name (e.g., "gold")
-    let accentColorSimple: String   // SDXL-optimized simple name (e.g., "cream")
+    let primaryColorSimple: String  // SDXL-weighted prompt syntax (e.g., "(rich vibrant red:1.6)")
+    let secondaryColorSimple: String // SDXL-weighted prompt syntax (e.g., "(warm gold:1.5)")
+    let accentColorSimple: String   // SDXL-weighted prompt syntax (e.g., "(soft cream:1.4)")
+    let primaryColorBase: String    // Base color name for exclusion logic (e.g., "red")
+    let secondaryColorBase: String  // Base color name for exclusion logic (e.g., "gold")
+    let accentColorBase: String     // Base color name for exclusion logic (e.g., "cream")
     let backgroundHint: String
 
-    init(name: String, description: String, primaryColor: String, secondaryColor: String, accentColor: String, primaryColorName: String, secondaryColorName: String, accentColorName: String, primaryColorSimple: String, secondaryColorSimple: String, accentColorSimple: String, backgroundHint: String) {
+    // swiftlint:disable:next line_length
+    init(name: String, description: String, primaryColor: String, secondaryColor: String, accentColor: String, primaryColorName: String, secondaryColorName: String, accentColorName: String, primaryColorSimple: String, secondaryColorSimple: String, accentColorSimple: String, primaryColorBase: String, secondaryColorBase: String, accentColorBase: String, backgroundHint: String) {
         self.id = UUID()
         self.name = name
         self.description = description
@@ -209,6 +114,9 @@ struct AnniversaryColorPalette: Identifiable, Codable {
         self.primaryColorSimple = primaryColorSimple
         self.secondaryColorSimple = secondaryColorSimple
         self.accentColorSimple = accentColorSimple
+        self.primaryColorBase = primaryColorBase
+        self.secondaryColorBase = secondaryColorBase
+        self.accentColorBase = accentColorBase
         self.backgroundHint = backgroundHint
     }
 
@@ -233,10 +141,13 @@ extension AnniversaryColorPalette {
             primaryColorName: "deep crimson red",
             secondaryColorName: "warm rose gold",
             accentColorName: "soft cream",
-            primaryColorSimple: "red",
-            secondaryColorSimple: "gold",
-            accentColorSimple: "cream",
-            backgroundHint: "romantic candlelit atmosphere"
+            primaryColorSimple: "(rich vibrant red:1.6)",
+            secondaryColorSimple: "(warm luxurious gold:1.5)",
+            accentColorSimple: "(soft elegant cream:1.4)",
+            primaryColorBase: "red",
+            secondaryColorBase: "gold",
+            accentColorBase: "cream",
+            backgroundHint: "romantic candlelit atmosphere with warm glow"
         ),
         AnniversaryColorPalette(
             name: "Golden Years",
@@ -247,10 +158,13 @@ extension AnniversaryColorPalette {
             primaryColorName: "rich golden yellow",
             secondaryColorName: "pale wheat beige",
             accentColorName: "cornsilk white",
-            primaryColorSimple: "gold",
-            secondaryColorSimple: "beige",
-            accentColorSimple: "white",
-            backgroundHint: "warm golden glow"
+            primaryColorSimple: "(luminous rich gold:1.6)",
+            secondaryColorSimple: "(soft pale beige:1.5)",
+            accentColorSimple: "(pure brilliant white:1.4)",
+            primaryColorBase: "gold",
+            secondaryColorBase: "beige",
+            accentColorBase: "white",
+            backgroundHint: "warm radiant golden glow with shimmer"
         ),
         AnniversaryColorPalette(
             name: "Silver Celebration",
@@ -261,10 +175,13 @@ extension AnniversaryColorPalette {
             primaryColorName: "metallic silver",
             secondaryColorName: "pale ice blue",
             accentColorName: "steel blue",
-            primaryColorSimple: "silver",
-            secondaryColorSimple: "blue",
-            accentColorSimple: "steel",
-            backgroundHint: "sophisticated silver shimmer"
+            primaryColorSimple: "(elegant metallic silver:1.6)",
+            secondaryColorSimple: "(soft ice blue:1.5)",
+            accentColorSimple: "(refined steel blue:1.4)",
+            primaryColorBase: "silver",
+            secondaryColorBase: "blue",
+            accentColorBase: "blue",
+            backgroundHint: "sophisticated silver shimmer with cool elegance"
         ),
         AnniversaryColorPalette(
             name: "Ruby Passion",
@@ -275,66 +192,13 @@ extension AnniversaryColorPalette {
             primaryColorName: "deep ruby red",
             secondaryColorName: "dark burgundy",
             accentColorName: "soft pink",
-            primaryColorSimple: "red",
-            secondaryColorSimple: "burgundy",
-            accentColorSimple: "pink",
-            backgroundHint: "passionate ruby atmosphere"
-        ),
-        AnniversaryColorPalette(
-            name: "Elegant Black",
-            description: "Sophisticated black and gold",
-            primaryColor: "#000000",
-            secondaryColor: "#FFD700",
-            accentColor: "#FFFFFF",
-            primaryColorName: "elegant black",
-            secondaryColorName: "rich gold",
-            accentColorName: "pure white",
-            primaryColorSimple: "black",
-            secondaryColorSimple: "gold",
-            accentColorSimple: "white",
-            backgroundHint: "elegant black tie event"
-        ),
-        AnniversaryColorPalette(
-            name: "Soft Pastels",
-            description: "Gentle pastel harmony",
-            primaryColor: "#FFB6C1",
-            secondaryColor: "#E6E6FA",
-            accentColor: "#F0FFF0",
-            primaryColorName: "light pink",
-            secondaryColorName: "lavender mist",
-            accentColorName: "pale mint green",
-            primaryColorSimple: "pink",
-            secondaryColorSimple: "lavender",
-            accentColorSimple: "mint",
-            backgroundHint: "soft dreamy atmosphere"
-        ),
-        AnniversaryColorPalette(
-            name: "Modern Minimalist",
-            description: "Clean contemporary design",
-            primaryColor: "#36454F",
-            secondaryColor: "#E6C2A6",
-            accentColor: "#FFFFFF",
-            primaryColorName: "charcoal gray",
-            secondaryColorName: "warm tan",
-            accentColorName: "clean white",
-            primaryColorSimple: "gray",
-            secondaryColorSimple: "tan",
-            accentColorSimple: "white",
-            backgroundHint: "clean modern background"
-        ),
-        AnniversaryColorPalette(
-            name: "Vintage Love",
-            description: "Warm vintage romance",
-            primaryColor: "#DEB887",
-            secondaryColor: "#F5DEB3",
-            accentColor: "#FFF8DC",
-            primaryColorName: "burlywood tan",
-            secondaryColorName: "wheat beige",
-            accentColorName: "cornsilk cream",
-            primaryColorSimple: "tan",
-            secondaryColorSimple: "beige",
-            accentColorSimple: "cream",
-            backgroundHint: "vintage sepia warmth"
+            primaryColorSimple: "(deep luxurious red:1.6)",
+            secondaryColorSimple: "(rich dark burgundy:1.5)",
+            accentColorSimple: "(gentle soft pink:1.4)",
+            primaryColorBase: "red",
+            secondaryColorBase: "burgundy",
+            accentColorBase: "pink",
+            backgroundHint: "passionate ruby atmosphere with romantic depth"
         )
     ]
 }
@@ -404,5 +268,3 @@ extension AnniversaryPersonalTouch {
     static let personalMessagePlaceholder = "Add your own personal anniversary message here..."
     static let maxPersonalMessageLength = 200
 }
-
-
