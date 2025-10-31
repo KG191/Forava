@@ -56,27 +56,23 @@ extension AnniversaryElement {
         // All elements are centerpieces - user selects exactly ONE
         AnniversaryElement(
             name: "Hearts",
-            weight: 1.7,
-            // swiftlint:disable:next line_length
-            aiPromptModifier: "(elegant flowing hearts:1.6) as central romantic focal point with soft curves and tender expression, hearts symbolizing deep love and commitment, dreamy romantic heart patterns with graceful movement"
+            weight: 2.2,
+            aiPromptModifier: "(large flowing hearts:2.2), romantic red hearts"
         ),
         AnniversaryElement(
             name: "Trophy",
-            weight: 1.6,
-            // swiftlint:disable:next line_length
-            aiPromptModifier: "(gleaming achievement trophy:1.5) as centerpiece celebrating accomplishments and success, elegant trophy design with refined details, symbol of victory and milestone achievement"
+            weight: 2.5,
+            aiPromptModifier: "(golden sports trophy cup:2.5), inanimate award trophy, NOT a bust, NOT a statue, celebration prize"
         ),
         AnniversaryElement(
             name: "Champagne",
-            weight: 1.6,
-            // swiftlint:disable:next line_length
-            aiPromptModifier: "(celebratory champagne bottle and glasses:1.5) as festive centerpiece, elegant champagne bottle with cork popping, crystal glasses clinking in celebration, sparkling bubbles and joyful toast to love and success"
+            weight: 2.2,
+            aiPromptModifier: "(champagne bottle glasses:2.2), celebration toast"
         ),
         AnniversaryElement(
             name: "Flowers",
-            weight: 1.6,
-            // swiftlint:disable:next line_length
-            aiPromptModifier: "(beautiful romantic flowers:1.5) as central floral focal point, exquisite blooms with graceful petals and elegant arrangement, soft delicate flowers creating natural beauty and romantic atmosphere"
+            weight: 2.2,
+            aiPromptModifier: "(romantic flowers bouquet:2.2), elegant blooms"
         )
     ]
 }
@@ -141,9 +137,9 @@ extension AnniversaryColorPalette {
             primaryColorName: "deep crimson red",
             secondaryColorName: "warm rose gold",
             accentColorName: "soft cream",
-            primaryColorSimple: "(rich vibrant red:1.6)",
-            secondaryColorSimple: "(warm luxurious gold:1.5)",
-            accentColorSimple: "(soft elegant cream:1.4)",
+            primaryColorSimple: "(vibrant red:2.0)",
+            secondaryColorSimple: "(gold:1.8)",
+            accentColorSimple: "(cream:1.6)",
             primaryColorBase: "red",
             secondaryColorBase: "gold",
             accentColorBase: "cream",
@@ -158,9 +154,9 @@ extension AnniversaryColorPalette {
             primaryColorName: "rich golden yellow",
             secondaryColorName: "pale wheat beige",
             accentColorName: "cornsilk white",
-            primaryColorSimple: "(luminous rich gold:1.6)",
-            secondaryColorSimple: "(soft pale beige:1.5)",
-            accentColorSimple: "(pure brilliant white:1.4)",
+            primaryColorSimple: "(gold:2.0)",
+            secondaryColorSimple: "(beige:1.8)",
+            accentColorSimple: "(white:1.6)",
             primaryColorBase: "gold",
             secondaryColorBase: "beige",
             accentColorBase: "white",
@@ -175,9 +171,9 @@ extension AnniversaryColorPalette {
             primaryColorName: "metallic silver",
             secondaryColorName: "pale ice blue",
             accentColorName: "steel blue",
-            primaryColorSimple: "(elegant metallic silver:1.6)",
-            secondaryColorSimple: "(soft ice blue:1.5)",
-            accentColorSimple: "(refined steel blue:1.4)",
+            primaryColorSimple: "(silver:2.0)",
+            secondaryColorSimple: "(ice blue:1.8)",
+            accentColorSimple: "(steel blue:1.6)",
             primaryColorBase: "silver",
             secondaryColorBase: "blue",
             accentColorBase: "blue",
@@ -192,9 +188,9 @@ extension AnniversaryColorPalette {
             primaryColorName: "deep ruby red",
             secondaryColorName: "dark burgundy",
             accentColorName: "soft pink",
-            primaryColorSimple: "(deep luxurious red:1.6)",
-            secondaryColorSimple: "(rich dark burgundy:1.5)",
-            accentColorSimple: "(gentle soft pink:1.4)",
+            primaryColorSimple: "(ruby red:2.0)",
+            secondaryColorSimple: "(burgundy:1.8)",
+            accentColorSimple: "(pink:1.6)",
             primaryColorBase: "red",
             secondaryColorBase: "burgundy",
             accentColorBase: "pink",

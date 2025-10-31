@@ -155,134 +155,37 @@ struct CulturalAIConfiguration {
 
     // MARK: - Cultural Prompt Standards
 
-    /// Base prompt structure - OPTIMIZED FOR SDXL (front-to-back processing)
-    /// Critical requirements FIRST, atmospheric details LAST
-    /// Combines rich descriptive guidance with SDXL weight syntax for optimal results
+    /// SIMPLIFIED SDXL Prompt Template - Short, direct, concrete
+    /// SDXL works MUCH better with brief, specific instructions
     static let culturalPromptTemplate = """
-        CRITICAL REQUIREMENTS - Create an exquisite [CULTURAL_EVENT] celebration design:
-
-        ═══════════════════════════════════════════════════════════════════════════════
-        1. COLOR PALETTE MANDATE (NON-NEGOTIABLE - HIGHEST PRIORITY):
-        ═══════════════════════════════════════════════════════════════════════════════
-
-        PRIMARY COLOR: [PRIMARY_COLOR_SIMPLE] - Use for central focal elements (approximately 70% dominance)
-        SECONDARY COLOR: [SECONDARY_COLOR_SIMPLE] - Use for supporting decorative elements (approximately 20%)
-        ACCENT COLOR: [ACCENT_COLOR_SIMPLE] - Use for highlights and refined details (approximately 10%)
-
-        ABSOLUTELY REQUIRED: Use ONLY these three colors - do not introduce any other colors whatsoever.
-        STRICTLY FORBIDDEN: Adding colors outside this palette, rainbow effects, or multicolored elements.
-        The color palette is NON-NEGOTIABLE and must be strictly followed throughout the entire composition.
-
-        ═══════════════════════════════════════════════════════════════════════════════
-        2. MANDATORY CENTERPIECE ELEMENT (MUST APPEAR PROMINENTLY):
-        ═══════════════════════════════════════════════════════════════════════════════
-
-        [CENTRE_ELEMENTS]
-
-        THIS ELEMENT IS ABSOLUTELY MANDATORY - IT MUST APPEAR PROMINENTLY as the dominant visual focus.
-        This centerpiece should be the primary focal point with refined details, elegant presentation,
-        and sophisticated artistic rendering. Ensure clear, unmistakable, PROMINENT presence.
-
-        ═══════════════════════════════════════════════════════════════════════════════
-        3. ARTISTIC THEME & VISUAL STYLE:
-        ═══════════════════════════════════════════════════════════════════════════════
-
-        [THEME_STYLE]
-
-        Create this design with professional quality, refined elegance, and sophisticated visual harmony.
-        Use graceful composition, balanced visual hierarchy, and exquisite attention to decorative details.
-
-        ═══════════════════════════════════════════════════════════════════════════════
-        4. ATMOSPHERIC BACKGROUND & EMOTIONAL CONTEXT:
-        ═══════════════════════════════════════════════════════════════════════════════
-
-        Background atmosphere: [BACKGROUND_ATMOSPHERE]
-        Emotional expression: [EMOTIONAL_CONTEXT]
-
-        The overall composition should evoke appropriate emotional resonance through visual elements,
-        lighting effects, and atmospheric depth, creating a memorable and meaningful design.
-
-        ═══════════════════════════════════════════════════════════════════════════════
-        5. SUPPORTING DECORATIVE ELEMENTS (complementary accents):
-        ═══════════════════════════════════════════════════════════════════════════════
-
-        [SUPPORTING_ELEMENTS]
-
-        These elements add graceful embellishment and refined decorative harmony,
-        complementing the central elements with elegant visual balance.
-
-        ═══════════════════════════════════════════════════════════════════════════════
-        CRITICAL ARTISTIC DIRECTIVES:
-        ═══════════════════════════════════════════════════════════════════════════════
-
-        ✓ CREATE: Harmonious color coordination using ONLY the three specified colors - NO EXCEPTIONS
-        ✓ CREATE: The specified centerpiece element MUST be clearly visible and prominent
-        ✓ CREATE: Professional quality with exquisite details and refined artistic execution
-        ✓ CREATE: Sophisticated visual hierarchy with balanced composition and elegant proportions
-        ✓ CREATE: Exquisite but refined composition - avoid excessive ornamentation
-        ✓ CREATE: Sophisticated elegance with restraint - not overly busy or cluttered
-
-        ✗ AVOID: Colors outside the specified three-color palette - ABSOLUTELY FORBIDDEN
-        ✗ AVOID: Missing or obscured centerpiece element - MUST BE CLEARLY VISIBLE
-        ✗ AVOID: Text, words, letters, numbers, typography, or any readable characters
-        ✗ AVOID: Generic or simplistic execution - aim for refined, exquisite quality
-        ✗ AVOID: Excessive decoration, overly busy compositions, or cluttered designs
-        ✗ AVOID: Elements not specified by the user
-
-        Generate decorative patterns, elegant shapes, and sophisticated abstract visual elements
-        that create a memorable, professional, and artistically beautiful composition with refined restraint.
+        Use ONLY these colors: [PRIMARY_COLOR_SIMPLE], [SECONDARY_COLOR_SIMPLE], [ACCENT_COLOR_SIMPLE]. No other colors.
+        Central focus: [CENTRE_ELEMENTS]
+        Style: [THEME_STYLE]. [BACKGROUND_ATMOSPHERE]. Professional quality.
         """
 
-    /// Base negative prompt - explicitly forbidden elements for SDXL (industry-standard technique)
-    /// Includes NSFW safety terms to prevent false positives from content filter
-    static let baseNegativePrompt = "text, words, letters, writing, typography, calligraphy, numbers, alphabet, script, handwriting, printed text, captions, labels, titles, messages, quotes, sayings, greetings, card text, watermarks, signatures, readable characters, nsfw, nudity, explicit, sexual, inappropriate, adult content, suggestive, provocative, revealing"
+    /// Comprehensive negative prompt - MAXIMUM weights to block ALL human imagery (Apple compliance)
+    static let baseNegativePrompt = "text, words, letters, nsfw, wrong colors, multiple centerpieces, (people:3.0), (person:3.0), (human:3.0), (man:2.8), (woman:2.8), (child:2.8), (face:3.0), (faces:3.0), (portrait:2.8), (statue:3.0), (sculpture:3.0), (bust:3.0), (figure:2.5), (body:2.5), (silhouette:2.5), (human form:2.8), (human shape:2.8), anatomy, arms, legs, hands, fingers"
 
-    /// All possible colors for exclusion (comprehensive list of common SDXL-understood colors)
-    private static let allKnownColors = [
-        "red", "blue", "green", "yellow", "orange", "purple", "pink", "brown",
-        "black", "white", "gray", "grey", "silver", "gold", "bronze", "copper",
-        "cyan", "magenta", "lime", "navy", "teal", "aqua", "maroon", "olive",
-        "coral", "salmon", "peach", "lavender", "violet", "indigo", "turquoise",
-        "mint", "emerald", "jade", "ruby", "sapphire", "amber", "ivory", "cream",
-        "beige", "tan", "burgundy", "crimson", "scarlet", "rose", "fuchsia",
-        "plum", "periwinkle", "chartreuse", "mauve", "taupe", "khaki", "steel"
-    ]
-
-    /// Generate color-exclusion negative prompt - forbids ALL colors except the selected 3
+    /// Simplified color-exclusion negative prompt
     static func colorExclusionNegativePrompt(
         allowedPrimary: String,
         allowedSecondary: String,
         allowedAccent: String
     ) -> String {
-        // Normalize to lowercase for comparison
-        let allowed = Set([
-            allowedPrimary.lowercased(),
-            allowedSecondary.lowercased(),
-            allowedAccent.lowercased()
-        ])
-
-        // Filter out allowed colors and create forbidden list
-        let forbiddenColors = allKnownColors.filter { !allowed.contains($0.lowercased()) }
-
-        // Build comprehensive negative prompt
-        var negativePrompt = baseNegativePrompt
-        negativePrompt += ", wrong colors, off-palette colors, unspecified colors, rainbow, multicolored"
-        negativePrompt += ", " + forbiddenColors.joined(separator: ", ")
-
-        return negativePrompt
+        return baseNegativePrompt + ", wrong colors"
     }
 
     /// Legacy negative prompt (for backward compatibility)
-    static let negativePrompt = baseNegativePrompt + ", wrong colors, off-palette colors, unspecified colors, rainbow, excessive colors, multicolored chaos, overly busy, excessive decoration, cluttered composition, too many elements, extra elements not requested"
+    static let negativePrompt = baseNegativePrompt
 
-    /// Quality enhancement suffix for all prompts
-    static let qualityEnhancement = ", masterpiece, best quality, highly detailed, professional digital art, pure decorative patterns, abstract visual elements only"
+    /// Simplified quality enhancement
+    static let qualityEnhancement = ", professional quality, detailed"
 
-    /// Cultural sensitivity suffix for all prompts
-    static let culturalSensitivity = ", respectful cultural representation, authentic traditional elements"
+    /// Simplified cultural sensitivity
+    static let culturalSensitivity = ""
 
-    /// No text enforcement suffix - aggressive agent directives
-    static let noTextEnforcement = ", YOU MUST NEVER INCLUDE: any text OR words OR letters OR numbers OR symbols OR writing OR typography OR calligraphy OR readable characters of any kind, ONLY decorative patterns and abstract shapes"
+    /// Simplified no text enforcement
+    static let noTextEnforcement = ""
 
     // MARK: - Error Handling
 

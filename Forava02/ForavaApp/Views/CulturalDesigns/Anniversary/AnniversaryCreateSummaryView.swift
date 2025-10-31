@@ -41,15 +41,6 @@ struct AnniversaryCreateSummaryView: View {
                             details: selectedTheme?.description
                         )
 
-                        // Gift Option Card
-                        selectionSummaryCard(
-                            title: "Gift Style",
-                            content: selectedGiftOption ?? "Not selected",
-                            isComplete: selectedGiftOption != nil,
-                            icon: "gift.fill",
-                            details: selectedGiftOption != nil ? "Specific design style for your anniversary gift" : nil
-                        )
-
                         selectionSummaryCard(
                             title: "Design Elements",
                             content: elementsDescription,
@@ -355,19 +346,17 @@ struct AnniversaryCreateSummaryView: View {
     private var completedSteps: Int {
         var steps = 0
         if selectedTheme != nil { steps += 1 }
-        if selectedGiftOption != nil { steps += 1 }
         if !selectedElements.isEmpty { steps += 1 }
         if selectedColorPalette != nil { steps += 1 }
         if !finalMessage.isEmpty && finalMessage != "No message selected" { steps += 1 }
         return steps
     }
 
-    private let totalSteps = 5
+    private let totalSteps = 4
 
     private var missingItemsDescription: String {
         var missing: [String] = []
         if selectedTheme == nil { missing.append("Style Theme") }
-        if selectedGiftOption == nil { missing.append("Gift Style") }
         if selectedElements.isEmpty { missing.append("Design Elements") }
         if selectedColorPalette == nil { missing.append("Color Palette") }
         if finalMessage.isEmpty || finalMessage == "No message selected" { missing.append("Personal Message") }

@@ -4,69 +4,29 @@ import SwiftUI
 // MARK: - Chinese New Year Theme Structure
 enum ChineseNewYearTheme: String, Codable, CaseIterable {
     case traditional = "Traditional"
-    case zodiac = "Zodiac"
-    case prosperity = "Prosperity"
     case modern = "Modern"
+    case familyReunion = "Family Reunion"
+    case prosperity = "Prosperity"
 
     var description: String {
         switch self {
         case .traditional:
-            return "Classic Chinese New Year with authentic elements"
-        case .zodiac:
-            return "Celebrating the current zodiac animal year"
-        case .prosperity:
-            return "Focus on wealth, luck, and good fortune"
+            return "Classic celebration with traditional red and gold patterns, ancient lanterns, authentic cultural symbols, timeless festive atmosphere, heritage visualization, traditional 传统 aesthetics"
         case .modern:
-            return "Contemporary Chinese New Year with modern twist"
+            return "Contemporary celebration with sleek modern aesthetics, minimalist design patterns, sophisticated urban festival vibe, clean contemporary lines, stylish 现代 elegance, innovative cultural fusion"
+        case .familyReunion:
+            return "Warm family togetherness celebration with reunion imagery, generational bonding symbols, cozy family gathering atmosphere, heartwarming unity patterns, 团圆 warmth, connected family energy"
+        case .prosperity:
+            return "Wealth and fortune celebration with prosperity symbols, abundant gold ingots, fortune coins, blessing imagery, success visualization, 招财 energy, lucky abundance patterns"
         }
     }
 
-    var giftOptions: [String] {
+    var chineseName: String {
         switch self {
-        case .traditional:
-            return [
-                "Imperial Dragon Card",
-                "Traditional Lion Dance",
-                "Red Lantern Festival",
-                "Plum Blossom Branch",
-                "Golden Temple Design",
-                "Ancestral Blessing Card",
-                "Classic Calligraphy Style",
-                "Traditional Family Scene"
-            ]
-        case .zodiac:
-            return [
-                "Year of the Dragon",
-                "Zodiac Animal Portrait",
-                "12 Animals Circle",
-                "Zodiac Compatibility Card",
-                "Animal Characteristics",
-                "Zodiac Calendar Design",
-                "Lucky Animal Symbols",
-                "Zodiac Fortune Card"
-            ]
-        case .prosperity:
-            return [
-                "Gold Coins Rain",
-                "Fortune Tree Design",
-                "Lucky Bamboo Card",
-                "Wealth God Blessing",
-                "Golden Ingots Scene",
-                "Prosperity Characters",
-                "Money Tree Branches",
-                "Abundance Symbols"
-            ]
-        case .modern:
-            return [
-                "Digital Dragon Art",
-                "Modern Red Envelope",
-                "Contemporary Lanterns",
-                "Urban Celebration",
-                "Minimalist CNY Design",
-                "Tech-Style Fireworks",
-                "Modern Calligraphy",
-                "Digital Prosperity Card"
-            ]
+        case .traditional: return "传统"
+        case .modern: return "现代"
+        case .familyReunion: return "团圆"
+        case .prosperity: return "招财"
         }
     }
 
@@ -74,12 +34,12 @@ enum ChineseNewYearTheme: String, Codable, CaseIterable {
         switch self {
         case .traditional:
             return Color(hex: "#DC143C") // Crimson Red
-        case .zodiac:
-            return Color(hex: "#B8860B") // Dark Golden Rod
+        case .modern:
+            return Color(hex: "#FF6B6B") // Modern Red
+        case .familyReunion:
+            return Color(hex: "#FF4444") // Warm Red
         case .prosperity:
             return Color(hex: "#FFD700") // Gold
-        case .modern:
-            return Color(hex: "#FF6347") // Tomato Red
         }
     }
 }
@@ -88,129 +48,103 @@ enum ChineseNewYearTheme: String, Codable, CaseIterable {
 struct ChineseNewYearElement: Identifiable, Codable {
     let id: UUID
     let name: String
-    let category: ElementCategory
-    let priority: Int // Higher number = higher priority
+    let chineseName: String
+    let weight: Double // SDXL emphasis weight (2.0-2.5 for centerpiece presence)
     let aiPromptModifier: String
 
-    init(name: String, category: ElementCategory, priority: Int, aiPromptModifier: String) {
+    init(name: String, chineseName: String, weight: Double, aiPromptModifier: String) {
         self.id = UUID()
         self.name = name
-        self.category = category
-        self.priority = priority
+        self.chineseName = chineseName
+        self.weight = weight
         self.aiPromptModifier = aiPromptModifier
-    }
-
-    enum ElementCategory: String, Codable, CaseIterable {
-        case centrePiece = "Centre Piece"
-        case supportingElement = "Supporting Element"
-
-        var description: String {
-            switch self {
-            case .centrePiece:
-                return "Takes visual precedence in the design"
-            case .supportingElement:
-                return "Complements the main design elements"
-            }
-        }
     }
 }
 
 // MARK: - Chinese New Year Elements Collection
 extension ChineseNewYearElement {
     static let allElements: [ChineseNewYearElement] = [
-        // Centre Pieces (Priority 90-100)
+        // All elements are centerpieces - user selects exactly ONE
         ChineseNewYearElement(
             name: "Dragon",
-            category: .centrePiece,
-            priority: 100,
-            aiPromptModifier: "magnificent Chinese dragon as central focal point, powerful and majestic"
+            chineseName: "龙",
+            weight: 2.5,
+            aiPromptModifier: "(majestic Chinese dragon:2.5), powerful mythical dragon with scales, auspicious dragon symbolism, fortune and power, NOT cartoon, traditional Chinese dragon art"
         ),
         ChineseNewYearElement(
-            name: "Lion Dance",
-            category: .centrePiece,
-            priority: 95,
-            aiPromptModifier: "traditional lion dance as main feature, vibrant and energetic performance"
+            name: "Lantern",
+            chineseName: "灯笼",
+            weight: 2.2,
+            aiPromptModifier: "(traditional red Chinese lanterns:2.2), festive hanging lanterns, glowing paper lanterns, celebration atmosphere"
         ),
         ChineseNewYearElement(
-            name: "Lanterns",
-            category: .centrePiece,
-            priority: 92,
-            aiPromptModifier: "beautiful red lanterns as centerpiece, glowing with warm festive light"
+            name: "Firecrackers",
+            chineseName: "鞭炮",
+            weight: 2.2,
+            aiPromptModifier: "(red firecrackers strings:2.2), traditional celebration firecrackers, festive firecracker display, luck and prosperity symbols"
         ),
         ChineseNewYearElement(
-            name: "Fireworks",
-            category: .centrePiece,
-            priority: 90,
-            aiPromptModifier: "spectacular fireworks display as focal point, bursting with celebration"
-        ),
-
-        // Supporting Elements (Priority 50-80)
-        ChineseNewYearElement(
-            name: "Plum Blossoms",
-            category: .supportingElement,
-            priority: 80,
-            aiPromptModifier: "delicate plum blossoms as decorative accents, symbolizing renewal and hope"
+            name: "Peony",
+            chineseName: "牡丹",
+            weight: 2.3,
+            aiPromptModifier: "(blooming peony flowers:2.3), elegant Chinese peony blooms, prosperity and beauty symbols, rich floral elegance"
         ),
         ChineseNewYearElement(
-            name: "Gold Coins",
-            category: .supportingElement,
-            priority: 75,
-            aiPromptModifier: "golden Chinese coins as prosperity embellishments"
-        ),
-        ChineseNewYearElement(
-            name: "Bamboo",
-            category: .supportingElement,
-            priority: 70,
-            aiPromptModifier: "elegant bamboo as border elements, representing strength and flexibility"
-        ),
-        ChineseNewYearElement(
-            name: "Fu Character",
-            category: .supportingElement,
-            priority: 65,
-            aiPromptModifier: "traditional Fu character as decorative element, symbolizing good fortune"
+            name: "Gold Ingots",
+            chineseName: "金元宝",
+            weight: 2.4,
+            aiPromptModifier: "(golden ingots yuanbao:2.4), traditional Chinese gold ingots, wealth symbols, prosperity and fortune, sycee gold bars"
         )
     ]
-
-    static var centrePieces: [ChineseNewYearElement] {
-        return allElements.filter { $0.category == .centrePiece }.sorted { $0.priority > $1.priority }
-    }
-
-    static var supportingElements: [ChineseNewYearElement] {
-        return allElements.filter { $0.category == .supportingElement }.sorted { $0.priority > $1.priority }
-    }
 }
 
 // MARK: - Chinese New Year Color Palettes
 struct ChineseNewYearColorPalette: Identifiable, Codable {
     let id: UUID
     let name: String
+    let chineseName: String
     let description: String
-    let primaryColor: String
-    let secondaryColor: String
-    let accentColor: String
+    let primaryColor: String        // Hex code (e.g., "#DC143C")
+    let secondaryColor: String      // Hex code
+    let accentColor: String         // Hex code
+    let primaryColorName: String    // Descriptive name for AI (e.g., "lucky crimson red")
+    let secondaryColorName: String  // Descriptive name for AI
+    let accentColorName: String     // Descriptive name for AI
+    let primaryColorSimple: String  // SDXL-weighted prompt syntax (e.g., "(vibrant red:2.0)")
+    let secondaryColorSimple: String // SDXL-weighted prompt syntax (e.g., "(brilliant gold:1.8)")
+    let accentColorSimple: String   // SDXL-weighted prompt syntax (e.g., "(jade green:1.6)")
+    let primaryColorBase: String    // Base color name for exclusion logic (e.g., "red")
+    let secondaryColorBase: String  // Base color name for exclusion logic (e.g., "gold")
+    let accentColorBase: String     // Base color name for exclusion logic (e.g., "green")
     let backgroundHint: String
 
-    init(name: String, description: String, primaryColor: String, 
-         secondaryColor: String, accentColor: String, backgroundHint: String) {
+    // swiftlint:disable:next line_length
+    init(name: String, chineseName: String, description: String, primaryColor: String, secondaryColor: String, accentColor: String, primaryColorName: String, secondaryColorName: String, accentColorName: String, primaryColorSimple: String, secondaryColorSimple: String, accentColorSimple: String, primaryColorBase: String, secondaryColorBase: String, accentColorBase: String, backgroundHint: String) {
         self.id = UUID()
         self.name = name
+        self.chineseName = chineseName
         self.description = description
         self.primaryColor = primaryColor
         self.secondaryColor = secondaryColor
         self.accentColor = accentColor
+        self.primaryColorName = primaryColorName
+        self.secondaryColorName = secondaryColorName
+        self.accentColorName = accentColorName
+        self.primaryColorSimple = primaryColorSimple
+        self.secondaryColorSimple = secondaryColorSimple
+        self.accentColorSimple = accentColorSimple
+        self.primaryColorBase = primaryColorBase
+        self.secondaryColorBase = secondaryColorBase
+        self.accentColorBase = accentColorBase
         self.backgroundHint = backgroundHint
     }
 
-    var primarySwiftUIColor: Color {
-        return Color(hex: primaryColor)
-    }
-    
-    var secondarySwiftUIColor: Color {
-        return Color(hex: secondaryColor)
-    }
-    
-    var accentSwiftUIColor: Color {
-        return Color(hex: accentColor)
+    var swiftUIColors: (primary: Color, secondary: Color, accent: Color) {
+        return (
+            primary: Color(hex: primaryColor),
+            secondary: Color(hex: secondaryColor),
+            accent: Color(hex: accentColor)
+        )
     }
 }
 
@@ -218,68 +152,76 @@ struct ChineseNewYearColorPalette: Identifiable, Codable {
 extension ChineseNewYearColorPalette {
     static let allPalettes: [ChineseNewYearColorPalette] = [
         ChineseNewYearColorPalette(
-            name: "Classic Red Gold",
-            description: "Traditional Chinese New Year colors",
+            name: "Lucky Red & Gold",
+            chineseName: "鸿运金红",
+            description: "Traditional lucky red with brilliant gold",
             primaryColor: "#DC143C",
             secondaryColor: "#FFD700",
-            accentColor: "#000000",
-            backgroundHint: "festive traditional atmosphere"
+            accentColor: "#8B0000",
+            primaryColorName: "lucky crimson red",
+            secondaryColorName: "brilliant fortune gold",
+            accentColorName: "deep auspicious red",
+            primaryColorSimple: "(vibrant red:2.0)",
+            secondaryColorSimple: "(brilliant gold:1.8)",
+            accentColorSimple: "(deep red:1.6)",
+            primaryColorBase: "red",
+            secondaryColorBase: "gold",
+            accentColorBase: "red",
+            backgroundHint: "festive celebration atmosphere with warm radiant energy"
         ),
         ChineseNewYearColorPalette(
-            name: "Dragon Colors",
-            description: "Deep red, gold, and emerald green",
+            name: "Imperial Elegance",
+            chineseName: "皇室华贵",
+            description: "Regal imperial colors with golden accents",
             primaryColor: "#B71C1C",
+            secondaryColor: "#FFC107",
+            accentColor: "#212121",
+            primaryColorName: "imperial deep red",
+            secondaryColorName: "royal golden yellow",
+            accentColorName: "elegant black",
+            primaryColorSimple: "(imperial red:2.0)",
+            secondaryColorSimple: "(royal gold:1.8)",
+            accentColorSimple: "(elegant black:1.6)",
+            primaryColorBase: "red",
+            secondaryColorBase: "gold",
+            accentColorBase: "black",
+            backgroundHint: "sophisticated imperial atmosphere with regal elegance"
+        ),
+        ChineseNewYearColorPalette(
+            name: "Prosperity Glow",
+            chineseName: "财运旺盛",
+            description: "Warm prosperity colors with golden glow",
+            primaryColor: "#FF5722",
+            secondaryColor: "#FFAB00",
+            accentColor: "#FFE0B2",
+            primaryColorName: "prosperity orange-red",
+            secondaryColorName: "fortune golden amber",
+            accentColorName: "warm golden cream",
+            primaryColorSimple: "(prosperity red:2.0)",
+            secondaryColorSimple: "(golden amber:1.8)",
+            accentColorSimple: "(golden cream:1.6)",
+            primaryColorBase: "red",
+            secondaryColorBase: "gold",
+            accentColorBase: "cream",
+            backgroundHint: "warm prosperous atmosphere with glowing golden radiance"
+        ),
+        ChineseNewYearColorPalette(
+            name: "Traditional Harmony",
+            chineseName: "传统和谐",
+            description: "Classic red, gold, and jade harmony",
+            primaryColor: "#DC143C",
             secondaryColor: "#FFD700",
-            accentColor: "#50C878",
-            backgroundHint: "imperial dragon presence"
-        ),
-        ChineseNewYearColorPalette(
-            name: "Prosperity Gold",
-            description: "Multiple gold shades with red accents",
-            primaryColor: "#FFD700",
-            secondaryColor: "#B8860B",
-            accentColor: "#DC143C",
-            backgroundHint: "golden prosperity glow"
-        ),
-        ChineseNewYearColorPalette(
-            name: "Imperial Palace",
-            description: "Royal red, yellow gold, and black",
-            primaryColor: "#8B0000",
-            secondaryColor: "#FFFF00",
-            accentColor: "#000000",
-            backgroundHint: "regal palace atmosphere"
-        ),
-        ChineseNewYearColorPalette(
-            name: "Modern Minimalist",
-            description: "Red, white, and gold accent",
-            primaryColor: "#FF0000",
-            secondaryColor: "#FFFFFF",
-            accentColor: "#FFD700",
-            backgroundHint: "clean modern celebration"
-        ),
-        ChineseNewYearColorPalette(
-            name: "Zodiac Traditional",
-            description: "Earth tones with red and gold",
-            primaryColor: "#8B4513",
-            secondaryColor: "#DC143C",
-            accentColor: "#FFD700",
-            backgroundHint: "natural earth harmony"
-        ),
-        ChineseNewYearColorPalette(
-            name: "Festive Bright",
-            description: "Bright red, electric gold, and white",
-            primaryColor: "#FF4500",
-            secondaryColor: "#FFDF00",
-            accentColor: "#FFFFFF",
-            backgroundHint: "vibrant celebration energy"
-        ),
-        ChineseNewYearColorPalette(
-            name: "Elegant Lunar",
-            description: "Deep red, rose gold, and cream",
-            primaryColor: "#800020",
-            secondaryColor: "#E8B4B8",
-            accentColor: "#F5F5DC",
-            backgroundHint: "elegant lunar celebration"
+            accentColor: "#00A86B",
+            primaryColorName: "classic celebration red",
+            secondaryColorName: "traditional fortune gold",
+            accentColorName: "harmonious jade green",
+            primaryColorSimple: "(celebration red:2.0)",
+            secondaryColorSimple: "(fortune gold:1.8)",
+            accentColorSimple: "(jade green:1.6)",
+            primaryColorBase: "red",
+            secondaryColorBase: "gold",
+            accentColorBase: "green",
+            backgroundHint: "harmonious traditional atmosphere with balanced cultural energy"
         )
     ]
 }
@@ -288,30 +230,32 @@ extension ChineseNewYearColorPalette {
 struct ChineseNewYearPersonalTouch: Identifiable, Codable {
     let id: UUID
     let message: String
+    let chineseMessage: String
     let tone: MessageTone
 
-    init(message: String, tone: MessageTone) {
+    init(message: String, chineseMessage: String, tone: MessageTone) {
         self.id = UUID()
         self.message = message
+        self.chineseMessage = chineseMessage
         self.tone = tone
     }
 
     enum MessageTone: String, Codable, CaseIterable {
-        case prosperous = "Prosperous"
-        case joyful = "Joyful"
-        case blessed = "Blessed"
-        case fortunate = "Fortunate"
-        case harmonious = "Harmonious"
-        case celebratory = "Celebratory"
+        case fortuneWishing = "Fortune Wishing"
+        case prosperityBlessing = "Prosperity Blessing"
+        case happinessJoy = "Happiness & Joy"
+        case familyTogetherness = "Family Togetherness"
+        case healthLongevity = "Health & Longevity"
+        case successAchievement = "Success & Achievement"
 
         var color: Color {
             switch self {
-            case .prosperous: return Color(hex: "#FFD700")
-            case .joyful: return Color(hex: "#FF6347")
-            case .blessed: return Color(hex: "#DC143C")
-            case .fortunate: return Color(hex: "#B8860B")
-            case .harmonious: return Color(hex: "#50C878")
-            case .celebratory: return Color(hex: "#FF4500")
+            case .fortuneWishing: return Color(hex: "#FFD700")
+            case .prosperityBlessing: return Color(hex: "#DC143C")
+            case .happinessJoy: return Color(hex: "#FF6B6B")
+            case .familyTogetherness: return Color(hex: "#FF4444")
+            case .healthLongevity: return Color(hex: "#00A86B")
+            case .successAchievement: return Color(hex: "#FFC107")
             }
         }
     }
@@ -321,32 +265,48 @@ struct ChineseNewYearPersonalTouch: Identifiable, Codable {
 extension ChineseNewYearPersonalTouch {
     static let optionalMessages: [ChineseNewYearPersonalTouch] = [
         ChineseNewYearPersonalTouch(
-            message: "恭喜發財! Wishing you prosperity and happiness",
-            tone: .prosperous
+            message: "Wishing you prosperity and good fortune in the new year",
+            chineseMessage: "恭喜发财",
+            tone: .fortuneWishing
         ),
         ChineseNewYearPersonalTouch(
-            message: "May the Year of [Zodiac] bring you good fortune",
-            tone: .fortunate
+            message: "Happy Chinese New Year! May it bring happiness and success",
+            chineseMessage: "新年快乐",
+            tone: .happinessJoy
         ),
         ChineseNewYearPersonalTouch(
-            message: "新年快樂! Happy New Year filled with joy",
-            tone: .joyful
+            message: "May all your wishes come true this year",
+            chineseMessage: "万事如意",
+            tone: .prosperityBlessing
         ),
         ChineseNewYearPersonalTouch(
-            message: "Wishing you health, wealth, and happiness",
-            tone: .blessed
+            message: "Wishing you and your family reunion and happiness",
+            chineseMessage: "阖家欢乐",
+            tone: .familyTogetherness
         ),
         ChineseNewYearPersonalTouch(
-            message: "May your dreams bloom like plum blossoms",
-            tone: .harmonious
+            message: "May you have good health and longevity",
+            chineseMessage: "身体健康",
+            tone: .healthLongevity
         ),
         ChineseNewYearPersonalTouch(
-            message: "Sending you luck and prosperity this New Year",
-            tone: .celebratory
+            message: "Wishing you success in all endeavors",
+            chineseMessage: "事业有成",
+            tone: .successAchievement
+        ),
+        ChineseNewYearPersonalTouch(
+            message: "May the Year of the Dragon bring you strength and fortune",
+            chineseMessage: "龙年大吉",
+            tone: .fortuneWishing
+        ),
+        ChineseNewYearPersonalTouch(
+            message: "Overflowing with wealth and prosperity",
+            chineseMessage: "财源广进",
+            tone: .prosperityBlessing
         )
     ]
 
-    static let personalMessagePlaceholder = "Add your own personal Chinese New Year message here..."
+    static let personalMessagePlaceholder = "Add your own Chinese New Year greeting..."
     static let maxPersonalMessageLength = 200
 }
 

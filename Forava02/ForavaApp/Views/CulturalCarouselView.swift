@@ -40,6 +40,7 @@ struct CulturalCarouselView: View {
                             }
                         }
                     }
+                    .scrollTargetLayout()
                     .padding(.horizontal, max(20, (UIScreen.main.bounds.width - cardWidth) / 2))
                 }
                 .scrollTargetBehavior(.viewAligned)

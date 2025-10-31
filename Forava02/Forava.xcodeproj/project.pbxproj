@@ -22,6 +22,25 @@
 		215A84562EA4E645006D56E9 /* GiftDesignTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215A84502EA4E645006D56E9 /* GiftDesignTypes.swift */; };
 		215A84572EA4E645006D56E9 /* OptimizedCulturalDesignComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215A84512EA4E645006D56E9 /* OptimizedCulturalDesignComponents.swift */; };
 		215A84592EA4EACE006D56E9 /* Tab Capsule colour.png in Resources */ = {isa = PBXBuildFile; fileRef = 215A84582EA4EACE006D56E9 /* Tab Capsule colour.png */; };
+		215C768F2EB3070B002C27DB /* ChineseNewYearCheckImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C76862EB3070B002C27DB /* ChineseNewYearCheckImageView.swift */; };
+		215C76902EB3070B002C27DB /* ChineseNewYearCreateSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C76882EB3070B002C27DB /* ChineseNewYearCreateSummaryView.swift */; };
+		215C76912EB3070B002C27DB /* ChineseNewYearColorPaletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C76872EB3070B002C27DB /* ChineseNewYearColorPaletteView.swift */; };
+		215C76922EB3070B002C27DB /* ChineseNewYearPersonalTouchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C768B2EB3070B002C27DB /* ChineseNewYearPersonalTouchView.swift */; };
+		215C76932EB3070B002C27DB /* ChineseNewYearDesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C76892EB3070B002C27DB /* ChineseNewYearDesignView.swift */; };
+		215C76942EB3070B002C27DB /* ChineseNewYearSendShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C768C2EB3070B002C27DB /* ChineseNewYearSendShareView.swift */; };
+		215C76952EB3070B002C27DB /* ChineseNewYearElementsSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C768A2EB3070B002C27DB /* ChineseNewYearElementsSelectionView.swift */; };
+		215C76962EB3070B002C27DB /* ChineseNewYearStyleSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C768D2EB3070B002C27DB /* ChineseNewYearStyleSelectionView.swift */; };
+		215C76982EB34CFB002C27DB /* ChineseNewYearAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C76972EB34CFB002C27DB /* ChineseNewYearAIService.swift */; };
+		215C76A22EB360A1002C27DB /* DiwaliPersonalTouchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C769F2EB360A1002C27DB /* DiwaliPersonalTouchView.swift */; };
+		215C76A32EB360A1002C27DB /* DiwaliElementsSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C769E2EB360A1002C27DB /* DiwaliElementsSelectionView.swift */; };
+		215C76A42EB360A1002C27DB /* DiwaliSendShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C76A02EB360A1002C27DB /* DiwaliSendShareView.swift */; };
+		215C76A52EB360A1002C27DB /* DiwaliColorPaletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C769C2EB360A1002C27DB /* DiwaliColorPaletteView.swift */; };
+		215C76A62EB360A1002C27DB /* DiwaliCheckImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C769B2EB360A1002C27DB /* DiwaliCheckImageView.swift */; };
+		215C76A72EB360A1002C27DB /* DiwaliCreateSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C769D2EB360A1002C27DB /* DiwaliCreateSummaryView.swift */; };
+		215C76A82EB360A1002C27DB /* DiwaliStyleSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C76A12EB360A1002C27DB /* DiwaliStyleSelectionView.swift */; };
+		215C76A92EB360C5002C27DB /* DiwaliDesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213539C82E6BE52900CC85B0 /* DiwaliDesignView.swift */; };
+		215C76AA2EB361B4002C27DB /* DiwaliModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93BBA2E627EA700200285 /* DiwaliModels.swift */; };
+		215C76AB2EB361C7002C27DB /* DiwaliAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C76992EB3607B002C27DB /* DiwaliAIService.swift */; };
 		218FF3552E63C593008C12BF /* HanukkahModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218FF3532E63C593008C12BF /* HanukkahModels.swift */; };
 		218FF3562E63C593008C12BF /* MidAutumnFestivalModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218FF3542E63C593008C12BF /* MidAutumnFestivalModels.swift */; };
 		218FF35B2E63C675008C12BF /* RakshaBandhanModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218FF3592E63C675008C12BF /* RakshaBandhanModels.swift */; };
@@ -92,6 +111,7 @@
 		21E8D07B2EACBCF3008B8145 /* AnniversaryTestingAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E8D0782EACBCF3008B8145 /* AnniversaryTestingAgent.swift */; };
 		21E8D07C2EACBCF3008B8145 /* AnniversaryTestSuite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E8D0792EACBCF3008B8145 /* AnniversaryTestSuite.swift */; };
 		21E8D07D2EACBCF3008B8145 /* AnniversaryValidationCriteria.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E8D07A2EACBCF3008B8145 /* AnniversaryValidationCriteria.swift */; };
+		21E8D07F2EAF82BC008B8145 /* DALLE3Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E8D07E2EAF82BC008B8145 /* DALLE3Service.swift */; };
 		37F0DE9FE82F46BE90B31BA8 /* ForavaApp/Views/Subscription/UsageDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C817084CC540DDBBEEBCD6 /* ForavaApp/Views/Subscription/UsageDashboardView.swift */; };
 		3AC53462BB2646F2877DC40F /* ForavaApp/Models/CoreTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4829A4CDBC4DAEB8F253A4 /* ForavaApp/Models/CoreTypes.swift */; };
 		3B3DD8DDBFBA40319C128767 /* ForavaApp/Views/CulturalDesigns/Shared/CulturalDesignProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05BE32819F74E3BB0C343FC /* ForavaApp/Views/CulturalDesigns/Shared/CulturalDesignProtocol.swift */; };
@@ -137,7 +157,6 @@
 		201A5F49AC7C4156B0E83E7D /* ForavaApp/Views/CulturalDesigns/Shared/CulturalDesignComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForavaApp/Views/CulturalDesigns/Shared/CulturalDesignComponents.swift; sourceTree = "<group>"; };
 		213539C02E6BE4FE00CC85B0 /* ChristmasDesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChristmasDesignView.swift; sourceTree = "<group>"; };
 		213539C42E6BE51500CC85B0 /* BirthdayDesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayDesignView.swift; sourceTree = "<group>"; };
-		213539C62E6BE51F00CC85B0 /* ChineseNewYearDesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChineseNewYearDesignView.swift; sourceTree = "<group>"; };
 		213539C82E6BE52900CC85B0 /* DiwaliDesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiwaliDesignView.swift; sourceTree = "<group>"; };
 		213539CA2E6BE53400CC85B0 /* EasterDesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasterDesignView.swift; sourceTree = "<group>"; };
 		213539CC2E6BE53D00CC85B0 /* EidAlAdhaDesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EidAlAdhaDesignView.swift; sourceTree = "<group>"; };
@@ -159,6 +178,23 @@
 		215A84502EA4E645006D56E9 /* GiftDesignTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftDesignTypes.swift; sourceTree = "<group>"; };
 		215A84512EA4E645006D56E9 /* OptimizedCulturalDesignComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptimizedCulturalDesignComponents.swift; sourceTree = "<group>"; };
 		215A84582EA4EACE006D56E9 /* Tab Capsule colour.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tab Capsule colour.png"; sourceTree = "<group>"; };
+		215C76862EB3070B002C27DB /* ChineseNewYearCheckImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChineseNewYearCheckImageView.swift; sourceTree = "<group>"; };
+		215C76872EB3070B002C27DB /* ChineseNewYearColorPaletteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChineseNewYearColorPaletteView.swift; sourceTree = "<group>"; };
+		215C76882EB3070B002C27DB /* ChineseNewYearCreateSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChineseNewYearCreateSummaryView.swift; sourceTree = "<group>"; };
+		215C76892EB3070B002C27DB /* ChineseNewYearDesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChineseNewYearDesignView.swift; sourceTree = "<group>"; };
+		215C768A2EB3070B002C27DB /* ChineseNewYearElementsSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChineseNewYearElementsSelectionView.swift; sourceTree = "<group>"; };
+		215C768B2EB3070B002C27DB /* ChineseNewYearPersonalTouchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChineseNewYearPersonalTouchView.swift; sourceTree = "<group>"; };
+		215C768C2EB3070B002C27DB /* ChineseNewYearSendShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChineseNewYearSendShareView.swift; sourceTree = "<group>"; };
+		215C768D2EB3070B002C27DB /* ChineseNewYearStyleSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChineseNewYearStyleSelectionView.swift; sourceTree = "<group>"; };
+		215C76972EB34CFB002C27DB /* ChineseNewYearAIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChineseNewYearAIService.swift; sourceTree = "<group>"; };
+		215C76992EB3607B002C27DB /* DiwaliAIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiwaliAIService.swift; sourceTree = "<group>"; };
+		215C769B2EB360A1002C27DB /* DiwaliCheckImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiwaliCheckImageView.swift; sourceTree = "<group>"; };
+		215C769C2EB360A1002C27DB /* DiwaliColorPaletteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiwaliColorPaletteView.swift; sourceTree = "<group>"; };
+		215C769D2EB360A1002C27DB /* DiwaliCreateSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiwaliCreateSummaryView.swift; sourceTree = "<group>"; };
+		215C769E2EB360A1002C27DB /* DiwaliElementsSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiwaliElementsSelectionView.swift; sourceTree = "<group>"; };
+		215C769F2EB360A1002C27DB /* DiwaliPersonalTouchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiwaliPersonalTouchView.swift; sourceTree = "<group>"; };
+		215C76A02EB360A1002C27DB /* DiwaliSendShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiwaliSendShareView.swift; sourceTree = "<group>"; };
+		215C76A12EB360A1002C27DB /* DiwaliStyleSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiwaliStyleSelectionView.swift; sourceTree = "<group>"; };
 		218FF3532E63C593008C12BF /* HanukkahModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HanukkahModels.swift; sourceTree = "<group>"; };
 		218FF3542E63C593008C12BF /* MidAutumnFestivalModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MidAutumnFestivalModels.swift; sourceTree = "<group>"; };
 		218FF3592E63C675008C12BF /* RakshaBandhanModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RakshaBandhanModels.swift; sourceTree = "<group>"; };
@@ -219,6 +255,7 @@
 		21E8D0782EACBCF3008B8145 /* AnniversaryTestingAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnniversaryTestingAgent.swift; sourceTree = "<group>"; };
 		21E8D0792EACBCF3008B8145 /* AnniversaryTestSuite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnniversaryTestSuite.swift; sourceTree = "<group>"; };
 		21E8D07A2EACBCF3008B8145 /* AnniversaryValidationCriteria.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnniversaryValidationCriteria.swift; sourceTree = "<group>"; };
+		21E8D07E2EAF82BC008B8145 /* DALLE3Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DALLE3Service.swift; sourceTree = "<group>"; };
 		24568CE398EA466799146241 /* ForavaApp/Views/Subscription/PremiumCulturalPacksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForavaApp/Views/Subscription/PremiumCulturalPacksView.swift; sourceTree = "<group>"; };
 		2A9EC3EAF3BA4199BAF575DF /* ForavaApp/Views/Subscription/SubscriptionTierView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForavaApp/Views/Subscription/SubscriptionTierView.swift; sourceTree = "<group>"; };
 		35B7B6AAC67649ECBD644F59 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
@@ -336,6 +373,28 @@
 			name = "Recovered References";
 			sourceTree = "<group>";
 		};
+		215C76732EB30615002C27DB /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		215C768E2EB3070B002C27DB /* ChineseNewYear */ = {
+			isa = PBXGroup;
+			children = (
+				215C76862EB3070B002C27DB /* ChineseNewYearCheckImageView.swift */,
+				215C76872EB3070B002C27DB /* ChineseNewYearColorPaletteView.swift */,
+				215C76882EB3070B002C27DB /* ChineseNewYearCreateSummaryView.swift */,
+				215C76892EB3070B002C27DB /* ChineseNewYearDesignView.swift */,
+				215C768A2EB3070B002C27DB /* ChineseNewYearElementsSelectionView.swift */,
+				215C768B2EB3070B002C27DB /* ChineseNewYearPersonalTouchView.swift */,
+				215C768C2EB3070B002C27DB /* ChineseNewYearSendShareView.swift */,
+				215C768D2EB3070B002C27DB /* ChineseNewYearStyleSelectionView.swift */,
+			);
+			path = ChineseNewYear;
+			sourceTree = "<group>";
+		};
 		218FF3622E642A86008C12BF /* Anniversary */ = {
 			isa = PBXGroup;
 			children = (
@@ -360,14 +419,6 @@
 			path = Birthday;
 			sourceTree = "<group>";
 		};
-		218FF3642E642A86008C12BF /* ChineseNewYear */ = {
-			isa = PBXGroup;
-			children = (
-				213539C62E6BE51F00CC85B0 /* ChineseNewYearDesignView.swift */,
-			);
-			path = ChineseNewYear;
-			sourceTree = "<group>";
-		};
 		218FF3662E642A86008C12BF /* Christmas */ = {
 			isa = PBXGroup;
 			children = (
@@ -379,6 +430,13 @@
 		218FF3672E642A86008C12BF /* Diwali */ = {
 			isa = PBXGroup;
 			children = (
+				215C769B2EB360A1002C27DB /* DiwaliCheckImageView.swift */,
+				215C769C2EB360A1002C27DB /* DiwaliColorPaletteView.swift */,
+				215C769D2EB360A1002C27DB /* DiwaliCreateSummaryView.swift */,
+				215C769E2EB360A1002C27DB /* DiwaliElementsSelectionView.swift */,
+				215C769F2EB360A1002C27DB /* DiwaliPersonalTouchView.swift */,
+				215C76A02EB360A1002C27DB /* DiwaliSendShareView.swift */,
+				215C76A12EB360A1002C27DB /* DiwaliStyleSelectionView.swift */,
 				213539C82E6BE52900CC85B0 /* DiwaliDesignView.swift */,
 			);
 			path = Diwali;
@@ -464,9 +522,9 @@
 		218FF3742E642A86008C12BF /* CulturalDesigns */ = {
 			isa = PBXGroup;
 			children = (
+				215C768E2EB3070B002C27DB /* ChineseNewYear */,
 				218FF3622E642A86008C12BF /* Anniversary */,
 				218FF3632E642A86008C12BF /* Birthday */,
-				218FF3642E642A86008C12BF /* ChineseNewYear */,
 				218FF3662E642A86008C12BF /* Christmas */,
 				218FF3672E642A86008C12BF /* Diwali */,
 				218FF3682E642A86008C12BF /* Easter */,
@@ -511,6 +569,9 @@
 		21C93B542E5FE78800200285 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				215C76992EB3607B002C27DB /* DiwaliAIService.swift */,
+				215C76972EB34CFB002C27DB /* ChineseNewYearAIService.swift */,
+				21E8D07E2EAF82BC008B8145 /* DALLE3Service.swift */,
 				215A843A2E9CF560006D56E9 /* BaseCulturalAIService.swift */,
 				215A843B2E9CF560006D56E9 /* CulturalAIConfiguration.swift */,
 				215A843C2E9CF560006D56E9 /* CulturalAIServiceProtocol.swift */,
@@ -605,7 +666,7 @@
 			isa = PBXGroup;
 			children = (
 				21E8D0752EACBC24008B8145 /* Testing */,
-				218FF3742E642A86008C12BF /* CulturalDesigns */,
+				215C76732EB30615002C27DB /* New Group */,
 				21C93B5E2E5FE78800200285 /* Customization */,
 				21C93B642E5FE78800200285 /* DesignSteps */,
 				21C93B662E5FE78800200285 /* History */,
@@ -627,6 +688,7 @@
 				21C93B7B2E5FE78800200285 /* SharedUIComponents.swift */,
 				EB82568E682F426DB7957BFB /* PlaceholderCulturalGiftDesignView.swift */,
 				79E71C998FEF4EF8BFE78604 /* CulturalGiftDesignView.swift */,
+				218FF3742E642A86008C12BF /* CulturalDesigns */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -813,6 +875,7 @@
 				A001 /* App.swift in Sources */,
 				A003 /* ContentView.swift in Sources */,
 				A010 /* APIClient.swift in Sources */,
+				215C76AB2EB361C7002C27DB /* DiwaliAIService.swift in Sources */,
 				A012 /* ApplePayConfig.swift in Sources */,
 				21B8978E2E7EA33E00DD567D /* AnniversarySendShareView.swift in Sources */,
 				21B8978F2E7EA33E00DD567D /* AnniversaryElementsSelectionView.swift in Sources */,
@@ -861,10 +924,12 @@
 				21C93B902E5FE78800200285 /* PromptMapper.swift in Sources */,
 				21C93B922E5FE78800200285 /* AdvancedCustomizationService.swift in Sources */,
 				21C93BC02E62B19F00200285 /* EidAlAdhaModels.swift in Sources */,
+				215C76A92EB360C5002C27DB /* DiwaliDesignView.swift in Sources */,
 				21C93B932E5FE78800200285 /* GenreSelectionStep.swift in Sources */,
 				218FF3602E640815008C12BF /* RoshHashanahModels.swift in Sources */,
 				21C93BB72E6254A700200285 /* BirthdayModels.swift in Sources */,
 				21C93B942E5FE78800200285 /* RakhiHistoryService.swift in Sources */,
+				21E8D07F2EAF82BC008B8145 /* DALLE3Service.swift in Sources */,
 				21C93B962E5FE78800200285 /* PreviewStep.swift in Sources */,
 				21C93B992E5FE78800200285 /* SocialSharingService.swift in Sources */,
 				21C93B9B2E5FE78800200285 /* EnhancedPaymentService.swift in Sources */,
@@ -888,6 +953,14 @@
 				21C93BAB2E5FE78800200285 /* SocialSharingView.swift in Sources */,
 				C001 /* Constants.swift in Sources */,
 				C003 /* SharedFormatting.swift in Sources */,
+				215C768F2EB3070B002C27DB /* ChineseNewYearCheckImageView.swift in Sources */,
+				215C76902EB3070B002C27DB /* ChineseNewYearCreateSummaryView.swift in Sources */,
+				215C76912EB3070B002C27DB /* ChineseNewYearColorPaletteView.swift in Sources */,
+				215C76922EB3070B002C27DB /* ChineseNewYearPersonalTouchView.swift in Sources */,
+				215C76932EB3070B002C27DB /* ChineseNewYearDesignView.swift in Sources */,
+				215C76942EB3070B002C27DB /* ChineseNewYearSendShareView.swift in Sources */,
+				215C76952EB3070B002C27DB /* ChineseNewYearElementsSelectionView.swift in Sources */,
+				215C76962EB3070B002C27DB /* ChineseNewYearStyleSelectionView.swift in Sources */,
 				21C93BC52E62D1C000200285 /* EidAlFitrModels.swift in Sources */,
 				C005 /* SharedModels.swift in Sources */,
 				215A843D2E9CF560006D56E9 /* BaseCulturalAIService.swift in Sources */,
@@ -900,6 +973,13 @@
 				21C93B572E5FE7880020028B /* Personalization/CulturalPromptMapper.swift in Sources */,
 				21B8978D2E7EA32000DD567D /* AnniversaryStyleSelectionView.swift in Sources */,
 				7D4E496253AF4534BD61FA28 /* ForavaApp/Models/SharedCulturalTypes.swift in Sources */,
+				215C76A22EB360A1002C27DB /* DiwaliPersonalTouchView.swift in Sources */,
+				215C76A32EB360A1002C27DB /* DiwaliElementsSelectionView.swift in Sources */,
+				215C76A42EB360A1002C27DB /* DiwaliSendShareView.swift in Sources */,
+				215C76A52EB360A1002C27DB /* DiwaliColorPaletteView.swift in Sources */,
+				215C76A62EB360A1002C27DB /* DiwaliCheckImageView.swift in Sources */,
+				215C76A72EB360A1002C27DB /* DiwaliCreateSummaryView.swift in Sources */,
+				215C76A82EB360A1002C27DB /* DiwaliStyleSelectionView.swift in Sources */,
 				1015FEB0D26F49F88846BB5D /* ForavaApp/Models/SubscriptionModels.swift in Sources */,
 				3AC53462BB2646F2877DC40F /* ForavaApp/Models/CoreTypes.swift in Sources */,
 				CCD4095A4B5249F887202701 /* ForavaApp/Services/LazyLoadingManager.swift in Sources */,
@@ -909,6 +989,8 @@
 				0691F1B7C8204853B28C1FB9 /* ForavaApp/Services/Calendar/CulturalNotificationManager.swift in Sources */,
 				4C7FD120FC4F4B17B9F89569 /* ForavaApp/Services/Social/CulturalCommunityService.swift in Sources */,
 				3B3DD8DDBFBA40319C128767 /* ForavaApp/Views/CulturalDesigns/Shared/CulturalDesignProtocol.swift in Sources */,
+				215C76982EB34CFB002C27DB /* ChineseNewYearAIService.swift in Sources */,
+				215C76AA2EB361B4002C27DB /* DiwaliModels.swift in Sources */,
 				927E1CFEE5F246649844AB63 /* ForavaApp/Views/CulturalDesigns/Shared/CulturalDesignComponents.swift in Sources */,
 				9483832A7E424BDF965DF859 /* ForavaApp/Views/CulturalDesigns/Shared/CulturalDesignViewModel.swift in Sources */,
 				4B8BD9A903AE49C28CFFD444 /* ForavaApp/Views/CulturalDesigns/Shared/GiftDesignTypes.swift in Sources */,

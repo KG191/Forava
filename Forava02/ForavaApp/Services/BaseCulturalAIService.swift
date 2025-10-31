@@ -358,6 +358,15 @@ class BaseCulturalAIService: ObservableObject {
             print("🚫 ELEMENT-EXCLUSION ACTIVE: \(additional)")
         }
 
+        // CRITICAL: Portrait format (vertical) has SDXL bias toward "portrait photography" genre
+        // which includes statues/sculptures. Apply MAXIMUM-WEIGHT human blocking for portrait aspect ratios.
+        if height > width {
+            // Portrait orientation - add MAXIMUM-WEIGHT statue/sculpture blocking (3.0+)
+            negativePrompt += ", (statue:4.0), (sculpture:4.0), (bust:4.0), (human bust:3.8), (monument:3.5), (marble figure:3.5), (stone figure:3.5), (carved figure:3.5), (figurine:3.0), (bronze statue:3.5), (marble bust:3.8), portrait photography, portrait genre, human likeness, human-shaped"
+            print("📱 PORTRAIT FORMAT DETECTED (\(width)×\(height)) - MAXIMUM-WEIGHT HUMAN BLOCKING ACTIVE")
+            print("   Added: statue:4.0, sculpture:4.0, bust:4.0, human bust:3.8, monument:3.5")
+        }
+
         // CRITICAL: Include negative prompt to prevent text generation and wrong colors
         let requestBody = CulturalAIConfiguration.modelConfiguration(
             prompt: prompt,
@@ -471,8 +480,8 @@ class BaseCulturalAIService: ObservableObject {
 
     /// Generate cultural prompt with shared enhancements and agent specification wrapper
     func enhanceCulturalPrompt(_ basePrompt: String) -> String {
-        // Wrap in agent specification directive prefix
-        var enhancedPrompt = "AGENT DIRECTIVE: You are creating a decorative background image with ONLY patterns and shapes. "
+        // Wrap in agent specification directive prefix - Apple-compliant (no people, no AI text)
+        var enhancedPrompt = "Create a non-photorealistic decorative illustration with ONLY inanimate objects (hearts, trophies, flowers, bottles). This is NOT a portrait photograph. ABSOLUTELY NO people, humans, faces, portraits, statues, sculptures, busts, monuments, figures, silhouettes, or human body parts of any kind. DO NOT include text. "
         enhancedPrompt += basePrompt
 
         // Add quality enhancements with pattern emphasis

@@ -24,8 +24,8 @@ struct AnniversaryCheckImageView: View {
 
         var aspectRatio: CGFloat {
             switch self {
-            case .iPhone: return 9.0/19.5  // iPhone aspect ratio
-            case .appleWatch: return 1.0   // Square for Apple Watch
+            case .iPhone: return 1024.0/1792.0  // DALL-E 3 portrait (9:15.75)
+            case .appleWatch: return 1.0        // Square for Apple Watch
             }
         }
 

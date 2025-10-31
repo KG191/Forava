@@ -70,6 +70,11 @@
             value = "$(BLACK_FOREST_LABS_API_TOKEN)"
             isEnabled = "YES">
          </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "OPENAI_API_KEY"
+            value = "$(OPENAI_API_KEY)"
+            isEnabled = "YES">
+         </EnvironmentVariable>
       </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction

@@ -4,69 +4,29 @@ import SwiftUI
 // MARK: - Diwali Theme Structure
 enum DiwaliTheme: String, Codable, CaseIterable {
     case traditional = "Traditional"
-    case rangoli = "Rangoli"
-    case lakshmi = "Lakshmi"
     case modern = "Modern"
+    case familyCelebration = "Family Celebration"
+    case prosperity = "Prosperity"
 
     var description: String {
         switch self {
         case .traditional:
-            return "Classic Diwali with authentic religious elements"
-        case .rangoli:
-            return "Beautiful floor art patterns and designs"
-        case .lakshmi:
-            return "Celebrating the goddess of wealth and prosperity"
+            return "Classic Diwali with authentic diyas and traditional rangoli patterns, sacred religious elements, timeless festive atmosphere, heritage visualization, traditional पारंपरिक aesthetics"
         case .modern:
-            return "Contemporary Diwali with modern artistic elements"
+            return "Contemporary Diwali with sleek modern aesthetics, minimalist design patterns, sophisticated urban festival vibe, clean contemporary lines, stylish आधुनिक elegance, innovative cultural fusion"
+        case .familyCelebration:
+            return "Warm family togetherness celebration with reunion imagery, generational bonding symbols, cozy family gathering atmosphere, heartwarming unity patterns, पारिवारिक उत्सव warmth, connected family energy"
+        case .prosperity:
+            return "Wealth and fortune celebration with Lakshmi blessings, prosperity symbols, abundant gold coins, divine blessing imagery, success visualization, समृद्धि energy, lucky abundance patterns"
         }
     }
 
-    var giftOptions: [String] {
+    var hindiName: String {
         switch self {
-        case .traditional:
-            return [
-                "Golden Diya Array",
-                "Traditional Lakshmi Puja",
-                "Sacred Om Design",
-                "Temple Lights Scene",
-                "Religious Blessing Card",
-                "Traditional Family Puja",
-                "Sanskrit Mantra Design",
-                "Classical Festival Scene"
-            ]
-        case .rangoli:
-            return [
-                "Geometric Rangoli Pattern",
-                "Floral Rangoli Design",
-                "Peacock Rangoli Art",
-                "Mandala Rangoli Circle",
-                "Traditional Kolam Pattern",
-                "Colorful Rangoli Border",
-                "Sacred Symbol Rangoli",
-                "Festival Floor Art"
-            ]
-        case .lakshmi:
-            return [
-                "Goddess Lakshmi Portrait",
-                "Lakshmi Pada (Footprints)",
-                "Golden Lotus Throne",
-                "Prosperity Blessing Card",
-                "Wealth Goddess Scene",
-                "Lakshmi Puja Setup",
-                "Divine Blessing Design",
-                "Prosperity Mandala"
-            ]
-        case .modern:
-            return [
-                "Modern Diya Arrangement",
-                "Contemporary Rangoli",
-                "Urban Diwali Lights",
-                "Minimalist Festival Card",
-                "Digital Art Lakshmi",
-                "Modern Light Pattern",
-                "Stylized Diwali Scene",
-                "Contemporary Blessing"
-            ]
+        case .traditional: return "पारंपरिक"
+        case .modern: return "आधुनिक"
+        case .familyCelebration: return "पारिवारिक उत्सव"
+        case .prosperity: return "समृद्धि"
         }
     }
 
@@ -74,12 +34,12 @@ enum DiwaliTheme: String, Codable, CaseIterable {
         switch self {
         case .traditional:
             return Color(hex: "#FF6B35") // Festival Orange
-        case .rangoli:
-            return Color(hex: "#FF1493") // Deep Pink
-        case .lakshmi:
-            return Color(hex: "#673AB7") // Deep Purple
         case .modern:
-            return Color(hex: "#000000") // Black
+            return Color(hex: "#FFD700") // Gold
+        case .familyCelebration:
+            return Color(hex: "#FF9933") // Saffron
+        case .prosperity:
+            return Color(hex: "#673AB7") // Deep Purple
         }
     }
 }
@@ -88,115 +48,94 @@ enum DiwaliTheme: String, Codable, CaseIterable {
 struct DiwaliElement: Identifiable, Codable {
     let id: UUID
     let name: String
-    let category: ElementCategory
-    let priority: Int // Higher number = higher priority
+    let hindiName: String
+    let weight: Double // SDXL emphasis weight (2.0-2.5 for centerpiece presence)
     let aiPromptModifier: String
 
-    init(name: String, category: ElementCategory, priority: Int, aiPromptModifier: String) {
+    init(name: String, hindiName: String, weight: Double, aiPromptModifier: String) {
         self.id = UUID()
         self.name = name
-        self.category = category
-        self.priority = priority
+        self.hindiName = hindiName
+        self.weight = weight
         self.aiPromptModifier = aiPromptModifier
-    }
-
-    enum ElementCategory: String, Codable, CaseIterable {
-        case centrePiece = "Centre Piece"
-        case supportingElement = "Supporting Element"
-
-        var description: String {
-            switch self {
-            case .centrePiece:
-                return "Takes visual precedence in the design"
-            case .supportingElement:
-                return "Complements the main design elements"
-            }
-        }
     }
 }
 
 // MARK: - Diwali Elements Collection
 extension DiwaliElement {
     static let allElements: [DiwaliElement] = [
-        // Centre Pieces (Priority 90-100)
+        // All elements are centerpieces - user selects exactly ONE
         DiwaliElement(
-            name: "Diya (Oil Lamp)",
-            category: .centrePiece,
-            priority: 100,
-            aiPromptModifier: "beautiful traditional diya oil lamp as central focal point, glowing with warm light"
+            name: "Diya",
+            hindiName: "दीया",
+            weight: 2.5,
+            aiPromptModifier: "(beautiful traditional diya oil lamp:2.5), glowing sacred flame, warm candlelight, festival of lights centerpiece, earthen lamp with wick"
+        ),
+        DiwaliElement(
+            name: "Rangoli",
+            hindiName: "रंगोली",
+            weight: 2.3,
+            aiPromptModifier: "(intricate rangoli floor art:2.3), colorful geometric patterns, traditional Indian floor design, vibrant symmetrical mandala, festive decoration"
         ),
         DiwaliElement(
             name: "Lotus",
-            category: .centrePiece,
-            priority: 95,
-            aiPromptModifier: "sacred lotus flower as centerpiece, symbol of purity and divinity"
+            hindiName: "कमल",
+            weight: 2.2,
+            aiPromptModifier: "(sacred lotus flower:2.2), divine purity symbol, elegant pink lotus blooms, spiritual centerpiece, prosperity and enlightenment"
         ),
         DiwaliElement(
             name: "Lakshmi",
-            category: .centrePiece,
-            priority: 92,
-            aiPromptModifier: "Goddess Lakshmi as focal point, divine blessing of wealth and prosperity"
+            hindiName: "लक्ष्मी",
+            weight: 2.4,
+            aiPromptModifier: "(Goddess Lakshmi:2.4), divine feminine deity of wealth and prosperity, golden throne, lotus flowers, blessing gestures, radiant divine presence"
         ),
         DiwaliElement(
             name: "Fireworks",
-            category: .centrePiece,
-            priority: 90,
-            aiPromptModifier: "spectacular fireworks as centerpiece, celebrating the festival of lights"
-        ),
-
-        // Supporting Elements (Priority 50-80)
-        DiwaliElement(
-            name: "Rangoli Patterns",
-            category: .supportingElement,
-            priority: 80,
-            aiPromptModifier: "intricate rangoli patterns as decorative floor art accents"
-        ),
-        DiwaliElement(
-            name: "Marigold Flowers",
-            category: .supportingElement,
-            priority: 75,
-            aiPromptModifier: "vibrant marigold flowers as festive decorative elements"
-        ),
-        DiwaliElement(
-            name: "Om Symbol",
-            category: .supportingElement,
-            priority: 70,
-            aiPromptModifier: "sacred Om symbol as spiritual border elements"
-        ),
-        DiwaliElement(
-            name: "Gold Coins",
-            category: .supportingElement,
-            priority: 65,
-            aiPromptModifier: "golden coins as prosperity symbols and decorative accents"
+            hindiName: "पटाखे",
+            weight: 2.2,
+            aiPromptModifier: "(spectacular fireworks display:2.2), colorful celebration lights in night sky, festive sparklers, joyous Diwali celebration atmosphere"
         )
     ]
-
-    static var centrePieces: [DiwaliElement] {
-        return allElements.filter { $0.category == .centrePiece }.sorted { $0.priority > $1.priority }
-    }
-
-    static var supportingElements: [DiwaliElement] {
-        return allElements.filter { $0.category == .supportingElement }.sorted { $0.priority > $1.priority }
-    }
 }
 
 // MARK: - Diwali Color Palettes
 struct DiwaliColorPalette: Identifiable, Codable {
     let id: UUID
     let name: String
+    let hindiName: String
     let description: String
-    let primaryColor: String
-    let secondaryColor: String
-    let accentColor: String
+    let primaryColor: String        // Hex code (e.g., "#FF6B35")
+    let secondaryColor: String      // Hex code
+    let accentColor: String         // Hex code
+    let primaryColorName: String    // Descriptive name for AI (e.g., "festival orange")
+    let secondaryColorName: String  // Descriptive name for AI
+    let accentColorName: String     // Descriptive name for AI
+    let primaryColorSimple: String  // SDXL-weighted prompt syntax (e.g., "(vibrant orange:2.0)")
+    let secondaryColorSimple: String // SDXL-weighted prompt syntax (e.g., "(brilliant gold:1.8)")
+    let accentColorSimple: String   // SDXL-weighted prompt syntax (e.g., "(deep purple:1.6)")
+    let primaryColorBase: String    // Base color name for exclusion logic (e.g., "orange")
+    let secondaryColorBase: String  // Base color name for exclusion logic (e.g., "gold")
+    let accentColorBase: String     // Base color name for exclusion logic (e.g., "purple")
     let backgroundHint: String
 
-    init(name: String, description: String, primaryColor: String, secondaryColor: String, accentColor: String, backgroundHint: String) {
+    // swiftlint:disable:next line_length
+    init(name: String, hindiName: String, description: String, primaryColor: String, secondaryColor: String, accentColor: String, primaryColorName: String, secondaryColorName: String, accentColorName: String, primaryColorSimple: String, secondaryColorSimple: String, accentColorSimple: String, primaryColorBase: String, secondaryColorBase: String, accentColorBase: String, backgroundHint: String) {
         self.id = UUID()
         self.name = name
+        self.hindiName = hindiName
         self.description = description
         self.primaryColor = primaryColor
         self.secondaryColor = secondaryColor
         self.accentColor = accentColor
+        self.primaryColorName = primaryColorName
+        self.secondaryColorName = secondaryColorName
+        self.accentColorName = accentColorName
+        self.primaryColorSimple = primaryColorSimple
+        self.secondaryColorSimple = secondaryColorSimple
+        self.accentColorSimple = accentColorSimple
+        self.primaryColorBase = primaryColorBase
+        self.secondaryColorBase = secondaryColorBase
+        self.accentColorBase = accentColorBase
         self.backgroundHint = backgroundHint
     }
 
@@ -214,67 +153,75 @@ extension DiwaliColorPalette {
     static let allPalettes: [DiwaliColorPalette] = [
         DiwaliColorPalette(
             name: "Classic Diwali",
-            description: "Deep orange, gold, and purple",
+            hindiName: "क्लासिक दीवाली",
+            description: "Festival orange with brilliant gold and deep purple",
             primaryColor: "#FF6B35",
             secondaryColor: "#FFD700",
             accentColor: "#673AB7",
-            backgroundHint: "warm festive diya glow"
+            primaryColorName: "festival orange",
+            secondaryColorName: "brilliant fortune gold",
+            accentColorName: "deep divine purple",
+            primaryColorSimple: "(festival orange:2.0)",
+            secondaryColorSimple: "(brilliant gold:1.8)",
+            accentColorSimple: "(deep purple:1.6)",
+            primaryColorBase: "orange",
+            secondaryColorBase: "gold",
+            accentColorBase: "purple",
+            backgroundHint: "warm festive diya glow with radiant celebration energy"
         ),
         DiwaliColorPalette(
             name: "Golden Prosperity",
-            description: "Multiple gold shades with orange accents",
+            hindiName: "स्वर्णिम समृद्धि",
+            description: "Luxurious gold with orange and dark gold accents",
             primaryColor: "#FFD700",
             secondaryColor: "#FFA500",
             accentColor: "#B8860B",
-            backgroundHint: "luxurious golden prosperity"
+            primaryColorName: "luxurious fortune gold",
+            secondaryColorName: "vibrant prosperity orange",
+            accentColorName: "rich dark gold",
+            primaryColorSimple: "(luxurious gold:2.0)",
+            secondaryColorSimple: "(vibrant orange:1.8)",
+            accentColorSimple: "(dark gold:1.6)",
+            primaryColorBase: "gold",
+            secondaryColorBase: "orange",
+            accentColorBase: "gold",
+            backgroundHint: "opulent golden prosperity with divine wealth energy"
         ),
         DiwaliColorPalette(
             name: "Lakshmi Blessings",
-            description: "Rich purple, gold, and deep pink",
+            hindiName: "लक्ष्मी आशीर्वाद",
+            description: "Divine purple with gold and deep pink blessings",
             primaryColor: "#673AB7",
             secondaryColor: "#FFD700",
             accentColor: "#C2185B",
-            backgroundHint: "divine goddess blessing"
-        ),
-        DiwaliColorPalette(
-            name: "Rangoli Colors",
-            description: "Bright multi-colors with white base",
-            primaryColor: "#FF1493",
-            secondaryColor: "#00FF7F",
-            accentColor: "#FFFFFF",
-            backgroundHint: "vibrant rangoli art background"
-        ),
-        DiwaliColorPalette(
-            name: "Royal Elegance",
-            description: "Deep purple, rose gold, and cream",
-            primaryColor: "#4A148C",
-            secondaryColor: "#E91E63",
-            accentColor: "#FFF8E1",
-            backgroundHint: "elegant royal celebration"
+            primaryColorName: "divine royal purple",
+            secondaryColorName: "blessed fortune gold",
+            accentColorName: "sacred deep pink",
+            primaryColorSimple: "(divine purple:2.0)",
+            secondaryColorSimple: "(blessed gold:1.8)",
+            accentColorSimple: "(sacred pink:1.6)",
+            primaryColorBase: "purple",
+            secondaryColorBase: "gold",
+            accentColorBase: "pink",
+            backgroundHint: "divine goddess blessing atmosphere with sacred radiance"
         ),
         DiwaliColorPalette(
             name: "Traditional Festival",
-            description: "Saffron, red, and gold",
+            hindiName: "पारंपरिक उत्सव",
+            description: "Saffron, crimson red, and traditional gold",
             primaryColor: "#FF9933",
             secondaryColor: "#DC143C",
             accentColor: "#FFD700",
-            backgroundHint: "authentic traditional festival"
-        ),
-        DiwaliColorPalette(
-            name: "Modern Minimalist",
-            description: "Black, gold, and orange accent",
-            primaryColor: "#000000",
-            secondaryColor: "#FFD700",
-            accentColor: "#FF6B35",
-            backgroundHint: "contemporary minimalist design"
-        ),
-        DiwaliColorPalette(
-            name: "Warm Celebration",
-            description: "Warm orange, copper, and ivory",
-            primaryColor: "#FF8C00",
-            secondaryColor: "#CD853F",
-            accentColor: "#FFFFF0",
-            backgroundHint: "warm candlelit celebration"
+            primaryColorName: "traditional saffron orange",
+            secondaryColorName: "auspicious crimson red",
+            accentColorName: "pure fortune gold",
+            primaryColorSimple: "(saffron orange:2.0)",
+            secondaryColorSimple: "(crimson red:1.8)",
+            accentColorSimple: "(fortune gold:1.6)",
+            primaryColorBase: "orange",
+            secondaryColorBase: "red",
+            accentColorBase: "gold",
+            backgroundHint: "authentic traditional celebration with sacred festival energy"
         )
     ]
 }
@@ -283,30 +230,32 @@ extension DiwaliColorPalette {
 struct DiwaliPersonalTouch: Identifiable, Codable {
     let id: UUID
     let message: String
+    let hindiMessage: String
     let tone: MessageTone
 
-    init(message: String, tone: MessageTone) {
+    init(message: String, hindiMessage: String, tone: MessageTone) {
         self.id = UUID()
         self.message = message
+        self.hindiMessage = hindiMessage
         self.tone = tone
     }
 
     enum MessageTone: String, Codable, CaseIterable {
-        case blessed = "Blessed"
-        case prosperous = "Prosperous"
-        case joyful = "Joyful"
-        case divine = "Divine"
-        case traditional = "Traditional"
-        case bright = "Bright"
+        case lightBlessing = "Light Blessing"
+        case prosperityWish = "Prosperity Wish"
+        case joyfulCelebration = "Joyful Celebration"
+        case familyTogether = "Family Together"
+        case divineBlessing = "Divine Blessing"
+        case successWish = "Success Wish"
 
         var color: Color {
             switch self {
-            case .blessed: return Color(hex: "#673AB7")
-            case .prosperous: return Color(hex: "#FFD700")
-            case .joyful: return Color(hex: "#FF6B35")
-            case .divine: return Color(hex: "#4A148C")
-            case .traditional: return Color(hex: "#FF9933")
-            case .bright: return Color(hex: "#FF1493")
+            case .lightBlessing: return Color(hex: "#FF6B35")
+            case .prosperityWish: return Color(hex: "#FFD700")
+            case .joyfulCelebration: return Color(hex: "#FF9933")
+            case .familyTogether: return Color(hex: "#DC143C")
+            case .divineBlessing: return Color(hex: "#673AB7")
+            case .successWish: return Color(hex: "#FFA500")
             }
         }
     }
@@ -316,32 +265,47 @@ struct DiwaliPersonalTouch: Identifiable, Codable {
 extension DiwaliPersonalTouch {
     static let optionalMessages: [DiwaliPersonalTouch] = [
         DiwaliPersonalTouch(
-            message: "दीपावली की हार्दिक शुभकामनाएं! Happy Diwali!",
-            tone: .traditional
-        ),
-        DiwaliPersonalTouch(
-            message: "May Goddess Lakshmi bless you with prosperity",
-            tone: .prosperous
-        ),
-        DiwaliPersonalTouch(
-            message: "Wishing you light, love, and happiness this Diwali",
-            tone: .joyful
-        ),
-        DiwaliPersonalTouch(
             message: "May the festival of lights brighten your life",
-            tone: .bright
+            hindiMessage: "दीपावली की हार्दिक शुभकामनाएं",
+            tone: .lightBlessing
         ),
         DiwaliPersonalTouch(
-            message: "शुभ दीपावली! May joy illuminate your path",
-            tone: .blessed
+            message: "Wishing you prosperity and success",
+            hindiMessage: "समृद्धि और सफलता की कामना",
+            tone: .prosperityWish
         ),
         DiwaliPersonalTouch(
-            message: "Celebrating the victory of light over darkness",
-            tone: .divine
+            message: "Happy Diwali! May joy fill your heart",
+            hindiMessage: "शुभ दीपावली! खुशियों से भर जाए आपका जीवन",
+            tone: .joyfulCelebration
+        ),
+        DiwaliPersonalTouch(
+            message: "Celebrating with family and love",
+            hindiMessage: "परिवार और प्यार के साथ दीवाली मनाएं",
+            tone: .familyTogether
+        ),
+        DiwaliPersonalTouch(
+            message: "May Goddess Lakshmi bless you always",
+            hindiMessage: "माँ लक्ष्मी की कृपा सदा बनी रहे",
+            tone: .divineBlessing
+        ),
+        DiwaliPersonalTouch(
+            message: "Light, love, and laughter this Diwali",
+            hindiMessage: "रोशनी, प्यार और खुशियाँ",
+            tone: .joyfulCelebration
+        ),
+        DiwaliPersonalTouch(
+            message: "Wishing you a year of achievements",
+            hindiMessage: "उपलब्धियों से भरा वर्ष हो",
+            tone: .successWish
+        ),
+        DiwaliPersonalTouch(
+            message: "May diyas illuminate your path to success",
+            hindiMessage: "दीपक रोशन करें सफलता का मार्ग",
+            tone: .lightBlessing
         )
     ]
 
     static let personalMessagePlaceholder = "Add your own personal Diwali message here..."
     static let maxPersonalMessageLength = 200
 }
-
