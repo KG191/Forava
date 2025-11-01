@@ -341,7 +341,11 @@ extension RoshHashanahPersonalTouch {
         )
     ]
 
+    // Alias for consistency with other cultural designs
+    static let allTouches = optionalMessages
+
     static let personalMessagePlaceholder = "Add your own personal Rosh Hashanah message here..."
     static let maxPersonalMessageLength = 200
+    static let maxMessageLength = 200  // Alias for consistency
 }
 

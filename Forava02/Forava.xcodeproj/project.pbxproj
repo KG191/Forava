@@ -50,6 +50,15 @@
 		215C76B92EB5A835002C27DB /* VesakDayCreateSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C76AF2EB5A835002C27DB /* VesakDayCreateSummaryView.swift */; };
 		215C76BA2EB5A835002C27DB /* VesakDayElementsSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C76B02EB5A835002C27DB /* VesakDayElementsSelectionView.swift */; };
 		215C76BC2EB5A858002C27DB /* VesakDayAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C76BB2EB5A858002C27DB /* VesakDayAIService.swift */; };
+		215C77372EB5F97A002C27DB /* RoshHashanahCheckImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C77302EB5F97A002C27DB /* RoshHashanahCheckImageView.swift */; };
+		215C77382EB5F97A002C27DB /* RoshHashanahElementsSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C77332EB5F97A002C27DB /* RoshHashanahElementsSelectionView.swift */; };
+		215C77392EB5F97A002C27DB /* RoshHashanahStyleSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C77362EB5F97A002C27DB /* RoshHashanahStyleSelectionView.swift */; };
+		215C773A2EB5F97A002C27DB /* RoshHashanahSendShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C77352EB5F97A002C27DB /* RoshHashanahSendShareView.swift */; };
+		215C773B2EB5F97A002C27DB /* RoshHashanahPersonalTouchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C77342EB5F97A002C27DB /* RoshHashanahPersonalTouchView.swift */; };
+		215C773C2EB5F97A002C27DB /* RoshHashanahColorPaletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C77312EB5F97A002C27DB /* RoshHashanahColorPaletteView.swift */; };
+		215C773D2EB5F97A002C27DB /* RoshHashanahCreateSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C77322EB5F97A002C27DB /* RoshHashanahCreateSummaryView.swift */; };
+		215C773E2EB5FB02002C27DB /* RoshHashanahAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C772E2EB5F93B002C27DB /* RoshHashanahAIService.swift */; };
+		215C773F2EB5FB4B002C27DB /* RoshHashanahDesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213539D62E6BE56800CC85B0 /* RoshHashanahDesignView.swift */; };
 		218FF3552E63C593008C12BF /* HanukkahModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218FF3532E63C593008C12BF /* HanukkahModels.swift */; };
 		218FF3562E63C593008C12BF /* MidAutumnFestivalModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218FF3542E63C593008C12BF /* MidAutumnFestivalModels.swift */; };
 		218FF35B2E63C675008C12BF /* RakshaBandhanModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218FF3592E63C675008C12BF /* RakshaBandhanModels.swift */; };
@@ -212,6 +221,14 @@
 		215C76B22EB5A835002C27DB /* VesakDaySendShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VesakDaySendShareView.swift; sourceTree = "<group>"; };
 		215C76B32EB5A835002C27DB /* VesakDayStyleSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VesakDayStyleSelectionView.swift; sourceTree = "<group>"; };
 		215C76BB2EB5A858002C27DB /* VesakDayAIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VesakDayAIService.swift; sourceTree = "<group>"; };
+		215C772E2EB5F93B002C27DB /* RoshHashanahAIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoshHashanahAIService.swift; sourceTree = "<group>"; };
+		215C77302EB5F97A002C27DB /* RoshHashanahCheckImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoshHashanahCheckImageView.swift; sourceTree = "<group>"; };
+		215C77312EB5F97A002C27DB /* RoshHashanahColorPaletteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoshHashanahColorPaletteView.swift; sourceTree = "<group>"; };
+		215C77322EB5F97A002C27DB /* RoshHashanahCreateSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoshHashanahCreateSummaryView.swift; sourceTree = "<group>"; };
+		215C77332EB5F97A002C27DB /* RoshHashanahElementsSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoshHashanahElementsSelectionView.swift; sourceTree = "<group>"; };
+		215C77342EB5F97A002C27DB /* RoshHashanahPersonalTouchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoshHashanahPersonalTouchView.swift; sourceTree = "<group>"; };
+		215C77352EB5F97A002C27DB /* RoshHashanahSendShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoshHashanahSendShareView.swift; sourceTree = "<group>"; };
+		215C77362EB5F97A002C27DB /* RoshHashanahStyleSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoshHashanahStyleSelectionView.swift; sourceTree = "<group>"; };
 		218FF3532E63C593008C12BF /* HanukkahModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HanukkahModels.swift; sourceTree = "<group>"; };
 		218FF3542E63C593008C12BF /* MidAutumnFestivalModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MidAutumnFestivalModels.swift; sourceTree = "<group>"; };
 		218FF3592E63C675008C12BF /* RakshaBandhanModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RakshaBandhanModels.swift; sourceTree = "<group>"; };
@@ -510,6 +527,13 @@
 		218FF36E2E642A86008C12BF /* RoshHashanah */ = {
 			isa = PBXGroup;
 			children = (
+				215C77302EB5F97A002C27DB /* RoshHashanahCheckImageView.swift */,
+				215C77312EB5F97A002C27DB /* RoshHashanahColorPaletteView.swift */,
+				215C77322EB5F97A002C27DB /* RoshHashanahCreateSummaryView.swift */,
+				215C77332EB5F97A002C27DB /* RoshHashanahElementsSelectionView.swift */,
+				215C77342EB5F97A002C27DB /* RoshHashanahPersonalTouchView.swift */,
+				215C77352EB5F97A002C27DB /* RoshHashanahSendShareView.swift */,
+				215C77362EB5F97A002C27DB /* RoshHashanahStyleSelectionView.swift */,
 				213539D62E6BE56800CC85B0 /* RoshHashanahDesignView.swift */,
 			);
 			path = RoshHashanah;
@@ -593,6 +617,7 @@
 		21C93B542E5FE78800200285 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				215C772E2EB5F93B002C27DB /* RoshHashanahAIService.swift */,
 				215C76BB2EB5A858002C27DB /* VesakDayAIService.swift */,
 				215C76992EB3607B002C27DB /* DiwaliAIService.swift */,
 				215C76972EB34CFB002C27DB /* ChineseNewYearAIService.swift */,
@@ -902,8 +927,16 @@
 				A003 /* ContentView.swift in Sources */,
 				A010 /* APIClient.swift in Sources */,
 				215C76AB2EB361C7002C27DB /* DiwaliAIService.swift in Sources */,
+				215C773F2EB5FB4B002C27DB /* RoshHashanahDesignView.swift in Sources */,
 				A012 /* ApplePayConfig.swift in Sources */,
 				21B8978E2E7EA33E00DD567D /* AnniversarySendShareView.swift in Sources */,
+				215C77372EB5F97A002C27DB /* RoshHashanahCheckImageView.swift in Sources */,
+				215C77382EB5F97A002C27DB /* RoshHashanahElementsSelectionView.swift in Sources */,
+				215C77392EB5F97A002C27DB /* RoshHashanahStyleSelectionView.swift in Sources */,
+				215C773A2EB5F97A002C27DB /* RoshHashanahSendShareView.swift in Sources */,
+				215C773B2EB5F97A002C27DB /* RoshHashanahPersonalTouchView.swift in Sources */,
+				215C773C2EB5F97A002C27DB /* RoshHashanahColorPaletteView.swift in Sources */,
+				215C773D2EB5F97A002C27DB /* RoshHashanahCreateSummaryView.swift in Sources */,
 				21B8978F2E7EA33E00DD567D /* AnniversaryElementsSelectionView.swift in Sources */,
 				21B897902E7EA33E00DD567D /* AnniversaryColorPaletteView.swift in Sources */,
 				21B897912E7EA33E00DD567D /* AnniversaryCreateSummaryView.swift in Sources */,
@@ -914,6 +947,7 @@
 				A016 /* PaymentCoordinator.swift in Sources */,
 				A01A /* WatchSessionManager_iOS.swift in Sources */,
 				21C93BB92E62577100200285 /* ChineseNewYearModels.swift in Sources */,
+				215C773E2EB5FB02002C27DB /* RoshHashanahAIService.swift in Sources */,
 				21C93B7D2E5FE78800200285 /* ComprehensivePaymentService.swift in Sources */,
 				21E8D0772EACBC3F008B8145 /* AnniversaryTestRunnerView.swift in Sources */,
 				21C93B7E2E5FE78800200285 /* CulturalGiftSelectionView.swift in Sources */,
