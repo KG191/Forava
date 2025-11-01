@@ -142,31 +142,12 @@ struct VesakDayCheckImageView: View {
 
                 if let urlString = imageURL {
                     // Display the generated image
-                    CachedAsyncImage(url: urlString) { phase in
-                        switch phase {
-                        case .success(let image):
-                            image
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .cornerRadius(16)
-                        case .failure:
-                            VStack(spacing: 12) {
-                                Image(systemName: "exclamationmark.triangle")
-                                    .font(.largeTitle)
-                                    .foregroundStyle(.red)
-                                Text("Failed to load image")
-                                    .font(.system(.subheadline, design: .rounded))
-                                    .foregroundStyle(.secondary)
-                            }
-                        case .empty:
-                            ProgressView()
-                                .scaleEffect(1.2)
-                                .tint(culturalColor)
-                        @unknown default:
-                            EmptyView()
-                        }
-                    }
-                    .aspectRatio(selectedFormat.aspectRatio, contentMode: .fit)
+                    CachedAsyncImage(
+                        url: urlString,
+                        contentMode: .fit,
+                        aspectRatio: selectedFormat.aspectRatio
+                    )
+                    .cornerRadius(16)
                 } else {
                     VStack(spacing: 12) {
                         Image(systemName: "photo")

@@ -118,31 +118,12 @@ struct VesakDaySendShareView: View {
                     .aspectRatio(selectedFormat.aspectRatio, contentMode: .fit)
 
                 if let urlString = imageURL {
-                    CachedAsyncImage(url: urlString) { phase in
-                        switch phase {
-                        case .success(let image):
-                            image
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .cornerRadius(16)
-                        case .failure:
-                            VStack(spacing: 12) {
-                                Image(systemName: "exclamationmark.triangle")
-                                    .font(.largeTitle)
-                                    .foregroundStyle(.red)
-                                Text("Failed to load image")
-                                    .font(.system(.subheadline, design: .rounded))
-                                    .foregroundStyle(.secondary)
-                            }
-                        case .empty:
-                            ProgressView()
-                                .scaleEffect(1.2)
-                                .tint(culturalColor)
-                        @unknown default:
-                            EmptyView()
-                        }
-                    }
-                    .aspectRatio(selectedFormat.aspectRatio, contentMode: .fit)
+                    CachedAsyncImage(
+                        url: urlString,
+                        contentMode: .fit,
+                        aspectRatio: selectedFormat.aspectRatio
+                    )
+                    .cornerRadius(16)
                 }
             }
             .padding(.horizontal, 20)
