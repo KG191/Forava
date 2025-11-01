@@ -112,21 +112,41 @@ struct VesakDaySendShareView: View {
 
         VStack(spacing: 12) {
             // Image Display
-            ZStack {
-                RoundedRectangle(cornerRadius: 16)
-                    .fill(Color(.secondarySystemBackground))
-                    .aspectRatio(selectedFormat.aspectRatio, contentMode: .fit)
+            if let urlString = imageURL {
+                // Use ImageWithTextOverlay for proper format sizing
+                ImageWithTextOverlay(
+                    imageURL: urlString,
+                    message: personalMessage,
+                    imageSize: selectedFormat.displaySize,
+                    culturalColor: culturalColor
+                )
+                .frame(maxWidth: .infinity)
+                .aspectRatio(selectedFormat.aspectRatio, contentMode: .fit)
+                .clipShape(RoundedRectangle(cornerRadius: 16))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 16)
+                        .stroke(culturalColor.opacity(0.3), lineWidth: 2)
+                )
+                .padding(.horizontal, 20)
+            } else {
+                // Placeholder when no image
+                ZStack {
+                    RoundedRectangle(cornerRadius: 16)
+                        .fill(Color(.secondarySystemBackground))
+                        .aspectRatio(selectedFormat.aspectRatio, contentMode: .fit)
 
-                if let urlString = imageURL {
-                    CachedAsyncImage(
-                        url: urlString,
-                        contentMode: .fit,
-                        aspectRatio: selectedFormat.aspectRatio
-                    )
-                    .cornerRadius(16)
+                    VStack(spacing: 12) {
+                        Image(systemName: "photo")
+                            .font(.largeTitle)
+                            .foregroundStyle(.secondary)
+
+                        Text("Image not available")
+                            .font(.system(.subheadline, design: .rounded))
+                            .foregroundStyle(.secondary)
+                    }
                 }
+                .padding(.horizontal, 20)
             }
-            .padding(.horizontal, 20)
 
             // Format Info
             Text("Format: \(selectedFormat.rawValue)")

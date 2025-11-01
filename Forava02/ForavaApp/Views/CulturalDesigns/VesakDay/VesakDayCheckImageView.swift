@@ -135,20 +135,28 @@ struct VesakDayCheckImageView: View {
 
         VStack(spacing: 16) {
             // Image Display
-            ZStack {
-                RoundedRectangle(cornerRadius: 16)
-                    .fill(Color(.secondarySystemBackground))
-                    .aspectRatio(selectedFormat.aspectRatio, contentMode: .fit)
+            if let urlString = imageURL {
+                // Use ImageWithTextOverlay for proper format sizing
+                ImageWithTextOverlay(
+                    imageURL: urlString,
+                    message: personalMessage,
+                    imageSize: selectedFormat.displaySize,
+                    culturalColor: culturalColor
+                )
+                .frame(maxWidth: .infinity)
+                .aspectRatio(selectedFormat.aspectRatio, contentMode: .fit)
+                .clipShape(RoundedRectangle(cornerRadius: 16))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 16)
+                        .stroke(culturalColor.opacity(0.3), lineWidth: 2)
+                )
+            } else {
+                // Placeholder when no image
+                ZStack {
+                    RoundedRectangle(cornerRadius: 16)
+                        .fill(Color(.secondarySystemBackground))
+                        .aspectRatio(selectedFormat.aspectRatio, contentMode: .fit)
 
-                if let urlString = imageURL {
-                    // Display the generated image
-                    CachedAsyncImage(
-                        url: urlString,
-                        contentMode: .fit,
-                        aspectRatio: selectedFormat.aspectRatio
-                    )
-                    .cornerRadius(16)
-                } else {
                     VStack(spacing: 12) {
                         Image(systemName: "photo")
                             .font(.largeTitle)
@@ -160,13 +168,13 @@ struct VesakDayCheckImageView: View {
                     }
                 }
             }
-            .padding(.horizontal, 20)
 
             // Format Info
             Text("Format: \(selectedFormat.rawValue)")
                 .font(.system(.caption, design: .rounded))
                 .foregroundStyle(.secondary)
         }
+        .padding(.horizontal, 20)
     }
 
     @ViewBuilder
