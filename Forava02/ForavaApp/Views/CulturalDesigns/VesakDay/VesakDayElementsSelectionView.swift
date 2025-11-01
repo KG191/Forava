@@ -141,7 +141,7 @@ struct VesakDayElementsSelectionView: View {
         case "lanterns":
             return "light.beacon.max.fill"
         case "meditation pose":
-            return "figure.arms.open"  // More universally available symbol
+            return "figure.mind.and.body"  // Mindfulness icon (Buddhist context)
         case "buddhist symbols":
             return "sparkles"
         default:
