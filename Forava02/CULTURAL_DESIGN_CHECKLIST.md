@@ -46,6 +46,22 @@ case .appleWatch:
 }
 ```
 
+**Image Display Example** (CheckImageView & SendShareView):
+```swift
+// ✅ CORRECT: Use ImageWithTextOverlay for proper format sizing
+ImageWithTextOverlay(
+    imageURL: urlString,
+    message: personalMessage,
+    imageSize: selectedFormat.displaySize,  // ← CRITICAL for proper sizing
+    culturalColor: culturalColor
+)
+.frame(maxWidth: .infinity)
+.aspectRatio(selectedFormat.aspectRatio, contentMode: .fit)
+
+// ❌ WRONG: Don't use CachedAsyncImage (doesn't handle format sizing)
+CachedAsyncImage(url: urlString, contentMode: .fit, aspectRatio: selectedFormat.aspectRatio)
+```
+
 ### 3. View Layer - Create 7 View Files
 Create in `ForavaApp/Views/CulturalDesigns/[Culture]/`:
 
@@ -55,7 +71,11 @@ Create in `ForavaApp/Views/CulturalDesigns/[Culture]/`:
 - [ ] `[Culture]PersonalTouchView.swift` - Message customization
 - [ ] `[Culture]CreateSummaryView.swift` - Review and generate
 - [ ] `[Culture]CheckImageView.swift` - Image preview and regenerate
+  - **CRITICAL**: Use `ImageWithTextOverlay` (not CachedAsyncImage) for proper format sizing
+  - Pass `imageSize: selectedFormat.displaySize` parameter
 - [ ] `[Culture]SendShareView.swift` - Share and send options
+  - **CRITICAL**: Use `ImageWithTextOverlay` (not CachedAsyncImage) for proper format sizing
+  - Pass `imageSize: selectedFormat.displaySize` parameter
 
 ### 4. Main Design Coordinator
 - [ ] Create `[Culture]DesignView.swift` in `ForavaApp/Views/CulturalDesigns/[Culture]/`
