@@ -19,6 +19,7 @@ struct ContentView: View {
                     endPoint: .bottomTrailing
                 )
                 .ignoresSafeArea()
+                .allowsHitTesting(false)  // Allow touches to pass through to content
 
                 VStack(spacing: 0) {
                     // Push content toward the top area
