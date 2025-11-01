@@ -154,8 +154,8 @@ struct CulturalGiftSelectionView: View {
                         .padding(.vertical, 16)
                         .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 16))
 
-                        // Continue Button
-                        NavigationLink(destination: TempCulturalGiftDesignView(selectedContact: selectedContact, selectedEvent: selectedEvent)) {
+                        // Continue Button - Use CulturalGiftDesignView (single routing source)
+                        NavigationLink(destination: CulturalGiftDesignView(selectedContact: selectedContact, selectedEvent: selectedEvent)) {
                             HStack(spacing: 8) {
                                 Image(systemName: "arrow.right.circle.fill")
                                 Text("Continue with \(selectedGift.name)")
@@ -499,6 +499,9 @@ struct CulturalGiftConfirmationView: View {
 }
 
 // MARK: - Temporary Cultural Gift Design View
+// ⚠️ DEPRECATED: This view is no longer used. Use CulturalGiftDesignView.swift instead.
+// ⚠️ DO NOT ADD NEW CULTURES HERE - all routing should be in CulturalGiftDesignView.swift
+@available(*, deprecated, message: "Use CulturalGiftDesignView instead")
 struct TempCulturalGiftDesignView: View {
     let selectedContact: Contact
     let selectedEvent: CulturalEvent
@@ -512,6 +515,8 @@ struct TempCulturalGiftDesignView: View {
             ChineseNewYearDesignView(selectedContact: selectedContact, selectedEvent: selectedEvent)
         case "diwali":
             DiwaliDesignView(selectedContact: selectedContact, selectedEvent: selectedEvent)
+        case "vesak day":
+            VesakDayDesignView(selectedContact: selectedContact, selectedEvent: selectedEvent)
         default:
             // Placeholder for other cultural events
             VStack(spacing: 24) {
