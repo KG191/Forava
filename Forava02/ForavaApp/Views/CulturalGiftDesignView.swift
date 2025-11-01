@@ -17,6 +17,9 @@ struct CulturalGiftDesignView: View {
             case "diwali":
                 DiwaliDesignView(selectedContact: selectedContact, selectedEvent: selectedEvent)
 
+            case "vesak day":
+                VesakDayDesignView(selectedContact: selectedContact, selectedEvent: selectedEvent)
+
             default:
                 // Placeholder for other cultural events (to be implemented)
                 VStack(spacing: 24) {
