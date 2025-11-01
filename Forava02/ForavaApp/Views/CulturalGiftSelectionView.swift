@@ -517,6 +517,8 @@ struct TempCulturalGiftDesignView: View {
             DiwaliDesignView(selectedContact: selectedContact, selectedEvent: selectedEvent)
         case "vesak day":
             VesakDayDesignView(selectedContact: selectedContact, selectedEvent: selectedEvent)
+        case "rosh hashanah":
+            RoshHashanahDesignView(selectedContact: selectedContact, selectedEvent: selectedEvent)
         default:
             // Placeholder for other cultural events
             VStack(spacing: 24) {
