@@ -101,21 +101,35 @@ class VesakDayAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
         let elementName = designSpec.element?.name.lowercased().replacingOccurrences(of: " ", with: "") ?? "lotusflower"
         let lookupKey = "\(themeName)-\(elementName)"
 
-        let prompt: String
+        let basePrompt: String
         let negativePrompt: String
 
         if let alternativePrompt = Self.alternativePrompts[lookupKey] {
             // Use alternative natural language prompt
             print("📝 Using alternative prompt for: \(lookupKey)")
-            prompt = alternativePrompt.prompt
+            basePrompt = alternativePrompt.prompt
             // CRITICAL: Do NOT use negative prompt - DALL-E 3 rejects ANY negative instructions
             negativePrompt = ""
         } else {
             // Fallback to programmatic generation
             print("⚙️  Using programmatic prompt for: \(lookupKey)")
-            prompt = createCulturalPrompt(from: designSpec)
+            basePrompt = createCulturalPrompt(from: designSpec)
             // CRITICAL: Do NOT use negative prompt - DALL-E 3 rejects ANY negative instructions
             negativePrompt = ""
+        }
+
+        // Format-specific prompt adjustments
+        let prompt: String
+        switch format {
+        case .iPhone:
+            prompt = basePrompt
+            print("📱 Using portrait composition (iPhone)")
+        case .appleWatch:
+            // Apple Watch: Emphasize centered, square composition
+            let watchSuffix = " Centered square composition, balanced symmetrical layout, "
+                + "main subject in center, square 1:1 aspect ratio."
+            prompt = basePrompt + watchSuffix
+            print("⌚ Using square composition (Apple Watch)")
         }
 
         // DALL-E 3: Send ONLY positive prompts
@@ -164,13 +178,13 @@ class VesakDayAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
         let elementName = designSpec.element?.name.lowercased().replacingOccurrences(of: " ", with: "") ?? "lotusflower"
         let lookupKey = "\(themeName)-\(elementName)"
 
-        let prompt: String
+        let basePrompt: String
         let additionalNegativePrompt: String
 
         if let alternativePrompt = Self.alternativePrompts[lookupKey] {
             // 🔄 USING ALTERNATIVE PROMPT SYSTEM
             print("🔄 Alternative prompt system active for: \(lookupKey)")
-            prompt = alternativePrompt.prompt
+            basePrompt = alternativePrompt.prompt
 
             // Build combined negative prompt
             let forbiddenElements = buildForbiddenElementsPrompt(selectedElement: designSpec.element)
@@ -180,10 +194,24 @@ class VesakDayAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
         } else {
             // ⚙️ FALLBACK: Programmatic prompt generation
             print("⚙️ Using programmatic prompt generation for: \(lookupKey)")
-            prompt = createCulturalPrompt(from: designSpec)
+            basePrompt = createCulturalPrompt(from: designSpec)
 
             // Build element-exclusion negative prompt
             additionalNegativePrompt = buildForbiddenElementsPrompt(selectedElement: designSpec.element)
+        }
+
+        // Format-specific prompt adjustments for SDXL
+        let prompt: String
+        switch format {
+        case .iPhone:
+            prompt = basePrompt
+            print("📱 SDXL using portrait composition (iPhone)")
+        case .appleWatch:
+            // Apple Watch: Emphasize centered, square composition
+            let watchSuffix = " Centered square composition, balanced symmetrical layout, "
+                + "main subject in center, square 1:1 aspect ratio"
+            prompt = basePrompt + watchSuffix
+            print("⌚ SDXL using square composition (Apple Watch)")
         }
 
         // Get color palette components for SDXL

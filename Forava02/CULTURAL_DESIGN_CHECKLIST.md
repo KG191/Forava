@@ -24,10 +24,27 @@ When adding a new cultural design (e.g., "Christmas", "Eid", etc.), follow these
 - [ ] Create `[Culture]AIService.swift` in `ForavaApp/Services/`
   - [ ] Extend `BaseCulturalAIService`
   - [ ] Implement `CulturalAIServiceProtocol`
-  - [ ] Add DALL-E 3 primary generation
-  - [ ] Add SDXL fallback support
+  - [ ] Add DALL-E 3 primary generation with format-specific sizes:
+    - iPhone: `.size1024x1792` (portrait)
+    - Apple Watch: `.size1024` (square 1024×1024)
+  - [ ] **CRITICAL**: Add format-specific prompt adjustments:
+    - iPhone: Use base prompt as-is
+    - Apple Watch: Append square composition instructions (see code example below)
+  - [ ] Add SDXL fallback support with same format adjustments
   - [ ] Create 16+ alternative natural language prompts (4 themes × 4 elements)
   - [ ] Add cultural authenticity validation
+
+**Apple Watch Format Prompt Example**:
+```swift
+switch format {
+case .iPhone:
+    prompt = basePrompt
+case .appleWatch:
+    let watchSuffix = " Centered square composition, balanced symmetrical layout, "
+        + "main subject in center, square 1:1 aspect ratio"
+    prompt = basePrompt + watchSuffix
+}
+```
 
 ### 3. View Layer - Create 7 View Files
 Create in `ForavaApp/Views/CulturalDesigns/[Culture]/`:
@@ -99,6 +116,17 @@ Create in `ForavaApp/Views/CulturalDesigns/[Culture]/`:
 ### Issue: Image generation fails
 **Cause:** Missing AI service or incorrect protocol implementation
 **Solution:** Verify `[Culture]AIService` extends `BaseCulturalAIService` and implements all required methods
+
+### Issue: Apple Watch image is just a smaller version of iPhone image
+**Cause:** Same prompt used for both formats without square composition instructions
+**Solution:** Add format-specific prompt adjustments in AI service:
+```swift
+case .appleWatch:
+    let watchSuffix = " Centered square composition, balanced symmetrical layout, "
+        + "main subject in center, square 1:1 aspect ratio"
+    prompt = basePrompt + watchSuffix
+```
+**Impact:** Apple Watch gets properly composed square images (1024×1024) instead of cropped portrait images
 
 ## 📊 Cultural Design Status
 

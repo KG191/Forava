@@ -293,6 +293,44 @@ ForavaApp/Testing/ProductionTestSuite.swift
 3. **Backward Compatibility**: Rakhi functionality must remain 100% intact through all changes
 4. **Test Before Expand**: Each cultural addition requires comprehensive validation
 5. **Xcode Project Integration**: All new files must be properly added to Forava.xcodeproj
+6. **Single Routing Source**: ONLY update `CulturalGiftDesignView.swift` for cultural routing (see Architectural Consolidation below)
+
+### 🎯 CRITICAL: Cultural Routing Architecture (Single Source of Truth)
+
+**Issue Identified (2025-11-01)**: Vesak Day tabs were not appearing due to duplicate routing logic in two locations.
+
+**Architectural Consolidation Implemented**:
+- **Single Source**: `ForavaApp/Views/CulturalGiftDesignView.swift` is the ONLY file for cultural routing
+- **Deprecated**: `TempCulturalGiftDesignView` (inside `CulturalGiftSelectionView.swift`) marked as deprecated
+- **Prevention**: All future cultural designs must ONLY add routing to `CulturalGiftDesignView.swift`
+
+**When Adding New Cultural Design**:
+```swift
+// ONLY edit this file: ForavaApp/Views/CulturalGiftDesignView.swift
+// Add new case around line 17:
+
+switch selectedEvent.name.lowercased() {
+case "anniversary":
+    AnniversaryDesignView(...)
+case "chinese new year":
+    ChineseNewYearDesignView(...)
+case "diwali":
+    DiwaliDesignView(...)
+case "vesak day":
+    VesakDayDesignView(...)
+case "christmas":  // ← Add new culture here
+    ChristmasDesignView(...)
+default:
+    // Coming Soon placeholder
+}
+```
+
+**DO NOT**:
+- ❌ Modify `TempCulturalGiftDesignView` (deprecated, will be removed)
+- ❌ Create additional routing views
+- ❌ Add routing logic anywhere except `CulturalGiftDesignView.swift`
+
+**Checklist Reference**: See `Forava02/CULTURAL_DESIGN_CHECKLIST.md` for complete implementation guide
 
 ### Cultural Development Workflow
 ```bash

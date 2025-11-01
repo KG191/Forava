@@ -41,6 +41,15 @@
 		215C76A92EB360C5002C27DB /* DiwaliDesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213539C82E6BE52900CC85B0 /* DiwaliDesignView.swift */; };
 		215C76AA2EB361B4002C27DB /* DiwaliModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93BBA2E627EA700200285 /* DiwaliModels.swift */; };
 		215C76AB2EB361C7002C27DB /* DiwaliAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C76992EB3607B002C27DB /* DiwaliAIService.swift */; };
+		215C76AC2EB5A7F9002C27DB /* VesakDayDesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213539D82E6BE57100CC85B0 /* VesakDayDesignView.swift */; };
+		215C76B42EB5A835002C27DB /* VesakDayStyleSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C76B32EB5A835002C27DB /* VesakDayStyleSelectionView.swift */; };
+		215C76B52EB5A835002C27DB /* VesakDayCheckImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C76AD2EB5A835002C27DB /* VesakDayCheckImageView.swift */; };
+		215C76B62EB5A835002C27DB /* VesakDayColorPaletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C76AE2EB5A835002C27DB /* VesakDayColorPaletteView.swift */; };
+		215C76B72EB5A835002C27DB /* VesakDaySendShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C76B22EB5A835002C27DB /* VesakDaySendShareView.swift */; };
+		215C76B82EB5A835002C27DB /* VesakDayPersonalTouchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C76B12EB5A835002C27DB /* VesakDayPersonalTouchView.swift */; };
+		215C76B92EB5A835002C27DB /* VesakDayCreateSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C76AF2EB5A835002C27DB /* VesakDayCreateSummaryView.swift */; };
+		215C76BA2EB5A835002C27DB /* VesakDayElementsSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C76B02EB5A835002C27DB /* VesakDayElementsSelectionView.swift */; };
+		215C76BC2EB5A858002C27DB /* VesakDayAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C76BB2EB5A858002C27DB /* VesakDayAIService.swift */; };
 		218FF3552E63C593008C12BF /* HanukkahModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218FF3532E63C593008C12BF /* HanukkahModels.swift */; };
 		218FF3562E63C593008C12BF /* MidAutumnFestivalModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218FF3542E63C593008C12BF /* MidAutumnFestivalModels.swift */; };
 		218FF35B2E63C675008C12BF /* RakshaBandhanModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218FF3592E63C675008C12BF /* RakshaBandhanModels.swift */; };
@@ -195,6 +204,14 @@
 		215C769F2EB360A1002C27DB /* DiwaliPersonalTouchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiwaliPersonalTouchView.swift; sourceTree = "<group>"; };
 		215C76A02EB360A1002C27DB /* DiwaliSendShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiwaliSendShareView.swift; sourceTree = "<group>"; };
 		215C76A12EB360A1002C27DB /* DiwaliStyleSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiwaliStyleSelectionView.swift; sourceTree = "<group>"; };
+		215C76AD2EB5A835002C27DB /* VesakDayCheckImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VesakDayCheckImageView.swift; sourceTree = "<group>"; };
+		215C76AE2EB5A835002C27DB /* VesakDayColorPaletteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VesakDayColorPaletteView.swift; sourceTree = "<group>"; };
+		215C76AF2EB5A835002C27DB /* VesakDayCreateSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VesakDayCreateSummaryView.swift; sourceTree = "<group>"; };
+		215C76B02EB5A835002C27DB /* VesakDayElementsSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VesakDayElementsSelectionView.swift; sourceTree = "<group>"; };
+		215C76B12EB5A835002C27DB /* VesakDayPersonalTouchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VesakDayPersonalTouchView.swift; sourceTree = "<group>"; };
+		215C76B22EB5A835002C27DB /* VesakDaySendShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VesakDaySendShareView.swift; sourceTree = "<group>"; };
+		215C76B32EB5A835002C27DB /* VesakDayStyleSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VesakDayStyleSelectionView.swift; sourceTree = "<group>"; };
+		215C76BB2EB5A858002C27DB /* VesakDayAIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VesakDayAIService.swift; sourceTree = "<group>"; };
 		218FF3532E63C593008C12BF /* HanukkahModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HanukkahModels.swift; sourceTree = "<group>"; };
 		218FF3542E63C593008C12BF /* MidAutumnFestivalModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MidAutumnFestivalModels.swift; sourceTree = "<group>"; };
 		218FF3592E63C675008C12BF /* RakshaBandhanModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RakshaBandhanModels.swift; sourceTree = "<group>"; };
@@ -514,6 +531,13 @@
 		218FF3732E642A86008C12BF /* VesakDay */ = {
 			isa = PBXGroup;
 			children = (
+				215C76AD2EB5A835002C27DB /* VesakDayCheckImageView.swift */,
+				215C76AE2EB5A835002C27DB /* VesakDayColorPaletteView.swift */,
+				215C76AF2EB5A835002C27DB /* VesakDayCreateSummaryView.swift */,
+				215C76B02EB5A835002C27DB /* VesakDayElementsSelectionView.swift */,
+				215C76B12EB5A835002C27DB /* VesakDayPersonalTouchView.swift */,
+				215C76B22EB5A835002C27DB /* VesakDaySendShareView.swift */,
+				215C76B32EB5A835002C27DB /* VesakDayStyleSelectionView.swift */,
 				213539D82E6BE57100CC85B0 /* VesakDayDesignView.swift */,
 			);
 			path = VesakDay;
@@ -569,6 +593,7 @@
 		21C93B542E5FE78800200285 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				215C76BB2EB5A858002C27DB /* VesakDayAIService.swift */,
 				215C76992EB3607B002C27DB /* DiwaliAIService.swift */,
 				215C76972EB34CFB002C27DB /* ChineseNewYearAIService.swift */,
 				21E8D07E2EAF82BC008B8145 /* DALLE3Service.swift */,
@@ -871,6 +896,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				215C76AC2EB5A7F9002C27DB /* VesakDayDesignView.swift in Sources */,
 				21C93BAE2E61568600200285 /* ChristmasModels.swift in Sources */,
 				A001 /* App.swift in Sources */,
 				A003 /* ContentView.swift in Sources */,
@@ -920,6 +946,13 @@
 				21B8978C2E7EA18800DD567D /* CulturalGiftDesignView.swift in Sources */,
 				215A84382E9CF41E006D56E9 /* AnniversaryAIService.swift in Sources */,
 				21C93B8E2E5FE78800200285 /* SimpleLanguageSettingsView.swift in Sources */,
+				215C76B42EB5A835002C27DB /* VesakDayStyleSelectionView.swift in Sources */,
+				215C76B52EB5A835002C27DB /* VesakDayCheckImageView.swift in Sources */,
+				215C76B62EB5A835002C27DB /* VesakDayColorPaletteView.swift in Sources */,
+				215C76B72EB5A835002C27DB /* VesakDaySendShareView.swift in Sources */,
+				215C76B82EB5A835002C27DB /* VesakDayPersonalTouchView.swift in Sources */,
+				215C76B92EB5A835002C27DB /* VesakDayCreateSummaryView.swift in Sources */,
+				215C76BA2EB5A835002C27DB /* VesakDayElementsSelectionView.swift in Sources */,
 				21C93B8F2E5FE78800200285 /* SharedUIComponents.swift in Sources */,
 				21C93B902E5FE78800200285 /* PromptMapper.swift in Sources */,
 				21C93B922E5FE78800200285 /* AdvancedCustomizationService.swift in Sources */,
@@ -988,6 +1021,7 @@
 				804F94C64D384D39B539C08E /* ForavaApp/Services/Calendar/CulturalCalendarService.swift in Sources */,
 				0691F1B7C8204853B28C1FB9 /* ForavaApp/Services/Calendar/CulturalNotificationManager.swift in Sources */,
 				4C7FD120FC4F4B17B9F89569 /* ForavaApp/Services/Social/CulturalCommunityService.swift in Sources */,
+				215C76BC2EB5A858002C27DB /* VesakDayAIService.swift in Sources */,
 				3B3DD8DDBFBA40319C128767 /* ForavaApp/Views/CulturalDesigns/Shared/CulturalDesignProtocol.swift in Sources */,
 				215C76982EB34CFB002C27DB /* ChineseNewYearAIService.swift in Sources */,
 				215C76AA2EB361B4002C27DB /* DiwaliModels.swift in Sources */,
