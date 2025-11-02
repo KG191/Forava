@@ -16,7 +16,7 @@ class DALLE3Service: ObservableObject {
 
     // MARK: - API Configuration
 
-    private var apiKey: String {
+    internal var apiKey: String {
         return loadOpenAIAPIKey()
     }
 
@@ -51,20 +51,39 @@ class DALLE3Service: ObservableObject {
     private func loadOpenAIAPIKey() -> String {
         // Priority 1: Environment variable (from .env or Xcode scheme)
         if let envKey = ProcessInfo.processInfo.environment["OPENAI_API_KEY"], !envKey.isEmpty {
-            print("✅ DALL-E 3: Loaded API key from environment variable")
-            return envKey
+            // Reject common placeholder values
+            if envKey == "your_openai_api_key_here" || envKey.hasPrefix("your_") {
+                print("❌ DALL-E 3: Placeholder API key detected: '\(envKey)'")
+                print("💡 Please add your real OpenAI API key to .env file or environment variables")
+                // Continue to check other sources
+            } else {
+                print("✅ DALL-E 3: Loaded API key from environment variable")
+                return envKey
+            }
         }
 
         // Priority 2: UserDefaults (for persistent storage)
         if let defaultsKey = UserDefaults.standard.string(forKey: "OPENAI_API_KEY"), !defaultsKey.isEmpty {
-            print("✅ DALL-E 3: Loaded API key from UserDefaults")
-            return defaultsKey
+            // Reject placeholder values
+            if defaultsKey == "your_openai_api_key_here" || defaultsKey.hasPrefix("your_") {
+                print("❌ DALL-E 3: Placeholder API key in UserDefaults: '\(defaultsKey)'")
+                // Continue to check other sources
+            } else {
+                print("✅ DALL-E 3: Loaded API key from UserDefaults")
+                return defaultsKey
+            }
         }
 
         // Priority 3: Info.plist
         if let plistKey = Bundle.main.object(forInfoDictionaryKey: "OPENAI_API_KEY") as? String, !plistKey.isEmpty {
-            print("✅ DALL-E 3: Loaded API key from Info.plist")
-            return plistKey
+            // Reject placeholder values
+            if plistKey == "your_openai_api_key_here" || plistKey.hasPrefix("your_") {
+                print("❌ DALL-E 3: Placeholder API key in Info.plist: '\(plistKey)'")
+                // Continue to check other sources
+            } else {
+                print("✅ DALL-E 3: Loaded API key from Info.plist")
+                return plistKey
+            }
         }
 
         // Priority 4: Attempt to read .env file directly

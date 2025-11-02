@@ -22,9 +22,12 @@ class ChineseNewYearAIService: BaseCulturalAIService, CulturalAIServiceProtocol 
         print("🐉 ChineseNewYearAIService initialized")
         if useDALLE3 {
             print("🎨 AI Model: DALL-E 3 (OpenAI) - Superior prompt following")
+            // Check OpenAI API key availability
+            let openAIKey = dalle3Service.apiKey
+            print("🔑 OpenAI API Status: \(openAIKey.isEmpty ? "❌ NOT CONFIGURED" : "✅ CONFIGURED (\(openAIKey.prefix(8))...)")")
         } else {
             print("🎨 AI Model: SDXL (Replicate)")
-            print("🔑 API Key Status: \(apiKeyStatus)")
+            print("🔑 Replicate API Status: \(apiKeyStatus)")
         }
         print("⚙️  Mock Generation: \(useMockGeneration ? "ENABLED" : "DISABLED - Using Real AI")")
     }
