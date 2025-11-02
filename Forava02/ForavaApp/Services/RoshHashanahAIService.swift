@@ -258,36 +258,36 @@ class RoshHashanahAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
         "traditional-shofar": (
             prompt: """
 A beautiful traditional ram's horn shofar with authentic Jewish New Year aesthetic, \
-sacred spiritual instrument with curved natural horn texture in warm brown tones, \
-High Holy Days atmosphere with blue and gold accents, cinematic lighting, designed for \
+elegant ceremonial instrument with curved natural horn texture in warm brown tones, \
+festive celebration atmosphere with blue and gold accents, cinematic lighting, designed for \
 iPhone wallpaper or Apple Watch face, high-resolution, no text, traditional art style.
 """,
             negativePrompt: "cartoon, inappropriate cultural elements, low resolution"
         ),
         "traditional-appleshoney": (
             prompt: """
-Traditional sweet apples and golden honey arrangement for Rosh Hashanah blessing, \
+Traditional sweet apples and golden honey arrangement for Rosh Hashanah celebration, \
 fresh red apples with honey drizzle in authentic Jewish New Year aesthetic, \
-warm inviting composition with blue and gold tones, spiritual celebration atmosphere, \
+warm inviting composition with blue and gold tones, festive cultural atmosphere, \
 designed for iPhone or Apple Watch wallpaper, high-resolution, no text.
 """,
             negativePrompt: "modern style, neon lights, cartoon"
         ),
         "traditional-starofdavid": (
             prompt: """
-Sacred Star of David symbol in traditional royal blue and gold, authentic Jewish \
-spiritual aesthetic with elegant six-pointed star design, High Holy Days atmosphere \
-with reverent lighting, designed for iPhone wallpaper or Apple Watch face, \
-high-resolution, no text, traditional sacred art style.
+Traditional Star of David symbol in royal blue and gold, authentic Jewish \
+cultural aesthetic with elegant six-pointed star design, festive celebration atmosphere \
+with beautiful lighting, designed for iPhone wallpaper or Apple Watch face, \
+high-resolution, no text, traditional cultural art style.
 """,
             negativePrompt: "modern elements, chaotic, inappropriate"
         ),
         "traditional-torahscroll": (
             prompt: """
-Sacred Torah scroll with traditional Hebrew calligraphy, authentic Jewish spiritual \
-aesthetic with reverent parchment texture and wooden rollers, High Holy Days atmosphere \
+Traditional decorative scroll with elegant Hebrew calligraphy, authentic Jewish cultural \
+aesthetic with beautiful parchment texture and wooden rollers, Rosh Hashanah celebration atmosphere \
 in blue and gold tones, designed for iPhone wallpaper or Apple Watch face, \
-high-resolution, no text, traditional sacred art.
+high-resolution, no text, traditional cultural art.
 """,
             negativePrompt: "western religious symbols, modern art, cartoon"
         ),
@@ -295,7 +295,7 @@ high-resolution, no text, traditional sacred art.
         // 🌅 RENEWAL Theme
         "renewal-shofar": (
             prompt: """
-Ram's horn shofar symbolizing fresh spiritual awakening and new beginnings, bright \
+Ram's horn shofar symbolizing fresh cultural awakening and new beginnings, bright \
 clean aesthetic representing renewal and transformation, hopeful Rosh Hashanah atmosphere \
 with fresh blue and gold tones, designed for iPhone wallpaper or Apple Watch face, \
 high-resolution, no text, uplifting composition.
@@ -304,7 +304,7 @@ high-resolution, no text, uplifting composition.
         ),
         "renewal-appleshoney": (
             prompt: """
-Fresh bright apples and golden honey representing sweet new year and renewal blessings, \
+Fresh bright apples and golden honey representing sweet new year and renewal celebrations, \
 clean vibrant composition symbolizing new beginnings, hopeful uplifting atmosphere with \
 fresh blue and gold accents, designed for iPhone or Apple Watch wallpaper, high-resolution, \
 no text, bright optimistic aesthetic.
@@ -313,7 +313,7 @@ no text, bright optimistic aesthetic.
         ),
         "renewal-starofdavid": (
             prompt: """
-Bright Star of David symbolizing spiritual renewal and fresh beginnings, clean elegant \
+Bright Star of David symbolizing cultural renewal and fresh beginnings, clean elegant \
 composition in vibrant blue and gold, uplifting hopeful Rosh Hashanah atmosphere, \
 designed for iPhone wallpaper or Apple Watch face, high-resolution, no text, \
 fresh optimistic aesthetic.
@@ -322,7 +322,7 @@ fresh optimistic aesthetic.
         ),
         "renewal-torahscroll": (
             prompt: """
-Fresh Torah scroll symbolizing spiritual renewal and new year wisdom, bright clean \
+Fresh decorative scroll symbolizing cultural renewal and new year wisdom, bright clean \
 aesthetic with hopeful atmosphere in blue and gold tones, uplifting Rosh Hashanah \
 composition representing fresh beginnings, designed for iPhone or Apple Watch wallpaper, \
 high-resolution, no text.
@@ -333,8 +333,8 @@ high-resolution, no text.
         // 👨‍👩‍👧 FAMILY Theme
         "family-shofar": (
             prompt: """
-Warm cozy shofar creating family gathering atmosphere for High Holy Days, gentle sacred \
-tones symbolizing togetherness and unity, heartwarming Rosh Hashanah reunion ambience \
+Warm cozy shofar creating family gathering atmosphere for Rosh Hashanah celebration, gentle traditional \
+tones symbolizing togetherness and unity, heartwarming New Year reunion ambience \
 with soft blue and warm golden tones, designed for iPhone wallpaper or Apple Watch face, \
 high-resolution, no text, family celebration aesthetic.
 """,
@@ -343,7 +343,7 @@ high-resolution, no text, family celebration aesthetic.
         "family-appleshoney": (
             prompt: """
 Cozy warm apples and honey arrangement for family Rosh Hashanah celebration, heartwarming \
-composition symbolizing family togetherness and sweet blessings, gentle warm atmosphere \
+composition symbolizing family togetherness and sweet traditions, gentle warm atmosphere \
 with family reunion energy in soft blue and gold, designed for iPhone or Apple Watch \
 wallpaper, high-resolution, no text.
 """,
@@ -360,9 +360,9 @@ family reunion aesthetic.
         ),
         "family-torahscroll": (
             prompt: """
-Warm Torah scroll blessing family celebration with gentle sacred atmosphere, cozy \
+Warm decorative scroll celebrating family traditions with gentle festive atmosphere, cozy \
 composition symbolizing family heritage and unity in soft blue and golden tones, \
-heartwarming Rosh Hashanah reunion blessings, designed for iPhone or Apple Watch wallpaper, \
+heartwarming Rosh Hashanah reunion celebration, designed for iPhone or Apple Watch wallpaper, \
 high-resolution, no text.
 """,
             negativePrompt: "formal, cold colors, isolated"
@@ -389,8 +389,8 @@ wallpaper, high-resolution, no text.
         ),
         "modern-starofdavid": (
             prompt: """
-Contemporary minimalist Star of David with sleek modern aesthetic, clean geometric sacred \
-symbol in elegant blue and gold tones, sophisticated spiritual vibe with modern composition, \
+Contemporary minimalist Star of David with sleek modern aesthetic, clean geometric cultural \
+symbol in elegant blue and gold tones, sophisticated festive vibe with modern composition, \
 designed for iPhone wallpaper or Apple Watch face, high-resolution, no text, \
 stylish contemporary design.
 """,
@@ -398,8 +398,8 @@ stylish contemporary design.
         ),
         "modern-torahscroll": (
             prompt: """
-Minimalist modern artistic interpretation of Torah scroll with sleek contemporary aesthetics, \
-stylized sacred design in elegant blue and gold tones, clean sophisticated spiritual \
+Minimalist modern artistic interpretation of decorative scroll with sleek contemporary aesthetics, \
+stylized cultural design in elegant blue and gold tones, clean sophisticated festive \
 composition for Rosh Hashanah, designed for iPhone or Apple Watch wallpaper, high-resolution, \
 no text, modern minimalist style.
 """,

@@ -87,26 +87,54 @@ class DALLE3Service: ObservableObject {
         }
 
         // Priority 4: Attempt to read .env file directly
-        if let projectRoot = Bundle.main.resourcePath?.replacingOccurrences(of: "/build/", with: "/"),
-           let envPath = findEnvFile(startingFrom: projectRoot) {
-            do {
-                let envContent = try String(contentsOfFile: envPath, encoding: .utf8)
-                let lines = envContent.components(separatedBy: .newlines)
-                for line in lines {
-                    let trimmed = line.trimmingCharacters(in: .whitespaces)
-                    if trimmed.hasPrefix("OPENAI_API_KEY=") {
-                        let key = String(trimmed.dropFirst("OPENAI_API_KEY=".count))
-                            .trimmingCharacters(in: .whitespaces)
-                        if !key.isEmpty && key != "your_openai_api_key_here" {
-                            print("✅ DALL-E 3: Loaded API key from .env file")
-                            return key
-                        }
-                    }
-                }
-            } catch {
-                print("⚠️ DALL-E 3: Failed to read .env file: \(error)")
+        // Try multiple approaches to find the project root
+        var searchPaths: [String] = []
+
+        // Approach 1: Fix case-sensitivity - replace both /Build/ and /build/
+        if let resourcePath = Bundle.main.resourcePath {
+            let path1 = resourcePath.replacingOccurrences(of: "/Build/", with: "/")
+            let path2 = resourcePath.replacingOccurrences(of: "/build/", with: "/")
+            searchPaths.append(path1)
+            if path2 != path1 {
+                searchPaths.append(path2)
             }
         }
+
+        // Approach 2: Use FileManager to get current working directory
+        let currentDir = FileManager.default.currentDirectoryPath
+        searchPaths.append(currentDir)
+
+        // Approach 3: Common project paths
+        searchPaths.append("/Users/kirangokal/Documents/Forava/Forava02")
+        searchPaths.append("/Users/kirangokal/Documents/Forava")
+
+        print("🔍 DALL-E 3: Searching for .env file in \(searchPaths.count) locations...")
+
+        for searchPath in searchPaths {
+            if let envPath = findEnvFile(startingFrom: searchPath) {
+                print("📂 DALL-E 3: Found .env at: \(envPath)")
+                do {
+                    let envContent = try String(contentsOfFile: envPath, encoding: .utf8)
+                    let lines = envContent.components(separatedBy: .newlines)
+                    for line in lines {
+                        let trimmed = line.trimmingCharacters(in: .whitespaces)
+                        if trimmed.hasPrefix("OPENAI_API_KEY=") {
+                            let key = String(trimmed.dropFirst("OPENAI_API_KEY=".count))
+                                .trimmingCharacters(in: .whitespaces)
+                            if !key.isEmpty && key != "your_openai_api_key_here" {
+                                print("✅ DALL-E 3: Loaded API key from .env file")
+                                return key
+                            }
+                        }
+                    }
+                } catch {
+                    print("⚠️ DALL-E 3: Failed to read .env file at \(envPath): \(error)")
+                    // Continue to next search path
+                }
+            }
+        }
+
+        print("❌ DALL-E 3: No .env file found in any search location")
 
         print("❌ DALL-E 3: No API key found")
         return ""
