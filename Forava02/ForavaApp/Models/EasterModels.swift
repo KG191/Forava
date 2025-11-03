@@ -185,29 +185,36 @@ struct EasterColorPalette: Identifiable, Codable {
     let id: UUID
     let name: String
     let description: String
-    let primaryColor: String
-    let secondaryColor: String
-    let accentColor: String
-    let backgroundHint: String
+    let primaryHex: String
+    let secondaryHex: String
+    let accentHex: String
+    let backgroundHex: String
+    let aiColorHint: String
 
-    init(name: String, description: String, primaryColor: String,
-         secondaryColor: String, accentColor: String, backgroundHint: String) {
+    init(
+        name: String,
+        description: String,
+        primaryHex: String,
+        secondaryHex: String,
+        accentHex: String,
+        backgroundHex: String,
+        aiColorHint: String
+    ) {
         self.id = UUID()
         self.name = name
         self.description = description
-        self.primaryColor = primaryColor
-        self.secondaryColor = secondaryColor
-        self.accentColor = accentColor
-        self.backgroundHint = backgroundHint
+        self.primaryHex = primaryHex
+        self.secondaryHex = secondaryHex
+        self.accentHex = accentHex
+        self.backgroundHex = backgroundHex
+        self.aiColorHint = aiColorHint
     }
 
-    var swiftUIColors: (primary: Color, secondary: Color, accent: Color) {
-        (
-            primary: Color(hex: primaryColor),
-            secondary: Color(hex: secondaryColor),
-            accent: Color(hex: accentColor)
-        )
-    }
+    // Computed properties for SwiftUI Color conversion
+    var primaryColor: Color { Color(hex: primaryHex) }
+    var secondaryColor: Color { Color(hex: secondaryHex) }
+    var accentColor: Color { Color(hex: accentHex) }
+    var backgroundColor: Color { Color(hex: backgroundHex) }
 }
 
 // MARK: - Easter Color Palettes Collection
@@ -216,66 +223,74 @@ extension EasterColorPalette {
         EasterColorPalette(
             name: "Pastel Spring",
             description: "Soft Pink, Baby Blue, Mint Green",
-            primaryColor: "#FFB6C1",
-            secondaryColor: "#ADD8E6",
-            accentColor: "#98FB98",
-            backgroundHint: "gentle spring morning atmosphere"
+            primaryHex: "#FFB6C1",
+            secondaryHex: "#ADD8E6",
+            accentHex: "#98FB98",
+            backgroundHex: "#F0F8FF",
+            aiColorHint: "gentle spring morning atmosphere with soft pastels"
         ),
         EasterColorPalette(
             name: "Golden Sunrise",
             description: "Gold, Warm Yellow, Light Orange",
-            primaryColor: "#FFD700",
-            secondaryColor: "#FFFF00",
-            accentColor: "#FFE4B5",
-            backgroundHint: "warm Easter sunrise glow"
+            primaryHex: "#FFD700",
+            secondaryHex: "#FFFF00",
+            accentHex: "#FFE4B5",
+            backgroundHex: "#FFA500",
+            aiColorHint: "warm Easter sunrise glow with golden tones"
         ),
         EasterColorPalette(
             name: "Traditional Easter",
             description: "Purple, White, Gold",
-            primaryColor: "#8A2BE2",
-            secondaryColor: "#FFFFFF",
-            accentColor: "#FFD700",
-            backgroundHint: "sacred traditional Easter atmosphere"
+            primaryHex: "#8A2BE2",
+            secondaryHex: "#FFFFFF",
+            accentHex: "#FFD700",
+            backgroundHex: "#4B0082",
+            aiColorHint: "traditional Easter atmosphere with royal purple"
         ),
         EasterColorPalette(
             name: "Garden Fresh",
             description: "Fresh Green, Lavender, White",
-            primaryColor: "#90EE90",
-            secondaryColor: "#E6E6FA",
-            accentColor: "#FFFFFF",
-            backgroundHint: "fresh spring garden setting"
+            primaryHex: "#90EE90",
+            secondaryHex: "#E6E6FA",
+            accentHex: "#FFFFFF",
+            backgroundHex: "#228B22",
+            aiColorHint: "fresh spring garden setting with green growth"
         ),
         EasterColorPalette(
             name: "Bunny Soft",
             description: "Cream, Soft Brown, Pink",
-            primaryColor: "#F5F5DC",
-            secondaryColor: "#D2B48C",
-            accentColor: "#FFC0CB",
-            backgroundHint: "soft bunny fur texture"
+            primaryHex: "#F5F5DC",
+            secondaryHex: "#D2B48C",
+            accentHex: "#FFC0CB",
+            backgroundHex: "#A0826D",
+            aiColorHint: "soft bunny fur texture with warm cream tones"
         ),
         EasterColorPalette(
             name: "Egg Hunt Colors",
             description: "Bright Multi-colors on White",
-            primaryColor: "#FF6347",
-            secondaryColor: "#32CD32",
-            accentColor: "#FF69B4",
-            backgroundHint: "bright festive egg hunt scene"
+            primaryHex: "#FF6347",
+            secondaryHex: "#32CD32",
+            accentHex: "#FF69B4",
+            backgroundHex: "#F5F5F5",
+            aiColorHint: "bright festive egg hunt scene with vibrant colors"
         ),
         EasterColorPalette(
             name: "Modern Minimalist",
             description: "White, Sage Green, Gold Accent",
-            primaryColor: "#FFFFFF",
-            secondaryColor: "#9CAF88",
-            accentColor: "#FFD700",
-            backgroundHint: "clean modern Easter background"
+            primaryHex: "#FFFFFF",
+            secondaryHex: "#9CAF88",
+            accentHex: "#FFD700",
+            backgroundHex: "#708238",
+            aiColorHint: "clean modern Easter background with sage green"
         ),
         EasterColorPalette(
             name: "Resurrection Glory",
             description: "Pure White, Gold, Light Blue",
-            primaryColor: "#FFFFFF",
-            secondaryColor: "#FFD700",
-            accentColor: "#87CEEB",
-            backgroundHint: "radiant resurrection morning light"
+            primaryHex: "#FFFFFF",
+            secondaryHex: "#FFD700",
+            accentHex: "#87CEEB",
+            backgroundHex: "#4682B4",
+            aiColorHint: "radiant morning light with golden glory"
         )
     ]
 }

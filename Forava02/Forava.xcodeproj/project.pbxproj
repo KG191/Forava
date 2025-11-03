@@ -59,6 +59,43 @@
 		215C773D2EB5F97A002C27DB /* RoshHashanahCreateSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C77322EB5F97A002C27DB /* RoshHashanahCreateSummaryView.swift */; };
 		215C773E2EB5FB02002C27DB /* RoshHashanahAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C772E2EB5F93B002C27DB /* RoshHashanahAIService.swift */; };
 		215C773F2EB5FB4B002C27DB /* RoshHashanahDesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213539D62E6BE56800CC85B0 /* RoshHashanahDesignView.swift */; };
+		215C77412EB72580002C27DB /* RakshaBandhanAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C77402EB72580002C27DB /* RakshaBandhanAIService.swift */; };
+		215C77492EB72597002C27DB /* RakshaBandhanSendShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C77472EB72597002C27DB /* RakshaBandhanSendShareView.swift */; };
+		215C774A2EB72597002C27DB /* RakshaBandhanStyleSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C77482EB72597002C27DB /* RakshaBandhanStyleSelectionView.swift */; };
+		215C774B2EB72597002C27DB /* RakshaBandhanCheckImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C77422EB72597002C27DB /* RakshaBandhanCheckImageView.swift */; };
+		215C774C2EB72597002C27DB /* RakshaBandhanColorPaletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C77432EB72597002C27DB /* RakshaBandhanColorPaletteView.swift */; };
+		215C774D2EB72597002C27DB /* RakshaBandhanPersonalTouchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C77462EB72597002C27DB /* RakshaBandhanPersonalTouchView.swift */; };
+		215C774E2EB72597002C27DB /* RakshaBandhanCreateSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C77442EB72597002C27DB /* RakshaBandhanCreateSummaryView.swift */; };
+		215C774F2EB72597002C27DB /* RakshaBandhanElementsSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C77452EB72597002C27DB /* RakshaBandhanElementsSelectionView.swift */; };
+		215C77502EB7259F002C27DB /* RakshaBandhanDesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213539D42E6BE56000CC85B0 /* RakshaBandhanDesignView.swift */; };
+		215C77522EB75796002C27DB /* MidAutumnFestivalAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C77512EB75796002C27DB /* MidAutumnFestivalAIService.swift */; };
+		215C775A2EB757AB002C27DB /* MidAutumnFestivalStyleSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C77592EB757AB002C27DB /* MidAutumnFestivalStyleSelectionView.swift */; };
+		215C775B2EB757AB002C27DB /* MidAutumnFestivalCreateSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C77552EB757AB002C27DB /* MidAutumnFestivalCreateSummaryView.swift */; };
+		215C775C2EB757AB002C27DB /* MidAutumnFestivalSendShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C77582EB757AB002C27DB /* MidAutumnFestivalSendShareView.swift */; };
+		215C775D2EB757AB002C27DB /* MidAutumnFestivalElementsSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C77562EB757AB002C27DB /* MidAutumnFestivalElementsSelectionView.swift */; };
+		215C775E2EB757AB002C27DB /* MidAutumnFestivalColorPaletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C77542EB757AB002C27DB /* MidAutumnFestivalColorPaletteView.swift */; };
+		215C775F2EB757AB002C27DB /* MidAutumnFestivalPersonalTouchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C77572EB757AB002C27DB /* MidAutumnFestivalPersonalTouchView.swift */; };
+		215C77602EB757AB002C27DB /* MidAutumnFestivalCheckImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C77532EB757AB002C27DB /* MidAutumnFestivalCheckImageView.swift */; };
+		215C77612EB757B5002C27DB /* MidAutumnFestivalDesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213539D22E6BE55600CC85B0 /* MidAutumnFestivalDesignView.swift */; };
+		215C77692EB89C1D002C27DB /* EasterSendShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C77672EB89C1D002C27DB /* EasterSendShareView.swift */; };
+		215C776A2EB89C1D002C27DB /* EasterCheckImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C77622EB89C1D002C27DB /* EasterCheckImageView.swift */; };
+		215C776B2EB89C1D002C27DB /* EasterStyleSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C77682EB89C1D002C27DB /* EasterStyleSelectionView.swift */; };
+		215C776C2EB89C1D002C27DB /* EasterCreateSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C77642EB89C1D002C27DB /* EasterCreateSummaryView.swift */; };
+		215C776D2EB89C1D002C27DB /* EasterElementsSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C77652EB89C1D002C27DB /* EasterElementsSelectionView.swift */; };
+		215C776E2EB89C1D002C27DB /* EasterColorPaletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C77632EB89C1D002C27DB /* EasterColorPaletteView.swift */; };
+		215C776F2EB89C1D002C27DB /* EasterPersonalTouchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C77662EB89C1D002C27DB /* EasterPersonalTouchView.swift */; };
+		215C77712EB89C5D002C27DB /* EasterAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C77702EB89C5D002C27DB /* EasterAIService.swift */; };
+		215C77732EB89C6B002C27DB /* HanukkahAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C77722EB89C6B002C27DB /* HanukkahAIService.swift */; };
+		215C77742EB89C8E002C27DB /* EasterDesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213539CA2E6BE53400CC85B0 /* EasterDesignView.swift */; };
+		215C77752EB89C8E002C27DB /* EasterDesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213539CA2E6BE53400CC85B0 /* EasterDesignView.swift */; };
+		215C777D2EB8A1CB002C27DB /* HanukkahCheckImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C77762EB8A1CB002C27DB /* HanukkahCheckImageView.swift */; };
+		215C777E2EB8A1CB002C27DB /* HanukkahStyleSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C777C2EB8A1CB002C27DB /* HanukkahStyleSelectionView.swift */; };
+		215C777F2EB8A1CB002C27DB /* HanukkahCreateSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C77782EB8A1CB002C27DB /* HanukkahCreateSummaryView.swift */; };
+		215C77802EB8A1CB002C27DB /* HanukkahElementsSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C77792EB8A1CB002C27DB /* HanukkahElementsSelectionView.swift */; };
+		215C77812EB8A1CB002C27DB /* HanukkahColorPaletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C77772EB8A1CB002C27DB /* HanukkahColorPaletteView.swift */; };
+		215C77822EB8A1CB002C27DB /* HanukkahPersonalTouchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C777A2EB8A1CB002C27DB /* HanukkahPersonalTouchView.swift */; };
+		215C77832EB8A1CB002C27DB /* HanukkahSendShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C777B2EB8A1CB002C27DB /* HanukkahSendShareView.swift */; };
+		215C77842EB8A1D6002C27DB /* HanukkahDesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213539D02E6BE54E00CC85B0 /* HanukkahDesignView.swift */; };
 		218FF3552E63C593008C12BF /* HanukkahModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218FF3532E63C593008C12BF /* HanukkahModels.swift */; };
 		218FF3562E63C593008C12BF /* MidAutumnFestivalModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218FF3542E63C593008C12BF /* MidAutumnFestivalModels.swift */; };
 		218FF35B2E63C675008C12BF /* RakshaBandhanModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218FF3592E63C675008C12BF /* RakshaBandhanModels.swift */; };
@@ -229,6 +266,38 @@
 		215C77342EB5F97A002C27DB /* RoshHashanahPersonalTouchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoshHashanahPersonalTouchView.swift; sourceTree = "<group>"; };
 		215C77352EB5F97A002C27DB /* RoshHashanahSendShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoshHashanahSendShareView.swift; sourceTree = "<group>"; };
 		215C77362EB5F97A002C27DB /* RoshHashanahStyleSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoshHashanahStyleSelectionView.swift; sourceTree = "<group>"; };
+		215C77402EB72580002C27DB /* RakshaBandhanAIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RakshaBandhanAIService.swift; sourceTree = "<group>"; };
+		215C77422EB72597002C27DB /* RakshaBandhanCheckImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RakshaBandhanCheckImageView.swift; sourceTree = "<group>"; };
+		215C77432EB72597002C27DB /* RakshaBandhanColorPaletteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RakshaBandhanColorPaletteView.swift; sourceTree = "<group>"; };
+		215C77442EB72597002C27DB /* RakshaBandhanCreateSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RakshaBandhanCreateSummaryView.swift; sourceTree = "<group>"; };
+		215C77452EB72597002C27DB /* RakshaBandhanElementsSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RakshaBandhanElementsSelectionView.swift; sourceTree = "<group>"; };
+		215C77462EB72597002C27DB /* RakshaBandhanPersonalTouchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RakshaBandhanPersonalTouchView.swift; sourceTree = "<group>"; };
+		215C77472EB72597002C27DB /* RakshaBandhanSendShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RakshaBandhanSendShareView.swift; sourceTree = "<group>"; };
+		215C77482EB72597002C27DB /* RakshaBandhanStyleSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RakshaBandhanStyleSelectionView.swift; sourceTree = "<group>"; };
+		215C77512EB75796002C27DB /* MidAutumnFestivalAIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MidAutumnFestivalAIService.swift; sourceTree = "<group>"; };
+		215C77532EB757AB002C27DB /* MidAutumnFestivalCheckImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MidAutumnFestivalCheckImageView.swift; sourceTree = "<group>"; };
+		215C77542EB757AB002C27DB /* MidAutumnFestivalColorPaletteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MidAutumnFestivalColorPaletteView.swift; sourceTree = "<group>"; };
+		215C77552EB757AB002C27DB /* MidAutumnFestivalCreateSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MidAutumnFestivalCreateSummaryView.swift; sourceTree = "<group>"; };
+		215C77562EB757AB002C27DB /* MidAutumnFestivalElementsSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MidAutumnFestivalElementsSelectionView.swift; sourceTree = "<group>"; };
+		215C77572EB757AB002C27DB /* MidAutumnFestivalPersonalTouchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MidAutumnFestivalPersonalTouchView.swift; sourceTree = "<group>"; };
+		215C77582EB757AB002C27DB /* MidAutumnFestivalSendShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MidAutumnFestivalSendShareView.swift; sourceTree = "<group>"; };
+		215C77592EB757AB002C27DB /* MidAutumnFestivalStyleSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MidAutumnFestivalStyleSelectionView.swift; sourceTree = "<group>"; };
+		215C77622EB89C1D002C27DB /* EasterCheckImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasterCheckImageView.swift; sourceTree = "<group>"; };
+		215C77632EB89C1D002C27DB /* EasterColorPaletteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasterColorPaletteView.swift; sourceTree = "<group>"; };
+		215C77642EB89C1D002C27DB /* EasterCreateSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasterCreateSummaryView.swift; sourceTree = "<group>"; };
+		215C77652EB89C1D002C27DB /* EasterElementsSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasterElementsSelectionView.swift; sourceTree = "<group>"; };
+		215C77662EB89C1D002C27DB /* EasterPersonalTouchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasterPersonalTouchView.swift; sourceTree = "<group>"; };
+		215C77672EB89C1D002C27DB /* EasterSendShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasterSendShareView.swift; sourceTree = "<group>"; };
+		215C77682EB89C1D002C27DB /* EasterStyleSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasterStyleSelectionView.swift; sourceTree = "<group>"; };
+		215C77702EB89C5D002C27DB /* EasterAIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasterAIService.swift; sourceTree = "<group>"; };
+		215C77722EB89C6B002C27DB /* HanukkahAIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HanukkahAIService.swift; sourceTree = "<group>"; };
+		215C77762EB8A1CB002C27DB /* HanukkahCheckImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HanukkahCheckImageView.swift; sourceTree = "<group>"; };
+		215C77772EB8A1CB002C27DB /* HanukkahColorPaletteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HanukkahColorPaletteView.swift; sourceTree = "<group>"; };
+		215C77782EB8A1CB002C27DB /* HanukkahCreateSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HanukkahCreateSummaryView.swift; sourceTree = "<group>"; };
+		215C77792EB8A1CB002C27DB /* HanukkahElementsSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HanukkahElementsSelectionView.swift; sourceTree = "<group>"; };
+		215C777A2EB8A1CB002C27DB /* HanukkahPersonalTouchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HanukkahPersonalTouchView.swift; sourceTree = "<group>"; };
+		215C777B2EB8A1CB002C27DB /* HanukkahSendShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HanukkahSendShareView.swift; sourceTree = "<group>"; };
+		215C777C2EB8A1CB002C27DB /* HanukkahStyleSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HanukkahStyleSelectionView.swift; sourceTree = "<group>"; };
 		218FF3532E63C593008C12BF /* HanukkahModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HanukkahModels.swift; sourceTree = "<group>"; };
 		218FF3542E63C593008C12BF /* MidAutumnFestivalModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MidAutumnFestivalModels.swift; sourceTree = "<group>"; };
 		218FF3592E63C675008C12BF /* RakshaBandhanModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RakshaBandhanModels.swift; sourceTree = "<group>"; };
@@ -479,6 +548,13 @@
 		218FF3682E642A86008C12BF /* Easter */ = {
 			isa = PBXGroup;
 			children = (
+				215C77622EB89C1D002C27DB /* EasterCheckImageView.swift */,
+				215C77632EB89C1D002C27DB /* EasterColorPaletteView.swift */,
+				215C77642EB89C1D002C27DB /* EasterCreateSummaryView.swift */,
+				215C77652EB89C1D002C27DB /* EasterElementsSelectionView.swift */,
+				215C77662EB89C1D002C27DB /* EasterPersonalTouchView.swift */,
+				215C77672EB89C1D002C27DB /* EasterSendShareView.swift */,
+				215C77682EB89C1D002C27DB /* EasterStyleSelectionView.swift */,
 				213539CA2E6BE53400CC85B0 /* EasterDesignView.swift */,
 			);
 			path = Easter;
@@ -503,6 +579,13 @@
 		218FF36B2E642A86008C12BF /* Hanukkah */ = {
 			isa = PBXGroup;
 			children = (
+				215C77762EB8A1CB002C27DB /* HanukkahCheckImageView.swift */,
+				215C77772EB8A1CB002C27DB /* HanukkahColorPaletteView.swift */,
+				215C77782EB8A1CB002C27DB /* HanukkahCreateSummaryView.swift */,
+				215C77792EB8A1CB002C27DB /* HanukkahElementsSelectionView.swift */,
+				215C777A2EB8A1CB002C27DB /* HanukkahPersonalTouchView.swift */,
+				215C777B2EB8A1CB002C27DB /* HanukkahSendShareView.swift */,
+				215C777C2EB8A1CB002C27DB /* HanukkahStyleSelectionView.swift */,
 				213539D02E6BE54E00CC85B0 /* HanukkahDesignView.swift */,
 			);
 			path = Hanukkah;
@@ -511,6 +594,13 @@
 		218FF36C2E642A86008C12BF /* MidAutumnFestival */ = {
 			isa = PBXGroup;
 			children = (
+				215C77532EB757AB002C27DB /* MidAutumnFestivalCheckImageView.swift */,
+				215C77542EB757AB002C27DB /* MidAutumnFestivalColorPaletteView.swift */,
+				215C77552EB757AB002C27DB /* MidAutumnFestivalCreateSummaryView.swift */,
+				215C77562EB757AB002C27DB /* MidAutumnFestivalElementsSelectionView.swift */,
+				215C77572EB757AB002C27DB /* MidAutumnFestivalPersonalTouchView.swift */,
+				215C77582EB757AB002C27DB /* MidAutumnFestivalSendShareView.swift */,
+				215C77592EB757AB002C27DB /* MidAutumnFestivalStyleSelectionView.swift */,
 				213539D22E6BE55600CC85B0 /* MidAutumnFestivalDesignView.swift */,
 			);
 			path = MidAutumnFestival;
@@ -519,6 +609,13 @@
 		218FF36D2E642A86008C12BF /* RakshaBandhan */ = {
 			isa = PBXGroup;
 			children = (
+				215C77422EB72597002C27DB /* RakshaBandhanCheckImageView.swift */,
+				215C77432EB72597002C27DB /* RakshaBandhanColorPaletteView.swift */,
+				215C77442EB72597002C27DB /* RakshaBandhanCreateSummaryView.swift */,
+				215C77452EB72597002C27DB /* RakshaBandhanElementsSelectionView.swift */,
+				215C77462EB72597002C27DB /* RakshaBandhanPersonalTouchView.swift */,
+				215C77472EB72597002C27DB /* RakshaBandhanSendShareView.swift */,
+				215C77482EB72597002C27DB /* RakshaBandhanStyleSelectionView.swift */,
 				213539D42E6BE56000CC85B0 /* RakshaBandhanDesignView.swift */,
 			);
 			path = RakshaBandhan;
@@ -617,6 +714,10 @@
 		21C93B542E5FE78800200285 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				215C77722EB89C6B002C27DB /* HanukkahAIService.swift */,
+				215C77702EB89C5D002C27DB /* EasterAIService.swift */,
+				215C77512EB75796002C27DB /* MidAutumnFestivalAIService.swift */,
+				215C77402EB72580002C27DB /* RakshaBandhanAIService.swift */,
 				215C772E2EB5F93B002C27DB /* RoshHashanahAIService.swift */,
 				215C76BB2EB5A858002C27DB /* VesakDayAIService.swift */,
 				215C76992EB3607B002C27DB /* DiwaliAIService.swift */,
@@ -922,12 +1023,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				215C76AC2EB5A7F9002C27DB /* VesakDayDesignView.swift in Sources */,
+				215C77612EB757B5002C27DB /* MidAutumnFestivalDesignView.swift in Sources */,
 				21C93BAE2E61568600200285 /* ChristmasModels.swift in Sources */,
 				A001 /* App.swift in Sources */,
 				A003 /* ContentView.swift in Sources */,
 				A010 /* APIClient.swift in Sources */,
 				215C76AB2EB361C7002C27DB /* DiwaliAIService.swift in Sources */,
 				215C773F2EB5FB4B002C27DB /* RoshHashanahDesignView.swift in Sources */,
+				215C77492EB72597002C27DB /* RakshaBandhanSendShareView.swift in Sources */,
+				215C774A2EB72597002C27DB /* RakshaBandhanStyleSelectionView.swift in Sources */,
+				215C774B2EB72597002C27DB /* RakshaBandhanCheckImageView.swift in Sources */,
+				215C774C2EB72597002C27DB /* RakshaBandhanColorPaletteView.swift in Sources */,
+				215C774D2EB72597002C27DB /* RakshaBandhanPersonalTouchView.swift in Sources */,
+				215C774E2EB72597002C27DB /* RakshaBandhanCreateSummaryView.swift in Sources */,
+				215C774F2EB72597002C27DB /* RakshaBandhanElementsSelectionView.swift in Sources */,
 				A012 /* ApplePayConfig.swift in Sources */,
 				21B8978E2E7EA33E00DD567D /* AnniversarySendShareView.swift in Sources */,
 				215C77372EB5F97A002C27DB /* RoshHashanahCheckImageView.swift in Sources */,
@@ -938,9 +1047,17 @@
 				215C773C2EB5F97A002C27DB /* RoshHashanahColorPaletteView.swift in Sources */,
 				215C773D2EB5F97A002C27DB /* RoshHashanahCreateSummaryView.swift in Sources */,
 				21B8978F2E7EA33E00DD567D /* AnniversaryElementsSelectionView.swift in Sources */,
+				215C77842EB8A1D6002C27DB /* HanukkahDesignView.swift in Sources */,
 				21B897902E7EA33E00DD567D /* AnniversaryColorPaletteView.swift in Sources */,
 				21B897912E7EA33E00DD567D /* AnniversaryCreateSummaryView.swift in Sources */,
 				21B897922E7EA33E00DD567D /* AnniversaryDesignView.swift in Sources */,
+				215C777D2EB8A1CB002C27DB /* HanukkahCheckImageView.swift in Sources */,
+				215C777E2EB8A1CB002C27DB /* HanukkahStyleSelectionView.swift in Sources */,
+				215C777F2EB8A1CB002C27DB /* HanukkahCreateSummaryView.swift in Sources */,
+				215C77802EB8A1CB002C27DB /* HanukkahElementsSelectionView.swift in Sources */,
+				215C77812EB8A1CB002C27DB /* HanukkahColorPaletteView.swift in Sources */,
+				215C77822EB8A1CB002C27DB /* HanukkahPersonalTouchView.swift in Sources */,
+				215C77832EB8A1CB002C27DB /* HanukkahSendShareView.swift in Sources */,
 				21B897932E7EA33E00DD567D /* AnniversaryPersonalTouchView.swift in Sources */,
 				21B897942E7EA33E00DD567D /* AnniversaryCheckImageView.swift in Sources */,
 				A014 /* OnboardingView.swift in Sources */,
@@ -953,10 +1070,12 @@
 				21C93B7E2E5FE78800200285 /* CulturalGiftSelectionView.swift in Sources */,
 				21C93BB12E615BAC00200285 /* ColorExtensions.swift in Sources */,
 				21C93B7F2E5FE78800200285 /* ContactSelectionView.swift in Sources */,
+				215C77732EB89C6B002C27DB /* HanukkahAIService.swift in Sources */,
 				215A84522EA4E645006D56E9 /* CachedAsyncImage.swift in Sources */,
 				215A84532EA4E645006D56E9 /* CulturalDesignComponents.swift in Sources */,
 				215A84542EA4E645006D56E9 /* CulturalDesignViewModel.swift in Sources */,
 				215A84552EA4E645006D56E9 /* CulturalDesignProtocol.swift in Sources */,
+				215C77412EB72580002C27DB /* RakshaBandhanAIService.swift in Sources */,
 				215A84562EA4E645006D56E9 /* GiftDesignTypes.swift in Sources */,
 				215A84572EA4E645006D56E9 /* OptimizedCulturalDesignComponents.swift in Sources */,
 				21C93B802E5FE78800200285 /* GeneratedRakhiView.swift in Sources */,
@@ -1022,6 +1141,7 @@
 				C003 /* SharedFormatting.swift in Sources */,
 				215C768F2EB3070B002C27DB /* ChineseNewYearCheckImageView.swift in Sources */,
 				215C76902EB3070B002C27DB /* ChineseNewYearCreateSummaryView.swift in Sources */,
+				215C77522EB75796002C27DB /* MidAutumnFestivalAIService.swift in Sources */,
 				215C76912EB3070B002C27DB /* ChineseNewYearColorPaletteView.swift in Sources */,
 				215C76922EB3070B002C27DB /* ChineseNewYearPersonalTouchView.swift in Sources */,
 				215C76932EB3070B002C27DB /* ChineseNewYearDesignView.swift in Sources */,
@@ -1042,17 +1162,27 @@
 				7D4E496253AF4534BD61FA28 /* ForavaApp/Models/SharedCulturalTypes.swift in Sources */,
 				215C76A22EB360A1002C27DB /* DiwaliPersonalTouchView.swift in Sources */,
 				215C76A32EB360A1002C27DB /* DiwaliElementsSelectionView.swift in Sources */,
+				215C77712EB89C5D002C27DB /* EasterAIService.swift in Sources */,
 				215C76A42EB360A1002C27DB /* DiwaliSendShareView.swift in Sources */,
 				215C76A52EB360A1002C27DB /* DiwaliColorPaletteView.swift in Sources */,
 				215C76A62EB360A1002C27DB /* DiwaliCheckImageView.swift in Sources */,
 				215C76A72EB360A1002C27DB /* DiwaliCreateSummaryView.swift in Sources */,
+				215C77502EB7259F002C27DB /* RakshaBandhanDesignView.swift in Sources */,
 				215C76A82EB360A1002C27DB /* DiwaliStyleSelectionView.swift in Sources */,
+				215C77692EB89C1D002C27DB /* EasterSendShareView.swift in Sources */,
+				215C776A2EB89C1D002C27DB /* EasterCheckImageView.swift in Sources */,
+				215C776B2EB89C1D002C27DB /* EasterStyleSelectionView.swift in Sources */,
+				215C776C2EB89C1D002C27DB /* EasterCreateSummaryView.swift in Sources */,
+				215C776D2EB89C1D002C27DB /* EasterElementsSelectionView.swift in Sources */,
+				215C776E2EB89C1D002C27DB /* EasterColorPaletteView.swift in Sources */,
+				215C776F2EB89C1D002C27DB /* EasterPersonalTouchView.swift in Sources */,
 				1015FEB0D26F49F88846BB5D /* ForavaApp/Models/SubscriptionModels.swift in Sources */,
 				3AC53462BB2646F2877DC40F /* ForavaApp/Models/CoreTypes.swift in Sources */,
 				CCD4095A4B5249F887202701 /* ForavaApp/Services/LazyLoadingManager.swift in Sources */,
 				659A3F6B1C7941F0A818111A /* ForavaApp/Services/PerformanceMonitor.swift in Sources */,
 				60CE1723D72345B0AE9A6988 /* ForavaApp/Services/SubscriptionManager.swift in Sources */,
 				804F94C64D384D39B539C08E /* ForavaApp/Services/Calendar/CulturalCalendarService.swift in Sources */,
+				215C77742EB89C8E002C27DB /* EasterDesignView.swift in Sources */,
 				0691F1B7C8204853B28C1FB9 /* ForavaApp/Services/Calendar/CulturalNotificationManager.swift in Sources */,
 				4C7FD120FC4F4B17B9F89569 /* ForavaApp/Services/Social/CulturalCommunityService.swift in Sources */,
 				215C76BC2EB5A858002C27DB /* VesakDayAIService.swift in Sources */,
@@ -1063,6 +1193,13 @@
 				9483832A7E424BDF965DF859 /* ForavaApp/Views/CulturalDesigns/Shared/CulturalDesignViewModel.swift in Sources */,
 				4B8BD9A903AE49C28CFFD444 /* ForavaApp/Views/CulturalDesigns/Shared/GiftDesignTypes.swift in Sources */,
 				F2A710BBBEBC44E5B8B6708D /* ForavaApp/Views/CulturalDesigns/Shared/OptimizedCulturalDesignComponents.swift in Sources */,
+				215C775A2EB757AB002C27DB /* MidAutumnFestivalStyleSelectionView.swift in Sources */,
+				215C775B2EB757AB002C27DB /* MidAutumnFestivalCreateSummaryView.swift in Sources */,
+				215C775C2EB757AB002C27DB /* MidAutumnFestivalSendShareView.swift in Sources */,
+				215C775D2EB757AB002C27DB /* MidAutumnFestivalElementsSelectionView.swift in Sources */,
+				215C775E2EB757AB002C27DB /* MidAutumnFestivalColorPaletteView.swift in Sources */,
+				215C775F2EB757AB002C27DB /* MidAutumnFestivalPersonalTouchView.swift in Sources */,
+				215C77602EB757AB002C27DB /* MidAutumnFestivalCheckImageView.swift in Sources */,
 				AC28FFD1980A43ED841C7730 /* ForavaApp/Views/Subscription/SubscriptionTierView.swift in Sources */,
 				EA9A4A93B7924808B8004245 /* ForavaApp/Views/Subscription/PremiumCulturalPacksView.swift in Sources */,
 				37F0DE9FE82F46BE90B31BA8 /* ForavaApp/Views/Subscription/UsageDashboardView.swift in Sources */,
@@ -1083,6 +1220,7 @@
 				B021 /* RakhiWatchFaceView.swift in Sources */,
 				B023 /* WatchConnectivityManager.swift in Sources */,
 				21C939072E508B0900200285 /* Constants.swift in Sources */,
+				215C77752EB89C8E002C27DB /* EasterDesignView.swift in Sources */,
 				C4FF /* SharedModels.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

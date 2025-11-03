@@ -30,6 +30,18 @@ struct CulturalGiftDesignView: View {
             case "rosh hashanah":
                 RoshHashanahDesignView(selectedContact: selectedContact, selectedEvent: selectedEvent)
 
+            case "raksha bandhan":
+                RakshaBandhanDesignView(selectedContact: selectedContact, selectedEvent: selectedEvent)
+
+            case "mid-autumn festival":
+                MidAutumnFestivalDesignView(selectedContact: selectedContact, selectedEvent: selectedEvent)
+
+            case "hanukkah":
+                HanukkahDesignView(selectedContact: selectedContact, selectedEvent: selectedEvent)
+
+            case "easter":
+                EasterDesignView(selectedContact: selectedContact, selectedEvent: selectedEvent)
+
             default:
                 // Placeholder for other cultural events (to be implemented)
                 VStack(spacing: 24) {

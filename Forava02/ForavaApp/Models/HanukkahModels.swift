@@ -185,28 +185,36 @@ struct HanukkahColorPalette: Identifiable, Codable {
     let id: UUID
     let name: String
     let description: String
-    let primaryColor: String
-    let secondaryColor: String
-    let accentColor: String
-    let backgroundHint: String
+    let primaryHex: String
+    let secondaryHex: String
+    let accentHex: String
+    let backgroundHex: String
+    let aiColorHint: String
 
-    init(name: String, description: String, primaryColor: String, secondaryColor: String, accentColor: String, backgroundHint: String) {
+    init(
+        name: String,
+        description: String,
+        primaryHex: String,
+        secondaryHex: String,
+        accentHex: String,
+        backgroundHex: String,
+        aiColorHint: String
+    ) {
         self.id = UUID()
         self.name = name
         self.description = description
-        self.primaryColor = primaryColor
-        self.secondaryColor = secondaryColor
-        self.accentColor = accentColor
-        self.backgroundHint = backgroundHint
+        self.primaryHex = primaryHex
+        self.secondaryHex = secondaryHex
+        self.accentHex = accentHex
+        self.backgroundHex = backgroundHex
+        self.aiColorHint = aiColorHint
     }
 
-    var swiftUIColors: (primary: Color, secondary: Color, accent: Color) {
-        return (
-            primary: Color(hex: primaryColor),
-            secondary: Color(hex: secondaryColor),
-            accent: Color(hex: accentColor)
-        )
-    }
+    // Computed properties for SwiftUI Color conversion
+    var primaryColor: Color { Color(hex: primaryHex) }
+    var secondaryColor: Color { Color(hex: secondaryHex) }
+    var accentColor: Color { Color(hex: accentHex) }
+    var backgroundColor: Color { Color(hex: backgroundHex) }
 }
 
 // MARK: - Hanukkah Color Palettes Collection
@@ -215,66 +223,74 @@ extension HanukkahColorPalette {
         HanukkahColorPalette(
             name: "Traditional Blue",
             description: "Royal Blue, Gold, and White",
-            primaryColor: "#0047AB",
-            secondaryColor: "#FFD700",
-            accentColor: "#FFFFFF",
-            backgroundHint: "traditional blue and gold atmosphere"
+            primaryHex: "#0047AB",
+            secondaryHex: "#FFD700",
+            accentHex: "#FFFFFF",
+            backgroundHex: "#001F3F",
+            aiColorHint: "traditional blue and gold atmosphere with deep navy background"
         ),
         HanukkahColorPalette(
             name: "Menorah Gold",
             description: "Multiple Gold Shades with Blue Accents",
-            primaryColor: "#FFD700",
-            secondaryColor: "#FFA500",
-            accentColor: "#4169E1",
-            backgroundHint: "warm golden menorah glow"
+            primaryHex: "#FFD700",
+            secondaryHex: "#FFA500",
+            accentHex: "#4169E1",
+            backgroundHex: "#3E2723",
+            aiColorHint: "warm golden menorah glow with rich brown background"
         ),
         HanukkahColorPalette(
             name: "Winter Festival",
             description: "Silver, Ice Blue, and White",
-            primaryColor: "#C0C0C0",
-            secondaryColor: "#B0E0E6",
-            accentColor: "#FFFFFF",
-            backgroundHint: "winter festival shimmer"
+            primaryHex: "#C0C0C0",
+            secondaryHex: "#B0E0E6",
+            accentHex: "#FFFFFF",
+            backgroundHex: "#1C2841",
+            aiColorHint: "winter festival shimmer with midnight blue background"
         ),
         HanukkahColorPalette(
             name: "Classic Hanukkah",
             description: "Navy Blue, Silver, and Cream",
-            primaryColor: "#000080",
-            secondaryColor: "#C0C0C0",
-            accentColor: "#F5F5DC",
-            backgroundHint: "classic Hanukkah elegance"
+            primaryHex: "#000080",
+            secondaryHex: "#C0C0C0",
+            accentHex: "#F5F5DC",
+            backgroundHex: "#000033",
+            aiColorHint: "classic Hanukkah elegance with deep navy background"
         ),
         HanukkahColorPalette(
             name: "Miracle Light",
             description: "Bright Blue, Gold, and Yellow",
-            primaryColor: "#1E90FF",
-            secondaryColor: "#FFD700",
-            accentColor: "#FFFF00",
-            backgroundHint: "brilliant miracle light"
+            primaryHex: "#1E90FF",
+            secondaryHex: "#FFD700",
+            accentHex: "#FFFF00",
+            backgroundHex: "#003366",
+            aiColorHint: "brilliant miracle light with deep blue background"
         ),
         HanukkahColorPalette(
             name: "Family Celebration",
             description: "Warm Blue, Gold, and Beige",
-            primaryColor: "#4682B4",
-            secondaryColor: "#DAA520",
-            accentColor: "#F5F5DC",
-            backgroundHint: "warm family gathering"
+            primaryHex: "#4682B4",
+            secondaryHex: "#DAA520",
+            accentHex: "#F5F5DC",
+            backgroundHex: "#2F4F4F",
+            aiColorHint: "warm family gathering with cozy slate background"
         ),
         HanukkahColorPalette(
             name: "Modern Minimalist",
             description: "Black, White, and Blue Accent",
-            primaryColor: "#000000",
-            secondaryColor: "#FFFFFF",
-            accentColor: "#0066CC",
-            backgroundHint: "clean modern background"
+            primaryHex: "#000000",
+            secondaryHex: "#FFFFFF",
+            accentHex: "#0066CC",
+            backgroundHex: "#1A1A1A",
+            aiColorHint: "clean modern background with stark contrast"
         ),
         HanukkahColorPalette(
             name: "Elegant Silver",
             description: "Silver, Pearl White, and Soft Blue",
-            primaryColor: "#C0C0C0",
-            secondaryColor: "#F8F8FF",
-            accentColor: "#87CEEB",
-            backgroundHint: "elegant silver sophistication"
+            primaryHex: "#C0C0C0",
+            secondaryHex: "#F8F8FF",
+            accentHex: "#87CEEB",
+            backgroundHex: "#2F4F4F",
+            aiColorHint: "elegant silver sophistication with slate background"
         )
     ]
 }

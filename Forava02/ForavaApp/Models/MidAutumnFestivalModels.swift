@@ -185,28 +185,36 @@ struct MidAutumnFestivalColorPalette: Identifiable, Codable {
     let id: UUID
     let name: String
     let description: String
-    let primaryColor: String
-    let secondaryColor: String
-    let accentColor: String
-    let backgroundHint: String
+    let primaryHex: String
+    let secondaryHex: String
+    let accentHex: String
+    let backgroundHex: String
+    let aiColorHint: String
 
-    init(name: String, description: String, primaryColor: String, secondaryColor: String, accentColor: String, backgroundHint: String) {
+    init(
+        name: String,
+        description: String,
+        primaryHex: String,
+        secondaryHex: String,
+        accentHex: String,
+        backgroundHex: String,
+        aiColorHint: String
+    ) {
         self.id = UUID()
         self.name = name
         self.description = description
-        self.primaryColor = primaryColor
-        self.secondaryColor = secondaryColor
-        self.accentColor = accentColor
-        self.backgroundHint = backgroundHint
+        self.primaryHex = primaryHex
+        self.secondaryHex = secondaryHex
+        self.accentHex = accentHex
+        self.backgroundHex = backgroundHex
+        self.aiColorHint = aiColorHint
     }
 
-    var swiftUIColors: (primary: Color, secondary: Color, accent: Color) {
-        return (
-            primary: Color(hex: primaryColor),
-            secondary: Color(hex: secondaryColor),
-            accent: Color(hex: accentColor)
-        )
-    }
+    // Computed properties for SwiftUI Color conversion
+    var primaryColor: Color { Color(hex: primaryHex) }
+    var secondaryColor: Color { Color(hex: secondaryHex) }
+    var accentColor: Color { Color(hex: accentHex) }
+    var backgroundColor: Color { Color(hex: backgroundHex) }
 }
 
 // MARK: - Mid-Autumn Festival Color Palettes Collection
@@ -215,66 +223,74 @@ extension MidAutumnFestivalColorPalette {
         MidAutumnFestivalColorPalette(
             name: "Harvest Moon",
             description: "Golden yellow, orange, and deep brown",
-            primaryColor: "#FFD700",
-            secondaryColor: "#FF8C00",
-            accentColor: "#8B4513",
-            backgroundHint: "warm harvest moon glow"
+            primaryHex: "#FFD700",
+            secondaryHex: "#FF8C00",
+            accentHex: "#8B4513",
+            backgroundHex: "#2C1810",
+            aiColorHint: "warm harvest moon glow with deep brown background"
         ),
         MidAutumnFestivalColorPalette(
             name: "Autumn Leaves",
             description: "Rust orange, golden brown, and deep red",
-            primaryColor: "#CD853F",
-            secondaryColor: "#D2691E",
-            accentColor: "#8B0000",
-            backgroundHint: "rich autumn foliage atmosphere"
+            primaryHex: "#CD853F",
+            secondaryHex: "#D2691E",
+            accentHex: "#8B0000",
+            backgroundHex: "#4A2511",
+            aiColorHint: "rich autumn foliage atmosphere with warm earth tones"
         ),
         MidAutumnFestivalColorPalette(
             name: "Traditional Lantern",
             description: "Red, gold, and warm yellow",
-            primaryColor: "#DC143C",
-            secondaryColor: "#FFD700",
-            accentColor: "#FFF8DC",
-            backgroundHint: "festive lantern celebration"
+            primaryHex: "#DC143C",
+            secondaryHex: "#FFD700",
+            accentHex: "#FFF8DC",
+            backgroundHex: "#8B0000",
+            aiColorHint: "festive lantern celebration with crimson red warmth"
         ),
         MidAutumnFestivalColorPalette(
             name: "Moonlight Silver",
             description: "Silver, pearl white, and soft blue",
-            primaryColor: "#C0C0C0",
-            secondaryColor: "#F8F8FF",
-            accentColor: "#ADD8E6",
-            backgroundHint: "serene moonlight ambiance"
+            primaryHex: "#C0C0C0",
+            secondaryHex: "#F8F8FF",
+            accentHex: "#ADD8E6",
+            backgroundHex: "#1C2841",
+            aiColorHint: "serene moonlight ambiance with midnight blue background"
         ),
         MidAutumnFestivalColorPalette(
             name: "Jade Rabbit",
             description: "Jade green, white, and gold",
-            primaryColor: "#00A86B",
-            secondaryColor: "#FFFFFF",
-            accentColor: "#FFD700",
-            backgroundHint: "mystical jade rabbit legend"
+            primaryHex: "#00A86B",
+            secondaryHex: "#FFFFFF",
+            accentHex: "#FFD700",
+            backgroundHex: "#0D3B2E",
+            aiColorHint: "mystical jade rabbit legend with deep jade background"
         ),
         MidAutumnFestivalColorPalette(
             name: "Osmanthus Gold",
             description: "Golden yellow, orange, and cream",
-            primaryColor: "#FFAA00",
-            secondaryColor: "#FF8C00",
-            accentColor: "#FFFDD0",
-            backgroundHint: "fragrant osmanthus blossom"
+            primaryHex: "#FFAA00",
+            secondaryHex: "#FF8C00",
+            accentHex: "#FFFDD0",
+            backgroundHex: "#3D2817",
+            aiColorHint: "fragrant osmanthus blossom with golden warmth"
         ),
         MidAutumnFestivalColorPalette(
             name: "Modern Minimalist",
             description: "Black, white, and gold accent",
-            primaryColor: "#000000",
-            secondaryColor: "#FFFFFF",
-            accentColor: "#FFD700",
-            backgroundHint: "contemporary minimalist design"
+            primaryHex: "#000000",
+            secondaryHex: "#FFFFFF",
+            accentHex: "#FFD700",
+            backgroundHex: "#1A1A1A",
+            aiColorHint: "contemporary minimalist design with stark contrast"
         ),
         MidAutumnFestivalColorPalette(
             name: "Warm Family",
             description: "Warm orange, brown, and ivory",
-            primaryColor: "#FF8C00",
-            secondaryColor: "#A0522D",
-            accentColor: "#FFFFF0",
-            backgroundHint: "cozy family gathering warmth"
+            primaryHex: "#FF8C00",
+            secondaryHex: "#A0522D",
+            accentHex: "#FFFFF0",
+            backgroundHex: "#3E2723",
+            aiColorHint: "cozy family gathering warmth with brown earth tones"
         )
     ]
 }
@@ -344,4 +360,3 @@ extension MidAutumnFestivalPersonalTouch {
     static let personalMessagePlaceholder = "Add your own personal Mid-Autumn Festival message here..."
     static let maxPersonalMessageLength = 200
 }
-

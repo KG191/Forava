@@ -4,20 +4,33 @@ import SwiftUI
 // MARK: - Raksha Bandhan Theme Structure
 enum RakshaBandhanTheme: String, Codable, CaseIterable {
     case traditional = "Traditional"
-    case sacred = "Sacred"
+    case brotherSisterBond = "Brother-Sister Bond"
     case modern = "Modern"
-    case family = "Family"
+    case protectionPromise = "Protection Promise"
 
     var description: String {
         switch self {
         case .traditional:
-            return "Classic Raksha Bandhan with authentic religious elements"
-        case .sacred:
-            return "Spiritual significance and divine protection"
+            return "Classic Raksha Bandhan with authentic cultural elements"
+        case .brotherSisterBond:
+            return "Celebrating the unique bond between siblings"
         case .modern:
             return "Contemporary Raksha Bandhan with modern elements"
-        case .family:
-            return "Extended family bonds and relationships"
+        case .protectionPromise:
+            return "Beautiful promise of care and protection"
+        }
+    }
+
+    var hindiName: String {
+        switch self {
+        case .traditional:
+            return "पारंपरिक" // Traditional
+        case .brotherSisterBond:
+            return "भाई-बहन का प्यार" // Brother-Sister Love
+        case .modern:
+            return "आधुनिक" // Modern
+        case .protectionPromise:
+            return "रक्षा का वादा" // Promise of Protection
         }
     }
 
@@ -25,25 +38,25 @@ enum RakshaBandhanTheme: String, Codable, CaseIterable {
         switch self {
         case .traditional:
             return [
-                "Sacred Thread Ceremony",
-                "Traditional Rakhi Tying",
-                "Brother Sister Ritual",
-                "Classic Festival Scene",
+                "Traditional Thread Ceremony",
+                "Classic Rakhi Tying",
+                "Brother Sister Celebration",
+                "Festive Rakhi Scene",
                 "Traditional Sweets Plate",
-                "Sacred Tilaka Blessing",
-                "Religious Rakhi Card",
+                "Cultural Tilaka Design",
+                "Traditional Rakhi Card",
                 "Classical Bond Celebration"
             ]
-        case .sacred:
+        case .brotherSisterBond:
             return [
-                "Divine Protection Thread",
-                "Sacred Om Rakhi",
-                "Spiritual Bond Card",
-                "Holy Protection Blessing",
-                "Divine Sibling Love",
-                "Sacred Knot Design",
-                "Religious Protection Art",
-                "Blessed Rakhi Scene"
+                "Beautiful Protection Thread",
+                "Elegant Om Rakhi",
+                "Sibling Bond Card",
+                "Joyful Protection Design",
+                "Loving Sibling Celebration",
+                "Beautiful Knot Design",
+                "Cultural Protection Art",
+                "Happy Rakhi Scene"
             ]
         case .modern:
             return [
@@ -56,14 +69,14 @@ enum RakshaBandhanTheme: String, Codable, CaseIterable {
                 "Modern Protection Symbol",
                 "Trendy Rakhi Card"
             ]
-        case .family:
+        case .protectionPromise:
             return [
-                "Family Rakhi Celebration",
+                "Joyful Rakhi Celebration",
                 "Multiple Siblings Scene",
-                "Extended Family Bond",
+                "Beautiful Family Bond",
                 "Generational Rakhi",
                 "Family Unity Card",
-                "Cousin Rakhi Exchange",
+                "Festive Rakhi Exchange",
                 "Family Gathering Scene",
                 "Complete Family Festival"
             ]
@@ -74,12 +87,12 @@ enum RakshaBandhanTheme: String, Codable, CaseIterable {
         switch self {
         case .traditional:
             return Color(hex: "#FF6B35") // Festival Orange
-        case .sacred:
+        case .brotherSisterBond:
             return Color(hex: "#FFD700") // Gold
         case .modern:
             return Color(hex: "#FF69B4") // Modern Pink
-        case .family:
-            return Color(hex: "#228B22") // Forest Green
+        case .protectionPromise:
+            return Color(hex: "#DC143C") // Crimson Red
         }
     }
 }
@@ -88,125 +101,103 @@ enum RakshaBandhanTheme: String, Codable, CaseIterable {
 struct RakshaBandhanElement: Identifiable, Codable {
     let id: UUID
     let name: String
-    let category: ElementCategory
-    let priority: Int // Higher number = higher priority
+    let sfSymbol: String
+    let weight: Double // For AI generation emphasis (0.0-1.0)
     let aiPromptModifier: String
 
-    init(name: String, category: ElementCategory, priority: Int, aiPromptModifier: String) {
+    init(name: String, sfSymbol: String, weight: Double, aiPromptModifier: String) {
         self.id = UUID()
         self.name = name
-        self.category = category
-        self.priority = priority
+        self.sfSymbol = sfSymbol
+        self.weight = weight
         self.aiPromptModifier = aiPromptModifier
-    }
-
-    enum ElementCategory: String, Codable, CaseIterable {
-        case centrePiece = "Centre Piece"
-        case supportingElement = "Supporting Element"
-
-        var description: String {
-            switch self {
-            case .centrePiece:
-                return "Takes visual precedence in the design"
-            case .supportingElement:
-                return "Complements the main design elements"
-            }
-        }
     }
 }
 
 // MARK: - Raksha Bandhan Elements Collection
 extension RakshaBandhanElement {
     static let allElements: [RakshaBandhanElement] = [
-        // Centre Pieces (Priority 90-100)
         RakshaBandhanElement(
             name: "Rakhi Thread",
-            category: .centrePiece,
-            priority: 100,
-            aiPromptModifier: "beautiful rakhi thread as central focal point, sacred protection bond"
+            sfSymbol: "line.3.crossed.swirl.circle",
+            weight: 1.0,
+            aiPromptModifier: "beautiful rakhi thread as central focal point, traditional protection bond"
         ),
         RakshaBandhanElement(
-            name: "Brother-Sister Bond",
-            category: .centrePiece,
-            priority: 95,
-            aiPromptModifier: "brother-sister bond as centerpiece, loving sibling relationship"
+            name: "Sweets Thali",
+            sfSymbol: "birthday.cake",
+            weight: 0.9,
+            aiPromptModifier: "traditional Indian sweets plate (thali) with festive treats"
         ),
         RakshaBandhanElement(
-            name: "Sacred Knot",
-            category: .centrePiece,
-            priority: 92,
-            aiPromptModifier: "sacred protective knot as focal point, divine protection symbol"
+            name: "Diya",
+            sfSymbol: "light.beacon.max",
+            weight: 0.8,
+            aiPromptModifier: "traditional oil lamp (diya) with warm celebratory glow"
         ),
         RakshaBandhanElement(
-            name: "Om Symbol",
-            category: .centrePiece,
-            priority: 90,
-            aiPromptModifier: "sacred Om symbol as centerpiece, divine Hindu blessing"
-        ),
-
-        // Supporting Elements (Priority 50-80)
-        RakshaBandhanElement(
-            name: "Tilaka",
-            category: .supportingElement,
-            priority: 80,
-            aiPromptModifier: "traditional tilaka as sacred decorative accent"
+            name: "Marigold",
+            sfSymbol: "leaf.fill",
+            weight: 0.7,
+            aiPromptModifier: "beautiful orange marigold flowers, festive cultural decoration"
         ),
         RakshaBandhanElement(
-            name: "Sweets Plate",
-            category: .supportingElement,
-            priority: 75,
-            aiPromptModifier: "traditional sweets plate as festive embellishments"
+            name: "Gift Box",
+            sfSymbol: "gift.fill",
+            weight: 0.75,
+            aiPromptModifier: "elegant gift box with traditional wrapping, sibling love"
         ),
         RakshaBandhanElement(
-            name: "Aarti Diya",
-            category: .supportingElement,
-            priority: 70,
-            aiPromptModifier: "sacred aarti diya as spiritual border elements"
+            name: "Tilak Plate",
+            sfSymbol: "circlebadge.fill",
+            weight: 0.65,
+            aiPromptModifier: "traditional tilak plate with kumkum and rice grains"
         ),
         RakshaBandhanElement(
-            name: "Marigold Flowers",
-            category: .supportingElement,
-            priority: 65,
-            aiPromptModifier: "beautiful marigold flowers as festive decorative flourishes"
+            name: "Aarti Thali",
+            sfSymbol: "circle.circle",
+            weight: 0.6,
+            aiPromptModifier: "traditional aarti plate with cultural celebration items"
+        ),
+        RakshaBandhanElement(
+            name: "Brother Sister",
+            sfSymbol: "person.2.fill",
+            weight: 0.85,
+            aiPromptModifier: "brother and sister celebrating together, joyful sibling bond"
         )
     ]
-
-    static var centrePieces: [RakshaBandhanElement] {
-        return allElements.filter { $0.category == .centrePiece }.sorted { $0.priority > $1.priority }
-    }
-
-    static var supportingElements: [RakshaBandhanElement] {
-        return allElements.filter { $0.category == .supportingElement }.sorted { $0.priority > $1.priority }
-    }
 }
 
 // MARK: - Raksha Bandhan Color Palettes
 struct RakshaBandhanColorPalette: Identifiable, Codable {
     let id: UUID
     let name: String
+    let hindiName: String
     let description: String
-    let primaryColor: String
-    let secondaryColor: String
-    let accentColor: String
-    let backgroundHint: String
+    let primaryHex: String
+    let secondaryHex: String
+    let accentHex: String
+    let backgroundHex: String
+    let aiColorHint: String
 
-    init(name: String, description: String, primaryColor: String, secondaryColor: String, accentColor: String, backgroundHint: String) {
+    init(name: String, hindiName: String, description: String,
+         primaryHex: String, secondaryHex: String, accentHex: String, backgroundHex: String,
+         aiColorHint: String) {
         self.id = UUID()
         self.name = name
+        self.hindiName = hindiName
         self.description = description
-        self.primaryColor = primaryColor
-        self.secondaryColor = secondaryColor
-        self.accentColor = accentColor
-        self.backgroundHint = backgroundHint
+        self.primaryHex = primaryHex
+        self.secondaryHex = secondaryHex
+        self.accentHex = accentHex
+        self.backgroundHex = backgroundHex
+        self.aiColorHint = aiColorHint
     }
 
-    var swiftUIColors: (primary: Color, secondary: Color, accent: Color) {
-        return (
-            primary: Color(hex: primaryColor),
-            secondary: Color(hex: secondaryColor),
-            accent: Color(hex: accentColor)
-        )
-    }
+    var primaryColor: Color { Color(hex: primaryHex) }
+    var secondaryColor: Color { Color(hex: secondaryHex) }
+    var accentColor: Color { Color(hex: accentHex) }
+    var backgroundColor: Color { Color(hex: backgroundHex) }
 }
 
 // MARK: - Raksha Bandhan Color Palettes Collection
@@ -214,67 +205,83 @@ extension RakshaBandhanColorPalette {
     static let allPalettes: [RakshaBandhanColorPalette] = [
         RakshaBandhanColorPalette(
             name: "Traditional Rakhi",
+            hindiName: "पारंपरिक राखी",
             description: "Saffron orange, red, and gold",
-            primaryColor: "#FF6B35",
-            secondaryColor: "#DC143C",
-            accentColor: "#FFD700",
-            backgroundHint: "traditional festival atmosphere"
+            primaryHex: "#FF6B35",
+            secondaryHex: "#DC143C",
+            accentHex: "#FFD700",
+            backgroundHex: "#FFF8F0",
+            aiColorHint: "traditional Raksha Bandhan festival atmosphere with saffron orange, crimson red, and golden yellow tones"
         ),
         RakshaBandhanColorPalette(
-            name: "Sacred Thread",
+            name: "Golden Thread",
+            hindiName: "सुनहरा धागा",
             description: "Gold, crimson, and white",
-            primaryColor: "#FFD700",
-            secondaryColor: "#DC143C",
-            accentColor: "#FFFFFF",
-            backgroundHint: "sacred golden glow"
+            primaryHex: "#FFD700",
+            secondaryHex: "#DC143C",
+            accentHex: "#FFFFFF",
+            backgroundHex: "#FFFACD",
+            aiColorHint: "elegant golden thread with crimson and pure white accents, beautiful festive glow"
         ),
         RakshaBandhanColorPalette(
             name: "Festival Bright",
+            hindiName: "त्योहार की रंगत",
             description: "Red, pink, orange, and gold",
-            primaryColor: "#DC143C",
-            secondaryColor: "#FF69B4",
-            accentColor: "#FFD700",
-            backgroundHint: "bright festive celebration"
+            primaryHex: "#DC143C",
+            secondaryHex: "#FF69B4",
+            accentHex: "#FFD700",
+            backgroundHex: "#FFF0F5",
+            aiColorHint: "bright festive celebration with crimson red, hot pink, and golden accents"
         ),
         RakshaBandhanColorPalette(
             name: "Royal Protection",
+            hindiName: "शाही रक्षा",
             description: "Deep red, gold, and maroon",
-            primaryColor: "#8B0000",
-            secondaryColor: "#FFD700",
-            accentColor: "#800000",
-            backgroundHint: "royal protection atmosphere"
+            primaryHex: "#8B0000",
+            secondaryHex: "#FFD700",
+            accentHex: "#800000",
+            backgroundHex: "#FFF5EE",
+            aiColorHint: "elegant protection atmosphere with deep burgundy red, royal gold, and rich maroon tones"
         ),
         RakshaBandhanColorPalette(
             name: "Modern Elegance",
+            hindiName: "आधुनिक सुंदरता",
             description: "Rose gold, coral, and cream",
-            primaryColor: "#E6C2A6",
-            secondaryColor: "#FF7F50",
-            accentColor: "#FFF8DC",
-            backgroundHint: "modern elegant setting"
+            primaryHex: "#E6C2A6",
+            secondaryHex: "#FF7F50",
+            accentHex: "#FFF8DC",
+            backgroundHex: "#FAF0E6",
+            aiColorHint: "modern elegant setting with rose gold, coral pink, and creamy beige tones"
         ),
         RakshaBandhanColorPalette(
             name: "Brother Sister Bond",
+            hindiName: "भाई-बहन का बंधन",
             description: "Blue, pink, and gold",
-            primaryColor: "#4169E1",
-            secondaryColor: "#FF69B4",
-            accentColor: "#FFD700",
-            backgroundHint: "sibling bond harmony"
+            primaryHex: "#4169E1",
+            secondaryHex: "#FF69B4",
+            accentHex: "#FFD700",
+            backgroundHex: "#F0F8FF",
+            aiColorHint: "joyful sibling bond harmony with royal blue, vibrant pink, and golden accents"
         ),
         RakshaBandhanColorPalette(
-            name: "Classic Hindu",
+            name: "Classic Cultural",
+            hindiName: "शास्त्रीय सांस्कृतिक",
             description: "Saffron, red, and yellow",
-            primaryColor: "#FF9933",
-            secondaryColor: "#DC143C",
-            accentColor: "#FFFF00",
-            backgroundHint: "classic Hindu tradition"
+            primaryHex: "#FF9933",
+            secondaryHex: "#DC143C",
+            accentHex: "#FFFF00",
+            backgroundHex: "#FFFAF0",
+            aiColorHint: "classic cultural tradition with saffron orange, crimson red, and bright yellow"
         ),
         RakshaBandhanColorPalette(
             name: "Warm Family",
+            hindiName: "गर्म परिवार",
             description: "Orange, gold, and beige",
-            primaryColor: "#FF8C00",
-            secondaryColor: "#FFD700",
-            accentColor: "#F5F5DC",
-            backgroundHint: "warm family gathering"
+            primaryHex: "#FF8C00",
+            secondaryHex: "#FFD700",
+            accentHex: "#F5F5DC",
+            backgroundHex: "#FFF8DC",
+            aiColorHint: "warm family gathering with dark orange, golden yellow, and soft beige tones"
         )
     ]
 }
@@ -283,30 +290,32 @@ extension RakshaBandhanColorPalette {
 struct RakshaBandhanPersonalTouch: Identifiable, Codable {
     let id: UUID
     let message: String
+    let hindiMessage: String
     let tone: MessageTone
 
-    init(message: String, tone: MessageTone) {
+    init(message: String, hindiMessage: String, tone: MessageTone) {
         self.id = UUID()
         self.message = message
+        self.hindiMessage = hindiMessage
         self.tone = tone
     }
 
     enum MessageTone: String, Codable, CaseIterable {
         case traditional = "Traditional"
-        case blessing = "Blessing"
+        case joyful = "Joyful"
         case protective = "Protective"
         case loving = "Loving"
-        case joyful = "Joyful"
-        case sacred = "Sacred"
+        case celebratory = "Celebratory"
+        case heartfelt = "Heartfelt"
 
         var color: Color {
             switch self {
             case .traditional: return Color(hex: "#FF6B35")
-            case .blessing: return Color(hex: "#FFD700")
+            case .joyful: return Color(hex: "#FFD700")
             case .protective: return Color(hex: "#DC143C")
             case .loving: return Color(hex: "#FF69B4")
-            case .joyful: return Color(hex: "#228B22")
-            case .sacred: return Color(hex: "#9370DB")
+            case .celebratory: return Color(hex: "#228B22")
+            case .heartfelt: return Color(hex: "#9370DB")
             }
         }
     }
@@ -316,28 +325,34 @@ struct RakshaBandhanPersonalTouch: Identifiable, Codable {
 extension RakshaBandhanPersonalTouch {
     static let optionalMessages: [RakshaBandhanPersonalTouch] = [
         RakshaBandhanPersonalTouch(
-            message: "रक्षा बंधन की शुभकामनाएं! Happy Raksha Bandhan!",
+            message: "Happy Raksha Bandhan!",
+            hindiMessage: "रक्षा बंधन की शुभकामनाएं!",
             tone: .traditional
         ),
         RakshaBandhanPersonalTouch(
-            message: "May the bond of protection grow stronger each year",
-            tone: .blessing
-        ),
-        RakshaBandhanPersonalTouch(
-            message: "Celebrating the sacred thread of love and care",
-            tone: .protective
-        ),
-        RakshaBandhanPersonalTouch(
-            message: "Wishing you happiness and protection always",
-            tone: .loving
-        ),
-        RakshaBandhanPersonalTouch(
-            message: "The thread that binds hearts forever",
+            message: "Celebrating the beautiful bond between us",
+            hindiMessage: "हमारे बीच के सुंदर बंधन का जश्न",
             tone: .joyful
         ),
         RakshaBandhanPersonalTouch(
-            message: "May this Rakhi bring joy and blessings",
-            tone: .sacred
+            message: "The thread that connects our hearts forever",
+            hindiMessage: "वह धागा जो हमारे दिलों को हमेशा जोड़ता है",
+            tone: .protective
+        ),
+        RakshaBandhanPersonalTouch(
+            message: "Wishing you happiness and joy always",
+            hindiMessage: "आपको हमेशा खुशी और आनंद की कामना",
+            tone: .loving
+        ),
+        RakshaBandhanPersonalTouch(
+            message: "Here's to the special bond we share",
+            hindiMessage: "हम जो विशेष रिश्ता साझा करते हैं",
+            tone: .celebratory
+        ),
+        RakshaBandhanPersonalTouch(
+            message: "May our bond grow stronger with each passing year",
+            hindiMessage: "हर गुजरते साल के साथ हमारा रिश्ता मजबूत हो",
+            tone: .heartfelt
         )
     ]
 
