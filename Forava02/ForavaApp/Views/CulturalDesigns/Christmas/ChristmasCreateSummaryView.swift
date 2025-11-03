@@ -271,7 +271,7 @@ struct ChristmasCreateSummaryView: View {
 
 #Preview {
     ChristmasCreateSummaryView(
-        selectedTheme: .family,
+        selectedTheme: .traditional,
         selectedElements: [ChristmasElement.allElements[0]],
         selectedColorPalette: ChristmasColorPalette.allPalettes[0],
         finalMessage: "Wishing you a Merry Christmas filled with joy and peace",

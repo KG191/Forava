@@ -79,15 +79,15 @@ struct ChristmasColorPaletteView: View {
                 // Color Swatches
                 HStack(spacing: 4) {
                     RoundedRectangle(cornerRadius: 8)
-                        .fill(Color(hex: palette.primaryHex))
+                        .fill(Color(hex: palette.primaryColor))
                         .frame(height: 60)
 
                     RoundedRectangle(cornerRadius: 8)
-                        .fill(Color(hex: palette.secondaryHex))
+                        .fill(Color(hex: palette.secondaryColor))
                         .frame(height: 60)
 
                     RoundedRectangle(cornerRadius: 8)
-                        .fill(Color(hex: palette.accentHex))
+                        .fill(Color(hex: palette.accentColor))
                         .frame(height: 60)
                 }
                 .overlay(
@@ -133,7 +133,7 @@ struct ChristmasColorPaletteView: View {
             HStack(spacing: 12) {
                 VStack(spacing: 8) {
                     RoundedRectangle(cornerRadius: 8)
-                        .fill(Color(hex: palette.primaryHex))
+                        .fill(Color(hex: palette.primaryColor))
                         .frame(height: 50)
 
                     Text("Primary")
@@ -143,7 +143,7 @@ struct ChristmasColorPaletteView: View {
 
                 VStack(spacing: 8) {
                     RoundedRectangle(cornerRadius: 8)
-                        .fill(Color(hex: palette.secondaryHex))
+                        .fill(Color(hex: palette.secondaryColor))
                         .frame(height: 50)
 
                     Text("Secondary")
@@ -153,7 +153,7 @@ struct ChristmasColorPaletteView: View {
 
                 VStack(spacing: 8) {
                     RoundedRectangle(cornerRadius: 8)
-                        .fill(Color(hex: palette.accentHex))
+                        .fill(Color(hex: palette.accentColor))
                         .frame(height: 50)
 
                     Text("Accent")

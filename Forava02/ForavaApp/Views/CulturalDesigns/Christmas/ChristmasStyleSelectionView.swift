@@ -72,7 +72,7 @@ struct ChristmasStyleSelectionView: View {
 
 #Preview {
     ChristmasStyleSelectionView(
-        selectedTheme: .constant(.family),
+        selectedTheme: .constant(.traditional),
         culturalColor: Color(hex: "#C41E3A")
     )
 }
