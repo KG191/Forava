@@ -1,8 +1,8 @@
 import SwiftUI
 import Foundation
 
-struct HanukkahElementsSelectionView: View {
-    @Binding var selectedElements: [HanukkahElement]
+struct ChristmasElementsSelectionView: View {
+    @Binding var selectedElements: [ChristmasElement]
     let culturalColor: Color
 
     private let columns = [
@@ -33,7 +33,7 @@ struct HanukkahElementsSelectionView: View {
                     VStack(spacing: 16) {
                         // Elements Grid
                         LazyVGrid(columns: columns, spacing: 12) {
-                            ForEach(HanukkahElement.allElements) { element in
+                            ForEach(ChristmasElement.allElements) { element in
                                 elementCard(
                                     element: element,
                                     isSelected: selectedElements.contains { $0.id == element.id }
@@ -70,7 +70,7 @@ struct HanukkahElementsSelectionView: View {
 
     @ViewBuilder
     private func elementCard(
-        element: HanukkahElement,
+        element: ChristmasElement,
         isSelected: Bool
     ) -> some View {
         Button {
@@ -110,7 +110,7 @@ struct HanukkahElementsSelectionView: View {
     }
 
     // MARK: - Helper Functions
-    private func toggleElementSelection(_ element: HanukkahElement) {
+    private func toggleElementSelection(_ element: ChristmasElement) {
         if let index = selectedElements.firstIndex(where: { $0.id == element.id }) {
             // Deselect if clicking the same element
             selectedElements.remove(at: index)
@@ -123,22 +123,22 @@ struct HanukkahElementsSelectionView: View {
 
     private func elementIcon(for elementName: String) -> String {
         switch elementName.lowercased() {
-        case "menorah":
-            return "flame.fill"
-        case "dreidel":
-            return "cube.fill"
-        case "star of david":
+        case "christmas tree":
+            return "tree.fill"
+        case "nativity scene":
             return "star.fill"
-        case "hanukkah candles":
-            return "candybarphone"
-        case "oil jug":
-            return "light.beacon.max.fill"
-        case "gelt coins":
-            return "dollarsign.circle.fill"
-        case "hebrew letters":
-            return "character.textbox"
-        case "blue & white ribbons":
-            return "rosette"
+        case "santa claus":
+            return "gift.fill"
+        case "star of bethlehem":
+            return "star.circle.fill"
+        case "holly & berries":
+            return "leaf.fill"
+        case "snowflakes":
+            return "snowflake"
+        case "gift boxes":
+            return "giftcard.fill"
+        case "christmas bells":
+            return "bell.fill"
         default:
             return "star.fill"
         }
@@ -146,8 +146,8 @@ struct HanukkahElementsSelectionView: View {
 }
 
 #Preview {
-    HanukkahElementsSelectionView(
-        selectedElements: .constant([HanukkahElement.allElements[0]]),
-        culturalColor: Color(hex: "#0047AB")
+    ChristmasElementsSelectionView(
+        selectedElements: .constant([ChristmasElement.allElements[0]]),
+        culturalColor: Color(hex: "#C41E3A")
     )
 }
