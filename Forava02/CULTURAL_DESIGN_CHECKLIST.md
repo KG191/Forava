@@ -3,6 +3,15 @@
 ## 🎯 Purpose
 This checklist ensures complete and consistent implementation of new cultural designs in the Forava app.
 
+## 🚨 CRITICAL: Prevent Xcode Crashes
+**READ FIRST**: `CULTURAL_DESIGN_IMPLEMENTATION_PROTOCOL.md` for full crash prevention protocol.
+
+**The Golden Rule**:
+> **ALL DesignView files MUST be 250+ lines with FULL protocol conformance**
+> **NEVER commit stub/placeholder implementations**
+
+**Why This Matters**: Stub DesignView files cause Swift type checker exhaustion → SWBBuildService crash → Xcode quit unexpectedly.
+
 ## ⚠️ CRITICAL: Single Source of Truth
 **ALL cultural routing must be added to `CulturalGiftDesignView.swift`**
 - DO NOT modify `TempCulturalGiftDesignView` (deprecated)
@@ -77,13 +86,18 @@ Create in `ForavaApp/Views/CulturalDesigns/[Culture]/`:
   - **CRITICAL**: Use `ImageWithTextOverlay` (not CachedAsyncImage) for proper format sizing
   - Pass `imageSize: selectedFormat.displaySize` parameter
 
-### 4. Main Design Coordinator
+### 4. Main Design Coordinator ⚠️ CRASH-PRONE STEP
 - [ ] Create `[Culture]DesignView.swift` in `ForavaApp/Views/CulturalDesigns/[Culture]/`
+  - [ ] **MANDATORY**: File MUST be 250+ lines (copy from EasterDesignView.swift template)
   - [ ] Implement `CulturalDesignViewProtocol`
+  - [ ] Add **ALL 7 typealias declarations** (StyleContent, ElementsContent, etc.)
   - [ ] Set up tab navigation with `GiftDesignTab`
   - [ ] Configure state management (@State properties)
-  - [ ] Add AI service integration (@StateObject)
-  - [ ] Implement generation logic
+  - [ ] Add AI service integration (@StateObject private var [culture]AI)
+  - [ ] Implement **ALL 7 @ViewBuilder functions**
+  - [ ] Implement complete generation logic (async/await)
+  - [ ] **VERIFY**: `wc -l [Culture]DesignView.swift` shows 250+ lines
+  - [ ] **NEVER** use `PlaceholderCulturalView`
 
 ### 5. 🎯 CRITICAL: Add Routing (Single Source of Truth)
 - [ ] **Update `CulturalGiftDesignView.swift`** (line ~17)
@@ -97,10 +111,18 @@ Create in `ForavaApp/Views/CulturalDesigns/[Culture]/`:
 - [ ] Verify culture exists in `CulturalEvent.allEvents` in `ForavaApp/Models/CulturalEvent.swift`
 - [ ] Ensure event name matches routing case (case-insensitive)
 
-### 7. Xcode Project Integration
-- [ ] Add all new files to Xcode project
+### 7. Xcode Project Integration ⚠️ REQUIRED STEP
+- [ ] **MANDATORY**: Add all new files to Xcode project via GUI
+  - [ ] Open: `open Forava.xcodeproj`
+  - [ ] Right-click ForavaApp/Services → "Add Files to 'Forava'..."
+  - [ ] Select `[Culture]AIService.swift`
+  - [ ] Check "ForavaApp" target → Click "Add"
+  - [ ] Right-click ForavaApp/Views/CulturalDesigns/[Culture]/ → "Add Files to 'Forava'..."
+  - [ ] Multi-select all 8 .swift files
+  - [ ] Check "ForavaApp" target → Click "Add"
 - [ ] Verify target membership (ForavaApp)
 - [ ] Check file organization in Project Navigator
+- [ ] **CRITICAL**: Files on disk but not in Xcode = build errors
 
 ### 8. Testing & Validation
 - [ ] Build project: `xcodebuild -project Forava.xcodeproj -scheme ForavaApp build`
@@ -150,20 +172,26 @@ case .appleWatch:
 
 ## 📊 Cultural Design Status
 
-| Culture | Models | AI Service | Views (7) | Routing | Status |
-|---------|--------|------------|-----------|---------|--------|
-| Anniversary | ✅ | ✅ | ✅ | ✅ | Complete |
-| Chinese New Year | ✅ | ✅ | ✅ | ✅ | Complete |
-| Diwali | ✅ | ✅ | ✅ | ✅ | Complete |
-| Vesak Day | ✅ | ✅ | ✅ | ✅ | Complete |
-| Christmas | ⏳ | ⏳ | ⏳ | ⏳ | Pending |
-| Easter | ⏳ | ⏳ | ⏳ | ⏳ | Pending |
-| Eid al-Fitr | ⏳ | ⏳ | ⏳ | ⏳ | Pending |
-| Eid al-Adha | ⏳ | ⏳ | ⏳ | ⏳ | Pending |
-| Hanukkah | ⏳ | ⏳ | ⏳ | ⏳ | Pending |
-| Rosh Hashanah | ⏳ | ⏳ | ⏳ | ⏳ | Pending |
-| Mid-Autumn Festival | ⏳ | ⏳ | ⏳ | ⏳ | Pending |
-| Raksha Bandhan | ⏳ | ⏳ | ⏳ | ⏳ | Pending |
+| Culture | Models | AI Service | Views (8) | Routing | Xcode | Build | Status |
+|---------|--------|------------|-----------|---------|-------|-------|--------|
+| Anniversary | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | Complete |
+| Chinese New Year | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | Complete |
+| Diwali | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | Complete |
+| Vesak Day | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | Complete |
+| Rosh Hashanah | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | Complete |
+| Easter | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | Complete |
+| Hanukkah | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | Complete |
+| Mid-Autumn Festival | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | Complete |
+| **Christmas** | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ | **Needs Xcode Add** |
+| Raksha Bandhan | ✅ | ✅ | ⏳ | ⏳ | ⏳ | ⏳ | In Progress |
+| Eid al-Fitr | ⏳ | ⏳ | ⏳ | ⏳ | ⏳ | ⏳ | Pending |
+| Eid al-Adha | ⏳ | ⏳ | ⏳ | ⏳ | ⏳ | ⏳ | Pending |
+
+**Legend**:
+- ✅ Complete
+- ⏳ Pending/Not Started
+- ❌ Needs Action
+- **Bold** = Requires immediate attention
 
 ## 🎨 Cultural Design Examples
 
