@@ -210,7 +210,6 @@
 		0A4829A4CDBC4DAEB8F253A4 /* ForavaApp/Models/CoreTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForavaApp/Models/CoreTypes.swift; sourceTree = "<group>"; };
 		12B643207E304B7394A7FEC6 /* ChineseNewYearDesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChineseNewYearDesignView.swift; sourceTree = "<group>"; };
 		201A5F49AC7C4156B0E83E7D /* ForavaApp/Views/CulturalDesigns/Shared/CulturalDesignComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForavaApp/Views/CulturalDesigns/Shared/CulturalDesignComponents.swift; sourceTree = "<group>"; };
-		213539C02E6BE4FE00CC85B0 /* ChristmasDesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChristmasDesignView.swift; sourceTree = "<group>"; };
 		213539C42E6BE51500CC85B0 /* BirthdayDesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayDesignView.swift; sourceTree = "<group>"; };
 		213539C82E6BE52900CC85B0 /* DiwaliDesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiwaliDesignView.swift; sourceTree = "<group>"; };
 		213539CA2E6BE53400CC85B0 /* EasterDesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasterDesignView.swift; sourceTree = "<group>"; };
@@ -522,14 +521,6 @@
 			path = Birthday;
 			sourceTree = "<group>";
 		};
-		218FF3662E642A86008C12BF /* Christmas */ = {
-			isa = PBXGroup;
-			children = (
-				213539C02E6BE4FE00CC85B0 /* ChristmasDesignView.swift */,
-			);
-			path = Christmas;
-			sourceTree = "<group>";
-		};
 		218FF3672E642A86008C12BF /* Diwali */ = {
 			isa = PBXGroup;
 			children = (
@@ -670,7 +661,6 @@
 				215C768E2EB3070B002C27DB /* ChineseNewYear */,
 				218FF3622E642A86008C12BF /* Anniversary */,
 				218FF3632E642A86008C12BF /* Birthday */,
-				218FF3662E642A86008C12BF /* Christmas */,
 				218FF3672E642A86008C12BF /* Diwali */,
 				218FF3682E642A86008C12BF /* Easter */,
 				218FF3692E642A86008C12BF /* EidAlAdha */,
