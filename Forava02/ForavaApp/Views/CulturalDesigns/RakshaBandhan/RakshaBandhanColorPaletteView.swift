@@ -79,15 +79,15 @@ struct RakshaBandhanColorPaletteView: View {
                 // Color Swatches
                 HStack(spacing: 4) {
                     RoundedRectangle(cornerRadius: 8)
-                        .fill(Color(hex: palette.primaryColor))
+                        .fill(Color(hex: palette.primaryHex))
                         .frame(height: 60)
 
                     RoundedRectangle(cornerRadius: 8)
-                        .fill(Color(hex: palette.secondaryColor))
+                        .fill(Color(hex: palette.secondaryHex))
                         .frame(height: 60)
 
                     RoundedRectangle(cornerRadius: 8)
-                        .fill(Color(hex: palette.accentColor))
+                        .fill(Color(hex: palette.accentHex))
                         .frame(height: 60)
                 }
                 .overlay(
@@ -137,7 +137,7 @@ struct RakshaBandhanColorPaletteView: View {
             HStack(spacing: 12) {
                 VStack(spacing: 8) {
                     RoundedRectangle(cornerRadius: 8)
-                        .fill(Color(hex: palette.primaryColor))
+                        .fill(Color(hex: palette.primaryHex))
                         .frame(height: 50)
 
                     Text("Primary")
@@ -147,7 +147,7 @@ struct RakshaBandhanColorPaletteView: View {
 
                 VStack(spacing: 8) {
                     RoundedRectangle(cornerRadius: 8)
-                        .fill(Color(hex: palette.secondaryColor))
+                        .fill(Color(hex: palette.secondaryHex))
                         .frame(height: 50)
 
                     Text("Secondary")
@@ -157,7 +157,7 @@ struct RakshaBandhanColorPaletteView: View {
 
                 VStack(spacing: 8) {
                     RoundedRectangle(cornerRadius: 8)
-                        .fill(Color(hex: palette.accentColor))
+                        .fill(Color(hex: palette.accentHex))
                         .frame(height: 50)
 
                     Text("Accent")

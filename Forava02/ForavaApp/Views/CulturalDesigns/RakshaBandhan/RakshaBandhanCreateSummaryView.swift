@@ -258,7 +258,7 @@ struct RakshaBandhanCreateSummaryView: View {
         if selectedElements.isEmpty {
             return ""
         }
-        return selectedElements.map { "\($0.name) (\($0.hindiName))" }.joined(separator: ", ")
+        return selectedElements.map { $0.name }.joined(separator: ", ")
     }
 
     private var messageDescription: String {

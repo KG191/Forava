@@ -155,29 +155,27 @@ class RakshaBandhanAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
         format: ImageFormat
     ) async throws -> String {
 
+        // Determine dimensions based on format
+        let (width, height) = format == .iPhone
+            ? (CulturalAIConfiguration.iPhoneWidth, CulturalAIConfiguration.iPhoneHeight)
+            : (CulturalAIConfiguration.watchWidth, CulturalAIConfiguration.watchHeight)
+
         print("🎨 Generating Raksha Bandhan image with SDXL...")
+        print("   Format: \(format == .iPhone ? "iPhone" : "Apple Watch") (\(width)x\(height))")
 
         let prompt = createCulturalPrompt(from: designSpec)
         let negativePrompt = "low quality, blurry, distorted, text, watermark, ugly, bad anatomy"
 
-        // Determine dimensions
-        let width: Int
-        let height: Int
-
-        switch format {
-        case .iPhone:
-            width = 1024
-            height = 1792  // Portrait for iPhone
-        case .appleWatch:
-            width = 1024
-            height = 1024  // Square for Watch
-        }
-
-        return try await generateWithSDXL(
+        // Call inherited SDXL generation from BaseCulturalAIService
+        return try await generateCulturalGift(
             prompt: prompt,
-            negativePrompt: negativePrompt,
+            culturalContext: "Raksha Bandhan",
             width: width,
-            height: height
+            height: height,
+            primaryColor: designSpec.colorPalette.primaryHex,
+            secondaryColor: designSpec.colorPalette.secondaryHex,
+            accentColor: designSpec.colorPalette.accentHex,
+            additionalNegativePrompt: negativePrompt
         )
     }
 
@@ -189,7 +187,7 @@ class RakshaBandhanAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
     }
 
     // MARK: - Prompt Creation
-    private func createCulturalPrompt(from designSpec: RakshaBandhanDesignSpec) -> String {
+    nonisolated private func createCulturalPrompt(from designSpec: RakshaBandhanDesignSpec) -> String {
         let themeDesc = designSpec.theme.description
         let elementModifier = designSpec.element?.aiPromptModifier ?? "traditional rakhi thread with festive celebration"
         let colorHint = designSpec.colorPalette.aiColorHint
@@ -212,15 +210,19 @@ class RakshaBandhanAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
     }
 
     // MARK: - Protocol Conformance
+    nonisolated var culturalEventType: String {
+        return "Raksha Bandhan"
+    }
+
     func generateCulturalGift(
-        theme: Any,
-        element: Any?,
+        culturalTheme: Any,
+        elements: [Any],
         colorPalette: Any,
         personalMessage: String,
         recipientName: String
     ) async throws -> String {
-        guard let theme = theme as? RakshaBandhanTheme,
-              let element = element as? RakshaBandhanElement,
+        guard let theme = culturalTheme as? RakshaBandhanTheme,
+              let element = elements.first as? RakshaBandhanElement,
               let palette = colorPalette as? RakshaBandhanColorPalette else {
             throw CulturalAIConfiguration.CulturalAIError.invalidResponse
         }
@@ -244,6 +246,13 @@ class RakshaBandhanAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
 
     nonisolated func getCulturalColorPalettes() -> [Any] {
         return RakshaBandhanColorPalette.allPalettes
+    }
+
+    nonisolated func createCulturalPrompt(from designSpec: Any) -> String {
+        guard let spec = designSpec as? RakshaBandhanDesignSpec else {
+            return "Raksha Bandhan celebration design"
+        }
+        return createCulturalPrompt(from: spec)
     }
 
     // MARK: - Alternative Natural Language Prompts (4 themes × 8 elements = 32 prompts)

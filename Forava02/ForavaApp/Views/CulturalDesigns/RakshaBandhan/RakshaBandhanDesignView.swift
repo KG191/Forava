@@ -30,7 +30,7 @@ struct RakshaBandhanDesignView: View, CulturalDesignViewProtocol {
 
     // MARK: - Additional State
     @State private var isGenerating = false
-    @State private var generatedImages: [String: String] = [:] // Keys: "iPhone", "AppleWatch"
+    @State private var generatedImages: [String: String] = [:] // Keys: "iPhone", "Apple Watch"
     @State private var showingShareSheet = false
     @StateObject private var rakshaBandhanAI = RakshaBandhanAIService.shared
 
@@ -227,7 +227,7 @@ extension RakshaBandhanDesignView {
                 print("   Primary Element: \(primaryElement.name)")
                 print("   Color Palette: \(colorPalette.name)")
                 print("   Message: \(finalMessage)")
-                print("   Contact: \(selectedContact.fullName)")
+                print("   Contact: \(selectedContact.name)")
 
                 // Generate iPhone version
                 let iPhoneURL = try await rakshaBandhanAI.generateRakshaBandhanGift(
@@ -235,7 +235,7 @@ extension RakshaBandhanDesignView {
                     element: primaryElement,
                     colorPalette: colorPalette,
                     message: finalMessage,
-                    contactName: selectedContact.fullName,
+                    contactName: selectedContact.name,
                     format: .iPhone
                 )
 
@@ -250,12 +250,12 @@ extension RakshaBandhanDesignView {
                     element: primaryElement,
                     colorPalette: colorPalette,
                     message: finalMessage,
-                    contactName: selectedContact.fullName,
+                    contactName: selectedContact.name,
                     format: .appleWatch
                 )
 
                 await MainActor.run {
-                    generatedImages["AppleWatch"] = watchURL
+                    generatedImages["Apple Watch"] = watchURL
                     print("✅ Apple Watch image generated: \(watchURL)")
                     isGenerating = false
                 }

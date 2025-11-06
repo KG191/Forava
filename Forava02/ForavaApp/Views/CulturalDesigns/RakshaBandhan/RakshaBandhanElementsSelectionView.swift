@@ -96,10 +96,6 @@ struct RakshaBandhanElementsSelectionView: View {
                         .font(.system(.subheadline, design: .rounded).weight(.semibold))
                         .foregroundStyle(isSelected ? culturalColor : .primary)
                         .multilineTextAlignment(.center)
-
-                    Text(element.hindiName)
-                        .font(.system(.caption2, design: .rounded))
-                        .foregroundStyle(.secondary)
                 }
 
                 // Selection Indicator
