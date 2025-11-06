@@ -42,8 +42,8 @@ struct CulturalGiftDesignView: View {
             case "easter":
                 EasterDesignView(selectedContact: selectedContact, selectedEvent: selectedEvent)
 
-            case "christmas":
-                ChristmasDesignView(selectedContact: selectedContact, selectedEvent: selectedEvent)
+            // case "christmas":
+            //     ChristmasDesignView(selectedContact: selectedContact, selectedEvent: selectedEvent)
 
             default:
                 // Placeholder for other cultural events (to be implemented)
