@@ -294,6 +294,89 @@ ForavaApp/Testing/ProductionTestSuite.swift
 4. **Test Before Expand**: Each cultural addition requires comprehensive validation
 5. **Xcode Project Integration**: All new files must be properly added to Forava.xcodeproj
 6. **Single Routing Source**: ONLY update `CulturalGiftDesignView.swift` for cultural routing (see Architectural Consolidation below)
+7. **🚨 PREVENT XCODE CRASHES**: ALL DesignView files MUST be 250+ lines with FULL protocol conformance (see Crash Prevention Protocol below)
+
+### 🚨 CRITICAL: Xcode Crash Prevention Protocol
+
+**READ FIRST**: See `Forava02/CULTURAL_DESIGN_IMPLEMENTATION_PROTOCOL.md` for full details.
+
+**The Golden Rule**:
+> **ALL DesignView files MUST be 250+ lines with FULL protocol conformance**
+> **NEVER commit stub/placeholder implementations**
+
+**Why This Matters**: Stub DesignView files (< 50 lines using `PlaceholderCulturalView`) cause Swift type checker exhaustion → SWBBuildService crashes → "Xcode quit unexpectedly" error.
+
+**The Crash Sequence**:
+```
+Stub DesignView (16 lines)
+  ↓
+Child views expect protocol conformance
+  ↓
+Swift type checker can't resolve typealiases
+  ↓
+Circular dependency errors accumulate
+  ↓
+SWBBuildService exhausts resources
+  ↓
+XCODE CRASH
+```
+
+**Mandatory Requirements**:
+1. **DesignView Size**: 250+ lines minimum
+2. **Protocol Conformance**: Must implement `CulturalDesignViewProtocol`
+3. **Typealiases**: All 7 typealias declarations required
+4. **State Management**: All @State and @StateObject properties
+5. **ViewBuilder Functions**: All 7 @ViewBuilder functions implemented
+6. **Generation Logic**: Complete async/await generation function
+7. **NO Placeholders**: Never use `PlaceholderCulturalView`
+
+**Property Naming Standards** (CRITICAL):
+```
+✅ STANDARD (Easter, Diwali, Anniversary):
+   - primaryHex, secondaryHex, accentHex, backgroundHex, aiColorHint
+
+⚠️ NON-STANDARD (Christmas - causes crashes):
+   - primaryColor, secondaryColor, accentColor, backgroundHint
+```
+
+**Verification Before Build**:
+```bash
+# 1. Check file size
+wc -l ForavaApp/Views/CulturalDesigns/Christmas/ChristmasDesignView.swift
+# MUST show 250+ lines
+
+# 2. Check for placeholders
+grep -r "PlaceholderCulturalView" ForavaApp/Views/CulturalDesigns/Christmas/
+
+# 3. Check typealiases
+grep "typealias" ForavaApp/Views/CulturalDesigns/Christmas/ChristmasDesignView.swift | wc -l
+# MUST show 7+
+
+# 4. Verify protocol conformance
+grep "CulturalDesignViewProtocol" ForavaApp/Views/CulturalDesigns/Christmas/ChristmasDesignView.swift
+```
+
+**If Xcode Already Crashed**:
+```bash
+# 1. Force quit
+killall Xcode
+killall SWBBuildService
+
+# 2. Clean build
+rm -rf ~/Library/Developer/Xcode/DerivedData/Forava-*
+
+# 3. Fix stub files (copy from Easter template)
+cp ForavaApp/Views/CulturalDesigns/Easter/EasterDesignView.swift \
+   ForavaApp/Views/CulturalDesigns/Christmas/ChristmasDesignView.swift
+# Then find/replace all "Easter" → "Christmas"
+
+# 4. Reopen and build
+open Forava.xcodeproj
+```
+
+**Reference Documents**:
+- `Forava02/CULTURAL_DESIGN_IMPLEMENTATION_PROTOCOL.md` - Full 7-step protocol
+- `Forava02/CULTURAL_DESIGN_CHECKLIST.md` - Implementation checklist
 
 ### 🎯 CRITICAL: Cultural Routing Architecture (Single Source of Truth)
 
