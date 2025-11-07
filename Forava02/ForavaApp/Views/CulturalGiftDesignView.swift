@@ -45,6 +45,9 @@ struct CulturalGiftDesignView: View {
             case "christmas":
                 ChristmasDesignView(selectedContact: selectedContact, selectedEvent: selectedEvent)
 
+            case "eid al-adha":
+                EidAlAdhaDesignView(selectedContact: selectedContact, selectedEvent: selectedEvent)
+
             default:
                 // Placeholder for other cultural events (to be implemented)
                 VStack(spacing: 24) {

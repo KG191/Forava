@@ -1,0 +1,1559 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Forava.xcodeproj -scheme ForavaApp build CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY=
+
+Build settings from command line:
+    CODE_SIGN_IDENTITY = 
+    CODE_SIGNING_REQUIRED = NO
+
+--- xcodebuild: WARNING: Using the first of multiple matching destinations:
+{ platform:iOS, id:dvtdevice-DVTiPhonePlaceholder-iphoneos:placeholder, name:Any iOS Device }
+{ platform:iOS Simulator, id:dvtdevice-DVTiOSDeviceSimulatorPlaceholder-iphonesimulator:placeholder, name:Any iOS Simulator Device }
+{ platform:iOS Simulator, arch:arm64, id:BA147D36-A189-4968-AF94-D1DD165237AE, OS:26.0, name:6.5" Display iPhone App Store Connect }
+{ platform:iOS Simulator, arch:arm64, id:9564B964-DBD9-46F0-BE33-3408D32A1C29, OS:18.4, name:iPad (A16) }
+{ platform:iOS Simulator, arch:x86_64, id:9564B964-DBD9-46F0-BE33-3408D32A1C29, OS:18.4, name:iPad (A16) }
+{ platform:iOS Simulator, arch:arm64, id:F000038C-17E4-486B-8C91-47AB44A9409A, OS:18.6, name:iPad (A16) }
+{ platform:iOS Simulator, arch:x86_64, id:F000038C-17E4-486B-8C91-47AB44A9409A, OS:18.6, name:iPad (A16) }
+{ platform:iOS Simulator, arch:arm64, id:ECFC055D-0FB2-4FF0-B4AA-3C8C439C4D4B, OS:26.0, name:iPad (A16) }
+{ platform:iOS Simulator, arch:arm64, id:BA8BC674-E7E5-4302-AEAA-06B8053100FF, OS:26.0, name:iPad 11" M2 App Store Connect Test }
+{ platform:iOS Simulator, arch:arm64, id:346F0F7B-01A8-4E23-9B76-FF6677605C0B, OS:18.6, name:iPad Air 5th Gen Test }
+{ platform:iOS Simulator, arch:x86_64, id:346F0F7B-01A8-4E23-9B76-FF6677605C0B, OS:18.6, name:iPad Air 5th Gen Test }
+{ platform:iOS Simulator, arch:arm64, id:7B0BED35-8C26-4531-BC21-2FA8EF028E54, OS:26.0, name:iPad Air 5th Gen Test 2 }
+{ platform:iOS Simulator, arch:arm64, id:9C14C15D-F5AF-4A2A-86E1-E2462434668D, OS:26.0, name:iPad Air 11" M2 App Store Connect test }
+{ platform:iOS Simulator, arch:arm64, id:41CDB357-FCA6-4264-AFE2-41EB8036994C, OS:18.6, name:iPad Air 11-inch (M2)_Test }
+{ platform:iOS Simulator, arch:x86_64, id:41CDB357-FCA6-4264-AFE2-41EB8036994C, OS:18.6, name:iPad Air 11-inch (M2)_Test }
+{ platform:iOS Simulator, arch:arm64, id:44040F27-9381-436B-A99E-74C8889B31AE, OS:18.4, name:iPad Air 11-inch (M3) }
+{ platform:iOS Simulator, arch:x86_64, id:44040F27-9381-436B-A99E-74C8889B31AE, OS:18.4, name:iPad Air 11-inch (M3) }
+{ platform:iOS Simulator, arch:arm64, id:C6590EBB-2FAE-4F74-9D92-C3CD0EA41632, OS:18.6, name:iPad Air 11-inch (M3) }
+{ platform:iOS Simulator, arch:x86_64, id:C6590EBB-2FAE-4F74-9D92-C3CD0EA41632, OS:18.6, name:iPad Air 11-inch (M3) }
+{ platform:iOS Simulator, arch:arm64, id:DD38BDC6-B7B3-45FA-95C5-315597393492, OS:26.0, name:iPad Air 11-inch (M3) }
+{ platform:iOS Simulator, arch:arm64, id:0F514641-2D7F-4DFE-95EA-CEE4EECD21B7, OS:18.4, name:iPad Air 13-inch (M3) }
+{ platform:iOS Simulator, arch:x86_64, id:0F514641-2D7F-4DFE-95EA-CEE4EECD21B7, OS:18.4, name:iPad Air 13-inch (M3) }
+{ platform:iOS Simulator, arch:arm64, id:C1A2EADE-C790-4EF8-A837-16F9C87FCFE0, OS:18.6, name:iPad Air 13-inch (M3) }
+{ platform:iOS Simulator, arch:x86_64, id:C1A2EADE-C790-4EF8-A837-16F9C87FCFE0, OS:18.6, name:iPad Air 13-inch (M3) }
+{ platform:iOS Simulator, arch:arm64, id:0FFF09AC-FEFF-4B79-A68A-C7328B05E1A9, OS:26.0, name:iPad Air 13-inch (M3) }
+{ platform:iOS Simulator, arch:arm64, id:9A786657-5588-4065-9DB1-11CA1C45CBED, OS:18.4, name:iPad Pro 11-inch (M4) }
+{ platform:iOS Simulator, arch:x86_64, id:9A786657-5588-4065-9DB1-11CA1C45CBED, OS:18.4, name:iPad Pro 11-inch (M4) }
+{ platform:iOS Simulator, arch:arm64, id:0802D6A0-D375-4BCA-8571-8B28F8F83DA9, OS:18.6, name:iPad Pro 11-inch (M4) }
+{ platform:iOS Simulator, arch:x86_64, id:0802D6A0-D375-4BCA-8571-8B28F8F83DA9, OS:18.6, name:iPad Pro 11-inch (M4) }
+{ platform:iOS Simulator, arch:arm64, id:23497D53-10AA-4B6F-8682-68F0BAEC4E1E, OS:26.0, name:iPad Pro 11-inch (M4) }
+{ platform:iOS Simulator, arch:arm64, id:AF30F3EE-9362-41DD-AAEE-11353E1AC9C7, OS:18.4, name:iPad Pro 13-inch (M4) }
+{ platform:iOS Simulator, arch:x86_64, id:AF30F3EE-9362-41DD-AAEE-11353E1AC9C7, OS:18.4, name:iPad Pro 13-inch (M4) }
+{ platform:iOS Simulator, arch:arm64, id:69276040-90CB-470E-9A9D-9FD2B08B50A7, OS:18.6, name:iPad Pro 13-inch (M4) }
+{ platform:iOS Simulator, arch:x86_64, id:69276040-90CB-470E-9A9D-9FD2B08B50A7, OS:18.6, name:iPad Pro 13-inch (M4) }
+{ platform:iOS Simulator, arch:arm64, id:E0278DD9-6FE0-4BF2-B21D-A479FE95145B, OS:26.0, name:iPad Pro 13-inch (M4) }
+{ platform:iOS Simulator, arch:arm64, id:0E18673B-1AA1-4C3B-AD72-A340F9119420, OS:18.4, name:iPad mini (A17 Pro) }
+{ platform:iOS Simulator, arch:x86_64, id:0E18673B-1AA1-4C3B-AD72-A340F9119420, OS:18.4, name:iPad mini (A17 Pro) }
+{ platform:iOS Simulator, arch:arm64, id:92138C4D-FFDA-4282-840C-10BD6A6AF6C2, OS:18.6, name:iPad mini (A17 Pro) }
+{ platform:iOS Simulator, arch:x86_64, id:92138C4D-FFDA-4282-840C-10BD6A6AF6C2, OS:18.6, name:iPad mini (A17 Pro) }
+{ platform:iOS Simulator, arch:arm64, id:21C67BC1-49E3-4684-BB6C-E1C394A8445C, OS:26.0, name:iPad mini (A17 Pro) }
+{ platform:iOS Simulator, arch:arm64, id:1645E385-2169-42B3-B2E1-017C9F627127, OS:18.6, name:iPhone 6.5" Display_AppStore Connect }
+{ platform:iOS Simulator, arch:x86_64, id:1645E385-2169-42B3-B2E1-017C9F627127, OS:18.6, name:iPhone 6.5" Display_AppStore Connect }
+{ platform:iOS Simulator, arch:arm64, id:65ED3211-1644-4DA3-A25A-2DD6454DB18C, OS:18.6, name:iPhone 12 (18.6) - Test }
+{ platform:iOS Simulator, arch:x86_64, id:65ED3211-1644-4DA3-A25A-2DD6454DB18C, OS:18.6, name:iPhone 12 (18.6) - Test }
+{ platform:iOS Simulator, arch:arm64, id:E6A6C792-0428-4287-AAE6-E2115EA1BFF5, OS:18.6, name:iPhone 12 Pro Max Test }
+{ platform:iOS Simulator, arch:x86_64, id:E6A6C792-0428-4287-AAE6-E2115EA1BFF5, OS:18.6, name:iPhone 12 Pro Max Test }
+{ platform:iOS Simulator, arch:arm64, id:2E484245-B975-4BD1-B5DC-3003C596BA19, OS:26.0, name:iPhone 12 Pro Max_Test }
+{ platform:iOS Simulator, arch:arm64, id:E3D4C3FC-0C71-4C89-9FB8-9D9B3A4C1E7B, OS:18.4, name:iPhone 13 mini }
+{ platform:iOS Simulator, arch:x86_64, id:E3D4C3FC-0C71-4C89-9FB8-9D9B3A4C1E7B, OS:18.4, name:iPhone 13 mini }
+{ platform:iOS Simulator, arch:arm64, id:F38A6A90-99CE-444A-A7C4-DBE4B673A531, OS:18.6, name:iPhone 13 mini }
+{ platform:iOS Simulator, arch:x86_64, id:F38A6A90-99CE-444A-A7C4-DBE4B673A531, OS:18.6, name:iPhone 13 mini }
+{ platform:iOS Simulator, arch:arm64, id:09376C35-EC96-4F05-B3AB-73D80C03CB3F, OS:18.6, name:iPhone 13 mini (18.6) - Test }
+{ platform:iOS Simulator, arch:x86_64, id:09376C35-EC96-4F05-B3AB-73D80C03CB3F, OS:18.6, name:iPhone 13 mini (18.6) - Test }
+{ platform:iOS Simulator, arch:arm64, id:01E16C67-52B5-4F86-BD70-495DCA70E935, OS:18.6, name:iPhone 15 Pro (18.6) - Test }
+{ platform:iOS Simulator, arch:x86_64, id:01E16C67-52B5-4F86-BD70-495DCA70E935, OS:18.6, name:iPhone 15 Pro (18.6) - Test }
+{ platform:iOS Simulator, arch:arm64, id:0A5D9680-AAC8-492A-B651-D3A2087426FC, OS:18.4, name:iPhone 16 }
+{ platform:iOS Simulator, arch:x86_64, id:0A5D9680-AAC8-492A-B651-D3A2087426FC, OS:18.4, name:iPhone 16 }
+{ platform:iOS Simulator, arch:arm64, id:A5A70DF4-D837-4ED2-806D-64D498FD5C32, OS:18.6, name:iPhone 16 }
+{ platform:iOS Simulator, arch:x86_64, id:A5A70DF4-D837-4ED2-806D-64D498FD5C32, OS:18.6, name:iPhone 16 }
+{ platform:iOS Simulator, arch:arm64, id:C4791FA5-3218-4816-8AA1-A3DFC1F1683B, OS:18.4, name:iPhone 16 Plus }
+{ platform:iOS Simulator, arch:x86_64, id:C4791FA5-3218-4816-8AA1-A3DFC1F1683B, OS:18.4, name:iPhone 16 Plus }
+{ platform:iOS Simulator, arch:arm64, id:89DEBC78-98DD-406F-AE31-BB603D6265FC, OS:18.6, name:iPhone 16 Plus }
+{ platform:iOS Simulator, arch:x86_64, id:89DEBC78-98DD-406F-AE31-BB603D6265FC, OS:18.6, name:iPhone 16 Plus }
+{ platform:iOS Simulator, arch:arm64, id:821A6976-6C8B-4310-AAFF-7F035C60454C, OS:18.4, name:iPhone 16 Pro }
+{ platform:iOS Simulator, arch:x86_64, id:821A6976-6C8B-4310-AAFF-7F035C60454C, OS:18.4, name:iPhone 16 Pro }
+{ platform:iOS Simulator, arch:arm64, id:97D71B5B-5DF9-4D79-BB6E-16EBF06FBC0B, OS:18.6, name:iPhone 16 Pro }
+{ platform:iOS Simulator, arch:x86_64, id:97D71B5B-5DF9-4D79-BB6E-16EBF06FBC0B, OS:18.6, name:iPhone 16 Pro }
+{ platform:iOS Simulator, arch:arm64, id:7F2486B3-342E-4C19-ABA7-7A89501D4DB1, OS:18.4, name:iPhone 16 Pro Max }
+{ platform:iOS Simulator, arch:x86_64, id:7F2486B3-342E-4C19-ABA7-7A89501D4DB1, OS:18.4, name:iPhone 16 Pro Max }
+{ platform:iOS Simulator, arch:arm64, id:2EF36AD8-CC3B-42D5-A5EF-6C2FA18F09FC, OS:18.6, name:iPhone 16 Pro Max }
+{ platform:iOS Simulator, arch:x86_64, id:2EF36AD8-CC3B-42D5-A5EF-6C2FA18F09FC, OS:18.6, name:iPhone 16 Pro Max }
+{ platform:iOS Simulator, arch:arm64, id:CF2ED644-3D47-4094-B5B2-9D8116EB278B, OS:26.0, name:iPhone 16 Pro Max }
+{ platform:iOS Simulator, arch:arm64, id:A8480F19-EDB7-4D64-BFC7-4098FCB85BB6, OS:18.4, name:iPhone 16e }
+{ platform:iOS Simulator, arch:x86_64, id:A8480F19-EDB7-4D64-BFC7-4098FCB85BB6, OS:18.4, name:iPhone 16e }
+{ platform:iOS Simulator, arch:arm64, id:9736C550-4BB9-4EE0-B068-34164ADBD4AD, OS:18.6, name:iPhone 16e }
+{ platform:iOS Simulator, arch:x86_64, id:9736C550-4BB9-4EE0-B068-34164ADBD4AD, OS:18.6, name:iPhone 16e }
+{ platform:iOS Simulator, arch:arm64, id:2CC67F6D-B18F-4B39-8CE6-0948EA3B1296, OS:26.0, name:iPhone 16e }
+{ platform:iOS Simulator, arch:arm64, id:02F69653-1618-48EE-A7A0-948715B42707, OS:26.0, name:iPhone 17 }
+{ platform:iOS Simulator, arch:arm64, id:153F368B-F7F0-4D8F-840E-9A0F1FC61EEB, OS:26.0, name:iPhone 17 Pro }
+{ platform:iOS Simulator, arch:arm64, id:B278717A-5E37-4BBB-966A-7BB4C5742201, OS:26.0, name:iPhone 17 Pro Max }
+{ platform:iOS Simulator, arch:arm64, id:C2F4740C-FA96-40A4-A39A-BC92C06E200D, OS:26.0, name:iPhone Air }
+{ platform:iOS Simulator, arch:arm64, id:E5252708-F775-4018-8C74-A7337059B47B, OS:18.6, name:iPhone SE 3rd gen (18.6) - Test }
+{ platform:iOS Simulator, arch:x86_64, id:E5252708-F775-4018-8C74-A7337059B47B, OS:18.6, name:iPhone SE 3rd gen (18.6) - Test }
+{ platform:iOS, arch:arm64, id:00008101-000919883A30001E, name:Kiran Gokal’s iPhone }
+note: Using codesigning identity override: 
+ComputePackagePrebuildTargetDependencyGraph
+
+Prepare packages
+
+CreateBuildRequest
+
+SendProjectDescription
+
+CreateBuildOperation
+
+ComputeTargetDependencyGraph
+note: Building targets in dependency order
+note: Target dependency graph (1 target)
+    Target 'ForavaApp' in project 'Forava' (no dependencies)
+
+GatherProvisioningInputs
+
+CreateBuildDescription
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -v -E -dM -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.0.sdk -x c -c /dev/null
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/usr/bin/actool --print-asset-tag-combinations --output-format xml1 /Users/kirangokal/Documents/Forava/Forava02/Forava_Assets.xcassets
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/usr/bin/actool --version --output-format xml1
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc --version
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld -version_details
+
+Build description signature: b2e592b6037ab40c1ce75f634ec92129
+Build description path: /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/XCBuildData/b2e592b6037ab40c1ce75f634ec92129.xcbuilddata
+ClangStatCache /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.0.sdk /Users/kirangokal/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphoneos26.0-23A339-81ce72e5b06c9602b9d30b56f2eed08a.sdkstatcache
+    cd /Users/kirangokal/Documents/Forava/Forava02/Forava.xcodeproj
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.0.sdk -o /Users/kirangokal/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphoneos26.0-23A339-81ce72e5b06c9602b9d30b56f2eed08a.sdkstatcache
+
+CreateBuildDirectory /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos
+    cd /Users/kirangokal/Documents/Forava/Forava02/Forava.xcodeproj
+    builtin-create-build-directory /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos
+
+CreateBuildDirectory /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphoneos
+    cd /Users/kirangokal/Documents/Forava/Forava02/Forava.xcodeproj
+    builtin-create-build-directory /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphoneos
+
+WriteAuxiliaryFile /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/Forava-d74c4f65cb56b9942535923bb783a811-VFS-iphoneos/all-product-headers.yaml
+    cd /Users/kirangokal/Documents/Forava/Forava02/Forava.xcodeproj
+    write-file /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/Forava-d74c4f65cb56b9942535923bb783a811-VFS-iphoneos/all-product-headers.yaml
+
+MkDir /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos/ForavaApp.app (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    /bin/mkdir -p /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos/ForavaApp.app
+
+WriteAuxiliaryFile /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/ForavaApp-DebugDylibPath-normal-arm64.txt (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    write-file /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/ForavaApp-DebugDylibPath-normal-arm64.txt
+
+WriteAuxiliaryFile /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/ForavaApp-DebugDylibInstallName-normal-arm64.txt (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    write-file /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/ForavaApp-DebugDylibInstallName-normal-arm64.txt
+
+WriteAuxiliaryFile /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/empty-ForavaApp.plist (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    write-file /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/empty-ForavaApp.plist
+
+WriteAuxiliaryFile /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/ForavaApp-project-headers.hmap (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    write-file /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/ForavaApp-project-headers.hmap
+
+WriteAuxiliaryFile /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/ForavaApp-own-target-headers.hmap (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    write-file /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/ForavaApp-own-target-headers.hmap
+
+WriteAuxiliaryFile /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/ForavaApp-all-non-framework-target-headers.hmap (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    write-file /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/ForavaApp-all-non-framework-target-headers.hmap
+
+WriteAuxiliaryFile /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/ForavaApp.hmap (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    write-file /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/ForavaApp.hmap
+
+WriteAuxiliaryFile /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/ForavaApp-generated-files.hmap (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    write-file /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/ForavaApp-generated-files.hmap
+
+WriteAuxiliaryFile /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/Objects-normal/arm64/ForavaApp_const_extract_protocols.json (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    write-file /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/Objects-normal/arm64/ForavaApp_const_extract_protocols.json
+
+WriteAuxiliaryFile /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/Objects-normal/arm64/ForavaApp.LinkFileList (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    write-file /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/Objects-normal/arm64/ForavaApp.LinkFileList
+
+WriteAuxiliaryFile /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/Objects-normal/arm64/ForavaApp.SwiftFileList (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    write-file /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/Objects-normal/arm64/ForavaApp.SwiftFileList
+
+WriteAuxiliaryFile /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/Objects-normal/arm64/ForavaApp-OutputFileMap.json (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    write-file /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/Objects-normal/arm64/ForavaApp-OutputFileMap.json
+
+WriteAuxiliaryFile /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/Objects-normal/arm64/ForavaApp.SwiftConstValuesFileList (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    write-file /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/Objects-normal/arm64/ForavaApp.SwiftConstValuesFileList
+
+WriteAuxiliaryFile /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/ForavaApp.DependencyStaticMetadataFileList (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    write-file /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/ForavaApp.DependencyStaticMetadataFileList
+
+WriteAuxiliaryFile /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/ForavaApp.DependencyMetadataFileList (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    write-file /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/ForavaApp.DependencyMetadataFileList
+
+WriteAuxiliaryFile /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/ForavaApp-all-target-headers.hmap (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    write-file /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/ForavaApp-all-target-headers.hmap
+
+Ld /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos/ForavaApp.app/__preview.dylib normal (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target arm64-apple-ios17.0 -dynamiclib -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.0.sdk -O0 -L/Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos -F/Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos -install_name @rpath/ForavaApp.debug.dylib -dead_strip -rdynamic -Xlinker -no_deduplicate -Xlinker -dependency_info -Xlinker /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/Objects-normal/arm64/ForavaApp_dependency_info.dat -o /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos/ForavaApp.app/__preview.dylib
+
+CopyPNGFile /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos/ForavaApp.app/Tab\ Capsule\ colour.png /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Testing_01/Tab\ Capsule\ colour.png (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    /Applications/Xcode.app/Contents/Developer/usr/bin/copypng -compress -strip-PNG-text /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Testing_01/Tab\ Capsule\ colour.png /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos/ForavaApp.app/Tab\ Capsule\ colour.png
+
+MkDir /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/assetcatalog_output/unthinned (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    /bin/mkdir -p /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/assetcatalog_output/unthinned
+
+MkDir /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/assetcatalog_output/thinned (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    /bin/mkdir -p /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/assetcatalog_output/thinned
+
+GenerateAssetSymbols /Users/kirangokal/Documents/Forava/Forava02/Forava_Assets.xcassets (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    /Applications/Xcode.app/Contents/Developer/usr/bin/actool /Users/kirangokal/Documents/Forava/Forava02/Forava_Assets.xcassets --compile /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos/ForavaApp.app --output-format human-readable-text --notices --warnings --export-dependency-info /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/assetcatalog_dependencies --output-partial-info-plist /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/assetcatalog_generated_info.plist --app-icon AppIcon --accent-color AccentColor --compress-pngs --enable-on-demand-resources YES --development-region en --target-device iphone --target-device ipad --minimum-deployment-target 17.0 --platform iphoneos --bundle-identifier com.forava.app --generate-swift-asset-symbols /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/DerivedSources/GeneratedAssetSymbols.swift --generate-objc-asset-symbols /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/DerivedSources/GeneratedAssetSymbols.h --generate-asset-symbol-index /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/DerivedSources/GeneratedAssetSymbols-Index.plist
+/* com.apple.actool.compilation-results */
+/Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/DerivedSources/GeneratedAssetSymbols-Index.plist
+/Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/DerivedSources/GeneratedAssetSymbols.h
+/Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/DerivedSources/GeneratedAssetSymbols.swift
+
+
+CompileAssetCatalogVariant thinned /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos/ForavaApp.app /Users/kirangokal/Documents/Forava/Forava02/Forava_Assets.xcassets (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    /Applications/Xcode.app/Contents/Developer/usr/bin/actool /Users/kirangokal/Documents/Forava/Forava02/Forava_Assets.xcassets --compile /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/assetcatalog_output/thinned --output-format human-readable-text --notices --warnings --export-dependency-info /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/assetcatalog_dependencies_thinned --output-partial-info-plist /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/assetcatalog_generated_info.plist_thinned --app-icon AppIcon --accent-color AccentColor --compress-pngs --enable-on-demand-resources YES --development-region en --target-device iphone --target-device ipad --minimum-deployment-target 17.0 --platform iphoneos
+objc[99034]: Class _NoAnimationDelegate is implemented in both /Library/Developer/CoreSimulator/Volumes/iOS_23A343/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.0.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/SwiftUICore.framework/SwiftUICore (0x143510130) and /Library/Developer/CoreSimulator/Volumes/iOS_23A343/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.0.simruntime/Contents/Resources/RuntimeRoot/System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore (0x140679198). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+/* com.apple.actool.document.notices */
+/Users/kirangokal/Documents/Forava/Forava02/Forava_Assets.xcassets:./AppIcon.appiconset/[][ipad][76x76][][][1x][][][][]: notice: 76x76@1x app icons only apply to iPad apps targeting releases of iOS prior to 10.0.
+/* com.apple.actool.compilation-results */
+/Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/assetcatalog_generated_info.plist_thinned
+/Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/assetcatalog_output/thinned/AppIcon60x60@2x.png
+/Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/assetcatalog_output/thinned/AppIcon76x76@2x~ipad.png
+/Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/assetcatalog_output/thinned/Assets.car
+
+
+SwiftDriver ForavaApp normal arm64 com.apple.xcode.tools.swift.compiler (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    builtin-SwiftDriver -- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name ForavaApp -Onone -enforce-exclusivity\=checked @/Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/Objects-normal/arm64/ForavaApp.SwiftFileList -DDEBUG -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.0.sdk -target arm64-apple-ios17.0 -g -module-cache-path /Users/kirangokal/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Index.noindex/DataStore -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 5 -I /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos -F /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos -emit-localized-strings -emit-localized-strings-path /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/Objects-normal/arm64 -c -j14 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Users/kirangokal/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphoneos26.0-23A339-81ce72e5b06c9602b9d30b56f2eed08a.sdkstatcache -output-file-map /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/Objects-normal/arm64/ForavaApp-OutputFileMap.json -use-frontend-parseable-output -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path /Users/kirangokal/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -sdk-module-cache-path /Users/kirangokal/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -serialize-diagnostics -emit-dependencies -emit-module -emit-module-path /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/Objects-normal/arm64/ForavaApp.swiftmodule -validate-clang-modules-once -clang-build-session-file /Users/kirangokal/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -I/Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/swift-overrides.hmap -emit-const-values -Xfrontend -const-gather-protocols-file -Xfrontend /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/Objects-normal/arm64/ForavaApp_const_extract_protocols.json -Xcc -iquote -Xcc /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/ForavaApp-generated-files.hmap -Xcc -I/Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/ForavaApp-own-target-headers.hmap -Xcc -I/Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/ForavaApp-all-target-headers.hmap -Xcc -iquote -Xcc /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/ForavaApp-project-headers.hmap -Xcc -I/Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos/include -Xcc -I/Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/DerivedSources-normal/arm64 -Xcc -I/Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/DerivedSources/arm64 -Xcc -I/Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/Objects-normal/arm64/ForavaApp-Swift.h -working-directory /Users/kirangokal/Documents/Forava/Forava02 -experimental-emit-module-separately -disable-cmo
+
+SwiftCompile normal arm64 Compiling\ ChristmasDesignView.swift,\ ChristmasStyleSelectionView.swift,\ RakshaBandhanSendShareView.swift,\ RakshaBandhanStyleSelectionView.swift,\ RakshaBandhanCheckImageView.swift,\ RakshaBandhanColorPaletteView.swift,\ RakshaBandhanPersonalTouchView.swift,\ RakshaBandhanCreateSummaryView.swift,\ RakshaBandhanElementsSelectionView.swift,\ ApplePayConfig.swift,\ AnniversarySendShareView.swift,\ RoshHashanahCheckImageView.swift,\ RoshHashanahElementsSelectionView.swift,\ RoshHashanahStyleSelectionView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Christmas/ChristmasDesignView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Christmas/ChristmasStyleSelectionView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/RakshaBandhan/RakshaBandhanSendShareView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/RakshaBandhan/RakshaBandhanStyleSelectionView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/RakshaBandhan/RakshaBandhanCheckImageView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/RakshaBandhan/RakshaBandhanColorPaletteView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/RakshaBandhan/RakshaBandhanPersonalTouchView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/RakshaBandhan/RakshaBandhanCreateSummaryView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/RakshaBandhan/RakshaBandhanElementsSelectionView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/ApplePayConfig.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Anniversary/AnniversarySendShareView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/RoshHashanah/RoshHashanahCheckImageView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/RoshHashanah/RoshHashanahElementsSelectionView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/RoshHashanah/RoshHashanahStyleSelectionView.swift (in target 'ForavaApp' from project 'Forava')
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Christmas/ChristmasDesignView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Christmas/ChristmasStyleSelectionView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/RakshaBandhan/RakshaBandhanSendShareView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/RakshaBandhan/RakshaBandhanStyleSelectionView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/RakshaBandhan/RakshaBandhanCheckImageView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/RakshaBandhan/RakshaBandhanColorPaletteView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/RakshaBandhan/RakshaBandhanPersonalTouchView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/RakshaBandhan/RakshaBandhanCreateSummaryView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/RakshaBandhan/RakshaBandhanElementsSelectionView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/ApplePayConfig.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Anniversary/AnniversarySendShareView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/RoshHashanah/RoshHashanahCheckImageView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/RoshHashanah/RoshHashanahElementsSelectionView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/RoshHashanah/RoshHashanahStyleSelectionView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 Compiling\ RoshHashanahSendShareView.swift,\ RoshHashanahPersonalTouchView.swift,\ RoshHashanahColorPaletteView.swift,\ RoshHashanahCreateSummaryView.swift,\ AnniversaryElementsSelectionView.swift,\ HanukkahDesignView.swift,\ AnniversaryColorPaletteView.swift,\ AnniversaryCreateSummaryView.swift,\ AnniversaryDesignView.swift,\ HanukkahCheckImageView.swift,\ HanukkahStyleSelectionView.swift,\ HanukkahCreateSummaryView.swift,\ HanukkahElementsSelectionView.swift,\ HanukkahColorPaletteView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/RoshHashanah/RoshHashanahSendShareView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/RoshHashanah/RoshHashanahPersonalTouchView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/RoshHashanah/RoshHashanahColorPaletteView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/RoshHashanah/RoshHashanahCreateSummaryView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Anniversary/AnniversaryElementsSelectionView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Hanukkah/HanukkahDesignView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Anniversary/AnniversaryColorPaletteView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Anniversary/AnniversaryCreateSummaryView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Anniversary/AnniversaryDesignView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Hanukkah/HanukkahCheckImageView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Hanukkah/HanukkahStyleSelectionView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Hanukkah/HanukkahCreateSummaryView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Hanukkah/HanukkahElementsSelectionView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Hanukkah/HanukkahColorPaletteView.swift (in target 'ForavaApp' from project 'Forava')
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/RoshHashanah/RoshHashanahSendShareView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/RoshHashanah/RoshHashanahPersonalTouchView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/RoshHashanah/RoshHashanahColorPaletteView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/RoshHashanah/RoshHashanahCreateSummaryView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Anniversary/AnniversaryElementsSelectionView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Hanukkah/HanukkahDesignView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Anniversary/AnniversaryColorPaletteView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Anniversary/AnniversaryCreateSummaryView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Anniversary/AnniversaryDesignView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Hanukkah/HanukkahCheckImageView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Hanukkah/HanukkahStyleSelectionView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Hanukkah/HanukkahCreateSummaryView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Hanukkah/HanukkahElementsSelectionView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Hanukkah/HanukkahColorPaletteView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 Compiling\ ContactSelectionView.swift,\ HanukkahAIService.swift,\ CachedAsyncImage.swift,\ ChristmasAIService.swift,\ CulturalDesignComponents.swift,\ CulturalDesignViewModel.swift,\ CulturalDesignProtocol.swift,\ RakshaBandhanAIService.swift,\ GiftDesignTypes.swift,\ OptimizedCulturalDesignComponents.swift,\ GeneratedRakhiView.swift,\ AdvancedAnimationService.swift,\ AdvancedCustomizationView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/ContactSelectionView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/HanukkahAIService.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Shared/CachedAsyncImage.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/ChristmasAIService.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Shared/CulturalDesignComponents.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Shared/CulturalDesignViewModel.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Shared/CulturalDesignProtocol.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/RakshaBandhanAIService.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Shared/GiftDesignTypes.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Shared/OptimizedCulturalDesignComponents.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/GeneratedRakhiView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/AdvancedAnimationService.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/Customization/AdvancedCustomizationView.swift (in target 'ForavaApp' from project 'Forava')
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/ContactSelectionView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/ContactSelectionView.swift:157:37: warning: 'TempCulturalGiftDesignView' is deprecated: Use CulturalGiftDesignView instead
+                                    TempCulturalGiftDesignView(selectedContact: selectedContact, selectedEvent: event)
+                                    ^
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/HanukkahAIService.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/HanukkahAIService.swift:7:49: warning: conformance of 'HanukkahAIService' to protocol 'CulturalAIServiceProtocol' crosses into main actor-isolated code and can cause data races; this is an error in the Swift 6 language mode
+class HanukkahAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                                ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/HanukkahAIService.swift:7:49: note: isolate this conformance to the main actor with '@MainActor'
+class HanukkahAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                                ^
+                                                @MainActor 
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/HanukkahAIService.swift:7:49: note: turn data races into runtime errors with '@preconcurrency'
+class HanukkahAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                                ^
+                                                @preconcurrency 
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:12:20: note: main actor-isolated property 'isGenerating' cannot satisfy nonisolated requirement
+    @Published var isGenerating = false
+                   ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:13:20: note: main actor-isolated property 'generationProgress' cannot satisfy nonisolated requirement
+    @Published var generationProgress: Float = 0.0
+                   ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:14:20: note: main actor-isolated property 'error' cannot satisfy nonisolated requirement
+    @Published var error: CulturalAIConfiguration.CulturalAIError?
+                   ^
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Shared/CachedAsyncImage.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Shared/CachedAsyncImage.swift:185:63: warning: capture of 'cacheKey' with non-Sendable type 'NSString' in a '@Sendable' closure
+                Self.cache.setObject(downloadedImage, forKey: cacheKey)
+                                                              ^
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.0.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSString.h:103:12: note: class 'NSString' does not conform to the 'Sendable' protocol
+@interface NSString : NSObject <NSCopying, NSMutableCopying, NSSecureCoding>
+           ^
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/ChristmasAIService.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/ChristmasAIService.swift:7:50: warning: conformance of 'ChristmasAIService' to protocol 'CulturalAIServiceProtocol' crosses into main actor-isolated code and can cause data races; this is an error in the Swift 6 language mode
+class ChristmasAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                                 ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/ChristmasAIService.swift:7:50: note: isolate this conformance to the main actor with '@MainActor'
+class ChristmasAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                                 ^
+                                                 @MainActor 
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/ChristmasAIService.swift:7:50: note: turn data races into runtime errors with '@preconcurrency'
+class ChristmasAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                                 ^
+                                                 @preconcurrency 
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:12:20: note: main actor-isolated property 'isGenerating' cannot satisfy nonisolated requirement
+    @Published var isGenerating = false
+                   ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:13:20: note: main actor-isolated property 'generationProgress' cannot satisfy nonisolated requirement
+    @Published var generationProgress: Float = 0.0
+                   ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:14:20: note: main actor-isolated property 'error' cannot satisfy nonisolated requirement
+    @Published var error: CulturalAIConfiguration.CulturalAIError?
+                   ^
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Shared/CulturalDesignComponents.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Shared/CulturalDesignViewModel.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Shared/CulturalDesignProtocol.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/RakshaBandhanAIService.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/RakshaBandhanAIService.swift:7:54: warning: conformance of 'RakshaBandhanAIService' to protocol 'CulturalAIServiceProtocol' crosses into main actor-isolated code and can cause data races; this is an error in the Swift 6 language mode
+class RakshaBandhanAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                                     ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/RakshaBandhanAIService.swift:7:54: note: isolate this conformance to the main actor with '@MainActor'
+class RakshaBandhanAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                                     ^
+                                                     @MainActor 
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/RakshaBandhanAIService.swift:7:54: note: turn data races into runtime errors with '@preconcurrency'
+class RakshaBandhanAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                                     ^
+                                                     @preconcurrency 
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:12:20: note: main actor-isolated property 'isGenerating' cannot satisfy nonisolated requirement
+    @Published var isGenerating = false
+                   ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:13:20: note: main actor-isolated property 'generationProgress' cannot satisfy nonisolated requirement
+    @Published var generationProgress: Float = 0.0
+                   ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:14:20: note: main actor-isolated property 'error' cannot satisfy nonisolated requirement
+    @Published var error: CulturalAIConfiguration.CulturalAIError?
+                   ^
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Shared/GiftDesignTypes.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Shared/OptimizedCulturalDesignComponents.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/GeneratedRakhiView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/AdvancedAnimationService.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/Customization/AdvancedCustomizationView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 Compiling\ HanukkahPersonalTouchView.swift,\ HanukkahSendShareView.swift,\ AnniversaryPersonalTouchView.swift,\ AnniversaryCheckImageView.swift,\ OnboardingView.swift,\ PaymentCoordinator.swift,\ WatchSessionManager_iOS.swift,\ ChineseNewYearModels.swift,\ RoshHashanahAIService.swift,\ ComprehensivePaymentService.swift,\ AnniversaryTestRunnerView.swift,\ CulturalGiftSelectionView.swift,\ ColorExtensions.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Hanukkah/HanukkahPersonalTouchView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Hanukkah/HanukkahSendShareView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Anniversary/AnniversaryPersonalTouchView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Anniversary/AnniversaryCheckImageView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/OnboardingView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/PaymentCoordinator.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/WatchSessionManager_iOS.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Models/ChineseNewYearModels.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/RoshHashanahAIService.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/ComprehensivePaymentService.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/Testing/AnniversaryTestRunnerView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalGiftSelectionView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Utils/ColorExtensions.swift (in target 'ForavaApp' from project 'Forava')
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Hanukkah/HanukkahPersonalTouchView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Hanukkah/HanukkahSendShareView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Anniversary/AnniversaryPersonalTouchView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Anniversary/AnniversaryPersonalTouchView.swift:205:30: warning: 'onChange(of:perform:)' was deprecated in iOS 17.0: Use `onChange` with a two or zero parameter action closure instead.
+                            .onChange(of: personalMessage) { newValue in
+                             ^
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Anniversary/AnniversaryCheckImageView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/OnboardingView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/PaymentCoordinator.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/WatchSessionManager_iOS.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Models/ChineseNewYearModels.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/RoshHashanahAIService.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/RoshHashanahAIService.swift:7:53: warning: conformance of 'RoshHashanahAIService' to protocol 'CulturalAIServiceProtocol' crosses into main actor-isolated code and can cause data races; this is an error in the Swift 6 language mode
+class RoshHashanahAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                                    ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/RoshHashanahAIService.swift:7:53: note: isolate this conformance to the main actor with '@MainActor'
+class RoshHashanahAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                                    ^
+                                                    @MainActor 
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/RoshHashanahAIService.swift:7:53: note: turn data races into runtime errors with '@preconcurrency'
+class RoshHashanahAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                                    ^
+                                                    @preconcurrency 
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:12:20: note: main actor-isolated property 'isGenerating' cannot satisfy nonisolated requirement
+    @Published var isGenerating = false
+                   ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:13:20: note: main actor-isolated property 'generationProgress' cannot satisfy nonisolated requirement
+    @Published var generationProgress: Float = 0.0
+                   ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:14:20: note: main actor-isolated property 'error' cannot satisfy nonisolated requirement
+    @Published var error: CulturalAIConfiguration.CulturalAIError?
+                   ^
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/ComprehensivePaymentService.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/Testing/AnniversaryTestRunnerView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalGiftSelectionView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Utils/ColorExtensions.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 Compiling\ VesakDayDesignView.swift,\ MidAutumnFestivalDesignView.swift,\ ChristmasModels.swift,\ App.swift,\ ContentView.swift,\ APIClient.swift,\ DiwaliAIService.swift,\ RoshHashanahDesignView.swift,\ ChristmasPersonalTouchView.swift,\ ChristmasSendShareView.swift,\ ChristmasElementsSelectionView.swift,\ ChristmasCreateSummaryView.swift,\ ChristmasCheckImageView.swift,\ ChristmasColorPaletteView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/VesakDay/VesakDayDesignView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/MidAutumnFestival/MidAutumnFestivalDesignView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Models/ChristmasModels.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/App.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/ContentView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/APIClient.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/DiwaliAIService.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/RoshHashanah/RoshHashanahDesignView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Christmas/ChristmasPersonalTouchView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Christmas/ChristmasSendShareView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Christmas/ChristmasElementsSelectionView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Christmas/ChristmasCreateSummaryView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Christmas/ChristmasCheckImageView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Christmas/ChristmasColorPaletteView.swift (in target 'ForavaApp' from project 'Forava')
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/VesakDay/VesakDayDesignView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/MidAutumnFestival/MidAutumnFestivalDesignView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Models/ChristmasModels.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/App.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/ContentView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/APIClient.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/DiwaliAIService.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/DiwaliAIService.swift:7:47: warning: conformance of 'DiwaliAIService' to protocol 'CulturalAIServiceProtocol' crosses into main actor-isolated code and can cause data races; this is an error in the Swift 6 language mode
+class DiwaliAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                              ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/DiwaliAIService.swift:7:47: note: isolate this conformance to the main actor with '@MainActor'
+class DiwaliAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                              ^
+                                              @MainActor 
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/DiwaliAIService.swift:7:47: note: turn data races into runtime errors with '@preconcurrency'
+class DiwaliAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                              ^
+                                              @preconcurrency 
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:12:20: note: main actor-isolated property 'isGenerating' cannot satisfy nonisolated requirement
+    @Published var isGenerating = false
+                   ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:13:20: note: main actor-isolated property 'generationProgress' cannot satisfy nonisolated requirement
+    @Published var generationProgress: Float = 0.0
+                   ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:14:20: note: main actor-isolated property 'error' cannot satisfy nonisolated requirement
+    @Published var error: CulturalAIConfiguration.CulturalAIError?
+                   ^
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/RoshHashanah/RoshHashanahDesignView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Christmas/ChristmasPersonalTouchView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Christmas/ChristmasSendShareView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Christmas/ChristmasElementsSelectionView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Christmas/ChristmasCreateSummaryView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Christmas/ChristmasCheckImageView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Christmas/ChristmasColorPaletteView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 Compiling\ ImageWithTextOverlay.swift,\ AnniversaryModels.swift,\ CulturalEvent.swift,\ EnhancedPaymentOptionsView.swift,\ EasterModels.swift,\ RealTimeGenerationService.swift,\ CulturalGiftModel.swift,\ RakhiModel.swift,\ HanukkahModels.swift,\ MidAutumnFestivalModels.swift,\ RakhiDesignModels.swift,\ PaymentReceiveView.swift,\ CulturalCarouselView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Anniversary/ImageWithTextOverlay.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Models/AnniversaryModels.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Models/CulturalEvent.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/EnhancedPaymentOptionsView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Models/EasterModels.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/RealTimeGenerationService.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Models/CulturalGiftModel.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Models/RakhiModel.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Models/HanukkahModels.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Models/MidAutumnFestivalModels.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Models/RakhiDesignModels.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/PaymentReceiveView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalCarouselView.swift (in target 'ForavaApp' from project 'Forava')
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Anniversary/ImageWithTextOverlay.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Models/AnniversaryModels.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Models/CulturalEvent.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/EnhancedPaymentOptionsView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Models/EasterModels.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/RealTimeGenerationService.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Models/CulturalGiftModel.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Models/RakhiModel.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Models/HanukkahModels.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Models/MidAutumnFestivalModels.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Models/RakhiDesignModels.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/PaymentReceiveView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalCarouselView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 Compiling\ RakhiDesignStudioView.swift,\ VesakDayModels.swift,\ PersonalizationStep.swift,\ AIRakhiService.swift,\ Contact.swift,\ PaymentCompletionFlow.swift,\ ColorSelectionStep.swift,\ CulturalEventCard.swift,\ RakhiSelectionView.swift,\ RakhiHistoryView.swift,\ ElementSelectionStep.swift,\ SimpleLocalizationService.swift,\ AnimationPreviewView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/RakhiDesignStudioView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Models/VesakDayModels.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/DesignSteps/PersonalizationStep.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/AIRakhiService.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Models/Contact.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/Payment/PaymentCompletionFlow.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/DesignSteps/ColorSelectionStep.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalEventCard.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/RakhiSelectionView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/History/RakhiHistoryView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/DesignSteps/ElementSelectionStep.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/SimpleLocalizationService.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/AnimationPreviewView.swift (in target 'ForavaApp' from project 'Forava')
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/RakhiDesignStudioView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Models/VesakDayModels.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/DesignSteps/PersonalizationStep.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/AIRakhiService.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Models/Contact.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/Payment/PaymentCompletionFlow.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/DesignSteps/ColorSelectionStep.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalEventCard.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/RakhiSelectionView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/History/RakhiHistoryView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/DesignSteps/ElementSelectionStep.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/SimpleLocalizationService.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/AnimationPreviewView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 Compiling\ EnhancedAnimationService.swift,\ PerformanceOptimizer.swift,\ CulturalGiftDesignView.swift,\ AnniversaryAIService.swift,\ SimpleLanguageSettingsView.swift,\ VesakDayStyleSelectionView.swift,\ VesakDayCheckImageView.swift,\ VesakDayColorPaletteView.swift,\ VesakDaySendShareView.swift,\ VesakDayPersonalTouchView.swift,\ VesakDayCreateSummaryView.swift,\ VesakDayElementsSelectionView.swift,\ SharedUIComponents.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/EnhancedAnimationService.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Utils/PerformanceOptimizer.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalGiftDesignView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/AnniversaryAIService.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/Settings/SimpleLanguageSettingsView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/VesakDay/VesakDayStyleSelectionView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/VesakDay/VesakDayCheckImageView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/VesakDay/VesakDayColorPaletteView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/VesakDay/VesakDaySendShareView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/VesakDay/VesakDayPersonalTouchView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/VesakDay/VesakDayCreateSummaryView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/VesakDay/VesakDayElementsSelectionView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/SharedUIComponents.swift (in target 'ForavaApp' from project 'Forava')
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/EnhancedAnimationService.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Utils/PerformanceOptimizer.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalGiftDesignView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/AnniversaryAIService.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/AnniversaryAIService.swift:7:52: warning: conformance of 'AnniversaryAIService' to protocol 'CulturalAIServiceProtocol' crosses into main actor-isolated code and can cause data races; this is an error in the Swift 6 language mode
+class AnniversaryAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                                   ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/AnniversaryAIService.swift:7:52: note: isolate this conformance to the main actor with '@MainActor'
+class AnniversaryAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                                   ^
+                                                   @MainActor 
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/AnniversaryAIService.swift:7:52: note: turn data races into runtime errors with '@preconcurrency'
+class AnniversaryAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                                   ^
+                                                   @preconcurrency 
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:12:20: note: main actor-isolated property 'isGenerating' cannot satisfy nonisolated requirement
+    @Published var isGenerating = false
+                   ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:13:20: note: main actor-isolated property 'generationProgress' cannot satisfy nonisolated requirement
+    @Published var generationProgress: Float = 0.0
+                   ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:14:20: note: main actor-isolated property 'error' cannot satisfy nonisolated requirement
+    @Published var error: CulturalAIConfiguration.CulturalAIError?
+                   ^
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/Settings/SimpleLanguageSettingsView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/VesakDay/VesakDayStyleSelectionView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/VesakDay/VesakDayCheckImageView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/VesakDay/VesakDayColorPaletteView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/VesakDay/VesakDaySendShareView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/VesakDay/VesakDayPersonalTouchView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/VesakDay/VesakDayCreateSummaryView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/VesakDay/VesakDayElementsSelectionView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/SharedUIComponents.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 Compiling\ ChineseNewYearStyleSelectionView.swift,\ EidAlFitrModels.swift,\ SharedModels.swift,\ BaseCulturalAIService.swift,\ AnniversaryTestingAgent.swift,\ AnniversaryTestSuite.swift,\ AnniversaryValidationCriteria.swift,\ CulturalAIConfiguration.swift,\ CulturalAIServiceProtocol.swift,\ SocialSharingModels.swift,\ CulturalPromptMapper.swift,\ AnniversaryStyleSelectionView.swift,\ SharedCulturalTypes.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/ChineseNewYear/ChineseNewYearStyleSelectionView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Models/EidAlFitrModels.swift /Users/kirangokal/Documents/Forava/Forava02/Shared/SharedModels.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/Testing/AnniversaryTestingAgent.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/Testing/AnniversaryTestSuite.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/Testing/AnniversaryValidationCriteria.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/CulturalAIConfiguration.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/CulturalAIServiceProtocol.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Models/SocialSharingModels.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/Personalization/CulturalPromptMapper.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Anniversary/AnniversaryStyleSelectionView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Models/SharedCulturalTypes.swift (in target 'ForavaApp' from project 'Forava')
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/ChineseNewYear/ChineseNewYearStyleSelectionView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Models/EidAlFitrModels.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/Shared/SharedModels.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:464:13: warning: initialization of immutable value 'metrics' was never used; consider replacing with assignment to '_' or removing it
+        let metrics = CulturalAIConfiguration.PerformanceMetrics(
+        ~~~~^~~~~~~
+        _
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/Testing/AnniversaryTestingAgent.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/Testing/AnniversaryTestSuite.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/Testing/AnniversaryValidationCriteria.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/CulturalAIConfiguration.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/CulturalAIServiceProtocol.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Models/SocialSharingModels.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/Personalization/CulturalPromptMapper.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Anniversary/AnniversaryStyleSelectionView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Models/SharedCulturalTypes.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 Compiling\ DiwaliPersonalTouchView.swift,\ DiwaliElementsSelectionView.swift,\ EasterAIService.swift,\ DiwaliSendShareView.swift,\ DiwaliColorPaletteView.swift,\ DiwaliCheckImageView.swift,\ DiwaliCreateSummaryView.swift,\ RakshaBandhanDesignView.swift,\ DiwaliStyleSelectionView.swift,\ EasterSendShareView.swift,\ EasterCheckImageView.swift,\ EasterStyleSelectionView.swift,\ EasterCreateSummaryView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Diwali/DiwaliPersonalTouchView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Diwali/DiwaliElementsSelectionView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/EasterAIService.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Diwali/DiwaliSendShareView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Diwali/DiwaliColorPaletteView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Diwali/DiwaliCheckImageView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Diwali/DiwaliCreateSummaryView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/RakshaBandhan/RakshaBandhanDesignView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Diwali/DiwaliStyleSelectionView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Easter/EasterSendShareView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Easter/EasterCheckImageView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Easter/EasterStyleSelectionView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Easter/EasterCreateSummaryView.swift (in target 'ForavaApp' from project 'Forava')
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Diwali/DiwaliPersonalTouchView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Diwali/DiwaliElementsSelectionView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/EasterAIService.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/EasterAIService.swift:7:47: warning: conformance of 'EasterAIService' to protocol 'CulturalAIServiceProtocol' crosses into main actor-isolated code and can cause data races; this is an error in the Swift 6 language mode
+class EasterAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                              ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/EasterAIService.swift:7:47: note: isolate this conformance to the main actor with '@MainActor'
+class EasterAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                              ^
+                                              @MainActor 
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/EasterAIService.swift:7:47: note: turn data races into runtime errors with '@preconcurrency'
+class EasterAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                              ^
+                                              @preconcurrency 
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:12:20: note: main actor-isolated property 'isGenerating' cannot satisfy nonisolated requirement
+    @Published var isGenerating = false
+                   ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:13:20: note: main actor-isolated property 'generationProgress' cannot satisfy nonisolated requirement
+    @Published var generationProgress: Float = 0.0
+                   ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:14:20: note: main actor-isolated property 'error' cannot satisfy nonisolated requirement
+    @Published var error: CulturalAIConfiguration.CulturalAIError?
+                   ^
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Diwali/DiwaliSendShareView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Diwali/DiwaliColorPaletteView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Diwali/DiwaliCheckImageView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Diwali/DiwaliCreateSummaryView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/RakshaBandhan/RakshaBandhanDesignView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Diwali/DiwaliStyleSelectionView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Easter/EasterSendShareView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Easter/EasterCheckImageView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Easter/EasterStyleSelectionView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Easter/EasterCreateSummaryView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 Compiling\ EasterElementsSelectionView.swift,\ EasterColorPaletteView.swift,\ EasterPersonalTouchView.swift,\ SubscriptionModels.swift,\ CoreTypes.swift,\ LazyLoadingManager.swift,\ PerformanceMonitor.swift,\ SubscriptionManager.swift,\ CulturalCalendarService.swift,\ EasterDesignView.swift,\ CulturalNotificationManager.swift,\ CulturalCommunityService.swift,\ VesakDayAIService.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Easter/EasterElementsSelectionView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Easter/EasterColorPaletteView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Easter/EasterPersonalTouchView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Models/SubscriptionModels.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Models/CoreTypes.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/LazyLoadingManager.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/PerformanceMonitor.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/SubscriptionManager.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/Calendar/CulturalCalendarService.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Easter/EasterDesignView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/Calendar/CulturalNotificationManager.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/Social/CulturalCommunityService.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/VesakDayAIService.swift (in target 'ForavaApp' from project 'Forava')
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Easter/EasterElementsSelectionView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Easter/EasterColorPaletteView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Easter/EasterPersonalTouchView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Models/SubscriptionModels.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Models/CoreTypes.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/LazyLoadingManager.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/PerformanceMonitor.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/SubscriptionManager.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/Calendar/CulturalCalendarService.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Easter/EasterDesignView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/Calendar/CulturalNotificationManager.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/Social/CulturalCommunityService.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/VesakDayAIService.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/VesakDayAIService.swift:7:49: warning: conformance of 'VesakDayAIService' to protocol 'CulturalAIServiceProtocol' crosses into main actor-isolated code and can cause data races; this is an error in the Swift 6 language mode
+class VesakDayAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                                ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/VesakDayAIService.swift:7:49: note: isolate this conformance to the main actor with '@MainActor'
+class VesakDayAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                                ^
+                                                @MainActor 
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/VesakDayAIService.swift:7:49: note: turn data races into runtime errors with '@preconcurrency'
+class VesakDayAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                                ^
+                                                @preconcurrency 
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:12:20: note: main actor-isolated property 'isGenerating' cannot satisfy nonisolated requirement
+    @Published var isGenerating = false
+                   ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:13:20: note: main actor-isolated property 'generationProgress' cannot satisfy nonisolated requirement
+    @Published var generationProgress: Float = 0.0
+                   ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:14:20: note: main actor-isolated property 'error' cannot satisfy nonisolated requirement
+    @Published var error: CulturalAIConfiguration.CulturalAIError?
+                   ^
+
+SwiftCompile normal arm64 Compiling\ ChineseNewYearAIService.swift,\ DiwaliModels.swift,\ MidAutumnFestivalStyleSelectionView.swift,\ MidAutumnFestivalCreateSummaryView.swift,\ MidAutumnFestivalSendShareView.swift,\ MidAutumnFestivalElementsSelectionView.swift,\ MidAutumnFestivalColorPaletteView.swift,\ MidAutumnFestivalPersonalTouchView.swift,\ MidAutumnFestivalCheckImageView.swift,\ SubscriptionTierView.swift,\ PremiumCulturalPacksView.swift,\ UsageDashboardView.swift,\ GeneratedAssetSymbols.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/ChineseNewYearAIService.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Models/DiwaliModels.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/MidAutumnFestival/MidAutumnFestivalStyleSelectionView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/MidAutumnFestival/MidAutumnFestivalCreateSummaryView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/MidAutumnFestival/MidAutumnFestivalSendShareView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/MidAutumnFestival/MidAutumnFestivalElementsSelectionView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/MidAutumnFestival/MidAutumnFestivalColorPaletteView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/MidAutumnFestival/MidAutumnFestivalPersonalTouchView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/MidAutumnFestival/MidAutumnFestivalCheckImageView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/Subscription/SubscriptionTierView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/Subscription/PremiumCulturalPacksView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/Subscription/UsageDashboardView.swift /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/DerivedSources/GeneratedAssetSymbols.swift (in target 'ForavaApp' from project 'Forava')
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/ChineseNewYearAIService.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/ChineseNewYearAIService.swift:7:55: warning: conformance of 'ChineseNewYearAIService' to protocol 'CulturalAIServiceProtocol' crosses into main actor-isolated code and can cause data races; this is an error in the Swift 6 language mode
+class ChineseNewYearAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                                      ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/ChineseNewYearAIService.swift:7:55: note: isolate this conformance to the main actor with '@MainActor'
+class ChineseNewYearAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                                      ^
+                                                      @MainActor 
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/ChineseNewYearAIService.swift:7:55: note: turn data races into runtime errors with '@preconcurrency'
+class ChineseNewYearAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                                      ^
+                                                      @preconcurrency 
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:12:20: note: main actor-isolated property 'isGenerating' cannot satisfy nonisolated requirement
+    @Published var isGenerating = false
+                   ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:13:20: note: main actor-isolated property 'generationProgress' cannot satisfy nonisolated requirement
+    @Published var generationProgress: Float = 0.0
+                   ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:14:20: note: main actor-isolated property 'error' cannot satisfy nonisolated requirement
+    @Published var error: CulturalAIConfiguration.CulturalAIError?
+                   ^
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Models/DiwaliModels.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/MidAutumnFestival/MidAutumnFestivalStyleSelectionView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/MidAutumnFestival/MidAutumnFestivalCreateSummaryView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/MidAutumnFestival/MidAutumnFestivalSendShareView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/MidAutumnFestival/MidAutumnFestivalElementsSelectionView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/MidAutumnFestival/MidAutumnFestivalColorPaletteView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/MidAutumnFestival/MidAutumnFestivalPersonalTouchView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/MidAutumnFestival/MidAutumnFestivalCheckImageView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/Subscription/SubscriptionTierView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/Subscription/PremiumCulturalPacksView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/Subscription/UsageDashboardView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/DerivedSources/GeneratedAssetSymbols.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 Compiling\ PromptMapper.swift,\ AdvancedCustomizationService.swift,\ EidAlAdhaModels.swift,\ DiwaliDesignView.swift,\ GenreSelectionStep.swift,\ RoshHashanahModels.swift,\ BirthdayModels.swift,\ RakhiHistoryService.swift,\ DALLE3Service.swift,\ PreviewStep.swift,\ SocialSharingService.swift,\ EnhancedPaymentService.swift,\ SettingsView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/PromptMapper.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/AdvancedCustomizationService.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Models/EidAlAdhaModels.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Diwali/DiwaliDesignView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/DesignSteps/GenreSelectionStep.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Models/RoshHashanahModels.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Models/BirthdayModels.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/RakhiHistoryService.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/DALLE3Service.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/DesignSteps/PreviewStep.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/SocialSharingService.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/EnhancedPaymentService.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/SettingsView.swift (in target 'ForavaApp' from project 'Forava')
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/PromptMapper.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/AdvancedCustomizationService.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Models/EidAlAdhaModels.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Diwali/DiwaliDesignView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/DesignSteps/GenreSelectionStep.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Models/RoshHashanahModels.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Models/BirthdayModels.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/RakhiHistoryService.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/DALLE3Service.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/DesignSteps/PreviewStep.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/SocialSharingService.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/EnhancedPaymentService.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/SettingsView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftEmitModule normal arm64 Emitting\ module\ for\ ForavaApp (in target 'ForavaApp' from project 'Forava')
+
+EmitSwiftModule normal arm64 (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/DiwaliAIService.swift:7:47: warning: conformance of 'DiwaliAIService' to protocol 'CulturalAIServiceProtocol' crosses into main actor-isolated code and can cause data races; this is an error in the Swift 6 language mode
+class DiwaliAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                              ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/DiwaliAIService.swift:7:47: note: isolate this conformance to the main actor with '@MainActor'
+class DiwaliAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                              ^
+                                              @MainActor 
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/DiwaliAIService.swift:7:47: note: turn data races into runtime errors with '@preconcurrency'
+class DiwaliAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                              ^
+                                              @preconcurrency 
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:12:20: note: main actor-isolated property 'isGenerating' cannot satisfy nonisolated requirement
+    @Published var isGenerating = false
+                   ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:13:20: note: main actor-isolated property 'generationProgress' cannot satisfy nonisolated requirement
+    @Published var generationProgress: Float = 0.0
+                   ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:14:20: note: main actor-isolated property 'error' cannot satisfy nonisolated requirement
+    @Published var error: CulturalAIConfiguration.CulturalAIError?
+                   ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/RoshHashanahAIService.swift:7:53: warning: conformance of 'RoshHashanahAIService' to protocol 'CulturalAIServiceProtocol' crosses into main actor-isolated code and can cause data races; this is an error in the Swift 6 language mode
+class RoshHashanahAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                                    ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/RoshHashanahAIService.swift:7:53: note: isolate this conformance to the main actor with '@MainActor'
+class RoshHashanahAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                                    ^
+                                                    @MainActor 
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/RoshHashanahAIService.swift:7:53: note: turn data races into runtime errors with '@preconcurrency'
+class RoshHashanahAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                                    ^
+                                                    @preconcurrency 
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:12:20: note: main actor-isolated property 'isGenerating' cannot satisfy nonisolated requirement
+    @Published var isGenerating = false
+                   ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:13:20: note: main actor-isolated property 'generationProgress' cannot satisfy nonisolated requirement
+    @Published var generationProgress: Float = 0.0
+                   ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:14:20: note: main actor-isolated property 'error' cannot satisfy nonisolated requirement
+    @Published var error: CulturalAIConfiguration.CulturalAIError?
+                   ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/HanukkahAIService.swift:7:49: warning: conformance of 'HanukkahAIService' to protocol 'CulturalAIServiceProtocol' crosses into main actor-isolated code and can cause data races; this is an error in the Swift 6 language mode
+class HanukkahAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                                ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/HanukkahAIService.swift:7:49: note: isolate this conformance to the main actor with '@MainActor'
+class HanukkahAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                                ^
+                                                @MainActor 
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/HanukkahAIService.swift:7:49: note: turn data races into runtime errors with '@preconcurrency'
+class HanukkahAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                                ^
+                                                @preconcurrency 
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:12:20: note: main actor-isolated property 'isGenerating' cannot satisfy nonisolated requirement
+    @Published var isGenerating = false
+                   ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:13:20: note: main actor-isolated property 'generationProgress' cannot satisfy nonisolated requirement
+    @Published var generationProgress: Float = 0.0
+                   ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:14:20: note: main actor-isolated property 'error' cannot satisfy nonisolated requirement
+    @Published var error: CulturalAIConfiguration.CulturalAIError?
+                   ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/ChristmasAIService.swift:7:50: warning: conformance of 'ChristmasAIService' to protocol 'CulturalAIServiceProtocol' crosses into main actor-isolated code and can cause data races; this is an error in the Swift 6 language mode
+class ChristmasAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                                 ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/ChristmasAIService.swift:7:50: note: isolate this conformance to the main actor with '@MainActor'
+class ChristmasAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                                 ^
+                                                 @MainActor 
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/ChristmasAIService.swift:7:50: note: turn data races into runtime errors with '@preconcurrency'
+class ChristmasAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                                 ^
+                                                 @preconcurrency 
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:12:20: note: main actor-isolated property 'isGenerating' cannot satisfy nonisolated requirement
+    @Published var isGenerating = false
+                   ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:13:20: note: main actor-isolated property 'generationProgress' cannot satisfy nonisolated requirement
+    @Published var generationProgress: Float = 0.0
+                   ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:14:20: note: main actor-isolated property 'error' cannot satisfy nonisolated requirement
+    @Published var error: CulturalAIConfiguration.CulturalAIError?
+                   ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/RakshaBandhanAIService.swift:7:54: warning: conformance of 'RakshaBandhanAIService' to protocol 'CulturalAIServiceProtocol' crosses into main actor-isolated code and can cause data races; this is an error in the Swift 6 language mode
+class RakshaBandhanAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                                     ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/RakshaBandhanAIService.swift:7:54: note: isolate this conformance to the main actor with '@MainActor'
+class RakshaBandhanAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                                     ^
+                                                     @MainActor 
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/RakshaBandhanAIService.swift:7:54: note: turn data races into runtime errors with '@preconcurrency'
+class RakshaBandhanAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                                     ^
+                                                     @preconcurrency 
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:12:20: note: main actor-isolated property 'isGenerating' cannot satisfy nonisolated requirement
+    @Published var isGenerating = false
+                   ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:13:20: note: main actor-isolated property 'generationProgress' cannot satisfy nonisolated requirement
+    @Published var generationProgress: Float = 0.0
+                   ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:14:20: note: main actor-isolated property 'error' cannot satisfy nonisolated requirement
+    @Published var error: CulturalAIConfiguration.CulturalAIError?
+                   ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/AnniversaryAIService.swift:7:52: warning: conformance of 'AnniversaryAIService' to protocol 'CulturalAIServiceProtocol' crosses into main actor-isolated code and can cause data races; this is an error in the Swift 6 language mode
+class AnniversaryAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                                   ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/AnniversaryAIService.swift:7:52: note: isolate this conformance to the main actor with '@MainActor'
+class AnniversaryAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                                   ^
+                                                   @MainActor 
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/AnniversaryAIService.swift:7:52: note: turn data races into runtime errors with '@preconcurrency'
+class AnniversaryAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                                   ^
+                                                   @preconcurrency 
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:12:20: note: main actor-isolated property 'isGenerating' cannot satisfy nonisolated requirement
+    @Published var isGenerating = false
+                   ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:13:20: note: main actor-isolated property 'generationProgress' cannot satisfy nonisolated requirement
+    @Published var generationProgress: Float = 0.0
+                   ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:14:20: note: main actor-isolated property 'error' cannot satisfy nonisolated requirement
+    @Published var error: CulturalAIConfiguration.CulturalAIError?
+                   ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/MidAutumnFestivalAIService.swift:7:58: warning: conformance of 'MidAutumnFestivalAIService' to protocol 'CulturalAIServiceProtocol' crosses into main actor-isolated code and can cause data races; this is an error in the Swift 6 language mode
+class MidAutumnFestivalAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                                         ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/MidAutumnFestivalAIService.swift:7:58: note: isolate this conformance to the main actor with '@MainActor'
+class MidAutumnFestivalAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                                         ^
+                                                         @MainActor 
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/MidAutumnFestivalAIService.swift:7:58: note: turn data races into runtime errors with '@preconcurrency'
+class MidAutumnFestivalAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                                         ^
+                                                         @preconcurrency 
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:12:20: note: main actor-isolated property 'isGenerating' cannot satisfy nonisolated requirement
+    @Published var isGenerating = false
+                   ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:13:20: note: main actor-isolated property 'generationProgress' cannot satisfy nonisolated requirement
+    @Published var generationProgress: Float = 0.0
+                   ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:14:20: note: main actor-isolated property 'error' cannot satisfy nonisolated requirement
+    @Published var error: CulturalAIConfiguration.CulturalAIError?
+                   ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/EasterAIService.swift:7:47: warning: conformance of 'EasterAIService' to protocol 'CulturalAIServiceProtocol' crosses into main actor-isolated code and can cause data races; this is an error in the Swift 6 language mode
+class EasterAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                              ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/EasterAIService.swift:7:47: note: isolate this conformance to the main actor with '@MainActor'
+class EasterAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                              ^
+                                              @MainActor 
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/EasterAIService.swift:7:47: note: turn data races into runtime errors with '@preconcurrency'
+class EasterAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                              ^
+                                              @preconcurrency 
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:12:20: note: main actor-isolated property 'isGenerating' cannot satisfy nonisolated requirement
+    @Published var isGenerating = false
+                   ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:13:20: note: main actor-isolated property 'generationProgress' cannot satisfy nonisolated requirement
+    @Published var generationProgress: Float = 0.0
+                   ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:14:20: note: main actor-isolated property 'error' cannot satisfy nonisolated requirement
+    @Published var error: CulturalAIConfiguration.CulturalAIError?
+                   ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/VesakDayAIService.swift:7:49: warning: conformance of 'VesakDayAIService' to protocol 'CulturalAIServiceProtocol' crosses into main actor-isolated code and can cause data races; this is an error in the Swift 6 language mode
+class VesakDayAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                                ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/VesakDayAIService.swift:7:49: note: isolate this conformance to the main actor with '@MainActor'
+class VesakDayAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                                ^
+                                                @MainActor 
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/VesakDayAIService.swift:7:49: note: turn data races into runtime errors with '@preconcurrency'
+class VesakDayAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                                ^
+                                                @preconcurrency 
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:12:20: note: main actor-isolated property 'isGenerating' cannot satisfy nonisolated requirement
+    @Published var isGenerating = false
+                   ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:13:20: note: main actor-isolated property 'generationProgress' cannot satisfy nonisolated requirement
+    @Published var generationProgress: Float = 0.0
+                   ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:14:20: note: main actor-isolated property 'error' cannot satisfy nonisolated requirement
+    @Published var error: CulturalAIConfiguration.CulturalAIError?
+                   ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/ChineseNewYearAIService.swift:7:55: warning: conformance of 'ChineseNewYearAIService' to protocol 'CulturalAIServiceProtocol' crosses into main actor-isolated code and can cause data races; this is an error in the Swift 6 language mode
+class ChineseNewYearAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                                      ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/ChineseNewYearAIService.swift:7:55: note: isolate this conformance to the main actor with '@MainActor'
+class ChineseNewYearAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                                      ^
+                                                      @MainActor 
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/ChineseNewYearAIService.swift:7:55: note: turn data races into runtime errors with '@preconcurrency'
+class ChineseNewYearAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                                      ^
+                                                      @preconcurrency 
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:12:20: note: main actor-isolated property 'isGenerating' cannot satisfy nonisolated requirement
+    @Published var isGenerating = false
+                   ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:13:20: note: main actor-isolated property 'generationProgress' cannot satisfy nonisolated requirement
+    @Published var generationProgress: Float = 0.0
+                   ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:14:20: note: main actor-isolated property 'error' cannot satisfy nonisolated requirement
+    @Published var error: CulturalAIConfiguration.CulturalAIError?
+                   ^
+
+SwiftDriverJobDiscovery normal arm64 Compiling ImageWithTextOverlay.swift, AnniversaryModels.swift, CulturalEvent.swift, EnhancedPaymentOptionsView.swift, EasterModels.swift, RealTimeGenerationService.swift, CulturalGiftModel.swift, RakhiModel.swift, HanukkahModels.swift, MidAutumnFestivalModels.swift, RakhiDesignModels.swift, PaymentReceiveView.swift, CulturalCarouselView.swift (in target 'ForavaApp' from project 'Forava')
+
+SwiftCompile normal arm64 Compiling\ RealTimeGenerationView.swift,\ RakshaBandhanModels.swift,\ SocialSharingView.swift,\ Constants.swift,\ SharedFormatting.swift,\ ChineseNewYearCheckImageView.swift,\ ChineseNewYearCreateSummaryView.swift,\ MidAutumnFestivalAIService.swift,\ ChineseNewYearColorPaletteView.swift,\ ChineseNewYearPersonalTouchView.swift,\ ChineseNewYearDesignView.swift,\ ChineseNewYearSendShareView.swift,\ ChineseNewYearElementsSelectionView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/RealTimeGenerationView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Models/RakshaBandhanModels.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/Sharing/SocialSharingView.swift /Users/kirangokal/Documents/Forava/Forava02/Shared/Constants.swift /Users/kirangokal/Documents/Forava/Forava02/Shared/SharedFormatting.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/ChineseNewYear/ChineseNewYearCheckImageView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/ChineseNewYear/ChineseNewYearCreateSummaryView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/MidAutumnFestivalAIService.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/ChineseNewYear/ChineseNewYearColorPaletteView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/ChineseNewYear/ChineseNewYearPersonalTouchView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/ChineseNewYear/ChineseNewYearDesignView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/ChineseNewYear/ChineseNewYearSendShareView.swift /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/ChineseNewYear/ChineseNewYearElementsSelectionView.swift (in target 'ForavaApp' from project 'Forava')
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/RealTimeGenerationView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Models/RakshaBandhanModels.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/Sharing/SocialSharingView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/Shared/Constants.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/Shared/SharedFormatting.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/ChineseNewYear/ChineseNewYearCheckImageView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/ChineseNewYear/ChineseNewYearCreateSummaryView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/MidAutumnFestivalAIService.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/MidAutumnFestivalAIService.swift:7:58: warning: conformance of 'MidAutumnFestivalAIService' to protocol 'CulturalAIServiceProtocol' crosses into main actor-isolated code and can cause data races; this is an error in the Swift 6 language mode
+class MidAutumnFestivalAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                                         ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/MidAutumnFestivalAIService.swift:7:58: note: isolate this conformance to the main actor with '@MainActor'
+class MidAutumnFestivalAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                                         ^
+                                                         @MainActor 
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/MidAutumnFestivalAIService.swift:7:58: note: turn data races into runtime errors with '@preconcurrency'
+class MidAutumnFestivalAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
+                                                         ^
+                                                         @preconcurrency 
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:12:20: note: main actor-isolated property 'isGenerating' cannot satisfy nonisolated requirement
+    @Published var isGenerating = false
+                   ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:13:20: note: main actor-isolated property 'generationProgress' cannot satisfy nonisolated requirement
+    @Published var generationProgress: Float = 0.0
+                   ^
+/Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Services/BaseCulturalAIService.swift:14:20: note: main actor-isolated property 'error' cannot satisfy nonisolated requirement
+    @Published var error: CulturalAIConfiguration.CulturalAIError?
+                   ^
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/ChineseNewYear/ChineseNewYearColorPaletteView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/ChineseNewYear/ChineseNewYearPersonalTouchView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/ChineseNewYear/ChineseNewYearDesignView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/ChineseNewYear/ChineseNewYearSendShareView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftCompile normal arm64 /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/ChineseNewYear/ChineseNewYearElementsSelectionView.swift (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    
+
+SwiftDriverJobDiscovery normal arm64 Compiling ContactSelectionView.swift, HanukkahAIService.swift, CachedAsyncImage.swift, ChristmasAIService.swift, CulturalDesignComponents.swift, CulturalDesignViewModel.swift, CulturalDesignProtocol.swift, RakshaBandhanAIService.swift, GiftDesignTypes.swift, OptimizedCulturalDesignComponents.swift, GeneratedRakhiView.swift, AdvancedAnimationService.swift, AdvancedCustomizationView.swift (in target 'ForavaApp' from project 'Forava')
+
+SwiftDriverJobDiscovery normal arm64 Compiling PromptMapper.swift, AdvancedCustomizationService.swift, EidAlAdhaModels.swift, DiwaliDesignView.swift, GenreSelectionStep.swift, RoshHashanahModels.swift, BirthdayModels.swift, RakhiHistoryService.swift, DALLE3Service.swift, PreviewStep.swift, SocialSharingService.swift, EnhancedPaymentService.swift, SettingsView.swift (in target 'ForavaApp' from project 'Forava')
+
+SwiftDriverJobDiscovery normal arm64 Compiling RakhiDesignStudioView.swift, VesakDayModels.swift, PersonalizationStep.swift, AIRakhiService.swift, Contact.swift, PaymentCompletionFlow.swift, ColorSelectionStep.swift, CulturalEventCard.swift, RakhiSelectionView.swift, RakhiHistoryView.swift, ElementSelectionStep.swift, SimpleLocalizationService.swift, AnimationPreviewView.swift (in target 'ForavaApp' from project 'Forava')
+
+SwiftDriverJobDiscovery normal arm64 Emitting module for ForavaApp (in target 'ForavaApp' from project 'Forava')
+
+SwiftDriver\ Compilation\ Requirements ForavaApp normal arm64 com.apple.xcode.tools.swift.compiler (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    builtin-Swift-Compilation-Requirements -- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name ForavaApp -Onone -enforce-exclusivity\=checked @/Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/Objects-normal/arm64/ForavaApp.SwiftFileList -DDEBUG -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.0.sdk -target arm64-apple-ios17.0 -g -module-cache-path /Users/kirangokal/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Index.noindex/DataStore -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 5 -I /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos -F /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos -emit-localized-strings -emit-localized-strings-path /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/Objects-normal/arm64 -c -j14 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Users/kirangokal/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphoneos26.0-23A339-81ce72e5b06c9602b9d30b56f2eed08a.sdkstatcache -output-file-map /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/Objects-normal/arm64/ForavaApp-OutputFileMap.json -use-frontend-parseable-output -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path /Users/kirangokal/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -sdk-module-cache-path /Users/kirangokal/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -serialize-diagnostics -emit-dependencies -emit-module -emit-module-path /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/Objects-normal/arm64/ForavaApp.swiftmodule -validate-clang-modules-once -clang-build-session-file /Users/kirangokal/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -I/Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/swift-overrides.hmap -emit-const-values -Xfrontend -const-gather-protocols-file -Xfrontend /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/Objects-normal/arm64/ForavaApp_const_extract_protocols.json -Xcc -iquote -Xcc /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/ForavaApp-generated-files.hmap -Xcc -I/Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/ForavaApp-own-target-headers.hmap -Xcc -I/Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/ForavaApp-all-target-headers.hmap -Xcc -iquote -Xcc /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/ForavaApp-project-headers.hmap -Xcc -I/Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos/include -Xcc -I/Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/DerivedSources-normal/arm64 -Xcc -I/Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/DerivedSources/arm64 -Xcc -I/Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/Objects-normal/arm64/ForavaApp-Swift.h -working-directory /Users/kirangokal/Documents/Forava/Forava02 -experimental-emit-module-separately -disable-cmo
+
+SwiftMergeGeneratedHeaders /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/DerivedSources/ForavaApp-Swift.h /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/Objects-normal/arm64/ForavaApp-Swift.h (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    builtin-swiftHeaderTool -arch arm64 /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/Objects-normal/arm64/ForavaApp-Swift.h -o /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/DerivedSources/ForavaApp-Swift.h
+
+Copy /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos/ForavaApp.swiftmodule/arm64-apple-ios.swiftmodule /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/Objects-normal/arm64/ForavaApp.swiftmodule (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/Objects-normal/arm64/ForavaApp.swiftmodule /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos/ForavaApp.swiftmodule/arm64-apple-ios.swiftmodule
+
+Copy /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos/ForavaApp.swiftmodule/arm64-apple-ios.swiftdoc /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/Objects-normal/arm64/ForavaApp.swiftdoc (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/Objects-normal/arm64/ForavaApp.swiftdoc /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos/ForavaApp.swiftmodule/arm64-apple-ios.swiftdoc
+
+Copy /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos/ForavaApp.swiftmodule/arm64-apple-ios.abi.json /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/Objects-normal/arm64/ForavaApp.abi.json (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/Objects-normal/arm64/ForavaApp.abi.json /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos/ForavaApp.swiftmodule/arm64-apple-ios.abi.json
+
+Copy /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos/ForavaApp.swiftmodule/Project/arm64-apple-ios.swiftsourceinfo /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/Objects-normal/arm64/ForavaApp.swiftsourceinfo (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/Objects-normal/arm64/ForavaApp.swiftsourceinfo /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos/ForavaApp.swiftmodule/Project/arm64-apple-ios.swiftsourceinfo
+
+SwiftDriverJobDiscovery normal arm64 Compiling ChineseNewYearStyleSelectionView.swift, EidAlFitrModels.swift, SharedModels.swift, BaseCulturalAIService.swift, AnniversaryTestingAgent.swift, AnniversaryTestSuite.swift, AnniversaryValidationCriteria.swift, CulturalAIConfiguration.swift, CulturalAIServiceProtocol.swift, SocialSharingModels.swift, CulturalPromptMapper.swift, AnniversaryStyleSelectionView.swift, SharedCulturalTypes.swift (in target 'ForavaApp' from project 'Forava')
+
+SwiftDriverJobDiscovery normal arm64 Compiling HanukkahPersonalTouchView.swift, HanukkahSendShareView.swift, AnniversaryPersonalTouchView.swift, AnniversaryCheckImageView.swift, OnboardingView.swift, PaymentCoordinator.swift, WatchSessionManager_iOS.swift, ChineseNewYearModels.swift, RoshHashanahAIService.swift, ComprehensivePaymentService.swift, AnniversaryTestRunnerView.swift, CulturalGiftSelectionView.swift, ColorExtensions.swift (in target 'ForavaApp' from project 'Forava')
+
+SwiftDriverJobDiscovery normal arm64 Compiling VesakDayDesignView.swift, MidAutumnFestivalDesignView.swift, ChristmasModels.swift, App.swift, ContentView.swift, APIClient.swift, DiwaliAIService.swift, RoshHashanahDesignView.swift, ChristmasPersonalTouchView.swift, ChristmasSendShareView.swift, ChristmasElementsSelectionView.swift, ChristmasCreateSummaryView.swift, ChristmasCheckImageView.swift, ChristmasColorPaletteView.swift (in target 'ForavaApp' from project 'Forava')
+
+SwiftDriverJobDiscovery normal arm64 Compiling EasterElementsSelectionView.swift, EasterColorPaletteView.swift, EasterPersonalTouchView.swift, SubscriptionModels.swift, CoreTypes.swift, LazyLoadingManager.swift, PerformanceMonitor.swift, SubscriptionManager.swift, CulturalCalendarService.swift, EasterDesignView.swift, CulturalNotificationManager.swift, CulturalCommunityService.swift, VesakDayAIService.swift (in target 'ForavaApp' from project 'Forava')
+
+SwiftDriverJobDiscovery normal arm64 Compiling EnhancedAnimationService.swift, PerformanceOptimizer.swift, CulturalGiftDesignView.swift, AnniversaryAIService.swift, SimpleLanguageSettingsView.swift, VesakDayStyleSelectionView.swift, VesakDayCheckImageView.swift, VesakDayColorPaletteView.swift, VesakDaySendShareView.swift, VesakDayPersonalTouchView.swift, VesakDayCreateSummaryView.swift, VesakDayElementsSelectionView.swift, SharedUIComponents.swift (in target 'ForavaApp' from project 'Forava')
+
+SwiftDriverJobDiscovery normal arm64 Compiling ChineseNewYearAIService.swift, DiwaliModels.swift, MidAutumnFestivalStyleSelectionView.swift, MidAutumnFestivalCreateSummaryView.swift, MidAutumnFestivalSendShareView.swift, MidAutumnFestivalElementsSelectionView.swift, MidAutumnFestivalColorPaletteView.swift, MidAutumnFestivalPersonalTouchView.swift, MidAutumnFestivalCheckImageView.swift, SubscriptionTierView.swift, PremiumCulturalPacksView.swift, UsageDashboardView.swift, GeneratedAssetSymbols.swift (in target 'ForavaApp' from project 'Forava')
+
+SwiftDriverJobDiscovery normal arm64 Compiling RoshHashanahSendShareView.swift, RoshHashanahPersonalTouchView.swift, RoshHashanahColorPaletteView.swift, RoshHashanahCreateSummaryView.swift, AnniversaryElementsSelectionView.swift, HanukkahDesignView.swift, AnniversaryColorPaletteView.swift, AnniversaryCreateSummaryView.swift, AnniversaryDesignView.swift, HanukkahCheckImageView.swift, HanukkahStyleSelectionView.swift, HanukkahCreateSummaryView.swift, HanukkahElementsSelectionView.swift, HanukkahColorPaletteView.swift (in target 'ForavaApp' from project 'Forava')
+
+SwiftDriverJobDiscovery normal arm64 Compiling DiwaliPersonalTouchView.swift, DiwaliElementsSelectionView.swift, EasterAIService.swift, DiwaliSendShareView.swift, DiwaliColorPaletteView.swift, DiwaliCheckImageView.swift, DiwaliCreateSummaryView.swift, RakshaBandhanDesignView.swift, DiwaliStyleSelectionView.swift, EasterSendShareView.swift, EasterCheckImageView.swift, EasterStyleSelectionView.swift, EasterCreateSummaryView.swift (in target 'ForavaApp' from project 'Forava')
+
+SwiftDriverJobDiscovery normal arm64 Compiling RealTimeGenerationView.swift, RakshaBandhanModels.swift, SocialSharingView.swift, Constants.swift, SharedFormatting.swift, ChineseNewYearCheckImageView.swift, ChineseNewYearCreateSummaryView.swift, MidAutumnFestivalAIService.swift, ChineseNewYearColorPaletteView.swift, ChineseNewYearPersonalTouchView.swift, ChineseNewYearDesignView.swift, ChineseNewYearSendShareView.swift, ChineseNewYearElementsSelectionView.swift (in target 'ForavaApp' from project 'Forava')
+
+SwiftDriverJobDiscovery normal arm64 Compiling ChristmasDesignView.swift, ChristmasStyleSelectionView.swift, RakshaBandhanSendShareView.swift, RakshaBandhanStyleSelectionView.swift, RakshaBandhanCheckImageView.swift, RakshaBandhanColorPaletteView.swift, RakshaBandhanPersonalTouchView.swift, RakshaBandhanCreateSummaryView.swift, RakshaBandhanElementsSelectionView.swift, ApplePayConfig.swift, AnniversarySendShareView.swift, RoshHashanahCheckImageView.swift, RoshHashanahElementsSelectionView.swift, RoshHashanahStyleSelectionView.swift (in target 'ForavaApp' from project 'Forava')
+
+SwiftDriver\ Compilation ForavaApp normal arm64 com.apple.xcode.tools.swift.compiler (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    builtin-Swift-Compilation -- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name ForavaApp -Onone -enforce-exclusivity\=checked @/Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/Objects-normal/arm64/ForavaApp.SwiftFileList -DDEBUG -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.0.sdk -target arm64-apple-ios17.0 -g -module-cache-path /Users/kirangokal/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Index.noindex/DataStore -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 5 -I /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos -F /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos -emit-localized-strings -emit-localized-strings-path /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/Objects-normal/arm64 -c -j14 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Users/kirangokal/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphoneos26.0-23A339-81ce72e5b06c9602b9d30b56f2eed08a.sdkstatcache -output-file-map /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/Objects-normal/arm64/ForavaApp-OutputFileMap.json -use-frontend-parseable-output -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path /Users/kirangokal/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -sdk-module-cache-path /Users/kirangokal/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -serialize-diagnostics -emit-dependencies -emit-module -emit-module-path /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/Objects-normal/arm64/ForavaApp.swiftmodule -validate-clang-modules-once -clang-build-session-file /Users/kirangokal/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -I/Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/swift-overrides.hmap -emit-const-values -Xfrontend -const-gather-protocols-file -Xfrontend /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/Objects-normal/arm64/ForavaApp_const_extract_protocols.json -Xcc -iquote -Xcc /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/ForavaApp-generated-files.hmap -Xcc -I/Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/ForavaApp-own-target-headers.hmap -Xcc -I/Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/ForavaApp-all-target-headers.hmap -Xcc -iquote -Xcc /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/ForavaApp-project-headers.hmap -Xcc -I/Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos/include -Xcc -I/Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/DerivedSources-normal/arm64 -Xcc -I/Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/DerivedSources/arm64 -Xcc -I/Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/Objects-normal/arm64/ForavaApp-Swift.h -working-directory /Users/kirangokal/Documents/Forava/Forava02 -experimental-emit-module-separately -disable-cmo
+
+Ld /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos/ForavaApp.app/ForavaApp.debug.dylib normal (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target arm64-apple-ios17.0 -dynamiclib -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.0.sdk -O0 -L/Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphoneos -L/Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos -F/Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphoneos -F/Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos -filelist /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/Objects-normal/arm64/ForavaApp.LinkFileList -install_name @rpath/ForavaApp.debug.dylib -Xlinker -rpath -Xlinker /usr/lib/swift -Xlinker -rpath -Xlinker @executable_path/Frameworks -dead_strip -Xlinker -object_path_lto -Xlinker /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/Objects-normal/arm64/ForavaApp_lto.o -rdynamic -Xlinker -no_deduplicate -Xlinker -dependency_info -Xlinker /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/Objects-normal/arm64/ForavaApp_dependency_info.dat -fobjc-link-runtime -L/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos -L/usr/lib/swift -Xlinker -add_ast_path -Xlinker /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/Objects-normal/arm64/ForavaApp.swiftmodule @/Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/Objects-normal/arm64/ForavaApp-linker-args.resp -Xlinker -alias -Xlinker _main -Xlinker ___debug_main_executable_dylib_entry_point -o /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos/ForavaApp.app/ForavaApp.debug.dylib
+
+ConstructStubExecutorLinkFileList /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/ForavaApp-ExecutorLinkFileList-normal-arm64.txt (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    construct-stub-executor-link-file-list /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos/ForavaApp.app/ForavaApp.debug.dylib /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/lib/libPreviewsJITStubExecutor_no_swift_entry_point.a /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/lib/libPreviewsJITStubExecutor.a --output /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/ForavaApp-ExecutorLinkFileList-normal-arm64.txt
+note: Using stub executor library with Swift entry point. (in target 'ForavaApp' from project 'Forava')
+
+Ld /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos/ForavaApp.app/ForavaApp normal (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target arm64-apple-ios17.0 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.0.sdk -O0 -L/Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos -F/Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos -Xlinker -rpath -Xlinker @executable_path -Xlinker -rpath -Xlinker @executable_path/Frameworks -rdynamic -Xlinker -no_deduplicate -e ___debug_blank_executor_main -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __debug_dylib -Xlinker /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/ForavaApp-DebugDylibPath-normal-arm64.txt -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __debug_instlnm -Xlinker /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/ForavaApp-DebugDylibInstallName-normal-arm64.txt -Xlinker -filelist -Xlinker /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/ForavaApp-ExecutorLinkFileList-normal-arm64.txt /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos/ForavaApp.app/ForavaApp.debug.dylib -o /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos/ForavaApp.app/ForavaApp
+
+LinkAssetCatalog /Users/kirangokal/Documents/Forava/Forava02/Forava_Assets.xcassets (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    builtin-linkAssetCatalog --thinned /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/assetcatalog_output/thinned --thinned-dependencies /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/assetcatalog_dependencies_thinned --thinned-info-plist-content /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/assetcatalog_generated_info.plist_thinned --unthinned /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/assetcatalog_output/unthinned --unthinned-dependencies /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/assetcatalog_dependencies_unthinned --unthinned-info-plist-content /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/assetcatalog_generated_info.plist_unthinned --output /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos/ForavaApp.app --plist-output /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/assetcatalog_generated_info.plist
+note: Emplaced /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos/ForavaApp.app/AppIcon60x60@2x.png (in target 'ForavaApp' from project 'Forava')
+note: Emplaced /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos/ForavaApp.app/AppIcon76x76@2x~ipad.png (in target 'ForavaApp' from project 'Forava')
+note: Emplaced /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos/ForavaApp.app/Assets.car (in target 'ForavaApp' from project 'Forava')
+
+ProcessInfoPlistFile /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos/ForavaApp.app/Info.plist /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/empty-ForavaApp.plist (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    builtin-infoPlistUtility /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/empty-ForavaApp.plist -producttype com.apple.product-type.application -genpkginfo /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos/ForavaApp.app/PkgInfo -expandbuildsettings -format binary -platform iphoneos -additionalcontentfile /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/assetcatalog_generated_info.plist -requiredArchitecture arm64 -o /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos/ForavaApp.app/Info.plist
+
+CopySwiftLibs /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos/ForavaApp.app (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    builtin-swiftStdLibTool --copy --verbose --scan-executable /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos/ForavaApp.app/ForavaApp.debug.dylib --scan-folder /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos/ForavaApp.app/Frameworks --scan-folder /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos/ForavaApp.app/PlugIns --scan-folder /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos/ForavaApp.app/SystemExtensions --scan-folder /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos/ForavaApp.app/Extensions --platform iphoneos --toolchain /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --destination /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos/ForavaApp.app/Frameworks --strip-bitcode --strip-bitcode-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip --emit-dependency-info /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/SwiftStdLibToolInputDependencies.dep --filter-for-swift-os --back-deploy-swift-span
+Ignoring --strip-bitcode because --sign was not passed
+
+ExtractAppIntentsMetadata (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/appintentsmetadataprocessor --toolchain-dir /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --module-name ForavaApp --sdk-root /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.0.sdk --xcode-version 17A400 --platform-family iOS --deployment-target 17.0 --bundle-identifier com.forava.app --output /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos/ForavaApp.app --target-triple arm64-apple-ios17.0 --binary-file /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos/ForavaApp.app/ForavaApp --dependency-file /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/Objects-normal/arm64/ForavaApp_dependency_info.dat --stringsdata-file /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/Objects-normal/arm64/ExtractedAppShortcutsMetadata.stringsdata --source-file-list /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/Objects-normal/arm64/ForavaApp.SwiftFileList --metadata-file-list /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/ForavaApp.DependencyMetadataFileList --static-metadata-file-list /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/ForavaApp.DependencyStaticMetadataFileList --swift-const-vals-list /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/Objects-normal/arm64/ForavaApp.SwiftConstValuesFileList --compile-time-extraction --deployment-aware-processing --validate-assistant-intents --no-app-shortcuts-localization
+2025-11-07 12:13:53.515 appintentsmetadataprocessor[99137:46977787] Starting appintentsmetadataprocessor export
+2025-11-07 12:13:53.598 appintentsmetadataprocessor[99137:46977787] Extracted no relevant App Intents symbols, skipping writing output
+
+AppIntentsSSUTraining (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/appintentsnltrainingprocessor --infoplist-path /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos/ForavaApp.app/Info.plist --temp-dir-path /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/ssu --bundle-id com.forava.app --product-path /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos/ForavaApp.app --extracted-metadata-path /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos/ForavaApp.app/Metadata.appintents --metadata-file-list /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Intermediates.noindex/Forava.build/Debug-iphoneos/ForavaApp.build/ForavaApp.DependencyMetadataFileList --archive-ssu-assets
+2025-11-07 12:13:53.613 appintentsnltrainingprocessor[99138:46977791] Parsing options for appintentsnltrainingprocessor
+2025-11-07 12:13:53.614 appintentsnltrainingprocessor[99138:46977791] No AppShortcuts found - Skipping.
+
+RegisterExecutionPolicyException /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos/ForavaApp.app (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    builtin-RegisterExecutionPolicyException /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos/ForavaApp.app
+
+Validate /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos/ForavaApp.app (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    builtin-validationUtility /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos/ForavaApp.app -shallow-bundle -infoplist-subpath Info.plist
+
+Touch /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos/ForavaApp.app (in target 'ForavaApp' from project 'Forava')
+    cd /Users/kirangokal/Documents/Forava/Forava02
+    /usr/bin/touch -c /Users/kirangokal/Library/Developer/Xcode/DerivedData/Forava-evmputjggvkckgbgiqsjghlxeefa/Build/Products/Debug-iphoneos/ForavaApp.app
+
+warning: ForavaApp isn't code signed but requires entitlements. It is not possible to add entitlements to a binary without signing it. (in target 'ForavaApp' from project 'Forava')
+warning: Skipping duplicate build file in Compile Sources build phase: /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Shared/CulturalDesignProtocol.swift (in target 'ForavaApp' from project 'Forava')
+warning: Skipping duplicate build file in Compile Sources build phase: /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Shared/CulturalDesignComponents.swift (in target 'ForavaApp' from project 'Forava')
+warning: Skipping duplicate build file in Compile Sources build phase: /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Shared/CulturalDesignViewModel.swift (in target 'ForavaApp' from project 'Forava')
+warning: Skipping duplicate build file in Compile Sources build phase: /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Shared/GiftDesignTypes.swift (in target 'ForavaApp' from project 'Forava')
+warning: Skipping duplicate build file in Compile Sources build phase: /Users/kirangokal/Documents/Forava/Forava02/ForavaApp/Views/CulturalDesigns/Shared/OptimizedCulturalDesignComponents.swift (in target 'ForavaApp' from project 'Forava')
+** BUILD SUCCEEDED **
+

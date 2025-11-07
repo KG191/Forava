@@ -4,20 +4,20 @@ import SwiftUI
 // MARK: - Eid al-Adha Theme Structure
 enum EidAlAdhaTheme: String, Codable, CaseIterable {
     case traditional = "Traditional"
-    case family = "Family"
+    case modern = "Modern"
     case spiritual = "Spiritual"
-    case celebration = "Celebration"
+    case festive = "Festive"
 
     var description: String {
         switch self {
         case .traditional:
-            return "Classic Eid traditions with timeless Islamic values"
-        case .family:
-            return "Family gathering and unity in Eid celebrations"
+            return "Classic Islamic aesthetics with timeless spiritual elements"
+        case .modern:
+            return "Contemporary Islamic design with sleek geometric patterns"
         case .spiritual:
-            return "Sacred Eid meaning with spiritual reflections"
-        case .celebration:
-            return "Joyful Eid festivities with community spirit"
+            return "Sacred meanings with devotional inspirations"
+        case .festive:
+            return "Vibrant celebration with joyful family gathering vibes"
         }
     }
 
@@ -25,47 +25,47 @@ enum EidAlAdhaTheme: String, Codable, CaseIterable {
         switch self {
         case .traditional:
             return [
-                "Traditional Eid Mubarak Card",
-                "Islamic Calligraphy Design",
-                "Mosque Silhouette Card",
-                "Crescent and Star Card",
-                "Classic Arabic Greeting",
-                "Traditional Pattern Card",
-                "Heritage Eid Design",
-                "Cultural Blessing Card"
+                "Classic Mosque Card",
+                "Traditional Crescent Moon",
+                "Heritage Kaaba Design",
+                "Classic Islamic Calligraphy",
+                "Traditional Geometric Pattern",
+                "Vintage Lantern Card",
+                "Classic Prayer Mat Design",
+                "Traditional Family Gathering"
             ]
-        case .family:
+        case .modern:
             return [
-                "Family Gathering Card",
-                "Unity and Togetherness",
-                "Generations Celebrating",
-                "Home and Heart Design",
-                "Family Feast Scene",
-                "Children's Joy Card",
-                "Multi-generation Card",
-                "Family Blessing Design"
+                "Minimalist Mosque Design",
+                "Contemporary Geometric Card",
+                "Modern Crescent Moon",
+                "Sleek Typography Card",
+                "Abstract Islamic Art",
+                "Modern Lantern Style",
+                "Digital Islamic Pattern",
+                "Contemporary Celebration"
             ]
         case .spiritual:
             return [
-                "Sacred Prayer Card",
+                "Sacred Kaaba Scene",
+                "Devotional Prayer Card",
                 "Spiritual Reflection Design",
-                "Divine Blessings Card",
-                "Peaceful Worship Scene",
-                "Sacred Journey Card",
-                "Pilgrimage Memory Design",
                 "Blessed Sacrifice Theme",
-                "Spiritual Gratitude Card"
+                "Divine Light Card",
+                "Sacred Islamic Calligraphy",
+                "Peaceful Worship Scene",
+                "Spiritual Blessings Card"
             ]
-        case .celebration:
+        case .festive:
             return [
-                "Festive Eid Celebration",
-                "Joyful Community Card",
-                "Colorful Festival Design",
-                "Happy Gathering Scene",
-                "Celebration Feast Card",
-                "Festival Joy Design",
-                "Community Spirit Card",
-                "Vibrant Eid Festivities"
+                "Vibrant Celebration Card",
+                "Joyful Family Gathering",
+                "Festive Lanterns Design",
+                "Colorful Geometric Pattern",
+                "Bright Eid Celebration",
+                "Happy Family Card",
+                "Festive Mosque Scene",
+                "Joyous Celebration Design"
             ]
         }
     }
@@ -73,13 +73,13 @@ enum EidAlAdhaTheme: String, Codable, CaseIterable {
     var primaryColor: Color {
         switch self {
         case .traditional:
-            return Color(hex: "#228B22") // Islamic Green
-        case .family:
-            return Color(hex: "#DAA520") // Golden Rod
+            return Color(hex: "#2E7D32") // Islamic Green
+        case .modern:
+            return Color(hex: "#00796B") // Modern Teal
         case .spiritual:
-            return Color(hex: "#4169E1") // Royal Blue
-        case .celebration:
-            return Color(hex: "#FF6347") // Tomato Red
+            return Color(hex: "#4A148C") // Spiritual Purple
+        case .festive:
+            return Color(hex: "#F57C00") // Festive Orange
         }
     }
 }
@@ -123,51 +123,51 @@ extension EidAlAdhaElement {
             name: "Mosque",
             category: .centrePiece,
             priority: 100,
-            aiPromptModifier: "beautiful mosque as central focal point, elegant Islamic architecture"
+            aiPromptModifier: "majestic mosque with minarets as central focal point, architectural Islamic beauty"
         ),
         EidAlAdhaElement(
-            name: "Crescent and Star",
+            name: "Crescent Moon",
             category: .centrePiece,
             priority: 95,
-            aiPromptModifier: "crescent moon and star as centerpiece, Islamic symbols of faith"
+            aiPromptModifier: "luminous crescent moon as main symbol, radiant Islamic celestial beauty"
         ),
         EidAlAdhaElement(
             name: "Kaaba",
             category: .centrePiece,
             priority: 92,
-            aiPromptModifier: "sacred Kaaba as focal point, symbol of Islamic pilgrimage"
+            aiPromptModifier: "sacred Kaaba as centerpiece, spiritual focal point with devotional atmosphere"
         ),
         EidAlAdhaElement(
-            name: "Arabic Calligraphy",
+            name: "Islamic Star",
             category: .centrePiece,
             priority: 90,
-            aiPromptModifier: "elegant Arabic calligraphy as centerpiece, beautiful Islamic script"
+            aiPromptModifier: "brilliant Islamic star as focal point, geometric radiance and spiritual light"
         ),
 
         // Supporting Elements (Priority 50-80)
         EidAlAdhaElement(
-            name: "Geometric Patterns",
-            category: .supportingElement,
-            priority: 80,
-            aiPromptModifier: "intricate Islamic geometric patterns as decorative accents"
-        ),
-        EidAlAdhaElement(
-            name: "Palm Branches",
-            category: .supportingElement,
-            priority: 75,
-            aiPromptModifier: "graceful palm branches as natural embellishments"
-        ),
-        EidAlAdhaElement(
             name: "Lanterns",
             category: .supportingElement,
-            priority: 70,
-            aiPromptModifier: "traditional Islamic lanterns as festive border elements"
+            priority: 80,
+            aiPromptModifier: "elegant Islamic lanterns as decorative accents, warm glowing ambiance"
         ),
         EidAlAdhaElement(
-            name: "Prayer Beads",
+            name: "Calligraphy",
+            category: .supportingElement,
+            priority: 75,
+            aiPromptModifier: "beautiful Arabic calligraphy as artistic embellishment, flowing sacred script"
+        ),
+        EidAlAdhaElement(
+            name: "Geometric Patterns",
+            category: .supportingElement,
+            priority: 70,
+            aiPromptModifier: "intricate Islamic geometric patterns as border elements, mathematical sacred art"
+        ),
+        EidAlAdhaElement(
+            name: "Prayer Mat",
             category: .supportingElement,
             priority: 65,
-            aiPromptModifier: "elegant prayer beads as spiritual decorative elements"
+            aiPromptModifier: "ornate prayer mat as grounding element, devotional foundation imagery"
         )
     ]
 
@@ -185,28 +185,38 @@ struct EidAlAdhaColorPalette: Identifiable, Codable {
     let id: UUID
     let name: String
     let description: String
-    let primaryColor: String
-    let secondaryColor: String
-    let accentColor: String
-    let backgroundHint: String
+    let primaryHex: String
+    let secondaryHex: String
+    let accentHex: String
+    let backgroundHex: String
+    let aiColorHint: String
 
-    init(name: String, description: String, primaryColor: String, 
-         secondaryColor: String, accentColor: String, backgroundHint: String) {
+    init(name: String, description: String, primaryHex: String, secondaryHex: String, accentHex: String, backgroundHex: String, aiColorHint: String) {
         self.id = UUID()
         self.name = name
         self.description = description
-        self.primaryColor = primaryColor
-        self.secondaryColor = secondaryColor
-        self.accentColor = accentColor
-        self.backgroundHint = backgroundHint
+        self.primaryHex = primaryHex
+        self.secondaryHex = secondaryHex
+        self.accentHex = accentHex
+        self.backgroundHex = backgroundHex
+        self.aiColorHint = aiColorHint
     }
 
-    var swiftUIColors: (primary: Color, secondary: Color, accent: Color) {
-        return (
-            primary: Color(hex: primaryColor),
-            secondary: Color(hex: secondaryColor),
-            accent: Color(hex: accentColor)
-        )
+    // Computed Color properties for SwiftUI
+    var primary: Color {
+        Color(hex: primaryHex)
+    }
+
+    var secondary: Color {
+        Color(hex: secondaryHex)
+    }
+
+    var accent: Color {
+        Color(hex: accentHex)
+    }
+
+    var background: Color {
+        Color(hex: backgroundHex)
     }
 }
 
@@ -214,68 +224,76 @@ struct EidAlAdhaColorPalette: Identifiable, Codable {
 extension EidAlAdhaColorPalette {
     static let allPalettes: [EidAlAdhaColorPalette] = [
         EidAlAdhaColorPalette(
-            name: "Islamic Green",
+            name: "Classic Green & Gold",
             description: "Traditional Islamic colors",
-            primaryColor: "#228B22",
-            secondaryColor: "#DAA520",
-            accentColor: "#FFFFFF",
-            backgroundHint: "peaceful Islamic atmosphere"
+            primaryHex: "#2E7D32",
+            secondaryHex: "#FFD700",
+            accentHex: "#FFFFFF",
+            backgroundHex: "#F5F5DC",
+            aiColorHint: "traditional Islamic colors with green and gold tones, warm cream background"
         ),
         EidAlAdhaColorPalette(
             name: "Desert Sunset",
-            description: "Warm desert tones",
-            primaryColor: "#CD853F",
-            secondaryColor: "#DEB887",
-            accentColor: "#F4A460",
-            backgroundHint: "warm desert landscape"
+            description: "Warm Arabian tones",
+            primaryHex: "#FF6B35",
+            secondaryHex: "#F7931E",
+            accentHex: "#8B4513",
+            backgroundHex: "#FFF0E6",
+            aiColorHint: "warm desert sunset with amber and earthy brown tones, soft peachy background"
         ),
         EidAlAdhaColorPalette(
-            name: "Golden Celebration",
-            description: "Luxurious golden theme",
-            primaryColor: "#DAA520",
-            secondaryColor: "#F0E68C",
-            accentColor: "#FFFFFF",
-            backgroundHint: "golden festive glow"
+            name: "Elegant White",
+            description: "Pure and pristine",
+            primaryHex: "#FFFFFF",
+            secondaryHex: "#C0C0C0",
+            accentHex: "#2E7D32",
+            backgroundHex: "#F5F5F5",
+            aiColorHint: "pure white with elegant silver and green accents, clean light background"
         ),
         EidAlAdhaColorPalette(
-            name: "Peaceful Blue",
-            description: "Serene spiritual tones",
-            primaryColor: "#4169E1",
-            secondaryColor: "#87CEEB",
-            accentColor: "#F0F8FF",
-            backgroundHint: "peaceful sky atmosphere"
+            name: "Modern Teal",
+            description: "Contemporary serenity",
+            primaryHex: "#00796B",
+            secondaryHex: "#26A69A",
+            accentHex: "#FFD700",
+            backgroundHex: "#E0F2F1",
+            aiColorHint: "modern teal with turquoise and gold accents, serene aqua background"
         ),
         EidAlAdhaColorPalette(
             name: "Royal Purple",
-            description: "Elegant purple and gold",
-            primaryColor: "#6A0DAD",
-            secondaryColor: "#DAA520",
-            accentColor: "#FFFFFF",
-            backgroundHint: "royal Islamic court"
+            description: "Regal spirituality",
+            primaryHex: "#4A148C",
+            secondaryHex: "#7B1FA2",
+            accentHex: "#FFD700",
+            backgroundHex: "#F3E5F5",
+            aiColorHint: "royal purple with violet and gold accents, majestic lavender background"
         ),
         EidAlAdhaColorPalette(
-            name: "Pure White",
-            description: "Clean spiritual purity",
-            primaryColor: "#FFFFFF",
-            secondaryColor: "#228B22",
-            accentColor: "#DAA520",
-            backgroundHint: "pure spiritual light"
+            name: "Warm Earth",
+            description: "Natural harmony",
+            primaryHex: "#8B4513",
+            secondaryHex: "#D2691E",
+            accentHex: "#2E7D32",
+            backgroundHex: "#F4EAD5",
+            aiColorHint: "warm earth tones with brown and green accents, natural beige background"
         ),
         EidAlAdhaColorPalette(
-            name: "Festive Red",
-            description: "Vibrant celebration colors",
-            primaryColor: "#DC143C",
-            secondaryColor: "#DAA520",
-            accentColor: "#FFFFFF",
-            backgroundHint: "vibrant celebration atmosphere"
+            name: "Bright Festive",
+            description: "Vibrant celebration",
+            primaryHex: "#F57C00",
+            secondaryHex: "#FFA726",
+            accentHex: "#2E7D32",
+            backgroundHex: "#FFF3E0",
+            aiColorHint: "bright festive orange with warm amber and green tones, cheerful cream background"
         ),
         EidAlAdhaColorPalette(
-            name: "Earth Tones",
-            description: "Natural earthy harmony",
-            primaryColor: "#8B4513",
-            secondaryColor: "#DEB887",
-            accentColor: "#F5DEB3",
-            backgroundHint: "natural earthly backdrop"
+            name: "Midnight Blue",
+            description: "Night prayer serenity",
+            primaryHex: "#0D47A1",
+            secondaryHex: "#1976D2",
+            accentHex: "#FFD700",
+            backgroundHex: "#E3F2FD",
+            aiColorHint: "midnight blue with azure and gold star accents, peaceful sky blue background"
         )
     ]
 }
@@ -293,21 +311,21 @@ struct EidAlAdhaPersonalTouch: Identifiable, Codable {
     }
 
     enum MessageTone: String, Codable, CaseIterable {
+        case peaceful = "Peaceful"
         case blessed = "Blessed"
         case joyful = "Joyful"
-        case peaceful = "Peaceful"
+        case reflective = "Reflective"
         case grateful = "Grateful"
-        case spiritual = "Spiritual"
-        case family = "Family"
+        case celebratory = "Celebratory"
 
         var color: Color {
             switch self {
-            case .blessed: return Color(hex: "#228B22")
-            case .joyful: return Color(hex: "#DAA520")
-            case .peaceful: return Color(hex: "#4169E1")
+            case .peaceful: return Color(hex: "#00796B")
+            case .blessed: return Color(hex: "#2E7D32")
+            case .joyful: return Color(hex: "#F57C00")
+            case .reflective: return Color(hex: "#4A148C")
             case .grateful: return Color(hex: "#8B4513")
-            case .spiritual: return Color(hex: "#6A0DAD")
-            case .family: return Color(hex: "#DC143C")
+            case .celebratory: return Color(hex: "#FFD700")
             }
         }
     }
@@ -317,32 +335,31 @@ struct EidAlAdhaPersonalTouch: Identifiable, Codable {
 extension EidAlAdhaPersonalTouch {
     static let optionalMessages: [EidAlAdhaPersonalTouch] = [
         EidAlAdhaPersonalTouch(
-            message: "May Allah's blessings be with you on this sacred day",
-            tone: .blessed
-        ),
-        EidAlAdhaPersonalTouch(
-            message: "Eid Mubarak! Wishing you joy and happiness",
-            tone: .joyful
-        ),
-        EidAlAdhaPersonalTouch(
-            message: "May this Eid bring peace and serenity to your heart",
+            message: "May peace and blessings be with you this Eid al-Adha",
             tone: .peaceful
         ),
         EidAlAdhaPersonalTouch(
-            message: "Grateful for your presence in our lives this Eid",
+            message: "Wishing you a blessed Eid filled with divine mercy",
+            tone: .blessed
+        ),
+        EidAlAdhaPersonalTouch(
+            message: "Eid Mubarak! May joy and happiness surround you",
+            tone: .joyful
+        ),
+        EidAlAdhaPersonalTouch(
+            message: "May this sacred occasion bring spiritual reflection",
+            tone: .reflective
+        ),
+        EidAlAdhaPersonalTouch(
+            message: "Grateful for your friendship this Eid al-Adha",
             tone: .grateful
         ),
         EidAlAdhaPersonalTouch(
-            message: "May your spiritual journey be blessed and rewarding",
-            tone: .spiritual
-        ),
-        EidAlAdhaPersonalTouch(
-            message: "Celebrating this blessed occasion with family love",
-            tone: .family
+            message: "Celebrating Eid al-Adha with heartfelt wishes for you",
+            tone: .celebratory
         )
     ]
 
     static let personalMessagePlaceholder = "Add your own personal Eid al-Adha message here..."
     static let maxPersonalMessageLength = 200
 }
-
