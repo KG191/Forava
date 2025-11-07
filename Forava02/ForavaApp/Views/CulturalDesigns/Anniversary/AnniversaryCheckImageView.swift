@@ -225,25 +225,25 @@ struct AnniversaryCheckImageView: View {
                         .stroke(culturalColor.opacity(0.3), lineWidth: 2)
                 )
                 .shadow(color: culturalColor.opacity(0.2), radius: 8, x: 0, y: 4)
-                .overlay(
-                    // Tap hint overlay
-                    VStack {
-                        Spacer()
-                        HStack {
-                            Spacer()
-                            Text("Tap to view full size")
-                                .font(.system(.caption2, design: .rounded).weight(.medium))
-                                .foregroundStyle(.white)
-                                .padding(.horizontal, 12)
-                                .padding(.vertical, 6)
-                                .background(
+                .overlay(alignment: .bottom) {
+                    // Tap hint overlay - centered bottom with glass morphism
+                    Text("Tap to view full size")
+                        .font(.system(.caption, design: .rounded).weight(.semibold))
+                        .foregroundStyle(.white)
+                        .shadow(color: .black.opacity(0.9), radius: 3, x: 0, y: 1)
+                        .shadow(color: .black.opacity(0.6), radius: 6, x: 0, y: 3)
+                        .padding(.horizontal, 16)
+                        .padding(.vertical, 10)
+                        .background(
+                            Capsule()
+                                .fill(.thickMaterial)
+                                .overlay(
                                     Capsule()
-                                        .fill(.black.opacity(0.6))
+                                        .fill(.black.opacity(0.5))
                                 )
-                                .padding(8)
-                        }
-                    }
-                )
+                        )
+                        .padding(.bottom, 16)
+                }
             }
             .buttonStyle(.plain)
 

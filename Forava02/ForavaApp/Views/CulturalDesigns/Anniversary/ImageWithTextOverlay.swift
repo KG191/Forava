@@ -35,24 +35,30 @@ struct ImageWithTextOverlay: View {
                     }
                 }
 
-                // Text overlay - positioned relative to actual displayed size
+                // Text overlay - positioned at bottom with background
                 if !message.isEmpty && message != "No message selected" {
                     VStack {
                         Spacer()
-                            .frame(height: geometry.size.height * 0.25)
 
                         Text(message)
                             .font(textFont(for: geometry.size))
                             .foregroundStyle(.white)
                             .multilineTextAlignment(.center)
                             .lineLimit(3)
-                            .shadow(color: culturalColor.opacity(0.8), radius: 6, x: 0, y: 2)
-                            .shadow(color: culturalColor.opacity(0.5), radius: 12, x: 0, y: 4)
+                            .shadow(color: .black.opacity(0.9), radius: 3, x: 0, y: 1)
+                            .shadow(color: .black.opacity(0.6), radius: 6, x: 0, y: 3)
                             .padding(.horizontal, max(geometry.size.width * 0.08, 16))
-                            .padding(.vertical, 12)
+                            .padding(.vertical, 16)
+                            .background(
+                                RoundedRectangle(cornerRadius: 16)
+                                    .fill(.thickMaterial)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 16)
+                                            .fill(culturalColor.opacity(0.4))
+                                    )
+                            )
                             .padding(.horizontal, max(geometry.size.width * 0.06, 12))
-
-                        Spacer()
+                            .padding(.bottom, max(geometry.size.height * 0.05, 16))
                     }
                 }
             }
