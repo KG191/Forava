@@ -99,13 +99,21 @@ Create in `ForavaApp/Views/CulturalDesigns/[Culture]/`:
   - [ ] **VERIFY**: `wc -l [Culture]DesignView.swift` shows 250+ lines
   - [ ] **NEVER** use `PlaceholderCulturalView`
 
-### 5. 🎯 CRITICAL: Add Routing (Single Source of Truth)
-- [ ] **Update `CulturalGiftDesignView.swift`** (line ~17)
+### 5. 🎯 CRITICAL: Add Routing (BOTH Locations Required)
+- [ ] **FIRST: Update `CulturalGiftDesignView.swift`** (line ~45)
   ```swift
   case "[culture name]":
       [Culture]DesignView(selectedContact: selectedContact, selectedEvent: selectedEvent)
   ```
-- [ ] ⚠️ DO NOT modify `TempCulturalGiftDesignView` (deprecated)
+- [ ] **SECOND: ALSO update `TempCulturalGiftDesignView`** in `CulturalGiftSelectionView.swift` (line ~530)
+  ```swift
+  case "[culture name]":
+      [Culture]DesignView(selectedContact: selectedContact, selectedEvent: selectedEvent)
+  ```
+  - ⚠️ **CRITICAL**: Despite being marked `@available(*, deprecated)`, this routing is STILL ACTIVE
+  - This has caused recurring issues for: Vesak Day (commit fd47bbc), Rosh Hashanah (commit d591998), Christmas (commit current)
+  - **If you skip this step, tabs won't show after selecting a contact**
+  - Until TempCulturalGiftDesignView is fully removed, ALL cultures need BOTH routing locations
 
 ### 6. Cultural Event Registration
 - [ ] Verify culture exists in `CulturalEvent.allEvents` in `ForavaApp/Models/CulturalEvent.swift`
@@ -143,9 +151,18 @@ Create in `ForavaApp/Views/CulturalDesigns/[Culture]/`:
 
 ## 🔍 Common Issues & Solutions
 
-### Issue: Tabs not showing, seeing "Coming Soon" message
-**Cause:** Routing not added to `CulturalGiftDesignView.swift`
-**Solution:** Add case to switch statement in `CulturalGiftDesignView.swift` (see Step 5)
+### Issue: Tabs not showing, seeing "Coming Soon" message (RECURRING ISSUE #1)
+**Cause:** Routing added to `CulturalGiftDesignView.swift` but NOT to `TempCulturalGiftDesignView`
+**Solution:** Add case to switch statement in **BOTH** locations:
+1. `CulturalGiftDesignView.swift` (line ~45)
+2. `TempCulturalGiftDesignView` in `CulturalGiftSelectionView.swift` (line ~530)
+
+**Historical Pattern:** This has happened to:
+- Vesak Day (November 1, 2025 - commit fd47bbc)
+- Rosh Hashanah (November 2, 2025 - commit d591998)
+- Christmas (November 7, 2025 - current fix)
+
+**Prevention:** Always add routing to BOTH locations until TempCulturalGiftDesignView is completely removed from the codebase
 
 ### Issue: "Creating [Culture] Gift Cultural Design Studio" placeholder
 **Cause:** Event name mismatch between `CulturalEvent.allEvents` and routing case

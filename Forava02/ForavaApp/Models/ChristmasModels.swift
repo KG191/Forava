@@ -185,27 +185,38 @@ struct ChristmasColorPalette: Identifiable, Codable {
     let id: UUID
     let name: String
     let description: String
-    let primaryColor: String
-    let secondaryColor: String
-    let accentColor: String
-    let backgroundHint: String
+    let primaryHex: String
+    let secondaryHex: String
+    let accentHex: String
+    let backgroundHex: String
+    let aiColorHint: String
 
-    init(name: String, description: String, primaryColor: String, secondaryColor: String, accentColor: String, backgroundHint: String) {
+    init(name: String, description: String, primaryHex: String, secondaryHex: String, accentHex: String, backgroundHex: String, aiColorHint: String) {
         self.id = UUID()
         self.name = name
         self.description = description
-        self.primaryColor = primaryColor
-        self.secondaryColor = secondaryColor
-        self.accentColor = accentColor
-        self.backgroundHint = backgroundHint
+        self.primaryHex = primaryHex
+        self.secondaryHex = secondaryHex
+        self.accentHex = accentHex
+        self.backgroundHex = backgroundHex
+        self.aiColorHint = aiColorHint
     }
 
-    var swiftUIColors: (primary: Color, secondary: Color, accent: Color) {
-        return (
-            primary: Color(hex: primaryColor),
-            secondary: Color(hex: secondaryColor),
-            accent: Color(hex: accentColor)
-        )
+    // Computed Color properties for SwiftUI
+    var primary: Color {
+        Color(hex: primaryHex)
+    }
+
+    var secondary: Color {
+        Color(hex: secondaryHex)
+    }
+
+    var accent: Color {
+        Color(hex: accentHex)
+    }
+
+    var background: Color {
+        Color(hex: backgroundHex)
     }
 }
 
@@ -215,66 +226,74 @@ extension ChristmasColorPalette {
         ChristmasColorPalette(
             name: "Classic",
             description: "Traditional Christmas colors",
-            primaryColor: "#C41E3A",
-            secondaryColor: "#228B22",
-            accentColor: "#FFD700",
-            backgroundHint: "warm winter atmosphere"
+            primaryHex: "#C41E3A",
+            secondaryHex: "#228B22",
+            accentHex: "#FFD700",
+            backgroundHex: "#FFFFFF",
+            aiColorHint: "warm winter atmosphere with traditional red and green Christmas tones"
         ),
         ChristmasColorPalette(
             name: "Winter Wonderland",
             description: "Cool winter tones",
-            primaryColor: "#FFFFFF",
-            secondaryColor: "#C0C0C0",
-            accentColor: "#4169E1",
-            backgroundHint: "snowy winter landscape"
+            primaryHex: "#FFFFFF",
+            secondaryHex: "#C0C0C0",
+            accentHex: "#4169E1",
+            backgroundHex: "#E6F3FF",
+            aiColorHint: "snowy winter landscape with cool silvery blue tones"
         ),
         ChristmasColorPalette(
             name: "Golden Elegance",
             description: "Luxurious golden theme",
-            primaryColor: "#FFD700",
-            secondaryColor: "#F5F5DC",
-            accentColor: "#800020",
-            backgroundHint: "elegant golden glow"
+            primaryHex: "#FFD700",
+            secondaryHex: "#F5F5DC",
+            accentHex: "#800020",
+            backgroundHex: "#FFF9E6",
+            aiColorHint: "elegant golden glow with luxurious burgundy accents"
         ),
         ChristmasColorPalette(
             name: "Modern Minimalist",
             description: "Contemporary simplicity",
-            primaryColor: "#000000",
-            secondaryColor: "#FFFFFF",
-            accentColor: "#FFD700",
-            backgroundHint: "clean modern background"
+            primaryHex: "#000000",
+            secondaryHex: "#FFFFFF",
+            accentHex: "#FFD700",
+            backgroundHex: "#F5F5F5",
+            aiColorHint: "clean modern background with minimalist black, white, and gold palette"
         ),
         ChristmasColorPalette(
             name: "Rustic Charm",
             description: "Cozy cabin vibes",
-            primaryColor: "#8B4513",
-            secondaryColor: "#228B22",
-            accentColor: "#DC143C",
-            backgroundHint: "rustic wooden texture"
+            primaryHex: "#8B4513",
+            secondaryHex: "#228B22",
+            accentHex: "#DC143C",
+            backgroundHex: "#F4EAD5",
+            aiColorHint: "rustic wooden texture with warm brown and forest green tones"
         ),
         ChristmasColorPalette(
             name: "Festive Bright",
             description: "Vibrant holiday spirit",
-            primaryColor: "#FF0000",
-            secondaryColor: "#00FF00",
-            accentColor: "#FFFFFF",
-            backgroundHint: "bright festive atmosphere"
+            primaryHex: "#FF0000",
+            secondaryHex: "#00FF00",
+            accentHex: "#FFFFFF",
+            backgroundHex: "#FFF5E6",
+            aiColorHint: "bright festive atmosphere with vibrant red and green holiday colors"
         ),
         ChristmasColorPalette(
             name: "Royal Christmas",
             description: "Regal purple and gold",
-            primaryColor: "#663399",
-            secondaryColor: "#FFD700",
-            accentColor: "#C0C0C0",
-            backgroundHint: "royal velvet backdrop"
+            primaryHex: "#663399",
+            secondaryHex: "#FFD700",
+            accentHex: "#C0C0C0",
+            backgroundHex: "#F0E6FF",
+            aiColorHint: "royal velvet backdrop with regal purple, gold, and silver tones"
         ),
         ChristmasColorPalette(
             name: "Warm Cozy",
             description: "Fireplace warmth",
-            primaryColor: "#FF8C00",
-            secondaryColor: "#8B4513",
-            accentColor: "#FFD700",
-            backgroundHint: "warm fireplace glow"
+            primaryHex: "#FF8C00",
+            secondaryHex: "#8B4513",
+            accentHex: "#FFD700",
+            backgroundHex: "#FFF0E6",
+            aiColorHint: "warm fireplace glow with cozy orange, brown, and golden tones"
         )
     ]
 }
@@ -344,4 +363,3 @@ extension ChristmasPersonalTouch {
     static let personalMessagePlaceholder = "Add your own personal Christmas message here..."
     static let maxPersonalMessageLength = 200
 }
-

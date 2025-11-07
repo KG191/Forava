@@ -196,10 +196,11 @@ extension ChristmasDesignView {
         print("Tab 2 - ELEMENTS (\(selectedElements.count)): \(selectedElements.map { $0.name }.joined(separator: ", "))")
         print("Tab 3 - COLOR PALETTE: \(selectedColorPalette?.name ?? "❌ NOT SELECTED")")
         if let colors = selectedColorPalette {
-            print("        PRIMARY: \(colors.primaryColor)")
-            print("        SECONDARY: \(colors.secondaryColor)")
-            print("        ACCENT: \(colors.accentColor)")
-            print("        BACKGROUND: \(colors.backgroundHint)")
+            print("        PRIMARY: \(colors.primaryHex)")
+            print("        SECONDARY: \(colors.secondaryHex)")
+            print("        ACCENT: \(colors.accentHex)")
+            print("        BACKGROUND: \(colors.backgroundHex)")
+            print("        AI COLOR HINT: \(colors.aiColorHint)")
         }
         print("Tab 4 - MESSAGE: \(finalMessage)")
         print("=" + String(repeating: "=", count: 79))

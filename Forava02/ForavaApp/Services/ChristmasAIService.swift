@@ -15,7 +15,7 @@ class ChristmasAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
 
     override init() {
         super.init()
-        print("<„ ChristmasAIService initialized")
+        print("<ï¿½ ChristmasAIService initialized")
     }
 
     enum ImageFormat {
@@ -50,11 +50,11 @@ class ChristmasAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
         let dalle3Size: DALLE3Service.ImageSize = format == .iPhone ? .size1024x1792 : .size1024
         let prompt = createCulturalPrompt(from: designSpec)
 
-        print("<„ Generating Christmas gift with DALL-E 3")
-        print("<„ Theme: \(designSpec.theme.rawValue)")
-        print("<„ Element: \(designSpec.element?.name ?? "None")")
-        print("<„ Palette: \(designSpec.colorPalette.name)")
-        print("<„ Size: \(dalle3Size)")
+        print("<ï¿½ Generating Christmas gift with DALL-E 3")
+        print("<ï¿½ Theme: \(designSpec.theme.rawValue)")
+        print("<ï¿½ Element: \(designSpec.element?.name ?? "None")")
+        print("<ï¿½ Palette: \(designSpec.colorPalette.name)")
+        print("<ï¿½ Size: \(dalle3Size)")
 
         return try await dalle3Service.generateImage(
             prompt: prompt,
@@ -67,20 +67,20 @@ class ChristmasAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
     private func generateWithSDXL(designSpec: ChristmasDesignSpec, format: ImageFormat) async throws -> String {
         let (width, height) = format == .iPhone ? (1024, 1792) : (1024, 1024)
 
-        print("<„ Generating Christmas gift with SDXL")
-        print("<„ Theme: \(designSpec.theme.rawValue)")
-        print("<„ Element: \(designSpec.element?.name ?? "None")")
-        print("<„ Palette: \(designSpec.colorPalette.name)")
-        print("<„ Size: \(width)x\(height)")
+        print("<ï¿½ Generating Christmas gift with SDXL")
+        print("<ï¿½ Theme: \(designSpec.theme.rawValue)")
+        print("<ï¿½ Element: \(designSpec.element?.name ?? "None")")
+        print("<ï¿½ Palette: \(designSpec.colorPalette.name)")
+        print("<ï¿½ Size: \(width)x\(height)")
 
         return try await generateCulturalGift(
             prompt: createCulturalPrompt(from: designSpec),
             culturalContext: "Christmas",
             width: width,
             height: height,
-            primaryColor: designSpec.colorPalette.primaryColor,
-            secondaryColor: designSpec.colorPalette.secondaryColor,
-            accentColor: designSpec.colorPalette.accentColor,
+            primaryColor: designSpec.colorPalette.primaryHex,
+            secondaryColor: designSpec.colorPalette.secondaryHex,
+            accentColor: designSpec.colorPalette.accentHex,
             additionalNegativePrompt: ""
         )
     }
@@ -100,7 +100,7 @@ class ChristmasAIService: BaseCulturalAIService, CulturalAIServiceProtocol {
         }
 
         // Color palette
-        promptComponents.append(designSpec.colorPalette.backgroundHint)
+        promptComponents.append(designSpec.colorPalette.aiColorHint)
 
         // Quality and style modifiers
         promptComponents.append("festive holiday atmosphere")

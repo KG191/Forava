@@ -378,40 +378,52 @@ open Forava.xcodeproj
 - `Forava02/CULTURAL_DESIGN_IMPLEMENTATION_PROTOCOL.md` - Full 7-step protocol
 - `Forava02/CULTURAL_DESIGN_CHECKLIST.md` - Implementation checklist
 
-### 🎯 CRITICAL: Cultural Routing Architecture (Single Source of Truth)
+### 🎯 CRITICAL: Cultural Routing Architecture (Dual Routing Required)
 
-**Issue Identified (2025-11-01)**: Vesak Day tabs were not appearing due to duplicate routing logic in two locations.
+**Issue Pattern (RECURRING)**: Tabs not appearing after selecting contact for new cultural designs.
 
-**Architectural Consolidation Implemented**:
-- **Single Source**: `ForavaApp/Views/CulturalGiftDesignView.swift` is the ONLY file for cultural routing
-- **Deprecated**: `TempCulturalGiftDesignView` (inside `CulturalGiftSelectionView.swift`) marked as deprecated
-- **Prevention**: All future cultural designs must ONLY add routing to `CulturalGiftDesignView.swift`
+**Root Cause**: Despite architectural consolidation attempts, the app still uses TWO routing systems:
+- **Primary Router**: `ForavaApp/Views/CulturalGiftDesignView.swift` (intended single source of truth)
+- **Legacy Router**: `TempCulturalGiftDesignView` (inside `CulturalGiftSelectionView.swift`, marked deprecated but STILL ACTIVE)
 
-**When Adding New Cultural Design**:
+**Historical Failures**: This has caused recurring issues for:
+- Vesak Day (November 1, 2025 - commit fd47bbc)
+- Rosh Hashanah (November 2, 2025 - commit d591998)
+- Christmas (November 7, 2025 - current fix)
+
+**When Adding New Cultural Design (BOTH Locations Required)**:
+
+**Step 1 - Update CulturalGiftDesignView.swift** (line ~45):
 ```swift
-// ONLY edit this file: ForavaApp/Views/CulturalGiftDesignView.swift
-// Add new case around line 17:
-
 switch selectedEvent.name.lowercased() {
 case "anniversary":
     AnniversaryDesignView(...)
 case "chinese new year":
     ChineseNewYearDesignView(...)
-case "diwali":
-    DiwaliDesignView(...)
-case "vesak day":
-    VesakDayDesignView(...)
-case "christmas":  // ← Add new culture here
+case "christmas":  // ← Add new culture here FIRST
     ChristmasDesignView(...)
 default:
     // Coming Soon placeholder
 }
 ```
 
-**DO NOT**:
-- ❌ Modify `TempCulturalGiftDesignView` (deprecated, will be removed)
-- ❌ Create additional routing views
-- ❌ Add routing logic anywhere except `CulturalGiftDesignView.swift`
+**Step 2 - ALSO Update TempCulturalGiftDesignView** in `CulturalGiftSelectionView.swift` (line ~530):
+```swift
+// Yes, you MUST add routing here too, despite it being deprecated
+switch selectedEvent.name.lowercased() {
+case "easter":
+    EasterDesignView(...)
+case "christmas":  // ← ALSO add here or tabs won't show
+    ChristmasDesignView(...)
+default:
+    // Placeholder
+}
+```
+
+**CRITICAL WARNING**:
+- ⚠️ If you only add routing to CulturalGiftDesignView.swift, **tabs will NOT show**
+- ⚠️ The app will display "Coming Soon" placeholder instead of the 7-tab interface
+- ⚠️ This is technical debt: TempCulturalGiftDesignView must be fully removed, but until then ALL cultures need BOTH locations
 
 **Checklist Reference**: See `Forava02/CULTURAL_DESIGN_CHECKLIST.md` for complete implementation guide
 
