@@ -2,6 +2,7 @@ import SwiftUI
 
 struct CulturalCarouselView: View {
     @State private var selectedEventIndex: Int = 0
+    @State private var scrolledID: Int? = 0  // Track scroll position for programmatic scrolling
 
     let events = CulturalEvent.allEvents
     let onEventSelected: (CulturalEvent) -> Void
@@ -12,57 +13,42 @@ struct CulturalCarouselView: View {
     var body: some View {
         VStack(spacing: 20) {
             // Main Carousel with smooth scrolling
-            ScrollViewReader { proxy in
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: cardSpacing) {
-                        ForEach(Array(events.enumerated()), id: \.offset) { index, event in
-                            CulturalEventCard(
-                                event: event,
-                                isSelected: selectedEventIndex == index,
-                                onTap: {
-                                    // Only scroll if selecting a different card
-                                    if selectedEventIndex != index {
-                                        selectEvent(at: index)
-                                        // Smooth scroll to selected card
-                                        withAnimation(.easeInOut(duration: 0.6)) {
-                                            proxy.scrollTo(index, anchor: .center)
-                                        }
-                                    } else {
-                                        // Already selected - just provide haptic feedback
-                                        let impactFeedback = UIImpactFeedbackGenerator(style: .medium)
-                                        impactFeedback.impactOccurred()
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: cardSpacing) {
+                    ForEach(Array(events.enumerated()), id: \.offset) { index, event in
+                        CulturalEventCard(
+                            event: event,
+                            isSelected: selectedEventIndex == index,
+                            onTap: {
+                                // Only scroll if selecting a different card
+                                if selectedEventIndex != index {
+                                    selectEvent(at: index)
+                                    // Trigger smooth scroll to selected card
+                                    withAnimation(.easeInOut(duration: 0.6)) {
+                                        scrolledID = index
                                     }
-                                }
-                            )
-                            .frame(width: cardWidth, alignment: .top)
-                            .padding(.bottom, 10) // Extra padding to prevent label cutoff
-                            .id(index)
-                            .onAppear {
-                                // Update selection based on which card is most visible
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                                    if abs(index - selectedEventIndex) < abs(selectedEventIndex - index) {
-                                        selectedEventIndex = index
-                                    }
+                                } else {
+                                    // Already selected - just provide haptic feedback
+                                    let impactFeedback = UIImpactFeedbackGenerator(style: .medium)
+                                    impactFeedback.impactOccurred()
                                 }
                             }
-                        }
-                    }
-                    .scrollTargetLayout()
-                    .padding(.horizontal, max(20, (UIScreen.main.bounds.width - cardWidth) / 2))
-                }
-                .scrollTargetBehavior(.viewAligned)
-                .onChange(of: selectedEventIndex) { _, newIndex in
-                    // Smooth scroll to newly selected index
-                    withAnimation(.easeInOut(duration: 0.6)) {
-                        proxy.scrollTo(newIndex, anchor: .center)
+                        )
+                        .frame(width: cardWidth, alignment: .top)
+                        .padding(.bottom, 10) // Extra padding to prevent label cutoff
+                        .id(index)
                     }
                 }
-                .onAppear {
-                    // Center the first event
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                        withAnimation(.easeInOut(duration: 0.5)) {
-                            proxy.scrollTo(0, anchor: .center)
-                        }
+                .scrollTargetLayout()
+                .padding(.horizontal, max(20, (UIScreen.main.bounds.width - cardWidth) / 2))
+            }
+            .scrollPosition(id: $scrolledID, anchor: .center)
+            .scrollTargetBehavior(.viewAligned)
+            .onAppear {
+                // Center the first event
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    withAnimation(.easeInOut(duration: 0.5)) {
+                        scrolledID = 0
                     }
                 }
             }
@@ -78,6 +64,7 @@ struct CulturalCarouselView: View {
                         .onTapGesture {
                             withAnimation(.easeInOut(duration: 0.6)) {
                                 selectedEventIndex = index
+                                scrolledID = index  // Also trigger programmatic scroll
                             }
 
                             // Provide haptic feedback
