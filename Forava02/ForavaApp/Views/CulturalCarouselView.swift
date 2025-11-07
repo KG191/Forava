@@ -28,9 +28,10 @@ struct CulturalCarouselView: View {
                                         scrolledID = index
                                     }
                                 } else {
-                                    // Already selected - just provide haptic feedback
+                                    // Already selected - navigate to contact selection
                                     let impactFeedback = UIImpactFeedbackGenerator(style: .medium)
                                     impactFeedback.impactOccurred()
+                                    onEventSelected(event)
                                 }
                             }
                         )
