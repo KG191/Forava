@@ -20,10 +20,17 @@ struct CulturalCarouselView: View {
                                 event: event,
                                 isSelected: selectedEventIndex == index,
                                 onTap: {
-                                    selectEvent(at: index)
-                                    // Smooth scroll to selected card
-                                    withAnimation(.easeInOut(duration: 0.6)) {
-                                        proxy.scrollTo(index, anchor: .center)
+                                    // Only scroll if selecting a different card
+                                    if selectedEventIndex != index {
+                                        selectEvent(at: index)
+                                        // Smooth scroll to selected card
+                                        withAnimation(.easeInOut(duration: 0.6)) {
+                                            proxy.scrollTo(index, anchor: .center)
+                                        }
+                                    } else {
+                                        // Already selected - just provide haptic feedback
+                                        let impactFeedback = UIImpactFeedbackGenerator(style: .medium)
+                                        impactFeedback.impactOccurred()
                                     }
                                 }
                             )

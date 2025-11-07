@@ -95,14 +95,6 @@ extension CulturalEvent {
             culturalContext: "Universal celebration of lasting bonds and cherished memories"
         ),
         CulturalEvent(
-            name: "Birthdays",
-            imageName: "Birthdays",
-            description: "Universal celebration of life and personal milestones",
-            category: .universal,
-            colors: ["#FF69B4", "#00BFFF", "#FFD700"],
-            culturalContext: "Universal celebration marking another year of life and growth"
-        ),
-        CulturalEvent(
             name: "Chinese New Year",
             imageName: "ChineseNewYear",
             description: "Lunar New Year celebration with family traditions",
@@ -141,15 +133,6 @@ extension CulturalEvent {
             category: .islamic,
             colors: ["#4682B4", "#FFD700", "#20B2AA"],
             culturalContext: "Islamic festival commemorating Ibrahim's willingness to sacrifice"
-        ),
-        CulturalEvent(
-            name: "Eid al-Fitr",
-            imageName: "Eid al-Fitri",
-            description: "Islamic celebration marking the end of Ramadan",
-            category: .islamic,
-            colors: ["#008B8B", "#FFD700", "#32CD32"],
-            culturalContext: "Islamic festival celebrating the breaking of the Ramadan fast",
-            isComingSoon: true
         ),
         CulturalEvent(
             name: "Hanukkah",
