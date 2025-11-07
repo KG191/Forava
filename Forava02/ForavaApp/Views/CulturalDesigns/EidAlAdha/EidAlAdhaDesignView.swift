@@ -16,6 +16,7 @@ struct EidAlAdhaDesignView: View, CulturalDesignViewProtocol {
     typealias CreateContent = EidAlAdhaCreateSummaryView
     typealias CheckContent = EidAlAdhaCheckImageView
     typealias SendContent = EidAlAdhaSendShareView
+    typealias ConnectContent = EidAlAdhaConnectView
 
     let selectedContact: Contact
     let selectedEvent: CulturalEvent
@@ -70,6 +71,9 @@ struct EidAlAdhaDesignView: View, CulturalDesignViewProtocol {
                         .transition(.opacity)
                 } else if currentTab == .send {
                     sendContent()
+                        .transition(.opacity)
+                } else if currentTab == .connect {
+                    connectContent()
                         .transition(.opacity)
                 }
             }
@@ -183,6 +187,13 @@ extension EidAlAdhaDesignView {
             onGoBackToGenerate: {
                 currentTab = .create
             }
+        )
+    }
+
+    @ViewBuilder func connectContent() -> ConnectContent {
+        EidAlAdhaConnectView(
+            selectedContact: selectedContact,
+            culturalColor: culturalColor
         )
     }
 

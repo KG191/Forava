@@ -16,6 +16,7 @@ struct HanukkahDesignView: View, CulturalDesignViewProtocol {
     typealias CreateContent = HanukkahCreateSummaryView
     typealias CheckContent = HanukkahCheckImageView
     typealias SendContent = HanukkahSendShareView
+    typealias ConnectContent = HanukkahConnectView
 
     let selectedContact: Contact
     let selectedEvent: CulturalEvent
@@ -70,6 +71,9 @@ struct HanukkahDesignView: View, CulturalDesignViewProtocol {
                         .transition(.opacity)
                 } else if currentTab == .send {
                     sendContent()
+                        .transition(.opacity)
+                } else if currentTab == .connect {
+                    connectContent()
                         .transition(.opacity)
                 }
             }
@@ -183,6 +187,13 @@ extension HanukkahDesignView {
             onGoBackToGenerate: {
                 currentTab = .create
             }
+        )
+    }
+
+    @ViewBuilder func connectContent() -> ConnectContent {
+        HanukkahConnectView(
+            selectedContact: selectedContact,
+            culturalColor: culturalColor
         )
     }
 

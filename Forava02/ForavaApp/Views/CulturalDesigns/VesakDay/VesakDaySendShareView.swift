@@ -172,10 +172,15 @@ struct VesakDaySendShareView: View {
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 16)
                 .background(
-                    RoundedRectangle(cornerRadius: 12)
-                        .fill(culturalColor.gradient)
+                    LinearGradient(
+                        colors: [Color(hex: "#FF8A00"), Color(hex: "#E05A00")],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
                 )
                 .foregroundStyle(.white)
+                .cornerRadius(12)
+                .shadow(color: .black.opacity(0.18), radius: 14, y: 8)
             }
             .padding(.horizontal, 20)
 
@@ -193,10 +198,15 @@ struct VesakDaySendShareView: View {
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 16)
                 .background(
-                    RoundedRectangle(cornerRadius: 12)
-                        .strokeBorder(culturalColor, lineWidth: 2)
+                    LinearGradient(
+                        colors: [Color(hex: "#FF8A00"), Color(hex: "#E05A00")],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
                 )
-                .foregroundStyle(culturalColor)
+                .foregroundStyle(.white)
+                .cornerRadius(12)
+                .shadow(color: .black.opacity(0.18), radius: 14, y: 8)
             }
             .padding(.horizontal, 20)
 
@@ -214,10 +224,15 @@ struct VesakDaySendShareView: View {
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 16)
                 .background(
-                    RoundedRectangle(cornerRadius: 12)
-                        .strokeBorder(culturalColor, lineWidth: 2)
+                    LinearGradient(
+                        colors: [Color(hex: "#FF8A00"), Color(hex: "#E05A00")],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
                 )
-                .foregroundStyle(culturalColor)
+                .foregroundStyle(.white)
+                .cornerRadius(12)
+                .shadow(color: .black.opacity(0.18), radius: 14, y: 8)
             }
             .padding(.horizontal, 20)
 

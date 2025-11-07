@@ -16,6 +16,7 @@ struct ChineseNewYearDesignView: View, CulturalDesignViewProtocol {
     typealias CreateContent = ChineseNewYearCreateSummaryView
     typealias CheckContent = ChineseNewYearCheckImageView
     typealias SendContent = ChineseNewYearSendShareView
+    typealias ConnectContent = ChineseNewYearConnectView
 
     let selectedContact: Contact
     let selectedEvent: CulturalEvent
@@ -70,6 +71,9 @@ struct ChineseNewYearDesignView: View, CulturalDesignViewProtocol {
                         .transition(.opacity)
                 } else if currentTab == .send {
                     sendContent()
+                        .transition(.opacity)
+                } else if currentTab == .connect {
+                    connectContent()
                         .transition(.opacity)
                 }
             }
@@ -183,6 +187,13 @@ extension ChineseNewYearDesignView {
             onGoBackToGenerate: {
                 currentTab = .create
             }
+        )
+    }
+
+    @ViewBuilder func connectContent() -> ConnectContent {
+        ChineseNewYearConnectView(
+            selectedContact: selectedContact,
+            culturalColor: culturalColor
         )
     }
 

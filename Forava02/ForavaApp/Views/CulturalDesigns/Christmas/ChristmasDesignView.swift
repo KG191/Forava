@@ -16,6 +16,7 @@ struct ChristmasDesignView: View, CulturalDesignViewProtocol {
     typealias CreateContent = ChristmasCreateSummaryView
     typealias CheckContent = ChristmasCheckImageView
     typealias SendContent = ChristmasSendShareView
+    typealias ConnectContent = ChristmasConnectView
 
     let selectedContact: Contact
     let selectedEvent: CulturalEvent
@@ -70,6 +71,9 @@ struct ChristmasDesignView: View, CulturalDesignViewProtocol {
                         .transition(.opacity)
                 } else if currentTab == .send {
                     sendContent()
+                        .transition(.opacity)
+                } else if currentTab == .connect {
+                    connectContent()
                         .transition(.opacity)
                 }
             }
@@ -183,6 +187,13 @@ extension ChristmasDesignView {
             onGoBackToGenerate: {
                 currentTab = .create
             }
+        )
+    }
+
+    @ViewBuilder func connectContent() -> ConnectContent {
+        ChristmasConnectView(
+            selectedContact: selectedContact,
+            culturalColor: culturalColor
         )
     }
 

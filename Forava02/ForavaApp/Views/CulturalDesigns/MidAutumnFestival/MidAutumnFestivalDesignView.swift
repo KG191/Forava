@@ -16,6 +16,7 @@ struct MidAutumnFestivalDesignView: View, CulturalDesignViewProtocol {
     typealias CreateContent = MidAutumnFestivalCreateSummaryView
     typealias CheckContent = MidAutumnFestivalCheckImageView
     typealias SendContent = MidAutumnFestivalSendShareView
+    typealias ConnectContent = MidAutumnFestivalConnectView
 
     let selectedContact: Contact
     let selectedEvent: CulturalEvent
@@ -70,6 +71,9 @@ struct MidAutumnFestivalDesignView: View, CulturalDesignViewProtocol {
                         .transition(.opacity)
                 } else if currentTab == .send {
                     sendContent()
+                        .transition(.opacity)
+                } else if currentTab == .connect {
+                    connectContent()
                         .transition(.opacity)
                 }
             }
@@ -183,6 +187,13 @@ extension MidAutumnFestivalDesignView {
             onGoBackToGenerate: {
                 currentTab = .create
             }
+        )
+    }
+
+    @ViewBuilder func connectContent() -> ConnectContent {
+        MidAutumnFestivalConnectView(
+            selectedContact: selectedContact,
+            culturalColor: culturalColor
         )
     }
 

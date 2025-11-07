@@ -25,7 +25,6 @@ struct AnniversarySendShareView: View {
     enum ShareMethod: String, CaseIterable {
         case messages = "Messages"
         case mail = "Email"
-        case photos = "Save to Photos"
         case socialMedia = "Social Media"
         case airdrop = "AirDrop"
 
@@ -33,7 +32,6 @@ struct AnniversarySendShareView: View {
             switch self {
             case .messages: return "message.fill"
             case .mail: return "envelope.fill"
-            case .photos: return "photo.fill"
             case .socialMedia: return "square.and.arrow.up.fill"
             case .airdrop: return "wifi.circle.fill"
             }
@@ -43,7 +41,6 @@ struct AnniversarySendShareView: View {
             switch self {
             case .messages: return .green
             case .mail: return .blue
-            case .photos: return .purple
             case .socialMedia: return .orange
             case .airdrop: return .cyan
             }
@@ -362,12 +359,19 @@ struct AnniversarySendShareView: View {
             Button("Go Back to Generate") {
                 onGoBackToGenerate()
             }
-            .font(.system(.subheadline, design: .rounded).weight(.medium))
-            .foregroundStyle(culturalColor)
-            .padding(.horizontal, 16)
-            .padding(.vertical, 8)
-            .background(culturalColor.opacity(0.1))
-            .cornerRadius(8)
+            .font(.system(.subheadline, design: .rounded).weight(.semibold))
+            .foregroundStyle(.white)
+            .padding(.horizontal, 24)
+            .padding(.vertical, 14)
+            .background(
+                LinearGradient(
+                    colors: [Color(hex: "#FF8A00"), Color(hex: "#E05A00")],
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                )
+            )
+            .cornerRadius(12)
+            .shadow(color: .black.opacity(0.18), radius: 14, y: 8)
         }
         .frame(height: 200)
         .frame(maxWidth: .infinity)
@@ -384,8 +388,6 @@ struct AnniversarySendShareView: View {
         case .mail:
             // Handle email sharing
             shareViaEmail()
-        case .photos:
-            saveToPhotos()
         case .socialMedia:
             shareViaActivitySheet()
         case .airdrop:

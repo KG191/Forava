@@ -5,10 +5,16 @@ import SwiftUI
 struct ForavaPrimaryButton: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .foregroundStyle(Color(hex: "#C9431A")) // warm red‑orange text
+            .foregroundStyle(.white) // white text on orange gradient
             .background(
                 RoundedRectangle(cornerRadius: 22, style: .continuous)
-                    .fill(Color(hex: "#FFF0DC")) // warm cream (avoid stark white)
+                    .fill(
+                        LinearGradient(
+                            colors: [Color(hex: "#FF8A00"), Color(hex: "#E05A00")],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                    )
             )
             .overlay(
                 RoundedRectangle(cornerRadius: 22, style: .continuous)

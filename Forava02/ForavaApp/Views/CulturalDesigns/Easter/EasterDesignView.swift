@@ -16,6 +16,7 @@ struct EasterDesignView: View, CulturalDesignViewProtocol {
     typealias CreateContent = EasterCreateSummaryView
     typealias CheckContent = EasterCheckImageView
     typealias SendContent = EasterSendShareView
+    typealias ConnectContent = EasterConnectView
 
     let selectedContact: Contact
     let selectedEvent: CulturalEvent
@@ -70,6 +71,9 @@ struct EasterDesignView: View, CulturalDesignViewProtocol {
                         .transition(.opacity)
                 } else if currentTab == .send {
                     sendContent()
+                        .transition(.opacity)
+                } else if currentTab == .connect {
+                    connectContent()
                         .transition(.opacity)
                 }
             }
@@ -183,6 +187,13 @@ extension EasterDesignView {
             onGoBackToGenerate: {
                 currentTab = .create
             }
+        )
+    }
+
+    @ViewBuilder func connectContent() -> ConnectContent {
+        EasterConnectView(
+            selectedContact: selectedContact,
+            culturalColor: culturalColor
         )
     }
 

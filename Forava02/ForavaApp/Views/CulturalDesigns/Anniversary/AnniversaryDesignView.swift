@@ -16,6 +16,7 @@ struct AnniversaryDesignView: View, CulturalDesignViewProtocol {
     typealias CreateContent = AnniversaryCreateSummaryView
     typealias CheckContent = AnniversaryCheckImageView
     typealias SendContent = AnniversarySendShareView
+    typealias ConnectContent = AnniversaryConnectView
 
     let selectedContact: Contact
     let selectedEvent: CulturalEvent
@@ -70,6 +71,9 @@ struct AnniversaryDesignView: View, CulturalDesignViewProtocol {
                         .transition(.opacity)
                 } else if currentTab == .send {
                     sendContent()
+                        .transition(.opacity)
+                } else if currentTab == .connect {
+                    connectContent()
                         .transition(.opacity)
                 }
             }
@@ -184,6 +188,13 @@ extension AnniversaryDesignView {
             onGoBackToGenerate: {
                 currentTab = .create
             }
+        )
+    }
+
+    @ViewBuilder func connectContent() -> ConnectContent {
+        AnniversaryConnectView(
+            selectedContact: selectedContact,
+            culturalColor: culturalColor
         )
     }
 

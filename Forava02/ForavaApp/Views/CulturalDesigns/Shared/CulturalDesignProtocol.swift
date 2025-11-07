@@ -13,6 +13,7 @@ protocol CulturalDesignViewProtocol: View {
     associatedtype CreateContent: View
     associatedtype CheckContent: View
     associatedtype SendContent: View
+    associatedtype ConnectContent: View
 
     var selectedContact: Contact { get }
     var selectedEvent: CulturalEvent { get }
@@ -31,6 +32,7 @@ protocol CulturalDesignViewProtocol: View {
     @ViewBuilder func createContent() -> CreateContent
     @ViewBuilder func checkContent() -> CheckContent
     @ViewBuilder func sendContent() -> SendContent
+    @ViewBuilder func connectContent() -> ConnectContent
 }
 
 extension CulturalDesignViewProtocol {

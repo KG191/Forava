@@ -16,6 +16,7 @@ struct RoshHashanahDesignView: View, CulturalDesignViewProtocol {
     typealias CreateContent = RoshHashanahCreateSummaryView
     typealias CheckContent = RoshHashanahCheckImageView
     typealias SendContent = RoshHashanahSendShareView
+    typealias ConnectContent = RoshHashanahConnectView
 
     let selectedContact: Contact
     let selectedEvent: CulturalEvent
@@ -70,6 +71,9 @@ struct RoshHashanahDesignView: View, CulturalDesignViewProtocol {
                         .transition(.opacity)
                 } else if currentTab == .send {
                     sendContent()
+                        .transition(.opacity)
+                } else if currentTab == .connect {
+                    connectContent()
                         .transition(.opacity)
                 }
             }
@@ -183,6 +187,13 @@ extension RoshHashanahDesignView {
             onGoBackToGenerate: {
                 currentTab = .create
             }
+        )
+    }
+
+    @ViewBuilder func connectContent() -> ConnectContent {
+        RoshHashanahConnectView(
+            selectedContact: selectedContact,
+            culturalColor: culturalColor
         )
     }
 

@@ -16,6 +16,7 @@ struct RakshaBandhanDesignView: View, CulturalDesignViewProtocol {
     typealias CreateContent = RakshaBandhanCreateSummaryView
     typealias CheckContent = RakshaBandhanCheckImageView
     typealias SendContent = RakshaBandhanSendShareView
+    typealias ConnectContent = RakshaBandhanConnectView
 
     let selectedContact: Contact
     let selectedEvent: CulturalEvent
@@ -70,6 +71,9 @@ struct RakshaBandhanDesignView: View, CulturalDesignViewProtocol {
                         .transition(.opacity)
                 } else if currentTab == .send {
                     sendContent()
+                        .transition(.opacity)
+                } else if currentTab == .connect {
+                    connectContent()
                         .transition(.opacity)
                 }
             }
@@ -183,6 +187,13 @@ extension RakshaBandhanDesignView {
             onGoBackToGenerate: {
                 currentTab = .create
             }
+        )
+    }
+
+    @ViewBuilder func connectContent() -> ConnectContent {
+        RakshaBandhanConnectView(
+            selectedContact: selectedContact,
+            culturalColor: culturalColor
         )
     }
 

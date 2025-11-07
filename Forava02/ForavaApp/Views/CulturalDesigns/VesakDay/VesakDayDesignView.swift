@@ -16,6 +16,7 @@ struct VesakDayDesignView: View, CulturalDesignViewProtocol {
     typealias CreateContent = VesakDayCreateSummaryView
     typealias CheckContent = VesakDayCheckImageView
     typealias SendContent = VesakDaySendShareView
+    typealias ConnectContent = VesakDayConnectView
 
     let selectedContact: Contact
     let selectedEvent: CulturalEvent
@@ -70,6 +71,9 @@ struct VesakDayDesignView: View, CulturalDesignViewProtocol {
                         .transition(.opacity)
                 } else if currentTab == .send {
                     sendContent()
+                        .transition(.opacity)
+                } else if currentTab == .connect {
+                    connectContent()
                         .transition(.opacity)
                 }
             }
@@ -183,6 +187,13 @@ extension VesakDayDesignView {
             onGoBackToGenerate: {
                 currentTab = .create
             }
+        )
+    }
+
+    @ViewBuilder func connectContent() -> ConnectContent {
+        VesakDayConnectView(
+            selectedContact: selectedContact,
+            culturalColor: culturalColor
         )
     }
 

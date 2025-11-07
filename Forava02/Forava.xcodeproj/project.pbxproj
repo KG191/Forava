@@ -119,6 +119,20 @@
 		219FCD492EBDBECE0068B3A1 /* EidAlAdhaSendShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219FCD422EBDBECE0068B3A1 /* EidAlAdhaSendShareView.swift */; };
 		219FCD4D2EBDC0660068B3A1 /* EidAlAdhaAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219FCD4A2EBDBEF10068B3A1 /* EidAlAdhaAIService.swift */; };
 		219FCD4E2EBDC2F40068B3A1 /* EidAlAdhaDesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213539CC2E6BE53D00CC85B0 /* EidAlAdhaDesignView.swift */; };
+		219FCD502EBE89120068B3A1 /* VoucherProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219FCD4F2EBE89120068B3A1 /* VoucherProvider.swift */; };
+		219FCD522EBE893E0068B3A1 /* VoucherProviderGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219FCD512EBE893E0068B3A1 /* VoucherProviderGrid.swift */; };
+		219FCD542EBE89540068B3A1 /* AnniversaryConnectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219FCD532EBE89540068B3A1 /* AnniversaryConnectView.swift */; };
+		219FCD562EBE89610068B3A1 /* ChineseNewYearConnectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219FCD552EBE89610068B3A1 /* ChineseNewYearConnectView.swift */; };
+		219FCD582EBE89740068B3A1 /* ChristmasConnectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219FCD572EBE89740068B3A1 /* ChristmasConnectView.swift */; };
+		219FCD5A2EBE89850068B3A1 /* DiwaliConnectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219FCD592EBE89850068B3A1 /* DiwaliConnectView.swift */; };
+		219FCD5C2EBE89900068B3A1 /* EasterConnectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219FCD5B2EBE89900068B3A1 /* EasterConnectView.swift */; };
+		219FCD5E2EBE899C0068B3A1 /* EidAlAdhaConnectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219FCD5D2EBE899C0068B3A1 /* EidAlAdhaConnectView.swift */; };
+		219FCD602EBE89A50068B3A1 /* HanukkahConnectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219FCD5F2EBE89A50068B3A1 /* HanukkahConnectView.swift */; };
+		219FCD622EBE89AE0068B3A1 /* MidAutumnFestivalConnectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219FCD612EBE89AE0068B3A1 /* MidAutumnFestivalConnectView.swift */; };
+		219FCD642EBE89B70068B3A1 /* RakshaBandhanConnectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219FCD632EBE89B70068B3A1 /* RakshaBandhanConnectView.swift */; };
+		219FCD662EBE89C30068B3A1 /* RoshHashanahConnectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219FCD652EBE89C30068B3A1 /* RoshHashanahConnectView.swift */; };
+		219FCD682EBE89CE0068B3A1 /* VesakDayConnectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219FCD672EBE89CE0068B3A1 /* VesakDayConnectView.swift */; };
+		219FCD6A2EBE8A7B0068B3A1 /* SharedMessageComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219FCD692EBE8A7B0068B3A1 /* SharedMessageComponents.swift */; };
 		21B8978C2E7EA18800DD567D /* CulturalGiftDesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E71C998FEF4EF8BFE78604 /* CulturalGiftDesignView.swift */; };
 		21B8978D2E7EA32000DD567D /* AnniversaryStyleSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1411BA74DF4437F81A335E5 /* AnniversaryStyleSelectionView.swift */; };
 		21B8978E2E7EA33E00DD567D /* AnniversarySendShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37C93AD8519475BBBFB7C8D /* AnniversarySendShareView.swift */; };
@@ -333,6 +347,20 @@
 		219FCD422EBDBECE0068B3A1 /* EidAlAdhaSendShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EidAlAdhaSendShareView.swift; sourceTree = "<group>"; };
 		219FCD432EBDBECE0068B3A1 /* EidAlAdhaStyleSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EidAlAdhaStyleSelectionView.swift; sourceTree = "<group>"; };
 		219FCD4A2EBDBEF10068B3A1 /* EidAlAdhaAIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EidAlAdhaAIService.swift; sourceTree = "<group>"; };
+		219FCD4F2EBE89120068B3A1 /* VoucherProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoucherProvider.swift; sourceTree = "<group>"; };
+		219FCD512EBE893E0068B3A1 /* VoucherProviderGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoucherProviderGrid.swift; sourceTree = "<group>"; };
+		219FCD532EBE89540068B3A1 /* AnniversaryConnectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnniversaryConnectView.swift; sourceTree = "<group>"; };
+		219FCD552EBE89610068B3A1 /* ChineseNewYearConnectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChineseNewYearConnectView.swift; sourceTree = "<group>"; };
+		219FCD572EBE89740068B3A1 /* ChristmasConnectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChristmasConnectView.swift; sourceTree = "<group>"; };
+		219FCD592EBE89850068B3A1 /* DiwaliConnectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiwaliConnectView.swift; sourceTree = "<group>"; };
+		219FCD5B2EBE89900068B3A1 /* EasterConnectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasterConnectView.swift; sourceTree = "<group>"; };
+		219FCD5D2EBE899C0068B3A1 /* EidAlAdhaConnectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EidAlAdhaConnectView.swift; sourceTree = "<group>"; };
+		219FCD5F2EBE89A50068B3A1 /* HanukkahConnectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HanukkahConnectView.swift; sourceTree = "<group>"; };
+		219FCD612EBE89AE0068B3A1 /* MidAutumnFestivalConnectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MidAutumnFestivalConnectView.swift; sourceTree = "<group>"; };
+		219FCD632EBE89B70068B3A1 /* RakshaBandhanConnectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RakshaBandhanConnectView.swift; sourceTree = "<group>"; };
+		219FCD652EBE89C30068B3A1 /* RoshHashanahConnectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoshHashanahConnectView.swift; sourceTree = "<group>"; };
+		219FCD672EBE89CE0068B3A1 /* VesakDayConnectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VesakDayConnectView.swift; sourceTree = "<group>"; };
+		219FCD692EBE8A7B0068B3A1 /* SharedMessageComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedMessageComponents.swift; sourceTree = "<group>"; };
 		21C93B432E5FE78800200285 /* CulturalEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulturalEvent.swift; sourceTree = "<group>"; };
 		21C93B442E5FE78800200285 /* CulturalGiftModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulturalGiftModel.swift; sourceTree = "<group>"; };
 		21C93B452E5FE78800200285 /* RakhiDesignModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RakhiDesignModels.swift; sourceTree = "<group>"; };
@@ -510,6 +538,7 @@
 		215C768E2EB3070B002C27DB /* ChineseNewYear */ = {
 			isa = PBXGroup;
 			children = (
+				219FCD552EBE89610068B3A1 /* ChineseNewYearConnectView.swift */,
 				215C76862EB3070B002C27DB /* ChineseNewYearCheckImageView.swift */,
 				215C76872EB3070B002C27DB /* ChineseNewYearColorPaletteView.swift */,
 				215C76882EB3070B002C27DB /* ChineseNewYearCreateSummaryView.swift */,
@@ -525,6 +554,7 @@
 		218FF3622E642A86008C12BF /* Anniversary */ = {
 			isa = PBXGroup;
 			children = (
+				219FCD532EBE89540068B3A1 /* AnniversaryConnectView.swift */,
 				215A844A2EA39FA3006D56E9 /* ImageWithTextOverlay.swift */,
 				A1411BA74DF4437F81A335E5 /* AnniversaryStyleSelectionView.swift */,
 				B37C93AD8519475BBBFB7C8D /* AnniversarySendShareView.swift */,
@@ -541,6 +571,7 @@
 		218FF3672E642A86008C12BF /* Diwali */ = {
 			isa = PBXGroup;
 			children = (
+				219FCD592EBE89850068B3A1 /* DiwaliConnectView.swift */,
 				215C769B2EB360A1002C27DB /* DiwaliCheckImageView.swift */,
 				215C769C2EB360A1002C27DB /* DiwaliColorPaletteView.swift */,
 				215C769D2EB360A1002C27DB /* DiwaliCreateSummaryView.swift */,
@@ -556,6 +587,7 @@
 		218FF3682E642A86008C12BF /* Easter */ = {
 			isa = PBXGroup;
 			children = (
+				219FCD5B2EBE89900068B3A1 /* EasterConnectView.swift */,
 				215C77622EB89C1D002C27DB /* EasterCheckImageView.swift */,
 				215C77632EB89C1D002C27DB /* EasterColorPaletteView.swift */,
 				215C77642EB89C1D002C27DB /* EasterCreateSummaryView.swift */,
@@ -571,6 +603,7 @@
 		218FF3692E642A86008C12BF /* EidAlAdha */ = {
 			isa = PBXGroup;
 			children = (
+				219FCD5D2EBE899C0068B3A1 /* EidAlAdhaConnectView.swift */,
 				219FCD3E2EBDBECE0068B3A1 /* EidAlAdhaCheckImageView.swift */,
 				219FCD3F2EBDBECE0068B3A1 /* EidAlAdhaColorPaletteView.swift */,
 				219FCD402EBDBECE0068B3A1 /* EidAlAdhaElementsSelectionView.swift */,
@@ -586,6 +619,7 @@
 		218FF36B2E642A86008C12BF /* Hanukkah */ = {
 			isa = PBXGroup;
 			children = (
+				219FCD5F2EBE89A50068B3A1 /* HanukkahConnectView.swift */,
 				215C77762EB8A1CB002C27DB /* HanukkahCheckImageView.swift */,
 				215C77772EB8A1CB002C27DB /* HanukkahColorPaletteView.swift */,
 				215C77782EB8A1CB002C27DB /* HanukkahCreateSummaryView.swift */,
@@ -601,6 +635,7 @@
 		218FF36C2E642A86008C12BF /* MidAutumnFestival */ = {
 			isa = PBXGroup;
 			children = (
+				219FCD612EBE89AE0068B3A1 /* MidAutumnFestivalConnectView.swift */,
 				215C77532EB757AB002C27DB /* MidAutumnFestivalCheckImageView.swift */,
 				215C77542EB757AB002C27DB /* MidAutumnFestivalColorPaletteView.swift */,
 				215C77552EB757AB002C27DB /* MidAutumnFestivalCreateSummaryView.swift */,
@@ -616,6 +651,7 @@
 		218FF36D2E642A86008C12BF /* RakshaBandhan */ = {
 			isa = PBXGroup;
 			children = (
+				219FCD632EBE89B70068B3A1 /* RakshaBandhanConnectView.swift */,
 				215C77422EB72597002C27DB /* RakshaBandhanCheckImageView.swift */,
 				215C77432EB72597002C27DB /* RakshaBandhanColorPaletteView.swift */,
 				215C77442EB72597002C27DB /* RakshaBandhanCreateSummaryView.swift */,
@@ -631,6 +667,7 @@
 		218FF36E2E642A86008C12BF /* RoshHashanah */ = {
 			isa = PBXGroup;
 			children = (
+				219FCD652EBE89C30068B3A1 /* RoshHashanahConnectView.swift */,
 				215C77302EB5F97A002C27DB /* RoshHashanahCheckImageView.swift */,
 				215C77312EB5F97A002C27DB /* RoshHashanahColorPaletteView.swift */,
 				215C77322EB5F97A002C27DB /* RoshHashanahCreateSummaryView.swift */,
@@ -646,6 +683,8 @@
 		218FF3722E642A86008C12BF /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				219FCD692EBE8A7B0068B3A1 /* SharedMessageComponents.swift */,
+				219FCD512EBE893E0068B3A1 /* VoucherProviderGrid.swift */,
 				215A844C2EA4E645006D56E9 /* CachedAsyncImage.swift */,
 				215A844D2EA4E645006D56E9 /* CulturalDesignComponents.swift */,
 				215A844E2EA4E645006D56E9 /* CulturalDesignProtocol.swift */,
@@ -659,6 +698,7 @@
 		218FF3732E642A86008C12BF /* VesakDay */ = {
 			isa = PBXGroup;
 			children = (
+				219FCD672EBE89CE0068B3A1 /* VesakDayConnectView.swift */,
 				215C76AD2EB5A835002C27DB /* VesakDayCheckImageView.swift */,
 				215C76AE2EB5A835002C27DB /* VesakDayColorPaletteView.swift */,
 				215C76AF2EB5A835002C27DB /* VesakDayCreateSummaryView.swift */,
@@ -693,6 +733,7 @@
 		219FCD252EBD6B1E0068B3A1 /* Christmas */ = {
 			isa = PBXGroup;
 			children = (
+				219FCD572EBE89740068B3A1 /* ChristmasConnectView.swift */,
 				219FCD1D2EBD6B1E0068B3A1 /* ChristmasCheckImageView.swift */,
 				219FCD1E2EBD6B1E0068B3A1 /* ChristmasColorPaletteView.swift */,
 				219FCD1F2EBD6B1E0068B3A1 /* ChristmasCreateSummaryView.swift */,
@@ -708,6 +749,7 @@
 		21C93B472E5FE78800200285 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				219FCD4F2EBE89120068B3A1 /* VoucherProvider.swift */,
 				218FF35F2E640815008C12BF /* RoshHashanahModels.swift */,
 				218FF35C2E63C803008C12BF /* VesakDayModels.swift */,
 				218FF3592E63C675008C12BF /* RakshaBandhanModels.swift */,
@@ -1046,11 +1088,13 @@
 				215C77612EB757B5002C27DB /* MidAutumnFestivalDesignView.swift in Sources */,
 				21C93BAE2E61568600200285 /* ChristmasModels.swift in Sources */,
 				A001 /* App.swift in Sources */,
+				219FCD582EBE89740068B3A1 /* ChristmasConnectView.swift in Sources */,
 				A003 /* ContentView.swift in Sources */,
 				A010 /* APIClient.swift in Sources */,
 				215C76AB2EB361C7002C27DB /* DiwaliAIService.swift in Sources */,
 				215C773F2EB5FB4B002C27DB /* RoshHashanahDesignView.swift in Sources */,
 				219FCD262EBD6B1E0068B3A1 /* ChristmasPersonalTouchView.swift in Sources */,
+				219FCD5E2EBE899C0068B3A1 /* EidAlAdhaConnectView.swift in Sources */,
 				219FCD272EBD6B1E0068B3A1 /* ChristmasSendShareView.swift in Sources */,
 				219FCD282EBD6B1E0068B3A1 /* ChristmasElementsSelectionView.swift in Sources */,
 				219FCD292EBD6B1E0068B3A1 /* ChristmasCreateSummaryView.swift in Sources */,
@@ -1077,6 +1121,7 @@
 				21B8978F2E7EA33E00DD567D /* AnniversaryElementsSelectionView.swift in Sources */,
 				215C77842EB8A1D6002C27DB /* HanukkahDesignView.swift in Sources */,
 				21B897902E7EA33E00DD567D /* AnniversaryColorPaletteView.swift in Sources */,
+				219FCD682EBE89CE0068B3A1 /* VesakDayConnectView.swift in Sources */,
 				21B897912E7EA33E00DD567D /* AnniversaryCreateSummaryView.swift in Sources */,
 				21B897922E7EA33E00DD567D /* AnniversaryDesignView.swift in Sources */,
 				215C777D2EB8A1CB002C27DB /* HanukkahCheckImageView.swift in Sources */,
@@ -1123,7 +1168,9 @@
 				21C93B882E5FE78800200285 /* RakhiDesignModels.swift in Sources */,
 				21C93B892E5FE78800200285 /* PaymentReceiveView.swift in Sources */,
 				21C93B8A2E5FE78800200285 /* CulturalCarouselView.swift in Sources */,
+				219FCD622EBE89AE0068B3A1 /* MidAutumnFestivalConnectView.swift in Sources */,
 				21C93B8B2E5FE78800200285 /* EnhancedAnimationService.swift in Sources */,
+				219FCD522EBE893E0068B3A1 /* VoucherProviderGrid.swift in Sources */,
 				21C93B8D2E5FE78800200285 /* PerformanceOptimizer.swift in Sources */,
 				21B8978C2E7EA18800DD567D /* CulturalGiftDesignView.swift in Sources */,
 				215A84382E9CF41E006D56E9 /* AnniversaryAIService.swift in Sources */,
@@ -1138,6 +1185,7 @@
 				215C76BA2EB5A835002C27DB /* VesakDayElementsSelectionView.swift in Sources */,
 				21C93B8F2E5FE78800200285 /* SharedUIComponents.swift in Sources */,
 				21C93B902E5FE78800200285 /* PromptMapper.swift in Sources */,
+				219FCD642EBE89B70068B3A1 /* RakshaBandhanConnectView.swift in Sources */,
 				21C93B922E5FE78800200285 /* AdvancedCustomizationService.swift in Sources */,
 				21C93BC02E62B19F00200285 /* EidAlAdhaModels.swift in Sources */,
 				215C76A92EB360C5002C27DB /* DiwaliDesignView.swift in Sources */,
@@ -1151,6 +1199,7 @@
 				219FCD4D2EBDC0660068B3A1 /* EidAlAdhaAIService.swift in Sources */,
 				21C93B9C2E5FE78800200285 /* SettingsView.swift in Sources */,
 				21C93B9E2E5FE78800200285 /* RakhiDesignStudioView.swift in Sources */,
+				219FCD6A2EBE8A7B0068B3A1 /* SharedMessageComponents.swift in Sources */,
 				218FF35D2E63C803008C12BF /* VesakDayModels.swift in Sources */,
 				21C93B9F2E5FE78800200285 /* PersonalizationStep.swift in Sources */,
 				21C93BA02E5FE78800200285 /* AIRakhiService.swift in Sources */,
@@ -1163,6 +1212,7 @@
 				21C93BA62E5FE78800200285 /* ElementSelectionStep.swift in Sources */,
 				21C93BA72E5FE78800200285 /* (null) in Sources */,
 				21C93BA82E5FE78800200285 /* SimpleLocalizationService.swift in Sources */,
+				219FCD562EBE89610068B3A1 /* ChineseNewYearConnectView.swift in Sources */,
 				21C93BA92E5FE78800200285 /* AnimationPreviewView.swift in Sources */,
 				21C93BAA2E5FE78800200285 /* RealTimeGenerationView.swift in Sources */,
 				218FF35B2E63C675008C12BF /* RakshaBandhanModels.swift in Sources */,
@@ -1171,12 +1221,15 @@
 				219FCD462EBDBECE0068B3A1 /* EidAlAdhaCheckImageView.swift in Sources */,
 				219FCD472EBDBECE0068B3A1 /* EidAlAdhaColorPaletteView.swift in Sources */,
 				219FCD482EBDBECE0068B3A1 /* EidAlAdhaElementsSelectionView.swift in Sources */,
+				219FCD502EBE89120068B3A1 /* VoucherProvider.swift in Sources */,
 				219FCD492EBDBECE0068B3A1 /* EidAlAdhaSendShareView.swift in Sources */,
 				21C93BAB2E5FE78800200285 /* SocialSharingView.swift in Sources */,
 				C001 /* Constants.swift in Sources */,
+				219FCD542EBE89540068B3A1 /* AnniversaryConnectView.swift in Sources */,
 				C003 /* SharedFormatting.swift in Sources */,
 				215C768F2EB3070B002C27DB /* ChineseNewYearCheckImageView.swift in Sources */,
 				215C76902EB3070B002C27DB /* ChineseNewYearCreateSummaryView.swift in Sources */,
+				219FCD662EBE89C30068B3A1 /* RoshHashanahConnectView.swift in Sources */,
 				215C77522EB75796002C27DB /* MidAutumnFestivalAIService.swift in Sources */,
 				215C76912EB3070B002C27DB /* ChineseNewYearColorPaletteView.swift in Sources */,
 				215C76922EB3070B002C27DB /* ChineseNewYearPersonalTouchView.swift in Sources */,
@@ -1190,6 +1243,7 @@
 				21E8D07C2EACBCF3008B8145 /* AnniversaryTestSuite.swift in Sources */,
 				21E8D07D2EACBCF3008B8145 /* AnniversaryValidationCriteria.swift in Sources */,
 				215A843E2E9CF560006D56E9 /* CulturalAIConfiguration.swift in Sources */,
+				219FCD602EBE89A50068B3A1 /* HanukkahConnectView.swift in Sources */,
 				215A843F2E9CF560006D56E9 /* CulturalAIServiceProtocol.swift in Sources */,
 				21C93B562E5FE7880020028A /* SocialSharingModels.swift in Sources */,
 				21C93B572E5FE7880020028B /* Personalization/CulturalPromptMapper.swift in Sources */,
@@ -1197,12 +1251,14 @@
 				7D4E496253AF4534BD61FA28 /* ForavaApp/Models/SharedCulturalTypes.swift in Sources */,
 				215C76A22EB360A1002C27DB /* DiwaliPersonalTouchView.swift in Sources */,
 				215C76A32EB360A1002C27DB /* DiwaliElementsSelectionView.swift in Sources */,
+				219FCD5A2EBE89850068B3A1 /* DiwaliConnectView.swift in Sources */,
 				215C77712EB89C5D002C27DB /* EasterAIService.swift in Sources */,
 				215C76A42EB360A1002C27DB /* DiwaliSendShareView.swift in Sources */,
 				215C76A52EB360A1002C27DB /* DiwaliColorPaletteView.swift in Sources */,
 				215C76A62EB360A1002C27DB /* DiwaliCheckImageView.swift in Sources */,
 				215C76A72EB360A1002C27DB /* DiwaliCreateSummaryView.swift in Sources */,
 				215C77502EB7259F002C27DB /* RakshaBandhanDesignView.swift in Sources */,
+				219FCD5C2EBE89900068B3A1 /* EasterConnectView.swift in Sources */,
 				215C76A82EB360A1002C27DB /* DiwaliStyleSelectionView.swift in Sources */,
 				215C77692EB89C1D002C27DB /* EasterSendShareView.swift in Sources */,
 				215C776A2EB89C1D002C27DB /* EasterCheckImageView.swift in Sources */,

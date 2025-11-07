@@ -218,10 +218,15 @@ struct ChineseNewYearSendShareView: View {
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 14)
                 .background(
-                    RoundedRectangle(cornerRadius: 12)
-                        .fill(Color(.secondarySystemBackground))
+                    LinearGradient(
+                        colors: [Color(hex: "#FF8A00"), Color(hex: "#E05A00")],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
                 )
-                .foregroundStyle(.primary)
+                .foregroundStyle(.white)
+                .cornerRadius(12)
+                .shadow(color: .black.opacity(0.18), radius: 14, y: 8)
             }
             .padding(.horizontal, 20)
         }

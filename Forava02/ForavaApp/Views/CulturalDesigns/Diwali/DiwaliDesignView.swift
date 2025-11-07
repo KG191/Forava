@@ -16,6 +16,7 @@ struct DiwaliDesignView: View, CulturalDesignViewProtocol {
     typealias CreateContent = DiwaliCreateSummaryView
     typealias CheckContent = DiwaliCheckImageView
     typealias SendContent = DiwaliSendShareView
+    typealias ConnectContent = DiwaliConnectView
 
     let selectedContact: Contact
     let selectedEvent: CulturalEvent
@@ -70,6 +71,9 @@ struct DiwaliDesignView: View, CulturalDesignViewProtocol {
                         .transition(.opacity)
                 } else if currentTab == .send {
                     sendContent()
+                        .transition(.opacity)
+                } else if currentTab == .connect {
+                    connectContent()
                         .transition(.opacity)
                 }
             }
@@ -183,6 +187,13 @@ extension DiwaliDesignView {
             onGoBackToGenerate: {
                 currentTab = .create
             }
+        )
+    }
+
+    @ViewBuilder func connectContent() -> ConnectContent {
+        DiwaliConnectView(
+            selectedContact: selectedContact,
+            culturalColor: culturalColor
         )
     }
 
