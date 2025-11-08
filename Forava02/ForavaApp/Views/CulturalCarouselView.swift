@@ -20,19 +20,7 @@ struct CulturalCarouselView: View {
                             event: event,
                             isSelected: selectedEventIndex == index,
                             onTap: {
-                                // Only scroll if selecting a different card
-                                if selectedEventIndex != index {
-                                    selectEvent(at: index)
-                                    // Trigger smooth scroll to selected card
-                                    withAnimation(.easeInOut(duration: 0.6)) {
-                                        scrolledID = index
-                                    }
-                                } else {
-                                    // Already selected - navigate to contact selection
-                                    let impactFeedback = UIImpactFeedbackGenerator(style: .medium)
-                                    impactFeedback.impactOccurred()
-                                    onEventSelected(event)
-                                }
+                                handleCardTap(at: index, event: event)
                             }
                         )
                         .frame(width: cardWidth, alignment: .top)
@@ -40,19 +28,10 @@ struct CulturalCarouselView: View {
                         .id(index)
                     }
                 }
-                .scrollTargetLayout()
                 .padding(.horizontal, max(20, (UIScreen.main.bounds.width - cardWidth) / 2))
             }
             .scrollPosition(id: $scrolledID, anchor: .center)
-            .scrollTargetBehavior(.viewAligned)
-            .onAppear {
-                // Center the first event
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                    withAnimation(.easeInOut(duration: 0.5)) {
-                        scrolledID = 0
-                    }
-                }
-            }
+            .scrollTargetBehavior(.paging)
 
             // Page Indicators with tap functionality
             HStack(spacing: 8) {
@@ -63,14 +42,7 @@ struct CulturalCarouselView: View {
                         .scaleEffect(selectedEventIndex == index ? 1.2 : 1.0)
                         .animation(.spring(response: 0.3, dampingFraction: 0.7), value: selectedEventIndex)
                         .onTapGesture {
-                            withAnimation(.easeInOut(duration: 0.6)) {
-                                selectedEventIndex = index
-                                scrolledID = index  // Also trigger programmatic scroll
-                            }
-
-                            // Provide haptic feedback
-                            let impactFeedback = UIImpactFeedbackGenerator(style: .light)
-                            impactFeedback.impactOccurred()
+                            handleIndicatorTap(at: index)
                         }
                 }
             }
@@ -113,10 +85,9 @@ struct CulturalCarouselView: View {
             .padding(.top, 16)
         }
         .onAppear {
-            // Center the first event on appear
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                selectedEventIndex = 0
-            }
+            // Initialize both selection and scroll position immediately
+            selectedEventIndex = 0
+            scrolledID = 0
         }
     }
 
@@ -125,6 +96,38 @@ struct CulturalCarouselView: View {
 
         // Provide haptic feedback
         let impactFeedback = UIImpactFeedbackGenerator(style: .medium)
+        impactFeedback.impactOccurred()
+    }
+
+    // Unified handler for card tap - consolidates state updates to avoid gesture conflicts
+    private func handleCardTap(at index: Int, event: CulturalEvent) {
+        if selectedEventIndex != index {
+            // Selecting a different card - update selection and scroll
+            withAnimation(.easeInOut(duration: 0.3)) {
+                selectedEventIndex = index
+                scrolledID = index
+            }
+
+            // Provide haptic feedback
+            let impactFeedback = UIImpactFeedbackGenerator(style: .medium)
+            impactFeedback.impactOccurred()
+        } else {
+            // Already selected - navigate to contact selection
+            let impactFeedback = UIImpactFeedbackGenerator(style: .medium)
+            impactFeedback.impactOccurred()
+            onEventSelected(event)
+        }
+    }
+
+    // Unified handler for page indicator tap
+    private func handleIndicatorTap(at index: Int) {
+        withAnimation(.easeInOut(duration: 0.3)) {
+            selectedEventIndex = index
+            scrolledID = index
+        }
+
+        // Provide haptic feedback
+        let impactFeedback = UIImpactFeedbackGenerator(style: .light)
         impactFeedback.impactOccurred()
     }
 
