@@ -40,6 +40,7 @@
 		215C76A82EB360A1002C27DB /* DiwaliStyleSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C76A12EB360A1002C27DB /* DiwaliStyleSelectionView.swift */; };
 		215C76A92EB360C5002C27DB /* DiwaliDesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213539C82E6BE52900CC85B0 /* DiwaliDesignView.swift */; };
 		215C76AA2EB361B4002C27DB /* DiwaliModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93BBA2E627EA700200285 /* DiwaliModels.swift */; };
+		2AB29D0B144486564A59A3FC /* HoliModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E7CF5A1CFF4A4A98FE6575 /* HoliModels.swift */; };
 		215C76AB2EB361C7002C27DB /* DiwaliAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C76992EB3607B002C27DB /* DiwaliAIService.swift */; };
 		215C76AC2EB5A7F9002C27DB /* VesakDayDesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213539D82E6BE57100CC85B0 /* VesakDayDesignView.swift */; };
 		215C76B42EB5A835002C27DB /* VesakDayStyleSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C76B32EB5A835002C27DB /* VesakDayStyleSelectionView.swift */; };
@@ -84,7 +85,6 @@
 		215C776D2EB89C1D002C27DB /* EasterElementsSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C77652EB89C1D002C27DB /* EasterElementsSelectionView.swift */; };
 		215C776E2EB89C1D002C27DB /* EasterColorPaletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C77632EB89C1D002C27DB /* EasterColorPaletteView.swift */; };
 		215C776F2EB89C1D002C27DB /* EasterPersonalTouchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C77662EB89C1D002C27DB /* EasterPersonalTouchView.swift */; };
-		215C77712EB89C5D002C27DB /* EasterAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C77702EB89C5D002C27DB /* EasterAIService.swift */; };
 		215C77732EB89C6B002C27DB /* HanukkahAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C77722EB89C6B002C27DB /* HanukkahAIService.swift */; };
 		215C77742EB89C8E002C27DB /* EasterDesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213539CA2E6BE53400CC85B0 /* EasterDesignView.swift */; };
 		215C77752EB89C8E002C27DB /* EasterDesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213539CA2E6BE53400CC85B0 /* EasterDesignView.swift */; };
@@ -133,6 +133,19 @@
 		219FCD662EBE89C30068B3A1 /* RoshHashanahConnectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219FCD652EBE89C30068B3A1 /* RoshHashanahConnectView.swift */; };
 		219FCD682EBE89CE0068B3A1 /* VesakDayConnectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219FCD672EBE89CE0068B3A1 /* VesakDayConnectView.swift */; };
 		219FCD6A2EBE8A7B0068B3A1 /* SharedMessageComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219FCD692EBE8A7B0068B3A1 /* SharedMessageComponents.swift */; };
+		219FCD6B2EBF6D630068B3A1 /* EasterAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C77702EB89C5D002C27DB /* EasterAIService.swift */; };
+		219FCD6D2EC005310068B3A1 /* HoliAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219FCD6C2EC005310068B3A1 /* HoliAIService.swift */; };
+		219FCD782EC005480068B3A1 /* HoliElementsSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219FCD732EC005480068B3A1 /* HoliElementsSelectionView.swift */; };
+		219FCD792EC005480068B3A1 /* HoliSendShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219FCD752EC005480068B3A1 /* HoliSendShareView.swift */; };
+		219FCD7A2EC005480068B3A1 /* HoliColorPaletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219FCD6F2EC005480068B3A1 /* HoliColorPaletteView.swift */; };
+		219FCD7B2EC005480068B3A1 /* HoliConnectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219FCD702EC005480068B3A1 /* HoliConnectView.swift */; };
+		219FCD7C2EC005480068B3A1 /* HoliStyleSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219FCD762EC005480068B3A1 /* HoliStyleSelectionView.swift */; };
+		219FCD7D2EC005480068B3A1 /* HoliPersonalTouchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219FCD742EC005480068B3A1 /* HoliPersonalTouchView.swift */; };
+		219FCD7E2EC005480068B3A1 /* HoliCheckImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219FCD6E2EC005480068B3A1 /* HoliCheckImageView.swift */; };
+		219FCD7F2EC005480068B3A1 /* HoliDesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219FCD722EC005480068B3A1 /* HoliDesignView.swift */; };
+		219FCD802EC005480068B3A1 /* HoliCreateSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219FCD712EC005480068B3A1 /* HoliCreateSummaryView.swift */; };
+		219FCD842EC005730068B3A1 /* terms-of-use.html in Resources */ = {isa = PBXBuildFile; fileRef = 219FCD822EC005730068B3A1 /* terms-of-use.html */; };
+		219FCD852EC005730068B3A1 /* privacy-policy.html in Resources */ = {isa = PBXBuildFile; fileRef = 219FCD812EC005730068B3A1 /* privacy-policy.html */; };
 		21B8978C2E7EA18800DD567D /* CulturalGiftDesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E71C998FEF4EF8BFE78604 /* CulturalGiftDesignView.swift */; };
 		21B8978D2E7EA32000DD567D /* AnniversaryStyleSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1411BA74DF4437F81A335E5 /* AnniversaryStyleSelectionView.swift */; };
 		21B8978E2E7EA33E00DD567D /* AnniversarySendShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37C93AD8519475BBBFB7C8D /* AnniversarySendShareView.swift */; };
@@ -197,7 +210,6 @@
 		21E8D07C2EACBCF3008B8145 /* AnniversaryTestSuite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E8D0792EACBCF3008B8145 /* AnniversaryTestSuite.swift */; };
 		21E8D07D2EACBCF3008B8145 /* AnniversaryValidationCriteria.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E8D07A2EACBCF3008B8145 /* AnniversaryValidationCriteria.swift */; };
 		21E8D07F2EAF82BC008B8145 /* DALLE3Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E8D07E2EAF82BC008B8145 /* DALLE3Service.swift */; };
-		37F0DE9FE82F46BE90B31BA8 /* ForavaApp/Views/Subscription/UsageDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C817084CC540DDBBEEBCD6 /* ForavaApp/Views/Subscription/UsageDashboardView.swift */; };
 		3AC53462BB2646F2877DC40F /* ForavaApp/Models/CoreTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4829A4CDBC4DAEB8F253A4 /* ForavaApp/Models/CoreTypes.swift */; };
 		3B3DD8DDBFBA40319C128767 /* ForavaApp/Views/CulturalDesigns/Shared/CulturalDesignProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05BE32819F74E3BB0C343FC /* ForavaApp/Views/CulturalDesigns/Shared/CulturalDesignProtocol.swift */; };
 		4B8BD9A903AE49C28CFFD444 /* ForavaApp/Views/CulturalDesigns/Shared/GiftDesignTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4283DB62BC9A4356BDA2CC8D /* ForavaApp/Views/CulturalDesigns/Shared/GiftDesignTypes.swift */; };
@@ -215,8 +227,6 @@
 		A012 /* ApplePayConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = A011 /* ApplePayConfig.swift */; };
 		A014 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A013 /* OnboardingView.swift */; };
 		A016 /* PaymentCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A015 /* PaymentCoordinator.swift */; };
-		A01A /* WatchSessionManager_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = A019 /* WatchSessionManager_iOS.swift */; };
-		AC28FFD1980A43ED841C7730 /* ForavaApp/Views/Subscription/SubscriptionTierView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9EC3EAF3BA4199BAF575DF /* ForavaApp/Views/Subscription/SubscriptionTierView.swift */; };
 		B001 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B000 /* App.swift */; };
 		B003 /* MainTokenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B002 /* MainTokenView.swift */; };
 		B005 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B004 /* Assets.xcassets */; };
@@ -231,7 +241,6 @@
 		C005 /* SharedModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = C004 /* SharedModels.swift */; };
 		C4FF /* SharedModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = C004 /* SharedModels.swift */; };
 		CCD4095A4B5249F887202701 /* ForavaApp/Services/LazyLoadingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B2C9B828374D7DAA542DD4 /* ForavaApp/Services/LazyLoadingManager.swift */; };
-		EA9A4A93B7924808B8004245 /* ForavaApp/Views/Subscription/PremiumCulturalPacksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24568CE398EA466799146241 /* ForavaApp/Views/Subscription/PremiumCulturalPacksView.swift */; };
 		F2A710BBBEBC44E5B8B6708D /* ForavaApp/Views/CulturalDesigns/Shared/OptimizedCulturalDesignComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C8DE009E784B9F87A5E907 /* ForavaApp/Views/CulturalDesigns/Shared/OptimizedCulturalDesignComponents.swift */; };
 /* End PBXBuildFile section */
 
@@ -361,6 +370,18 @@
 		219FCD652EBE89C30068B3A1 /* RoshHashanahConnectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoshHashanahConnectView.swift; sourceTree = "<group>"; };
 		219FCD672EBE89CE0068B3A1 /* VesakDayConnectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VesakDayConnectView.swift; sourceTree = "<group>"; };
 		219FCD692EBE8A7B0068B3A1 /* SharedMessageComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedMessageComponents.swift; sourceTree = "<group>"; };
+		219FCD6C2EC005310068B3A1 /* HoliAIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoliAIService.swift; sourceTree = "<group>"; };
+		219FCD6E2EC005480068B3A1 /* HoliCheckImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoliCheckImageView.swift; sourceTree = "<group>"; };
+		219FCD6F2EC005480068B3A1 /* HoliColorPaletteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoliColorPaletteView.swift; sourceTree = "<group>"; };
+		219FCD702EC005480068B3A1 /* HoliConnectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoliConnectView.swift; sourceTree = "<group>"; };
+		219FCD712EC005480068B3A1 /* HoliCreateSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoliCreateSummaryView.swift; sourceTree = "<group>"; };
+		219FCD722EC005480068B3A1 /* HoliDesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoliDesignView.swift; sourceTree = "<group>"; };
+		219FCD732EC005480068B3A1 /* HoliElementsSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoliElementsSelectionView.swift; sourceTree = "<group>"; };
+		219FCD742EC005480068B3A1 /* HoliPersonalTouchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoliPersonalTouchView.swift; sourceTree = "<group>"; };
+		219FCD752EC005480068B3A1 /* HoliSendShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoliSendShareView.swift; sourceTree = "<group>"; };
+		219FCD762EC005480068B3A1 /* HoliStyleSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoliStyleSelectionView.swift; sourceTree = "<group>"; };
+		219FCD812EC005730068B3A1 /* privacy-policy.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = "privacy-policy.html"; sourceTree = "<group>"; };
+		219FCD822EC005730068B3A1 /* terms-of-use.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = "terms-of-use.html"; sourceTree = "<group>"; };
 		21C93B432E5FE78800200285 /* CulturalEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulturalEvent.swift; sourceTree = "<group>"; };
 		21C93B442E5FE78800200285 /* CulturalGiftModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulturalGiftModel.swift; sourceTree = "<group>"; };
 		21C93B452E5FE78800200285 /* RakhiDesignModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RakhiDesignModels.swift; sourceTree = "<group>"; };
@@ -408,6 +429,7 @@
 		21C93BB32E6188E900200285 /* AnniversaryModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnniversaryModels.swift; sourceTree = "<group>"; };
 		21C93BB82E62577100200285 /* ChineseNewYearModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChineseNewYearModels.swift; sourceTree = "<group>"; };
 		21C93BBA2E627EA700200285 /* DiwaliModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiwaliModels.swift; sourceTree = "<group>"; };
+		29E7CF5A1CFF4A4A98FE6575 /* HoliModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoliModels.swift; sourceTree = "<group>"; };
 		21C93BBC2E62AA7F00200285 /* EasterModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasterModels.swift; sourceTree = "<group>"; };
 		21C93BBF2E62B19F00200285 /* EidAlAdhaModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EidAlAdhaModels.swift; sourceTree = "<group>"; };
 		21E8D0762EACBC3F008B8145 /* AnniversaryTestRunnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnniversaryTestRunnerView.swift; sourceTree = "<group>"; };
@@ -415,15 +437,12 @@
 		21E8D0792EACBCF3008B8145 /* AnniversaryTestSuite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnniversaryTestSuite.swift; sourceTree = "<group>"; };
 		21E8D07A2EACBCF3008B8145 /* AnniversaryValidationCriteria.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnniversaryValidationCriteria.swift; sourceTree = "<group>"; };
 		21E8D07E2EAF82BC008B8145 /* DALLE3Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DALLE3Service.swift; sourceTree = "<group>"; };
-		24568CE398EA466799146241 /* ForavaApp/Views/Subscription/PremiumCulturalPacksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForavaApp/Views/Subscription/PremiumCulturalPacksView.swift; sourceTree = "<group>"; };
-		2A9EC3EAF3BA4199BAF575DF /* ForavaApp/Views/Subscription/SubscriptionTierView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForavaApp/Views/Subscription/SubscriptionTierView.swift; sourceTree = "<group>"; };
 		35B7B6AAC67649ECBD644F59 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		4283DB62BC9A4356BDA2CC8D /* ForavaApp/Views/CulturalDesigns/Shared/GiftDesignTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForavaApp/Views/CulturalDesigns/Shared/GiftDesignTypes.swift; sourceTree = "<group>"; };
 		4AF94C3E0C3949DF970484F1 /* DiwaliDesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiwaliDesignView.swift; sourceTree = "<group>"; };
 		4EBADE91E8BB4F34BB1D1CD6 /* EasterDesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasterDesignView.swift; sourceTree = "<group>"; };
 		573C4E8983EA44049A331343 /* ChristmasDesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChristmasDesignView.swift; sourceTree = "<group>"; };
 		66E409DD4F48476FB3B1DADB /* ForavaApp/Services/SubscriptionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForavaApp/Services/SubscriptionManager.swift; sourceTree = "<group>"; };
-		69C817084CC540DDBBEEBCD6 /* ForavaApp/Views/Subscription/UsageDashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForavaApp/Views/Subscription/UsageDashboardView.swift; sourceTree = "<group>"; };
 		6C5D3514129D44A6A1239021 /* ForavaApp/Models/SubscriptionModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForavaApp/Models/SubscriptionModels.swift; sourceTree = "<group>"; };
 		7043A6C8DE614699B92F7536 /* AnniversaryColorPaletteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnniversaryColorPaletteView.swift; sourceTree = "<group>"; };
 		723953C0700543E9AE178079 /* VesakDayDesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VesakDayDesignView.swift; sourceTree = "<group>"; };
@@ -442,7 +461,6 @@
 		A011 /* ApplePayConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplePayConfig.swift; sourceTree = "<group>"; };
 		A013 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		A015 /* PaymentCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentCoordinator.swift; sourceTree = "<group>"; };
-		A019 /* WatchSessionManager_iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSessionManager_iOS.swift; sourceTree = "<group>"; };
 		A01B /* ForavaApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ForavaApp.entitlements; sourceTree = "<group>"; };
 		A1411BA74DF4437F81A335E5 /* AnniversaryStyleSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnniversaryStyleSelectionView.swift; sourceTree = "<group>"; };
 		A1FF /* ForavaApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ForavaApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -521,18 +539,8 @@
 				EDE689EA5B7042CDAC9503D2 /* RakshaBandhanDesignView.swift */,
 				7CB371B2055D4D9D8E9FDF61 /* RoshHashanahDesignView.swift */,
 				723953C0700543E9AE178079 /* VesakDayDesignView.swift */,
-				2A9EC3EAF3BA4199BAF575DF /* ForavaApp/Views/Subscription/SubscriptionTierView.swift */,
-				24568CE398EA466799146241 /* ForavaApp/Views/Subscription/PremiumCulturalPacksView.swift */,
-				69C817084CC540DDBBEEBCD6 /* ForavaApp/Views/Subscription/UsageDashboardView.swift */,
 			);
 			name = "Recovered References";
-			sourceTree = "<group>";
-		};
-		215C76732EB30615002C27DB /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 		215C768E2EB3070B002C27DB /* ChineseNewYear */ = {
@@ -714,6 +722,7 @@
 		218FF3742E642A86008C12BF /* CulturalDesigns */ = {
 			isa = PBXGroup;
 			children = (
+				219FCD772EC005480068B3A1 /* Holi */,
 				219FCD252EBD6B1E0068B3A1 /* Christmas */,
 				215C768E2EB3070B002C27DB /* ChineseNewYear */,
 				218FF3622E642A86008C12BF /* Anniversary */,
@@ -746,6 +755,31 @@
 			path = Christmas;
 			sourceTree = "<group>";
 		};
+		219FCD772EC005480068B3A1 /* Holi */ = {
+			isa = PBXGroup;
+			children = (
+				219FCD6E2EC005480068B3A1 /* HoliCheckImageView.swift */,
+				219FCD6F2EC005480068B3A1 /* HoliColorPaletteView.swift */,
+				219FCD702EC005480068B3A1 /* HoliConnectView.swift */,
+				219FCD712EC005480068B3A1 /* HoliCreateSummaryView.swift */,
+				219FCD722EC005480068B3A1 /* HoliDesignView.swift */,
+				219FCD732EC005480068B3A1 /* HoliElementsSelectionView.swift */,
+				219FCD742EC005480068B3A1 /* HoliPersonalTouchView.swift */,
+				219FCD752EC005480068B3A1 /* HoliSendShareView.swift */,
+				219FCD762EC005480068B3A1 /* HoliStyleSelectionView.swift */,
+			);
+			path = Holi;
+			sourceTree = "<group>";
+		};
+		219FCD832EC005730068B3A1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				219FCD812EC005730068B3A1 /* privacy-policy.html */,
+				219FCD822EC005730068B3A1 /* terms-of-use.html */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		21C93B472E5FE78800200285 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -758,6 +792,7 @@
 				21C93BBF2E62B19F00200285 /* EidAlAdhaModels.swift */,
 				21C93BBC2E62AA7F00200285 /* EasterModels.swift */,
 				21C93BBA2E627EA700200285 /* DiwaliModels.swift */,
+				29E7CF5A1CFF4A4A98FE6575 /* HoliModels.swift */,
 				21C93BB82E62577100200285 /* ChineseNewYearModels.swift */,
 				21C93BB32E6188E900200285 /* AnniversaryModels.swift */,
 				21C93BAD2E61568600200285 /* ChristmasModels.swift */,
@@ -774,6 +809,7 @@
 		21C93B542E5FE78800200285 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				219FCD6C2EC005310068B3A1 /* HoliAIService.swift */,
 				219FCD4A2EBDBEF10068B3A1 /* EidAlAdhaAIService.swift */,
 				219FCD1B2EBD6AFF0068B3A1 /* ChristmasAIService.swift */,
 				215C77722EB89C6B002C27DB /* HanukkahAIService.swift */,
@@ -879,7 +915,6 @@
 			isa = PBXGroup;
 			children = (
 				21E8D0752EACBC24008B8145 /* Testing */,
-				215C76732EB30615002C27DB /* New Group */,
 				21C93B5E2E5FE78800200285 /* Customization */,
 				21C93B642E5FE78800200285 /* DesignSteps */,
 				21C93B662E5FE78800200285 /* History */,
@@ -931,6 +966,7 @@
 		A1F0 /* ForavaApp */ = {
 			isa = PBXGroup;
 			children = (
+				219FCD832EC005730068B3A1 /* Resources */,
 				21C93B472E5FE78800200285 /* Models */,
 				21C93B542E5FE78800200285 /* Services */,
 				21C93B5A2E5FE78800200285 /* Testing_01 */,
@@ -942,7 +978,6 @@
 				A011 /* ApplePayConfig.swift */,
 				A013 /* OnboardingView.swift */,
 				A015 /* PaymentCoordinator.swift */,
-				A019 /* WatchSessionManager_iOS.swift */,
 				A01B /* ForavaApp.entitlements */,
 				A004 /* Assets.xcassets */,
 			);
@@ -1064,6 +1099,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				219FCD842EC005730068B3A1 /* terms-of-use.html in Resources */,
+				219FCD852EC005730068B3A1 /* privacy-policy.html in Resources */,
 				A005 /* Assets.xcassets in Resources */,
 				215A84592EA4EACE006D56E9 /* Tab Capsule colour.png in Resources */,
 			);
@@ -1126,6 +1163,7 @@
 				21B897922E7EA33E00DD567D /* AnniversaryDesignView.swift in Sources */,
 				215C777D2EB8A1CB002C27DB /* HanukkahCheckImageView.swift in Sources */,
 				215C777E2EB8A1CB002C27DB /* HanukkahStyleSelectionView.swift in Sources */,
+				219FCD6B2EBF6D630068B3A1 /* EasterAIService.swift in Sources */,
 				215C777F2EB8A1CB002C27DB /* HanukkahCreateSummaryView.swift in Sources */,
 				215C77802EB8A1CB002C27DB /* HanukkahElementsSelectionView.swift in Sources */,
 				215C77812EB8A1CB002C27DB /* HanukkahColorPaletteView.swift in Sources */,
@@ -1135,11 +1173,19 @@
 				21B897942E7EA33E00DD567D /* AnniversaryCheckImageView.swift in Sources */,
 				A014 /* OnboardingView.swift in Sources */,
 				A016 /* PaymentCoordinator.swift in Sources */,
-				A01A /* WatchSessionManager_iOS.swift in Sources */,
 				21C93BB92E62577100200285 /* ChineseNewYearModels.swift in Sources */,
 				215C773E2EB5FB02002C27DB /* RoshHashanahAIService.swift in Sources */,
 				21C93B7D2E5FE78800200285 /* ComprehensivePaymentService.swift in Sources */,
 				21E8D0772EACBC3F008B8145 /* AnniversaryTestRunnerView.swift in Sources */,
+				219FCD782EC005480068B3A1 /* HoliElementsSelectionView.swift in Sources */,
+				219FCD792EC005480068B3A1 /* HoliSendShareView.swift in Sources */,
+				219FCD7A2EC005480068B3A1 /* HoliColorPaletteView.swift in Sources */,
+				219FCD7B2EC005480068B3A1 /* HoliConnectView.swift in Sources */,
+				219FCD7C2EC005480068B3A1 /* HoliStyleSelectionView.swift in Sources */,
+				219FCD7D2EC005480068B3A1 /* HoliPersonalTouchView.swift in Sources */,
+				219FCD7E2EC005480068B3A1 /* HoliCheckImageView.swift in Sources */,
+				219FCD7F2EC005480068B3A1 /* HoliDesignView.swift in Sources */,
+				219FCD802EC005480068B3A1 /* HoliCreateSummaryView.swift in Sources */,
 				21C93B7E2E5FE78800200285 /* CulturalGiftSelectionView.swift in Sources */,
 				21C93BB12E615BAC00200285 /* ColorExtensions.swift in Sources */,
 				21C93B7F2E5FE78800200285 /* ContactSelectionView.swift in Sources */,
@@ -1252,8 +1298,8 @@
 				215C76A22EB360A1002C27DB /* DiwaliPersonalTouchView.swift in Sources */,
 				215C76A32EB360A1002C27DB /* DiwaliElementsSelectionView.swift in Sources */,
 				219FCD5A2EBE89850068B3A1 /* DiwaliConnectView.swift in Sources */,
-				215C77712EB89C5D002C27DB /* EasterAIService.swift in Sources */,
 				215C76A42EB360A1002C27DB /* DiwaliSendShareView.swift in Sources */,
+				219FCD6D2EC005310068B3A1 /* HoliAIService.swift in Sources */,
 				215C76A52EB360A1002C27DB /* DiwaliColorPaletteView.swift in Sources */,
 				215C76A62EB360A1002C27DB /* DiwaliCheckImageView.swift in Sources */,
 				215C76A72EB360A1002C27DB /* DiwaliCreateSummaryView.swift in Sources */,
@@ -1280,6 +1326,7 @@
 				3B3DD8DDBFBA40319C128767 /* ForavaApp/Views/CulturalDesigns/Shared/CulturalDesignProtocol.swift in Sources */,
 				215C76982EB34CFB002C27DB /* ChineseNewYearAIService.swift in Sources */,
 				215C76AA2EB361B4002C27DB /* DiwaliModels.swift in Sources */,
+				2AB29D0B144486564A59A3FC /* HoliModels.swift in Sources */,
 				927E1CFEE5F246649844AB63 /* ForavaApp/Views/CulturalDesigns/Shared/CulturalDesignComponents.swift in Sources */,
 				9483832A7E424BDF965DF859 /* ForavaApp/Views/CulturalDesigns/Shared/CulturalDesignViewModel.swift in Sources */,
 				4B8BD9A903AE49C28CFFD444 /* ForavaApp/Views/CulturalDesigns/Shared/GiftDesignTypes.swift in Sources */,
@@ -1292,9 +1339,6 @@
 				215C775E2EB757AB002C27DB /* MidAutumnFestivalColorPaletteView.swift in Sources */,
 				215C775F2EB757AB002C27DB /* MidAutumnFestivalPersonalTouchView.swift in Sources */,
 				215C77602EB757AB002C27DB /* MidAutumnFestivalCheckImageView.swift in Sources */,
-				AC28FFD1980A43ED841C7730 /* ForavaApp/Views/Subscription/SubscriptionTierView.swift in Sources */,
-				EA9A4A93B7924808B8004245 /* ForavaApp/Views/Subscription/PremiumCulturalPacksView.swift in Sources */,
-				37F0DE9FE82F46BE90B31BA8 /* ForavaApp/Views/Subscription/UsageDashboardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

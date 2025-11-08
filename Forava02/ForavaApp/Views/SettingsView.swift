@@ -1,9 +1,8 @@
 import SwiftUI
 import PassKit
-import WatchConnectivity
+import WebKit
 
 struct SettingsView: View {
-    @StateObject private var watchConnectivity = WatchConnectivityManager.shared
     @State private var notificationsEnabled = true
     @State private var soundEnabled = true
     @State private var hapticEnabled = true
@@ -24,15 +23,6 @@ struct SettingsView: View {
                     Text("Apple Pay")
                 } footer: {
                     Text("Apple Pay allows secure payments for Rakhi gifts. All transactions are encrypted and protected by Touch ID or Face ID.")
-                }
-
-                // Watch Connectivity Section
-                Section {
-                    watchConnectivitySection
-                } header: {
-                    Text("Apple Watch")
-                } footer: {
-                    Text("Connect your Apple Watch to receive Rakhi notifications and manage payments directly from your wrist.")
                 }
 
                 // Notifications Section
@@ -66,17 +56,6 @@ struct SettingsView: View {
                 } header: {
                     Text("Legal")
                 }
-
-                // Debug Section (only in debug builds)
-                #if DEBUG
-                Section {
-                    debugSection
-                } header: {
-                    Text("Debug & Testing")
-                } footer: {
-                    Text("Developer tools for testing and debugging. Only visible in debug builds.")
-                }
-                #endif
 
                 // App Information Section
                 Section {
@@ -144,58 +123,6 @@ struct SettingsView: View {
                         .frame(width: 20)
 
                     Text("Payment Settings")
-                }
-            }
-        }
-    }
-
-    // MARK: - Watch Connectivity Section
-    private var watchConnectivitySection: some View {
-        Group {
-            HStack {
-                Image(systemName: "applewatch")
-                    .foregroundStyle(.orange)
-                    .frame(width: 20)
-
-                Text("Connection Status")
-
-                Spacer()
-
-                Circle()
-                    .fill(watchConnectivity.isConnected ? .green : .red)
-                    .frame(width: 8, height: 8)
-
-                Text(watchConnectivity.isConnected ? "Connected" : "Disconnected")
-                    .foregroundStyle(watchConnectivity.isConnected ? .green : .red)
-                    .font(.system(.caption, design: .rounded).weight(.medium))
-            }
-
-            if watchConnectivity.isWatchAppInstalled {
-                HStack {
-                    Image(systemName: "checkmark.circle.fill")
-                        .foregroundStyle(.green)
-                        .frame(width: 20)
-
-                    Text("Forava Watch App")
-
-                    Spacer()
-
-                    Text("Installed")
-                        .foregroundStyle(.green)
-                        .font(.system(.caption, design: .rounded).weight(.medium))
-                }
-            } else {
-                HStack {
-                    Image(systemName: "exclamationmark.triangle.fill")
-                        .foregroundStyle(.orange)
-                        .frame(width: 20)
-
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text("Forava Watch App")
-                        Text("Install on Apple Watch for full experience")
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
-                    }
                 }
             }
         }
@@ -358,39 +285,6 @@ struct SettingsView: View {
         }
     }
 
-    // MARK: - Debug Section
-    #if DEBUG
-    private var debugSection: some View {
-        Group {
-            NavigationLink {
-                AnniversaryTestRunnerView()
-            } label: {
-                HStack {
-                    Image(systemName: "wand.and.stars")
-                        .foregroundStyle(.orange)
-                        .frame(width: 20)
-
-                    Text("Anniversary AI Tests")
-                }
-            }
-
-            HStack {
-                Image(systemName: "hammer.fill")
-                    .foregroundStyle(.gray)
-                    .frame(width: 20)
-
-                Text("Build Configuration")
-
-                Spacer()
-
-                Text("Debug")
-                    .foregroundStyle(.orange)
-                    .font(.system(.caption, design: .rounded).weight(.medium))
-            }
-        }
-    }
-    #endif
-
     // MARK: - App Info Section
     private var appInfoSection: some View {
         Group {
@@ -508,37 +402,17 @@ struct PrivacyPolicyView: View {
 
     var body: some View {
         NavigationStack {
-            ScrollView {
-                VStack(alignment: .leading, spacing: 20) {
-                    Text("Privacy Policy")
-                        .font(.largeTitle.bold())
-
-                    Text("Forava is committed to protecting your privacy and ensuring the security of your personal information.")
-
-                    Group {
-                        Text("Data Collection")
-                            .font(.headline)
-                        Text("We collect minimal data necessary for app functionality, including payment information processed securely through Apple Pay.")
-
-                        Text("Data Usage")
-                            .font(.headline)
-                        Text("Your data is used solely for providing Rakhi gifting services and is never shared with third parties.")
-
-                        Text("Security")
-                            .font(.headline)
-                        Text("All data is encrypted and stored securely following Apple's security guidelines.")
+            HTMLDocumentView(fileName: "privacy-policy")
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationTitle("Privacy Policy")
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button("Done") {
+                            dismiss()
+                        }
+                        .foregroundStyle(.orange)
                     }
                 }
-                .padding()
-            }
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Done") {
-                        dismiss()
-                    }
-                }
-            }
         }
     }
 }
@@ -548,37 +422,36 @@ struct TermsOfServiceView: View {
 
     var body: some View {
         NavigationStack {
-            ScrollView {
-                VStack(alignment: .leading, spacing: 20) {
-                    Text("Terms of Service")
-                        .font(.largeTitle.bold())
-
-                    Text("By using Forava, you agree to these terms and conditions.")
-
-                    Group {
-                        Text("Service Description")
-                            .font(.headline)
-                        Text("Forava provides a platform for sending digital Rakhi gifts with secure payment processing.")
-
-                        Text("User Responsibilities")
-                            .font(.headline)
-                        Text("Users are responsible for accurate payment information and appropriate use of the service.")
-
-                        Text("Limitation of Liability")
-                            .font(.headline)
-                        Text("Forava is not liable for issues arising from third-party payment processors or network connectivity.")
+            HTMLDocumentView(fileName: "terms-of-use")
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationTitle("Terms of Use")
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button("Done") {
+                            dismiss()
+                        }
+                        .foregroundStyle(.orange)
                     }
                 }
-                .padding()
-            }
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Done") {
-                        dismiss()
-                    }
-                }
-            }
+        }
+    }
+}
+
+// MARK: - HTML Document WebView
+struct HTMLDocumentView: UIViewRepresentable {
+    let fileName: String
+
+    func makeUIView(context: Context) -> WKWebView {
+        let webView = WKWebView()
+        webView.scrollView.contentInsetAdjustmentBehavior = .automatic
+        return webView
+    }
+
+    func updateUIView(_ webView: WKWebView, context: Context) {
+        if let htmlPath = Bundle.main.path(forResource: fileName, ofType: "html", inDirectory: "Resources") {
+            let url = URL(fileURLWithPath: htmlPath)
+            let request = URLRequest(url: url)
+            webView.load(request)
         }
     }
 }

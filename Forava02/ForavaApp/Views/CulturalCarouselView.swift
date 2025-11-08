@@ -58,7 +58,7 @@ struct CulturalCarouselView: View {
                             Image(systemName: events[selectedEventIndex].category.icon)
                                 .font(.system(.body, design: .rounded).weight(.semibold))
 
-                            Text("Create a \(events[selectedEventIndex].name) Gift")
+                            Text("Create/Send a \(events[selectedEventIndex].name) Gratitude Gift")
                                 .font(.system(.body, design: .rounded).weight(.semibold))
                         }
                         .foregroundStyle(Color(hex: "#C9431A"))
