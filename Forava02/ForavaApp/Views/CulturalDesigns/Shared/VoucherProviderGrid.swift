@@ -117,19 +117,22 @@ private struct ProviderCard: View {
     let culturalColor: Color
     let onTap: () -> Void
 
-    var body: some View {
-        Button(action: onTap) {
-            VStack(spacing: 12) {
-                // Icon
-                ZStack {
-                    Circle()
-                        .fill(provider.primaryColor.opacity(0.15))
-                        .frame(width: 60, height: 60)
+    @State private var isPressed = false
 
-                    Image(systemName: provider.icon)
-                        .font(.system(size: 28))
-                        .foregroundStyle(provider.primaryColor)
-                }
+    var body: some View {
+        Button(action: {
+            // Haptic feedback
+            let impactFeedback = UIImpactFeedbackGenerator(style: .medium)
+            impactFeedback.impactOccurred(intensity: 0.7)
+            onTap()
+        }) {
+            VStack(spacing: 12) {
+                // Brand Logo Icon with 20pt corner radius
+                Image(provider.icon)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 60, height: 60)
+                    .clipShape(RoundedRectangle(cornerRadius: 20))
 
                 // Name
                 Text(provider.name)
@@ -141,20 +144,29 @@ private struct ProviderCard: View {
             .frame(maxWidth: .infinity)
             .padding(.vertical, 20)
             .background(
-                RoundedRectangle(cornerRadius: 16)
+                RoundedRectangle(cornerRadius: 20)
                     .fill(.ultraThinMaterial)
                     .overlay(
-                        RoundedRectangle(cornerRadius: 16)
+                        RoundedRectangle(cornerRadius: 20)
                             .fill(culturalColor.opacity(0.03))
                     )
                     .overlay(
-                        RoundedRectangle(cornerRadius: 16)
+                        RoundedRectangle(cornerRadius: 20)
                             .stroke(culturalColor.opacity(0.25), lineWidth: 1)
                     )
             )
-            .shadow(color: .black.opacity(0.08), radius: 8, y: 4)
+            .shadow(
+                color: .black.opacity(isPressed ? 0.15 : 0.08),
+                radius: isPressed ? 12 : 8,
+                y: 4
+            )
+            .scaleEffect(isPressed ? 0.94 : 1.0)
+            .animation(.spring(response: 0.25, dampingFraction: 0.7), value: isPressed)
         }
         .buttonStyle(.plain)
+        .onLongPressGesture(minimumDuration: 0, maximumDistance: .infinity, pressing: { pressing in
+            isPressed = pressing
+        }, perform: {})
     }
 }
 

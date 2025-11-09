@@ -7,7 +7,7 @@ struct VoucherProvider: Identifiable, Equatable {
     let name: String
     let category: VoucherCategory
     let url: URL
-    let icon: String  // SF Symbol name
+    let icon: String  // Brand logo asset name from GiftCards.xcassets
     let primaryColor: Color
 
     static func == (lhs: VoucherProvider, rhs: VoucherProvider) -> Bool {
@@ -72,14 +72,14 @@ extension VoucherProvider {
             name: "Ticketek",
             category: .entertainment,
             url: URL(string: "https://premier.ticketek.com.au/")!,
-            icon: "ticket.fill",
+            icon: "ticketek",
             primaryColor: Color(hex: "#FF6B6B")
         ),
         VoucherProvider(
             name: "Event Cinema",
             category: .entertainment,
             url: URL(string: "https://www.eventcinemas.com.au/")!,
-            icon: "film.fill",
+            icon: "event_cinemas",
             primaryColor: Color(hex: "#E84A5F")
         ),
 
@@ -88,14 +88,14 @@ extension VoucherProvider {
             name: "Sephora",
             category: .beauty,
             url: URL(string: "https://www.sephora.com.au/")!,
-            icon: "paintbrush.fill",
+            icon: "sephora",
             primaryColor: Color(hex: "#000000")
         ),
         VoucherProvider(
             name: "Mecca Maxima",
             category: .beauty,
             url: URL(string: "https://www.mecca.com.au/")!,
-            icon: "sparkles",
+            icon: "mecca_maxima",
             primaryColor: Color(hex: "#FF8ED4")
         ),
 
@@ -104,14 +104,14 @@ extension VoucherProvider {
             name: "Myer",
             category: .departmentStore,
             url: URL(string: "https://www.myer.com.au/")!,
-            icon: "bag.fill",
+            icon: "myer",
             primaryColor: Color(hex: "#D32F2F")
         ),
         VoucherProvider(
             name: "David Jones",
             category: .departmentStore,
             url: URL(string: "https://www.davidjones.com/")!,
-            icon: "building.2.fill",
+            icon: "david_jones",
             primaryColor: Color(hex: "#1976D2")
         ),
 
@@ -120,15 +120,8 @@ extension VoucherProvider {
             name: "Dymocks",
             category: .books,
             url: URL(string: "https://www.dymocks.com.au/")!,
-            icon: "book.fill",
+            icon: "dymocks",
             primaryColor: Color(hex: "#388E3C")
-        ),
-        VoucherProvider(
-            name: "Strand",
-            category: .books,
-            url: URL(string: "https://www.strandbooks.com.au/")!,
-            icon: "books.vertical.fill",
-            primaryColor: Color(hex: "#95E1D3")
         ),
 
         // Fashion & Apparel
@@ -136,21 +129,21 @@ extension VoucherProvider {
             name: "Country Road",
             category: .fashion,
             url: URL(string: "https://www.countryroad.com.au/")!,
-            icon: "tshirt.fill",
+            icon: "country_road",
             primaryColor: Color(hex: "#5D4037")
         ),
         VoucherProvider(
             name: "Witchery",
             category: .fashion,
             url: URL(string: "https://www.witchery.com.au/")!,
-            icon: "hanger",
+            icon: "witchery",
             primaryColor: Color(hex: "#212121")
         ),
         VoucherProvider(
             name: "Mimco",
             category: .fashion,
             url: URL(string: "https://www.mimco.com.au/")!,
-            icon: "handbag.fill",
+            icon: "mimco",
             primaryColor: Color(hex: "#F38181")
         ),
 
@@ -159,21 +152,21 @@ extension VoucherProvider {
             name: "Nike",
             category: .sports,
             url: URL(string: "https://www.nike.com.au/")!,
-            icon: "figure.run",
+            icon: "nike",
             primaryColor: Color(hex: "#FF6B00")
         ),
         VoucherProvider(
             name: "Adidas",
             category: .sports,
             url: URL(string: "https://www.adidas.com.au/")!,
-            icon: "sportscourt.fill",
+            icon: "adidas",
             primaryColor: Color(hex: "#000000")
         ),
         VoucherProvider(
             name: "Rebel",
             category: .sports,
             url: URL(string: "https://www.rebelsport.com.au/")!,
-            icon: "figure.strengthtraining.traditional",
+            icon: "rebel",
             primaryColor: Color(hex: "#FF0000")
         ),
 
@@ -182,7 +175,7 @@ extension VoucherProvider {
             name: "JB Hi-Fi",
             category: .electronics,
             url: URL(string: "https://www.jbhifi.com.au/")!,
-            icon: "headphones",
+            icon: "jb_hifi",
             primaryColor: Color(hex: "#000000")
         )
     ]

@@ -223,6 +223,7 @@
 		A001 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000 /* App.swift */; };
 		A003 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A002 /* ContentView.swift */; };
 		A005 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A004 /* Assets.xcassets */; };
+		A007 /* GiftCards.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A006 /* GiftCards.xcassets */; };
 		A010 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00F /* APIClient.swift */; };
 		A012 /* ApplePayConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = A011 /* ApplePayConfig.swift */; };
 		A014 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A013 /* OnboardingView.swift */; };
@@ -457,6 +458,7 @@
 		A000 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		A002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A004 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Forava_Assets.xcassets; sourceTree = SOURCE_ROOT; };
+		A006 /* GiftCards.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = GiftCards.xcassets; sourceTree = SOURCE_ROOT; };
 		A00F /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		A011 /* ApplePayConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplePayConfig.swift; sourceTree = "<group>"; };
 		A013 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
@@ -980,6 +982,7 @@
 				A015 /* PaymentCoordinator.swift */,
 				A01B /* ForavaApp.entitlements */,
 				A004 /* Assets.xcassets */,
+				A006 /* GiftCards.xcassets */,
 			);
 			path = ForavaApp;
 			sourceTree = "<group>";
@@ -1102,6 +1105,7 @@
 				219FCD842EC005730068B3A1 /* terms-of-use.html in Resources */,
 				219FCD852EC005730068B3A1 /* privacy-policy.html in Resources */,
 				A005 /* Assets.xcassets in Resources */,
+				A007 /* GiftCards.xcassets in Resources */,
 				215A84592EA4EACE006D56E9 /* Tab Capsule colour.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

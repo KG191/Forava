@@ -10,7 +10,7 @@ enum GiftDesignTab: String, CaseIterable {
     case create = "Create"
     case check = "Check"
     case send = "Send"
-    case connect = "Connect"
+    case connect = "Gratitude"
 
     var icon: String {
         switch self {
