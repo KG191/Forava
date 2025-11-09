@@ -28,12 +28,13 @@ struct CulturalCarouselView: View {
                         .id(index)
                     }
                 }
+                .scrollTargetLayout()
                 .padding(.horizontal, max(20, (UIScreen.main.bounds.width - cardWidth) / 2))
             }
             .scrollPosition(id: $scrolledID, anchor: .center)
-            .scrollTargetBehavior(.paging)
+            .scrollTargetBehavior(.viewAligned)
             .onChange(of: scrolledID) { oldValue, newValue in
-                if let newIndex = newValue, newIndex != selectedEventIndex {
+                if let newIndex = newValue {
                     withAnimation(.easeInOut(duration: 0.2)) {
                         selectedEventIndex = newIndex
                     }

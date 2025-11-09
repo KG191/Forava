@@ -172,15 +172,10 @@ struct RoshHashanahSendShareView: View {
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 16)
                 .background(
-                    LinearGradient(
-                        colors: [Color(hex: "#FF8A00"), Color(hex: "#E05A00")],
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    )
+                    RoundedRectangle(cornerRadius: 12)
+                        .fill(culturalColor.gradient)
                 )
                 .foregroundStyle(.white)
-                .cornerRadius(12)
-                .shadow(color: .black.opacity(0.18), radius: 14, y: 8)
             }
             .padding(.horizontal, 20)
 
@@ -198,15 +193,10 @@ struct RoshHashanahSendShareView: View {
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 16)
                 .background(
-                    LinearGradient(
-                        colors: [Color(hex: "#FF8A00"), Color(hex: "#E05A00")],
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    )
+                    RoundedRectangle(cornerRadius: 12)
+                        .strokeBorder(culturalColor, lineWidth: 2)
                 )
-                .foregroundStyle(.white)
-                .cornerRadius(12)
-                .shadow(color: .black.opacity(0.18), radius: 14, y: 8)
+                .foregroundStyle(culturalColor)
             }
             .padding(.horizontal, 20)
 
@@ -224,15 +214,10 @@ struct RoshHashanahSendShareView: View {
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 16)
                 .background(
-                    LinearGradient(
-                        colors: [Color(hex: "#FF8A00"), Color(hex: "#E05A00")],
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    )
+                    RoundedRectangle(cornerRadius: 12)
+                        .strokeBorder(culturalColor, lineWidth: 2)
                 )
-                .foregroundStyle(.white)
-                .cornerRadius(12)
-                .shadow(color: .black.opacity(0.18), radius: 14, y: 8)
+                .foregroundStyle(culturalColor)
             }
             .padding(.horizontal, 20)
 
@@ -251,10 +236,15 @@ struct RoshHashanahSendShareView: View {
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 14)
                 .background(
-                    RoundedRectangle(cornerRadius: 12)
-                        .fill(Color(.secondarySystemBackground))
+                    LinearGradient(
+                        colors: [Color(hex: "#FF8A00"), Color(hex: "#E05A00")],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
                 )
-                .foregroundStyle(.primary)
+                .foregroundStyle(.white)
+                .cornerRadius(12)
+                .shadow(color: .black.opacity(0.18), radius: 14, y: 8)
             }
             .padding(.horizontal, 20)
         }
