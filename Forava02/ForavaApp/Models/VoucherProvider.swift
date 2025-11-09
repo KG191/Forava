@@ -114,6 +114,13 @@ extension VoucherProvider {
             icon: "david_jones",
             primaryColor: Color(hex: "#1976D2")
         ),
+        VoucherProvider(
+            name: "Westfield",
+            category: .departmentStore,
+            url: URL(string: "https://www.westfieldgiftcards.com.au/Online/order/order-card?_gl=1*1y656me*_gcl_au*MzYyMDEzNTY4LjE3NjI2NDYzMzE.*_ga*MTA0Mjg1MzIzMS4xNzYyNjQ2MzMx*_ga_BTMN40XGDR*czE3NjI2NTgzODIkbzIkZzEkdDE3NjI2NTg4MzUkajU5JGwwJGgxMjUzNTM4Nzgy")!,
+            icon: "westfield",
+            primaryColor: Color(hex: "#E30613")
+        ),
 
         // Books & Reading
         VoucherProvider(

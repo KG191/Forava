@@ -160,14 +160,23 @@ private struct ProviderCard: View {
             .frame(maxWidth: .infinity)
             .background(
                 RoundedRectangle(cornerRadius: 20)
-                    .fill(.ultraThinMaterial)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 20)
-                            .fill(culturalColor.opacity(0.03))
+                    .fill(
+                        LinearGradient(
+                            colors: isPressed
+                                ? [Color(hex: "#FF8A00").opacity(0.9), Color(hex: "#E05A00").opacity(0.7)]
+                                : [Color(hex: "#FF8A00").opacity(0.15), Color(hex: "#E05A00").opacity(0.05)],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
                     )
                     .overlay(
                         RoundedRectangle(cornerRadius: 20)
-                            .stroke(culturalColor.opacity(0.25), lineWidth: 1)
+                            .stroke(
+                                isPressed
+                                    ? Color(hex: "#FF8A00").opacity(0.6)
+                                    : Color(hex: "#FF8A00").opacity(0.25),
+                                lineWidth: 1
+                            )
                     )
             )
             .clipShape(RoundedRectangle(cornerRadius: 20))

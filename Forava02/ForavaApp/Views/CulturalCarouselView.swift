@@ -32,6 +32,13 @@ struct CulturalCarouselView: View {
             }
             .scrollPosition(id: $scrolledID, anchor: .center)
             .scrollTargetBehavior(.paging)
+            .onChange(of: scrolledID) { oldValue, newValue in
+                if let newIndex = newValue, newIndex != selectedEventIndex {
+                    withAnimation(.easeInOut(duration: 0.2)) {
+                        selectedEventIndex = newIndex
+                    }
+                }
+            }
 
             // Page Indicators with tap functionality
             HStack(spacing: 8) {

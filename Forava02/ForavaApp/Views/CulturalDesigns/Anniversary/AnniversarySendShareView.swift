@@ -23,26 +23,20 @@ struct AnniversarySendShareView: View {
     }
 
     enum ShareMethod: String, CaseIterable {
-        case messages = "Messages"
-        case mail = "Email"
-        case socialMedia = "Social Media"
-        case airdrop = "AirDrop"
+        case sendToLovedOne = "Send to Loved One"
+        case saveToPhotos = "Save to Photos"
 
         var icon: String {
             switch self {
-            case .messages: return "message.fill"
-            case .mail: return "envelope.fill"
-            case .socialMedia: return "square.and.arrow.up.fill"
-            case .airdrop: return "wifi.circle.fill"
+            case .sendToLovedOne: return "square.and.arrow.up.fill"
+            case .saveToPhotos: return "photo.on.rectangle.angled"
             }
         }
 
         var color: Color {
             switch self {
-            case .messages: return .green
-            case .mail: return .blue
-            case .socialMedia: return .orange
-            case .airdrop: return .cyan
+            case .sendToLovedOne: return .orange
+            case .saveToPhotos: return .blue
             }
         }
     }
@@ -98,9 +92,6 @@ struct AnniversarySendShareView: View {
 
                         // Sharing Options
                         sharingOptionsSection()
-
-                        // Contact Information
-                        contactInfoSection()
 
                         // Delivery Status
                         if saveStatus != .none {
@@ -381,17 +372,10 @@ struct AnniversarySendShareView: View {
     // MARK: - Sharing Functions
     private func handleShare(method: ShareMethod) {
         switch method {
-        case .messages:
-            if MFMessageComposeViewController.canSendText() {
-                showingMessageComposer = true
-            }
-        case .mail:
-            // Handle email sharing
-            shareViaEmail()
-        case .socialMedia:
+        case .sendToLovedOne:
             shareViaActivitySheet()
-        case .airdrop:
-            shareViaActivitySheet()
+        case .saveToPhotos:
+            saveToPhotos()
         }
     }
 
