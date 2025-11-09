@@ -126,23 +126,38 @@ private struct ProviderCard: View {
             impactFeedback.impactOccurred(intensity: 0.7)
             onTap()
         }) {
-            VStack(spacing: 12) {
-                // Brand Logo Icon with 20pt corner radius
-                Image(provider.icon)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 60, height: 60)
-                    .clipShape(RoundedRectangle(cornerRadius: 20))
+            VStack(spacing: 0) {
+                // Main content area
+                VStack(spacing: 8) {
+                    // Category Icon (generic SF Symbol)
+                    Image(systemName: provider.category.icon)
+                        .font(.system(size: 32))
+                        .foregroundStyle(provider.primaryColor.opacity(0.6))
+                        .padding(.top, 16)
 
-                // Name
-                Text(provider.name)
-                    .font(.system(.subheadline, design: .rounded).weight(.semibold))
-                    .foregroundStyle(.primary)
-                    .multilineTextAlignment(.center)
-                    .lineLimit(2)
+                    // Brand Name (large focal point)
+                    Text(provider.name)
+                        .font(.system(.headline, design: .rounded).weight(.bold))
+                        .foregroundStyle(.primary)
+                        .multilineTextAlignment(.center)
+                        .lineLimit(2)
+                        .padding(.horizontal, 12)
+
+                    // Category text
+                    Text(provider.category.rawValue)
+                        .font(.system(.caption, design: .rounded).weight(.medium))
+                        .foregroundStyle(.secondary)
+                        .multilineTextAlignment(.center)
+                        .lineLimit(1)
+                        .padding(.bottom, 12)
+                }
+
+                // Brand color accent bar at bottom
+                Rectangle()
+                    .fill(provider.primaryColor)
+                    .frame(height: 4)
             }
             .frame(maxWidth: .infinity)
-            .padding(.vertical, 20)
             .background(
                 RoundedRectangle(cornerRadius: 20)
                     .fill(.ultraThinMaterial)
@@ -155,6 +170,7 @@ private struct ProviderCard: View {
                             .stroke(culturalColor.opacity(0.25), lineWidth: 1)
                     )
             )
+            .clipShape(RoundedRectangle(cornerRadius: 20))
             .shadow(
                 color: .black.opacity(isPressed ? 0.15 : 0.08),
                 radius: isPressed ? 12 : 8,

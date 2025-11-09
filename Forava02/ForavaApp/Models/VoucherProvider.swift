@@ -7,7 +7,7 @@ struct VoucherProvider: Identifiable, Equatable {
     let name: String
     let category: VoucherCategory
     let url: URL
-    let icon: String  // Brand logo asset name from GiftCards.xcassets
+    let icon: String  // DEPRECATED: No longer used (using category.icon instead for IP compliance)
     let primaryColor: Color
 
     static func == (lhs: VoucherProvider, rhs: VoucherProvider) -> Bool {
