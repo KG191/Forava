@@ -16,31 +16,13 @@ struct SettingsView: View {
     var body: some View {
         NavigationStack {
             List {
-                // Apple Pay Section
-                Section {
-                    applePaySection
-                } header: {
-                    Text("Apple Pay")
-                } footer: {
-                    Text("Apple Pay allows secure payments for Rakhi gifts. All transactions are encrypted and protected by Touch ID or Face ID.")
-                }
-
                 // Notifications Section
                 Section {
                     notificationsSection
                 } header: {
                     Text("Notifications")
                 } footer: {
-                    Text("Control how you receive notifications for Rakhi gifts and payment requests.")
-                }
-
-                // Security Section
-                Section {
-                    securitySection
-                } header: {
-                    Text("Security & Privacy")
-                } footer: {
-                    Text("Forava follows Apple's strict privacy guidelines. Your data is encrypted and never shared with third parties.")
+                    Text("Control how you receive notifications for gifts and reminders.")
                 }
 
                 // Data Management Section
@@ -91,43 +73,6 @@ struct SettingsView: View {
         }
     }
 
-    // MARK: - Apple Pay Section
-    private var applePaySection: some View {
-        Group {
-            HStack {
-                Image(systemName: "creditcard.fill")
-                    .foregroundStyle(.green)
-                    .frame(width: 20)
-
-                Text("Apple Pay Status")
-
-                Spacer()
-
-                if PKPaymentAuthorizationViewController.canMakePayments() {
-                    Text("Available")
-                        .foregroundStyle(.green)
-                        .font(.system(.caption, design: .rounded).weight(.medium))
-                } else {
-                    Text("Unavailable")
-                        .foregroundStyle(.red)
-                        .font(.system(.caption, design: .rounded).weight(.medium))
-                }
-            }
-
-            NavigationLink {
-                PaymentSettingsView()
-            } label: {
-                HStack {
-                    Image(systemName: "gear")
-                        .foregroundStyle(.blue)
-                        .frame(width: 20)
-
-                    Text("Payment Settings")
-                }
-            }
-        }
-    }
-
     // MARK: - Notifications Section
     private var notificationsSection: some View {
         Group {
@@ -160,53 +105,6 @@ struct SettingsView: View {
 
                         Text("Haptic Feedback")
                     }
-                }
-            }
-        }
-    }
-
-    // MARK: - Security Section
-    private var securitySection: some View {
-        Group {
-            Toggle(isOn: $autoApprovePayments) {
-                HStack {
-                    Image(systemName: "checkmark.shield.fill")
-                        .foregroundStyle(.green)
-                        .frame(width: 20)
-
-                    VStack(alignment: .leading, spacing: 2) {
-                        Text("Auto-Approve Small Payments")
-                        Text("Payments under $\(Int(maxPaymentAmount))")
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
-                    }
-                }
-            }
-
-            if autoApprovePayments {
-                VStack(alignment: .leading, spacing: 8) {
-                    HStack {
-                        Image(systemName: "dollarsign.circle")
-                            .foregroundStyle(.green)
-                            .frame(width: 20)
-
-                        Text("Max Auto Amount: $\(Int(maxPaymentAmount))")
-                    }
-
-                    Slider(value: $maxPaymentAmount, in: 10...200, step: 10)
-                        .accentColor(.orange)
-                }
-            }
-
-            NavigationLink {
-                BiometricSettingsView()
-            } label: {
-                HStack {
-                    Image(systemName: "faceid")
-                        .foregroundStyle(.blue)
-                        .frame(width: 20)
-
-                    Text("Biometric Authentication")
                 }
             }
         }
@@ -311,7 +209,7 @@ struct SettingsView: View {
                 Spacer()
 
                 Button("Contact") {
-                    if let url = URL(string: "mailto:support@forava.com") {
+                    if let url = URL(string: "mailto:foravaapp@gmail.com") {
                         UIApplication.shared.open(url)
                     }
                 }
@@ -351,36 +249,6 @@ struct SettingsView: View {
 }
 
 // MARK: - Supporting Views
-
-struct PaymentSettingsView: View {
-    var body: some View {
-        List {
-            Section {
-                Text("Payment settings and preferences will be managed here")
-                    .foregroundStyle(.secondary)
-            } header: {
-                Text("Payment Preferences")
-            }
-        }
-        .navigationTitle("Payment Settings")
-        .navigationBarTitleDisplayMode(.large)
-    }
-}
-
-struct BiometricSettingsView: View {
-    var body: some View {
-        List {
-            Section {
-                Text("Biometric authentication settings for secure payments")
-                    .foregroundStyle(.secondary)
-            } header: {
-                Text("Authentication")
-            }
-        }
-        .navigationTitle("Biometric Settings")
-        .navigationBarTitleDisplayMode(.large)
-    }
-}
 
 struct DataExportView: View {
     var body: some View {

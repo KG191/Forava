@@ -1,69 +1,40 @@
 import SwiftUI
 import Foundation
-import MessageUI
-import Photos
 
 struct AnniversarySendShareView: View {
-    let generatedImages: [String: String]  // Keys: "iPhone", "AppleWatch"
+    let generatedImages: [String: String]
     let personalMessage: String
     let selectedContact: Contact
     let culturalColor: Color
     @Binding var showingShareSheet: Bool
     let onGoBackToGenerate: () -> Void
 
-    @State private var showingMessageComposer = false
-    @State private var showingMailComposer = false
-    @State private var showingSaveConfirmation = false
-    @State private var saveStatus: SaveStatus = .none
-    @State private var shareMethod: ShareMethod?
-    @State private var activityItems: [Any] = []
+    @State private var selectedFormat: ImageFormat = .iPhone
 
-    private var hasGeneratedImages: Bool {
-        !generatedImages.isEmpty
-    }
+    enum ImageFormat: String, CaseIterable {
+        case iPhone = "iPhone"
+        case appleWatch = "Apple Watch"
 
-    enum ShareMethod: String, CaseIterable {
-        case sendToLovedOne = "Send to Loved One"
-        case saveToPhotos = "Save to Photos"
-
-        var icon: String {
+        var displaySize: CGSize {
             switch self {
-            case .sendToLovedOne: return "square.and.arrow.up.fill"
-            case .saveToPhotos: return "photo.on.rectangle.angled"
+            case .iPhone:
+                return CGSize(
+                    width: CGFloat(CulturalAIConfiguration.iPhoneWidth),
+                    height: CGFloat(CulturalAIConfiguration.iPhoneHeight)
+                )
+            case .appleWatch:
+                return CGSize(
+                    width: CGFloat(CulturalAIConfiguration.watchWidth),
+                    height: CGFloat(CulturalAIConfiguration.watchHeight)
+                )
             }
         }
 
-        var color: Color {
+        var aspectRatio: CGFloat {
             switch self {
-            case .sendToLovedOne: return .orange
-            case .saveToPhotos: return .blue
+            case .iPhone: return 1024.0/1792.0  // DALL-E 3 portrait (9:15.75)
+            case .appleWatch: return 1.0        // Square for Apple Watch
             }
-        }
-    }
-
-    enum SaveStatus: Equatable {
-        case none
-        case saving
-        case success
-        case failed(String)
-
-        var message: String {
-            switch self {
-            case .none: return ""
-            case .saving: return "Saving to Photos..."
-            case .success: return "Saved to Photos successfully!"
-            case .failed(let error): return "Failed to save: \(error)"
-            }
-        }
-
-        var isSuccess: Bool {
-            if case .success = self { return true }
-            return false
-        }
-
-        var isError: Bool {
-            if case .failed = self { return true }
-            return false
         }
     }
 
@@ -72,11 +43,11 @@ struct AnniversarySendShareView: View {
             VStack(spacing: 24) {
                 // Header Section
                 VStack(spacing: 12) {
-                    Text("Send Your Anniversary Gift")
+                    Text("Share Your Gift")
                         .font(.system(.title2, design: .rounded).weight(.bold))
                         .foregroundStyle(.primary)
 
-                    Text("Share your personalized anniversary design with \(selectedContact.name)")
+                    Text("Send your personalized Anniversary gift to \(selectedContact.name)")
                         .font(.system(.body, design: .rounded))
                         .foregroundStyle(.secondary)
                         .multilineTextAlignment(.center)
@@ -85,21 +56,18 @@ struct AnniversarySendShareView: View {
                 .padding(.top, 20)
 
                 // Glass Morphism Content Container
-                VStack(spacing: 24) {
-                    if hasGeneratedImages {
-                        // Image Preview
-                        imagePreviewSection()
+                VStack(spacing: 20) {
+                    if !generatedImages.isEmpty {
+                        // Format Selector
+                        formatSelector()
 
-                        // Sharing Options
-                        sharingOptionsSection()
+                        // Preview
+                        imagePreview()
 
-                        // Delivery Status
-                        if saveStatus != .none {
-                            deliveryStatusSection()
-                        }
+                        // Share Options
+                        shareOptions()
                     } else {
-                        // No Image Available
-                        noImageSection()
+                        emptyState()
                     }
                 }
                 .padding(.vertical, 24)
@@ -124,543 +92,191 @@ struct AnniversarySendShareView: View {
                 endPoint: .bottom
             )
         )
-        .sheet(isPresented: $showingMessageComposer) {
-            if MFMessageComposeViewController.canSendText() {
-                MessageComposeView(
-                    recipient: selectedContact.phoneNumber,
-                    images: generatedImages,
-                    personalMessage: personalMessage
-                )
-            } else {
-                Text("Messages not available")
-            }
-        }
-        .sheet(isPresented: $showingMailComposer) {
-            MailComposeView(
-                recipient: selectedContact.email ?? "",
-                subject: "Happy Anniversary!",
-                images: generatedImages,
-                personalMessage: personalMessage,
-                culturalColor: culturalColor
-            )
-        }
-        .sheet(isPresented: $showingShareSheet) {
-            ActivityViewController(activityItems: activityItems)
-        }
-        .alert("Save Status", isPresented: $showingSaveConfirmation) {
-            Button("OK") {
-                saveStatus = .none
-            }
-        } message: {
-            Text(saveStatus.message)
-        }
     }
 
     @ViewBuilder
-    private func imagePreviewSection() -> some View {
-        VStack(spacing: 16) {
-            HStack {
-                Image(systemName: "photo.circle.fill")
-                    .foregroundStyle(culturalColor)
-                Text("Your Anniversary Gift")
-                    .font(.system(.headline, design: .rounded).weight(.semibold))
-                Spacer()
+    private func formatSelector() -> some View {
+        Picker("Format", selection: $selectedFormat) {
+            ForEach(ImageFormat.allCases, id: \.self) { format in
+                Text(format.rawValue).tag(format)
             }
-
-            // Image Preview Card
-            RoundedRectangle(cornerRadius: 16)
-                .fill(culturalColor.opacity(0.12))
-                .aspectRatio(1.0, contentMode: .fit)
-                .frame(maxHeight: 200)
-                .overlay(
-                    VStack(spacing: 12) {
-                        Image(systemName: "heart.circle.fill")
-                            .font(.system(.largeTitle))
-                            .foregroundStyle(culturalColor)
-
-                        Text("Anniversary Design")
-                            .font(.system(.headline, design: .rounded).weight(.semibold))
-                            .foregroundStyle(.primary)
-
-                        Text("Ready to share with \(selectedContact.name)")
-                            .font(.system(.caption, design: .rounded))
-                            .foregroundStyle(.secondary)
-                    }
-                )
         }
+        .pickerStyle(.segmented)
         .padding(.horizontal, 20)
     }
 
     @ViewBuilder
-    private func sharingOptionsSection() -> some View {
-        VStack(spacing: 16) {
-            HStack {
-                Image(systemName: "square.and.arrow.up.circle.fill")
-                    .foregroundStyle(culturalColor)
-                Text("Sharing Options")
-                    .font(.system(.headline, design: .rounded).weight(.semibold))
-                Spacer()
-            }
+    private func imagePreview() -> some View {
+        let imageKey = selectedFormat.rawValue
+        let imageURL = generatedImages[imageKey]
 
-            LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 2), spacing: 12) {
-                ForEach(ShareMethod.allCases, id: \.self) { method in
-                    shareMethodCard(method: method)
-                }
-            }
-        }
-        .padding(.horizontal, 20)
-    }
-
-    @ViewBuilder
-    private func shareMethodCard(method: ShareMethod) -> some View {
-        Button {
-            withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
-                shareMethod = method
-                handleShare(method: method)
-            }
-        } label: {
-            VStack(spacing: 12) {
-                ZStack {
-                    Circle()
-                        .fill(method.color.opacity(0.2))
-                        .frame(width: 50, height: 50)
-
-                    Image(systemName: method.icon)
-                        .font(.title2)
-                        .foregroundStyle(method.color)
-                }
-
-                Text(method.rawValue)
-                    .font(.system(.caption, design: .rounded).weight(.medium))
-                    .foregroundStyle(.primary)
-                    .multilineTextAlignment(.center)
-            }
-            .frame(maxWidth: .infinity)
-            .padding(.vertical, 16)
-            .background(
-                RoundedRectangle(cornerRadius: 12)
-                    .fill(culturalColor.opacity(0.10))
-            )
-        }
-        .buttonStyle(.plain)
-    }
-
-    @ViewBuilder
-    private func contactInfoSection() -> some View {
-        VStack(spacing: 16) {
-            HStack {
-                Image(systemName: "person.circle.fill")
-                    .foregroundStyle(culturalColor)
-                Text("Recipient")
-                    .font(.system(.headline, design: .rounded).weight(.semibold))
-                Spacer()
-            }
-
-            HStack(spacing: 16) {
-                Circle()
-                    .fill(culturalColor.opacity(0.2))
-                    .frame(width: 50, height: 50)
-                    .overlay(
-                        Text(String(selectedContact.name.prefix(1)).uppercased())
-                            .font(.system(.title2, design: .rounded).weight(.bold))
-                            .foregroundStyle(culturalColor)
-                    )
-
-                VStack(alignment: .leading, spacing: 4) {
-                    Text(selectedContact.name)
-                        .font(.system(.subheadline, design: .rounded).weight(.semibold))
-                        .foregroundStyle(.primary)
-
-                    if !selectedContact.phoneNumber.isEmpty {
-                        Text(selectedContact.phoneNumber)
-                            .font(.system(.caption, design: .rounded))
-                            .foregroundStyle(.secondary)
-                    }
-
-                    if let relationship = selectedContact.relationship {
-                        Text(relationship)
-                            .font(.system(.caption, design: .rounded))
-                            .foregroundStyle(culturalColor)
-                            .padding(.horizontal, 8)
-                            .padding(.vertical, 2)
-                            .background(culturalColor.opacity(0.1))
-                            .cornerRadius(4)
-                    }
-                }
-
-                Spacer()
-            }
-        }
-        .padding(.horizontal, 20)
-        .padding(.vertical, 16)
-        .background(
-            RoundedRectangle(cornerRadius: 16)
-                .fill(culturalColor.opacity(0.05))
-        )
-        .padding(.horizontal, 20)
-    }
-
-    @ViewBuilder
-    private func deliveryStatusSection() -> some View {
         VStack(spacing: 12) {
-            HStack {
-                let iconName = saveStatus.isSuccess ? "checkmark.circle.fill" :
-                    saveStatus.isError ? "xmark.circle.fill" : "clock.circle.fill"
-                Image(systemName: iconName)
-                    .foregroundStyle(saveStatus.isSuccess ? .green : saveStatus.isError ? .red : .orange)
+            // Image Display
+            ZStack {
+                RoundedRectangle(cornerRadius: 16)
+                    .fill(Color(.secondarySystemBackground))
+                    .aspectRatio(selectedFormat.aspectRatio, contentMode: .fit)
 
-                Text("Delivery Status")
-                    .font(.system(.headline, design: .rounded).weight(.semibold))
-
-                Spacer()
+                if let urlString = imageURL {
+                    ImageWithTextOverlay(
+                        imageURL: urlString,
+                        message: personalMessage,
+                        imageSize: selectedFormat.displaySize,
+                        culturalColor: culturalColor
+                    )
+                    .aspectRatio(selectedFormat.aspectRatio, contentMode: .fit)
+                    .cornerRadius(16)
+                }
             }
+            .padding(.horizontal, 20)
 
-            HStack {
-                Text(saveStatus.message)
-                    .font(.system(.subheadline, design: .rounded))
-                    .foregroundStyle(saveStatus.isSuccess ? .green : saveStatus.isError ? .red : .primary)
-                Spacer()
-            }
+            // Format Info
+            Text("Format: \(selectedFormat.rawValue)")
+                .font(.system(.caption, design: .rounded))
+                .foregroundStyle(.secondary)
         }
-        .padding(.horizontal, 20)
-        .padding(.vertical, 16)
-        .background(
-            RoundedRectangle(cornerRadius: 16)
-                .fill((saveStatus.isSuccess ? Color.green : saveStatus.isError ? Color.red : Color.orange).opacity(0.1))
-        )
-        .padding(.horizontal, 20)
     }
 
     @ViewBuilder
-    private func noImageSection() -> some View {
+    private func shareOptions() -> some View {
         VStack(spacing: 16) {
-            Image(systemName: "photo.badge.plus")
-                .font(.system(.largeTitle))
-                .foregroundStyle(.secondary)
+            // Share via iOS Share Sheet
+            Button(action: {
+                showingShareSheet = true
+            }) {
+                HStack {
+                    Image(systemName: "square.and.arrow.up")
+                        .font(.headline)
 
-            Text("No Image to Share")
-                .font(.system(.headline, design: .rounded).weight(.semibold))
-                .foregroundStyle(.secondary)
+                    Text("Share Image")
+                        .font(.system(.headline, design: .rounded).weight(.semibold))
+                }
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 16)
+                .background(
+                    RoundedRectangle(cornerRadius: 12)
+                        .fill(culturalColor.gradient)
+                )
+                .foregroundStyle(.white)
+            }
+            .padding(.horizontal, 20)
 
-            Text("Generate your anniversary gift first before sharing")
+            // Save to Photos
+            Button(action: {
+                saveToPhotos()
+            }) {
+                HStack {
+                    Image(systemName: "square.and.arrow.down")
+                        .font(.headline)
+
+                    Text("Save to Photos")
+                        .font(.system(.headline, design: .rounded).weight(.semibold))
+                }
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 16)
+                .background(
+                    RoundedRectangle(cornerRadius: 12)
+                        .strokeBorder(culturalColor, lineWidth: 2)
+                )
+                .foregroundStyle(culturalColor)
+            }
+            .padding(.horizontal, 20)
+
+            // Send via Messages (Placeholder)
+            Button(action: {
+                sendViaMessages()
+            }) {
+                HStack {
+                    Image(systemName: "message.fill")
+                        .font(.headline)
+
+                    Text("Send via Messages")
+                        .font(.system(.headline, design: .rounded).weight(.semibold))
+                }
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 16)
+                .background(
+                    RoundedRectangle(cornerRadius: 12)
+                        .strokeBorder(culturalColor, lineWidth: 2)
+                )
+                .foregroundStyle(culturalColor)
+            }
+            .padding(.horizontal, 20)
+
+            Divider()
+                .padding(.vertical, 8)
+
+            // Go Back to Generate
+            Button(action: onGoBackToGenerate) {
+                HStack {
+                    Image(systemName: "arrow.left")
+                        .font(.headline)
+
+                    Text("Generate New Gift")
+                        .font(.system(.headline, design: .rounded).weight(.semibold))
+                }
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 14)
+                .background(
+                    LinearGradient(
+                        colors: [Color(hex: "#FF8A00"), Color(hex: "#E05A00")],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
+                )
+                .foregroundStyle(.white)
+                .cornerRadius(12)
+                .shadow(color: .black.opacity(0.18), radius: 14, y: 8)
+            }
+            .padding(.horizontal, 20)
+        }
+    }
+
+    @ViewBuilder
+    private func emptyState() -> some View {
+        VStack(spacing: 16) {
+            Image(systemName: "paperplane")
+                .font(.system(size: 60))
+                .foregroundStyle(culturalColor.opacity(0.5))
+
+            Text("No Gift to Share")
+                .font(.system(.title3, design: .rounded).weight(.semibold))
+                .foregroundStyle(.primary)
+
+            Text("Generate a gift first to share it with \(selectedContact.name)")
                 .font(.system(.subheadline, design: .rounded))
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
 
-            Button("Go Back to Generate") {
-                onGoBackToGenerate()
+            Button(action: onGoBackToGenerate) {
+                Text("Go to Create")
+                    .font(.system(.subheadline, design: .rounded).weight(.semibold))
+                    .foregroundStyle(culturalColor)
             }
-            .font(.system(.subheadline, design: .rounded).weight(.semibold))
-            .foregroundStyle(.white)
-            .padding(.horizontal, 24)
-            .padding(.vertical, 14)
-            .background(
-                LinearGradient(
-                    colors: [Color(hex: "#FF8A00"), Color(hex: "#E05A00")],
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
-                )
-            )
-            .cornerRadius(12)
-            .shadow(color: .black.opacity(0.18), radius: 14, y: 8)
+            .padding(.top, 8)
         }
-        .frame(height: 200)
-        .frame(maxWidth: .infinity)
-        .padding(.horizontal, 20)
+        .padding(.vertical, 60)
     }
 
-    // MARK: - Sharing Functions
-    private func handleShare(method: ShareMethod) {
-        switch method {
-        case .sendToLovedOne:
-            shareViaActivitySheet()
-        case .saveToPhotos:
-            saveToPhotos()
-        }
-    }
-
-    private func shareViaEmail() {
-        if MFMailComposeViewController.canSendMail() {
-            showingMailComposer = true
-        } else {
-            saveStatus = .failed("Email not configured on this device")
-            showingSaveConfirmation = true
-        }
-    }
-
+    // MARK: - Actions
     private func saveToPhotos() {
-        saveStatus = .saving
-
-        // Request add-only photo library permission (iOS 14+ best practice)
-        PHPhotoLibrary.requestAuthorization(for: .addOnly) { status in
-            DispatchQueue.main.async {
-                guard status == .authorized else {
-                    saveStatus = .failed("Photo library access denied")
-                    showingSaveConfirmation = true
-                    return
-                }
-
-                // Load and save all generated images
-                Task {
-                    var savedCount = 0
-                    var failedCount = 0
-
-                    for (_, imageURL) in generatedImages {
-                        if let url = URL(string: imageURL),
-                           let data = try? Data(contentsOf: url),
-                           let image = UIImage(data: data) {
-
-                            // Create image with text overlay
-                            let renderer = UIGraphicsImageRenderer(size: image.size)
-                            let finalImage = renderer.image { _ in
-                                // Draw base image
-                                image.draw(at: .zero)
-
-                                // Draw text overlay if message exists
-                                if !personalMessage.isEmpty && personalMessage != "No message selected" {
-                                    let paragraphStyle = NSMutableParagraphStyle()
-                                    paragraphStyle.alignment = .center
-
-                                    let attributes: [NSAttributedString.Key: Any] = [
-                                        .font: UIFont(name: "Snell Roundhand", size: 28) ?? UIFont.systemFont(ofSize: 28, weight: .bold),
-                                        .foregroundColor: UIColor.white,
-                                        .paragraphStyle: paragraphStyle,
-                                        .strokeColor: UIColor(culturalColor),
-                                        .strokeWidth: -3.0
-                                    ]
-
-                                    let textRect = CGRect(
-                                        x: image.size.width * 0.1,
-                                        y: image.size.height * 0.25,
-                                        width: image.size.width * 0.8,
-                                        height: image.size.height * 0.5
-                                    )
-
-                                    personalMessage.draw(with: textRect, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
-                                }
-                            }
-
-                            // Save to Photos
-                            do {
-                                try await PHPhotoLibrary.shared().performChanges {
-                                    PHAssetChangeRequest.creationRequestForAsset(from: finalImage)
-                                }
-                                savedCount += 1
-                            } catch {
-                                failedCount += 1
-                            }
-                        } else {
-                            failedCount += 1
-                        }
-                    }
-
-                    // Update status
-                    await MainActor.run {
-                        if savedCount > 0 {
-                            saveStatus = .success
-                        } else {
-                            saveStatus = .failed("Could not save images")
-                        }
-                        showingSaveConfirmation = true
-                    }
-                }
-            }
-        }
+        print("📸 Save to Photos tapped - functionality to be implemented")
+        // TODO: Implement photo library save functionality
     }
 
-    private func shareViaActivitySheet() {
-        // Prepare images for sharing
-        Task {
-            var items: [Any] = []
-
-            // Add personal message
-            if !personalMessage.isEmpty && personalMessage != "No message selected" {
-                items.append(personalMessage)
-            }
-
-            // Load and prepare images
-            for (_, imageURL) in generatedImages {
-                if let url = URL(string: imageURL),
-                   let data = try? Data(contentsOf: url),
-                   let image = UIImage(data: data) {
-
-                    // Create image with text overlay
-                    let renderer = UIGraphicsImageRenderer(size: image.size)
-                    let finalImage = renderer.image { _ in
-                        image.draw(at: .zero)
-
-                        if !personalMessage.isEmpty && personalMessage != "No message selected" {
-                            let paragraphStyle = NSMutableParagraphStyle()
-                            paragraphStyle.alignment = .center
-
-                            let attributes: [NSAttributedString.Key: Any] = [
-                                .font: UIFont(name: "Snell Roundhand", size: 28) ?? UIFont.systemFont(ofSize: 28, weight: .bold),
-                                .foregroundColor: UIColor.white,
-                                .paragraphStyle: paragraphStyle,
-                                .strokeColor: UIColor(culturalColor),
-                                .strokeWidth: -3.0
-                            ]
-
-                            let textRect = CGRect(
-                                x: image.size.width * 0.1,
-                                y: image.size.height * 0.25,
-                                width: image.size.width * 0.8,
-                                height: image.size.height * 0.5
-                            )
-
-                            personalMessage.draw(with: textRect, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
-                        }
-                    }
-
-                    items.append(finalImage)
-                }
-            }
-
-            await MainActor.run {
-                activityItems = items
-                showingShareSheet = true
-            }
-        }
+    private func sendViaMessages() {
+        print("💬 Send via Messages tapped - functionality to be implemented")
+        // TODO: Implement Messages integration
     }
-}
-
-// MARK: - Message Composer
-struct MessageComposeView: UIViewControllerRepresentable {
-    let recipient: String
-    let images: [String: String]
-    let personalMessage: String
-
-    func makeUIViewController(context: Context) -> MFMessageComposeViewController {
-        let composer = MFMessageComposeViewController()
-        composer.recipients = [recipient]
-        composer.body = personalMessage.isEmpty || personalMessage == "No message selected" ?
-            "Happy Anniversary! I created this special gift for you. 💕" :
-            personalMessage
-        composer.messageComposeDelegate = context.coordinator
-        return composer
-    }
-
-    func updateUIViewController(_ uiViewController: MFMessageComposeViewController, context: Context) {}
-
-    func makeCoordinator() -> Coordinator {
-        Coordinator()
-    }
-
-    class Coordinator: NSObject, MFMessageComposeViewControllerDelegate {
-        func messageComposeViewController(
-            _ controller: MFMessageComposeViewController,
-            didFinishWith result: MessageComposeResult
-        ) {
-            controller.dismiss(animated: true)
-        }
-    }
-}
-
-// MARK: - Mail Composer
-struct MailComposeView: UIViewControllerRepresentable {
-    let recipient: String
-    let subject: String
-    let images: [String: String]
-    let personalMessage: String
-    let culturalColor: Color
-
-    func makeUIViewController(context: Context) -> MFMailComposeViewController {
-        let composer = MFMailComposeViewController()
-        composer.setToRecipients([recipient])
-        composer.setSubject(subject)
-
-        let messageBody = personalMessage.isEmpty || personalMessage == "No message selected" ?
-            "Happy Anniversary! I created this special gift for you." :
-            personalMessage
-        composer.setMessageBody(messageBody, isHTML: false)
-        composer.mailComposeDelegate = context.coordinator
-
-        // Attach images asynchronously
-        Task {
-            for (format, imageURL) in images {
-                if let url = URL(string: imageURL),
-                   let data = try? Data(contentsOf: url),
-                   let image = UIImage(data: data) {
-
-                    // Create image with text overlay
-                    let renderer = UIGraphicsImageRenderer(size: image.size)
-                    let finalImage = renderer.image { _ in
-                        image.draw(at: .zero)
-
-                        if !personalMessage.isEmpty && personalMessage != "No message selected" {
-                            let paragraphStyle = NSMutableParagraphStyle()
-                            paragraphStyle.alignment = .center
-
-                            let attributes: [NSAttributedString.Key: Any] = [
-                                .font: UIFont(name: "Snell Roundhand", size: 28) ?? UIFont.systemFont(ofSize: 28, weight: .bold),
-                                .foregroundColor: UIColor.white,
-                                .paragraphStyle: paragraphStyle,
-                                .strokeColor: UIColor(culturalColor),
-                                .strokeWidth: -3.0
-                            ]
-
-                            let textRect = CGRect(
-                                x: image.size.width * 0.1,
-                                y: image.size.height * 0.25,
-                                width: image.size.width * 0.8,
-                                height: image.size.height * 0.5
-                            )
-
-                            personalMessage.draw(with: textRect, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
-                        }
-                    }
-
-                    if let imageData = finalImage.jpegData(compressionQuality: 0.9) {
-                        await MainActor.run {
-                            composer.addAttachmentData(imageData, mimeType: "image/jpeg", fileName: "Anniversary_\(format).jpg")
-                        }
-                    }
-                }
-            }
-        }
-
-        return composer
-    }
-
-    func updateUIViewController(_ uiViewController: MFMailComposeViewController, context: Context) {}
-
-    func makeCoordinator() -> Coordinator {
-        Coordinator()
-    }
-
-    class Coordinator: NSObject, MFMailComposeViewControllerDelegate {
-        func mailComposeController(
-            _ controller: MFMailComposeViewController,
-            didFinishWith result: MFMailComposeResult,
-            error: Error?
-        ) {
-            controller.dismiss(animated: true)
-        }
-    }
-}
-
-// MARK: - Activity View Controller
-struct ActivityViewController: UIViewControllerRepresentable {
-    let activityItems: [Any]
-
-    func makeUIViewController(context: Context) -> UIActivityViewController {
-        let controller = UIActivityViewController(
-            activityItems: activityItems,
-            applicationActivities: nil
-        )
-        return controller
-    }
-
-    func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {}
 }
 
 #Preview {
     AnniversarySendShareView(
-        generatedImages: ["iPhone": "sample_image_url", "AppleWatch": "sample_watch_url"],
-        personalMessage: "Happy 10th Anniversary!",
-        selectedContact: Contact(name: "Sarah Johnson", phoneNumber: "+1-555-0123", relationship: "Partner"),
-        culturalColor: Color(hex: "#DC143C"),
+        generatedImages: [:],
+        personalMessage: "Happy Anniversary!",
+        selectedContact: Contact(name: "Friend", phoneNumber: ""),
+        culturalColor: Color(hex: "#E91E63"),
         showingShareSheet: .constant(false),
-        onGoBackToGenerate: { print("Go back to generate") }
+        onGoBackToGenerate: {}
     )
 }
