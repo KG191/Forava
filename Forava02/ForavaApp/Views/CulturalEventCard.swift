@@ -37,8 +37,8 @@ struct CulturalEventCard: View {
                 }
                 .padding(.horizontal, 12)
                 .padding(.vertical, 10)
-                .frame(width: 180)
-                .frame(minHeight: 50)
+                .frame(width: 210)
+                .frame(minHeight: 65)
                 .background(
                     RoundedRectangle(cornerRadius: 25)
                         .fill(.ultraThinMaterial)

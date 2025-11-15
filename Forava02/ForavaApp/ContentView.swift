@@ -1,9 +1,11 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var preferences: CulturePreferencesManager
     @State private var selectedEvent: CulturalEvent?
     @State private var navigateToContact = false
     @State private var showSettings = false
+    @State private var showAllCultures = false
 
     var body: some View {
         NavigationStack {
@@ -23,13 +25,13 @@ struct ContentView: View {
 
                 VStack(spacing: 0) {
                     // Push content toward the top area
-                    Spacer().frame(height: 24)
+                    Spacer().frame(height: 12)
 
                     // MARK: Large, centered Rakhi hero
                     Image("rakhi_hero")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 280, height: 200) // Reduced size to make room for carousel
+                        .frame(width: 280, height: 160) // Reduced size to make room for carousel
                         .shadow(color: .black.opacity(0.18), radius: 16, y: 6)
                         .frame(maxWidth: .infinity, alignment: .center) // ensure horizontal centering
                         .padding(.top, 6)
@@ -46,14 +48,63 @@ struct ContentView: View {
                         .padding(.top, 16)
 
                     // Small spacer
-                    Spacer().frame(height: 20)
+                    Spacer().frame(height: 4)
 
-                    // MARK: Cultural Events Carousel
-                    CulturalCarouselView { event in
-                        selectedEvent = event
-                        navigateToContact = true
+                    // MARK: Cultural Events Carousel with Badge Overlay
+                    ZStack(alignment: .bottom) {
+                        CulturalCarouselView(showAllCultures: $showAllCultures) { event in
+                            selectedEvent = event
+                            navigateToContact = true
+                        }
+
+                        // MARK: View All Cultures Badge (Overlays at bottom)
+                        if showAllCultures {
+                            HStack {
+                                Image(systemName: "eye")
+                                    .font(.caption)
+                                Text("Showing all 12 cultures")
+                                    .font(.caption.weight(.medium))
+                            }
+                            .padding(.horizontal, 12)
+                            .padding(.vertical, 6)
+                            .background(
+                                Capsule()
+                                    .fill(Color.orange.opacity(0.15))
+                            )
+                            .foregroundStyle(.orange)
+                            .transition(.scale.combined(with: .opacity))
+                            .offset(y: -8)
+                        }
                     }
-                    .padding(.bottom, 32)
+                    .padding(.bottom, 16)
+
+                    Button {
+                        withAnimation(.spring(response: 0.3)) {
+                            showAllCultures.toggle()
+                        }
+                    } label: {
+                        HStack {
+                            Image(systemName: showAllCultures ? "checkmark.circle.fill" : "square.grid.3x3.fill")
+                                .font(.headline)
+
+                            Text(showAllCultures ? "View My Cultures" : "View All Cultures")
+                                .font(.system(.subheadline, design: .rounded).weight(.semibold))
+                        }
+                        .padding(.horizontal, 20)
+                        .padding(.vertical, 12)
+                        .background(
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(.ultraThinMaterial)
+                        )
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 10)
+                                .strokeBorder(Color.orange, lineWidth: 1.5)
+                        )
+                        .foregroundStyle(.white)
+                        .shadow(color: .black.opacity(0.15), radius: 8, y: 4)
+                    }
+                    .padding(.top, 4)
+                    .padding(.bottom, 16)
 
                     // Bottom spacer
                     Spacer()

@@ -40,7 +40,6 @@
 		215C76A82EB360A1002C27DB /* DiwaliStyleSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C76A12EB360A1002C27DB /* DiwaliStyleSelectionView.swift */; };
 		215C76A92EB360C5002C27DB /* DiwaliDesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213539C82E6BE52900CC85B0 /* DiwaliDesignView.swift */; };
 		215C76AA2EB361B4002C27DB /* DiwaliModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C93BBA2E627EA700200285 /* DiwaliModels.swift */; };
-		2AB29D0B144486564A59A3FC /* HoliModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E7CF5A1CFF4A4A98FE6575 /* HoliModels.swift */; };
 		215C76AB2EB361C7002C27DB /* DiwaliAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C76992EB3607B002C27DB /* DiwaliAIService.swift */; };
 		215C76AC2EB5A7F9002C27DB /* VesakDayDesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213539D82E6BE57100CC85B0 /* VesakDayDesignView.swift */; };
 		215C76B42EB5A835002C27DB /* VesakDayStyleSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C76B32EB5A835002C27DB /* VesakDayStyleSelectionView.swift */; };
@@ -146,6 +145,9 @@
 		219FCD802EC005480068B3A1 /* HoliCreateSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219FCD712EC005480068B3A1 /* HoliCreateSummaryView.swift */; };
 		219FCD842EC005730068B3A1 /* terms-of-use.html in Resources */ = {isa = PBXBuildFile; fileRef = 219FCD822EC005730068B3A1 /* terms-of-use.html */; };
 		219FCD852EC005730068B3A1 /* privacy-policy.html in Resources */ = {isa = PBXBuildFile; fileRef = 219FCD812EC005730068B3A1 /* privacy-policy.html */; };
+		219FCDFA2EC5E72F0068B3A1 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219FCDF92EC5E72F0068B3A1 /* WelcomeView.swift */; };
+		219FCDFD2EC5E7660068B3A1 /* InfinityLoopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219FCDFB2EC5E7660068B3A1 /* InfinityLoopView.swift */; };
+		219FCDFE2EC5ECE30068B3A1 /* CulturePreferencesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219FCDF72EC5E6E90068B3A1 /* CulturePreferencesManager.swift */; };
 		21B8978C2E7EA18800DD567D /* CulturalGiftDesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E71C998FEF4EF8BFE78604 /* CulturalGiftDesignView.swift */; };
 		21B8978D2E7EA32000DD567D /* AnniversaryStyleSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1411BA74DF4437F81A335E5 /* AnniversaryStyleSelectionView.swift */; };
 		21B8978E2E7EA33E00DD567D /* AnniversarySendShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37C93AD8519475BBBFB7C8D /* AnniversarySendShareView.swift */; };
@@ -210,6 +212,7 @@
 		21E8D07C2EACBCF3008B8145 /* AnniversaryTestSuite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E8D0792EACBCF3008B8145 /* AnniversaryTestSuite.swift */; };
 		21E8D07D2EACBCF3008B8145 /* AnniversaryValidationCriteria.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E8D07A2EACBCF3008B8145 /* AnniversaryValidationCriteria.swift */; };
 		21E8D07F2EAF82BC008B8145 /* DALLE3Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E8D07E2EAF82BC008B8145 /* DALLE3Service.swift */; };
+		2AB29D0B144486564A59A3FC /* HoliModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E7CF5A1CFF4A4A98FE6575 /* HoliModels.swift */; };
 		3AC53462BB2646F2877DC40F /* ForavaApp/Models/CoreTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4829A4CDBC4DAEB8F253A4 /* ForavaApp/Models/CoreTypes.swift */; };
 		3B3DD8DDBFBA40319C128767 /* ForavaApp/Views/CulturalDesigns/Shared/CulturalDesignProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05BE32819F74E3BB0C343FC /* ForavaApp/Views/CulturalDesigns/Shared/CulturalDesignProtocol.swift */; };
 		4B8BD9A903AE49C28CFFD444 /* ForavaApp/Views/CulturalDesigns/Shared/GiftDesignTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4283DB62BC9A4356BDA2CC8D /* ForavaApp/Views/CulturalDesigns/Shared/GiftDesignTypes.swift */; };
@@ -383,6 +386,9 @@
 		219FCD762EC005480068B3A1 /* HoliStyleSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoliStyleSelectionView.swift; sourceTree = "<group>"; };
 		219FCD812EC005730068B3A1 /* privacy-policy.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = "privacy-policy.html"; sourceTree = "<group>"; };
 		219FCD822EC005730068B3A1 /* terms-of-use.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = "terms-of-use.html"; sourceTree = "<group>"; };
+		219FCDF72EC5E6E90068B3A1 /* CulturePreferencesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulturePreferencesManager.swift; sourceTree = "<group>"; };
+		219FCDF92EC5E72F0068B3A1 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		219FCDFB2EC5E7660068B3A1 /* InfinityLoopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfinityLoopView.swift; sourceTree = "<group>"; };
 		21C93B432E5FE78800200285 /* CulturalEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulturalEvent.swift; sourceTree = "<group>"; };
 		21C93B442E5FE78800200285 /* CulturalGiftModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulturalGiftModel.swift; sourceTree = "<group>"; };
 		21C93B452E5FE78800200285 /* RakhiDesignModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RakhiDesignModels.swift; sourceTree = "<group>"; };
@@ -430,7 +436,6 @@
 		21C93BB32E6188E900200285 /* AnniversaryModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnniversaryModels.swift; sourceTree = "<group>"; };
 		21C93BB82E62577100200285 /* ChineseNewYearModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChineseNewYearModels.swift; sourceTree = "<group>"; };
 		21C93BBA2E627EA700200285 /* DiwaliModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiwaliModels.swift; sourceTree = "<group>"; };
-		29E7CF5A1CFF4A4A98FE6575 /* HoliModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoliModels.swift; sourceTree = "<group>"; };
 		21C93BBC2E62AA7F00200285 /* EasterModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasterModels.swift; sourceTree = "<group>"; };
 		21C93BBF2E62B19F00200285 /* EidAlAdhaModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EidAlAdhaModels.swift; sourceTree = "<group>"; };
 		21E8D0762EACBC3F008B8145 /* AnniversaryTestRunnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnniversaryTestRunnerView.swift; sourceTree = "<group>"; };
@@ -438,6 +443,7 @@
 		21E8D0792EACBCF3008B8145 /* AnniversaryTestSuite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnniversaryTestSuite.swift; sourceTree = "<group>"; };
 		21E8D07A2EACBCF3008B8145 /* AnniversaryValidationCriteria.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnniversaryValidationCriteria.swift; sourceTree = "<group>"; };
 		21E8D07E2EAF82BC008B8145 /* DALLE3Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DALLE3Service.swift; sourceTree = "<group>"; };
+		29E7CF5A1CFF4A4A98FE6575 /* HoliModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoliModels.swift; sourceTree = "<group>"; };
 		35B7B6AAC67649ECBD644F59 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		4283DB62BC9A4356BDA2CC8D /* ForavaApp/Views/CulturalDesigns/Shared/GiftDesignTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForavaApp/Views/CulturalDesigns/Shared/GiftDesignTypes.swift; sourceTree = "<group>"; };
 		4AF94C3E0C3949DF970484F1 /* DiwaliDesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiwaliDesignView.swift; sourceTree = "<group>"; };
@@ -782,6 +788,14 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		219FCDFC2EC5E7660068B3A1 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				219FCDFB2EC5E7660068B3A1 /* InfinityLoopView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		21C93B472E5FE78800200285 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -854,6 +868,7 @@
 		21C93B5C2E5FE78800200285 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				219FCDF72EC5E6E90068B3A1 /* CulturePreferencesManager.swift */,
 				21C93BB02E615BAC00200285 /* ColorExtensions.swift */,
 				21C93B5B2E5FE78800200285 /* PerformanceOptimizer.swift */,
 			);
@@ -916,6 +931,8 @@
 		21C93B7C2E5FE78800200285 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				219FCDFC2EC5E7660068B3A1 /* Components */,
+				219FCDF92EC5E72F0068B3A1 /* WelcomeView.swift */,
 				21E8D0752EACBC24008B8145 /* Testing */,
 				21C93B5E2E5FE78800200285 /* Customization */,
 				21C93B642E5FE78800200285 /* DesignSteps */,
@@ -1170,6 +1187,7 @@
 				219FCD6B2EBF6D630068B3A1 /* EasterAIService.swift in Sources */,
 				215C777F2EB8A1CB002C27DB /* HanukkahCreateSummaryView.swift in Sources */,
 				215C77802EB8A1CB002C27DB /* HanukkahElementsSelectionView.swift in Sources */,
+				219FCDFE2EC5ECE30068B3A1 /* CulturePreferencesManager.swift in Sources */,
 				215C77812EB8A1CB002C27DB /* HanukkahColorPaletteView.swift in Sources */,
 				215C77822EB8A1CB002C27DB /* HanukkahPersonalTouchView.swift in Sources */,
 				215C77832EB8A1CB002C27DB /* HanukkahSendShareView.swift in Sources */,
@@ -1263,6 +1281,7 @@
 				21C93BA72E5FE78800200285 /* (null) in Sources */,
 				21C93BA82E5FE78800200285 /* SimpleLocalizationService.swift in Sources */,
 				219FCD562EBE89610068B3A1 /* ChineseNewYearConnectView.swift in Sources */,
+				219FCDFD2EC5E7660068B3A1 /* InfinityLoopView.swift in Sources */,
 				21C93BA92E5FE78800200285 /* AnimationPreviewView.swift in Sources */,
 				21C93BAA2E5FE78800200285 /* RealTimeGenerationView.swift in Sources */,
 				218FF35B2E63C675008C12BF /* RakshaBandhanModels.swift in Sources */,
@@ -1339,6 +1358,7 @@
 				215C775B2EB757AB002C27DB /* MidAutumnFestivalCreateSummaryView.swift in Sources */,
 				215C775C2EB757AB002C27DB /* MidAutumnFestivalSendShareView.swift in Sources */,
 				219FCD4E2EBDC2F40068B3A1 /* EidAlAdhaDesignView.swift in Sources */,
+				219FCDFA2EC5E72F0068B3A1 /* WelcomeView.swift in Sources */,
 				215C775D2EB757AB002C27DB /* MidAutumnFestivalElementsSelectionView.swift in Sources */,
 				215C775E2EB757AB002C27DB /* MidAutumnFestivalColorPaletteView.swift in Sources */,
 				215C775F2EB757AB002C27DB /* MidAutumnFestivalPersonalTouchView.swift in Sources */,

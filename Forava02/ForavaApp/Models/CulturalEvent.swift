@@ -183,6 +183,14 @@ extension CulturalEvent {
             culturalContext: "Buddhist festival honoring the life and teachings of Buddha"
         )
     ]
+
+    /// Filter events by selected culture IDs
+    /// - Parameter categoryIDs: Set of UUID strings representing selected cultures
+    /// - Returns: Array of CulturalEvent objects matching the selected IDs
+    static func filtered(by categoryIDs: Set<String>) -> [CulturalEvent] {
+        guard !categoryIDs.isEmpty else { return [] }
+        return allEvents.filter { categoryIDs.contains($0.id.uuidString) }
+    }
 }
 
 // MARK: - Gift Status (Definition is in CoreTypes.swift)

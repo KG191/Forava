@@ -1,21 +1,31 @@
 import SwiftUI
 
 struct CulturalCarouselView: View {
+    @EnvironmentObject var preferences: CulturePreferencesManager
+    @Binding var showAllCultures: Bool
     @State private var selectedEventIndex: Int = 0
     @State private var scrolledID: Int? = 0  // Track scroll position for programmatic scrolling
 
-    let events = CulturalEvent.allEvents
     let onEventSelected: (CulturalEvent) -> Void
 
     private let cardWidth: CGFloat = 210  // 75% of 280
     private let cardSpacing: CGFloat = 15  // Slightly smaller spacing too
 
+    /// Computed property: Display filtered or all events based on toggle
+    var displayedEvents: [CulturalEvent] {
+        if showAllCultures {
+            return CulturalEvent.allEvents
+        } else {
+            return CulturalEvent.filtered(by: preferences.selectedCultureIDs)
+        }
+    }
+
     var body: some View {
-        VStack(spacing: 20) {
+        VStack(spacing: 12) {
             // Main Carousel with smooth scrolling
             ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: cardSpacing) {
-                    ForEach(Array(events.enumerated()), id: \.offset) { index, event in
+                LazyHStack(spacing: cardSpacing) {
+                    ForEach(Array(displayedEvents.enumerated()), id: \.offset) { index, event in
                         CulturalEventCard(
                             event: event,
                             isSelected: selectedEventIndex == index,
@@ -24,7 +34,6 @@ struct CulturalCarouselView: View {
                             }
                         )
                         .frame(width: cardWidth, alignment: .top)
-                        .padding(.bottom, 10) // Extra padding to prevent label cutoff
                         .id(index)
                     }
                 }
@@ -41,32 +50,17 @@ struct CulturalCarouselView: View {
                 }
             }
 
-            // Page Indicators with tap functionality
-            HStack(spacing: 8) {
-                ForEach(0..<events.count, id: \.self) { index in
-                    Circle()
-                        .fill(selectedEventIndex == index ? .white : .white.opacity(0.4))
-                        .frame(width: selectedEventIndex == index ? 8 : 6, height: selectedEventIndex == index ? 8 : 6)
-                        .scaleEffect(selectedEventIndex == index ? 1.2 : 1.0)
-                        .animation(.spring(response: 0.3, dampingFraction: 0.7), value: selectedEventIndex)
-                        .onTapGesture {
-                            handleIndicatorTap(at: index)
-                        }
-                }
-            }
-            .padding(.top, 12)
-
             // Selected Event Action
             VStack(spacing: 10) {
-                if selectedEventIndex < events.count {
+                if !displayedEvents.isEmpty && selectedEventIndex < displayedEvents.count {
                     Button {
-                        onEventSelected(events[selectedEventIndex])
+                        onEventSelected(displayedEvents[selectedEventIndex])
                     } label: {
                         HStack(spacing: 8) {
-                            Image(systemName: events[selectedEventIndex].category.icon)
+                            Image(systemName: displayedEvents[selectedEventIndex].category.icon)
                                 .font(.system(.body, design: .rounded).weight(.semibold))
 
-                            Text("Create/Send a \(events[selectedEventIndex].name) Gratitude Gift")
+                            Text("Create/Send a \(displayedEvents[selectedEventIndex].name) Gratitude Gift")
                                 .font(.system(.body, design: .rounded).weight(.semibold))
                         }
                         .foregroundStyle(Color(hex: "#C9431A"))
@@ -82,15 +76,33 @@ struct CulturalCarouselView: View {
                     .padding(.horizontal, 24)
 
                     // Cultural context hint
-                    Text(events[selectedEventIndex].culturalContext)
+                    Text(displayedEvents[selectedEventIndex].culturalContext)
                         .font(.system(.caption, design: .rounded))
                         .foregroundStyle(.white.opacity(0.7))
                         .multilineTextAlignment(.center)
                         .padding(.horizontal, 32)
                         .shadow(color: .black.opacity(0.2), radius: 2, y: 1)
+                } else if displayedEvents.isEmpty {
+                    // Empty state
+                    VStack(spacing: 16) {
+                        Image(systemName: "square.grid.3x3")
+                            .font(.system(size: 60))
+                            .foregroundStyle(.white.opacity(0.5))
+
+                        Text("No Cultures Selected")
+                            .font(.system(.title3, design: .rounded).weight(.semibold))
+                            .foregroundStyle(.white)
+
+                        Text("Go to Settings to choose which cultures you want to see")
+                            .font(.system(.subheadline, design: .rounded))
+                            .foregroundStyle(.white.opacity(0.7))
+                            .multilineTextAlignment(.center)
+                            .padding(.horizontal, 32)
+                    }
+                    .padding(.vertical, 40)
                 }
             }
-            .padding(.top, 16)
+            .padding(.top, 8)
         }
         .onAppear {
             // Initialize both selection and scroll position immediately
@@ -127,18 +139,6 @@ struct CulturalCarouselView: View {
         }
     }
 
-    // Unified handler for page indicator tap
-    private func handleIndicatorTap(at index: Int) {
-        withAnimation(.easeInOut(duration: 0.3)) {
-            selectedEventIndex = index
-            scrolledID = index
-        }
-
-        // Provide haptic feedback
-        let impactFeedback = UIImpactFeedbackGenerator(style: .light)
-        impactFeedback.impactOccurred()
-    }
-
 }
 
 // Custom button style for the action button
@@ -151,20 +151,29 @@ struct ScaleButtonStyle: ButtonStyle {
 }
 
 #Preview {
-    ZStack {
-        LinearGradient(
-            gradient: Gradient(stops: [
-                .init(color: Color(hex: "#FF8A00"), location: 0.00),
-                .init(color: Color(hex: "#FFC170"), location: 0.52),
-                .init(color: Color(hex: "#E05A00"), location: 1.00)
-            ]),
-            startPoint: .topLeading,
-            endPoint: .bottomTrailing
-        )
-        .ignoresSafeArea()
+    struct PreviewWrapper: View {
+        @State private var showAllCultures = false
 
-        CulturalCarouselView { event in
-            print("Selected: \(event.name)")
+        var body: some View {
+            ZStack {
+                LinearGradient(
+                    gradient: Gradient(stops: [
+                        .init(color: Color(hex: "#FF8A00"), location: 0.00),
+                        .init(color: Color(hex: "#FFC170"), location: 0.52),
+                        .init(color: Color(hex: "#E05A00"), location: 1.00)
+                    ]),
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                )
+                .ignoresSafeArea()
+
+                CulturalCarouselView(showAllCultures: $showAllCultures) { event in
+                    print("Selected: \(event.name)")
+                }
+                .environmentObject(CulturePreferencesManager())
+            }
         }
     }
+
+    return PreviewWrapper()
 }
