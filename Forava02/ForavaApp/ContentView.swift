@@ -56,25 +56,6 @@ struct ContentView: View {
                             selectedEvent = event
                             navigateToContact = true
                         }
-
-                        // MARK: View All Cultures Badge (Overlays at bottom)
-                        if showAllCultures {
-                            HStack {
-                                Image(systemName: "eye")
-                                    .font(.caption)
-                                Text("Showing all 12 cultures")
-                                    .font(.caption.weight(.medium))
-                            }
-                            .padding(.horizontal, 12)
-                            .padding(.vertical, 6)
-                            .background(
-                                Capsule()
-                                    .fill(Color.orange.opacity(0.15))
-                            )
-                            .foregroundStyle(.orange)
-                            .transition(.scale.combined(with: .opacity))
-                            .offset(y: -8)
-                        }
                     }
                     .padding(.bottom, 16)
 

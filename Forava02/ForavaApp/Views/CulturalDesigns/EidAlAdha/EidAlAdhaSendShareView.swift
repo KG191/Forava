@@ -1,5 +1,7 @@
 import SwiftUI
 import Foundation
+import Photos
+import MessageUI
 
 struct EidAlAdhaSendShareView: View {
     let generatedImages: [String: String]
@@ -10,6 +12,10 @@ struct EidAlAdhaSendShareView: View {
     let onGoBackToGenerate: () -> Void
 
     @State private var selectedFormat: ImageFormat = .iPhone
+    @State private var showingSaveAlert = false
+    @State private var saveAlertMessage = ""
+    @State private var showingMessageComposer = false
+    @State private var downloadedImageForMessages: UIImage?
 
     enum ImageFormat: String, CaseIterable {
         case iPhone = "iPhone"
@@ -92,6 +98,16 @@ struct EidAlAdhaSendShareView: View {
                 endPoint: .bottom
             )
         )
+        .alert("Save to Photos", isPresented: $showingSaveAlert) {
+            Button("OK", role: .cancel) { }
+        } message: {
+            Text(saveAlertMessage)
+        }
+        .sheet(isPresented: $showingMessageComposer) {
+            if let image = downloadedImageForMessages {
+                MessageComposeView(image: image, recipientName: selectedContact.name, recipientPhone: selectedContact.phoneNumber)
+            }
+        }
     }
 
     @ViewBuilder
@@ -260,13 +276,205 @@ struct EidAlAdhaSendShareView: View {
 
     // MARK: - Actions
     private func saveToPhotos() {
-        print("📸 Save to Photos tapped - functionality to be implemented")
-        // TODO: Implement photo library save functionality
+        guard let imageURL = generatedImages[selectedFormat.rawValue] else {
+            saveAlertMessage = "No image available to save"
+            showingSaveAlert = true
+            return
+        }
+
+        // Download image from URL
+        Task {
+            do {
+                let (data, _) = try await URLSession.shared.data(from: URL(string: imageURL)!)
+                guard let image = UIImage(data: data) else {
+                    await MainActor.run {
+                        saveAlertMessage = "Failed to load image"
+                        showingSaveAlert = true
+                    }
+                    return
+                }
+
+                // Request permission and save
+                let status = PHPhotoLibrary.authorizationStatus(for: .addOnly)
+
+                if status == .notDetermined {
+                    let newStatus = await PHPhotoLibrary.requestAuthorization(for: .addOnly)
+                    if newStatus == .authorized || newStatus == .limited {
+                        await saveImageToLibrary(image)
+                    } else {
+                        await MainActor.run {
+                            saveAlertMessage = "Please allow photo library access in Settings"
+                            showingSaveAlert = true
+                        }
+                    }
+                } else if status == .authorized || status == .limited {
+                    await saveImageToLibrary(image)
+                } else {
+                    await MainActor.run {
+                        saveAlertMessage = "Please allow photo library access in Settings"
+                        showingSaveAlert = true
+                    }
+                }
+            } catch {
+                await MainActor.run {
+                    saveAlertMessage = "Failed to download image: \(error.localizedDescription)"
+                    showingSaveAlert = true
+                }
+            }
+        }
+    }
+
+    private func saveImageToLibrary(_ image: UIImage) async {
+        do {
+            try await PHPhotoLibrary.shared().performChanges {
+                PHAssetChangeRequest.creationRequestForAsset(from: image)
+            }
+            await MainActor.run {
+                saveAlertMessage = "Image saved to Photos successfully!"
+                showingSaveAlert = true
+            }
+        } catch {
+            await MainActor.run {
+                saveAlertMessage = "Failed to save image: \(error.localizedDescription)"
+                showingSaveAlert = true
+            }
+        }
     }
 
     private func sendViaMessages() {
-        print("💬 Send via Messages tapped - functionality to be implemented")
-        // TODO: Implement Messages integration
+        guard MFMessageComposeViewController.canSendText() else {
+            saveAlertMessage = "Messages is not available on this device"
+            showingSaveAlert = true
+            return
+        }
+
+        guard let imageURL = generatedImages[selectedFormat.rawValue] else {
+            saveAlertMessage = "No image available to send"
+            showingSaveAlert = true
+            return
+        }
+
+        // Download image for Messages
+        Task {
+            do {
+                let (data, _) = try await URLSession.shared.data(from: URL(string: imageURL)!)
+                guard let image = UIImage(data: data) else {
+                    await MainActor.run {
+                        saveAlertMessage = "Failed to load image"
+                        showingSaveAlert = true
+                    }
+                    return
+                }
+
+                await MainActor.run {
+                    downloadedImageForMessages = image
+                    showingMessageComposer = true
+                }
+            } catch {
+                await MainActor.run {
+                    saveAlertMessage = "Failed to download image: \(error.localizedDescription)"
+                    showingSaveAlert = true
+                }
+            }
+        }
+    }
+}
+
+// MARK: - Message Composer
+struct MessageComposeView: UIViewControllerRepresentable {
+    let image: UIImage
+    let recipientName: String
+    let recipientPhone: String
+    @Environment(\.presentationMode) var presentationMode
+
+    func makeUIViewController(context: Context) -> MFMessageComposeViewController {
+        let controller = MFMessageComposeViewController()
+        controller.messageComposeDelegate = context.coordinator
+
+        // Add recipient if phone number exists
+        if !recipientPhone.isEmpty {
+            controller.recipients = [recipientPhone]
+        }
+
+        // Attach image
+        if let imageData = image.jpegData(compressionQuality: 0.9) {
+            controller.addAttachmentData(imageData, typeIdentifier: "public.jpeg", filename: "eid-gift.jpg")
+        }
+
+        // Set message body
+        controller.body = "I created this personalized gift for you! 🎁"
+
+        return controller
+    }
+
+    func updateUIViewController(_ uiViewController: MFMessageComposeViewController, context: Context) {
+        // No updates needed
+    }
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
+
+    class Coordinator: NSObject, MFMessageComposeViewControllerDelegate {
+        let parent: MessageComposeView
+
+        init(_ parent: MessageComposeView) {
+            self.parent = parent
+        }
+
+        func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+            parent.presentationMode.wrappedValue.dismiss()
+        }
+    }
+}
+
+
+
+// MARK: - Message Composer
+struct MessageComposeView: UIViewControllerRepresentable {
+    let image: UIImage
+    let recipientName: String
+    let recipientPhone: String
+    @Environment(\.presentationMode) var presentationMode
+
+    func makeUIViewController(context: Context) -> MFMessageComposeViewController {
+        let controller = MFMessageComposeViewController()
+        controller.messageComposeDelegate = context.coordinator
+
+        // Add recipient if phone number exists
+        if !recipientPhone.isEmpty {
+            controller.recipients = [recipientPhone]
+        }
+
+        // Attach image
+        if let imageData = image.jpegData(compressionQuality: 0.9) {
+            controller.addAttachmentData(imageData, typeIdentifier: "public.jpeg", filename: "anniversary-gift.jpg")
+        }
+
+        // Set message body
+        controller.body = "I created this personalized gift for you! 🎁"
+
+        return controller
+    }
+
+    func updateUIViewController(_ uiViewController: MFMessageComposeViewController, context: Context) {
+        // No updates needed
+    }
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
+
+    class Coordinator: NSObject, MFMessageComposeViewControllerDelegate {
+        let parent: MessageComposeView
+
+        init(_ parent: MessageComposeView) {
+            self.parent = parent
+        }
+
+        func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+            parent.presentationMode.wrappedValue.dismiss()
+        }
     }
 }
 
