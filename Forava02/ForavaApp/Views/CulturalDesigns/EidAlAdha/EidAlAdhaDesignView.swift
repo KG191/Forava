@@ -33,9 +33,16 @@ struct EidAlAdhaDesignView: View, CulturalDesignViewProtocol {
     @State private var isGenerating = false
     @State private var generatedImages: [String: String] = [:] // Keys: "iPhone", "Apple Watch"
     @State private var showingShareSheet = false
+    @State private var showAgeRestrictionAlert = false
     @StateObject private var eidAlAdhaAI = EidAlAdhaAIService.shared
+    @EnvironmentObject var ageVerification: AgeVerification
+    @State private var hasGeneratedOnce = false // Track if first (free) generation completed
+    @State private var showPurchaseSheet = false // Show IAP purchase dialog
+    @State private var showPaywall = false // Show hard paywall when quota exhausted
+    @StateObject private var paymentService = ComprehensivePaymentService.shared
+    @StateObject private var quotaManager = GenerationQuotaManager.shared
 
-    var body: some View {
+    var body: some View{
         VStack(spacing: 0) {
             // Cultural Header
             ModularCulturalHeaderView(
@@ -87,6 +94,20 @@ struct EidAlAdhaDesignView: View, CulturalDesignViewProtocol {
         .toolbarBackground(.hidden, for: .bottomBar)
         .background(Color(.systemGroupedBackground))
         .edgesIgnoringSafeArea([])
+        .alert("Age Restriction", isPresented: $showAgeRestrictionAlert) {
+            Button("OK", role: .cancel) { }
+        } message: {
+            Text("You must be \(AgeVerification.minimumAge) or older to use AI generation features. If you believe this is an error, please contact support.")
+        }
+        .sheet(isPresented: $showPaywall) {
+            PaywallView(paymentService: paymentService, quotaManager: quotaManager)
+        }
+        .sheet(isPresented: $showingShareSheet) {
+            ShareSheetView(
+                generatedImages: generatedImages,
+                personalMessage: finalMessage
+            )
+        }
     }
 
     // MARK: - Computed Properties
@@ -171,8 +192,11 @@ extension EidAlAdhaDesignView {
             personalMessage: finalMessage,
             isGenerating: $isGenerating,
             culturalColor: culturalColor,
+            hasGeneratedOnce: hasGeneratedOnce,
+            paymentService: paymentService,
+            isFreeTier: !paymentService.isSubscribed,
             onRegenerate: {
-                generateEidAlAdhaGift()
+                regenerateWithCreditCheck()
             }
         )
     }
@@ -200,7 +224,25 @@ extension EidAlAdhaDesignView {
     // MARK: - Generation Logic
     private func generateEidAlAdhaGift() {
         print("🎯 Generate EidAlAdha Gift button tapped")
-        print("=" + String(repeating: "=", count: 79))
+
+        // COMPLIANCE: Apple Guideline 1.2.1 - Age gate for AI-generated content
+        guard ageVerification.canAccessAIGeneration() else {
+            print("❌ Age verification failed - user is underage")
+            showAgeRestrictionAlert = true
+            return
+        }
+
+                // MONETIZATION: Check free quota (3 generations lifetime)
+        if !paymentService.isSubscribed && !hasGeneratedOnce {
+            // First-time generation - check free quota
+            if !quotaManager.hasFreeQuota() {
+                print("❌ Free quota exhausted - showing paywall")
+                showPaywall = true
+                return
+            }
+        }
+
+print("=" + String(repeating: "=", count: 79))
         print("📊 ALL TAB SELECTIONS - USER PREFERENCES:")
         print("=" + String(repeating: "=", count: 79))
         print("Tab 1 - THEME: \(selectedTheme?.rawValue ?? "❌ NOT SELECTED")")
@@ -269,6 +311,14 @@ extension EidAlAdhaDesignView {
                     generatedImages["Apple Watch"] = watchURL  // CRITICAL: Must have space!
                     print("✅ Apple Watch image generated: \(watchURL)")
                     isGenerating = false
+
+                    // MONETIZATION: Use free quota if not subscribed and first generation
+                    if !self.paymentService.isSubscribed && !self.hasGeneratedOnce {
+                        self.quotaManager.useFreeGeneration()
+                        print("📊 Free quota used. Remaining: \(self.quotaManager.quotaRemaining)")
+                    }
+
+                    self.hasGeneratedOnce = true  // Mark first generation as complete
                 }
 
                 print("🎉 All EidAlAdha images generated successfully!")
@@ -280,6 +330,34 @@ extension EidAlAdhaDesignView {
                     // TODO: Show error alert to user
                 }
             }
+        }
+    }
+
+    // MARK: - Regeneration with IAP
+    private func regenerateWithCreditCheck() {
+        print("🔄 Regenerate requested")
+
+        // First generation is free, subsequent ones require credits
+        if hasGeneratedOnce {
+            // Check if user has credits
+            if paymentService.hasRegenerationCredits() {
+                // Use a credit and regenerate
+                let success = paymentService.useRegenerationCredit(for: "Eid Al Adha")
+                if success {
+                    print("✅ Credit used for Eid Al Adha regeneration")
+                    generateEidAlAdhaGift()
+                } else {
+                    print("❌ Failed to use credit")
+                }
+            } else {
+                // No credits available - show purchase sheet
+                print("⚠️ No credits available - showing purchase dialog")
+                showPurchaseSheet = true
+            }
+        } else {
+            // First generation is free
+            print("✅ First generation - free")
+            generateEidAlAdhaGift()
         }
     }
 }

@@ -33,7 +33,14 @@ struct ChineseNewYearDesignView: View, CulturalDesignViewProtocol {
     @State private var isGenerating = false
     @State private var generatedImages: [String: String] = [:] // Keys: "iPhone", "AppleWatch"
     @State private var showingShareSheet = false
+    @State private var showAgeRestrictionAlert = false
+    @State private var hasGeneratedOnce = false // Track if first (free) generation completed
+    @State private var showPurchaseSheet = false // Show IAP purchase dialog
     @StateObject private var chineseNewYearAI = ChineseNewYearAIService.shared
+    @StateObject private var paymentService = ComprehensivePaymentService.shared
+    @EnvironmentObject var ageVerification: AgeVerification
+    @State private var showPaywall = false // Show hard paywall when quota exhausted
+    @StateObject private var quotaManager = GenerationQuotaManager.shared
 
     var body: some View {
         VStack(spacing: 0) {
@@ -87,6 +94,20 @@ struct ChineseNewYearDesignView: View, CulturalDesignViewProtocol {
         .toolbarBackground(.hidden, for: .bottomBar)
         .background(Color(.systemGroupedBackground))
         .edgesIgnoringSafeArea([])
+        .alert("Age Restriction", isPresented: $showAgeRestrictionAlert) {
+            Button("OK", role: .cancel) { }
+        } message: {
+            Text("You must be \(AgeVerification.minimumAge) or older to use AI generation features. If you believe this is an error, please contact support.")
+        }
+        .sheet(isPresented: $showPaywall) {
+            PaywallView(paymentService: paymentService, quotaManager: quotaManager)
+        }
+        .sheet(isPresented: $showingShareSheet) {
+            ShareSheetView(
+                generatedImages: generatedImages,
+                personalMessage: finalMessage
+            )
+        }
     }
 
     // MARK: - Computed Properties
@@ -171,8 +192,11 @@ extension ChineseNewYearDesignView {
             personalMessage: finalMessage,
             isGenerating: $isGenerating,
             culturalColor: culturalColor,
+            hasGeneratedOnce: hasGeneratedOnce,
+            paymentService: paymentService,
+            isFreeTier: !paymentService.isSubscribed,
             onRegenerate: {
-                generateChineseNewYearGift()
+                regenerateWithCreditCheck()
             }
         )
     }
@@ -200,7 +224,25 @@ extension ChineseNewYearDesignView {
     // MARK: - Generation Logic
     private func generateChineseNewYearGift() {
         print("🎯 Generate Chinese New Year Gift button tapped")
-        print("=" + String(repeating: "=", count: 79))
+
+        // COMPLIANCE: Apple Guideline 1.2.1 - Age gate for AI-generated content
+        guard ageVerification.canAccessAIGeneration() else {
+            print("❌ Age verification failed - user is underage")
+            showAgeRestrictionAlert = true
+            return
+        }
+
+                // MONETIZATION: Check free quota (3 generations lifetime)
+        if !paymentService.isSubscribed && !hasGeneratedOnce {
+            // First-time generation - check free quota
+            if !quotaManager.hasFreeQuota() {
+                print("❌ Free quota exhausted - showing paywall")
+                showPaywall = true
+                return
+            }
+        }
+
+print("=" + String(repeating: "=", count: 79))
         print("📊 ALL TAB SELECTIONS - USER PREFERENCES:")
         print("=" + String(repeating: "=", count: 79))
         print("Tab 1 - THEME: \(selectedTheme?.rawValue ?? "❌ NOT SELECTED")")
@@ -255,6 +297,13 @@ extension ChineseNewYearDesignView {
                     self.generatedImages["iPhone"] = iPhoneResult
                     self.generatedImages["Apple Watch"] = watchResult  // Match enum rawValue with space
                     self.isGenerating = false
+                                        // MONETIZATION: Use free quota if not subscribed and first generation
+                    if !self.paymentService.isSubscribed && !self.hasGeneratedOnce {
+                        self.quotaManager.useFreeGeneration()
+                        print("📊 Free quota used. Remaining: \(self.quotaManager.quotaRemaining)")
+                    }
+
+                    self.hasGeneratedOnce = true  // Mark first generation as complete
                 }
             } catch {
                 print("❌ Generation failed with error: \(error)")
@@ -264,6 +313,34 @@ extension ChineseNewYearDesignView {
                     print("💥 Error details: \(error.localizedDescription)")
                 }
             }
+        }
+    }
+
+    // MARK: - Regeneration with IAP
+    private func regenerateWithCreditCheck() {
+        print("🔄 Regenerate requested")
+
+        // First generation is free, subsequent ones require credits
+        if hasGeneratedOnce {
+            // Check if user has credits
+            if paymentService.hasRegenerationCredits() {
+                // Use a credit and regenerate
+                let success = paymentService.useRegenerationCredit(for: "Chinese New Year")
+                if success {
+                    print("✅ Credit used for Chinese New Year regeneration")
+                    generateChineseNewYearGift()
+                } else {
+                    print("❌ Failed to use credit")
+                }
+            } else {
+                // No credits available - show purchase sheet
+                print("⚠️ No credits available - showing purchase dialog")
+                showPurchaseSheet = true
+            }
+        } else {
+            // First generation is free
+            print("✅ First generation - free")
+            generateChineseNewYearGift()
         }
     }
 }

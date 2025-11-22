@@ -34,12 +34,12 @@ struct ModularTabButton: View {
                 // Tab icon
                 Image(systemName: tab.icon)
                     .font(.system(.caption, design: .rounded))
-                    .foregroundStyle(masterOrange)
+                    .foregroundStyle(isSelected ? .white : masterOrange)
 
                 // Tab label
                 Text(tab.rawValue)
                     .font(.system(.caption2, design: .rounded).weight(.medium))
-                    .foregroundStyle(masterOrange)
+                    .foregroundStyle(isSelected ? .white : masterOrange)
             }
             .frame(width: 60)
             .padding(.vertical, 8)

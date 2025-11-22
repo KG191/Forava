@@ -65,9 +65,9 @@ struct RoshHashanahPersonalTouchView: View {
             .textFieldStyle(.plain)
             .padding(16)
             .background(
-                RoundedRectangle(cornerRadius: 12)
-                    .fill(Color(.systemBackground))
-            )
+                                RoundedRectangle(cornerRadius: 12)
+                                    .fill(.ultraThinMaterial)
+                            )
             .overlay(
                 RoundedRectangle(cornerRadius: 12)
                     .stroke(personalMessage.isEmpty ? .clear : culturalColor, lineWidth: 2)

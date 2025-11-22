@@ -1,0 +1,263 @@
+import SwiftUI
+import Foundation
+
+struct RoshHashanahCheckImageView: View {
+    let generatedImages: [String: String]
+    let personalMessage: String
+    @Binding var isGenerating: Bool
+    let culturalColor: Color
+    let onRegenerate: () -> Void
+
+    @State private var selectedFormat: ImageFormat = .iPhone
+    @State private var showingReportSheet = false  // SAFETY-002: Content reporting
+
+    enum ImageFormat: String, CaseIterable {
+        case iPhone = "iPhone"
+        case appleWatch = "Apple Watch"
+
+        var displaySize: CGSize {
+            switch self {
+            case .iPhone:
+                return CGSize(
+                    width: CGFloat(CulturalAIConfiguration.iPhoneWidth),
+                    height: CGFloat(CulturalAIConfiguration.iPhoneHeight)
+                )
+            case .appleWatch:
+                return CGSize(
+                    width: CGFloat(CulturalAIConfiguration.watchWidth),
+                    height: CGFloat(CulturalAIConfiguration.watchHeight)
+                )
+            }
+        }
+
+        var aspectRatio: CGFloat {
+            switch self {
+            case .iPhone: return 1024.0/1792.0  // DALL-E 3 portrait (9:15.75)
+            case .appleWatch: return 1.0        // Square for Apple Watch
+            }
+        }
+    }
+
+    var body: some View {
+        ScrollView {
+            VStack(spacing: 24) {
+                // Header Section
+                VStack(spacing: 12) {
+                    Text(isGenerating ? "Generating Your Gift..." : "Your Rosh Hashanah Gift")
+                        .font(.system(.title2, design: .rounded).weight(.bold))
+                        .foregroundStyle(.primary)
+
+                    Text(isGenerating ? "Please wait while we create your personalized design" : "Preview your generated gift")
+                        .font(.system(.body, design: .rounded))
+                        .foregroundStyle(.secondary)
+                        .multilineTextAlignment(.center)
+                }
+                .padding(.horizontal, 24)
+                .padding(.top, 20)
+
+                // Glass Morphism Content Container
+                VStack(spacing: 20) {
+                    if isGenerating {
+                        generationProgress()
+                    } else if !generatedImages.isEmpty {
+                        // Format Selector
+                        formatSelector()
+
+                        // Generated Image Display
+                        generatedImageDisplay()
+
+                        // Regenerate Button
+                        regenerateButton()
+                        
+                        // Report Content Button (SAFETY-002: UGC Moderation)
+                        reportContentButton()
+                    } else {
+                        emptyState()
+                    }
+                }
+                .padding(.vertical, 24)
+                .background(
+                    RoundedRectangle(cornerRadius: 20)
+                        .fill(.thinMaterial)
+                        .background(RoundedRectangle(cornerRadius: 20).fill(culturalColor.opacity(0.03)))
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 20)
+                                .stroke(culturalColor.opacity(0.3), lineWidth: 1)
+                        )
+                )
+                .padding(.horizontal, 16)
+
+                Spacer(minLength: 100)
+            }
+        }
+        .background(
+            LinearGradient(
+                colors: [culturalColor.opacity(0.08), .white],
+                startPoint: .top,
+                endPoint: .bottom
+            )
+        )
+        .sheet(isPresented: $showingReportSheet) {
+            ReportContentView(
+                culturalEventName: "Rosh Hashanah",
+                imageDescription: "AI-generated Rosh Hashanah celebration image"
+            )
+        }
+    }
+
+    @ViewBuilder
+    private func generationProgress() -> some View {
+        VStack(spacing: 20) {
+            ProgressView()
+                .scaleEffect(1.5)
+                .tint(culturalColor)
+                .padding(.top, 40)
+
+            Text("Creating your personalized Rosh Hashanah gift...")
+                .font(.system(.headline, design: .rounded))
+                .foregroundStyle(.primary)
+                .multilineTextAlignment(.center)
+
+            Text("This may take 10-30 seconds")
+                .font(.system(.subheadline, design: .rounded))
+                .foregroundStyle(.secondary)
+                .padding(.bottom, 40)
+        }
+        .frame(maxWidth: .infinity)
+        .padding()
+    }
+
+    @ViewBuilder
+    private func formatSelector() -> some View {
+        Picker("Format", selection: $selectedFormat) {
+            ForEach(ImageFormat.allCases, id: \.self) { format in
+                Text(format.rawValue).tag(format)
+            }
+        }
+        .pickerStyle(.segmented)
+        .padding(.horizontal, 20)
+    }
+
+    @ViewBuilder
+    private func generatedImageDisplay() -> some View {
+        let imageKey = selectedFormat.rawValue
+        let imageURL = generatedImages[imageKey]
+
+        VStack(spacing: 16) {
+            // Image Display
+            if let urlString = imageURL {
+                // Use ImageWithTextOverlay for proper format sizing
+                ImageWithTextOverlay(
+                    imageURL: urlString,
+                    message: personalMessage,
+                    imageSize: selectedFormat.displaySize,
+                    culturalColor: culturalColor
+                )
+                .frame(maxWidth: .infinity)
+                .aspectRatio(selectedFormat.aspectRatio, contentMode: .fit)
+                .clipShape(RoundedRectangle(cornerRadius: 16))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 16)
+                        .stroke(culturalColor.opacity(0.3), lineWidth: 2)
+                )
+            } else {
+                // Placeholder when no image
+                ZStack {
+                    RoundedRectangle(cornerRadius: 16)
+                        .fill(Color(.secondarySystemBackground))
+                        .aspectRatio(selectedFormat.aspectRatio, contentMode: .fit)
+
+                    VStack(spacing: 12) {
+                        Image(systemName: "photo")
+                            .font(.largeTitle)
+                            .foregroundStyle(.secondary)
+
+                        Text("Image not available")
+                            .font(.system(.subheadline, design: .rounded))
+                            .foregroundStyle(.secondary)
+                    }
+                }
+            }
+
+            // Format Info
+            Text("Format: \(selectedFormat.rawValue)")
+                .font(.system(.caption, design: .rounded))
+                .foregroundStyle(.secondary)
+        }
+        .padding(.horizontal, 20)
+    }
+
+    @ViewBuilder
+    private func regenerateButton() -> some View {
+        Button(action: onRegenerate) {
+            HStack {
+                Image(systemName: "arrow.clockwise")
+                    .font(.headline)
+
+                Text("Regenerate")
+                    .font(.system(.headline, design: .rounded).weight(.semibold))
+            }
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 14)
+            .background(
+                RoundedRectangle(cornerRadius: 12)
+                    .strokeBorder(culturalColor, lineWidth: 2)
+            )
+            .foregroundStyle(culturalColor)
+        }
+        .padding(.horizontal, 20)
+    }
+
+    @ViewBuilder
+    private func emptyState() -> some View {
+        VStack(spacing: 16) {
+            Image(systemName: "photo.on.rectangle.angled")
+                .font(.system(size: 60))
+                .foregroundStyle(culturalColor.opacity(0.5))
+
+            Text("No Gift Generated Yet")
+                .font(.system(.title3, design: .rounded).weight(.semibold))
+                .foregroundStyle(.primary)
+
+            Text("Go to the Create tab to generate your Rosh Hashanah gift")
+                .font(.system(.subheadline, design: .rounded))
+                .foregroundStyle(.secondary)
+                .multilineTextAlignment(.center)
+        }
+        .padding(.vertical, 60)
+    }
+}
+
+#Preview {
+    RoshHashanahCheckImageView(
+        generatedImages: [:],
+        personalMessage: "L'Shanah Tovah! May this new year be sweet",
+        isGenerating: .constant(false),
+        culturalColor: Color(hex: "#4169E1"),
+        onRegenerate: {}
+    )
+
+    @ViewBuilder
+    private func reportContentButton() -> some View {
+        Button {
+            showingReportSheet = true
+        } label: {
+            HStack {
+                Image(systemName: "exclamationmark.shield.fill")
+                    .font(.headline)
+                
+                Text("Report Inappropriate Content")
+                    .font(.system(.subheadline, design: .rounded).weight(.medium))
+            }
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 12)
+            .background(
+                RoundedRectangle(cornerRadius: 10)
+                    .strokeBorder(Color.red.opacity(0.6), lineWidth: 1.5)
+            )
+            .foregroundStyle(.red)
+        }
+        .padding(.horizontal, 20)
+    }
+
+}

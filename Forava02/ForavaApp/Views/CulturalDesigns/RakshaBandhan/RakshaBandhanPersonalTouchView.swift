@@ -53,7 +53,7 @@ struct RakshaBandhanPersonalTouchView: View {
                             .padding(12)
                             .background(
                                 RoundedRectangle(cornerRadius: 12)
-                                    .fill(Color(.systemBackground))
+                                    .fill(.ultraThinMaterial)
                             )
                             .overlay(
                                 RoundedRectangle(cornerRadius: 12)

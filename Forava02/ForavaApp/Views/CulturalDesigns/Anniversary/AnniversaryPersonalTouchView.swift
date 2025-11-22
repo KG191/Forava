@@ -194,7 +194,11 @@ struct AnniversaryPersonalTouchView: View {
                 VStack(spacing: 12) {
                     ZStack(alignment: .topLeading) {
                         RoundedRectangle(cornerRadius: 12)
-                            .fill(Color(.systemGray6))
+                            .fill(.ultraThinMaterial)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 12)
+                                    .stroke(culturalColor.opacity(0.3), lineWidth: 1)
+                            )
                             .frame(minHeight: 100)
 
                         TextEditor(text: $personalMessage)

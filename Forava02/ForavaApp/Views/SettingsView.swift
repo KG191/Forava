@@ -4,6 +4,8 @@ import WebKit
 
 struct SettingsView: View {
     @EnvironmentObject var preferences: CulturePreferencesManager
+    @StateObject private var paymentService = ComprehensivePaymentService.shared
+    @StateObject private var quotaManager = GenerationQuotaManager.shared
     @State private var notificationsEnabled = true
     @State private var soundEnabled = true
     @State private var hapticEnabled = true
@@ -13,6 +15,8 @@ struct SettingsView: View {
     @State private var showingPrivacyPolicy = false
     @State private var showingTermsOfService = false
     @State private var showingMinimumSelectionAlert = false
+    @State private var showingSubscriptionView = false
+    @State private var showCultureSelection = false
     @Environment(\.dismiss) private var dismiss
 
     var body: some View {
@@ -36,6 +40,17 @@ struct SettingsView: View {
                 } header: {
                     Text("Which Culture Does Your Loved One or Friend Identify With? You can change this anytime.")
                         .foregroundStyle(.white)
+                }
+
+                // Subscription & Credits Section
+                Section {
+                    subscriptionSection
+                } header: {
+                    Text("Subscription & Credits")
+                        .foregroundStyle(.white)
+                } footer: {
+                    Text("Manage your subscription and regeneration credits")
+                        .foregroundStyle(.white.opacity(0.7))
                 }
 
                 // Notifications Section
@@ -65,6 +80,17 @@ struct SettingsView: View {
                         .foregroundStyle(.white)
                 }
 
+                // Help & Support Section (SAFETY-002: UGC Moderation)
+                Section {
+                    helpSupportSection
+                } header: {
+                    Text("Help & Support")
+                        .foregroundStyle(.white)
+                } footer: {
+                    Text("Get help or report issues with AI-generated content")
+                        .foregroundStyle(.white.opacity(0.7))
+                }
+
                 // App Information Section
                 Section {
                     appInfoSection
@@ -84,6 +110,9 @@ struct SettingsView: View {
         }
         .sheet(isPresented: $showingTermsOfService) {
             TermsOfServiceView()
+        }
+        .sheet(isPresented: $showingSubscriptionView) {
+            SubscriptionView(paymentService: paymentService)
         }
         .alert("Delete All Data", isPresented: $showingDeleteConfirmation) {
             Button("Delete", role: .destructive) {
@@ -105,7 +134,11 @@ struct SettingsView: View {
         // Get all events and sort alphabetically by name
         let sortedEvents = CulturalEvent.allEvents.sorted { $0.name < $1.name }
 
-        return ForEach(sortedEvents) { event in
+        return DisclosureGroup(
+            isExpanded: $showCultureSelection,
+            content: {
+                VStack(spacing: 8) {
+                    ForEach(sortedEvents) { event in
             Button {
                 withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
                     // Check if this is the last selected culture
@@ -146,6 +179,158 @@ struct SettingsView: View {
                 )
             }
             .buttonStyle(.plain)
+                    }
+                }
+                .padding(.top, 8)
+            },
+            label: {
+                HStack(spacing: 12) {
+                    Image(systemName: "globe")
+                        .font(.system(size: 20))
+                        .foregroundStyle(.orange)
+
+                    Text("My Cultures")
+                        .font(.system(.body, design: .rounded).weight(.semibold))
+                        .foregroundStyle(.white)
+
+                    Spacer()
+
+                    Text("\(preferences.selectedCultureIDs.count) selected")
+                        .font(.system(.caption, design: .rounded))
+                        .foregroundStyle(.white.opacity(0.7))
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 4)
+                        .background(Capsule().fill(.orange.opacity(0.2)))
+                }
+                .padding(.vertical, 12)
+                .padding(.horizontal, 16)
+            }
+        )
+        .tint(.orange)
+        .background(
+            RoundedRectangle(cornerRadius: 12)
+                .fill(.ultraThinMaterial)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 12)
+                        .stroke(Color.orange.opacity(0.3), lineWidth: 1)
+                )
+        )
+    }
+
+    // MARK: - Subscription Section
+    private var subscriptionSection: some View {
+        Group {
+            // Current Tier Status
+            HStack {
+                Image(systemName: paymentService.isSubscribed ? "crown.fill" : "sparkles")
+                    .foregroundStyle(paymentService.isSubscribed ? Color(hex: "#FFD700") : .orange)
+                    .frame(width: 20)
+
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("Current Plan")
+                        .font(.system(.caption, design: .rounded))
+                        .foregroundStyle(.white.opacity(0.7))
+
+                    Text(paymentService.getSubscriptionTier().displayName)
+                        .font(.system(.body, design: .rounded).weight(.semibold))
+                        .foregroundStyle(.white)
+                }
+
+                Spacer()
+
+                if paymentService.isSubscribed {
+                    Text("Active")
+                        .font(.system(.caption, design: .rounded).weight(.medium))
+                        .foregroundStyle(.green)
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 4)
+                        .background(Capsule().fill(.green.opacity(0.2)))
+                }
+            }
+
+            // Free Quota Remaining (if on free tier)
+            if !paymentService.isSubscribed {
+                HStack {
+                    Image(systemName: "gift.fill")
+                        .foregroundStyle(.blue)
+                        .frame(width: 20)
+
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text("Free Generations")
+                            .font(.system(.caption, design: .rounded))
+                            .foregroundStyle(.white.opacity(0.7))
+
+                        Text("\(quotaManager.quotaRemaining) of 3 remaining")
+                            .font(.system(.body, design: .rounded).weight(.semibold))
+                            .foregroundStyle(.white)
+                    }
+
+                    Spacer()
+                }
+            }
+
+            // Regeneration Credits
+            HStack {
+                Image(systemName: "arrow.triangle.2.circlepath")
+                    .foregroundStyle(.purple)
+                    .frame(width: 20)
+
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("Regeneration Credits")
+                        .font(.system(.caption, design: .rounded))
+                        .foregroundStyle(.white.opacity(0.7))
+
+                    Text("\(paymentService.getAvailableCreditsCount()) available")
+                        .font(.system(.body, design: .rounded).weight(.semibold))
+                        .foregroundStyle(.white)
+                }
+
+                Spacer()
+            }
+
+            // View Subscription Details
+            Button {
+                showingSubscriptionView = true
+            } label: {
+                HStack {
+                    Image(systemName: "creditcard.fill")
+                        .foregroundStyle(.orange)
+                        .frame(width: 20)
+
+                    Text("View Plans & Pricing")
+                        .foregroundStyle(.white)
+
+                    Spacer()
+
+                    Image(systemName: "chevron.right")
+                        .foregroundStyle(.white.opacity(0.5))
+                        .font(.caption)
+                }
+            }
+
+            // Manage Subscription (only if subscribed)
+            if paymentService.isSubscribed {
+                Button {
+                    if let url = URL(string: "https://apps.apple.com/account/subscriptions") {
+                        UIApplication.shared.open(url)
+                    }
+                } label: {
+                    HStack {
+                        Image(systemName: "gearshape.fill")
+                            .foregroundStyle(.blue)
+                            .frame(width: 20)
+
+                        Text("Manage Subscription")
+                            .foregroundStyle(.white)
+
+                        Spacer()
+
+                        Image(systemName: "arrow.up.right")
+                            .foregroundStyle(.white.opacity(0.5))
+                            .font(.caption)
+                    }
+                }
+            }
         }
     }
 
@@ -192,19 +377,6 @@ struct SettingsView: View {
     // MARK: - Data Management Section
     private var dataManagementSection: some View {
         Group {
-            NavigationLink {
-                DataExportView()
-            } label: {
-                HStack {
-                    Image(systemName: "square.and.arrow.up")
-                        .foregroundStyle(.blue)
-                        .frame(width: 20)
-
-                    Text("Export Data")
-                        .foregroundStyle(.white)
-                }
-            }
-
             Button {
                 showingDeleteConfirmation = true
             } label: {
@@ -251,6 +423,52 @@ struct SettingsView: View {
                         .frame(width: 20)
 
                     Text("Terms of Service")
+                        .foregroundStyle(.white)
+
+                    Spacer()
+
+                    Image(systemName: "chevron.right")
+                        .foregroundStyle(.white.opacity(0.5))
+                        .font(.caption)
+                }
+            }
+        }
+    }
+
+    // MARK: - Help & Support Section (SAFETY-002: UGC Moderation)
+    private var helpSupportSection: some View {
+        Group {
+            // Contact Support
+            Link(destination: URL(string: "mailto:foravaapp@gmail.com")!) {
+                HStack {
+                    Image(systemName: "envelope.fill")
+                        .foregroundStyle(.orange)
+                        .frame(width: 20)
+
+                    Text("Contact Support")
+                        .foregroundStyle(.white)
+
+                    Spacer()
+
+                    Image(systemName: "arrow.up.right")
+                        .foregroundStyle(.white.opacity(0.5))
+                        .font(.caption)
+                }
+            }
+
+            // Report Content (general link - specific reports handled per-image)
+            Button {
+                // Open email with report template
+                if let mailtoURL = URL(string: "mailto:foravaapp@gmail.com?subject=Content%20Report&body=Please%20describe%20the%20issue%20you%20encountered%20with%20AI-generated%20content.") {
+                    UIApplication.shared.open(mailtoURL)
+                }
+            } label: {
+                HStack {
+                    Image(systemName: "exclamationmark.shield.fill")
+                        .foregroundStyle(.red)
+                        .frame(width: 20)
+
+                    Text("Report Inappropriate Content")
                         .foregroundStyle(.white)
 
                     Spacer()
@@ -333,27 +551,12 @@ struct SettingsView: View {
 
 // MARK: - Supporting Views
 
-struct DataExportView: View {
-    var body: some View {
-        List {
-            Section {
-                Text("Export your Rakhi gift history and data")
-                    .foregroundStyle(.secondary)
-            } header: {
-                Text("Export Options")
-            }
-        }
-        .navigationTitle("Export Data")
-        .navigationBarTitleDisplayMode(.large)
-    }
-}
-
 struct PrivacyPolicyView: View {
     @Environment(\.dismiss) private var dismiss
 
     var body: some View {
         NavigationStack {
-            HTMLDocumentView(fileName: "privacy-policy")
+            HTMLDocumentView(urlString: "https://kg191.github.io/forava-legal/privacy.html")
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationTitle("Privacy Policy")
                 .toolbar {
@@ -373,7 +576,7 @@ struct TermsOfServiceView: View {
 
     var body: some View {
         NavigationStack {
-            HTMLDocumentView(fileName: "terms-of-use")
+            HTMLDocumentView(urlString: "https://kg191.github.io/forava-legal/terms.html")
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationTitle("Terms of Use")
                 .toolbar {
@@ -390,7 +593,7 @@ struct TermsOfServiceView: View {
 
 // MARK: - HTML Document WebView
 struct HTMLDocumentView: UIViewRepresentable {
-    let fileName: String
+    let urlString: String
 
     func makeUIView(context: Context) -> WKWebView {
         let webView = WKWebView()
@@ -399,10 +602,19 @@ struct HTMLDocumentView: UIViewRepresentable {
     }
 
     func updateUIView(_ webView: WKWebView, context: Context) {
-        if let htmlPath = Bundle.main.path(forResource: fileName, ofType: "html", inDirectory: "Resources") {
-            let url = URL(fileURLWithPath: htmlPath)
+        // Try to load from remote URL first
+        if let url = URL(string: urlString) {
             let request = URLRequest(url: url)
             webView.load(request)
+        } else {
+            // Fallback to local file if URL is invalid
+            // Extract filename from urlString (e.g., "privacy" from any path)
+            let fileName = urlString.components(separatedBy: "/").last ?? urlString
+            if let htmlPath = Bundle.main.path(forResource: fileName, ofType: "html", inDirectory: "Resources") {
+                let url = URL(fileURLWithPath: htmlPath)
+                let request = URLRequest(url: url)
+                webView.load(request)
+            }
         }
     }
 }

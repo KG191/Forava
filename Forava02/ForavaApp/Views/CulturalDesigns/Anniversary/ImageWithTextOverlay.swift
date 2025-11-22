@@ -52,9 +52,10 @@ struct ImageWithTextOverlay: View {
                             .background(
                                 RoundedRectangle(cornerRadius: 16)
                                     .fill(.ultraThinMaterial)
+                                    .opacity(0.3)  // (0.0 = invisible, 1.0 = full material)
                                     .overlay(
                                         RoundedRectangle(cornerRadius: 16)
-                                            .fill(culturalColor.opacity(0.15))
+                                            .stroke(.white.opacity(0.2), lineWidth: 1)
                                     )
                             )
                             .padding(.horizontal, max(geometry.size.width * 0.06, 12))

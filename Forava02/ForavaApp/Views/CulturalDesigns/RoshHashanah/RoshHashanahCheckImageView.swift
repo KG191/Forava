@@ -2,13 +2,18 @@ import SwiftUI
 import Foundation
 
 struct RoshHashanahCheckImageView: View {
-    let generatedImages: [String: String]
+    let generatedImages: [String: String]  // Keys: "iPhone", "AppleWatch"
     let personalMessage: String
     @Binding var isGenerating: Bool
     let culturalColor: Color
+    let hasGeneratedOnce: Bool  // Track if first generation completed
+    @ObservedObject var paymentService: ComprehensivePaymentService
+    let isFreeTier: Bool
     let onRegenerate: () -> Void
 
     @State private var selectedFormat: ImageFormat = .iPhone
+    @State private var showingFullscreen = false
+    @State private var showPurchaseSheet = false  // IAP purchase dialog
 
     enum ImageFormat: String, CaseIterable {
         case iPhone = "iPhone"
@@ -65,8 +70,9 @@ struct RoshHashanahCheckImageView: View {
                         // Generated Image Display
                         generatedImageDisplay()
 
-                        // Regenerate Button
-                        regenerateButton()
+                        // Generation Controls
+                        generationControlsView()
+
                     } else {
                         emptyState()
                     }
@@ -178,24 +184,148 @@ struct RoshHashanahCheckImageView: View {
     }
 
     @ViewBuilder
-    private func regenerateButton() -> some View {
-        Button(action: onRegenerate) {
-            HStack {
-                Image(systemName: "arrow.clockwise")
-                    .font(.headline)
+    private func generationControlsView() -> some View {
+        VStack(spacing: 12) {
+            if !isGenerating && !generatedImages.isEmpty {
+                // Regenerate Button with IAP pricing
+                Button(action: onRegenerate) {
+                    HStack(spacing: 12) {
+                        Image(systemName: "arrow.clockwise")
+                            .font(.headline)
 
-                Text("Regenerate")
-                    .font(.system(.headline, design: .rounded).weight(.semibold))
+                        if hasGeneratedOnce {
+                            // Subsequent regenerations cost credits
+                            if paymentService.hasRegenerationCredits() {
+                                Text("Regenerate (Use Credit)")
+                                    .font(.system(.headline, design: .rounded).weight(.semibold))
+                            } else {
+                                Text("Regenerate (\(paymentService.getRegenerationPrice()))")
+                                    .font(.system(.headline, design: .rounded).weight(.semibold))
+                            }
+                        } else {
+                            // First regeneration is free
+                            Text("Regenerate Design (Free)")
+                                .font(.system(.headline, design: .rounded).weight(.semibold))
+                        }
+                    }
+                    .foregroundStyle(.white)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 14)
+                    .background(
+                        RoundedRectangle(cornerRadius: 12)
+                            .fill(culturalColor.gradient)
+                    )
+                }
+
+                if hasGeneratedOnce {
+                    if paymentService.hasRegenerationCredits() {
+                        Text("Available credits: \(paymentService.getAvailableCreditsCount())")
+                            .font(.system(.caption, design: .rounded).weight(.medium))
+                            .foregroundStyle(.green)
+                    } else {
+                        Text("Each regeneration costs \(paymentService.getRegenerationPrice())")
+                            .font(.system(.caption, design: .rounded))
+                            .foregroundStyle(.secondary)
+                    }
+                } else {
+                    Text("Don't like this design? Generate a new variation for free")
+                        .font(.system(.caption, design: .rounded))
+                        .foregroundStyle(.secondary)
+                        .multilineTextAlignment(.center)
+                }
             }
-            .frame(maxWidth: .infinity)
-            .padding(.vertical, 14)
-            .background(
-                RoundedRectangle(cornerRadius: 12)
-                    .strokeBorder(culturalColor, lineWidth: 2)
-            )
-            .foregroundStyle(culturalColor)
         }
         .padding(.horizontal, 20)
+        .sheet(isPresented: $showPurchaseSheet) {
+            regenerationPurchaseSheet()
+        }
+    }
+
+    @ViewBuilder
+    private func regenerationPurchaseSheet() -> some View {
+        NavigationView {
+            VStack(spacing: 24) {
+                // Header
+                VStack(spacing: 12) {
+                    Image(systemName: "arrow.clockwise.circle.fill")
+                        .font(.system(size: 60))
+                        .foregroundStyle(culturalColor.gradient)
+
+                    Text("Purchase Regeneration Credit")
+                        .font(.system(.title2, design: .rounded).weight(.bold))
+
+                    Text("Generate a new variation of your Rosh Hashanah design")
+                        .font(.system(.body, design: .rounded))
+                        .foregroundStyle(.secondary)
+                        .multilineTextAlignment(.center)
+                }
+                .padding(.top, 32)
+
+                // Pricing
+                VStack(spacing: 16) {
+                    HStack {
+                        Image(systemName: "sparkles")
+                            .foregroundStyle(culturalColor)
+                        Text("One-time credit")
+                            .font(.system(.headline, design: .rounded))
+                        Spacer()
+                        Text(paymentService.getRegenerationPrice())
+                            .font(.system(.title2, design: .rounded).weight(.bold))
+                            .foregroundStyle(culturalColor)
+                    }
+                    .padding()
+                    .background(
+                        RoundedRectangle(cornerRadius: 12)
+                            .fill(culturalColor.opacity(0.1))
+                    )
+                }
+                .padding(.horizontal)
+
+                // Purchase Button
+                Button(action: {
+                    Task {
+                        let success = await paymentService.purchaseRegenerationCredit()
+                        if success {
+                            showPurchaseSheet = false
+                            onRegenerate() // Trigger regeneration after purchase
+                        }
+                    }
+                }) {
+                    HStack {
+                        Image(systemName: "cart.fill")
+                        Text("Purchase Credit")
+                            .font(.system(.headline, design: .rounded).weight(.semibold))
+                    }
+                    .foregroundStyle(.white)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 16)
+                    .background(
+                        RoundedRectangle(cornerRadius: 12)
+                            .fill(culturalColor.gradient)
+                    )
+                }
+                .padding(.horizontal)
+                .disabled(paymentService.isLoading)
+
+                if let error = paymentService.errorMessage {
+                    Text(error)
+                        .font(.system(.caption, design: .rounded))
+                        .foregroundStyle(.red)
+                        .padding(.horizontal)
+                }
+
+                Spacer()
+            }
+            .navigationTitle("Regeneration Credit")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cancel") {
+                        showPurchaseSheet = false
+                    }
+                }
+            }
+        }
     }
 
     @ViewBuilder
@@ -224,6 +354,9 @@ struct RoshHashanahCheckImageView: View {
         personalMessage: "L'Shanah Tovah! May this new year be sweet",
         isGenerating: .constant(false),
         culturalColor: Color(hex: "#4169E1"),
+        hasGeneratedOnce: false,
+        paymentService: ComprehensivePaymentService.shared,
+        isFreeTier: false,
         onRegenerate: {}
     )
 }
