@@ -25,7 +25,7 @@ struct ContentView: View {
 
                 VStack(spacing: 0) {
                     // Push content toward the top area
-                    Spacer().frame(height: 12)
+                    Spacer().frame(height: DeviceInfo.adaptiveSpacing(compact: 4, standard: 12, large: -5))
 
                     // MARK: Large, centered Rakhi hero
                     Image("rakhi_hero")
@@ -34,21 +34,21 @@ struct ContentView: View {
                         .frame(width: 280, height: 160) // Reduced size to make room for carousel
                         .shadow(color: .black.opacity(0.18), radius: 16, y: 6)
                         .frame(maxWidth: .infinity, alignment: .center) // ensure horizontal centering
-                        .padding(.top, 6)
+                        .padding(.top, DeviceInfo.adaptiveSpacing(compact: 2, standard: 6, large: 1))
 
                     // MARK: Header text above title
                     Text("Connect With Loved Ones...")
                         .font(.system(.title2, design: .rounded).weight(.bold))
                         .foregroundStyle(.white)
                         .shadow(color: .black.opacity(0.3), radius: 4, y: 2)
-                        .padding(.top, 20)
+                        .padding(.top, DeviceInfo.adaptiveSpacing(compact: 8, standard: 20, large: 5))
 
                     // MARK: Title with dynamic color glance effect
                     AnimatedTitleView()
-                        .padding(.top, 16)
+                        .padding(.top, DeviceInfo.adaptiveSpacing(compact: 6, standard: 16, large: 5))
 
                     // Small spacer
-                    Spacer().frame(height: 4)
+                    Spacer().frame(height: DeviceInfo.adaptiveSpacing(compact: 2, standard: 4, large: 12))
 
                     // MARK: Cultural Events Carousel with Badge Overlay
                     ZStack(alignment: .bottom) {
@@ -57,7 +57,7 @@ struct ContentView: View {
                             navigateToContact = true
                         }
                     }
-                    .padding(.bottom, 16)
+                    .padding(.bottom, DeviceInfo.adaptiveSpacing(compact: 8, standard: 16, large: 24))
 
                     Button {
                         withAnimation(.spring(response: 0.3)) {
@@ -120,7 +120,7 @@ struct ContentView: View {
 struct AnimatedTitleView: View {
     var body: some View {
         Text("Forava")
-            .font(.system(size: 99, weight: .semibold, design: .serif))
+            .font(.system(size: DeviceInfo.isIPad ? 85 : 99, weight: .semibold, design: .serif))
             .kerning(0.5)
             .foregroundStyle(.white)
             .shadow(color: .black.opacity(0.15), radius: 8, y: 3)

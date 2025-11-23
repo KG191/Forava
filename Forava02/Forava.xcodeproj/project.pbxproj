@@ -158,6 +158,7 @@
 		219FCE142ECB25E00068B3A1 /* MessageComposeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219FCE132ECB25E00068B3A1 /* MessageComposeView.swift */; };
 		219FCE182ECBCA500068B3A1 /* ShareSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219FCE162ECBCA500068B3A1 /* ShareSheetView.swift */; };
 		219FCE1B2ED05CED0068B3A1 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219FCE1A2ED05CED0068B3A1 /* SplashScreenView.swift */; };
+		219FCE1E2ED1DA210068B3A1 /* DeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219FCE1C2ED1DA0F0068B3A1 /* DeviceInfo.swift */; };
 		21B8978C2E7EA18800DD567D /* CulturalGiftDesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E71C998FEF4EF8BFE78604 /* CulturalGiftDesignView.swift */; };
 		21B8978D2E7EA32000DD567D /* AnniversaryStyleSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1411BA74DF4437F81A335E5 /* AnniversaryStyleSelectionView.swift */; };
 		21B8978E2E7EA33E00DD567D /* AnniversarySendShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37C93AD8519475BBBFB7C8D /* AnniversarySendShareView.swift */; };
@@ -409,6 +410,7 @@
 		219FCE132ECB25E00068B3A1 /* MessageComposeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageComposeView.swift; sourceTree = "<group>"; };
 		219FCE162ECBCA500068B3A1 /* ShareSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheetView.swift; sourceTree = "<group>"; };
 		219FCE1A2ED05CED0068B3A1 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
+		219FCE1C2ED1DA0F0068B3A1 /* DeviceInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfo.swift; sourceTree = "<group>"; };
 		21C93B432E5FE78800200285 /* CulturalEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulturalEvent.swift; sourceTree = "<group>"; };
 		21C93B442E5FE78800200285 /* CulturalGiftModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulturalGiftModel.swift; sourceTree = "<group>"; };
 		21C93B452E5FE78800200285 /* RakhiDesignModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RakhiDesignModels.swift; sourceTree = "<group>"; };
@@ -906,6 +908,7 @@
 		21C93B5C2E5FE78800200285 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				219FCE1C2ED1DA0F0068B3A1 /* DeviceInfo.swift */,
 				219FCE162ECBCA500068B3A1 /* ShareSheetView.swift */,
 				219FCE132ECB25E00068B3A1 /* MessageComposeView.swift */,
 				219FCE0B2ECB23540068B3A1 /* WatermarkOverlay.swift */,
@@ -1411,6 +1414,7 @@
 				219FCE0A2ECB23450068B3A1 /* GenerationQuotaManager.swift in Sources */,
 				215C775A2EB757AB002C27DB /* MidAutumnFestivalStyleSelectionView.swift in Sources */,
 				215C775B2EB757AB002C27DB /* MidAutumnFestivalCreateSummaryView.swift in Sources */,
+				219FCE1E2ED1DA210068B3A1 /* DeviceInfo.swift in Sources */,
 				215C775C2EB757AB002C27DB /* MidAutumnFestivalSendShareView.swift in Sources */,
 				219FCE1B2ED05CED0068B3A1 /* SplashScreenView.swift in Sources */,
 				219FCD4E2EBDC2F40068B3A1 /* EidAlAdhaDesignView.swift in Sources */,

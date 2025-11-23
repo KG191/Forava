@@ -8,8 +8,8 @@ struct CulturalCarouselView: View {
 
     let onEventSelected: (CulturalEvent) -> Void
 
-    private let cardWidth: CGFloat = 210  // 75% of 280
-    private let cardSpacing: CGFloat = 15  // Slightly smaller spacing too
+    private let cardWidth: CGFloat = DeviceInfo.isIPad ? 260 : 210
+    private let cardSpacing: CGFloat = DeviceInfo.isIPad ? 25 : 15
 
     /// Computed property: Display filtered or all events based on toggle
     var displayedEvents: [CulturalEvent] {
@@ -21,7 +21,7 @@ struct CulturalCarouselView: View {
     }
 
     var body: some View {
-        VStack(spacing: 12) {
+        VStack(spacing: DeviceInfo.verticalSpacing(26)) {
             // Main Carousel with smooth scrolling
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHStack(spacing: cardSpacing) {
@@ -51,7 +51,7 @@ struct CulturalCarouselView: View {
             }
 
             // Selected Event Action
-            VStack(spacing: 10) {
+            VStack(spacing: DeviceInfo.isIPad ? 8 : 5) {
                 if !displayedEvents.isEmpty && selectedEventIndex < displayedEvents.count {
                     Button {
                         onEventSelected(displayedEvents[selectedEventIndex])
@@ -62,10 +62,12 @@ struct CulturalCarouselView: View {
 
                             Text("Create/Send a \(displayedEvents[selectedEventIndex].name) Gratitude Gift")
                                 .font(.system(.body, design: .rounded).weight(.semibold))
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.6)
                         }
                         .foregroundStyle(Color(hex: "#C9431A"))
                         .frame(maxWidth: .infinity)
-                        .padding(.vertical, 16)
+                        .padding(.vertical, DeviceInfo.isIPad ? 8 : 4)
                         .background(
                             RoundedRectangle(cornerRadius: 18, style: .continuous)
                                 .fill(Color(hex: "#FFF0DC"))
@@ -102,7 +104,7 @@ struct CulturalCarouselView: View {
                     .padding(.vertical, 40)
                 }
             }
-            .padding(.top, 8)
+            .padding(.top, DeviceInfo.isIPad ? -5 : -10)
         }
         .onAppear {
             // Initialize both selection and scroll position immediately
