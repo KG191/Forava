@@ -247,6 +247,7 @@ struct AgeGateView: View {
 
 // MARK: - Preview
 
+#if DEBUG
 #Preview("Age Gate - Unverified") {
     AgeGateView()
         .environmentObject(AgeVerification.previewUnverified())
@@ -265,3 +266,4 @@ struct AgeGateView: View {
 
     return PreviewWrapper()
 }
+#endif
