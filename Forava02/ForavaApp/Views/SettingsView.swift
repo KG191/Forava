@@ -1,5 +1,4 @@
 import SwiftUI
-import PassKit
 import WebKit
 
 struct SettingsView: View {

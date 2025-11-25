@@ -238,8 +238,6 @@
 		A003 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A002 /* ContentView.swift */; };
 		A005 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A004 /* Assets.xcassets */; };
 		A007 /* GiftCards.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A006 /* GiftCards.xcassets */; };
-		A010 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00F /* APIClient.swift */; };
-		A012 /* ApplePayConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = A011 /* ApplePayConfig.swift */; };
 		A014 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A013 /* OnboardingView.swift */; };
 		A016 /* PaymentCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A015 /* PaymentCoordinator.swift */; };
 		B001 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B000 /* App.swift */; };
@@ -487,8 +485,6 @@
 		A002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A004 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Forava_Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		A006 /* GiftCards.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = GiftCards.xcassets; sourceTree = SOURCE_ROOT; };
-		A00F /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
-		A011 /* ApplePayConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplePayConfig.swift; sourceTree = "<group>"; };
 		A013 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		A015 /* PaymentCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentCoordinator.swift; sourceTree = "<group>"; };
 		A01B /* ForavaApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ForavaApp.entitlements; sourceTree = "<group>"; };
@@ -1042,8 +1038,6 @@
 				21C93B7C2E5FE78800200285 /* Views */,
 				A000 /* App.swift */,
 				A002 /* ContentView.swift */,
-				A00F /* APIClient.swift */,
-				A011 /* ApplePayConfig.swift */,
 				A013 /* OnboardingView.swift */,
 				A015 /* PaymentCoordinator.swift */,
 				A01B /* ForavaApp.entitlements */,
@@ -1197,7 +1191,6 @@
 				A001 /* App.swift in Sources */,
 				219FCD582EBE89740068B3A1 /* ChristmasConnectView.swift in Sources */,
 				A003 /* ContentView.swift in Sources */,
-				A010 /* APIClient.swift in Sources */,
 				215C76AB2EB361C7002C27DB /* DiwaliAIService.swift in Sources */,
 				215C773F2EB5FB4B002C27DB /* RoshHashanahDesignView.swift in Sources */,
 				219FCD262EBD6B1E0068B3A1 /* ChristmasPersonalTouchView.swift in Sources */,
@@ -1217,7 +1210,6 @@
 				215C774D2EB72597002C27DB /* RakshaBandhanPersonalTouchView.swift in Sources */,
 				215C774E2EB72597002C27DB /* RakshaBandhanCreateSummaryView.swift in Sources */,
 				215C774F2EB72597002C27DB /* RakshaBandhanElementsSelectionView.swift in Sources */,
-				A012 /* ApplePayConfig.swift in Sources */,
 				21B8978E2E7EA33E00DD567D /* AnniversarySendShareView.swift in Sources */,
 				215C77372EB5F97A002C27DB /* RoshHashanahCheckImageView.swift in Sources */,
 				215C77382EB5F97A002C27DB /* RoshHashanahElementsSelectionView.swift in Sources */,

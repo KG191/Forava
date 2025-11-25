@@ -65,13 +65,15 @@ Phase 4 successfully completed the comprehensive Apple Watch integration and pay
 
 ---
 
-### 4.3 Apple Pay Integration Completion
-**Status**: ✅ **COMPLETED**
+### 4.3 StoreKit 2 Payment Integration ⚠️ **CORRECTED**
+**Status**: ✅ **COMPLETED** (Using StoreKit 2, NOT Apple Pay/PassKit)
+
+> **IMPORTANT CORRECTION (Nov 25, 2025)**: Previous documentation incorrectly stated this was an "Apple Pay Integration." The app correctly uses **StoreKit 2** for in-app purchases (subscriptions and consumable credits), NOT PassKit/Apple Pay. Apple Pay (PassKit) is for merchant payments of physical goods/services. StoreKit 2 is the correct technology for digital subscriptions and in-app content purchases.
 
 #### Core Implementation
 - **ComprehensivePaymentService.swift** (945 lines)
-  - Complete Apple Pay integration with cultural intelligence
-  - Production-ready payment processing pipeline
+  - Complete StoreKit 2 integration with cultural intelligence
+  - Production-ready subscription and IAP processing pipeline
   - Cultural amount enhancement with traditional significance
   - Comprehensive error handling and recovery mechanisms
   - Payment history and analytics system
@@ -84,11 +86,19 @@ Phase 4 successfully completed the comprehensive Apple Watch integration and pay
 - **Blessing Integration**: Spiritual significance in payment amounts
 
 #### Technical Implementation
-- **PKPaymentRequest Configuration**: Complete setup for Indian cultural context
-- **Merchant Capabilities**: Support for all major card networks including RuPay
-- **Security Implementation**: PCI-compliant transaction processing
+- **StoreKit 2 Integration**: Modern async/await subscription management
+- **Product Configuration**: Monthly ($7.99) and Annual ($59.99) subscriptions, plus credit packs
+- **Receipt Validation**: Secure transaction verification
 - **Async/Await Integration**: Modern Swift concurrency for payment flows
 - **Error Recovery**: Comprehensive error handling with user-friendly messaging
+- **Family Sharing**: Subscription sharing for family members
+
+#### Payment Methods Available (Managed by Apple)
+Users can pay for subscriptions/credits using any method configured in their Apple ID:
+- Apple Pay (handled by iOS, not by app code)
+- Credit/Debit cards
+- Carrier billing
+- Apple Account balance
 
 ---
 
@@ -226,7 +236,7 @@ Phase 4 successfully completed the comprehensive Apple Watch integration and pay
 ### Features Ready for Production
 - ✅ Complete Apple Watch Rakhi display system
 - ✅ Robust watch-to-iPhone transfer mechanism
-- ✅ Production-grade Apple Pay integration
+- ✅ Production-grade StoreKit 2 subscription integration
 - ✅ AI-powered gift amount intelligence
 - ✅ Comprehensive watch face complications
 - ✅ End-to-end payment completion flow
@@ -238,8 +248,8 @@ Phase 4 successfully completed the comprehensive Apple Watch integration and pay
 - ✅ Zero compilation errors or warnings
 
 ### Security & Compliance
-- ✅ PCI-DSS compliant payment processing
-- ✅ Apple Pay security standards implementation
+- ✅ StoreKit 2 secure transaction processing
+- ✅ Apple's IAP security standards implementation
 - ✅ Encrypted data transfer between devices
 - ✅ Privacy-first approach to user data
 
@@ -303,7 +313,7 @@ Phase 4 successfully completed the comprehensive Apple Watch integration and pay
 ### Apple Ecosystem Integration
 - **WatchConnectivity**: Expert-level implementation with robust error handling
 - **ClockKit**: Complete complication support for all families
-- **PassKit**: Production-grade Apple Pay integration
+- **StoreKit 2**: Production-grade subscription and IAP integration
 - **HealthKit Ready**: Architecture prepared for health data integration
 
 ### Performance Engineering
@@ -357,7 +367,7 @@ Phase 4 has successfully completed the Forava app transformation into a comprehe
 ### Complete Feature Set
 - ✅ **4.1**: Enhanced Apple Watch Rakhi display with 4 viewing modes
 - ✅ **4.2**: Sophisticated watch-to-iPhone transfer system
-- ✅ **4.3**: Production-grade Apple Pay integration with cultural intelligence
+- ✅ **4.3**: Production-grade StoreKit 2 integration with cultural intelligence
 - ✅ **4.4**: AI-powered gift amount intelligence system
 - ✅ **4.5**: Comprehensive watch face complications
 - ✅ **4.6**: End-to-end payment completion flow
