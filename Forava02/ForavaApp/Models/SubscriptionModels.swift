@@ -189,7 +189,6 @@ enum SubscriptionTier: String, Codable, CaseIterable {
                 "Save 38% annually",
                 "Early access to new events",
                 "Exclusive premium packs",
-                "API access (coming soon)",
                 "Priority support"
             ]
         }

@@ -52,20 +52,16 @@ struct CulturalGiftDesignView: View {
                 HoliDesignView(selectedContact: selectedContact, selectedEvent: selectedEvent)
 
             default:
-                // Placeholder for other cultural events (to be implemented)
+                // Fallback for unrecognized events (should not be reached)
                 VStack(spacing: 24) {
-                    Image(systemName: selectedEvent.category.icon)
+                    Image(systemName: "exclamationmark.triangle")
                         .font(.system(size: 60))
-                        .foregroundStyle(selectedEvent.category.primaryColor)
+                        .foregroundStyle(.orange)
 
-                    Text("\(selectedEvent.name) Design Studio")
+                    Text("Event Not Available")
                         .font(.system(.title, design: .rounded).weight(.bold))
 
-                    Text("Coming Soon")
-                        .font(.system(.title2, design: .rounded))
-                        .foregroundStyle(.secondary)
-
-                    Text("This cultural event will be available in a future update.")
+                    Text("This cultural event is not currently supported.")
                         .font(.system(.body, design: .rounded))
                         .foregroundStyle(.secondary)
                         .multilineTextAlignment(.center)

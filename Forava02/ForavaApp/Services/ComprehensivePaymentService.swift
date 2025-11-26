@@ -201,7 +201,7 @@ class ComprehensivePaymentService: ObservableObject {
 
         await MainActor.run {
             isLoading = false
-            errorMessage = "Subscription purchases coming soon!"
+            errorMessage = "Subscription feature is not available. Please use credit packs instead."
         }
 
         return false

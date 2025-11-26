@@ -83,18 +83,18 @@ struct CulturalGiftSelectionView: View {
                 // Gift Grid
                 ScrollView {
                     if filteredGifts.isEmpty {
-                        // Empty state
+                        // Empty state - should not occur for implemented events
                         VStack(spacing: 20) {
                             Image(systemName: selectedEvent.category.icon)
                                 .font(.system(size: 60))
                                 .foregroundStyle(selectedEvent.category.primaryColor.opacity(0.6))
 
                             VStack(spacing: 8) {
-                                Text("Coming Soon!")
+                                Text("No Gifts Available")
                                     .font(.system(.title2, design: .rounded).weight(.bold))
                                     .foregroundStyle(.primary)
 
-                                Text("\(selectedEvent.name) gifts are being carefully curated with cultural authenticity in mind.")
+                                Text("Please try selecting a contact first to view available \(selectedEvent.name) gifts.")
                                     .font(.system(.body, design: .rounded))
                                     .foregroundStyle(.secondary)
                                     .multilineTextAlignment(.center)

@@ -14,7 +14,6 @@ struct SettingsView: View {
     @State private var showingPrivacyPolicy = false
     @State private var showingTermsOfService = false
     @State private var showingMinimumSelectionAlert = false
-    @State private var showingSubscriptionView = false
     @State private var showCultureSelection = false
     @Environment(\.dismiss) private var dismiss
 
@@ -41,14 +40,14 @@ struct SettingsView: View {
                         .foregroundStyle(.white)
                 }
 
-                // Subscription & Credits Section
+                // Credits Section
                 Section {
                     subscriptionSection
                 } header: {
-                    Text("Subscription & Credits")
+                    Text("Credits & Balance")
                         .foregroundStyle(.white)
                 } footer: {
-                    Text("Manage your subscription and regeneration credits")
+                    Text("Track your free generations and regeneration credits")
                         .foregroundStyle(.white.opacity(0.7))
                 }
 
@@ -109,9 +108,6 @@ struct SettingsView: View {
         }
         .sheet(isPresented: $showingTermsOfService) {
             TermsOfServiceView()
-        }
-        .sheet(isPresented: $showingSubscriptionView) {
-            SubscriptionView(paymentService: paymentService)
         }
         .alert("Delete All Data", isPresented: $showingDeleteConfirmation) {
             Button("Delete", role: .destructive) {
@@ -285,50 +281,6 @@ struct SettingsView: View {
                 }
 
                 Spacer()
-            }
-
-            // View Subscription Details
-            Button {
-                showingSubscriptionView = true
-            } label: {
-                HStack {
-                    Image(systemName: "creditcard.fill")
-                        .foregroundStyle(.orange)
-                        .frame(width: 20)
-
-                    Text("View Plans & Pricing")
-                        .foregroundStyle(.white)
-
-                    Spacer()
-
-                    Image(systemName: "chevron.right")
-                        .foregroundStyle(.white.opacity(0.5))
-                        .font(.caption)
-                }
-            }
-
-            // Manage Subscription (only if subscribed)
-            if paymentService.isSubscribed {
-                Button {
-                    if let url = URL(string: "https://apps.apple.com/account/subscriptions") {
-                        UIApplication.shared.open(url)
-                    }
-                } label: {
-                    HStack {
-                        Image(systemName: "gearshape.fill")
-                            .foregroundStyle(.blue)
-                            .frame(width: 20)
-
-                        Text("Manage Subscription")
-                            .foregroundStyle(.white)
-
-                        Spacer()
-
-                        Image(systemName: "arrow.up.right")
-                            .foregroundStyle(.white.opacity(0.5))
-                            .font(.caption)
-                    }
-                }
             }
         }
     }
