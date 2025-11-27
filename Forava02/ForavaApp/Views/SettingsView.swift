@@ -2,6 +2,9 @@ import SwiftUI
 import WebKit
 
 struct SettingsView: View {
+    // MARK: - Onboarding Mode Parameter
+    var isOnboarding: Bool = false  // When true, validates culture selection before dismissing
+
     @EnvironmentObject var preferences: CulturePreferencesManager
     @StateObject private var paymentService = ComprehensivePaymentService.shared
     @StateObject private var quotaManager = GenerationQuotaManager.shared
@@ -105,7 +108,18 @@ struct SettingsView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Done") {
-                        dismiss()
+                        if isOnboarding {
+                            // Onboarding mode: validate culture selection first
+                            if preferences.selectedCultureIDs.isEmpty {
+                                showingMinimumSelectionAlert = true
+                            } else {
+                                preferences.completeOnboarding()
+                                dismiss()
+                            }
+                        } else {
+                            // Regular mode: just dismiss
+                            dismiss()
+                        }
                     }
                     .foregroundStyle(.orange)
                 }

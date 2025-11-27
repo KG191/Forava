@@ -123,33 +123,11 @@ struct WelcomeView: View {
 }
 
 /// Settings view for onboarding (full screen, requires culture selection)
+/// Now simply delegates to SettingsView with isOnboarding flag
 struct OnboardingSettingsView: View {
-    @EnvironmentObject var preferences: CulturePreferencesManager
-    @Environment(\.dismiss) var dismiss
-    @State private var showingAlert = false
-
     var body: some View {
-        NavigationStack {
-            SettingsView()
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button("Done") {
-                            if preferences.selectedCultureIDs.isEmpty {
-                                showingAlert = true
-                            } else {
-                                preferences.completeOnboarding()
-                                dismiss()
-                            }
-                        }
-                        .foregroundStyle(.orange)
-                    }
-                }
-        }
-        .alert("Select at Least One Culture", isPresented: $showingAlert) {
-            Button("OK", role: .cancel) { }
-        } message: {
-            Text("Please select at least one culture to continue using the app.")
-        }
+        // SettingsView handles validation, completeOnboarding(), and alert in onboarding mode
+        SettingsView(isOnboarding: true)
     }
 }
 
