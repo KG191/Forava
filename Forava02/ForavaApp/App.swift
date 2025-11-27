@@ -20,6 +20,10 @@ struct ForavaApp: App {
                             // Trigger singleton initialization (this starts StoreKit)
                             _ = ComprehensivePaymentService.shared
 
+                            // CRITICAL FIX: Load IAP products from App Store Connect
+                            // This ensures products are available when PaywallView appears
+                            await ComprehensivePaymentService.shared.loadAllProducts()
+
                             // Wait for StoreKit initialization to complete
                             // This prevents the freeze from happening during main UI
                             try? await Task.sleep(nanoseconds: 2_000_000_000) // 2 seconds

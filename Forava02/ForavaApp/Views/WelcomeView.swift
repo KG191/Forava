@@ -4,8 +4,11 @@ import SwiftUI
 /// Requires user to configure culture preferences before accessing main app
 struct WelcomeView: View {
     @EnvironmentObject var preferences: CulturePreferencesManager
+    @StateObject private var paymentService = ComprehensivePaymentService.shared
+    @StateObject private var quotaManager = GenerationQuotaManager.shared
     @State private var showPromptText = false
     @State private var showSettings = false
+    @State private var showPaywall = false
 
     var body: some View {
         NavigationStack {
@@ -54,6 +57,41 @@ struct WelcomeView: View {
                     }
 
                     Spacer()
+
+                    // MARK: Purchase Credits Button (For App Store Review - IAP Visibility)
+                    if showPromptText {
+                        VStack(spacing: 16) {
+                            Text("Or skip the free trial")
+                                .font(.system(.caption, design: .rounded))
+                                .foregroundStyle(.white.opacity(0.8))
+
+                            Button {
+                                showPaywall = true
+                            } label: {
+                                HStack {
+                                    Image(systemName: "cart.fill")
+                                        .font(.system(size: 16, weight: .semibold))
+
+                                    Text("Purchase Credits Now")
+                                        .font(.system(.body, design: .rounded).weight(.semibold))
+                                }
+                                .foregroundStyle(.white)
+                                .padding(.vertical, 14)
+                                .padding(.horizontal, 24)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 12)
+                                        .fill(.white.opacity(0.2))
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 12)
+                                                .stroke(.white.opacity(0.5), lineWidth: 1.5)
+                                        )
+                                )
+                            }
+                            .buttonStyle(.plain)
+                        }
+                        .padding(.bottom, 32)
+                        .transition(.opacity)
+                    }
                 }
             }
             .toolbar {
@@ -70,6 +108,9 @@ struct WelcomeView: View {
             .fullScreenCover(isPresented: $showSettings) {
                 // Full screen presentation on first launch (not dismissible sheet)
                 OnboardingSettingsView()
+            }
+            .sheet(isPresented: $showPaywall) {
+                PaywallView(paymentService: paymentService, quotaManager: quotaManager)
             }
             .onAppear {
                 // Fade in prompt text after 1 second

@@ -35,15 +35,12 @@ struct PaywallView: View {
                         // Header
                         headerSection
 
-                        // Tab selector
-                        tabSelector
+                        // REVIEW MODE: Tab selector hidden - showing only credit packs
+                        // Subscriptions not fully implemented, focusing on credit packs for App Store review
+                        // tabSelector
 
-                        // Content based on selected tab
-                        if selectedTab == .credits {
-                            creditPacksSection
-                        } else {
-                            subscriptionSection
-                        }
+                        // REVIEW MODE: Always show credit packs (subscriptions hidden)
+                        creditPacksSection
 
                         // Purchase button
                         purchaseButton
@@ -72,6 +69,11 @@ struct PaywallView: View {
                     LoadingOverlay()
                 }
             }
+            .task {
+                // Load/refresh IAP products when PaywallView appears
+                // This ensures products are up-to-date with App Store Connect
+                await paymentService.loadAllProducts()
+            }
         }
     }
 
@@ -97,12 +99,12 @@ struct PaywallView: View {
             }
 
             // Title
-            Text("You've Used All Free Generations")
+            Text("Purchase Regeneration Credits")
                 .font(.system(.title2, design: .rounded).weight(.bold))
                 .multilineTextAlignment(.center)
 
             // Subtitle
-            Text("Continue celebrating with unlimited cultural gifts")
+            Text("Buy credits to regenerate and create more cultural gifts")
                 .font(.system(.body, design: .rounded))
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
@@ -207,11 +209,8 @@ struct PaywallView: View {
                 Image(systemName: "cart.fill")
                     .font(.headline)
 
-                if selectedTab == .credits {
-                    Text("Buy \(selectedCreditPack.displayName)")
-                } else {
-                    Text("Subscribe Now")
-                }
+                // REVIEW MODE: Always show credit pack purchase
+                Text("Buy \(selectedCreditPack.displayName)")
             }
             .font(.system(.headline, design: .rounded).weight(.semibold))
             .foregroundStyle(.white)
@@ -248,14 +247,8 @@ struct PaywallView: View {
         isLoading = true
 
         Task {
-            let success: Bool
-            if selectedTab == .credits {
-                // Purchase credit pack
-                success = await purchaseCreditPack(selectedCreditPack)
-            } else {
-                // Subscribe
-                success = await subscribe(selectedSubscription)
-            }
+            // REVIEW MODE: Always purchase credit pack (subscriptions hidden)
+            let success = await purchaseCreditPack(selectedCreditPack)
 
             await MainActor.run {
                 isLoading = false

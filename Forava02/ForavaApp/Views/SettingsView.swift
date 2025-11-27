@@ -15,6 +15,7 @@ struct SettingsView: View {
     @State private var showingTermsOfService = false
     @State private var showingMinimumSelectionAlert = false
     @State private var showCultureSelection = false
+    @State private var showPaywall = false
     @Environment(\.dismiss) private var dismiss
 
     var body: some View {
@@ -108,6 +109,9 @@ struct SettingsView: View {
         }
         .sheet(isPresented: $showingTermsOfService) {
             TermsOfServiceView()
+        }
+        .sheet(isPresented: $showPaywall) {
+            PaywallView(paymentService: paymentService, quotaManager: quotaManager)
         }
         .alert("Delete All Data", isPresented: $showingDeleteConfirmation) {
             Button("Delete", role: .destructive) {
@@ -282,6 +286,44 @@ struct SettingsView: View {
 
                 Spacer()
             }
+
+            // Purchase Credits Button (CRITICAL: For App Store Review - IAP Visibility)
+            Button {
+                showPaywall = true
+            } label: {
+                HStack {
+                    Image(systemName: "cart.fill")
+                        .font(.system(size: 18, weight: .semibold))
+                        .foregroundStyle(.white)
+
+                    Text("Buy Regeneration Credits")
+                        .font(.system(.body, design: .rounded).weight(.semibold))
+                        .foregroundStyle(.white)
+
+                    Spacer()
+
+                    Image(systemName: "chevron.right")
+                        .font(.system(size: 14, weight: .semibold))
+                        .foregroundStyle(.white.opacity(0.7))
+                }
+                .padding(.vertical, 14)
+                .padding(.horizontal, 16)
+                .background(
+                    RoundedRectangle(cornerRadius: 12)
+                        .fill(
+                            LinearGradient(
+                                gradient: Gradient(colors: [
+                                    Color.orange,
+                                    Color.orange.opacity(0.8)
+                                ]),
+                                startPoint: .leading,
+                                endPoint: .trailing
+                            )
+                        )
+                        .shadow(color: .orange.opacity(0.3), radius: 8, x: 0, y: 4)
+                )
+            }
+            .buttonStyle(.plain)
         }
     }
 
