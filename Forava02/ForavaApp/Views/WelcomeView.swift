@@ -130,18 +130,6 @@ struct OnboardingSettingsView: View {
     var body: some View {
         NavigationStack {
             SettingsView()
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button("Done") {
-                            // Only allow dismissal if at least one culture is selected
-                            if !preferences.selectedCultureIDs.isEmpty {
-                                preferences.completeOnboarding()
-                                dismiss()
-                            }
-                        }
-                        .disabled(preferences.selectedCultureIDs.isEmpty)
-                    }
-                }
         }
     }
 }
