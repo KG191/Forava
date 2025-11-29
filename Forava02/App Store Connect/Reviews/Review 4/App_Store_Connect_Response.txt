@@ -1,0 +1,69 @@
+Thank you for your feedback regarding Forava version 1.0.
+
+We have addressed both issues and made the necessary corrections:
+
+---
+
+ISSUE 1: Guideline 2.1 - In-App Purchase Visibility
+
+Clarification: Forava uses a CREDIT-BASED purchase model, not subscriptions.
+
+We have removed the "Monthly Unlimited" and "Annual Unlimited" subscription products from App Store Connect as they are not implemented in the current version. The app offers consumable credit packs for AI image regeneration.
+
+AVAILABLE IN-APP PURCHASES (Credit Packs):
+
+| Product ID          | Name               | Price  |
+|--------------------|--------------------|--------|
+| regenerationCredit | Single Regeneration | $1.99  |
+| credits10          | Starter Pack       | $9.99  |
+| credits25          | Popular Pack       | $19.99 |
+| credits50          | Family Pack        | $34.99 |
+| credits100         | Festival Pack      | $59.99 |
+
+HOW TO ACCESS IN-APP PURCHASES:
+
+Path 1 - Via Settings:
+1. Launch app and complete onboarding (select any culture)
+2. Tap the gear icon (Settings) in the top-right corner
+3. Tap "Buy Regeneration Credits" button
+4. All 5 credit packs are displayed for purchase
+
+Path 2 - Via Natural Flow:
+1. Complete onboarding and select a cultural event
+2. Use all 3 free AI generations
+3. Paywall appears automatically showing credit packs
+
+Path 3 - Direct Access:
+1. From Welcome screen, tap "Purchase Credits Now" button
+2. Paywall displays with all credit pack options
+
+All products are configured for sandbox testing with the Paid Apps Agreement active.
+
+---
+
+ISSUE 2: Guideline 3.1.2 - Terms of Use (EULA)
+
+We have added the Terms of Use link to the App Description in App Store Connect:
+
+Terms of Use: https://kg191.github.io/forava-legal/terms.html
+Privacy Policy: https://kg191.github.io/forava-legal/privacy.html
+
+Both links are also accessible within the app:
+- Settings > "Terms of Service" button
+- Settings > "Privacy Policy" button
+
+The Terms of Use page includes:
+- App usage terms and conditions
+- AI-generated content policies
+- User responsibilities
+- Subscription/purchase terms (for credit packs)
+
+---
+
+SUMMARY OF CHANGES:
+
+1. Removed subscription products (Monthly/Annual Unlimited) from App Store Connect
+2. Added Terms of Use URL to App Description
+3. Verified Privacy Policy URL is correctly configured
+
+Thank you for your continued review. Please let us know if you need any additional information.

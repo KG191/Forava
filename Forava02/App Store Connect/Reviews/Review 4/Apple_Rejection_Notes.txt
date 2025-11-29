@@ -1,0 +1,52 @@
+App Store Review 4 - Rejection Notes
+=====================================
+
+Date: November 28, 2025
+Submission ID: aaf66989-d30e-4926-84e6-e3c5393e2dff
+Version Reviewed: 1.0
+
+---
+
+ISSUE 1: Guideline 2.1 - Information Needed
+-------------------------------------------
+
+We have started the review of your app, but we are still not able to continue because we cannot locate the in-app purchases, such as Monthly Unlimited and Annual Unlimited, within your app at this time.
+
+Next Steps:
+
+To help us proceed with the review of your app, please reply to this message providing the steps for locating the in-app purchases in your app.
+
+Note that in-app purchases are reviewed in an Apple-provided sandbox environment. Make sure they have been appropriately configured for review in the Apple-provided sandbox environment.
+
+If you are restricting access to in-app purchases based on factors such as storefront or device configurations, please include this information in your reply along with steps to enable the in-app purchases for our review.
+
+Additionally, note that the Account Holder must accept the Paid Apps Agreement in the Business section of App Store Connect before paid in-app purchases will function.
+
+
+ISSUE 2: Guideline 3.1.2 - Business - Payments - Subscriptions
+--------------------------------------------------------------
+
+Issue Description:
+
+The submission did not include all the required information for apps offering auto-renewable subscriptions.
+
+The app's metadata is missing the following required information:
+
+- A functional link to the Terms of Use (EULA). If you are using the standard Apple Terms of Use (EULA), include a link to the Terms of Use in the App Description. If you are using a custom EULA, add it in App Store Connect.
+
+Next Steps:
+
+Update the metadata to include the information specified above.
+
+Resources:
+
+Apps offering auto-renewable subscriptions must include all of the following required information in the binary:
+
+- Title of auto-renewing subscription (this may be the same as the in-app purchase product name)
+- Length of subscription
+- Price of subscription, and price per unit if appropriate
+- Functional links to the privacy policy and Terms of Use (EULA)
+
+The app metadata must also include functional links to the privacy policy in the Privacy Policy field in App Store Connect and the Terms of Use (EULA) in the App Description or EULA field in App Store Connect.
+
+Review Schedule 2 of the Apple Developer Program License Agreement to learn more.
