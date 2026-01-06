@@ -225,15 +225,11 @@
 		21E8D07F2EAF82BC008B8145 /* DALLE3Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E8D07E2EAF82BC008B8145 /* DALLE3Service.swift */; };
 		2AB29D0B144486564A59A3FC /* HoliModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E7CF5A1CFF4A4A98FE6575 /* HoliModels.swift */; };
 		3AC53462BB2646F2877DC40F /* ForavaApp/Models/CoreTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4829A4CDBC4DAEB8F253A4 /* ForavaApp/Models/CoreTypes.swift */; };
-		3B3DD8DDBFBA40319C128767 /* ForavaApp/Views/CulturalDesigns/Shared/CulturalDesignProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05BE32819F74E3BB0C343FC /* ForavaApp/Views/CulturalDesigns/Shared/CulturalDesignProtocol.swift */; };
-		4B8BD9A903AE49C28CFFD444 /* ForavaApp/Views/CulturalDesigns/Shared/GiftDesignTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4283DB62BC9A4356BDA2CC8D /* ForavaApp/Views/CulturalDesigns/Shared/GiftDesignTypes.swift */; };
 		4C7FD120FC4F4B17B9F89569 /* ForavaApp/Services/Social/CulturalCommunityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFD9AECB6644F5D9FB1F323 /* ForavaApp/Services/Social/CulturalCommunityService.swift */; };
 		60CE1723D72345B0AE9A6988 /* ForavaApp/Services/SubscriptionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E409DD4F48476FB3B1DADB /* ForavaApp/Services/SubscriptionManager.swift */; };
 		659A3F6B1C7941F0A818111A /* ForavaApp/Services/PerformanceMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF1F8493CB34288AEF8E9C7 /* ForavaApp/Services/PerformanceMonitor.swift */; };
 		7D4E496253AF4534BD61FA28 /* ForavaApp/Models/SharedCulturalTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6944C5B65444E5C9A6BFF4E /* ForavaApp/Models/SharedCulturalTypes.swift */; };
 		804F94C64D384D39B539C08E /* ForavaApp/Services/Calendar/CulturalCalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A8BA73C20F4C52804B9C2A /* ForavaApp/Services/Calendar/CulturalCalendarService.swift */; };
-		927E1CFEE5F246649844AB63 /* ForavaApp/Views/CulturalDesigns/Shared/CulturalDesignComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201A5F49AC7C4156B0E83E7D /* ForavaApp/Views/CulturalDesigns/Shared/CulturalDesignComponents.swift */; };
-		9483832A7E424BDF965DF859 /* ForavaApp/Views/CulturalDesigns/Shared/CulturalDesignViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA72AB9357842C486DED396 /* ForavaApp/Views/CulturalDesigns/Shared/CulturalDesignViewModel.swift */; };
 		A001 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000 /* App.swift */; };
 		A003 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A002 /* ContentView.swift */; };
 		A005 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A004 /* Assets.xcassets */; };
@@ -254,14 +250,12 @@
 		C005 /* SharedModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = C004 /* SharedModels.swift */; };
 		C4FF /* SharedModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = C004 /* SharedModels.swift */; };
 		CCD4095A4B5249F887202701 /* ForavaApp/Services/LazyLoadingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B2C9B828374D7DAA542DD4 /* ForavaApp/Services/LazyLoadingManager.swift */; };
-		F2A710BBBEBC44E5B8B6708D /* ForavaApp/Views/CulturalDesigns/Shared/OptimizedCulturalDesignComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C8DE009E784B9F87A5E907 /* ForavaApp/Views/CulturalDesigns/Shared/OptimizedCulturalDesignComponents.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		063209246C2C4919B569B04E /* AnniversaryElementsSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnniversaryElementsSelectionView.swift; sourceTree = "<group>"; };
 		0A4829A4CDBC4DAEB8F253A4 /* ForavaApp/Models/CoreTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForavaApp/Models/CoreTypes.swift; sourceTree = "<group>"; };
 		12B643207E304B7394A7FEC6 /* ChineseNewYearDesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChineseNewYearDesignView.swift; sourceTree = "<group>"; };
-		201A5F49AC7C4156B0E83E7D /* ForavaApp/Views/CulturalDesigns/Shared/CulturalDesignComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForavaApp/Views/CulturalDesigns/Shared/CulturalDesignComponents.swift; sourceTree = "<group>"; };
 		213539C82E6BE52900CC85B0 /* DiwaliDesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiwaliDesignView.swift; sourceTree = "<group>"; };
 		213539CA2E6BE53400CC85B0 /* EasterDesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasterDesignView.swift; sourceTree = "<group>"; };
 		213539CC2E6BE53D00CC85B0 /* EidAlAdhaDesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EidAlAdhaDesignView.swift; sourceTree = "<group>"; };
@@ -465,7 +459,6 @@
 		21E8D07E2EAF82BC008B8145 /* DALLE3Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DALLE3Service.swift; sourceTree = "<group>"; };
 		29E7CF5A1CFF4A4A98FE6575 /* HoliModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoliModels.swift; sourceTree = "<group>"; };
 		35B7B6AAC67649ECBD644F59 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
-		4283DB62BC9A4356BDA2CC8D /* ForavaApp/Views/CulturalDesigns/Shared/GiftDesignTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForavaApp/Views/CulturalDesigns/Shared/GiftDesignTypes.swift; sourceTree = "<group>"; };
 		4AF94C3E0C3949DF970484F1 /* DiwaliDesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiwaliDesignView.swift; sourceTree = "<group>"; };
 		4EBADE91E8BB4F34BB1D1CD6 /* EasterDesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasterDesignView.swift; sourceTree = "<group>"; };
 		573C4E8983EA44049A331343 /* ChristmasDesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChristmasDesignView.swift; sourceTree = "<group>"; };
@@ -474,11 +467,9 @@
 		7043A6C8DE614699B92F7536 /* AnniversaryColorPaletteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnniversaryColorPaletteView.swift; sourceTree = "<group>"; };
 		723953C0700543E9AE178079 /* VesakDayDesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VesakDayDesignView.swift; sourceTree = "<group>"; };
 		75546921A45A4AB2BA36EA11 /* HanukkahDesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HanukkahDesignView.swift; sourceTree = "<group>"; };
-		78C8DE009E784B9F87A5E907 /* ForavaApp/Views/CulturalDesigns/Shared/OptimizedCulturalDesignComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForavaApp/Views/CulturalDesigns/Shared/OptimizedCulturalDesignComponents.swift; sourceTree = "<group>"; };
 		79E71C998FEF4EF8BFE78604 /* CulturalGiftDesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulturalGiftDesignView.swift; sourceTree = "<group>"; };
 		7BF1F8493CB34288AEF8E9C7 /* ForavaApp/Services/PerformanceMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForavaApp/Services/PerformanceMonitor.swift; sourceTree = "<group>"; };
 		7CB371B2055D4D9D8E9FDF61 /* RoshHashanahDesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoshHashanahDesignView.swift; sourceTree = "<group>"; };
-		8BA72AB9357842C486DED396 /* ForavaApp/Views/CulturalDesigns/Shared/CulturalDesignViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForavaApp/Views/CulturalDesigns/Shared/CulturalDesignViewModel.swift; sourceTree = "<group>"; };
 		907D97116DFE467294355342 /* EidAlAdhaDesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EidAlAdhaDesignView.swift; sourceTree = "<group>"; };
 		96A6E022902E455E99ED8F1B /* MidAutumnFestivalDesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MidAutumnFestivalDesignView.swift; sourceTree = "<group>"; };
 		A000 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
@@ -515,7 +506,6 @@
 		EB82568E682F426DB7957BFB /* PlaceholderCulturalGiftDesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderCulturalGiftDesignView.swift; sourceTree = "<group>"; };
 		EBF54559B2E847D0A52CC1D1 /* AnniversaryDesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnniversaryDesignView.swift; sourceTree = "<group>"; };
 		EDE689EA5B7042CDAC9503D2 /* RakshaBandhanDesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RakshaBandhanDesignView.swift; sourceTree = "<group>"; };
-		F05BE32819F74E3BB0C343FC /* ForavaApp/Views/CulturalDesigns/Shared/CulturalDesignProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForavaApp/Views/CulturalDesigns/Shared/CulturalDesignProtocol.swift; sourceTree = "<group>"; };
 		F1A8BA73C20F4C52804B9C2A /* ForavaApp/Services/Calendar/CulturalCalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForavaApp/Services/Calendar/CulturalCalendarService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -549,11 +539,6 @@
 				F1A8BA73C20F4C52804B9C2A /* ForavaApp/Services/Calendar/CulturalCalendarService.swift */,
 				D9B97385EBE2460F821A7C8F /* ForavaApp/Services/Calendar/CulturalNotificationManager.swift */,
 				DBFD9AECB6644F5D9FB1F323 /* ForavaApp/Services/Social/CulturalCommunityService.swift */,
-				F05BE32819F74E3BB0C343FC /* ForavaApp/Views/CulturalDesigns/Shared/CulturalDesignProtocol.swift */,
-				201A5F49AC7C4156B0E83E7D /* ForavaApp/Views/CulturalDesigns/Shared/CulturalDesignComponents.swift */,
-				8BA72AB9357842C486DED396 /* ForavaApp/Views/CulturalDesigns/Shared/CulturalDesignViewModel.swift */,
-				4283DB62BC9A4356BDA2CC8D /* ForavaApp/Views/CulturalDesigns/Shared/GiftDesignTypes.swift */,
-				78C8DE009E784B9F87A5E907 /* ForavaApp/Views/CulturalDesigns/Shared/OptimizedCulturalDesignComponents.swift */,
 				E5D0B66373454367B2E61FA2 /* AnniversaryDesignView.swift */,
 				573C4E8983EA44049A331343 /* ChristmasDesignView.swift */,
 				12B643207E304B7394A7FEC6 /* ChineseNewYearDesignView.swift */,
@@ -1395,14 +1380,9 @@
 				0691F1B7C8204853B28C1FB9 /* ForavaApp/Services/Calendar/CulturalNotificationManager.swift in Sources */,
 				4C7FD120FC4F4B17B9F89569 /* ForavaApp/Services/Social/CulturalCommunityService.swift in Sources */,
 				215C76BC2EB5A858002C27DB /* VesakDayAIService.swift in Sources */,
-				3B3DD8DDBFBA40319C128767 /* ForavaApp/Views/CulturalDesigns/Shared/CulturalDesignProtocol.swift in Sources */,
 				215C76982EB34CFB002C27DB /* ChineseNewYearAIService.swift in Sources */,
 				215C76AA2EB361B4002C27DB /* DiwaliModels.swift in Sources */,
 				2AB29D0B144486564A59A3FC /* HoliModels.swift in Sources */,
-				927E1CFEE5F246649844AB63 /* ForavaApp/Views/CulturalDesigns/Shared/CulturalDesignComponents.swift in Sources */,
-				9483832A7E424BDF965DF859 /* ForavaApp/Views/CulturalDesigns/Shared/CulturalDesignViewModel.swift in Sources */,
-				4B8BD9A903AE49C28CFFD444 /* ForavaApp/Views/CulturalDesigns/Shared/GiftDesignTypes.swift in Sources */,
-				F2A710BBBEBC44E5B8B6708D /* ForavaApp/Views/CulturalDesigns/Shared/OptimizedCulturalDesignComponents.swift in Sources */,
 				219FCE0A2ECB23450068B3A1 /* GenerationQuotaManager.swift in Sources */,
 				215C775A2EB757AB002C27DB /* MidAutumnFestivalStyleSelectionView.swift in Sources */,
 				215C775B2EB757AB002C27DB /* MidAutumnFestivalCreateSummaryView.swift in Sources */,
