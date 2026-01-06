@@ -3,6 +3,7 @@ import SwiftUI
 
 /// Protocol defining the standard interface for all cultural AI services
 /// Ensures consistency across Anniversary, Diwali, Christmas, and other cultural events
+@MainActor
 protocol CulturalAIServiceProtocol: AnyObject, ObservableObject {
 
     // MARK: - Published Properties
