@@ -126,7 +126,27 @@ struct ChineseNewYearElementsSelectionView: View {
     }
 
     private func elementIcon(for elementName: String) -> String {
-        switch elementName.lowercased() {
+        let lowercaseName = elementName.lowercased()
+
+        // Handle dynamic zodiac year elements
+        if lowercaseName.contains("year of the") {
+            if lowercaseName.contains("rat") { return "hare.fill" }
+            if lowercaseName.contains("ox") { return "tortoise.fill" }
+            if lowercaseName.contains("tiger") { return "cat.fill" }
+            if lowercaseName.contains("rabbit") { return "hare.fill" }
+            if lowercaseName.contains("dragon") { return "sparkles" }
+            if lowercaseName.contains("snake") { return "waveform.path" }
+            if lowercaseName.contains("horse") { return "figure.equestrian.sports" }
+            if lowercaseName.contains("goat") { return "leaf.fill" }
+            if lowercaseName.contains("monkey") { return "face.smiling" }
+            if lowercaseName.contains("rooster") { return "bird.fill" }
+            if lowercaseName.contains("dog") { return "dog.fill" }
+            if lowercaseName.contains("pig") { return "hare.fill" }
+            return "calendar.badge.clock"  // Fallback
+        }
+
+        // Existing static element icons
+        switch lowercaseName {
         case "dragon":
             return "sparkles"
         case "lantern":

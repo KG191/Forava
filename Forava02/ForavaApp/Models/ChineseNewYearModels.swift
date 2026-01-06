@@ -59,11 +59,159 @@ struct ChineseNewYearElement: Identifiable, Codable {
         self.weight = weight
         self.aiPromptModifier = aiPromptModifier
     }
+
+    init(id: UUID, name: String, chineseName: String, weight: Double, aiPromptModifier: String) {
+        self.id = id
+        self.name = name
+        self.chineseName = chineseName
+        self.weight = weight
+        self.aiPromptModifier = aiPromptModifier
+    }
+}
+
+// MARK: - Chinese Zodiac Calculator
+struct ChineseZodiacCalculator {
+
+    enum ZodiacAnimal: String, CaseIterable {
+        case rat, ox, tiger, rabbit, dragon, snake
+        case horse, goat, monkey, rooster, dog, pig
+
+        var displayName: String { rawValue.capitalized }
+
+        var chineseCharacter: String {
+            switch self {
+            case .rat: return "鼠"
+            case .ox: return "牛"
+            case .tiger: return "虎"
+            case .rabbit: return "兔"
+            case .dragon: return "龙"
+            case .snake: return "蛇"
+            case .horse: return "马"
+            case .goat: return "羊"
+            case .monkey: return "猴"
+            case .rooster: return "鸡"
+            case .dog: return "狗"
+            case .pig: return "猪"
+            }
+        }
+
+        var sfSymbol: String {
+            switch self {
+            case .rat: return "hare.fill"
+            case .ox: return "tortoise.fill"
+            case .tiger: return "cat.fill"
+            case .rabbit: return "hare.fill"
+            case .dragon: return "sparkles"
+            case .snake: return "waveform.path"
+            case .horse: return "figure.equestrian.sports"
+            case .goat: return "leaf.fill"
+            case .monkey: return "face.smiling"
+            case .rooster: return "bird.fill"
+            case .dog: return "dog.fill"
+            case .pig: return "hare.fill"
+            }
+        }
+    }
+
+    enum ZodiacElement: String, CaseIterable {
+        case wood, fire, earth, metal, water
+
+        var displayName: String { rawValue.capitalized }
+
+        var chineseCharacter: String {
+            switch self {
+            case .wood: return "木"
+            case .fire: return "火"
+            case .earth: return "土"
+            case .metal: return "金"
+            case .water: return "水"
+            }
+        }
+    }
+
+    // Reference: 1924 was Year of the Rat (consistent with CulturalCalendarService)
+    // Reference: 1984 was Year of the Wood Rat (start of 60-year cycle for element calculation)
+    private static let animalReferenceYear = 1924
+    private static let elementReferenceYear = 1984
+
+    // Known CNY dates for accurate year boundary
+    private static let knownCNYDates: [Int: (month: Int, day: Int)] = [
+        2024: (2, 10), 2025: (1, 29), 2026: (2, 17),
+        2027: (2, 6), 2028: (1, 26), 2029: (2, 13), 2030: (2, 3)
+    ]
+
+    static func getZodiacYear(for date: Date = Date()) -> (animal: ZodiacAnimal, element: ZodiacElement) {
+        let chineseYear = getChineseYear(for: date)
+
+        // Animal: 12-year cycle from 1924 (Rat year)
+        let animalIndex = (chineseYear - animalReferenceYear) % 12
+        let normalizedAnimalIndex = animalIndex >= 0 ? animalIndex : animalIndex + 12
+        let animal = ZodiacAnimal.allCases[normalizedAnimalIndex]
+
+        // Element: 10-year cycle (each element governs 2 years)
+        let elementCycle = (chineseYear - elementReferenceYear) % 10
+        let normalizedElementCycle = elementCycle >= 0 ? elementCycle : elementCycle + 10
+        let elementIndex = normalizedElementCycle / 2
+        let element = ZodiacElement.allCases[elementIndex]
+
+        return (animal, element)
+    }
+
+    static func getChineseYear(for date: Date) -> Int {
+        let calendar = Calendar.current
+        let year = calendar.component(.year, from: date)
+        let month = calendar.component(.month, from: date)
+        let day = calendar.component(.day, from: date)
+
+        if let cnyDate = knownCNYDates[year] {
+            if month < cnyDate.month || (month == cnyDate.month && day < cnyDate.day) {
+                return year - 1
+            }
+        } else if month < 2 || (month == 2 && day < 4) {
+            return year - 1  // Fallback: Feb 4 approximation
+        }
+        return year
+    }
 }
 
 // MARK: - Chinese New Year Elements Collection
 extension ChineseNewYearElement {
-    static let allElements: [ChineseNewYearElement] = [
+
+    /// Creates dynamic zodiac year element based on current date
+    static func currentZodiacYearElement(for date: Date = Date()) -> ChineseNewYearElement {
+        let chineseYear = ChineseZodiacCalculator.getChineseYear(for: date)
+        let (animal, element) = ChineseZodiacCalculator.getZodiacYear(for: date)
+
+        let displayName = "Year of the \(element.displayName) \(animal.displayName)"
+        let chineseName = "\(element.chineseCharacter)\(animal.chineseCharacter)年"
+
+        let aiPrompt = "(\(animal.displayName.lowercased()) zodiac symbol:2.6), " +
+            "Chinese zodiac \(animal.displayName), " +
+            "\(element.displayName.lowercased()) element energy, " +
+            "traditional Chinese zodiac art, celebration of the year, NOT cartoon"
+
+        // Create deterministic UUID based on the Chinese year for stable identity
+        let stableID = UUID(uuidString: "00000000-0000-0000-0000-\(String(format: "%012d", chineseYear))")
+            ?? UUID()
+
+        return ChineseNewYearElement(
+            id: stableID,
+            name: displayName,
+            chineseName: chineseName,
+            weight: 2.6,  // Highest weight for zodiac prominence
+            aiPromptModifier: aiPrompt
+        )
+    }
+
+    /// Dynamic elements list with zodiac year FIRST
+    static var allElements: [ChineseNewYearElement] {
+        var elements = [currentZodiacYearElement()]
+        elements.append(contentsOf: staticElements)
+        return elements
+    }
+
+    /// Static elements (non-dynamic)
+    private static let staticElements: [ChineseNewYearElement] = [
         // All elements are centerpieces - user selects exactly ONE
         ChineseNewYearElement(
             name: "Dragon",
