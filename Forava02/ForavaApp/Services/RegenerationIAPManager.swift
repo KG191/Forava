@@ -361,7 +361,7 @@ class RegenerationIAPManager: ObservableObject {
         // Create new credit
         let credit = RegenerationCredit(
             id: UUID(),
-            purchaseDate: transaction.purchaseDate ?? Date(),
+            purchaseDate: transaction.purchaseDate,
             isUsed: false,
             usedDate: nil,
             culturalEvent: nil
@@ -391,7 +391,7 @@ class RegenerationIAPManager: ObservableObject {
         for _ in 0..<count {
             let credit = RegenerationCredit(
                 id: UUID(),
-                purchaseDate: transaction.purchaseDate ?? Date(),
+                purchaseDate: transaction.purchaseDate,
                 isUsed: false,
                 usedDate: nil,
                 culturalEvent: nil

@@ -49,18 +49,13 @@ class ComprehensivePaymentService: ObservableObject {
         isLoading = true
         errorMessage = nil
 
-        do {
-            // Load regeneration products
-            await regenerationManager.loadProducts()
+        // Load regeneration products
+        await regenerationManager.loadProducts()
 
-            // Future: Load subscription products here
-            // await subscriptionManager.loadProducts()
+        // Future: Load subscription products here
+        // await subscriptionManager.loadProducts()
 
-            print("✅ All IAP products loaded")
-        } catch {
-            errorMessage = "Failed to load products: \(error.localizedDescription)"
-            print("❌ Error loading products: \(error)")
-        }
+        print("✅ All IAP products loaded")
 
         isLoading = false
     }
@@ -153,7 +148,7 @@ class ComprehensivePaymentService: ObservableObject {
 
     /// Legacy method for backward compatibility
     func restoreAllPurchases() async {
-        await restorePurchases()
+        _ = await restorePurchases()
     }
 
     // MARK: - Subscription Management

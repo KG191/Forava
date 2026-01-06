@@ -160,6 +160,9 @@ class ImageLoader: ObservableObject {
         // Cancel any existing task
         currentTask?.cancel()
 
+        // Capture cache key as String for Sendable compliance
+        let cacheKeyString = urlString
+
         // Create download task with progress tracking
         let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, taskError in
             DispatchQueue.main.async {
@@ -181,8 +184,8 @@ class ImageLoader: ObservableObject {
                     return
                 }
 
-                // Cache the image
-                Self.cache.setObject(downloadedImage, forKey: cacheKey)
+                // Cache the image using String converted to NSString
+                Self.cache.setObject(downloadedImage, forKey: NSString(string: cacheKeyString))
 
                 print("✅ Image downloaded and cached successfully")
                 self.image = downloadedImage

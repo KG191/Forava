@@ -461,7 +461,7 @@ class BaseCulturalAIService: ObservableObject {
         // In production, this would integrate with cultural validation services
         let simulatedScore = Double.random(in: 0.85...0.98)
 
-        let metrics = CulturalAIConfiguration.PerformanceMetrics(
+        _ = CulturalAIConfiguration.PerformanceMetrics(
             generationTime: 25.0,
             culturalScore: simulatedScore,
             qualityScore: 0.92,

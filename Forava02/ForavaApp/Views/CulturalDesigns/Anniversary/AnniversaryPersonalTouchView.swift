@@ -206,7 +206,7 @@ struct AnniversaryPersonalTouchView: View {
                             .padding(12)
                             .background(Color.clear)
                             .focused($isTextFieldFocused)
-                            .onChange(of: personalMessage) { newValue in
+                            .onChange(of: personalMessage) { _, newValue in
                                 let maxLength = AnniversaryPersonalTouch.maxPersonalMessageLength
                                 if newValue.count > maxLength {
                                     personalMessage = String(newValue.prefix(maxLength))
