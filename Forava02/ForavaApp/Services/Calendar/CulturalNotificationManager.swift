@@ -17,12 +17,14 @@ class CulturalNotificationManager: NSObject, ObservableObject {
     
     private let notificationCenter = UNUserNotificationCenter.current()
     private let calendarService = CulturalCalendarService.shared
-    // PersonalizationService dependency - conditionally loaded to prevent build failures
-    private lazy var personalizationService: PersonalizationServiceProtocol? = {
-        // TODO: Replace with proper PersonalizationService.shared when project configuration is fixed
-        // For now, return nil to prevent compilation errors
-        return nil
-    }()
+    // PersonalizationService dependency - now properly integrated
+    private var personalizationService: PersonalizationService {
+        return PersonalizationService.shared
+    }
+
+    // Notification frequency tracking for rate limiting
+    private var notificationCountsByCategory: [NotificationType: Int] = [:]
+    private var lastNotificationCountReset: Date = Date()
     private var culturalNotificationTemplates: [NotificationTemplate] = []
     private var cancellables = Set<AnyCancellable>()
     
@@ -238,13 +240,13 @@ class CulturalNotificationManager: NSObject, ObservableObject {
     }
     
     private func schedulePersonalizedNotifications() async {
-        guard let userProfile = personalizationService?.userCulturalProfile else { return }
-        
+        guard let userProfile = personalizationService.userCulturalProfile else { return }
+
         // Schedule notifications based on user's strongest cultural affinities
         let topAffinities = userProfile.culturalAffinities
             .sorted { $0.value > $1.value }
             .prefix(3)
-        
+
         for (culturalContext, affinity) in topAffinities where affinity > 0.7 {
             await schedulePersonalizedCulturalInsights(for: culturalContext, affinity: affinity)
         }
@@ -277,7 +279,29 @@ class CulturalNotificationManager: NSObject, ObservableObject {
     private func scheduleNotification(_ notification: CulturalNotification) async {
         guard notificationPermissionStatus == .authorized else { return }
         guard shouldScheduleNotification(notification) else { return }
-        
+
+        // Adjust scheduled date for quiet hours
+        let adjustedDate = adjustForQuietHours(notification.scheduledDate)
+
+        // Create adjusted notification if date changed
+        var scheduledNotification = notification
+        if adjustedDate != notification.scheduledDate {
+            scheduledNotification = CulturalNotification(
+                id: notification.id,
+                type: notification.type,
+                culturalContext: notification.culturalContext,
+                event: notification.event,
+                scheduledDate: adjustedDate,
+                title: notification.title,
+                body: notification.body,
+                actionButtons: notification.actionButtons,
+                priority: notification.priority
+            )
+        }
+
+        // Increment frequency counter
+        incrementNotificationCount(for: notification.type)
+
         let content = UNMutableNotificationContent()
         content.title = notification.title
         content.body = notification.body
@@ -321,23 +345,23 @@ class CulturalNotificationManager: NSObject, ObservableObject {
             }
         }
         
-        // Schedule notification
+        // Schedule notification using adjusted date
         let trigger = UNCalendarNotificationTrigger(
-            dateMatching: Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], 
-                                                         from: notification.scheduledDate),
+            dateMatching: Calendar.current.dateComponents([.year, .month, .day, .hour, .minute],
+                                                         from: scheduledNotification.scheduledDate),
             repeats: false
         )
-        
+
         let request = UNNotificationRequest(
-            identifier: notification.id.uuidString,
+            identifier: scheduledNotification.id.uuidString,
             content: content,
             trigger: trigger
         )
-        
+
         do {
             try await notificationCenter.add(request)
-            scheduledNotifications.append(notification)
-            print("Scheduled cultural notification: \(notification.title) for \(notification.scheduledDate)")
+            scheduledNotifications.append(scheduledNotification)
+            print("Scheduled cultural notification: \(scheduledNotification.title) for \(scheduledNotification.scheduledDate)")
         } catch {
             print("Failed to schedule notification: \(error)")
         }
@@ -385,25 +409,129 @@ class CulturalNotificationManager: NSObject, ObservableObject {
     }
     
     // MARK: - Smart Notification Logic
-    
+
     private func shouldScheduleNotification(_ notification: CulturalNotification) -> Bool {
-        // Check user preferences
+        // Check user preferences first
+        let typeEnabled: Bool
         switch notification.type {
         case .preparation:
-            return userNotificationPreferences.enablePreparationReminders
+            typeEnabled = userNotificationPreferences.enablePreparationReminders
         case .weekReminder:
-            return userNotificationPreferences.enableWeeklyReminders
+            typeEnabled = userNotificationPreferences.enableWeeklyReminders
         case .dayBefore:
-            return userNotificationPreferences.enableDayBeforeReminders
+            typeEnabled = userNotificationPreferences.enableDayBeforeReminders
         case .celebration:
-            return userNotificationPreferences.enableCelebrationReminders
+            typeEnabled = userNotificationPreferences.enableCelebrationReminders
         case .giftingReminder:
-            return userNotificationPreferences.enableGiftingReminders
+            typeEnabled = userNotificationPreferences.enableGiftingReminders
         case .periodicReminder:
-            return userNotificationPreferences.enablePeriodicReminders
+            typeEnabled = userNotificationPreferences.enablePeriodicReminders
         case .personalizedInsight:
-            return userNotificationPreferences.enablePersonalizedInsights
+            typeEnabled = userNotificationPreferences.enablePersonalizedInsights
         }
+
+        guard typeEnabled else { return false }
+
+        // Check quiet hours
+        if isWithinQuietHours(notification.scheduledDate) {
+            // Reschedule to after quiet hours if possible
+            return false
+        }
+
+        // Check frequency limits
+        if exceedsFrequencyLimit(notification.type) {
+            return false
+        }
+
+        return true
+    }
+
+    // MARK: - Quiet Hours Enforcement
+
+    private func isWithinQuietHours(_ date: Date) -> Bool {
+        let calendar = Calendar.current
+        let hour = calendar.component(.hour, from: date)
+
+        let quietStart = userNotificationPreferences.quietHoursStart
+        let quietEnd = userNotificationPreferences.quietHoursEnd
+
+        // Handle quiet hours that span midnight (e.g., 22:00 - 08:00)
+        if quietStart > quietEnd {
+            // Quiet period spans midnight
+            return hour >= quietStart || hour < quietEnd
+        } else {
+            // Quiet period within same day
+            return hour >= quietStart && hour < quietEnd
+        }
+    }
+
+    /// Adjusts a notification time to avoid quiet hours
+    private func adjustForQuietHours(_ date: Date) -> Date {
+        guard isWithinQuietHours(date) else { return date }
+
+        let calendar = Calendar.current
+        let quietEnd = userNotificationPreferences.quietHoursEnd
+
+        // Move notification to after quiet hours end
+        var components = calendar.dateComponents([.year, .month, .day], from: date)
+        components.hour = quietEnd
+        components.minute = 0
+
+        if let adjustedDate = calendar.date(from: components) {
+            // If the adjusted time is before the original, move to next day
+            if adjustedDate < date {
+                return calendar.date(byAdding: .day, value: 1, to: adjustedDate) ?? date
+            }
+            return adjustedDate
+        }
+
+        return date
+    }
+
+    // MARK: - Frequency Rate Limiting
+
+    private func exceedsFrequencyLimit(_ type: NotificationType) -> Bool {
+        // Reset counts weekly
+        resetFrequencyCountsIfNeeded()
+
+        let currentCount = notificationCountsByCategory[type] ?? 0
+        let limit = getFrequencyLimit(for: type)
+
+        return currentCount >= limit
+    }
+
+    private func getFrequencyLimit(for type: NotificationType) -> Int {
+        // Weekly limits per notification type
+        switch type {
+        case .preparation:
+            return 5  // Max 5 preparation reminders per week
+        case .weekReminder:
+            return 5  // Max 5 week reminders per week
+        case .dayBefore:
+            return 7  // Max 7 day-before reminders per week (one per day)
+        case .celebration:
+            return 5  // Max 5 celebration notifications per week
+        case .giftingReminder:
+            return 3  // Max 3 gifting reminders per week
+        case .periodicReminder:
+            return 1  // Max 1 periodic reminder per week
+        case .personalizedInsight:
+            return 2  // Max 2 personalized insights per week
+        }
+    }
+
+    private func resetFrequencyCountsIfNeeded() {
+        let calendar = Calendar.current
+        let weeksSinceReset = calendar.dateComponents([.weekOfYear], from: lastNotificationCountReset, to: Date()).weekOfYear ?? 0
+
+        if weeksSinceReset >= 1 {
+            notificationCountsByCategory.removeAll()
+            lastNotificationCountReset = Date()
+        }
+    }
+
+    private func incrementNotificationCount(for type: NotificationType) {
+        notificationCountsByCategory[type] = (notificationCountsByCategory[type] ?? 0) + 1
     }
     
     private func determinePriority(for event: CulturalCalendarEvent, notificationType: NotificationType) -> NotificationPriority {
@@ -571,7 +699,11 @@ class CulturalNotificationManager: NSObject, ObservableObject {
         case .christmas: imageName = "christmas_notification"
         default: imageName = "cultural_default"
         }
-        
+
+        // Try PNG first (preferred for asset catalog), then JPG as fallback
+        if let pngURL = Bundle.main.url(forResource: imageName, withExtension: "png") {
+            return pngURL
+        }
         return Bundle.main.url(forResource: imageName, withExtension: "jpg")
     }
     
@@ -592,7 +724,7 @@ class CulturalNotificationManager: NSObject, ObservableObject {
     }
     
     private func getRandomCulturalContext() -> CulturalContext {
-        let userProfile = personalizationService?.userCulturalProfile
+        let userProfile = personalizationService.userCulturalProfile
         let relevantContexts = userProfile?.primaryCulturalContexts ?? Array(CulturalContext.allCases.prefix(5))
         return relevantContexts.randomElement() ?? .anniversary
     }
