@@ -4,6 +4,19 @@ A comprehensive guide to push notifications designed to boost user engagement, e
 
 ---
 
+## Implementation Status
+
+| Attribute | Value |
+|-----------|-------|
+| **Status** | In Progress |
+| **Development Branch** | `Notifications` |
+| **Merge Target** | `XCode04_Se` |
+| **Last Updated** | January 12, 2026 |
+
+> **Merge Instructions:** When notifications implementation is complete, merge this branch into `XCode04_Se` for integration with the main development line.
+
+---
+
 ## Table of Contents
 
 1. [Overview & Goals](#overview--goals)
@@ -104,7 +117,9 @@ Cultural learning and discovery.
 
 ### 6. Watch App Sync
 
-Cross-device notifications.
+> **Status:** Not Applicable - Watch app sync functionality has not been implemented in the current app architecture. This section is retained for future reference only.
+
+Cross-device notifications (Future Enhancement).
 
 | Notification | Device | Purpose |
 |--------------|--------|---------|
@@ -367,7 +382,7 @@ Users can control these in Settings:
 | Subscription Alerts | ON | Account and billing notifications |
 | Social Updates | ON | Sharing and delivery confirmations |
 | Cultural Insights | ON | Weekly learning moments |
-| Watch Sync | ON | Cross-device notifications |
+| Watch Sync | N/A | Cross-device notifications (not implemented) |
 | Promotional | OFF | Special offers and bonuses |
 
 ### Timing Preferences
@@ -497,7 +512,7 @@ struct NotificationPreferences {
     var subscriptionAlertsEnabled: Bool
     var socialUpdatesEnabled: Bool
     var culturalInsightsEnabled: Bool
-    var watchSyncEnabled: Bool
+    // var watchSyncEnabled: Bool  // Not implemented - Watch sync not available
     var promotionalEnabled: Bool
     var quietHoursStart: Date
     var quietHoursEnd: Date
@@ -524,6 +539,17 @@ Notification.Name.navigateToPlanning
 | Date | Version | Changes |
 |------|---------|---------|
 | January 2026 | 1.0 | Initial notification strategy document |
+| January 12, 2026 | 1.1 | Added implementation status, branch info, and merge target. Marked Watch App Sync as not applicable. |
+
+---
+
+## Branch & Merge Information
+
+- **Development Branch:** `Notifications`
+- **Merge Target:** `XCode04_Se`
+- **Related Documentation:** `NOTIFICATIONS_IMPLEMENTATION_STATUS.md`
+
+When all notification features are implemented and tested, create a pull request to merge into `XCode04_Se`.
 
 ---
 

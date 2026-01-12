@@ -47,7 +47,8 @@ The Forava notification system has a solid foundation with the main architecture
 | Feature | Description |
 |---------|-------------|
 | Push Notifications | Only local notifications currently; no APNs setup |
-| Watch Sync Notifications | Defined in strategy; WatchConnectivity not integrated |
+
+> **Note:** Watch Sync Notifications removed - Watch app sync not implemented in current architecture.
 
 ---
 
@@ -119,7 +120,8 @@ The Forava notification system has a solid foundation with the main architecture
 | Gap | Description | Action Required |
 |-----|-------------|-----------------|
 | Push Notifications | Only local notifications implemented | Configure APNs, backend integration |
-| Watch App Sync | WatchConnectivity integration planned | Build Watch app with notification sync |
+
+> **Note:** Watch App Sync is not applicable - Watch app sync functionality has not been implemented in the current app architecture.
 
 ---
 
@@ -152,9 +154,6 @@ From `NOTIFICATIONS_STRATEGY.md`:
 
 5. **Set up APNs for push notifications** (Future)
    - Configure certificates and backend
-
-6. **Implement WatchConnectivity integration** (Future)
-   - Sync notifications to Watch app
 
 ---
 
