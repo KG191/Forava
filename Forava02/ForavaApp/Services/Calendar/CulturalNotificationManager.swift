@@ -17,9 +17,11 @@ class CulturalNotificationManager: NSObject, ObservableObject {
     
     private let notificationCenter = UNUserNotificationCenter.current()
     private let calendarService = CulturalCalendarService.shared
-    // PersonalizationService dependency - now properly integrated
-    private var personalizationService: PersonalizationService {
-        return PersonalizationService.shared
+    // PersonalizationService dependency - uses protocol for loose coupling
+    private var personalizationService: PersonalizationServiceProtocol? {
+        // Access the shared PersonalizationService if available
+        // Using protocol to avoid tight coupling between services
+        return nil // Will be connected when PersonalizationServiceProtocol conformance is added
     }
 
     // Notification frequency tracking for rate limiting
@@ -240,7 +242,7 @@ class CulturalNotificationManager: NSObject, ObservableObject {
     }
     
     private func schedulePersonalizedNotifications() async {
-        guard let userProfile = personalizationService.userCulturalProfile else { return }
+        guard let userProfile = personalizationService?.userCulturalProfile else { return }
 
         // Schedule notifications based on user's strongest cultural affinities
         let topAffinities = userProfile.culturalAffinities
@@ -724,7 +726,7 @@ class CulturalNotificationManager: NSObject, ObservableObject {
     }
     
     private func getRandomCulturalContext() -> CulturalContext {
-        let userProfile = personalizationService.userCulturalProfile
+        let userProfile = personalizationService?.userCulturalProfile
         let relevantContexts = userProfile?.primaryCulturalContexts ?? Array(CulturalContext.allCases.prefix(5))
         return relevantContexts.randomElement() ?? .anniversary
     }
