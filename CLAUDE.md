@@ -378,54 +378,14 @@ open Forava.xcodeproj
 - `Forava02/CULTURAL_DESIGN_IMPLEMENTATION_PROTOCOL.md` - Full 7-step protocol
 - `Forava02/CULTURAL_DESIGN_CHECKLIST.md` - Implementation checklist
 
-### 🎯 CRITICAL: Cultural Routing Architecture (Dual Routing Required)
+### 🎯 Cultural Routing Architecture (Single Router)
 
-**Issue Pattern (RECURRING)**: Tabs not appearing after selecting contact for new cultural designs.
+**Status**: ✅ RESOLVED — `TempCulturalGiftDesignView` has been removed. All routing now goes through `CulturalGiftDesignView.swift`.
 
-**Root Cause**: Despite architectural consolidation attempts, the app still uses TWO routing systems:
-- **Primary Router**: `ForavaApp/Views/CulturalGiftDesignView.swift` (intended single source of truth)
-- **Legacy Router**: `TempCulturalGiftDesignView` (inside `CulturalGiftSelectionView.swift`, marked deprecated but STILL ACTIVE)
-
-**Historical Failures**: This has caused recurring issues for:
-- Vesak Day (November 1, 2025 - commit fd47bbc)
-- Rosh Hashanah (November 2, 2025 - commit d591998)
-- Christmas (November 7, 2025 - current fix)
-
-**When Adding New Cultural Design (BOTH Locations Required)**:
-
-**Step 1 - Update CulturalGiftDesignView.swift** (line ~45):
-```swift
-switch selectedEvent.name.lowercased() {
-case "anniversary":
-    AnniversaryDesignView(...)
-case "chinese new year":
-    ChineseNewYearDesignView(...)
-case "christmas":  // ← Add new culture here FIRST
-    ChristmasDesignView(...)
-default:
-    // Coming Soon placeholder
-}
-```
-
-**Step 2 - ALSO Update TempCulturalGiftDesignView** in `CulturalGiftSelectionView.swift` (line ~530):
-```swift
-// Yes, you MUST add routing here too, despite it being deprecated
-switch selectedEvent.name.lowercased() {
-case "easter":
-    EasterDesignView(...)
-case "christmas":  // ← ALSO add here or tabs won't show
-    ChristmasDesignView(...)
-default:
-    // Placeholder
-}
-```
-
-**CRITICAL WARNING**:
-- ⚠️ If you only add routing to CulturalGiftDesignView.swift, **tabs will NOT show**
-- ⚠️ The app will display "Coming Soon" placeholder instead of the 7-tab interface
-- ⚠️ This is technical debt: TempCulturalGiftDesignView must be fully removed, but until then ALL cultures need BOTH locations
-
-**Checklist Reference**: See `Forava02/CULTURAL_DESIGN_CHECKLIST.md` for complete implementation guide
+**When Adding New Cultural Design**:
+1. Add the case to the switch in `ForavaApp/Views/CulturalGiftDesignView.swift`
+2. Ensure the corresponding DesignView file exists and meets the 250+ line requirement
+3. Build and test thoroughly
 
 ### Cultural Development Workflow
 ```bash

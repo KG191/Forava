@@ -6,7 +6,7 @@ import SwiftUI
 //    1. Add the case here in the switch statement
 //    2. Ensure the corresponding DesignView file exists
 //    3. Build and test thoroughly before moving to next culture
-//    4. DO NOT modify TempCulturalGiftDesignView (deprecated)
+//    4. CulturalGiftDesignView is the only router — no legacy duplicates
 struct CulturalGiftDesignView: View {
     let selectedContact: Contact
     let selectedEvent: CulturalEvent

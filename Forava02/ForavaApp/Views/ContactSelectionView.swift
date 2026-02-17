@@ -154,7 +154,7 @@ struct ContactSelectionView: View {
                         } else {
                             NavigationLink {
                                 if let event = selectedEvent {
-                                    TempCulturalGiftDesignView(selectedContact: selectedContact, selectedEvent: event)
+                                    CulturalGiftDesignView(selectedContact: selectedContact, selectedEvent: event)
                                 } else {
                                     RakhiSelectionView(selectedContact: selectedContact, selectedEvent: selectedEvent)
                                 }
